@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectTypeGuids>{9B831FEF-F496-498F-9FE8-180DA5CB4258};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{01EA47C4-E03C-4B42-A767-6560AE5BF1AC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>VerticePort.Base</RootNamespace>
+    <AssemblyName>Vertices Engine MonoGame Port</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MonoGame.GL\Debug</OutputPath>
+    <DefineConstants>DEBUG;TECHDEMO_PLTFRM_GL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\MonoGame.GL\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>TECHDEMO_PLTFRM_GL</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NVorbis">
+      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\NVorbis.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\OpenTK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Entities\xEnvrio.cs" />
+    <Compile Include="Game\Enums.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\GameEngine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\BackgroundScreen.cs" />
+    <Compile Include="Screens\MainMenuScreen.cs" />
+    <Compile Include="Screens\ModelViewerScreen.cs" />
+    <Compile Include="Screens\Demos\DemoSelectScreen.cs" />
+    <Compile Include="Screens\Demos\FPSGamePlay.cs" />
+    <Compile Include="Screens\Demos\TechDemoSponza.cs" />
+    <Compile Include="Entities\ConcreteCube.cs" />
+    <Compile Include="Entities\Teapot.cs" />
+    <Compile Include="Entities\WoodenCrate.cs" />
+    <Compile Include="Entities\ModelObjs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="Content\Content.mgcb" />
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Content\Compiled.WindowsGL\Models\sponza\spnza_bricks_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+      <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
+      <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virtex.Lib.Vertices\Virtex.Lib.Vertices.GL.csproj">
+      <Project>{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}</Project>
+      <Name>Virtex.Lib.Vertices.GL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_side_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_side_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_top_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\wooden crate.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\wooden crate_ICON.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\sponza\spnza_bricks_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\sponza\spnza_bricks_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\sponza\sponza.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_df.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_df_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\cube_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\grass_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\grass_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\vrtc_techDemo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\wood_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Textures\menu\background.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Textures\virtex_logo\VirtexEdgeLogo64.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_dds_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_dds_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\modelobjs.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_diff.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_diff_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\td_courtyard.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Compiled.WindowsGL\Models\courtyard\" />
+  </ItemGroup>
+</Project>

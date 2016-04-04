@@ -1,0 +1,95 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
+using vxVertices.Core;
+
+namespace vxVertices.GUI.Controls
+{
+    public class vxListViewSpliter : vxGUIBaseItem
+    {
+        /// <summary>
+        /// Gets or sets the button image.
+        /// </summary>
+        /// <value>The button image.</value>
+        public Texture2D ButtonImage { get; set; }
+
+        public vxListViewSpliter(
+            vxEngine vxEngine,
+            string Text)
+        {
+            vxEngine = vxEngine;
+
+            this.Text = Text;
+
+            Position = Vector2.Zero;
+
+            ButtonImage = vxEngine.Assets.Textures.Blank;
+
+            this.Width = 1500;
+            this.Height = 40;
+
+            BoundingRectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+
+            Color_Normal = Color.White;
+            Color_Highlight = Color.LightBlue;
+        }
+
+        public override void Update(MouseState mouseState)
+        {
+            base.Update(mouseState);
+        }
+
+        public override void Draw(vxEngine vxEngine)
+        {
+            base.Draw(vxEngine);
+
+            //
+            //Update Rectangle
+            //     
+            BoundingRectangle = new Rectangle((int)(Position.X - Padding), (int)(Position.Y - Padding / 2), Width, Height + Padding / 2);
+            Rectangle BackRectangle = new Rectangle((int)(Position.X - Padding) - 2, (int)(Position.Y - Padding / 2) - 2, Width + 4, Height + Padding / 2 + 4);
+
+            //
+            //Draw Button
+            //
+            vxEngine.SpriteBatch.Begin();
+            /*
+            if (HasFocus)
+            {
+                vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BackRectangle, Color.LightBlue * 1.1f);
+                vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color.LightBlue);
+            }
+            */
+            vxEngine.SpriteBatch.Draw(ButtonImage, BoundingRectangle, Color.Black * 0.5f);
+
+
+            if (Text != null)
+            {
+                int BackHeight = 4;
+                
+                vxEngine.SpriteBatch.Draw(
+                    vxEngine.Assets.Textures.Blank,
+                    new Rectangle(
+                        BoundingRectangle.Location.X,
+                        BoundingRectangle.Location.Y + BackHeight + (int)vxEngine.Assets.Fonts.MenuFont.MeasureString(Text).Y,
+                        BoundingRectangle.Width,
+                        2),
+                    Color.Gray * 0.5f);
+                
+                vxEngine.SpriteBatch.DrawString(
+                    vxEngine.Assets.Fonts.MenuFont,
+                    Text,
+                    new Vector2(
+                        BoundingRectangle.Location.X + 5,
+                        BoundingRectangle.Location.Y + BackHeight + 5),
+                    Color.LightGray);
+            }
+
+            vxEngine.SpriteBatch.End();
+        }
+    }
+}

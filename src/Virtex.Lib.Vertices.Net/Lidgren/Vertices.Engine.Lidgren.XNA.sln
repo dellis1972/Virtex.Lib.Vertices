@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vertices.Engine.Lidgren.XNA", "Vertices.Engine.Lidgren.XNA\Vertices.Engine.Lidgren.XNA.csproj", "{46806426-2647-49A4-AD3F-0F1E332A4358}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46806426-2647-49A4-AD3F-0F1E332A4358}.Debug|x86.ActiveCfg = Debug|x86
+		{46806426-2647-49A4-AD3F-0F1E332A4358}.Debug|x86.Build.0 = Debug|x86
+		{46806426-2647-49A4-AD3F-0F1E332A4358}.Release|x86.ActiveCfg = Release|x86
+		{46806426-2647-49A4-AD3F-0F1E332A4358}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

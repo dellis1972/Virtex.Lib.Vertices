@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug2D</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectTypeGuids>{9B831FEF-F496-498F-9FE8-180DA5CB4258};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>vxVertices</RootNamespace>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AssemblyName>Virtex.Lib.Vertices.GL</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug2D|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MonoGame.Debug.2D</OutputPath>
+    <DefineConstants>DEBUG;VIRTICES_2D;VRTC_PLTFRM_GL </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release2D|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\MonoGame.Release.2D</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>VIRTICES_2D;VRTC_PLTFRM_GL </DefineConstants>
+    <DocumentationFile>bin\MonoGame.Release.2D\Engine.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug3D|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MonoGame.Debug.3D</OutputPath>
+    <DefineConstants>DEBUG;VIRTICES_3D;VRTC_PLTFRM_GL ; TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release3D|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\MonoGame.Release.3D</OutputPath>
+    <DefineConstants>VIRTICES_3D; VRTC_PLTFRM_GL </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NVorbis">
+      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\NVorbis.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\OpenTK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Content.mgcb" />
+    <None Include="Resources\InstancedEffect.xnb" />
+    <None Include="Resources\InstancedEffectXbox.xnb" />
+    <None Include="SDL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SDL_mixer.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Fonts\font_debug.spritefont" />
+    <None Include="Content\Fonts\font_gui.spritefont" />
+    <None Include="Content\Fonts\font_gui_title.spritefont" />
+    <None Include="Content\Fonts\font_splash.spritefont" />
+    <None Include="Content\Models\sun\Rays.png" />
+    <None Include="Content\Models\sun\Rays.xcf" />
+    <None Include="Content\Models\sun\sun.blend" />
+    <None Include="Content\Models\sun\sun.blend1" />
+    <None Include="Content\Models\sun\sun.blend2" />
+    <None Include="Content\Models\sun\sun.fbx" />
+    <None Include="Content\Models\sun\Sun.png" />
+    <None Include="Content\Models\sun\Sun.xcf" />
+    <None Include="Content\Models\sun\sun_ascii.fbx" />
+    <None Include="Content\Models\sun\sun_mask.fbx" />
+    <None Include="Content\Models\sun\sun_mask_mg.fbx" />
+    <None Include="Content\Models\utils\unit_box\texture_unitbox.png" />
+    <None Include="Content\Models\utils\unit_box\unit box.blend" />
+    <None Include="Content\Models\utils\unit_box\unit box.blend1" />
+    <None Include="Content\Models\utils\unit_box\unit_box.fbx" />
+    <None Include="Content\Models\utils\unit_box\unit_box_mg.fbx" />
+    <None Include="Content\Models\utils\unit_plane\image.png" />
+    <None Include="Content\Models\utils\unit_plane\image.xcf" />
+    <None Include="Content\Models\utils\unit_plane\plane.blend" />
+    <None Include="Content\Models\utils\unit_plane\plane.blend1" />
+    <None Include="Content\Models\utils\unit_plane\plane.blend2" />
+    <None Include="Content\Models\utils\unit_plane\unit_plane.fbx" />
+    <None Include="Content\Models\utils\unit_plane\unit_plane_mg.fbx" />
+    <None Include="Content\Models\utils\unit_sphere\texture_unitbox.png" />
+    <None Include="Content\Models\utils\unit_sphere\unitsphere.blend" />
+    <None Include="Content\Models\utils\unit_sphere\unitsphere.blend1" />
+    <None Include="Content\Models\utils\unit_sphere\unit_sphere.fbx" />
+    <None Include="Content\Models\utils\unit_sphere\unit_sphere_mg.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere.blend" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere.blend1" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere_2.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere_mg.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\Thumbs.db" />
+    <None Include="Content\Models\Vehicle\Wheel\wheel.png" />
+    <None Include="Content\Models\water_plane\image.png" />
+    <None Include="Content\Models\water_plane\image.xcf" />
+    <None Include="Content\Models\water_plane\plane.blend" />
+    <None Include="Content\Models\water_plane\plane.blend1" />
+    <None Include="Content\Models\water_plane\plane.blend2" />
+    <None Include="Content\Models\water_plane\water_plane.fbx" />
+    <None Include="Content\Models\water_plane\water_plane_mg.fbx" />
+    <None Include="Content\Shaders\EdgeDetection.Fx" />
+    <None Include="Content\Shaders\MainModelShader.fx" />
+    <None Include="Content\Shaders\SkyBoxShader.fx" />
+    <None Include="Content\Shaders\Bloom\BloomCombine.fx" />
+    <None Include="Content\Shaders\Bloom\BloomExtract.fx" />
+    <None Include="Content\Shaders\Bloom\GaussianBlur.fx" />
+    <None Include="Content\Shaders\Distorter\Distorters.fx" />
+    <None Include="Content\Shaders\Distorter\DistortScene.fx" />
+    <None Include="Content\Shaders\God Rays\GodRaysCombine.fx" />
+    <None Include="Content\Shaders\God Rays\LightRays.fx" />
+    <None Include="Content\Shaders\Water\vxWater.fx" />
+    <None Include="Content\Shaders\Water\waterbump.jpg" />
+    <None Include="Content\Shaders\Water\waterdistort.jpg" />
+    <None Include="Content\Shaders\Water\watertypes.xcf" />
+    <None Include="Content\Shaders\Water\Water_Plane.blend" />
+    <None Include="Content\Shaders\Water\Water_Plane.blend1" />
+    <None Include="Content\Shaders\Water\Water_Plane.blend2" />
+    <None Include="Content\Shaders\Water\Water_Plane.fbx" />
+    <None Include="Content\Shaders\Water\Water_Plane_mg.fbx" />
+    <None Include="Content\Textures\Cursor.png" />
+    <None Include="Content\Textures\Cursor.xcf" />
+    <None Include="Content\Textures\new.png" />
+    <None Include="Content\Textures\null_cube.dds" />
+    <None Include="Content\Textures\null_normal.tga" />
+    <None Include="Content\Textures\null_specular.tga" />
+    <None Include="Content\Textures\Materials\blank.png" />
+    <None Include="Content\Textures\Materials\dots.png" />
+    <None Include="Content\Textures\Materials\pavement.png" />
+    <None Include="Content\Textures\Materials\squares.png" />
+    <None Include="Content\Textures\Materials\Thumbs.db" />
+    <None Include="Content\Textures\Materials\waves.png" />
+    <None Include="Content\Textures\Menu\Slider\Arrow_Left.png" />
+    <None Include="Content\Textures\Menu\Slider\Arrow_Right.png" />
+    <None Include="Content\Textures\Rays\Rays.png" />
+    <None Include="Content\Textures\Rays\Rays.xcf" />
+    <None Include="Content\Textures\Rays\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\tlbr\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_new.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_new.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_new_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_open.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_open.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_open_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_save.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_save.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_saveas.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_saveas.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_saveas_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_save_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_export.png" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_export.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_export_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_import.png" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_import.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_import_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\io\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_restart.png" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_restart.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_restart_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_run.png" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_run.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_run_hover.png" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_stop.png" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_stop.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_stop_hover.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Click_AddItems.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Click_Select.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_New.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_Open.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_Save.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_SaveAs.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Test_Repeat.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Test_Start.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Level_Test_Stop.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Toolbar_Seperator.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\cntrls\ms_slct_L.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\cntrls\ms_slct_R.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\cntrls\ms_slct_scrll.png" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\cntrls\Thumbs.db" />
+    <None Include="Content\Textures\xGUI\blank.png" />
+    <None Include="Content\Textures\xGUI\gradient.png" />
+    <None Include="Content\Textures\xGUI\Thumbs.db" />
+    <None Include="Content\Graphics\Flares\flare1.png" />
+    <None Include="Content\Graphics\Flares\flare2.png" />
+    <None Include="Content\Graphics\Flares\flare3.png" />
+    <None Include="Content\Graphics\Flares\glow.png" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_debug.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_gui.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_gui_title.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_splash.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Cursor.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\new.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\null_cube.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\null_normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\null_specular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Materials\blank.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Materials\dots.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Materials\pavement.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Materials\squares.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Materials\waves.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Menu\Slider\Arrow_Left.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Menu\Slider\Arrow_Right.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\Rays\Rays.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_new.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_new_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_open.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_open_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_save.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_saveas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_saveas_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\file\file_save_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\io\io_export.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\io\io_export_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\io\io_import.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\io\io_import_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\test\test_restart.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\test\test_restart_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\test\test_run.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\test\test_run_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\test\test_stop.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\test\test_stop_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Click_AddItems.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Click_Select.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Manage_New.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Manage_Open.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Manage_Save.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Manage_SaveAs.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Test_Repeat.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Test_Start.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Level_Test_Stop.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\Toolbar_Seperator.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\cntrls\ms_slct_L.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\cntrls\ms_slct_R.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\toolbar_icons\cntrls\ms_slct_scrll.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\xGUI\blank.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\xGUI\gradient.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Water\waterbump.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Water\Water_Plane_mg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\SkyBoxShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\God Rays\GodRaysCombine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Water\vxWater.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Water\waterdistort.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Fonts\font_debug.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Fonts\font_gui.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Fonts\font_gui_title.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Fonts\font_splash.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Graphics\Flares\flare1.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Graphics\Flares\flare2.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Graphics\Flares\flare3.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Graphics\Flares\glow.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Models\sun\sun_mask_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Models\utils\unit_box\unit_box_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Models\utils\unit_plane\unit_plane_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Models\utils\unit_sphere\unit_sphere_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Models\water_plane\water_plane_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Cursor.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\new.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\null_cube.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\null_normal.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\null_specular.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Materials\blank.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Materials\dots.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Materials\pavement.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Materials\squares.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Materials\waves.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Menu\Slider\Arrow_Left.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Menu\Slider\Arrow_Right.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\Rays\Rays.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_new.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_new_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_open.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_open_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_save.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_saveas.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_saveas_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\file\file_save_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\io\io_export.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\io\io_export_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\io\io_import.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\io\io_import_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\test\test_restart.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\test\test_restart_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\test\test_run.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\test\test_run_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\test\test_stop.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\tlbr\test\test_stop_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Click_AddItems.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Click_Select.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Manage_New.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Manage_Open.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Manage_Save.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Manage_SaveAs.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Test_Repeat.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Test_Start.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Level_Test_Stop.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\Toolbar_Seperator.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\cntrls\ms_slct_L.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\cntrls\ms_slct_R.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\sandbox\toolbar_icons\cntrls\ms_slct_scrll.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\xGUI\blank.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Linux\Textures\xGUI\gradient.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Fonts\font_debug.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Fonts\font_gui.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Fonts\font_gui_title.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Fonts\font_splash.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Graphics\Flares\flare1.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Graphics\Flares\flare2.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Graphics\Flares\flare3.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Graphics\Flares\glow.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Models\sun\sun_mask_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Models\utils\unit_box\unit_box_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Models\utils\unit_plane\unit_plane_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Models\utils\unit_sphere\unit_sphere_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Models\water_plane\water_plane_mg.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Cursor.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\new.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\null_cube.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\null_normal.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\null_specular.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Materials\blank.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Materials\dots.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Materials\pavement.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Materials\squares.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Materials\waves.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Menu\Slider\Arrow_Left.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Menu\Slider\Arrow_Right.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\Rays\Rays.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_new.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_new_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_open.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_open_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_save.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_saveas.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_saveas_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\file\file_save_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\io\io_export.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\io\io_export_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\io\io_import.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\io\io_import_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\test\test_restart.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\test\test_restart_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\test\test_run.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\test\test_run_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\test\test_stop.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\tlbr\test\test_stop_hover.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Click_AddItems.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Click_Select.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Manage_New.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Manage_Open.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Manage_Save.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Manage_SaveAs.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Test_Repeat.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Test_Start.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Level_Test_Stop.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\Toolbar_Seperator.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\cntrls\ms_slct_L.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\cntrls\ms_slct_R.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\sandbox\toolbar_icons\cntrls\ms_slct_scrll.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\xGUI\blank.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.Android\Textures\xGUI\gradient.xnb" />
+    <None Include="README.md" />
+    <None Include="Content\MonoGame\Shaders\MainModelShader.fx" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\MainModelShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MonoGame\Shaders\Lighting\ClearGBuffer.fx" />
+    <None Include="Content\MonoGame\Shaders\Lighting\CombineFinal.fx" />
+    <None Include="Content\MonoGame\Shaders\Lighting\DirectionalLight.fx" />
+    <None Include="Content\MonoGame\Shaders\Lighting\PointLight.fx" />
+    <None Include="Content\MonoGame\Shaders\Lighting\RenderGBuffer.fx" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Lighting\ClearGBuffer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Lighting\CombineFinal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Lighting\DirectionalLight.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Lighting\PointLight.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Lighting\RenderGBuffer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MonoGame\Shaders\Include\Shadow.h" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\lghtng\sphere.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\sun\Sun_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\sun\sun_mask.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MonoGame\Shaders\God Rays\GodRaysCombine.fx" />
+    <None Include="Content\MonoGame\Shaders\God Rays\LightRays.fx" />
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Content\Shaders\CartoonEdgeDetection.Fx" />
+    <None Include="Content\MonoGame\Shaders\Include\ModelPixelShaders.h" />
+    <None Include="Content\MonoGame\Shaders\God Rays\MaskedSun.fx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Screens\Async Screens\BusyScreen.cs" />
+    <Compile Include="Screens\Async Screens\LoadAssetsScreen.cs" />
+    <Compile Include="Screens\Async Screens\LoadingScreen.cs" />
+    <Compile Include="Screens\Menus\AudioMenuScreen.cs" />
+    <Compile Include="Screens\Menus\ControlsMenuScreen.cs" />
+    <Compile Include="Screens\Menus\DebugMenuScreen.cs" />
+    <Compile Include="Screens\Menus\GraphicsSettingsScreen.cs" />
+    <Compile Include="Screens\Menus\SettingsMenuScreen.cs" />
+    <Compile Include="Graphics\2D Gameplay\Layer.cs" />
+    <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs" />
+    <Compile Include="Graphics\2D Gameplay\LineBatch.cs" />
+    <Compile Include="Sandbox\vxSandboxGamePlay.cs" />
+    <Compile Include="GUI\vxGuiManager.cs" />
+    <Compile Include="GUI\Dialogs\vxDialogBase.cs" />
+    <Compile Include="GUI\Dialogs\vxFileDialogItem.cs" />
+    <Compile Include="GUI\Dialogs\vxOpenFileDialog.cs" />
+    <Compile Include="GUI\Base\vxGUIBaseEnums.cs" />
+    <Compile Include="GUI\Base\vxGUIBaseEventArgs.cs" />
+    <Compile Include="GUI\Base\vxGUIBaseItem.cs" />
+    <Compile Include="Utilities\vxConsole.cs" />
+    <Compile Include="Utilities\vxUtil.cs" />
+    <Compile Include="Mathematics\vxMathUtils.cs" />
+    <Compile Include="Geometry\Quad.cs" />
+    <Compile Include="Geometry\Tri.cs" />
+    <Compile Include="Audio\AudioManager.cs" />
+    <Compile Include="Core\Serilization\Profile.cs" />
+    <Compile Include="Core\Input\TouchCollectionExtensions.cs" />
+    <Compile Include="Core\Input\VirtualGamePad.cs" />
+    <Compile Include="Core\Input\Accelerometer.cs" />
+    <Compile Include="Core\Input\Events\PlayerIndexEventArgs.cs" />
+    <Compile Include="Core\Serilization\Settings.cs" />
+    <Compile Include="Core\Serilization\LevelStats.cs" />
+    <Compile Include="Core\Enums.cs" />
+    <Compile Include="Core\Entities\Enviroment\Sun.cs" />
+    <Compile Include="Core\Entities\Enviroment\Water_General.cs" />
+    <Compile Include="Core\Entities\InstanceSet.cs" />
+    <Compile Include="Core\Entities\VehicleInput.cs" />
+    <Compile Include="Core\Entities\vxEntity.cs" />
+    <Compile Include="Core\Entities\vxEntity2D.cs" />
+    <Compile Include="Core\Entities\vxEntity3D.cs" />
+    <Compile Include="Core\Scenes\Scene2D.cs" />
+    <Compile Include="Core\Scenes\Scene3D.cs" />
+    <Compile Include="Core\Scenes\SceneBase.cs" />
+    <Compile Include="Core\Base Screens\GameScreen.cs" />
+    <Compile Include="Core\vxEngine.cs" />
+    <Compile Include="Core\ContentManagement\Assets.cs" />
+    <Compile Include="Core\ParticleSystem\vxParticleSystem3D.cs" />
+    <Compile Include="Core\ParticleSystem\vxParticle3D.cs" />
+    <Compile Include="Sandbox\vxSandBoxFileStructure.cs" />
+    <Compile Include="Screens\Menus\PauseMenuScreen.cs" />
+    <Compile Include="Graphics\2D Gameplay\AssetCreator2D.cs" />
+    <Compile Include="Animation\AnimationPlayer2D.cs" />
+    <Compile Include="Screens\Menus\MenuScreen.cs" />
+    <Compile Include="GUI\Controls\Buttons\vxButton.cs" />
+    <Compile Include="GUI\Controls\Buttons\xButton_Toggle.cs" />
+    <Compile Include="GUI\Controls\Combo Box\vxComboBox.cs" />
+    <Compile Include="GUI\Controls\Combo Box\vxComboBoxEventArgs.cs" />
+    <Compile Include="GUI\Controls\Combo Box\vxComboBoxItem.cs" />
+    <Compile Include="GUI\Controls\List View\vxListView.cs" />
+    <Compile Include="GUI\Controls\List View\vxListViewBar.cs" />
+    <Compile Include="GUI\Controls\List View\vxListViewItem.cs" />
+    <Compile Include="GUI\Controls\List View\vxListViewSpliter.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollBar.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollBarItem.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanel.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelSpliter.cs" />
+    <Compile Include="GUI\Controls\TabControl\vxTabControl.cs" />
+    <Compile Include="GUI\Controls\TabControl\vxTabPage.cs" />
+    <Compile Include="GUI\Controls\Textbox\vxTextbox.cs" />
+    <Compile Include="GUI\Controls\Toolbar\vxToolbar.cs" />
+    <Compile Include="GUI\Controls\Toolbar\vxToolbarButton.cs" />
+    <Compile Include="GUI\Controls\Toolbar\vxToolbarSpliter.cs" />
+    <Compile Include="Sandbox\MessageBoxs\vxMessageBoxSaveAs.cs" />
+    <Compile Include="Sandbox\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
+    <Compile Include="Network\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
+    <Compile Include="Network\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />
+    <Compile Include="Network\Dialogs\vxSeverListDialog.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBox.cs" />
+    <Compile Include="Core\Cameras\vxCamera2D.cs" />
+    <Compile Include="Core\Cameras\vxCamera3D.cs" />
+    <Compile Include="Core\Cameras\vxVirtualCamera.cs" />
+    <Compile Include="Core\Cameras\Controllers\CameraControlScheme.cs" />
+    <Compile Include="Core\Cameras\Controllers\CharacterCameraControlScheme.cs" />
+    <Compile Include="Core\Cameras\Controllers\CharacterControllerInput.cs" />
+    <Compile Include="Sandbox\Items\3D Cursor\vxAxis.cs" />
+    <Compile Include="Sandbox\Items\3D Cursor\vxCursor3D.cs" />
+    <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
+    <Compile Include="GUI\Controls\Buttons\vxButtonImage.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxServerScrollBarItem.cs" />
+    <Compile Include="GUI\Controls\Label\vxLabel.cs" />
+    <Compile Include="Network\Network Enums.cs" />
+    <Compile Include="GUI\GUI Enums.cs" />
+    <Compile Include="Graphics\Graphics Enums.cs" />
+    <Compile Include="Sandbox\Sandbox Enums.cs" />
+    <Compile Include="Mathematics\vxSmooth.cs" />
+    <Compile Include="Utilities\vxGeometryHelper.cs" />
+    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
+    <Compile Include="Graphics\3D Gameplay\vxRenderer.cs" />
+    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxDirectionalLight.cs" />
+    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
+    <Compile Include="Animation\AnimationSprite2D.cs" />
+    <Compile Include="GUI\Controls\Menu Entries\vxMenuEntry.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\BloomComponent.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\BloomSettings.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\LensFlareComponent.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
+    <Compile Include="Core\vxEngine.Network.cs" />
+    <Compile Include="GUI\Theme\vxGUITheme.cs" />
+    <Compile Include="GUI\Theme\vxBaseItemTheme.cs" />
+    <Compile Include="GUI\Theme\vxMenuEntryTheme.cs" />
+    <Compile Include="GUI\Theme\vxThemeButton.cs" />
+    <Compile Include="GUI\Theme\vxThemeTextbox.cs" />
+    <Compile Include="Core\Entities\Enviroment\vxWaterEntity.cs" />
+    <Compile Include="Sandbox\Entities\Base\vxSandboxEntity.cs" />
+    <Compile Include="Sandbox\Entities\Base\vxSandboxEntityDescription.cs" />
+    <Compile Include="Sandbox\Entities\Base\vxSandboxEntityProperty.cs" />
+    <Compile Include="Sandbox\Items\vxSnapBox.cs" />
+    <Compile Include="Sandbox\Items\3D Cursor\vxWorkingPlane.cs" />
+    <Compile Include="GUI\Controls\Buttons\vxSandboxItemButton.cs" />
+    <Compile Include="GUI\Dialogs\vxGraphicSettingsDialog.cs" />
+    <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
+    <Compile Include="Core\Input\vxInputManager.cs" />
+    <Compile Include="Core\Serilization\SettingsAudio.cs" />
+    <Compile Include="Core\Serilization\SettingsControls.cs" />
+    <Compile Include="Core\Serilization\SettingsGraphics.cs" />
+    <Compile Include="Core\DebugUtils\DebugCommandUI.cs" />
+    <Compile Include="Core\DebugUtils\DebugManager.cs" />
+    <Compile Include="Core\DebugUtils\DebugShapeRenderer.cs" />
+    <Compile Include="Core\DebugUtils\DebugSystem.cs" />
+    <Compile Include="Core\DebugUtils\FpsCounter.cs" />
+    <Compile Include="Core\DebugUtils\IDebugCommandHost.cs" />
+    <Compile Include="Core\DebugUtils\KeyboardUtils.cs" />
+    <Compile Include="Core\DebugUtils\Layout.cs" />
+    <Compile Include="Core\DebugUtils\StringBuilderExtensions.cs" />
+    <Compile Include="Core\DebugUtils\TimeRuler.cs" />
+    <Compile Include="Sandbox\Items\ScaleCube.cs" />
+    <Compile Include="Core\Scenes\Scene3D.Network.cs" />
+    <Compile Include="GUI\Theme\vxThemeDialog.cs" />
+    <Compile Include="Sandbox\vxSandboxGamePlay.Editor.cs" />
+    <Compile Include="Sandbox\vxSandboxGamePlay.empty.cs" />
+    <Compile Include="Sandbox\vxSandboxGamePlay.EntityManagement.cs" />
+    <Compile Include="Sandbox\vxSandboxGamePlay.Input.cs" />
+    <Compile Include="Sandbox\vxSandboxGamePlay.IO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graphics\2D Gameplay\" />
+    <Folder Include="Vertices.Engine.Content\" />
+    <Folder Include="GUI\" />
+    <Folder Include="Geometry\" />
+    <Folder Include="Core\Input\" />
+    <Folder Include="Core\Input\Events\" />
+    <Folder Include="Core\ContentManagement\" />
+    <Folder Include="Sandbox\Entities\" />
+    <Folder Include="Graphics\3D Gameplay\" />
+    <Folder Include="GUI\Controls\" />
+    <Folder Include="Network\MessageBoxs\" />
+    <Folder Include="Network\Dialogs\" />
+    <Folder Include="GUI\MessageBoxs\" />
+    <Folder Include="GUI\Controls\Label\" />
+    <Folder Include="Content\MonoGame\" />
+    <Folder Include="Content\MonoGame\Shaders\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\" />
+    <Folder Include="Content\MonoGame\Shaders\Lighting\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Lighting\" />
+    <Folder Include="Graphics\3D Gameplay\Defferred Rendering\" />
+    <Folder Include="Content\MonoGame\Shaders\Include\" />
+    <Folder Include="GUI\Theme\" />
+    <Folder Include="Core\DebugUtils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\flare1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\flare2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\flare3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\glow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\sun\sun_mask_mg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\utils\unit_box\unit_box_mg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\utils\unit_plane\unit_plane_mg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\utils\unit_sphere\unit_sphere_mg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Models\water_plane\water_plane_mg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\sel\sel_addItem.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\sel\sel_addItem_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\sel\sel_selItem.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\sandbox\tlbr\sel\sel_selItem_hover.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\God Rays\MaskedSun.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\God Rays\GodRaysCombine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\God Rays\LightRays.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Bloom\BloomCombine.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Bloom\BloomExtract.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Bloom\GaussianBlur.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\DepthOfField\DepthOfField.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Distorter\Distorters.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\CartoonEdgeDetection.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+      <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
+      <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virtex.Lib.Vertices.Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj">
+      <Project>{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}</Project>
+      <Name>Virtex.Lib.Vertices.Net.Lidgren.GL</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
