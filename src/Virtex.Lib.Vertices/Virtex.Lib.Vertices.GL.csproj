@@ -576,7 +576,6 @@
     <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\Entities\Enviroment\Sun.cs" />
     <Compile Include="Core\Entities\Enviroment\Water_General.cs" />
-    <Compile Include="Core\Entities\InstanceSet.cs" />
     <Compile Include="Core\Entities\VehicleInput.cs" />
     <Compile Include="Core\Entities\vxEntity.cs" />
     <Compile Include="Core\Entities\vxEntity2D.cs" />
@@ -684,6 +683,9 @@
     <Compile Include="Sandbox\vxSandboxGamePlay.EntityManagement.cs" />
     <Compile Include="Sandbox\vxSandboxGamePlay.Input.cs" />
     <Compile Include="Sandbox\vxSandboxGamePlay.IO.cs" />
+    <Compile Include="Graphics\Model\vxModel.cs" />
+    <Compile Include="Graphics\Instancing\vxInstanceSet.cs" />
+    <Compile Include="Graphics\Instancing\InstanceSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -709,6 +711,8 @@
     <Folder Include="Content\MonoGame\Shaders\Include\" />
     <Folder Include="GUI\Theme\" />
     <Folder Include="Core\DebugUtils\" />
+    <Folder Include="Graphics\Model\" />
+    <Folder Include="Graphics\Instancing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\flare1.xnb">

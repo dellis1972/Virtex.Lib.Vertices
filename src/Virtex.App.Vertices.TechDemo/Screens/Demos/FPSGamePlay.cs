@@ -82,10 +82,10 @@ namespace VerticeEnginePort.Base
         {
             InitialiseLevel();
 
-			xEnvrio g = new xEnvrio(vxEngine, vxEngine.LoadModel("Models/tech demo/vrtc_techDemo"), Vector3.Zero);
-            g.World *= Matrix.CreateRotationZ(-MathHelper.PiOver2);
-			g.name = "tech demo";
-			g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/tech demo/grass_nm");
+//			xEnvrio g = new xEnvrio(vxEngine, vxEngine.LoadModel("Models/tech demo/vrtc_techDemo"), Vector3.Zero);
+//            g.World *= Matrix.CreateRotationZ(-MathHelper.PiOver2);
+//			g.name = "tech demo";
+//			g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/tech demo/grass_nm");
 
 
 			int size = 100;
@@ -117,6 +117,8 @@ namespace VerticeEnginePort.Base
             grabber = new MotorizedGrabSpring();
             BEPUPhyicsSpace.Add(grabber);
             rayCastFilter = RayCastFilter;
+
+			new IndexedPrimTest(vxEngine, vxEngine.Assets.Models.UnitBox, new Vector3(0,0,0));
 
 
             #endregion

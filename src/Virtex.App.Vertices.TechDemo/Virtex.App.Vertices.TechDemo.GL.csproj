@@ -61,6 +61,7 @@
     <Compile Include="Entities\Teapot.cs" />
     <Compile Include="Entities\WoodenCrate.cs" />
     <Compile Include="Entities\ModelObjs.cs" />
+    <Compile Include="Entities\IndexedPrimTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
