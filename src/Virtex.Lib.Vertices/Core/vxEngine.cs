@@ -29,7 +29,7 @@ using vxVertices.GUI.Themes;
 namespace vxVertices.Core
 {
 	/// <summary>
-	/// The screen manager is a component which manages one or more GameScreen
+	/// The vxEngine is a component which manages one or more GameScreen
 	/// instances. It maintains a stack of screens, calls their Update and Draw
 	/// methods at the appropriate times, and automatically routes input to the
 	/// topmost active screen.

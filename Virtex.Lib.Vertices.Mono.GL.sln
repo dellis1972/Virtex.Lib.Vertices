@@ -82,4 +82,7 @@ Global
 		{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}.Release3D|Any CPU.ActiveCfg = Release3D|Any CPU
 		{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}.Release3D|Any CPU.Build.0 = Release3D|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = src\Virtex.App.Vertices.TechDemo\Virtex.App.Vertices.TechDemo.GL.csproj
+	EndGlobalSection
 EndGlobal
