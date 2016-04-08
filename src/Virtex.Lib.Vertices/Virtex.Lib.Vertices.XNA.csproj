@@ -116,7 +116,6 @@
     <Compile Include="Core\Entities\Enviroment\Sun.cs" />
     <Compile Include="Core\Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Core\Entities\Enviroment\Water_General.cs" />
-    <Compile Include="Core\Entities\InstanceSet.cs" />
     <Compile Include="Core\Entities\VehicleInput.cs" />
     <Compile Include="Core\Entities\vxEntity.cs" />
     <Compile Include="Core\Entities\vxEntity2D.cs" />
@@ -159,6 +158,9 @@
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\LensFlareComponent.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
+    <Compile Include="Graphics\Instancing\InstanceSet.cs" />
+    <Compile Include="Graphics\Instancing\vxInstanceSet.cs" />
+    <Compile Include="Graphics\Model\vxModel.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.cs" />
     <Compile Include="Graphics\Graphics Enums.cs" />
