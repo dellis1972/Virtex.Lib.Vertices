@@ -149,10 +149,15 @@ namespace vxVertices.Core
 			}
 		}
 
-		/// <summary>
-		/// The Current Gameplay Screen that is being run.
-		/// </summary>
-		public vxSceneBase CurrentGameplayScreen;
+
+        public Color FadeToBackBufferColor = Color.Black;
+        public Color LoadingScreenBackColor = Color.Black;
+        public Color LoadingScreenTextColor = Color.White;
+
+        /// <summary>
+        /// The Current Gameplay Screen that is being run.
+        /// </summary>
+        public vxSceneBase CurrentGameplayScreen;
 
 		#if VIRTICES_2D
 		/// <summary>
@@ -740,9 +745,6 @@ namespace vxVertices.Core
 			return screens.ToArray ();
 		}
 
-        public Color FadeToBackBufferColor = Color.Black;
-        public Color LoadingScreenBackColor = Color.Black;
-        public Color LoadingScreenTextColor = Color.White;
 
         /// <summary>
         /// Helper draws a translucent black fullscreen sprite, used for fading
@@ -1049,25 +1051,24 @@ namespace vxVertices.Core
                     graphics.IsFullScreen = true;
 
                 WriteLine_Cyan("Fullscreen: " + Profile.Settings.Graphics.Bool_FullScreen);
-
+                
                 //Set Graphics
                 graphics.ApplyChanges();
 
-#endregion
+                //Reset All Render Targets
+                if(this.Renderer !=null)
+                    this.Renderer.InitialiseRenderTargetsAll();
+                for (int i = 0; i < 8; i++)
+                {
+                    graphics.GraphicsDevice.SamplerStates[i] = SamplerState.PointClamp;
+                }
+
+                #endregion
 
             }
 #endif
 		}
-
-		/// <summary>
-		/// Due too Resolution sometimes being changed during game play, the render targets
-		/// need to be reset.
-		/// </summary>
-		public void ResetRenderTargets ()
-		{
-
-		}
-
+        
 		/// <summary>
 		/// Clears the temp directory.
 		/// </summary>

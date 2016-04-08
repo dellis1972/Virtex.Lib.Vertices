@@ -161,11 +161,6 @@ namespace vxVertices.Screens.Menus
             //
             vxEngine.SetGraphicsSettings();
 
-            //
-            //Reset the Render Target Sizes
-            //
-            vxEngine.ResetRenderTargets();
-
             ExitScreen();
         }
         #endregion

@@ -474,7 +474,7 @@ namespace vxVertices.Core.Scenes
 		}
 
 
-		private void DrawPointLight (Vector3 lightPosition, Color color, float lightRadius, float lightIntensity)
+		public void DrawPointLight (Vector3 lightPosition, Color color, float lightRadius, float lightIntensity)
 		{
 			Effect pointLightEffect = vxEngine.Assets.Shaders.DrfrdRndrPointLight;
 
@@ -528,11 +528,9 @@ namespace vxVertices.Core.Scenes
 
 		public virtual void DrawOverlayItems ()
 		{
-			/*
-            if (vxEngine.DisplayDebugMesh == false)
-                foreach (vxEntity3D entity in List_OverlayItems)
-                    entity.RenderMeshPlain();
-                    */
+            //if (vxEngine.DisplayDebugMesh == false)
+            //    foreach (vxEntity3D entity in List_OverlayItems)
+            //        entity.RenderMeshPlain();
 		}
 
 		public void DrawShadows (GameTime gameTime, vxCamera3D camera)
@@ -546,16 +544,20 @@ namespace vxVertices.Core.Scenes
 				vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 				vxEngine.GraphicsDevice.SamplerStates [0] = SamplerState.PointClamp;
 
-				foreach (vxEntity3D entity in Entities)
-					entity.RenderMeshShadow ();
+                if (vxEngine.Profile.Settings.Graphics.ShadowQuality > Settings.vxEnumQuality.None)
+                {
+                    foreach (vxEntity3D entity in Entities)
+                        entity.RenderMeshShadow();
 
-				foreach (InstanceSet instSet in InstanceSetCollection)
-					instSet.RenderInstancedShadow (instSet.InstancedModel, camera, instSet.instances.Count);
+                    foreach (InstanceSet instSet in InstanceSetCollection)
+                        instSet.RenderInstancedShadow(instSet.InstancedModel, camera, instSet.instances.Count);
 
-				foreach (KeyValuePair<object, InstanceSet> entry in Instances) {
-					// do something with entry.Value or entry.Key
-					entry.Value.RenderInstancedShadow (entry.Value.InstancedModel, camera, entry.Value.instances.Count);
-				}
+                    foreach (KeyValuePair<object, InstanceSet> entry in Instances)
+                    {
+                        // do something with entry.Value or entry.Key
+                        entry.Value.RenderInstancedShadow(entry.Value.InstancedModel, camera, entry.Value.instances.Count);
+                    }
+                }
 
 			}
 		}

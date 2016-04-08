@@ -103,8 +103,8 @@ namespace vxVertices.GUI.Dialogs
                 new Vector2(Margin, horiz));
             horiz += 45;
 
-            VSyncSettingsItem.ValueComboBox.AddItem("On");
             VSyncSettingsItem.ValueComboBox.AddItem("Off");
+            VSyncSettingsItem.ValueComboBox.AddItem("On");
             VSyncSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
 
                 if (e.SelectedItem.Text == "On")
@@ -150,6 +150,7 @@ namespace vxVertices.GUI.Dialogs
             BloomSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
                 vxEngine.Profile.Settings.Graphics.Bloom = (vxEnumQuality)(e.SelectedIndex);
                 vxConsole.WriteLine("Setting Bloom to: " + vxEngine.Profile.Settings.Graphics.Bloom);
+                Console.WriteLine((int)vxEngine.Profile.Settings.Graphics.Bloom);
             };
 
 
@@ -161,8 +162,8 @@ namespace vxVertices.GUI.Dialogs
                 new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
 
-            EdgeDetectSettingsItem.ValueComboBox.AddItem("On");
             EdgeDetectSettingsItem.ValueComboBox.AddItem("Off");
+            EdgeDetectSettingsItem.ValueComboBox.AddItem("On");
             EdgeDetectSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
 
                 if (e.SelectedItem.Text == "On")
@@ -256,9 +257,6 @@ namespace vxVertices.GUI.Dialogs
 
             //Set Graphics
             vxEngine.SetGraphicsSettings();
-
-            //Reset the Render Target Sizes
-            vxEngine.ResetRenderTargets();
         }
     }
 }

@@ -159,7 +159,8 @@
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\LensFlareComponent.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
-    <Compile Include="Graphics\3D Gameplay\vxRenderer.cs" />
+    <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
+    <Compile Include="Graphics\Renderer\vxRenderer.cs" />
     <Compile Include="Graphics\Graphics Enums.cs" />
     <Compile Include="GUI\Base\vxGUIBaseEnums.cs" />
     <Compile Include="GUI\Base\vxGUIBaseEventArgs.cs" />
