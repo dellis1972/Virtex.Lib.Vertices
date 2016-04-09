@@ -187,6 +187,14 @@ namespace vxVertices.Scenes.Sandbox.Entities
             //    base.RenderMeshPrepPass();
         }
 
+        public override void RenderMeshPlain()
+        {
+            foreach (vxAxis entity in List_Items)
+            {
+                entity.RenderMeshPlain();
+            }
+        }
+
         public override void RenderMesh(string RenderTechnique)
         {
             if (Current3DScene.Camera.CameraType == CameraType.Freeroam)

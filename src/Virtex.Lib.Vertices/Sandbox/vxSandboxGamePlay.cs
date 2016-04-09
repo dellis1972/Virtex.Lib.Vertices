@@ -497,6 +497,13 @@ namespace vxVertices.Scenes.Sandbox
             base.UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
+        public override void DrawOverlayItems()
+        {
+            base.DrawOverlayItems();
+            vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
+            Cursor.RenderMeshPlain();
+        }
+
         public override void DrawGameplayScreen(GameTime gameTime)
         {
             base.DrawGameplayScreen(gameTime);

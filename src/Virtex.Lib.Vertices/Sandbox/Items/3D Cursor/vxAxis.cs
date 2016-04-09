@@ -82,9 +82,10 @@ namespace vxVertices.Scenes.Sandbox.Entities
             base.SetIndex(NewIndex);
         }
 
-        public override void RenderMesh(string RenderTechnique)
+        float hightLiteFactor = 1;
+        public override void RenderMeshPlain()
         {
-			if (Current3DScene.Camera.CameraType == CameraType.Freeroam && model != null)
+            if (Current3DScene.Camera.CameraType == CameraType.Freeroam && model != null)
             {
                 // Copy any parent transforms.
                 Matrix[] transforms = new Matrix[model.Bones.Count];
@@ -100,7 +101,7 @@ namespace vxVertices.Scenes.Sandbox.Entities
                         //effect.EnableDefaultLighting();
                         effect.DiffuseColor = this.PlainColor.ToVector3() * hightLiteFactor * hightLiteFactor;
                         effect.World = Matrix.CreateScale(10) * World;
-                        effect.View =vxEngine.Current3DSceneBase.Camera.View;
+                        effect.View = vxEngine.Current3DSceneBase.Camera.View;
                         effect.Projection = vxEngine.Current3DSceneBase.Camera.Projection;
                     }
                     // Draw the mesh, using the effects set above.
@@ -108,12 +109,9 @@ namespace vxVertices.Scenes.Sandbox.Entities
                 }
             }
         }
-        float hightLiteFactor = 1;
-        public override void RenderMeshPrepPass()
-        {
-            //if(Current3DScene.camera.CameraType == CameraType.Freeroam)
-            //    base.RenderMeshPrepPass();
-        }
+
+        public override void RenderMesh(string RenderTechnique) { }
+        public override void RenderMeshPrepPass() { }
 
         public override void Update(GameTime gameTime)
         {
