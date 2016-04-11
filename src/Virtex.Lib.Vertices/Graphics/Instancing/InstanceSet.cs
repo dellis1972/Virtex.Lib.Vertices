@@ -19,11 +19,18 @@ namespace vxVertices.Core
         public Matrix[] instancedModelBones;
         public DynamicVertexBuffer mInstanceDataStream;
         vxEngine vxEngine;
-        
+
+        private bool _doShadowMap = true;
+        public bool DoShadowMap
+        {
+            get { return _doShadowMap; }
+            set { _doShadowMap = value; }
+        }
+
         /// <summary>
         /// The List of Entity Instances to Draw
         /// </summary>
-		public List<vxEntity3D> instances = new List<vxEntity3D>();
+        public List<vxEntity3D> instances = new List<vxEntity3D>();
 
 
         // To store instance transform matrices in a vertex buffer, we use this custom
@@ -272,6 +279,14 @@ namespace vxVertices.Core
                         part.Effect.Parameters["View"].SetValue(camera.View);
                         part.Effect.Parameters["Projection"].SetValue(camera.Projection);
                         part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
+
+                        if (vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None)
+                            DoShadowMap = false;
+                        else
+                            DoShadowMap = true;
+
+                        //if (part.Effect.Parameters["DoShadow"] != null)
+                            part.Effect.Parameters["DoShadow"].SetValue(DoShadowMap);
 
                         part.Effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
                         part.Effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);

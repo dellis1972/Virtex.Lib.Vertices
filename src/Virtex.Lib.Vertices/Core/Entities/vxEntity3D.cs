@@ -621,6 +621,14 @@ namespace vxVertices.Core.Entities
                             {
                                 effect.CurrentTechnique = effect.Techniques[RenderTechnique];
 
+                                if (vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None)
+                                    DoShadowMap = false;
+                                else
+                                    DoShadowMap = true;
+
+                                if (effect.Parameters["DoShadow"] != null)
+                                    effect.Parameters["DoShadow"].SetValue(DoShadowMap);
+
                                 if (effect.Parameters["ShadowMap"] != null)
                                     effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
                                 if (effect.Parameters["ShadowTransform"] != null)

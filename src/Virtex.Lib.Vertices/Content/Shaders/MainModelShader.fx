@@ -12,6 +12,7 @@ float Alpha = 1;
 float SpecularIntensity = 0.5;
 float SpecularPower = 1;
 
+bool DoShadow = true;
 
 //			Shadow Properties
 //*********************************************************************************************
@@ -349,8 +350,10 @@ MainVSOutput MainVSFunction(MainVSInput input, float4x4 worldTransform)
 		output.FogFactor = ComputeFogFactor(length(CameraPos - worldPosition));
 	}
 
-	output.Shadow = GetShadowData(worldPosition, output.Position);
-
+	if (DoShadow)
+	{
+		output.Shadow = GetShadowData(worldPosition, output.Position);
+	}
 	return output;
 }
 
@@ -392,7 +395,12 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	//Now, get the Shadow factor from the Cascaded Shadow Map
 	//*********************************************************************************************
 	//Get Shadow Factor
-	float shadow = GetShadowFactor(input.Shadow, 1);
+	float shadow = 1;
+	
+	if (DoShadow)
+	{
+		shadow = GetShadowFactor(input.Shadow, 1);
+	}
 
 	//Finally, Calculate the Color from the appropriate Pixel Shader.
 	//*********************************************************************************************	
