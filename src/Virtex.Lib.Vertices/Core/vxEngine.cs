@@ -892,29 +892,23 @@ namespace vxVertices.Core
 							if (newEffect.Parameters ["IsSun"] != null)
 								newEffect.Parameters ["IsSun"].SetValue (false);
                             
-                            try
-                            {
-                                if (newEffect.Parameters["NormalMap"] != null)
+                          
+                                if (newEffect.Parameters["NormalMap"] != null &&
+                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm"))
+                                {
                                     newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm"));
-                                Console.WriteLine("\t\t\t\tNormal Map Found");
-                            }
-                            catch
-                            {
-                                if (newEffect.Parameters["NormalMap"] != null)
-                                    newEffect.Parameters["NormalMap"].SetValue(baseNormalMap);
-                            }
+                                    Console.WriteLine("\t\t\t\tNormal Map Found");
+                                }
 
-                            try
+
+                            if (newEffect.Parameters["SpecularMap"] != null &&
+                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm"))
                             {
-                                if (newEffect.Parameters["SpecularMap"] != null)
+                                
                                     newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm"));
                                 Console.WriteLine("\t\t\t\tSpecular Map Found");
                             }
-                            catch
-                            {
-                                if (newEffect.Parameters["SpecularMap"] != null)
-                                    newEffect.Parameters["SpecularMap"].SetValue(baseSpecularMap);
-                            }
+                            
 
 #if VIRTICES_XNA
                             if (newEffect.Parameters["LightDirection"] != null)
