@@ -376,7 +376,7 @@ namespace vxVertices.Scenes.Sandbox
         /// <param name="otherScreenHasFocus"></param>
         /// <param name="coveredByOtherScreen"></param>
         public override void UpdateScene(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
-        {
+		{
             ParentEntityPlaceHolder = null;
 
             if (vxEngine.InputManager.IsNewMouseButtonPress(MouseButtons.MiddleButton))

@@ -37,17 +37,20 @@ namespace VerticeEnginePort.Base
         public override void LoadContent()
         {
             base.LoadContent();
-            // Create our menu entries.
+			// Create our menu entries.
+			vxMenuEntry introLevelMenuEntry = new vxMenuEntry(this, "Intro Level");
             vxMenuEntry spoznzaMenuEntry = new vxMenuEntry(this, "Sponza Sandbox Level");
             vxMenuEntry fpsMenuEntry = new vxMenuEntry(this, "First Person Level");
             vxMenuEntry exitMenuEntry = new vxMenuEntry(this, "Back");
 
-            // Hook up menu event handlers.
+			// Hook up menu event handlers.
+			introLevelMenuEntry.Selected +=	introLevelMenuEntrySelected;
             spoznzaMenuEntry.Selected += spoznzaMenuEntrySelected;
             fpsMenuEntry.Selected += fpsMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
 
-            // Add entries to the menu.
+			// Add entries to the menu.
+			MenuEntries.Add(introLevelMenuEntry);
             MenuEntries.Add(spoznzaMenuEntry);
             MenuEntries.Add(fpsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
@@ -55,7 +58,16 @@ namespace VerticeEnginePort.Base
 
         #endregion
 
-        #region Handle Input
+		#region Handle Input
+
+		/// <summary>
+		/// Event handler for when the Play Game menu entry is selected.
+		/// </summary>
+		void introLevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+		{
+			LoadingScreen.Load(vxEngine, true, e.PlayerIndex,
+				new IntroBackground());
+		}
 
 
         /// <summary>

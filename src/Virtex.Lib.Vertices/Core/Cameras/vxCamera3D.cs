@@ -323,9 +323,19 @@ namespace vxVertices.Core.Cameras
 
 
         public Vector3 OrbitTarget = Vector3.Zero;
+
+
         int mouseDelta = 0;
         int prevMsScrl = 0;
-        float zoom = -15;
+        
+
+		public float OrbitZoom
+		{
+			get { return zoom; }
+			set { zoom = value; }
+		}
+		float zoom = -15;
+
         public virtual void Update(GameTime time)
         {
             if (CameraType == CameraType.CharacterFPS)
@@ -336,7 +346,6 @@ namespace vxVertices.Core.Cameras
 
                     Yaw += (200- vxEngine.InputManager.MouseState.X) * dt * .12f;
                     Pitch += (200- vxEngine.InputManager.MouseState.Y) * dt * .12f;
-
 
 				//Yaw += (vxEngine.InputManager.PreviousMouseState.X - vxEngine.InputManager.MouseState.X) * dt * .12f;
 				//Pitch += (vxEngine.InputManager.PreviousMouseState.Y - vxEngine.InputManager.MouseState.Y) * dt * .12f;

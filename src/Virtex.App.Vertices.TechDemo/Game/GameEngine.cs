@@ -53,15 +53,15 @@ namespace VerticeEnginePort.Base
         /// </summary>
         public override void vxEngineMainEntryPoint()
         {
-            LoadAssetsScreen.Load(this, true, null, new BackgroundScreen(),
+			LoadAssetsScreen.Load(this, true, null, new IntroBackground(),
                     new MainMenuScreen());
         }
 
-        public override void StartMenuSet()
-        {
-            LoadingScreen.Load(this, false, null, new BackgroundScreen(),
-                                                           new MainMenuScreen());
-        }
+//        public override void StartMenuSet()
+//        {
+//            LoadingScreen.Load(this, false, null, new BackgroundScreen(),
+//                                                           new MainMenuScreen());
+//        }
 
         /// <summary>
         /// Load Global Content

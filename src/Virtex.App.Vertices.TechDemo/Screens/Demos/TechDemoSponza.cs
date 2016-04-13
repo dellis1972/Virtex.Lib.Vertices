@@ -235,10 +235,16 @@ namespace VerticeEnginePort.Base
                 grabber.Release();
                 //grabberGraphic.IsDrawing = false;
             }
-
+			vxConsole.WriteToInGameDebug ("Update");
             base.UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
+		public override void DrawGameplayScreen (GameTime gameTime)
+		{
+			base.DrawGameplayScreen (gameTime);
+
+			vxConsole.WriteToInGameDebug ("Draw");
+		}
         //Testing
         public override void SimulationStart()
         {
@@ -271,47 +277,5 @@ namespace VerticeEnginePort.Base
             }
             base.SimulationStop();
         }
-
-
-        ///// <summary>
-        ///// Lets the game respond to player input. Unlike the Update method,
-        ///// this will only be called when the gameplay screen is active.
-        ///// </summary>
-        //public override void HandleInput(InputManager input)
-        //{
-        //    if (input == null)
-        //        throw new ArgumentNullException("input");
-
-        //    // Look up inputs for the active player profile.
-        //    int playerIndex = (int)ControllingPlayer.Value;
-
-        //    KeyboardState keyboardState = input.KeyboardState;// input.CurrentKeyboardStates[playerIndex];
-        //    GamePadState gamePadState = input.GamePadState;// input.CurrentGamePadStates[playerIndex];
-
-        //    // The game pauses either if the user presses the pause button, or if
-        //    // they unplug the active gamepad. This requires us to keep track of
-        //    // whether a gamepad was ever plugged in, because we don't want to pause
-        //    // on PC if they are playing with a keyboard and have no gamepad at all!
-        //    bool gamePadDisconnected = !gamePadState.IsConnected;
-
-        //    /*            bool gamePadDisconnected = !gamePadState.IsConnected &&
-        //                               input.GamePadWasConnected[playerIndex];*/
-
-        //    if (input.IsPauseGame())
-        //    {
-        //        vxEngine.AddScreen(new PauseMenuScreen(), ControllingPlayer);
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-
-        public override void DrawGameplayScreen(GameTime gameTime)
-        {
-            base.DrawGameplayScreen(gameTime);
-        }
-
     }
 }

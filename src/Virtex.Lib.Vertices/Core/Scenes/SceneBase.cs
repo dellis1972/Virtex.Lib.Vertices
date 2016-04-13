@@ -100,6 +100,16 @@ namespace vxVertices.Core.Scenes
 		/// </summary>
         float pauseAlpha;
 
+		/// <summary>
+		/// Gets or sets a value indicating whether this instance is pausable.
+		/// </summary>
+		/// <value><c>true</c> if this instance is pausable; otherwise, <c>false</c>.</value>
+		public bool IsPausable
+		{
+			get{ return _isPausable; }
+			set { _isPausable = value; }
+		}
+		bool _isPausable = true;
 
 		public Texture2D LastFrame;
 
@@ -164,7 +174,6 @@ namespace vxVertices.Core.Scenes
 
         #region Update and Draw
 
-
 		/// <summary>
 		/// Updates the state of the game. This method checks the GameScreen.IsActive
 		/// property, so the game will stop updating when the pause menu is active,
@@ -183,7 +192,7 @@ namespace vxVertices.Core.Scenes
 			else
 				pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
 
-			if (IsActive)
+			if (IsActive || _isPausable == false)
 			{
 				UpdateScene (gameTime, otherScreenHasFocus,coveredByOtherScreen);
 			}

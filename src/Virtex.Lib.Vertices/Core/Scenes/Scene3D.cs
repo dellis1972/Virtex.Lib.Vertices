@@ -283,12 +283,12 @@ namespace vxVertices.Core.Scenes
 			// GUIManager.Update(vxEngine);
 
 			// Gradually fade in or out depending on whether we are covered by the pause screen.
-			if (coveredByOtherScreen)
+			if (coveredByOtherScreen && IsPausable)
 				pauseAlpha = Math.Min (pauseAlpha + 1f / 32, 1);
 			else
 				pauseAlpha = Math.Max (pauseAlpha - 1f / 32, 0);
 
-			if (IsActive) {
+			if (IsActive  || IsPausable == false) {
 				#region Set Debug Info
 
 				BEPUDebugDrawer.Update ();
@@ -339,6 +339,7 @@ namespace vxVertices.Core.Scenes
 				vxEngine.DebugSystem.TimeRuler.BeginMark ("Physics", Color.Red);
 
 				//Update the Physics System.
+				vxConsole.WriteToInGameDebug ("Physics");
 				BEPUPhyicsSpace.Update ();
 
 				// Stop measuring time for "Draw".
@@ -441,10 +442,12 @@ namespace vxVertices.Core.Scenes
             vxEngine.Renderer.ApplyCrepuscularRays(vxEngine);
 
 
-            //Draw Menu Blur
-            vxEngine.SpriteBatch.Begin();
-            vxEngine.SpriteBatch.Draw(vxEngine.Renderer.RT_BlurredScene, Vector2.Zero, Color.White * pauseAlpha);
-            vxEngine.SpriteBatch.End();
+            //Draw Menu Blur Only if this screen is Pausable
+			if (IsPausable) {
+				vxEngine.SpriteBatch.Begin ();
+				vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_BlurredScene, Vector2.Zero, Color.White * pauseAlpha);
+				vxEngine.SpriteBatch.End ();
+			}
 
 			DrawGameplayScreen(gameTime);
 

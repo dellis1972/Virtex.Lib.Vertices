@@ -637,7 +637,6 @@
     <Compile Include="Mathematics\vxSmooth.cs" />
     <Compile Include="Utilities\vxGeometryHelper.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
-    <Compile Include="Graphics\3D Gameplay\vxRenderer.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxDirectionalLight.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
     <Compile Include="Animation\AnimationSprite2D.cs" />
@@ -686,6 +685,8 @@
     <Compile Include="Graphics\Model\vxModel.cs" />
     <Compile Include="Graphics\Instancing\vxInstanceSet.cs" />
     <Compile Include="Graphics\Instancing\InstanceSet.cs" />
+    <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
+    <Compile Include="Graphics\Renderer\vxRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -713,6 +714,10 @@
     <Folder Include="Core\DebugUtils\" />
     <Folder Include="Graphics\Model\" />
     <Folder Include="Graphics\Instancing\" />
+    <Folder Include="Graphics\3D Gameplay\3D Gameplay\" />
+    <Folder Include="Graphics\Renderer\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\vxButton\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\flare1.xnb">
@@ -779,6 +784,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\CartoonEdgeDetection.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\vxButton\Bckgrnd_Nrml.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\vxMenuEntry\Bckgrnd_Lrg.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\vxMenuEntry\Bckgrnd_Nrml.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\vxMenuScreen\Bckgrnd_Nrml.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

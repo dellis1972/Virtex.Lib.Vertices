@@ -945,3 +945,36 @@
 /processor:
 /build:MonoGame/Shaders/Include/ModelPixelShaders.h
 
+#begin Gui/DfltThm/vxGUITheme/vxMenuEntry/Bckgrnd_Lrg.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Gui/DfltThm/vxGUITheme/vxMenuEntry/Bckgrnd_Lrg.png
+
+#begin Gui/DfltThm/vxGUITheme/vxMenuEntry/Bckgrnd_Nrml.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Gui/DfltThm/vxGUITheme/vxMenuEntry/Bckgrnd_Nrml.png
+
+#begin Gui/DfltThm/vxGUITheme/vxMenuScreen/Bckgrnd_Nrml.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Gui/DfltThm/vxGUITheme/vxMenuScreen/Bckgrnd_Nrml.png
+
