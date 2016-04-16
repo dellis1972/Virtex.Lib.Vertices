@@ -56,13 +56,7 @@ namespace VerticeEnginePort.Base
 			LoadAssetsScreen.Load(this, true, null, new IntroBackground(),
                     new MainMenuScreen());
         }
-
-//        public override void StartMenuSet()
-//        {
-//            LoadingScreen.Load(this, false, null, new BackgroundScreen(),
-//                                                           new MainMenuScreen());
-//        }
-
+        
         /// <summary>
         /// Load Global Content
         /// </summary>

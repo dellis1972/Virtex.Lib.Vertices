@@ -194,7 +194,7 @@ namespace vxVertices.Core.Scenes
 
 			if (IsActive || _isPausable == false)
 			{
-				UpdateScene (gameTime, otherScreenHasFocus,coveredByOtherScreen);
+				//UpdateScene (gameTime, otherScreenHasFocus,coveredByOtherScreen);
 			}
 		}
 
