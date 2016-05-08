@@ -205,6 +205,15 @@
     <Content Include="Content\Compiled.WindowsGL\Models\courtyard\td_courtyard.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Compiled.WindowsGL\Models\courtyard\" />

@@ -15,6 +15,7 @@ using vxVertices.Audio;
 using vxVertices.Utilities;
 using vxVertices.Core.Scenes;
 using vxVertices.Core.Cameras;
+using vxVertices.Graphics;
 
 
 namespace vxVertices.Core.Entities
@@ -51,9 +52,22 @@ namespace vxVertices.Core.Entities
         }
 
         /// <summary>
-        /// Main Entity Model Model
+        /// A Traditional MonoGame or XNA Model Class
         /// </summary>
         public Model model { get; set; }
+
+
+		/// <summary>
+		/// The vxModel model which can be used to emulate Instasnce meshing or
+		/// a Voxel Engine.
+		/// </summary>
+		public vxModel vxModel { get; set; }
+
+		/// <summary>
+		/// Gets or sets the mesh set for this entity.
+		/// </summary>
+		/// <value>The mesh set.</value>
+		public vxMeshSet MeshSet { get; set; }
 
         public Color SelectionColor = Color.Black;
 
