@@ -891,10 +891,13 @@ namespace vxVertices.Core
 
 							if (newEffect.Parameters ["IsSun"] != null)
 								newEffect.Parameters ["IsSun"].SetValue (false);
-                            
-                          
+
+                            //Console.WriteLine("Looking For : \n\tNM: {0}\n\tSM: {1}",
+                            //     "Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm",
+                            //     "Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm");
+
                                 if (newEffect.Parameters["NormalMap"] != null &&
-                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm"))
+                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm.xnb"))
                                 {
                                     newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm"));
                                     Console.WriteLine("\t\t\t\tNormal Map Found");
@@ -902,7 +905,7 @@ namespace vxVertices.Core
 
 
                             if (newEffect.Parameters["SpecularMap"] != null &&
-                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm"))
+                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm.xnb"))
                             {
                                 
                                     newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm"));

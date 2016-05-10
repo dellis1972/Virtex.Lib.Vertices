@@ -215,6 +215,12 @@ namespace vxVertices.GUI
         /// </summary>
         public event EventHandler<vxGuiItemClickEventArgs> Clicked;
 
+
+        /// <summary>
+        /// Event Raised when the Mouse First Begins too Hover over this item.
+        /// </summary>
+        public event EventHandler<EventArgs> OnInitialHover;
+
         /// <summary>
         /// Returns Whether or not the item is Enabled
         /// </summary>
@@ -463,6 +469,7 @@ namespace vxVertices.GUI
             Colour = Color_Normal;
         }
 
+        bool InitialHover = true;
 
         /// <summary>
         /// When the Mouse is NOT over the GUIItem
@@ -472,6 +479,9 @@ namespace vxVertices.GUI
             Colour = Color_Normal;
             isSelected = false;
             HasFocus = false;
+
+            //Reset Initial Hover Flag
+            InitialHover = true;
         }
 
         /// <summary>
@@ -482,6 +492,14 @@ namespace vxVertices.GUI
             Colour = Color_Highlight;
             isSelected = false;
             HasFocus = true;
+
+            if(InitialHover)
+            {
+                InitialHover = false;
+
+                if (OnInitialHover != null)
+                    OnInitialHover(this, new EventArgs());                
+            }
         }
         
         /// <summary>

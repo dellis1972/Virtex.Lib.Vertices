@@ -18,6 +18,35 @@ namespace vxVertices.Core.Input
 		ExtraButton2
 	}
 
+    public enum KeyboardTypes
+    {
+        QWERTY,
+        AZERTY,
+        CUSTOM
+    }
+
+    /// <summary>
+    /// Class holding Key Press Type for common movements. This allows players to customise keyboard controls 
+    /// for different keyboard types.
+    /// </summary>
+    public class KeyBindings
+    {
+        public Keys Forward = Keys.W;
+        public Keys Left = Keys.A;
+        public Keys Right = Keys.D;
+        public Keys Back = Keys.S;
+        public Keys Jump = Keys.Space;
+        public Keys Croutch = Keys.LeftControl;
+
+        public Keys Interact1 = Keys.E;
+        public Keys Interact2 = Keys.Q;
+
+        public KeyBindings()
+        {
+
+        }
+    }
+
 	public class vxInputManager
 	{
 		private readonly List<GestureSample> _gestures = new List<GestureSample>();
@@ -26,11 +55,13 @@ namespace vxVertices.Core.Input
 
 		private bool _cursorIsVisible;
 
-		/// <summary>
-		/// Gets or sets the cursor sprite.
-		/// </summary>
-		/// <value>The cursor sprite.</value>
-		public Texture2D CursorSprite
+        public KeyBindings KeyBindings = new KeyBindings();
+
+        /// <summary>
+        /// Gets or sets the cursor sprite.
+        /// </summary>
+        /// <value>The cursor sprite.</value>
+        public Texture2D CursorSprite
 		{
 			get{ return _cursorSprite; }
 			set{ _cursorSprite = value; }

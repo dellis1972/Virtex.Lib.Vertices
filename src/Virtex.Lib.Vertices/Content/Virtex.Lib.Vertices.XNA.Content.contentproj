@@ -407,6 +407,31 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\Menu_Click.wav">
+      <Name>Menu_Click</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Gui\DfltThm\vxGUITheme\SndFx\Menu\menuClick.wav">
+      <Name>menuClick</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuConfirm.wav">
+      <Name>MenuConfirm</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuError.wav">
+      <Name>MenuError</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuSound1.wav">
+      <Name>MenuSound1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
     <Content Include="Shaders\Include\ModelDistorter.h">
       <Name>ModelDistorter</Name>
       <Importer>EffectImporter</Importer>
@@ -522,6 +547,9 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sound Effects\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

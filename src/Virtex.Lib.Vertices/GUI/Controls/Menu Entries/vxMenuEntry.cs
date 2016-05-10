@@ -1,10 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using vxVertices.Core;
 using vxVertices.Core.Input.Events;
 using vxVertices.Screens.Menus;
 using vxVertices.Utilities;
+using Microsoft.Xna.Framework.Audio;
 
 namespace vxVertices.GUI.Controls
 {
@@ -64,14 +66,28 @@ namespace vxVertices.GUI.Controls
 				(int)(this.Font.MeasureString(Text).Y + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.Y));
 
 			Texture = vxEngine.vxGUITheme.vxMenuEntries.vxMenuItemBackground;
+
+            this.OnInitialHover += VxMenuEntry_OnInitialHover;
         }
 
-		/// <summary>
-		/// Method for raising the Selected event.
-		/// </summary>
-		protected internal virtual void OnSelectEntry(PlayerIndex playerIndex)
+        private void VxMenuEntry_OnInitialHover(object sender, EventArgs e)
+        {
+            //If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
+            SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
+            MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
+            MenuHighlight.Play();
+        }
+
+        /// <summary>
+        /// Method for raising the Selected event.
+        /// </summary>
+        protected internal virtual void OnSelectEntry(PlayerIndex playerIndex)
 		{
-			if (Selected != null)
+            SoundEffectInstance equipInstance = vxEngine.vxGUITheme.SE_Menu_Confirm.CreateInstance();
+            equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
+            equipInstance.Play();
+
+            if (Selected != null)
 				Selected(this, new PlayerIndexEventArgs(playerIndex));
 		}
 

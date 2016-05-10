@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using vxVertices.Core;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace vxVertices.GUI.Controls
 {
@@ -54,6 +55,16 @@ namespace vxVertices.GUI.Controls
 
 
             BackgroundTexture = vxEngine.vxGUITheme.vxButtons.BackgroundImage;
+
+            this.OnInitialHover += VxMenuEntry_OnInitialHover;
+        }
+
+        private void VxMenuEntry_OnInitialHover(object sender, EventArgs e)
+        {
+            //If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
+            SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
+            MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
+            MenuHighlight.Play();
         }
 
         /// <summary>

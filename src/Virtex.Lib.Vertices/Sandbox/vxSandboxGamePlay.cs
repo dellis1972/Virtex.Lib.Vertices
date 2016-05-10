@@ -428,16 +428,19 @@ namespace vxVertices.Scenes.Sandbox
                                         Index = Convert.ToInt32(raycastResult.HitObject.Tag);
                                         if (Index < Items.Count)
                                         {
-                                            Items[Index].SelectionState = vxEnumSelectionState.Hover;
-
-                                            if (Items[Index].GetType() == typeof(vxSnapBox))
+                                            if (Items[Index] != null)
                                             {
-                                                if (temp_part != null && entityCollision != null)
+                                                Items[Index].SelectionState = vxEnumSelectionState.Hover;
+
+                                                if (Items[Index].GetType() == typeof(vxSnapBox))
                                                 {
-                                                    temp_part.SetMesh(entityCollision.WorldTransform.Matrix, false, false);
-                                                    ParentEntityPlaceHolder = Items[Index];
-                                                    Index = -2;
-                                                    vxDebugShapeRenderer.AddBoundingBox(raycastResult.HitObject.BoundingBox, Color.HotPink);
+                                                    if (temp_part != null && entityCollision != null)
+                                                    {
+                                                        temp_part.SetMesh(entityCollision.WorldTransform.Matrix, false, false);
+                                                        ParentEntityPlaceHolder = Items[Index];
+                                                        Index = -2;
+                                                        vxDebugShapeRenderer.AddBoundingBox(raycastResult.HitObject.BoundingBox, Color.HotPink);
+                                                    }
                                                 }
                                             }
                                         }

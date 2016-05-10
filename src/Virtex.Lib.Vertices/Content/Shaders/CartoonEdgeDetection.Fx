@@ -109,7 +109,7 @@ float4 PixelShaderFunction(float2 texCoord : TEXCOORD0) : COLOR0
         float depthDelta = diagonalDelta.w;
         
         // Filter out very small changes, in order to produce nice clean results.
-        normalDelta = saturate((normalDelta - NormalThreshold) * NormalSensitivity);
+		normalDelta = 0.25 * saturate((normalDelta - NormalThreshold) * NormalSensitivity);
         depthDelta = saturate((depthDelta - DepthThreshold) * DepthSensitivity);
 
         // Does this pixel lie on an edge?

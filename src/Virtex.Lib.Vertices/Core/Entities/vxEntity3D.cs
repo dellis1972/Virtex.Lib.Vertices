@@ -640,7 +640,7 @@ namespace vxVertices.Core.Entities
                                     effect.Parameters["FogNear"].SetValue(5);
 
                                 if (effect.Parameters["FogFar"] != null)
-                                    effect.Parameters["FogFar"].SetValue(Camera.FarPlane/4);
+                                    effect.Parameters["FogFar"].SetValue(Camera.FarPlane);
 
                                 if (effect.Parameters["FogColor"] != null)
                                     effect.Parameters["FogColor"].SetValue(Vector4.One);
@@ -727,7 +727,7 @@ namespace vxVertices.Core.Entities
                             effect.Parameters["FogNear"].SetValue(5);
 
                         if (effect.Parameters["FogFar"] != null)
-                            effect.Parameters["FogFar"].SetValue(Camera.FarPlane / 4);
+                            effect.Parameters["FogFar"].SetValue(Camera.FarPlane / 2);
 
                         if (effect.Parameters["FogColor"] != null)
                             effect.Parameters["FogColor"].SetValue(Vector4.One);

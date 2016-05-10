@@ -4,7 +4,7 @@ using vxVertices.Utilities;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
+using Microsoft.Xna.Framework.Audio;
 
 namespace vxVertices.GUI.Themes
 {	
@@ -61,6 +61,17 @@ namespace vxVertices.GUI.Themes
         public vxThemeDialog vxDialogs { get; set; }
 
 
+
+
+
+        /*******************************************/
+        //					Sound Effects
+        /*******************************************/
+        public SoundEffect SE_Menu_Hover { get; set; }
+        public SoundEffect SE_Menu_Confirm { get; set; }
+        public SoundEffect SE_Menu_Cancel { get; set; }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUITheme"/> class.
         /// </summary>
@@ -103,7 +114,19 @@ namespace vxVertices.GUI.Themes
 			vxMenuEntries.Padding = new Vector2 (10, 4);
 			vxMenuEntries.vxMenuItemBackground = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
 			vxMenuEntries.TitleBackground = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
-		}
+
+
+
+
+            /*******************************************/
+            //					Sound Effects
+            /*******************************************/
+
+            //Menu Values
+            SE_Menu_Hover = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/Menu_Click");
+            SE_Menu_Confirm = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuConfirm");
+            SE_Menu_Cancel = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuError");
+        }
 
 
         /// <summary>
