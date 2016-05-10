@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.XNA", "src\Virtex.Lib.Vertices\Virtex.Lib.Vertices.XNA.csproj", "{5B8E36C0-8F22-41E0-A416-75E0C0B963B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Core.XNA", "src\Core\Virtex.Lib.Vertices.Core.XNA.csproj", "{5B8E36C0-8F22-41E0-A416-75E0C0B963B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Net.Lidgren.XNA", "src\Virtex.Lib.Vertices.Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.XNA.csproj", "{46806426-2647-49A4-AD3F-0F1E332A4358}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Net.Lidgren.XNA", "src\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.XNA.csproj", "{46806426-2647-49A4-AD3F-0F1E332A4358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Bepu.XNA", "src\Virtex.Lib.Vertices.Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.XNA.csproj", "{D12D6CA2-86A3-419B-9CE3-278AB00842FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Bepu.XNA", "src\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.XNA.csproj", "{D12D6CA2-86A3-419B-9CE3-278AB00842FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Farseer.XNA", "src\Virtex.Lib.Vertices.Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.XNA.csproj", "{FD0291FC-5FC6-49A2-AE17-8DF75B224F22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Farseer.XNA", "src\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.XNA.csproj", "{FD0291FC-5FC6-49A2-AE17-8DF75B224F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.XNA.Content", "src\Virtex.Lib.Vertices\Content\Virtex.Lib.Vertices.XNA.Content.contentproj", "{E0EA77A7-82A5-4CBE-BD94-BA26D205F269}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Core.XNA.Content", "src\Core\Content\Virtex.Lib.Vertices.Core.XNA.Content.contentproj", "{E0EA77A7-82A5-4CBE-BD94-BA26D205F269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.App.Vertices.TechDemo.XNA", "src\Virtex.App.Vertices.TechDemo\Virtex.App.Vertices.TechDemo.XNA.csproj", "{BA0FEAC2-BC99-47A0-B722-4D7F1547745F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.App.Vertices.TechDemo.XNA", "src\TechDemo\Virtex.App.Vertices.TechDemo.XNA.csproj", "{BA0FEAC2-BC99-47A0-B722-4D7F1547745F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.App.Vertices.TechDemo.XNA.Content", "src\Virtex.App.Vertices.TechDemo\Content\Virtex.App.Vertices.TechDemo.XNA.Content.contentproj", "{DDBBFB84-44F8-4C83-A5B7-3FCC25CB7140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.App.Vertices.TechDemo.XNA.Content", "src\TechDemo\Content\Virtex.App.Vertices.TechDemo.XNA.Content.contentproj", "{DDBBFB84-44F8-4C83-A5B7-3FCC25CB7140}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
