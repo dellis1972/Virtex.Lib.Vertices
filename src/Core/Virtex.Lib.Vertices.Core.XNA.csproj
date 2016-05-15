@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\XNA\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS, VIRTICES_NET, VIRTICES_XNA, VIRTICES_3D, VRTC_INCLDLIB_NET</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS, VIRTICES_NET, VRTC_PLTFRM_XNA, VIRTICES_3D, VRTC_INCLDLIB_NET</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -53,7 +53,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2D|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug2D\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS, VIRTICES_XNA, VIRTICES_2D</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS, VRTC_PLTFRM_XNA, VIRTICES_2D</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>

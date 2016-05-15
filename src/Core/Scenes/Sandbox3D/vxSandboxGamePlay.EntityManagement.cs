@@ -232,7 +232,7 @@ namespace vxVertices.Scenes.Sandbox3D
 
         public vxWaterEntity AddWaterVolume(Vector3 Position)
         {
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
 
             vxWaterEntity water = new vxWaterEntity(vxEngine, Position, new Vector3(5, 5, 8));
             waterItems.Add(water);

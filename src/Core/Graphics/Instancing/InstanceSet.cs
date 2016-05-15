@@ -190,7 +190,7 @@ namespace vxVertices.Core
         public virtual void RenderInstancedShadow(Model model, vxCamera3D camera, int numInstances)
         {            
             //Only XNA Supports Instance Drawing Currently
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             for (int i = 0; i < vxEngine.Renderer.NumberOfShadowSplits; ++i)
             {
                 {
@@ -252,7 +252,7 @@ namespace vxVertices.Core
         public virtual void RenderInstanced(Model model, vxCamera3D camera, int numInstances, string technique)
         {            
             //Only XNA Supports Instance Drawing Currently
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             if (numInstances > 0)
             {
                 // Draw the model. A model can have multiple meshes, so loop.

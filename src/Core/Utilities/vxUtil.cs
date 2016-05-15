@@ -131,7 +131,7 @@ namespace vxVertices.Utilities
 
 			int w = vxEngine.GraphicsDevice.PresentationParameters.BackBufferWidth;
 			int h = vxEngine.GraphicsDevice.PresentationParameters.BackBufferHeight;
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
 
 			//force a frame to be drawn (otherwise back buffer is empty) 
             vxEngine.Draw(new GameTime());

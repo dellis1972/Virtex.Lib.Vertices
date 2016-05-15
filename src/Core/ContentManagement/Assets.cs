@@ -200,7 +200,7 @@ namespace vxVertices.Core.ContentManagement
 			string prefixtag = "";
 
             //Model Shaders
-            #if VIRTICES_XNA
+            #if VRTC_PLTFRM_XNA
             //shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/MainModelShader");
 
             //Water

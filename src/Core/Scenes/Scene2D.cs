@@ -111,12 +111,39 @@ namespace vxVertices.Core.Scenes
 		}
 		public bool AllowCameraInput = true;
 
-		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		public override void UpdateScene(GameTime gameTime, bool otherScreenHasFocus,
+        float pauseAlpha;
+
+        /// <summary>
+        /// Updates the state of the game. This method checks the GameScreen.IsActive
+        /// property, so the game will stop updating when the pause menu is active,
+        /// or if you tab away to a different application.
+        /// </summary>
+        public sealed override void Update(GameTime gameTime, bool otherScreenHasFocus,
+                                            bool coveredByOtherScreen)
+        {//vxEngine.Game.IsFixedTimeStep = false;
+
+            base.Update(gameTime, otherScreenHasFocus, false);
+
+            // GUIManager.Update(vxEngine);
+
+            // Gradually fade in or out depending on whether we are covered by the pause screen.
+            if (coveredByOtherScreen && IsPausable)
+                pauseAlpha = Math.Min(pauseAlpha + 1f / 32, 1);
+            else
+                pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
+
+            if (IsActive || IsPausable == false)
+            {
+                UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+            }
+        }
+
+        /// <summary>
+        /// Allows the game to run logic such as updating the world,
+        /// checking for collisions, gathering input, and playing audio.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        public override void UpdateScene(GameTime gameTime, bool otherScreenHasFocus,
 			bool coveredByOtherScreen)
 		{
 			// FOREACH LOOPS DO NOT ALLOW ADDING MORE ADDITIONAL ENTITIES DURING LOOPING, FOR LOOPS GET AROUND THIS
@@ -146,7 +173,7 @@ namespace vxVertices.Core.Scenes
 		}
 
 
-private void HandleCamera(vxInputManager input, GameTime gameTime)
+        private void HandleCamera(vxInputManager input, GameTime gameTime)
 		{
 			Vector2 camMove = Vector2.Zero;
 
@@ -164,7 +191,7 @@ private void HandleCamera(vxInputManager input, GameTime gameTime)
 				Camera.Zoom -= 5f * (float)gameTime.ElapsedGameTime.TotalSeconds * Camera.Zoom / 20f;
 
 
-#if !VIRTICES_XNA
+#if !VRTC_PLTFRM_XNA
 			//Panning Control
 			if (input.MouseState.MiddleButton == ButtonState.Pressed) {
 				camMove = -Vector2.Subtract(input.MouseState.Position.ToVector2(), 
@@ -194,7 +221,7 @@ private void HandleCamera(vxInputManager input, GameTime gameTime)
 
 		}
 
-public override void HandleInputBase(vxInputManager input)
+        public override void HandleInputBase(vxInputManager input)
 		{
 			// get all of our input states
 			keyboardState = Keyboard.GetState();

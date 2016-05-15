@@ -227,7 +227,7 @@ namespace vxVertices.Core.Entities
             scBack.DisposeEntity();
             
             //CurrentSandboxLevel.Items.Remove(this);
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
 			CurrentSandboxLevel.waterItems.Remove (this);
 #endif
             Current3DScene.BEPUPhyicsSpace.Remove(fluidVolume);

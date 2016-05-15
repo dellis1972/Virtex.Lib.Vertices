@@ -92,7 +92,7 @@ namespace vxVertices.Core.Scenes
 		private float mLightRotationY = 0.01f;
 		// current rotation angle of the light around y axis
 
-		#if VIRTICES_XNA
+		#if VRTC_PLTFRM_XNA
 		
         /// <summary>
         /// Water Entity Collection
@@ -405,7 +405,7 @@ namespace vxVertices.Core.Scenes
 
 
 
-#if VIRTICES_XNA            
+#if VRTC_PLTFRM_XNA            
             foreach (InstanceSet instSet in InstanceSetCollection)
             {
                 instSet.Update();
@@ -596,7 +596,7 @@ namespace vxVertices.Core.Scenes
 
             foreach (vxEntity aeroEntity in Entities)
                 ((vxEntity3D)aeroEntity).RenderMeshPrepPass();
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             foreach (InstanceSet instSet in InstanceSetCollection)
                 instSet.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
 
@@ -662,7 +662,7 @@ namespace vxVertices.Core.Scenes
                     case vxEnumSceneShadowMode.SplitColors:
                     case vxEnumSceneShadowMode.BlockPattern:
 
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                         foreach (InstanceSet instSet in InstanceSetCollection)
                             instSet.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_Main_Instanced");
 
@@ -674,7 +674,7 @@ namespace vxVertices.Core.Scenes
 #endif
                         foreach (vxEntity3D entity in Entities)
                             entity.RenderMesh("Technique_Main");
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                         foreach (vxWaterEntity water in waterItems)
                             water.DrawWater(vxEngine.Renderer.RT_WaterReflectionMap, camera.GetReflectionView(water.WrknPlane));
 #endif
@@ -874,7 +874,7 @@ namespace vxVertices.Core.Scenes
 			//Depth Map
 			//
 			TitleText = "Depth Map";
-			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_DepthMap, new Rectangle (2 * width, 0, width, height), Color.White);
+			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_ShadowMap, new Rectangle (2 * width, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
 				new Vector2 (width * 5 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
 

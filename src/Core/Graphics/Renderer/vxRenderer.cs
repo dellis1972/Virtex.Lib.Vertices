@@ -692,7 +692,7 @@ namespace vxVertices.Graphics
         public virtual void RenderInstancedShadow(Model model, vxCamera3D camera, int numInstances)
         {
             //Only XNA Supports Instance Drawing Currently
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             for (int i = 0; i < NumberOfShadowSplits; ++i)
             {
                 {
@@ -749,7 +749,7 @@ namespace vxVertices.Graphics
         public virtual void RenderInstanced(Model model, vxCamera3D camera, int numInstances, string technique)
         {
             //Only XNA Supports Instance Drawing Currently
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             if (numInstances > 0)
             {
                 // Draw the model. A model can have multiple meshes, so loop.
@@ -1153,7 +1153,7 @@ namespace vxVertices.Graphics
         /// </remarks>
         public void SetBlurEffectParameters(float dx, float dy)
         {
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             // Look up the sample weight and offset effect parameters.
             EffectParameter weightsParameter, offsetsParameter;
 

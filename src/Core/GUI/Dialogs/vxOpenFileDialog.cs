@@ -14,7 +14,6 @@ using vxVertices.Core.Input;
 using vxVertices.GUI.Controls;
 using vxVertices.GUI.Events;
 using vxVertices.Mathematics;
-using vxVertices.Scenes.Sandbox;
 using System.Xml.Serialization;
 using vxVertices.Scenes.Sandbox3D;
 

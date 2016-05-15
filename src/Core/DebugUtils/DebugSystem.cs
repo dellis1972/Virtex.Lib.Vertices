@@ -106,19 +106,19 @@ namespace vxVertices.Core.Debug
             game.Components.Add(singletonInstance.DebugManager);
 
 			singletonInstance.DebugCommandUI = new DebugCommandUI(vxEngine);
-#if !VIRTICES_XNA
+#if !VRTC_PLTFRM_XNA
 			singletonInstance.DebugCommandUI.Initialize ();
 #endif
             game.Components.Add(singletonInstance.DebugCommandUI);
 
 			singletonInstance.FpsCounter = new FpsCounter(game);
-#if !VIRTICES_XNA
+#if !VRTC_PLTFRM_XNA
 			singletonInstance.FpsCounter.Initialize ();
 #endif
             game.Components.Add(singletonInstance.FpsCounter);
 
 			singletonInstance.TimeRuler = new TimeRuler(game);
-#if !VIRTICES_XNA
+#if !VRTC_PLTFRM_XNA
 			singletonInstance.TimeRuler.Initialize ();
 #endif
             game.Components.Add(singletonInstance.TimeRuler);

@@ -489,7 +489,7 @@ namespace vxVertices.Core.Entities
             {
                 foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
                 {
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                     if (part.Effect.Parameters["LightDirection"] != null)
                         part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
 
@@ -635,8 +635,84 @@ namespace vxVertices.Core.Entities
                             {
                                 effect.CurrentTechnique = effect.Techniques[RenderTechnique];
 
+        //                        if (effect.Parameters["DoShadow"] != null)
+        //                            effect.Parameters["DoShadow"].SetValue(vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None ? true : false);
+
+        //                        if (effect.Parameters["ShadowMap"] != null)
+        //                            effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
+        //                        if (effect.Parameters["ShadowTransform"] != null)
+        //                            effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
+        //                        if (effect.Parameters["TileBounds"] != null)
+        //                            effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
+        //                        if (effect.Parameters["SplitColors"] != null)
+        //                            effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
+
+        //                        if (effect.Parameters["CameraPos"] != null)
+        //                            effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
+
+        //                        if (effect.Parameters["FogNear"] != null)
+        //                            effect.Parameters["FogNear"].SetValue(5);
+
+        //                        if (effect.Parameters["FogFar"] != null)
+        //                            effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane / 4);
+
+        //                        if (effect.Parameters["FogColor"] != null)
+        //                            effect.Parameters["FogColor"].SetValue(Vector4.One);
+
+        //                        if (effect.Parameters["TextureSampler"] != null)
+        //                            effect.Parameters["TextureSampler"].SetValue(vxEngine.Renderer.RT_ColourMap);
+
+        //                        if (effect.Parameters["NormalSampler"] != null)
+        //                            effect.Parameters["NormalSampler"].SetValue(vxEngine.Renderer.RT_NormalMap);
+                                
+        //                        if (effect.Parameters["DiffuseLight"] != null)
+        //                            effect.Parameters["DiffuseLight"].SetValue(new Vector3(0.5f));
+
+        //                        if (effect.Parameters["AmbientLight"] != null)
+        //                            effect.Parameters["AmbientLight"].SetValue(new Vector3(0.5f));
+
+        //                        effect.Parameters["World"].SetValue(World);
+        //                        if (effect.Parameters["View"] != null)
+        //                            effect.Parameters["View"].SetValue(this.Camera.View);
+
+        //                        if (effect.Parameters["Projection"] != null)
+        //                            effect.Parameters["Projection"].SetValue(this.Camera.Projection);
+
+
+        //                        if (effect.Parameters["LightPosition"] != null)
+        //                            effect.Parameters["LightPosition"].SetValue(vxEngine.Renderer.lightPosition);
+
+        //                        if (effect.Parameters["LightDirection"] != null)
+        //                            effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
+
+        //                        float Factor = 125;
+        //                        if (effect.Parameters["SelectionColor"] != null)
+        //                            effect.Parameters["SelectionColor"].SetValue((new Vector3(SelectionColor.R / Factor, SelectionColor.G / Factor, SelectionColor.B / Factor)));
+        //                        /*
+        //                        if (TextureOffset != Vector2.Zero)
+        //                            vxConsole.WriteToInGameDebug(TextureOffset);
+        //*/
+        //                        if (effect.Parameters["TextOffset"] != null)
+        //                            effect.Parameters["TextOffset"].SetValue(TextureOffset);
+
+        //                        if (effect.Parameters["Alpha"] != null)
+        //                            effect.Parameters["Alpha"].SetValue(AlphaValue);
+
+
+
+                                //effect.CurrentTechnique = effect.Techniques[technique];
+                                effect.Parameters["World"].SetValue(World);
+                                effect.Parameters["View"].SetValue(Camera.View);
+                                effect.Parameters["Projection"].SetValue(Camera.Projection);
+                                effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
+
+                                if (vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None)
+                                    DoShadowMap = false;
+                                else
+                                    DoShadowMap = true;
+
                                 if (effect.Parameters["DoShadow"] != null)
-                                    effect.Parameters["DoShadow"].SetValue(vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None ? true : false);
+                                    effect.Parameters["DoShadow"].SetValue(DoShadowMap);
 
                                 if (effect.Parameters["ShadowMap"] != null)
                                     effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
@@ -648,52 +724,16 @@ namespace vxVertices.Core.Entities
                                     effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
 
                                 if (effect.Parameters["CameraPos"] != null)
-                                    effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
+                                    effect.Parameters["CameraPos"].SetValue(vxEngine.Current3DSceneBase.Camera.WorldMatrix.Translation);
 
                                 if (effect.Parameters["FogNear"] != null)
                                     effect.Parameters["FogNear"].SetValue(5);
 
                                 if (effect.Parameters["FogFar"] != null)
-                                    effect.Parameters["FogFar"].SetValue(Camera.FarPlane);
+                                    effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane / 4);
 
                                 if (effect.Parameters["FogColor"] != null)
                                     effect.Parameters["FogColor"].SetValue(Vector4.One);
-
-                                if (effect.Parameters["TextureSampler"] != null)
-                                    effect.Parameters["TextureSampler"].SetValue(vxEngine.Renderer.RT_ColourMap);
-
-                                if (effect.Parameters["NormalSampler"] != null)
-                                    effect.Parameters["NormalSampler"].SetValue(vxEngine.Renderer.RT_NormalMap);
-                                
-                                if (effect.Parameters["DiffuseLight"] != null)
-                                    effect.Parameters["DiffuseLight"].SetValue(new Vector3(0.5f));
-
-                                if (effect.Parameters["AmbientLight"] != null)
-                                    effect.Parameters["AmbientLight"].SetValue(new Vector3(0.5f));
-
-                                effect.Parameters["World"].SetValue(World);
-                                if (effect.Parameters["View"] != null)
-                                    effect.Parameters["View"].SetValue(this.Camera.View);
-
-                                if (effect.Parameters["Projection"] != null)
-                                    effect.Parameters["Projection"].SetValue(this.Camera.Projection);
-
-
-                                if (effect.Parameters["LightPosition"] != null)
-                                    effect.Parameters["LightPosition"].SetValue(vxEngine.Renderer.lightPosition);
-
-                                if (effect.Parameters["LightDirection"] != null)
-                                    effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
-
-                                float Factor = 125;
-                                if (effect.Parameters["SelectionColor"] != null)
-                                    effect.Parameters["SelectionColor"].SetValue((new Vector3(SelectionColor.R / Factor, SelectionColor.G / Factor, SelectionColor.B / Factor)));
-                                /*
-                                if (TextureOffset != Vector2.Zero)
-                                    vxConsole.WriteToInGameDebug(TextureOffset);
-        */
-                                if (effect.Parameters["TextOffset"] != null)
-                                    effect.Parameters["TextOffset"].SetValue(TextureOffset);
 
                                 if (effect.Parameters["Alpha"] != null)
                                     effect.Parameters["Alpha"].SetValue(AlphaValue);
@@ -746,7 +786,7 @@ namespace vxVertices.Core.Entities
                         if (effect.Parameters["FogColor"] != null)
                             effect.Parameters["FogColor"].SetValue(Vector4.One);
 
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                         if (effect.Parameters["ShadowDebug"] != null)
                             effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
 
@@ -821,11 +861,15 @@ namespace vxVertices.Core.Entities
                         foreach (var effect in mesh.Effects)
                         {
                             // Specify which effect technique to use.
-                            effect.CurrentTechnique = effect.Techniques["Shadow"];
+                            if (effect.Techniques["Shadow"] != null)
+                                effect.CurrentTechnique = effect.Techniques["Shadow"];
 
-                            effect.Parameters["ViewProjection_Sdw"].SetValue(vxEngine.Renderer.ShadowSplitProjections[i]);
-                            effect.Parameters["World"].SetValue(World);
-                            effect.Parameters["DepthBias_Sdw"].SetValue(new Vector2(vxEngine.Renderer.ShadowDepthBias[i, 0],
+                            if (effect.Parameters["ViewProjection_Sdw"] != null)
+                                effect.Parameters["ViewProjection_Sdw"].SetValue(vxEngine.Renderer.ShadowSplitProjections[i]);
+                            if (effect.Parameters["World"] != null)
+                                effect.Parameters["World"].SetValue(World);
+                            if (effect.Parameters["DepthBias_Sdw"] != null)
+                                effect.Parameters["DepthBias_Sdw"].SetValue(new Vector2(vxEngine.Renderer.ShadowDepthBias[i, 0],
                                 vxEngine.Renderer.ShadowDepthBias[i, 1]));
                         }
 

@@ -128,7 +128,7 @@ namespace vxVertices.Core
 
 			get {
 				string path = "Virtex Edge Design/" + GameName + "/Profiles/";
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                 path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
 #endif
 				return path;
@@ -142,7 +142,7 @@ namespace vxVertices.Core
 		public string Path_Sandbox {
 			get {
 				string path = "Virtex Edge Design/" + GameName + "/Sandbox/";
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                 path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + path;
 #endif
 				return path;
@@ -441,7 +441,7 @@ namespace vxVertices.Core
 			vxConsole.vxEngine = this;
 
 
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
 			vxConsole.WriteLine("Starting Vertices Engine with XNA Backend...");
 #else
 			vxConsole.WriteLine ("Starting Vertices Engine with MonoGame Backend...");
@@ -470,8 +470,8 @@ namespace vxVertices.Core
 			//string contentLocationTag = "Virtex.Lib.Vertices.XNA.Content";
 
 //Set Location of Content Specific too Platform
-#if VIRTICES_XNA
-            _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.XNA.Content";
+#if VRTC_PLTFRM_XNA
+            _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
 
 #elif VRTC_PLTFRM_GL
 			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";
@@ -852,7 +852,7 @@ namespace vxVertices.Core
 				string prefixtag = "";
 
 				//Model Shaders
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
 #else
 				prefixtag = "MonoGame/";
 #endif
@@ -913,7 +913,7 @@ namespace vxVertices.Core
                             }
                             
 
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
                             if (newEffect.Parameters["LightDirection"] != null)
                                 newEffect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
 
@@ -956,7 +956,7 @@ namespace vxVertices.Core
 
 			modelToReturn = Content.Load<Model> (Path);
 
-#if VIRTICES_XNA
+#if VRTC_PLTFRM_XNA
             replacementEffect = this.Assets.Shaders.WaterReflectionShader;
 
             try
