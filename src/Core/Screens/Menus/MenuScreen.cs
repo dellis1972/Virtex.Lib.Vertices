@@ -250,6 +250,9 @@ namespace vxVertices.Screens.Menus
 
                 // move down for the next entry the size of this entry
 				position += NextMenuItemOffset;
+
+
+                this.vxEngine.InputManager.ShowCursor = true;
             }
         }
 

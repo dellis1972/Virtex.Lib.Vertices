@@ -19,7 +19,8 @@ namespace vxVertices.Core.Cameras
         Freeroam,
         CharacterFPS,
         ChaseCamera,
-        Orbit
+        Orbit,
+        OnRails,
     }
 
     /// <summary>

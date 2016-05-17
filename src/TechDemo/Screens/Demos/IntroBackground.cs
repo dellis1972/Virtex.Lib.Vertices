@@ -160,7 +160,8 @@ namespace VerticeEnginePort.Base
 				//d.World = Matrix.CreateScale(1.0f) * Matrix.CreateRotationX(-MathHelper.PiOver2) * Matrix.CreateRotationY(angle);
 				Camera.Yaw = angle;
 			}
-			base.UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
+            base.UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 		}
 	}
 }

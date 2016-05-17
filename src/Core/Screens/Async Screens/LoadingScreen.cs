@@ -183,6 +183,8 @@ namespace vxVertices.Screens.Async
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
+
+            this.vxEngine.InputManager.ShowCursor = false;
             // If we are the only active screen, that means all the previous screens
             // must have finished transitioning off. We check for this in the Draw
             // method, rather than in Update, because it isn't enough just for the
