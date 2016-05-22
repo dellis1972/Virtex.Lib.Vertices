@@ -22,7 +22,7 @@ using vxVertices.Audio;
 using BEPUphysicsDrawer.Models;
 using BEPUutilities.Threading;
 using vxVertices.Utilities;
-using Lidgren.Network;
+
 using vxVertices.Core.Entities;
 using vxVertices.Geometry;
 using vxVertices.Core.Debug;
@@ -239,8 +239,10 @@ namespace vxVertices.Core.Scenes
 			vxEngine.Renderer.loadContent (mGraphicsManager);
 
 			Camera.AspectRatio = mGraphicsManager.GraphicsDevice.Viewport.AspectRatio;
-            
-			InitialiseNetwork ();
+
+#if VRTC_INCLDLIB_NET
+            InitialiseNetwork ();
+#endif
 		}
 
 
@@ -249,10 +251,12 @@ namespace vxVertices.Core.Scenes
 		/// Unload graphics content used by the game.
 		/// </summary>
 		public override void UnloadContent ()
-		{
+        {
+#if VRTC_INCLDLIB_NET
 			DeinitialiseNetwork ();
+#endif
 
-			content.Unload ();
+            content.Unload ();
 		}
 
 
@@ -263,9 +267,9 @@ namespace vxVertices.Core.Scenes
 			return (T)(object)nextValue;
 		}
 
-		#endregion
+#endregion
 
-		#region Update and Draw
+#region Update and Draw
 
 
 		/// <summary>
@@ -289,7 +293,7 @@ namespace vxVertices.Core.Scenes
 				pauseAlpha = Math.Max (pauseAlpha - 1f / 32, 0);
 
 			if (IsActive  || IsPausable == false) {
-				#region Set Debug Info
+#region Set Debug Info
 
 				BEPUDebugDrawer.Update ();
 
@@ -320,9 +324,12 @@ namespace vxVertices.Core.Scenes
 						((vxEntity3D)entity).TextureEnabled = !((vxEntity3D)entity).TextureEnabled;
 				}
 
-				#endregion
+#endregion
 
+
+#if VRTC_INCLDLIB_NET
 				UpdateNetwork ();
+#endif
 
 				//
 				//Update Audio Manager
@@ -405,7 +412,7 @@ namespace vxVertices.Core.Scenes
 
 
 
-#if VRTC_PLTFRM_XNA            
+#if VRTC_PLTFRM_XNA
             foreach (InstanceSet instSet in InstanceSetCollection)
             {
                 instSet.Update();
@@ -697,7 +704,7 @@ namespace vxVertices.Core.Scenes
 
             
             int rad = 4;
-
+            /*
             float angle = (float)gameTime.TotalGameTime.TotalSeconds;
             DrawPointLight(new Vector3((float)Math.Sin(angle) * rad, 1, (float)Math.Cos(angle) * rad), Color.Orange, 5, 2);
             rad = 2;
@@ -705,11 +712,11 @@ namespace vxVertices.Core.Scenes
             DrawPointLight(new Vector3(-5, 1, 15 * (float)Math.Cos(angle)), Color.White, 2, 2);
 
             DrawPointLight(new Vector3(5, 2, 15 * (float)Math.Cos(angle)), Color.Orange, 4, 0.25f);
-            //DrawDirectionalLight(new Vector3(-1), Color.White);
+            DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White);
+            */
+
+            DrawPointLight(new Vector3(0,0, 0), Color.Orange, 0, 0);
             
-
-            DrawPointLight(new Vector3(5, 2, 15 * (float)Math.Cos(0)), Color.Orange, 0, 0);
-
             vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
@@ -914,7 +921,7 @@ namespace vxVertices.Core.Scenes
 
 		}
 
-		#endregion
+#endregion
 	}
 }
 #endif

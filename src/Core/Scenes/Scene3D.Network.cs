@@ -1,4 +1,4 @@
-﻿#if VIRTICES_3D
+﻿#if VIRTICES_3D && VRTC_INCLDLIB_NET
 using vxVertices.Network;
 
 
@@ -41,7 +41,7 @@ namespace vxVertices.Core.Scenes
 {
     public partial class vxScene3D : vxSceneBase
     {
-        #region Network Code
+#region Network Code
 
         private NetServer server;
 
@@ -55,7 +55,7 @@ namespace vxVertices.Core.Scenes
         //private string IPAddress = "";
         //private int Port = 14242;
 
-        #endregion
+#endregion
 
         /// <summary>
         /// Starts the Scene as a Networked Game.
@@ -129,9 +129,9 @@ namespace vxVertices.Core.Scenes
 
         public void UpdateNetwork()
         {
-            #region Process Network Messages
+#region Process Network Messages
 
-            #region Process Client Network Messages
+#region Process Client Network Messages
 
             NetIncomingMessage im;
             if (s_client != null)
@@ -188,9 +188,9 @@ namespace vxVertices.Core.Scenes
                     s_client.Recycle(im);
                 }
             }
-            #endregion
+#endregion
 
-            #region Process Server Network Messages
+#region Process Server Network Messages
 
             NetIncomingMessage msg;
             if (server != null)
@@ -263,9 +263,9 @@ namespace vxVertices.Core.Scenes
                     server.Recycle(msg);
                 }
             }
-            #endregion
+#endregion
 
-            #endregion
+#endregion
         }
 
         private void UpdateConnectionsList()

@@ -28,6 +28,16 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\test\testbox\testbox.fbx">
+      <Name>testbox</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\test\testbox\testbox2.fbx">
+      <Name>testbox2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <None Include="Shaders\Include\ModelPixelShaders.h">
       <Name>ModelPixelShaders</Name>
     </None>
@@ -546,6 +556,16 @@
       <Name>sel_selItem_hover</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Shaders\Test\red.fx">
+      <Name>red</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Shaders\Test\blue.fx">
+      <Name>blue</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
