@@ -119,8 +119,8 @@ namespace VerticeEnginePort.Base
             */
 
             xEnvrio g = new xEnvrio(vxEngine, vxEngine.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
-            g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_nm");
-            g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_sm");
+            g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_nm");
+            g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_sm");
             g.SpecularIntensity = 1;
 
             //This is a little convenience method used to extract vertices and indices from a model.

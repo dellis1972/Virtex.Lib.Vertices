@@ -71,9 +71,9 @@ float4 LambertPixelShader(ModelPixelShaderData input)
 {   
 	float LightAmount = dot(input.PixelNormal, LightDirection);
 
-	float Emissive = 1.75f;
+	float Emissive = 0.5;
 
-    input.PixelColor.rgb *= (saturate(LightAmount) * DiffuseLight + AmbientLight) * Emissive;
+	input.PixelColor.rgb *= (saturate(LightAmount) * DiffuseLight + AmbientLight);// *Emissive;
     
     return input.PixelColor;
 }

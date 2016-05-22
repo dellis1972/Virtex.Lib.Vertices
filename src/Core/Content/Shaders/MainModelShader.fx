@@ -378,7 +378,7 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	float4 diffusecolor = tex2D(diffuseSampler, input.TexCoord);
 
 	float4 Normal = tex2D(normalSampler, input.TexCoord);
-
+	/*
 	//Thirdly, get the Normal from both the Gemoetry and any supplied Normal Maps.
 	//*********************************************************************************************
 	// read the normal from the normal map
@@ -391,7 +391,7 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	normalFromMap = normalize(normalFromMap);
 	//output the normal, in [0,1] space
 	Normal.rgb = 0.5f * (normalFromMap + 1.0f);
-
+	*/
 	//Now, get the Shadow factor from the Cascaded Shadow Map
 	//*********************************************************************************************
 	//Get Shadow Factor
@@ -410,7 +410,7 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	modelPSData.PixelNormal = Normal.rgb;
 
 	//float4 Color = ToonPixelShader(modelPSData);
-	float4 Color = LambertPixelShader(modelPSData);
+	float4 Color = diffusecolor * shadow;// LambertPixelShader(modelPSData);
 
 	//Color *= shadow;
 

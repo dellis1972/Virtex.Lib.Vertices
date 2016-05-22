@@ -269,7 +269,7 @@ namespace vxVertices.Core.Scenes
 
 #endregion
 
-#region Update and Draw
+        #region Update and Draw
 
 
 		/// <summary>
@@ -714,6 +714,7 @@ namespace vxVertices.Core.Scenes
             DrawPointLight(new Vector3(5, 2, 15 * (float)Math.Cos(angle)), Color.Orange, 4, 0.25f);
             DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White);
             */
+           // DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White);
 
             DrawPointLight(new Vector3(0,0, 0), Color.Orange, 0, 0);
             
