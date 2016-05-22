@@ -65,8 +65,8 @@ namespace VerticeEnginePort.Base
         public Teapot(GameEngine GameEngine, Vector3 StartPosition) :
             base(GameEngine, GameEngine.Model_Items_Teapot, StartPosition)
         {
-            NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/teapot/teapot_nm");
-            SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/teapot/teapot_sm");
+            //NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/teapot/teapot_nm");
+            //SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/teapot/teapot_sm");
             XRotation_ModelOffset = -MathHelper.PiOver2;
             //Vector_ModelOffSet = new Vector3(-0.5f, 1 / 2, 0.5f);
             //entity = new Box(StartPosition - Vector_ModelOffSet, 1, 1, 1, 1000);
@@ -80,7 +80,7 @@ namespace VerticeEnginePort.Base
             vxEngine.Current3DSceneBase.BEPUPhyicsSpace.Add(entityMover);
 
 
-			ModelDataExtractor.GetVerticesAndIndicesFromModel(model, out staticTriangleVertices, out staticTriangleIndices);
+			ModelDataExtractor.GetVerticesAndIndicesFromModel(vxModel.ModelMain, out staticTriangleVertices, out staticTriangleIndices);
 
         }
         Matrix preMat = Matrix.Identity;

@@ -118,14 +118,14 @@ namespace VerticeEnginePort.Base
             g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/sponza/spnza_bricks_sm");
             */
 
-            xEnvrio g = new xEnvrio(vxEngine, vxEngine.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
-            g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_nm");
-            g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_sm");
-            g.SpecularIntensity = 1;
+            xEnvrio envr = new xEnvrio(vxEngine, vxEngine.ContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+            //g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_nm");
+            //g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_sm");
+            envr.SpecularIntensity = 1;
 
             //This is a little convenience method used to extract vertices and indices from a model.
             //It doesn't do anything special; any approach that gets valid vertices and indices will work.
-            ModelDataExtractor.GetVerticesAndIndicesFromModel(g.model, out staticTriangleVertices, out staticTriangleIndices);
+            ModelDataExtractor.GetVerticesAndIndicesFromModel(envr.vxModel.ModelMain, out staticTriangleVertices, out staticTriangleIndices);
 
             //var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices, new AffineTransform(Matrix3X3.CreateFromAxisAngle(Vector3.Up, MathHelper.Pi), new Vector3(0, -10, 0)));
             var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices,
@@ -154,10 +154,10 @@ namespace VerticeEnginePort.Base
             Straights.AddItem(ScrollPanel_Straights);
 
 
-
+            
             Teapot t = new Teapot((GameEngine)vxEngine, new Vector3(4, 4, 0));
             t.SetMesh(Matrix.CreateTranslation(new Vector3(4, 2, 0)), true, true);
-
+            
             ConcreteCube cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 0));
             cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, 0)), true, true);
 

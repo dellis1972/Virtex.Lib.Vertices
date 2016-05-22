@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using vxVertices.Core.Entities;
+using vxVertices.Graphics;
 
 namespace vxVertices.Core.Particles
 {
@@ -25,7 +26,7 @@ namespace vxVertices.Core.Particles
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="model">Model.</param>
 		/// <param name="StartPosition">Start position.</param>
-		public vxParticle3D(vxEngine vxEngine, Model model, Vector3 StartPosition) 
+		public vxParticle3D(vxEngine vxEngine, vxModel model, Vector3 StartPosition) 
             : base(vxEngine, model, StartPosition)
         {
 

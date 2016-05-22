@@ -83,7 +83,6 @@
   <ItemGroup>
     <Compile Include="Entities\IndexedPrimTest.cs" />
     <Compile Include="Entities\ModelObjs.cs" />
-    <Compile Include="Entities\Torch.cs" />
     <Compile Include="Entities\Teapot.cs" />
     <Compile Include="Entities\ConcreteCube.cs" />
     <Compile Include="Entities\WoodenCrate.cs" />

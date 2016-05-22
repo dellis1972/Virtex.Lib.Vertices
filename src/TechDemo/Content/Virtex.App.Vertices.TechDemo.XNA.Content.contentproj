@@ -106,18 +106,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\teapot\teapot_df.png">
-      <Name>teapot_df</Name>
+    <Compile Include="Models\teapot\teapot_main_dds.png">
+      <Name>teapot_main_dds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\teapot\teapot_nm.png">
-      <Name>teapot_nm</Name>
+    <Compile Include="Models\teapot\teapot_main_nm.png">
+      <Name>teapot_main_nm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\teapot\teapot_sm.png">
-      <Name>teapot_sm</Name>
+    <Compile Include="Models\teapot\teapot_main_sm.png">
+      <Name>teapot_main_sm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -192,8 +192,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\courtyard\roof.png">
-      <Name>roof</Name>
+    <Compile Include="Models\courtyard\roof_dds.png">
+      <Name>roof_dds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -209,8 +209,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\courtyard\structure.png">
-      <Name>structure</Name>
+    <Compile Include="Models\courtyard\structure_dds.png">
+      <Name>structure_dds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

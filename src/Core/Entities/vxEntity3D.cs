@@ -51,15 +51,8 @@ namespace vxVertices.Core.Entities
             get { return ((vxScene3D)vxEngine.CurrentGameplayScreen).Camera; }
         }
 
-        /// <summary>
-        /// A Traditional MonoGame or XNA Model Class
-        /// </summary>
-        public Model model { get; set; }
-
-
 		/// <summary>
-		/// The vxModel model which can be used to emulate Instasnce meshing or
-		/// a Voxel Engine.
+		/// The vxModel model which holds are graphical, shader and vertices data to be shown.
 		/// </summary>
 		public vxModel vxModel { get; set; }
 
@@ -96,7 +89,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _doEdgeDetect = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     if (part.Effect.Parameters["DoEdgeDetection"] != null)
                         part.Effect.Parameters["DoEdgeDetection"].SetValue(_doEdgeDetect);
@@ -111,7 +104,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _doFog = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     if (part.Effect.Parameters["DoFog"] != null)
                         part.Effect.Parameters["DoFog"].SetValue(_doFog);
@@ -127,7 +120,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _doShading = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     part.Effect.Parameters["DoShading"].SetValue(_doShading);
                 }
@@ -164,7 +157,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _specularIntensity = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     if (part.Effect.Parameters["SpecularIntensity"] != null)
                         part.Effect.Parameters["SpecularIntensity"].SetValue(_specularIntensity);
@@ -184,7 +177,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _specularPower = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     if (part.Effect.Parameters["SpecularPower"] != null)
                         part.Effect.Parameters["SpecularPower"].SetValue(_specularPower);
@@ -194,7 +187,7 @@ namespace vxVertices.Core.Entities
         }
         float _specularPower = 1;
 
-
+        /*
         /// <summary>
         /// The Models main diffuse texture.
         /// </summary>
@@ -203,7 +196,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _modelTexture = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     part.Effect.Parameters["Texture"].SetValue(_modelTexture);
                 }
@@ -211,6 +204,7 @@ namespace vxVertices.Core.Entities
             get { return _modelTexture; }
         }
         Texture _modelTexture;
+        */
 
         /// <summary>
         /// Toggles Whether or not the main diffuse texture is shown.
@@ -220,8 +214,8 @@ namespace vxVertices.Core.Entities
             set
             {
                 _textureEnabled = value;
-                if (model != null)
-                    foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                if (vxModel.ModelMain != null)
+                    foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                     {
                         if (part.Effect.Parameters["TextureEnabled"] != null)
                             part.Effect.Parameters["TextureEnabled"].SetValue(_textureEnabled);
@@ -231,6 +225,7 @@ namespace vxVertices.Core.Entities
         }
         bool _textureEnabled;
 
+        /*
         /// <summary>
         /// Texture which is applied as the Normal Map.
         /// </summary>
@@ -251,6 +246,7 @@ namespace vxVertices.Core.Entities
             get { return _normalMap; }
         }
         Texture2D _normalMap;
+
 
         /// <summary>
         /// Texture which is applied as the Specular Map
@@ -273,6 +269,7 @@ namespace vxVertices.Core.Entities
             get { return _specularMap; }
         }
         Texture2D _specularMap;
+        */
 
         /// <summary>
         /// Texture which is applied as the Reflection Map
@@ -282,7 +279,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _reflectionMap = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     part.Effect.Parameters["DoReflectionMap"].SetValue(true);
                     part.Effect.Parameters["SkyboxTexture"].SetValue(_reflectionMap);
@@ -300,7 +297,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _reflectionAmount = Math.Min(value, 1);
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     part.Effect.Parameters["ReflectionAmount"].SetValue(_reflectionAmount);
                 }
@@ -309,7 +306,7 @@ namespace vxVertices.Core.Entities
         }
         float _reflectionAmount = 1;
 
-
+        /*
         /// <summary>
         /// The Models main diffuse texture.
         /// </summary>
@@ -326,6 +323,7 @@ namespace vxVertices.Core.Entities
             get { return _distortionMap; }
         }
         Texture _distortionMap;
+        */
 
         /// <summary>
         /// Model Alpha Value for Transparency
@@ -335,7 +333,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _mAlphaValue = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                 {
                     if (part.Effect.Parameters["AlphaValue"] != null)
                         part.Effect.Parameters["AlphaValue"].SetValue(_mAlphaValue);
@@ -463,13 +461,13 @@ namespace vxVertices.Core.Entities
         /// <param name="vxEngine">The current instance of the vxEngine.</param>
         /// <param name="EntityModel">The Entities Model to be used.</param>
         /// <param name="StartPosition">The Start Position of the Entity.</param>
-		public vxEntity3D(vxEngine vxEngine, Model EntityModel, Vector3 StartPosition) : base(vxEngine)
+		public vxEntity3D(vxEngine vxEngine,vxModel EntityModel, Vector3 StartPosition) : base(vxEngine)
         {
             World = Matrix.CreateRotationX(-MathHelper.PiOver2)
                 * Matrix.CreateTranslation(StartPosition);
 
             //Set Model Data
-            model = EntityModel;
+            this.vxModel = EntityModel;
 
             //Set Position Data
             this.Position = StartPosition;
@@ -485,33 +483,58 @@ namespace vxVertices.Core.Entities
         {
 
             // set lighting parameters for each shader
-            if (model != null)
+            if (vxModel != null)
             {
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                if (vxModel.ModelMain != null)
                 {
+                    foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                    {
 #if VRTC_PLTFRM_XNA
-                    if (part.Effect.Parameters["LightDirection"] != null)
-                        part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
+                        if (part.Effect.Parameters["LightDirection"] != null)
+                            part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
 
-                    if (part.Effect.Parameters["LightColor"] != null)
-                        part.Effect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+                        if (part.Effect.Parameters["LightColor"] != null)
+                            part.Effect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
 
-                    if (part.Effect.Parameters["AmbientLightColor"] != null)
-                        part.Effect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
+                        if (part.Effect.Parameters["AmbientLightColor"] != null)
+                            part.Effect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
 #endif
-                    if (part.Effect.Parameters["PoissonKernel"] != null)
-                        part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
+                        if (part.Effect.Parameters["PoissonKernel"] != null)
+                            part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
 
-                    if (part.Effect.Parameters["RandomTexture3D"] != null)
-                        part.Effect.Parameters["RandomTexture3D"].SetValue(vxEngine.Renderer.RandomTexture3D);
-                    if (part.Effect.Parameters["RandomTexture2D"] != null)
-                        part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
+                        if (part.Effect.Parameters["RandomTexture3D"] != null)
+                            part.Effect.Parameters["RandomTexture3D"].SetValue(vxEngine.Renderer.RandomTexture3D);
+                        if (part.Effect.Parameters["RandomTexture2D"] != null)
+                            part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
 
-                    //By Default, Don't Show Fog
-                    DoFog = vxEngine.Current3DSceneBase.DoFog;
+                        //By Default, Don't Show Fog
+                        DoFog = vxEngine.Current3DSceneBase.DoFog;
 
-                    SpecularIntensity = 0;
-                    SpecularPower = 1;
+                        SpecularIntensity = 0;
+                        SpecularPower = 1;
+                    }
+                }
+
+
+                //Set Shadow Data
+                if (vxModel.ModelShadow != null)
+                {
+                    foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                    {
+                        if (part.Effect.Parameters["PoissonKernel"] != null)
+                            part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
+
+                        if (part.Effect.Parameters["RandomTexture3D"] != null)
+                            part.Effect.Parameters["RandomTexture3D"].SetValue(vxEngine.Renderer.RandomTexture3D);
+                        if (part.Effect.Parameters["RandomTexture2D"] != null)
+                            part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
+
+                        //By Default, Don't Show Fog
+                        DoFog = vxEngine.Current3DSceneBase.DoFog;
+
+                        SpecularIntensity = 0;
+                        SpecularPower = 1;
+                    }
                 }
             }
 
@@ -533,37 +556,41 @@ namespace vxVertices.Core.Entities
         /// </summary>
         public virtual void UpdateRenderTechnique()
         {
-            if (_renderShadowSplitIndex)
+            if (vxModel != null)
             {
-                _technique = "ShadowSplitIndex";
-            }
-            else
-            {
-                if (_isAlphaNoShadow == true)
-                    _technique = "Alpha_NoShadow";
-                else
-                    _technique = mainTechnique;
-            }
-            if (model != null)
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
+                if (_renderShadowSplitIndex)
                 {
-                    if (part.Effect.Techniques[_technique] != null)
-                        part.Effect.CurrentTechnique = part.Effect.Techniques[_technique];
+                    _technique = "ShadowSplitIndex";
                 }
+                else
+                {
+                    if (_isAlphaNoShadow == true)
+                        _technique = "Alpha_NoShadow";
+                    else
+                        _technique = mainTechnique;
+                }
+
+                if (vxModel.ModelMain != null)
+                    foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                    {
+                        if (part.Effect.Techniques[_technique] != null)
+                            part.Effect.CurrentTechnique = part.Effect.Techniques[_technique];
+                    }
+            }
         }
 
-
+        
         public virtual void RenderMeshPlain()
-        {
-            if (model != null)
+        {/*
+            if (vxModel.ModelMain != null)
             {
                 // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[model.Bones.Count];
+                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
 
-                model.CopyAbsoluteBoneTransformsTo(transforms);
+                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
                 // Draw the model.
-                foreach (ModelMesh mesh in model.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
                 {
                     foreach (Effect effect in mesh.Effects)
                     {
@@ -578,9 +605,9 @@ namespace vxVertices.Core.Entities
                     }
                     mesh.Draw();
                 }
-            }
+            }*/
         }
-
+        
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -588,14 +615,14 @@ namespace vxVertices.Core.Entities
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public virtual void RenderWithBaseEffect()
         {
-            if (model != null)
+            if (vxModel.ModelMain != null)
             {
                 // Copy any parent transforms.
-                Matrix[] transforms = new Matrix[model.Bones.Count];
-                model.CopyAbsoluteBoneTransformsTo(transforms);
+                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
+                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
                 // Draw the model. A model can have multiple meshes, so loop.
-                foreach (ModelMesh mesh in model.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
                 {
                     // This is where the mesh orientation is set, as well 
                     // as our camera and projection.
@@ -611,23 +638,23 @@ namespace vxVertices.Core.Entities
                 }
             }
         }
-
+        
         /// <summary>
         /// Render's the Model using the applied shader and specefied Render Technique
         /// </summary>
         /// <param name="RenderTechnique">The Current Render Technique to Apply.</param>
         public virtual void RenderMesh(string RenderTechnique)
         {
-            if (model != null)
+            if (vxModel.ModelMain != null)
                 if (vxEngine.DisplayDebugMesh == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
                 {
                     //updateTechnique();
 
-                    Matrix[] transforms = new Matrix[model.Bones.Count];
-                    model.CopyAbsoluteBoneTransformsTo(transforms);
+                    Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
+                    vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
                     // Draw the model. A model can have multiple meshes, so loop.
-                    foreach (ModelMesh mesh in model.Meshes)
+                    foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
                     {
                         foreach (Effect effect in mesh.Effects)
                         {
@@ -751,57 +778,60 @@ namespace vxVertices.Core.Entities
         /// </summary>
         public virtual void RenderMeshPrepPass()
         {
-            if (model != null)
+            if (vxModel.ModelMain != null)
             {
                 // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[model.Bones.Count];
+                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
 
-                model.CopyAbsoluteBoneTransformsTo(transforms);
+                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
                 // Draw the model.
-                foreach (ModelMesh mesh in model.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
                 {
                     foreach (Effect effect in mesh.Effects)
                     {
                         // Specify which effect technique to use.
-                        effect.CurrentTechnique = effect.Techniques["Technique_PrepPass"];
+                        if (effect.Techniques["Technique_PrepPass"] != null)
+                        {
+                            effect.CurrentTechnique = effect.Techniques["Technique_PrepPass"];
 
-                        effect.Parameters["World"].SetValue(World);
-                        effect.Parameters["View"].SetValue(Camera.View);
-                        effect.Parameters["Projection"].SetValue(Camera.Projection);
+                            effect.Parameters["World"].SetValue(World);
+                            effect.Parameters["View"].SetValue(Camera.View);
+                            effect.Parameters["Projection"].SetValue(Camera.Projection);
 
-                        if (effect.Parameters["LightDirection"] != null)
-                            effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
-                        // vxConsole.WriteToInGameDebug(renderShadowSplitIndex);
+                            if (effect.Parameters["LightDirection"] != null)
+                                effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
+                            // vxConsole.WriteToInGameDebug(renderShadowSplitIndex);
 
-                        if (effect.Parameters["CameraPos"] != null)
-                            effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
+                            if (effect.Parameters["CameraPos"] != null)
+                                effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
 
-                        if (effect.Parameters["FogNear"] != null)
-                            effect.Parameters["FogNear"].SetValue(5);
+                            if (effect.Parameters["FogNear"] != null)
+                                effect.Parameters["FogNear"].SetValue(5);
 
-                        if (effect.Parameters["FogFar"] != null)
-                            effect.Parameters["FogFar"].SetValue(Camera.FarPlane / 2);
+                            if (effect.Parameters["FogFar"] != null)
+                                effect.Parameters["FogFar"].SetValue(Camera.FarPlane / 2);
 
-                        if (effect.Parameters["FogColor"] != null)
-                            effect.Parameters["FogColor"].SetValue(Vector4.One);
+                            if (effect.Parameters["FogColor"] != null)
+                                effect.Parameters["FogColor"].SetValue(Vector4.One);
 
 #if VRTC_PLTFRM_XNA
-                        if (effect.Parameters["ShadowDebug"] != null)
-                            effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
+                            if (effect.Parameters["ShadowDebug"] != null)
+                                effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
 
-                        if (effect.Parameters["ShadowMap"] != null)
-                            effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
-                        if (effect.Parameters["ShadowTransform"] != null)
-                            effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
-                        if (effect.Parameters["TileBounds"] != null)
-                            effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
-                        if (effect.Parameters["SplitColors"] != null)
-                            effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-#endif					
+                            if (effect.Parameters["ShadowMap"] != null)
+                                effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
+                            if (effect.Parameters["ShadowTransform"] != null)
+                                effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
+                            if (effect.Parameters["TileBounds"] != null)
+                                effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
+                            if (effect.Parameters["SplitColors"] != null)
+                                effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
+#endif
+                        }
+
+                        mesh.Draw();
                     }
-
-                    mesh.Draw();
                 }
             }
         }
@@ -810,15 +840,15 @@ namespace vxVertices.Core.Entities
         /// </summary>
         public virtual void RenderMeshForWaterReflectionPass(Plane surfacePlane)
         {
-            if (model != null)
+            if (vxModel.ModelMain != null)
             {
                 // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[model.Bones.Count];
+                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
 
-                model.CopyAbsoluteBoneTransformsTo(transforms);
+                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
                 // Draw the model.
-                foreach (ModelMesh mesh in model.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
                 {
                     foreach (Effect effect in mesh.Effects)
                     {
@@ -842,7 +872,7 @@ namespace vxVertices.Core.Entities
         /// </summary>
         public virtual void RenderMeshShadow()
         {
-            if (DoShadowMap && model != null)
+            if (DoShadowMap && vxModel.ModelShadow != null)
             {
                 for (int i = 0; i < vxEngine.Renderer.NumberOfShadowSplits; ++i)
                 {
@@ -856,7 +886,7 @@ namespace vxVertices.Core.Entities
                     }
 
                     // Draw the arena model first.
-                    foreach (ModelMesh mesh in model.Meshes)
+                    foreach (ModelMesh mesh in vxModel.ModelShadow.Meshes)
                     {
                         foreach (var effect in mesh.Effects)
                         {
@@ -879,7 +909,7 @@ namespace vxVertices.Core.Entities
             }
         }
 
-
+        /*
         /// <summary>
         /// Draws the Models to the Distortion Target
         /// </summary>
@@ -915,6 +945,7 @@ namespace vxVertices.Core.Entities
                 }
             }
         }
+        */
     }
 }
 

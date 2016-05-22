@@ -1,3 +1,16 @@
+//-----------------------------------------------------------------------------
+// Shadow.h
+//
+// Virtices Engine
+// Collection of Common Cascade Shadow Mapping Code for use in 
+// both the CascadeShadowShader.fx as well as in any other *.fx
+// files which use it.
+//
+// It is adapted from theomader's source code here: http://dev.theomader.com/cascaded-shadow-mapping-2/
+// It is released under the MIT License (https://opensource.org/licenses/mit-license.php)
+//
+// It has been modified for the Virtices Engine.
+//-----------------------------------------------------------------------------
 #define NumSplits 4
 #define CSM
 

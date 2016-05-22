@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
+﻿
+//XNA/MONOGAME
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
 using vxVertices.Core;
 using vxVertices.Core.Entities;
-using vxVertices.Utilities;
-
+using vxVertices.Graphics;
 
 namespace VerticeEnginePort.Base
 {
@@ -22,7 +15,7 @@ namespace VerticeEnginePort.Base
         /// Creates a New Instance of the Base Ship Class
         /// </summary>
         /// <param name="AssetPath"></param>
-        public xEnvrio(vxEngine vxEngine, Model entityModel, Vector3 StartPosition)
+        public xEnvrio(vxEngine vxEngine, vxModel entityModel, Vector3 StartPosition)
             : base(vxEngine, entityModel, StartPosition)
         {
             //World = Matrix.CreateRotationX(-MathHelper.PiOver2);

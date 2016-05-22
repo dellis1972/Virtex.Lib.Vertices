@@ -62,11 +62,11 @@ namespace vxVertices.Core.Entities
         /// </summary>
         /// <param name="AssetPath"></param>
         public vxWaterEntity(vxEngine vxEngine, Vector3 StartPosition, Vector3 WaterScale)
-			: base(vxEngine, vxEngine.LoadModelAsWaterObject("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager), StartPosition)
+            : base(vxEngine, vxEngine.ContentManager.LoadModel("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager, vxEngine.Assets.Shaders.WaterReflectionShader), StartPosition)
         {
             waterBumpMap = vxEngine.Assets.Textures.Texture_WaterWaves;
             waterDistortionMap = vxEngine.Assets.Textures.Texture_WaterDistort;
-            
+
             //Render even in debug mode
             RenderEvenInDebug = true;
 
@@ -207,7 +207,7 @@ namespace vxVertices.Core.Entities
         }
 
         public override void PostLoad()
-        {            
+        {
             string[] vars = UserDefinedData02.Split(';');
 
             WaterScale = new Vector3(float.Parse(vars[0]), float.Parse(vars[1]), float.Parse(vars[2]));
@@ -218,17 +218,17 @@ namespace vxVertices.Core.Entities
 
         public override void DisposeEntity()
         {
-            if(scPosition != null)
+            if (scPosition != null)
                 scPosition.DisposeEntity();
 
             scLeft.DisposeEntity();
             scRight.DisposeEntity();
             scForward.DisposeEntity();
             scBack.DisposeEntity();
-            
+
             //CurrentSandboxLevel.Items.Remove(this);
 #if VRTC_PLTFRM_XNA
-			CurrentSandboxLevel.waterItems.Remove (this);
+            CurrentSandboxLevel.waterItems.Remove(this);
 #endif
             Current3DScene.BEPUPhyicsSpace.Remove(fluidVolume);
             base.DisposeEntity();
@@ -249,16 +249,16 @@ namespace vxVertices.Core.Entities
         public void DrawWater(RenderTarget2D reflectionMap, Matrix reflectionViewMatrix)
         {
             //vxDebugShapeRenderer.AddBoundingBox(fluidVolume.BoundingBox, Color.Blue);
-            WaterFlowOffset += Vector2.UnitX/3000;
-            if (model != null)
+            WaterFlowOffset += Vector2.UnitX / 3000;
+            if (vxModel.ModelMain != null)
             {
                 // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[model.Bones.Count];
+                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
 
-                model.CopyAbsoluteBoneTransformsTo(transforms);
+                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
                 // Draw the model.
-                foreach (ModelMesh mesh in model.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
                 {
                     foreach (Effect effect in mesh.Effects)
                     {
@@ -282,37 +282,37 @@ namespace vxVertices.Core.Entities
                 }
             }
         }
-            /// <summary>
-        /// Draws the Models to the Distortion Target
-        /// </summary>
-        public override void DrawModelDistortion(vxEngine vxEngine, GameTime gameTime)
-        {
-            /*
-                // draw the distorter
-                Matrix worldView = World * Camera.View;
+        /*
+        /// <summary>
+    /// Draws the Models to the Distortion Target
+    /// </summary>
+    public override void DrawModelDistortion(vxEngine vxEngine, GameTime gameTime)
+    {
+            // draw the distorter
+            Matrix worldView = World * Camera.View;
 
-                // make sure the depth buffering is on, so only parts of the scene
-                // behind the distortion effect are affected
-                vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            // make sure the depth buffering is on, so only parts of the scene
+            // behind the distortion effect are affected
+            vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-                foreach (ModelMesh mesh in model.Meshes)
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (Effect effect in mesh.Effects)
                 {
-                    foreach (Effect effect in mesh.Effects)
-                    {
-                        effect.CurrentTechnique =
-                            effect.Techniques["Distortion"];
-                        effect.Parameters["WorldView"].SetValue(worldView);
-                        effect.Parameters["WorldViewProjection"].SetValue(worldView * Camera.Projection);
-                        effect.Parameters["DisplacementMap"].SetValue(waterDistortionMap);
-                        effect.Parameters["offset"].SetValue(0);
-                        
-                        effect.Parameters["DistortionScale"].SetValue(DistortionScale);
-                        effect.Parameters["Time"].SetValue((float)gameTime.TotalGameTime.TotalSeconds);
-                    }
-                    mesh.Draw();
+                    effect.CurrentTechnique =
+                        effect.Techniques["Distortion"];
+                    effect.Parameters["WorldView"].SetValue(worldView);
+                    effect.Parameters["WorldViewProjection"].SetValue(worldView * Camera.Projection);
+                    effect.Parameters["DisplacementMap"].SetValue(waterDistortionMap);
+                    effect.Parameters["offset"].SetValue(0);
+
+                    effect.Parameters["DistortionScale"].SetValue(DistortionScale);
+                    effect.Parameters["Time"].SetValue((float)gameTime.TotalGameTime.TotalSeconds);
                 }
-            */
-        }        
+                mesh.Draw();
+            }
+       
+    } */
     }
 }
 #endif
