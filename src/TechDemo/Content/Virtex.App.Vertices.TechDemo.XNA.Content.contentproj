@@ -94,13 +94,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\concrete_cube\texture_nm.png">
-      <Name>texture_nm</Name>
+    <Compile Include="Models\concrete_cube\Cube_nm.png">
+      <Name>Cube_nm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\concrete_cube\texture_sm.png">
-      <Name>texture_sm</Name>
+    <Compile Include="Models\concrete_cube\Cube_sm.png">
+      <Name>Cube_sm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -209,16 +209,103 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\courtyard\columns_dds.png">
+      <Name>columns_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\columns_nm.png">
+      <Name>columns_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\columns_sm.png">
+      <Name>columns_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\concrete_cube\Cube_dds.png">
+      <Name>Cube_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_dds.png">
+      <Name>arch_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\arch_nm.png">
+      <Name>arch_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\arch_sm.png">
+      <Name>arch_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Models\courtyard\structure_dds.png">
       <Name>structure_dds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_2_sm.png">
+      <Name>arch_2_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_2_dds.png">
+      <Name>arch_2_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_2_nm.png">
+      <Name>arch_2_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\floor_dds.png">
+      <Name>floor_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\floor_nm.png">
+      <Name>floor_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\floor_sm.png">
+      <Name>floor_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Models\courtyard\structure_nm.png">
       <Name>structure_nm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Models\courtyard\structure_sm.png">
       <Name>structure_sm</Name>
       <Importer>TextureImporter</Importer>

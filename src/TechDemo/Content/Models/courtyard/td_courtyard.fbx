@@ -11,9 +11,9 @@ FBXHeaderExtension:  {
 		Year: 2016
 		Month: 05
 		Day: 22
-		Hour: 18
-		Minute: 03
-		Second: 58
+		Hour: 23
+		Minute: 05
+		Second: 23
 		Millisecond: 0
 	}
 	Creator: "FBX SDK/FBX Plugins build 20070228"
@@ -21,7 +21,7 @@ FBXHeaderExtension:  {
 		FlagPLE: 0
 	}
 }
-CreationTime: "2016-05-22 18:03:58:000"
+CreationTime: "2016-05-22 23:05:23:000"
 Creator: "Blender version 2.68 (sub 0)"
 
 ; Object definitions
@@ -225,7 +225,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: "Model::Cylinder_002", "Mesh" {
+	Model: "Model::Arch_2", "Mesh" {
 		Version: 232
 		Properties60:  {
 			Property: "QuaternionInterpolate", "bool", "",0
@@ -4056,7 +4056,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: "Model::Plane_001", "Mesh" {
+	Model: "Model::Structure", "Mesh" {
 		Version: 232
 		Properties60:  {
 			Property: "QuaternionInterpolate", "bool", "",0
@@ -5105,7 +5105,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: "Model::Cylinder_008", "Mesh" {
+	Model: "Model::Arch", "Mesh" {
 		Version: 232
 		Properties60:  {
 			Property: "QuaternionInterpolate", "bool", "",0
@@ -8975,7 +8975,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: "Model::Structure", "Mesh" {
+	Model: "Model::Columns", "Mesh" {
 		Version: 232
 		Properties60:  {
 			Property: "QuaternionInterpolate", "bool", "",0
@@ -12450,7 +12450,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: "Model::Plane", "Mesh" {
+	Model: "Model::Floor", "Mesh" {
 		Version: 232
 		Properties60:  {
 			Property: "QuaternionInterpolate", "bool", "",0
@@ -12546,7 +12546,7 @@ Objects:  {
 			Name: "UVMap"
 			MappingInformationType: "ByPolygonVertex"
 			ReferenceInformationType: "IndexToDirect"
-			UV: -0.657087,2.814174,-0.657087,-1.814174,1.657087,-1.814174,1.657087,2.814174
+			UV: -3.383642,8.267281,-3.383639,-7.267281,4.383642,-7.267281,4.383642,8.267281
 			UVIndex: 0,1,2,3
 		}
 		LayerElementTexture: 0 {
@@ -12836,15 +12836,7 @@ Objects:  {
 			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
 		}
 		PoseNode:  {
-			Node: "Model::Cylinder_002"
-			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
-		}
-		PoseNode:  {
-			Node: "Model::Plane_001"
-			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
-		}
-		PoseNode:  {
-			Node: "Model::Cylinder_008"
+			Node: "Model::Arch_2"
 			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
 		}
 		PoseNode:  {
@@ -12852,7 +12844,15 @@ Objects:  {
 			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
 		}
 		PoseNode:  {
-			Node: "Model::Plane"
+			Node: "Model::Arch"
+			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
+		}
+		PoseNode:  {
+			Node: "Model::Columns"
+			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
+		}
+		PoseNode:  {
+			Node: "Model::Floor"
 			Matrix: 1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,1.000000000000000
 		}
 	}
@@ -12876,15 +12876,15 @@ Objects:  {
 Relations:  {
 	Model: "Model::Roof", "Mesh" {
 	}
-	Model: "Model::Cylinder_002", "Mesh" {
-	}
-	Model: "Model::Plane_001", "Mesh" {
-	}
-	Model: "Model::Cylinder_008", "Mesh" {
+	Model: "Model::Arch_2", "Mesh" {
 	}
 	Model: "Model::Structure", "Mesh" {
 	}
-	Model: "Model::Plane", "Mesh" {
+	Model: "Model::Arch", "Mesh" {
+	}
+	Model: "Model::Columns", "Mesh" {
+	}
+	Model: "Model::Floor", "Mesh" {
 	}
 	Model: "Model::Producer Perspective", "Camera" {
 	}
@@ -12927,23 +12927,23 @@ Relations:  {
 
 Connections:  {
 	Connect: "OO", "Model::Roof", "Model::Scene"
-	Connect: "OO", "Model::Cylinder_002", "Model::Scene"
-	Connect: "OO", "Model::Plane_001", "Model::Scene"
-	Connect: "OO", "Model::Cylinder_008", "Model::Scene"
+	Connect: "OO", "Model::Arch_2", "Model::Scene"
 	Connect: "OO", "Model::Structure", "Model::Scene"
-	Connect: "OO", "Model::Plane", "Model::Scene"
+	Connect: "OO", "Model::Arch", "Model::Scene"
+	Connect: "OO", "Model::Columns", "Model::Scene"
+	Connect: "OO", "Model::Floor", "Model::Scene"
 	Connect: "OO", "Material::None__roof_dds_png", "Model::Roof"
-	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Cylinder_002"
-	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Plane_001"
-	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Cylinder_008"
-	Connect: "OO", "Material::None__structure_dds_png", "Model::Structure"
-	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Plane"
+	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Arch_2"
+	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Structure"
+	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Arch"
+	Connect: "OO", "Material::None__structure_dds_png", "Model::Columns"
+	Connect: "OO", "Material::None__crtyrd_bricks_diff_tga", "Model::Floor"
 	Connect: "OO", "Texture::roof_dds_png", "Model::Roof"
-	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Cylinder_002"
-	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Plane_001"
-	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Cylinder_008"
-	Connect: "OO", "Texture::structure_dds_png", "Model::Structure"
-	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Plane"
+	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Arch_2"
+	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Structure"
+	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Arch"
+	Connect: "OO", "Texture::structure_dds_png", "Model::Columns"
+	Connect: "OO", "Texture::crtyrd_bricks_diff_tga", "Model::Floor"
 	Connect: "OO", "Video::crtyrd_bricks_diff_tga", "Texture::crtyrd_bricks_diff_tga"
 	Connect: "OO", "Video::roof_dds_png", "Texture::roof_dds_png"
 	Connect: "OO", "Video::structure_dds_png", "Texture::structure_dds_png"

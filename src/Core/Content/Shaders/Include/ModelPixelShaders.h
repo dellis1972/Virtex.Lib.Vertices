@@ -8,23 +8,18 @@
 //-----------------------------------------------------------------------------
 
 
-// The light direction is shared between the Lambert and Toon lighting techniques.
-float3 LightDirection = normalize(float3(1, 1, 1));
 
 
-// Settings controlling the Lambert lighting technique.
-float3 DiffuseLight = 0.5;
-float3 AmbientLight = 0.5;
+
+
+//float4 AmbientColor = float4(1, 1, 1, 1);
+//float AmbientIntensity = 0.1;
 
 // Settings controlling the Toon lighting technique.
-float ToonThresholds[2] = { 0.8, 0.4 };
-float ToonBrightnessLevels[3] = { 1.3, 0.9, 0.5 };
+//float ToonThresholds[2] = { 0.8, 0.4 };
+//float ToonBrightnessLevels[3] = { 1.3, 0.9, 0.5 };
 
-//Fog Variables
-float FogNear;
-float FogFar;
-float4 FogColor = { 1, 1, 1, 1 };
-bool DoFog;
+
 float3 CameraPos;
 
 
@@ -42,7 +37,7 @@ float ComputeFogFactor(float d)
 	return clamp((d - FogNear) / (FogFar - FogNear), 0, 1);
 }
 
-
+/*
 //A Basic Toon Pixel Shader
 float4 ToonPixelShader(ModelPixelShaderData input)
 {
@@ -61,7 +56,7 @@ float4 ToonPixelShader(ModelPixelShaderData input)
     
     return input.PixelColor;
 }
-
+*/
 
 
 

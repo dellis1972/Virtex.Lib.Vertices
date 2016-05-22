@@ -741,6 +741,9 @@ namespace vxVertices.Core.Entities
                                 if (effect.Parameters["DoShadow"] != null)
                                     effect.Parameters["DoShadow"].SetValue(DoShadowMap);
 
+                                if (effect.Parameters["ViewVector"] != null)
+                                    effect.Parameters["ViewVector"].SetValue(vxEngine.Current3DSceneBase.Camera.View.Forward);
+
                                 if (effect.Parameters["ShadowMap"] != null)
                                     effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
                                 if (effect.Parameters["ShadowTransform"] != null)
@@ -778,7 +781,7 @@ namespace vxVertices.Core.Entities
         /// </summary>
         public virtual void RenderMeshPrepPass()
         {
-            if (vxModel.ModelMain != null)
+            if (vxModel != null &&  vxModel.ModelMain != null)
             {
                 // Look up the bone transform matrices.
                 Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
@@ -872,7 +875,8 @@ namespace vxVertices.Core.Entities
         /// </summary>
         public virtual void RenderMeshShadow()
         {
-            if (DoShadowMap && vxModel.ModelShadow != null)
+
+            if (vxModel != null && DoShadowMap && vxModel.ModelShadow != null)
             {
                 for (int i = 0; i < vxEngine.Renderer.NumberOfShadowSplits; ++i)
                 {
