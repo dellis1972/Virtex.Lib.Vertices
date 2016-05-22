@@ -280,6 +280,8 @@ MainVSOutput MainVSFunction(MainVSInput input, float4x4 worldTransform)
 	{
 		output.FogFactor = ComputeFogFactor(length(CameraPos - worldPosition));
 	}
+	else
+		output.FogFactor = 0;
 	
 	if (DoShadow)
 	{
@@ -312,6 +314,16 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	
 	float shadow = GetShadowFactor(input.Shadow, 1);
 	float4 Color = diffusecolor * shadow;
+
+	Color = lerp(Color, FogColor, input.FogFactor);
+
+	if (ShadowDebug)
+	{
+		Color = GetSplitIndexColor(input.Shadow) * shadow;
+	}
+
+	return Color + float4(0, 0, 0, Alpha);
+
 	/*
 	float specFactor = tex2D(specularSampler, input.TexCoord).x;
 
@@ -345,13 +357,6 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	Color.a = Alpha;
 	}
 	*/
-	if (ShadowDebug)
-	{
-		Color = GetSplitIndexColor(input.Shadow) * shadow;
-		Color.a = Alpha;
-	}
-	
-	return Color + float4(0,0,0, Alpha);
 }
 
 technique Technique_Main
