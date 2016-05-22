@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.GL", "src\Virtex.Lib.Vertices\Virtex.Lib.Vertices.GL.csproj", "{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.GL", "src\Core\Virtex.Lib.Vertices.GL.csproj", "{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Farseer.GL", "src\Virtex.Lib.Vertices.Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj", "{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Farseer.GL", "src\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj", "{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Bepu.GL", "src\Virtex.Lib.Vertices.Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj", "{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Bepu.GL", "src\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj", "{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.App.Vertices.TechDemo.GL", "src\Virtex.App.Vertices.TechDemo\Virtex.App.Vertices.TechDemo.GL.csproj", "{01EA47C4-E03C-4B42-A767-6560AE5BF1AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.App.Vertices.TechDemo.GL", "src\TechDemo\Virtex.App.Vertices.TechDemo.GL.csproj", "{01EA47C4-E03C-4B42-A767-6560AE5BF1AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Net.Lidgren.GL", "src\Virtex.Lib.Vertices.Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj", "{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Net.Lidgren.GL", "src\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj", "{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

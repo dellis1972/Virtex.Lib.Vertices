@@ -69,12 +69,6 @@
     <None Include="Content\Content.mgcb" />
     <None Include="Resources\InstancedEffect.xnb" />
     <None Include="Resources\InstancedEffectXbox.xnb" />
-    <None Include="SDL.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SDL_mixer.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Content\Fonts\font_debug.spritefont" />
     <None Include="Content\Fonts\font_gui.spritefont" />
     <None Include="Content\Fonts\font_gui_title.spritefont" />
@@ -536,6 +530,15 @@
     <None Include="Content\Shaders\CartoonEdgeDetection.Fx" />
     <None Include="Content\MonoGame\Shaders\Include\ModelPixelShaders.h" />
     <None Include="Content\MonoGame\Shaders\God Rays\MaskedSun.fx" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuConfirm.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuError.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuSound1.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\menuClick.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\1Menu_Click.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\2Menu_Click.xnb" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\Menu_Click.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -552,7 +555,6 @@
     <Compile Include="Graphics\2D Gameplay\Layer.cs" />
     <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs" />
     <Compile Include="Graphics\2D Gameplay\LineBatch.cs" />
-    <Compile Include="Sandbox\vxSandboxGamePlay.cs" />
     <Compile Include="GUI\vxGuiManager.cs" />
     <Compile Include="GUI\Dialogs\vxDialogBase.cs" />
     <Compile Include="GUI\Dialogs\vxFileDialogItem.cs" />
@@ -566,29 +568,6 @@
     <Compile Include="Geometry\Quad.cs" />
     <Compile Include="Geometry\Tri.cs" />
     <Compile Include="Audio\AudioManager.cs" />
-    <Compile Include="Core\Serilization\Profile.cs" />
-    <Compile Include="Core\Input\TouchCollectionExtensions.cs" />
-    <Compile Include="Core\Input\VirtualGamePad.cs" />
-    <Compile Include="Core\Input\Accelerometer.cs" />
-    <Compile Include="Core\Input\Events\PlayerIndexEventArgs.cs" />
-    <Compile Include="Core\Serilization\Settings.cs" />
-    <Compile Include="Core\Serilization\LevelStats.cs" />
-    <Compile Include="Core\Enums.cs" />
-    <Compile Include="Core\Entities\Enviroment\Sun.cs" />
-    <Compile Include="Core\Entities\Enviroment\Water_General.cs" />
-    <Compile Include="Core\Entities\VehicleInput.cs" />
-    <Compile Include="Core\Entities\vxEntity.cs" />
-    <Compile Include="Core\Entities\vxEntity2D.cs" />
-    <Compile Include="Core\Entities\vxEntity3D.cs" />
-    <Compile Include="Core\Scenes\Scene2D.cs" />
-    <Compile Include="Core\Scenes\Scene3D.cs" />
-    <Compile Include="Core\Scenes\SceneBase.cs" />
-    <Compile Include="Core\Base Screens\GameScreen.cs" />
-    <Compile Include="Core\vxEngine.cs" />
-    <Compile Include="Core\ContentManagement\Assets.cs" />
-    <Compile Include="Core\ParticleSystem\vxParticleSystem3D.cs" />
-    <Compile Include="Core\ParticleSystem\vxParticle3D.cs" />
-    <Compile Include="Sandbox\vxSandBoxFileStructure.cs" />
     <Compile Include="Screens\Menus\PauseMenuScreen.cs" />
     <Compile Include="Graphics\2D Gameplay\AssetCreator2D.cs" />
     <Compile Include="Animation\AnimationPlayer2D.cs" />
@@ -612,20 +591,7 @@
     <Compile Include="GUI\Controls\Toolbar\vxToolbar.cs" />
     <Compile Include="GUI\Controls\Toolbar\vxToolbarButton.cs" />
     <Compile Include="GUI\Controls\Toolbar\vxToolbarSpliter.cs" />
-    <Compile Include="Sandbox\MessageBoxs\vxMessageBoxSaveAs.cs" />
-    <Compile Include="Sandbox\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
-    <Compile Include="Network\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
-    <Compile Include="Network\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />
-    <Compile Include="Network\Dialogs\vxSeverListDialog.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBox.cs" />
-    <Compile Include="Core\Cameras\vxCamera2D.cs" />
-    <Compile Include="Core\Cameras\vxCamera3D.cs" />
-    <Compile Include="Core\Cameras\vxVirtualCamera.cs" />
-    <Compile Include="Core\Cameras\Controllers\CameraControlScheme.cs" />
-    <Compile Include="Core\Cameras\Controllers\CharacterCameraControlScheme.cs" />
-    <Compile Include="Core\Cameras\Controllers\CharacterControllerInput.cs" />
-    <Compile Include="Sandbox\Items\3D Cursor\vxAxis.cs" />
-    <Compile Include="Sandbox\Items\3D Cursor\vxCursor3D.cs" />
     <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
     <Compile Include="GUI\Controls\Buttons\vxButtonImage.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxServerScrollBarItem.cs" />
@@ -633,7 +599,6 @@
     <Compile Include="Network\Network Enums.cs" />
     <Compile Include="GUI\GUI Enums.cs" />
     <Compile Include="Graphics\Graphics Enums.cs" />
-    <Compile Include="Sandbox\Sandbox Enums.cs" />
     <Compile Include="Mathematics\vxSmooth.cs" />
     <Compile Include="Utilities\vxGeometryHelper.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
@@ -645,62 +610,95 @@
     <Compile Include="Graphics\3D Gameplay\Components\BloomSettings.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\LensFlareComponent.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
-    <Compile Include="Core\vxEngine.Network.cs" />
     <Compile Include="GUI\Theme\vxGUITheme.cs" />
     <Compile Include="GUI\Theme\vxBaseItemTheme.cs" />
     <Compile Include="GUI\Theme\vxMenuEntryTheme.cs" />
     <Compile Include="GUI\Theme\vxThemeButton.cs" />
     <Compile Include="GUI\Theme\vxThemeTextbox.cs" />
-    <Compile Include="Core\Entities\Enviroment\vxWaterEntity.cs" />
-    <Compile Include="Sandbox\Entities\Base\vxSandboxEntity.cs" />
-    <Compile Include="Sandbox\Entities\Base\vxSandboxEntityDescription.cs" />
-    <Compile Include="Sandbox\Entities\Base\vxSandboxEntityProperty.cs" />
-    <Compile Include="Sandbox\Items\vxSnapBox.cs" />
-    <Compile Include="Sandbox\Items\3D Cursor\vxWorkingPlane.cs" />
     <Compile Include="GUI\Controls\Buttons\vxSandboxItemButton.cs" />
     <Compile Include="GUI\Dialogs\vxGraphicSettingsDialog.cs" />
     <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
-    <Compile Include="Core\Input\vxInputManager.cs" />
-    <Compile Include="Core\Serilization\SettingsAudio.cs" />
-    <Compile Include="Core\Serilization\SettingsControls.cs" />
-    <Compile Include="Core\Serilization\SettingsGraphics.cs" />
-    <Compile Include="Core\DebugUtils\DebugCommandUI.cs" />
-    <Compile Include="Core\DebugUtils\DebugManager.cs" />
-    <Compile Include="Core\DebugUtils\DebugShapeRenderer.cs" />
-    <Compile Include="Core\DebugUtils\DebugSystem.cs" />
-    <Compile Include="Core\DebugUtils\FpsCounter.cs" />
-    <Compile Include="Core\DebugUtils\IDebugCommandHost.cs" />
-    <Compile Include="Core\DebugUtils\KeyboardUtils.cs" />
-    <Compile Include="Core\DebugUtils\Layout.cs" />
-    <Compile Include="Core\DebugUtils\StringBuilderExtensions.cs" />
-    <Compile Include="Core\DebugUtils\TimeRuler.cs" />
-    <Compile Include="Sandbox\Items\ScaleCube.cs" />
-    <Compile Include="Core\Scenes\Scene3D.Network.cs" />
     <Compile Include="GUI\Theme\vxThemeDialog.cs" />
-    <Compile Include="Sandbox\vxSandboxGamePlay.Editor.cs" />
-    <Compile Include="Sandbox\vxSandboxGamePlay.empty.cs" />
-    <Compile Include="Sandbox\vxSandboxGamePlay.EntityManagement.cs" />
-    <Compile Include="Sandbox\vxSandboxGamePlay.Input.cs" />
-    <Compile Include="Sandbox\vxSandboxGamePlay.IO.cs" />
     <Compile Include="Graphics\Model\vxModel.cs" />
     <Compile Include="Graphics\Instancing\InstanceSet.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.cs" />
     <Compile Include="Graphics\Instancing\vxMeshSet.cs" />
+    <Compile Include="Base Screens\GameScreen.cs" />
+    <Compile Include="Cameras\vxCamera2D.cs" />
+    <Compile Include="Cameras\vxCamera3D.cs" />
+    <Compile Include="Cameras\vxVirtualCamera.cs" />
+    <Compile Include="Cameras\Controllers\CameraControlScheme.cs" />
+    <Compile Include="Cameras\Controllers\CharacterCameraControlScheme.cs" />
+    <Compile Include="Cameras\Controllers\CharacterControllerInput.cs" />
+    <Compile Include="ContentManagement\Assets.cs" />
+    <Compile Include="DebugUtils\DebugCommandUI.cs" />
+    <Compile Include="DebugUtils\DebugManager.cs" />
+    <Compile Include="DebugUtils\DebugShapeRenderer.cs" />
+    <Compile Include="DebugUtils\DebugSystem.cs" />
+    <Compile Include="DebugUtils\FpsCounter.cs" />
+    <Compile Include="DebugUtils\IDebugCommandHost.cs" />
+    <Compile Include="DebugUtils\KeyboardUtils.cs" />
+    <Compile Include="DebugUtils\Layout.cs" />
+    <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
+    <Compile Include="DebugUtils\TimeRuler.cs" />
+    <Compile Include="Entities\VehicleInput.cs" />
+    <Compile Include="Entities\vxEntity.cs" />
+    <Compile Include="Entities\vxEntity2D.cs" />
+    <Compile Include="Entities\vxEntity3D.cs" />
+    <Compile Include="Entities\Enviroment\Sun.cs" />
+    <Compile Include="Entities\Enviroment\Water_General.cs" />
+    <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
+    <Compile Include="Entities\Sandbox3D\vxSandboxEntity.cs" />
+    <Compile Include="Entities\Sandbox3D\vxSandboxEntityDescription.cs" />
+    <Compile Include="Entities\Sandbox3D\vxSandboxEntityProperty.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxAxis.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxCursor3D.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxScaleCube.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxSnapBox.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxWorkingPlane.cs" />
+    <Compile Include="Entities\boxes\plainModel.cs" />
+    <Compile Include="ParticleSystem\vxParticle3D.cs" />
+    <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
+    <Compile Include="Input\Accelerometer.cs" />
+    <Compile Include="Input\TouchCollectionExtensions.cs" />
+    <Compile Include="Input\VirtualGamePad.cs" />
+    <Compile Include="Input\vxInputManager.cs" />
+    <Compile Include="Input\Events\PlayerIndexEventArgs.cs" />
+    <Compile Include="Scenes\Scene2D.cs" />
+    <Compile Include="Scenes\Scene3D.Network.cs" />
+    <Compile Include="Scenes\Scene3D.cs" />
+    <Compile Include="Scenes\Scene3D.empty.cs" />
+    <Compile Include="Scenes\SceneBase.cs" />
+    <Compile Include="Scenes\Sandbox3D\Sandbox Enums.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.Editor.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.EntityManagement.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.IO.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.Input.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.empty.cs" />
+    <Compile Include="Serilization\LevelStats.cs" />
+    <Compile Include="Serilization\Profile.cs" />
+    <Compile Include="Serilization\Settings.cs" />
+    <Compile Include="Serilization\SettingsAudio.cs" />
+    <Compile Include="Serilization\SettingsControls.cs" />
+    <Compile Include="Serilization\SettingsGraphics.cs" />
+    <Compile Include="Serilization\vxSandBoxFileStructure.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="vxEngine.Network.cs" />
+    <Compile Include="vxEngine.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveAs.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
     <Folder Include="Vertices.Engine.Content\" />
     <Folder Include="GUI\" />
     <Folder Include="Geometry\" />
-    <Folder Include="Core\Input\" />
-    <Folder Include="Core\Input\Events\" />
-    <Folder Include="Core\ContentManagement\" />
-    <Folder Include="Sandbox\Entities\" />
     <Folder Include="Graphics\3D Gameplay\" />
     <Folder Include="GUI\Controls\" />
-    <Folder Include="Network\MessageBoxs\" />
-    <Folder Include="Network\Dialogs\" />
     <Folder Include="GUI\MessageBoxs\" />
     <Folder Include="GUI\Controls\Label\" />
     <Folder Include="Content\MonoGame\" />
@@ -711,7 +709,6 @@
     <Folder Include="Graphics\3D Gameplay\Defferred Rendering\" />
     <Folder Include="Content\MonoGame\Shaders\Include\" />
     <Folder Include="GUI\Theme\" />
-    <Folder Include="Core\DebugUtils\" />
     <Folder Include="Graphics\Model\" />
     <Folder Include="Graphics\Instancing\" />
     <Folder Include="Graphics\3D Gameplay\3D Gameplay\" />
@@ -800,15 +797,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+    <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
       <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
+    <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
       <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Virtex.Lib.Vertices.Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj">
+    <ProjectReference Include="..\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj">
       <Project>{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}</Project>
       <Name>Virtex.Lib.Vertices.Net.Lidgren.GL</Name>
     </ProjectReference>

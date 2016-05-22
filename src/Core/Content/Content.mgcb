@@ -978,3 +978,45 @@
 /processorParam:TextureFormat=Color
 /build:Gui/DfltThm/vxGUITheme/vxMenuScreen/Bckgrnd_Nrml.png
 
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/1Menu_Click.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/1Menu_Click.wav
+
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/2Menu_Click.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/2Menu_Click.wav
+
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/Menu_Click.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/Menu_Click.wav
+
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuConfirm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuConfirm.wav
+
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuError.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuError.wav
+
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuSound1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuSound1.wav
+
+#begin Gui/DfltThm/vxGUITheme/SndFx/Menu/menuClick.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Gui/DfltThm/vxGUITheme/SndFx/Menu/menuClick.wav
+

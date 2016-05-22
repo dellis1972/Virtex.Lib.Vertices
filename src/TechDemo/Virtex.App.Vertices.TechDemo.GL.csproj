@@ -74,15 +74,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+    <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
       <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Virtex.Lib.Vertices.Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
+    <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
       <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Virtex.Lib.Vertices\Virtex.Lib.Vertices.GL.csproj">
+    <ProjectReference Include="..\Core\Virtex.Lib.Vertices.GL.csproj">
       <Project>{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}</Project>
       <Name>Virtex.Lib.Vertices.GL</Name>
     </ProjectReference>
@@ -206,9 +206,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.mtl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.png">
