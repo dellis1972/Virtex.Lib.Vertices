@@ -224,52 +224,7 @@ namespace vxVertices.Core.Entities
             get { return _textureEnabled; }
         }
         bool _textureEnabled;
-
-        /*
-        /// <summary>
-        /// Texture which is applied as the Normal Map.
-        /// </summary>
-        public Texture2D NormalMap
-        {
-            set
-            {
-                _normalMap = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
-                {
-                    if (part.Effect.Parameters["DoNormalMap"] != null)
-                        part.Effect.Parameters["DoNormalMap"].SetValue(true);
-
-                    if (part.Effect.Parameters["NormalMap"] != null)
-                        part.Effect.Parameters["NormalMap"].SetValue(_normalMap);
-                }
-            }
-            get { return _normalMap; }
-        }
-        Texture2D _normalMap;
-
-
-        /// <summary>
-        /// Texture which is applied as the Specular Map
-        /// </summary>
-        public Texture2D SpecularMap
-        {
-            set
-            {
-                _specularMap = value;
-                foreach (var part in model.Meshes.SelectMany(m => m.MeshParts))
-                {
-
-                    if (part.Effect.Parameters["DoSpecularMap"] != null)
-                        part.Effect.Parameters["DoSpecularMap"].SetValue(true);
-
-                    if (part.Effect.Parameters["SpecularMap"] != null)
-                        part.Effect.Parameters["SpecularMap"].SetValue(_specularMap);
-                }
-            }
-            get { return _specularMap; }
-        }
-        Texture2D _specularMap;
-        */
+        
 
         /// <summary>
         /// Texture which is applied as the Reflection Map
@@ -645,7 +600,7 @@ namespace vxVertices.Core.Entities
         /// <param name="RenderTechnique">The Current Render Technique to Apply.</param>
         public virtual void RenderMesh(string RenderTechnique)
         {
-            if (vxModel.ModelMain != null)
+            if (vxModel!=null && vxModel.ModelMain != null)
                 if (vxEngine.DisplayDebugMesh == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
                 {
                     //updateTechnique();

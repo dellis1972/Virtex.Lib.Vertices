@@ -81,6 +81,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\IndexedCubeTest.cs" />
     <Compile Include="Entities\IndexedPrimTest.cs" />
     <Compile Include="Entities\ModelObjs.cs" />
     <Compile Include="Entities\Teapot.cs" />

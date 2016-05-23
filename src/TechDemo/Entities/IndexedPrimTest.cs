@@ -57,6 +57,8 @@ namespace VerticeEnginePort.Base
 			effect.TextureEnabled = true;
 			effect.Texture = vxEngine.Assets.Textures.Texture_Sun_Glow;
 
+            
+
 
 			foreach (var pass in effect.CurrentTechnique.Passes)
 			{

@@ -76,16 +76,20 @@ namespace vxVertices.Graphics
 		/// Vertex, Normal, UV Coordinate Data to be passed as one large pool of data
 		/// to the graphics card to limit draw calls as well as allowing for a psuedo
 		/// Instance Mesh look on Multiple Platforms.</value>
-		public List<vxMeshVertex> MeshVertices { get; set; }
+		//public List<vxMeshVertex> MeshVertices { get; set; }
 
 
+        public List<VertexPositionNormalTexture> MeshVertices { get; set; }
+        //public VertexPositionTexture[] verts;
 
-		/// <summary>
-		/// Load's a *.OBJ File
-		/// </summary>
-		/// <param name="path">Path.</param>
-		public vxModelVoxel(string path)
+
+        /// <summary>
+        /// Load's a *.OBJ File
+        /// </summary>
+        /// <param name="path">Path.</param>
+        public vxModelVoxel(string path)
 		{
+            MeshVertices = new List<VertexPositionNormalTexture>();
 			Vertices = new List<Vector3> ();
 			Normals = new List<Vector3> ();
 			TextureUVCoordinate = new List<Vector2> ();
@@ -155,13 +159,17 @@ namespace vxVertices.Graphics
 								//Now spilt the individual vertex info 
 								string[] vertexChunk = chunks[i].Split('/');
 
-								vxMeshVertex vert;
+                                    //vxMeshVertex vert;
 
-								vert.Position = Vertices[int.Parse(vertexChunk[1])];
-								vert.TextureCoordinate = TextureUVCoordinate[int.Parse(vertexChunk[2])];
-								vert.Normal = Normals[int.Parse(vertexChunk[3])];
+                                    //vert.Position = Vertices[int.Parse(vertexChunk[1])];
+                                    //vert.TextureCoordinate = TextureUVCoordinate[int.Parse(vertexChunk[2])];
+                                    //vert.Normal = Normals[int.Parse(vertexChunk[3])];
 
-							}
+                                    //Console.WriteLine("VERT\tPOS: {0}\tUV: {1}", Vertices[int.Parse(vertexChunk[0])-1], TextureUVCoordinate[int.Parse(vertexChunk[1])-1]);
+                                    
+                                MeshVertices.Add(new VertexPositionNormalTexture(Vertices[int.Parse(vertexChunk[0]) - 1], Normals[int.Parse(vertexChunk[2]) - 1], TextureUVCoordinate[int.Parse(vertexChunk[1]) - 1]));
+
+                                }
 
 						}
 						break;

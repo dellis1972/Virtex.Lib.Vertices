@@ -111,7 +111,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
                 foreach (ModelMesh mesh in newModel.ModelMain.Meshes)
                 {
+#if vxDEBUG_VERBOSE
                     Console.WriteLine("\t\t\tMesh Name: " + mesh.Name);
+#endif
                     mesh.Tag = PathToModel;
                     // Scan over all the effects currently on the mesh.
                     foreach (Effect oldEffect in mesh.Effects)
@@ -145,7 +147,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                                 File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
                             {
                                 newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
+#if vxDEBUG_VERBOSE
                                 Console.WriteLine("\t\t\t\tNormal Map Found");
+#endif
                             }
                             
                             // Specular Map
@@ -154,7 +158,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                             {
 
                                 newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));
+#if vxDEBUG_VERBOSE
                                 Console.WriteLine("\t\t\t\tSpecular Map Found");
+#endif
                             }
 
                             if (newEffect.Parameters["TextureEnabled"] != null)
@@ -188,8 +194,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                     }
                 }
 
-
+#if vxDEBUG_VERBOSE
                 Console.WriteLine("\t\t\t------------------------");
+#endif
                 //////////////////////////////////////////////////////////////////////////////////
                 //                              SHADOW MODEL
                 //////////////////////////////////////////////////////////////////////////////////
@@ -206,7 +213,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
                 foreach (ModelMesh mesh in newModel.ModelShadow.Meshes)
                 {
+#if vxDEBUG_VERBOSE
                     Console.WriteLine("\t\t\tShadow Mesh: " + mesh.Name);
+#endif
                     mesh.Tag = PathToModel;
                     // Scan over all the effects currently on the mesh.
                     foreach (Effect oldEffect in mesh.Effects)
