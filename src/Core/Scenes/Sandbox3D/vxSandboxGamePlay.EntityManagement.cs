@@ -31,6 +31,7 @@ using vxVertices.Physics.BEPU.CollisionRuleManagement;
 using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using vxVertices.Core.Entities;
 using vxVertices.Entities.Sandbox3D;
+using vxVertices.Graphics;
 
 namespace vxVertices.Scenes.Sandbox3D
 {
@@ -97,7 +98,7 @@ namespace vxVertices.Scenes.Sandbox3D
         /// </summary>
         /// <param name="Key">Unique Key to use for this InstanceSet.</param>
         /// <param name="model">The Model to be used in the InstanceSet.</param>
-        public virtual void CreateNewInstanceCollection(object Key, Model model)
+        public virtual void CreateNewInstanceCollection(object Key, vxModel model)
         {
             InstanceSet instanceSet = new InstanceSet(vxEngine);
             instanceSet.InstancedModel = model;

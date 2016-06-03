@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using vxVertices.Core.Entities;
 using vxVertices.Core.Cameras;
- 
+using vxVertices.Graphics;
 
 namespace vxVertices.Core
 {
@@ -38,17 +38,17 @@ namespace vxVertices.Core
         public static VertexDeclaration mInstanceVertexDeclaration;
 
         public Matrix[] instanceTransforms;
-        public Model InstancedModel
+        public vxModel InstancedModel
         {
             get { return instancedModel; }
             set
             {
                 instancedModel = value;
-                instancedModelBones = new Matrix[instancedModel.Bones.Count];
-                instancedModel.CopyAbsoluteBoneTransformsTo(instancedModelBones);                
+                instancedModelBones = new Matrix[instancedModel.ModelMain.Bones.Count];
+                instancedModel.ModelMain.CopyAbsoluteBoneTransformsTo(instancedModelBones);                
             }
         }
-        Model instancedModel;
+        vxModel instancedModel;
 
         GraphicsDevice mGraphicsDevice;
 
@@ -70,7 +70,7 @@ namespace vxVertices.Core
 
         public void Initialise(vxEngine vxEngine)
         {
-            foreach (ModelMeshPart part in InstancedModel.Meshes.SelectMany(m => m.MeshParts))
+            foreach (ModelMeshPart part in InstancedModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
             {
                 part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
 
@@ -87,7 +87,33 @@ namespace vxVertices.Core
                 part.Effect.CurrentTechnique = part.Effect.Techniques["Lambert"];
             }
             
-            foreach (var eff in InstancedModel.Meshes.SelectMany(m => m.Effects))
+            foreach (var eff in InstancedModel.ModelShadow.Meshes.SelectMany(m => m.Effects))
+            {
+                eff.CurrentTechnique = eff.Techniques["ShadowInstanced"];
+            }
+
+
+
+
+
+            foreach (ModelMeshPart part in InstancedModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+            {
+                part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
+
+                part.Effect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+                part.Effect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
+
+
+                part.Effect.Parameters["Shininess"].SetValue(0.01f);
+                part.Effect.Parameters["SpecularIntensity"].SetValue(8.0f);
+
+                part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
+                part.Effect.Parameters["RandomTexture3D"].SetValue(vxEngine.Renderer.RandomTexture3D);
+                part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture3D);
+                part.Effect.CurrentTechnique = part.Effect.Techniques["Lambert"];
+            }
+
+            foreach (var eff in InstancedModel.ModelShadow.Meshes.SelectMany(m => m.Effects))
             {
                 eff.CurrentTechnique = eff.Techniques["ShadowInstanced"];
             }

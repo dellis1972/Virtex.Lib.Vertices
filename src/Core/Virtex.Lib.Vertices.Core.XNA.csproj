@@ -114,7 +114,6 @@
     <Compile Include="DebugUtils\Layout.cs" />
     <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
     <Compile Include="DebugUtils\TimeRuler.cs" />
-    <Compile Include="Entities\boxes\plainModel.cs" />
     <Compile Include="Entities\Enviroment\Sun.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Enviroment\Water_General.cs" />

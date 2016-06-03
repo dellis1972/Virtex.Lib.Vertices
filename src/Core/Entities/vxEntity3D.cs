@@ -444,7 +444,6 @@ namespace vxVertices.Core.Entities
                 {
                     foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                     {
-#if VRTC_PLTFRM_XNA
                         if (part.Effect.Parameters["LightDirection"] != null)
                             part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
 
@@ -453,7 +452,7 @@ namespace vxVertices.Core.Entities
 
                         if (part.Effect.Parameters["AmbientLightColor"] != null)
                             part.Effect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
-#endif
+
                         if (part.Effect.Parameters["PoissonKernel"] != null)
                             part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
 
@@ -685,7 +684,9 @@ namespace vxVertices.Core.Entities
                                 //effect.CurrentTechnique = effect.Techniques[technique];
                                 effect.Parameters["World"].SetValue(World);
                                 effect.Parameters["View"].SetValue(Camera.View);
-                                effect.Parameters["Projection"].SetValue(Camera.Projection);
+								effect.Parameters["Projection"].SetValue(Camera.Projection);
+
+							if (effect.Parameters["LightDirection"] != null)
                                 effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
 
                                 if (vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None)
@@ -712,7 +713,7 @@ namespace vxVertices.Core.Entities
                                     effect.Parameters["CameraPos"].SetValue(vxEngine.Current3DSceneBase.Camera.WorldMatrix.Translation);
 
                                 if (effect.Parameters["FogNear"] != null)
-                                    effect.Parameters["FogNear"].SetValue(5);
+                                    effect.Parameters["FogNear"].SetValue(5.0f);
 
                                 if (effect.Parameters["FogFar"] != null)
                                     effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane / 4);
@@ -763,9 +764,9 @@ namespace vxVertices.Core.Entities
 
                             if (effect.Parameters["CameraPos"] != null)
                                 effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
-
+							
                             if (effect.Parameters["FogNear"] != null)
-                                effect.Parameters["FogNear"].SetValue(5);
+								effect.Parameters["FogNear"].SetValue(5.0f);
 
                             if (effect.Parameters["FogFar"] != null)
                                 effect.Parameters["FogFar"].SetValue(Camera.FarPlane / 2);

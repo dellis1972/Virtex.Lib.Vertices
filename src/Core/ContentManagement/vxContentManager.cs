@@ -111,9 +111,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
                 foreach (ModelMesh mesh in newModel.ModelMain.Meshes)
                 {
-#if vxDEBUG_VERBOSE
+//#if vxDEBUG_VERBOSE
                     Console.WriteLine("\t\t\tMesh Name: " + mesh.Name);
-#endif
+//#endif
                     mesh.Tag = PathToModel;
                     // Scan over all the effects currently on the mesh.
                     foreach (Effect oldEffect in mesh.Effects)
