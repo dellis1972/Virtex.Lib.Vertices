@@ -61,34 +61,61 @@ namespace vxVertices.GUI.Controls
 
         Vector2 PaddingVector = new Vector2(0, 0);
 
+		/// <summary>
+		/// The panel background texture.
+		/// </summary>
+		public Texture2D PanelBackground;
+
+		/// <summary>
+		/// A Specific Rasterizer State to preform Rectangle Sizzoring.
+		/// </summary>
+		RasterizerState _rasterizerState;
+
         /// <summary>
         /// Scroll Panael to Hold a Grid or Detail list of Items
         /// </summary>
         /// <param name="Position"></param>
         /// <param name="Width"></param>
         /// <param name="Height"></param>
-        public vxScrollPanel(Vector2 Position, int Width, int Height)
+        public vxScrollPanel(Vector2 Position, int Width, int Height) :
+		this(Position, Width, Height, 64)
         {
-            this.Width = Width;
-            this.Height = Height;
-            this.Position = Position;
-            this.OriginalPosition = Position;
-
-            BoundingRectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
-            Padding = 10;
-
-            scrollBar = new vxScrollBar(this,
-                new Vector2(
-                    BoundingRectangle.X + BoundingRectangle.Width - Padding - 20,
-                    BoundingRectangle.Y + Padding),
-                BoundingRectangle.Height,
-                BoundingRectangle.Height)
-            {
-                BarWidth = ScrollBarWidth,
-            };
-
-            this.EnabledStateChanged += new EventHandler<EventArgs>(xScrollPanel_EnabledStateChanged);
+            
         }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="vxVertices.GUI.Controls.vxScrollPanel"/> class.
+		/// </summary>
+		/// <param name="Position">Position.</param>
+		/// <param name="Width">Width.</param>
+		/// <param name="Height">Height.</param>
+		/// <param name="ScrollBarWidth">Scroll bar width.</param>
+		public vxScrollPanel(Vector2 Position, int Width, int Height, int ScrollBarWidth)
+		{
+
+			this.Position = Position;
+			this.OriginalPosition = Position;
+			this.Width = Width;
+			this.Height = Height;
+			this.ScrollBarWidth = ScrollBarWidth;
+
+			BoundingRectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+			Padding = 10;
+
+			scrollBar = new vxScrollBar(this,
+				new Vector2(
+					BoundingRectangle.X + BoundingRectangle.Width - Padding - 20,
+					BoundingRectangle.Y + Padding),
+				BoundingRectangle.Height,
+				BoundingRectangle.Height)
+			{
+				BarWidth = ScrollBarWidth,
+			};
+
+			this.EnabledStateChanged += new EventHandler<EventArgs>(xScrollPanel_EnabledStateChanged);
+
+			_rasterizerState = new RasterizerState () { ScissorTestEnable = true };
+		}
 
         void xScrollPanel_EnabledStateChanged(object sender, EventArgs e)
         {
@@ -127,7 +154,7 @@ namespace vxVertices.GUI.Controls
             if (guiItem.GetType() == typeof(vxFileDialogItem))
                 Padding = 5;
 
-            int temp_height = 0;
+            //int temp_height = 0;
 
 
             //First, Check that the Width of the item is not wider than the panel it's self;
@@ -284,42 +311,40 @@ namespace vxVertices.GUI.Controls
                         x,
                         y,
                         Width,
-                        Height);
+                        Height);			
             }
             catch (Exception ex) { vxConsole.WriteError(this.ToString(), "ScrollPanel: "+ex.Message); }
 
+			//Only draw if the rectangle is larger than 2 pixels. This is to avoid
+			//artifacts where the minimum size is 1 pixel, which is pointless.
+			if (rec.Height > 2) {
 
-            RasterizerState _rasterizerState = new RasterizerState() { ScissorTestEnable = true };
-            //Draw Background
-            vxEngine.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,
-                                  null, null, _rasterizerState);
+				//Draw Background
+				vxEngine.SpriteBatch.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend,
+					null, null, _rasterizerState);
 
-            //First Draw The Background
-            vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color.Black * Alpha);
-
-
-            //Copy the current scissor rect so we can restore it after
-            Rectangle currentRect = vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle;
-
-            //Set the current scissor rectangle
-            vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle = rec;
-
-            //Then draw the scroll bar
-            scrollBar.DrawByOwner(vxEngine);
-
-            foreach (vxGUIBaseItem bsGuiItm in Items)
-            {
-                bsGuiItm.DrawByOwner(vxEngine);
-            }
-            //Console.WriteLine(rec);
-            //Reset scissor rectangle to the saved value
-            vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle = currentRect;
-            vxEngine.SpriteBatch.End();
+				//First Draw The Background
+				vxEngine.SpriteBatch.Draw (vxEngine.Assets.Textures.Blank, BoundingRectangle, Color.Black * Alpha);
 
 
+				//Copy the current scissor rect so we can restore it after
+				Rectangle currentRect = vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle;
 
-            //Reset the original Viewport
-            //vxEngine.GraphicsDevice.Viewport = viewport_Original;
+				//Set the current scissor rectangle
+				vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle = rec;
+
+				//Then draw the scroll bar
+				scrollBar.DrawByOwner (vxEngine);
+
+				foreach (vxGUIBaseItem bsGuiItm in Items) {
+					bsGuiItm.DrawByOwner (vxEngine);
+				}
+				//Console.WriteLine(rec);
+				//Reset scissor rectangle to the saved value
+				vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle = currentRect;
+
+				vxEngine.SpriteBatch.End();
+			}
         }
     }
 }

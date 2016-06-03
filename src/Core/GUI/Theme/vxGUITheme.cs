@@ -66,10 +66,12 @@ namespace vxVertices.GUI.Themes
 
         /*******************************************/
         //					Sound Effects
-        /*******************************************/
+		/*******************************************/
+		#if DRIVER_OPENAL
         public SoundEffect SE_Menu_Hover { get; set; }
         public SoundEffect SE_Menu_Confirm { get; set; }
         public SoundEffect SE_Menu_Cancel { get; set; }
+		#endif
 
 
         /// <summary>
@@ -113,6 +115,7 @@ namespace vxVertices.GUI.Themes
 			//this.vxMenuEntries.TitleColor = Color.Black;
 			vxMenuEntries.Padding = new Vector2 (10, 4);
 			vxMenuEntries.vxMenuItemBackground = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
+			vxMenuEntries.vxMenuSplitterTexture = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
 			vxMenuEntries.TitleBackground = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
 
 
@@ -123,9 +126,11 @@ namespace vxVertices.GUI.Themes
             /*******************************************/
 
             //Menu Values
+			#if DRIVER_OPENAL
             SE_Menu_Hover = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/Menu_Click");
             SE_Menu_Confirm = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuConfirm");
             SE_Menu_Cancel = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuError");
+			#endif
         }
 
 
@@ -155,7 +160,8 @@ namespace vxVertices.GUI.Themes
 			/*******************************************/
 			//					MENU ITEM
 			/*******************************************/
-            vxMenuEntries.vxMenuItemBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
+			vxMenuEntries.vxMenuItemBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
+			vxMenuEntries.vxMenuSplitterTexture = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
 			vxMenuEntries.TitleBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
 		}
 

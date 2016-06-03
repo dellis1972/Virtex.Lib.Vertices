@@ -15,7 +15,7 @@ namespace vxVertices.GUI.Controls
 	/// </summary>
     public class vxToolbar : vxGUIBaseItem
     {
-        List<vxGUIBaseItem> ToolbarItems = new List<vxGUIBaseItem>();
+        public List<vxGUIBaseItem> ToolbarItems = new List<vxGUIBaseItem>();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="vxVertices.GUI.Controls.vxToolbar"/> class.
@@ -31,6 +31,7 @@ namespace vxVertices.GUI.Controls
             HoverAlphaMax = 0.75f;
             HoverAlphaMin = 0.5f;
             HoverAlphaDeltaSpeed = 10;
+
         }
 
 		/// <summary>
