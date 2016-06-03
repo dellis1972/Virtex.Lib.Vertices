@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Input;
 //Virtex vxEngine Declaration
 using vxVertices.Core;
 using vxVertices.Core.Entities;
- 
+using vxVertices.Graphics;
 
 namespace vxVertices.Scenes.Sandbox.Entities
 {
@@ -46,7 +46,7 @@ namespace vxVertices.Scenes.Sandbox.Entities
         /// Creates a New Instance of the Base Ship Class
         /// </summary>
         /// <param name="AssetPath"></param>
-        public vxWorkingPlane(vxEngine vxEngine, Model entityModel, Vector3 StartPosition)
+        public vxWorkingPlane(vxEngine vxEngine, vxModel entityModel, Vector3 StartPosition)
             : base(vxEngine, entityModel, StartPosition)
         {
             //InitShaders();

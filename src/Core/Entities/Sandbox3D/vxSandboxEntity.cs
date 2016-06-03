@@ -18,6 +18,7 @@ using vxVertices.Core.Input;
 using vxVertices.GUI.Controls;
 using vxVertices.GUI;
 using vxVertices.Scenes.Sandbox3D;
+using vxVertices.Graphics;
 
 namespace vxVertices.Entities.Sandbox3D
 {  
@@ -164,7 +165,7 @@ namespace vxVertices.Entities.Sandbox3D
         public Matrix PreSelectionWorld = Matrix.Identity;
 
 
-        public vxSandboxEntity(vxEngine vxEngine, Model EntityModel, Vector3 StartPosition)
+        public vxSandboxEntity(vxEngine vxEngine, vxModel EntityModel, Vector3 StartPosition)
             : base(vxEngine, EntityModel, StartPosition)
         {
             Properties = new List<vxSandboxEntityProperty>();
@@ -221,7 +222,7 @@ namespace vxVertices.Entities.Sandbox3D
 
                 //This is a little convenience method used to extract vertices and indices from a model.
                 //It doesn't do anything special; any approach that gets valid vertices and indices will work.
-                ModelDataExtractor.GetVerticesAndIndicesFromModel(model, out MeshVertices, out MeshIndices);
+                ModelDataExtractor.GetVerticesAndIndicesFromModel(vxModel.ModelMain, out MeshVertices, out MeshIndices);
 
                 PhysicsSkin_Main = new StaticMesh(MeshVertices, MeshIndices,
                     new AffineTransform(new Vector3(1),

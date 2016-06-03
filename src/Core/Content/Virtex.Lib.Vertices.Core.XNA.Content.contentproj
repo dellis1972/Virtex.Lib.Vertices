@@ -202,12 +202,12 @@
       <Processor>FontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
-    <Compile Include="Textures\null_normal.tga">
+    <Compile Include="Textures\nullTextures\null_normal.tga">
       <Name>null_normal</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\null_specular.tga">
+    <Compile Include="Textures\nullTextures\null_specular.tga">
       <Name>null_specular</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -253,7 +253,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\null_cube.dds">
+    <Compile Include="Textures\nullTextures\null_cube.dds">
       <Name>null_cube</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -566,6 +566,16 @@
       <Name>blue</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Shaders\CascadeShadowShader.fx">
+      <Name>CascadeShadowShader</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\nullTextures\null_diffuse.png">
+      <Name>null_diffuse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

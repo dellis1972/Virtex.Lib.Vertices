@@ -539,6 +539,23 @@
     <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\Menu_Click.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Shaders\Include\ModelDistorter.h" />
+    <None Include="Content\Shaders\Include\ModelPixelShaders.h" />
+    <None Include="Content\Shaders\Include\Shadow.h" />
+    <None Include="Content\Shaders\CascadeShadowShader.fx" />
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\nullTextures\null_cube.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\nullTextures\null_diffuse.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\nullTextures\null_normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\nullTextures\null_specular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MonoGame\Shaders\CascadeShadowShader.fx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -691,6 +708,8 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveAs.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
+    <Compile Include="ContentManagement\vxContentManager.cs" />
+    <Compile Include="Graphics\Model\vxModelVoxel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -795,9 +814,13 @@
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\vxMenuScreen\Bckgrnd_Nrml.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+<<<<<<< HEAD
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\vxMenuEntry\Splttr_Nrml.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+=======
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\CascadeShadowShader.xnb" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">

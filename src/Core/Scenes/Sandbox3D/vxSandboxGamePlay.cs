@@ -361,6 +361,9 @@ namespace vxVertices.Scenes.Sandbox3D
             }
             ConnectedMatrix = Matrix.Identity;
             CurrentlySelectedKey = "";
+
+            if (this.SandboxGameState == vxEnumSandboxGameState.EditMode)
+                this.vxEngine.InputManager.ShowCursor = true;
         }
 
         public virtual void InitialiseCamera()

@@ -15,6 +15,7 @@ using vxVertices.Core.Cameras;
 using vxVertices.Physics.BEPU.Entities.Prefabs;
 using vxVertices.Entities.Sandbox3D;
 using vxVertices.Scenes.Sandbox3D;
+using vxVertices.Graphics;
 
 namespace vxVertices.Entities.Sandbox3D.Util
 {
@@ -27,7 +28,7 @@ namespace vxVertices.Entities.Sandbox3D.Util
         /// SnapBox for allowing tracks to snap together
         /// </summary>
         /// <param name="vxEngine"></param>
-        public vxSnapBox(vxEngine vxEngine, Model SnapBoxModel, int Width, int Height, int Length)
+        public vxSnapBox(vxEngine vxEngine, vxModel SnapBoxModel, int Width, int Height, int Length)
             : base(vxEngine, SnapBoxModel, Vector3.Zero)
         {
             EndLocalRotation = new Vector3(MathHelper.PiOver2, -MathHelper.PiOver4, MathHelper.PiOver4);

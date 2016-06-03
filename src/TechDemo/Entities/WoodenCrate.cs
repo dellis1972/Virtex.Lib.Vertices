@@ -61,7 +61,7 @@ namespace VerticeEnginePort.Base
         public WoodenCrate(GameEngine GameEngine, Vector3 StartPosition) :
             base(GameEngine, GameEngine.Model_Items_WoodenCrate, StartPosition)
         {
-            NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/items/wooden crate/crate_side_nm");
+            //NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/items/wooden crate/crate_side_nm");
             XRotation_ModelOffset = -MathHelper.PiOver2;
             //Vector_ModelOffSet = new Vector3(-0.5f, 1 / 2, 0.5f);
             //entity = new Box(StartPosition - Vector_ModelOffSet, 1, 1, 1, 1000);

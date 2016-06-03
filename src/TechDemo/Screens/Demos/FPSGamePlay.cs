@@ -118,7 +118,7 @@ namespace VerticeEnginePort.Base
             BEPUPhyicsSpace.Add(grabber);
             rayCastFilter = RayCastFilter;
 
-			new IndexedPrimTest(vxEngine, vxEngine.Assets.Models.UnitBox, new Vector3(0,0,0));
+			new IndexedPrimTest(vxEngine, new Vector3(0,0,0));
 
 
             #endregion

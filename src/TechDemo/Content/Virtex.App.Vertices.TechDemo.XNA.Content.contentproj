@@ -94,30 +94,30 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\concrete_cube\texture_nm.png">
-      <Name>texture_nm</Name>
+    <Compile Include="Models\concrete_cube\Cube_nm.png">
+      <Name>Cube_nm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\concrete_cube\texture_sm.png">
-      <Name>texture_sm</Name>
+    <Compile Include="Models\concrete_cube\Cube_sm.png">
+      <Name>Cube_sm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\teapot\teapot_df.png">
-      <Name>teapot_df</Name>
+    <Compile Include="Models\teapot\teapot_main_dds.png">
+      <Name>teapot_main_dds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\teapot\teapot_nm.png">
-      <Name>teapot_nm</Name>
+    <Compile Include="Models\teapot\teapot_main_nm.png">
+      <Name>teapot_main_nm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Models\teapot\teapot_sm.png">
-      <Name>teapot_sm</Name>
+    <Compile Include="Models\teapot\teapot_main_sm.png">
+      <Name>teapot_main_sm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -184,29 +184,152 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\courtyard\crtyrd_bricks_diff.tga">
-      <Name>crtyrd_bricks_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\courtyard\crtyrd_bricks_nm.tga">
-      <Name>crtyrd_bricks_nm</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\courtyard\crtyrd_bricks_sm.tga">
-      <Name>crtyrd_bricks_sm</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\courtyard\td_courtyard.fbx">
       <Name>td_courtyard</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <ProcessorParameters_GenerateTangentFrames>True</ProcessorParameters_GenerateTangentFrames>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\roof_dds.png">
+      <Name>roof_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\roof_nm.png">
+      <Name>roof_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\roof_sm.png">
+      <Name>roof_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\columns_dds.png">
+      <Name>columns_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\columns_nm.png">
+      <Name>columns_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\columns_sm.png">
+      <Name>columns_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\concrete_cube\Cube_dds.png">
+      <Name>Cube_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_dds.png">
+      <Name>arch_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\arch_nm.png">
+      <Name>arch_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\courtyard\arch_sm.png">
+      <Name>arch_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\structure_dds.png">
+      <Name>structure_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_2_sm.png">
+      <Name>arch_2_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_2_dds.png">
+      <Name>arch_2_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\arch_2_nm.png">
+      <Name>arch_2_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\floor_dds.png">
+      <Name>floor_dds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\floor_nm.png">
+      <Name>floor_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\floor_sm.png">
+      <Name>floor_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\structure_nm.png">
+      <Name>structure_nm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\courtyard\structure_sm.png">
+      <Name>structure_sm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\concrete_cube_obj\texture.png">
+      <Name>texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\concrete_cube_obj\concrete_cube.mtl">
+      <Name>concrete_cube</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Models\concrete_cube_obj\concrete_cube.obj">
+      <Name>concrete_cube</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

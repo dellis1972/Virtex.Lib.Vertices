@@ -2,6 +2,20 @@
 
 The Vertices Engine is an in-house developed engine based in built from the ground up in C#. It comes compatible with both XNA and MonoGame libraries (although 3D is still in process of being ported over) for use as the back end allowing it to be multiplatform across PC, MacOS, Linux, iOS, and Android.
 
+# Status
+
+| Platform | Build Status                   |
+|----------|--------------------------------|
+| XNA      | ![alt text][buildstatusXNA]    |
+| DirectX  | ![alt text][buildstatusDirctX] |
+| OpenGL   | ![alt text][buildstatusGL]     |
+| Android  | ![alt text][buildstatusDroid]  |
+
+[buildstatusXNA]: https://img.shields.io/badge/build-passing-brightgreen.svg
+[buildstatusDirctX]: https://img.shields.io/badge/build-tbd-blue.svg
+[buildstatusGL]: https://img.shields.io/badge/build-failing-red.svg
+[buildstatusDroid]: https://img.shields.io/badge/build-tbd-blue.svg
+
 # Features
 ## Real-time Surface and Water Reflections
 ![Reflections](https://virtexedgedesign.files.wordpress.com/2015/10/reflections.png)

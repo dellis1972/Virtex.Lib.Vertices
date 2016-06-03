@@ -1,3 +1,16 @@
+//-----------------------------------------------------------------------------
+// Shadow.h
+//
+// Virtices Engine
+// Collection of Common Cascade Shadow Mapping Code for use in 
+// both the CascadeShadowShader.fx as well as in any other *.fx
+// files which use it.
+//
+// It is adapted from theomader's source code here: http://dev.theomader.com/cascaded-shadow-mapping-2/
+// It is released under the MIT License (https://opensource.org/licenses/mit-license.php)
+//
+// It has been modified for the Virtices Engine.
+//-----------------------------------------------------------------------------
 #define NumSplits 4
 #define CSM
 
@@ -281,20 +294,20 @@ CascadeBlendingInfo GetBlendingInfo(ShadowData shadowData)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 float GetShadowFactor( ShadowData shadowData, float ndotl )
 {
-	//float4 randomTexCoord3D = float4(shadowData.WorldPosition.xyz*100, 0);
-	//float2 randomValues = tex3Dlod(RandomSampler3D, randomTexCoord3D).rg;
-	//float2 rotation = randomValues * 2 - 1;
+	float4 randomTexCoord3D = float4(shadowData.WorldPosition.xyz*100, 0);
+	float2 randomValues = tex3Dlod(RandomSampler3D, randomTexCoord3D).rg;
+	float2 rotation = randomValues * 2 - 1;
 
 	//float l = saturate(smoothstep(-0.2, 0.2, ndotl));
-	//float l = saturate(smoothstep(0, 0.2, ndotl));
-	//float t = smoothstep(randomValues.x * 0.5, 1.0f, l);
+	float l = saturate(smoothstep(0, 0.2, ndotl));
+	float t = smoothstep(randomValues.x * 0.5, 1.0f, l);
 
-	//const int numSamples = 2;
+	const int numSamples = 2;
 	ShadowSplitInfo splitInfo = GetSplitInfo(shadowData);
 	
 	//return lerp(ShadowBrightness, 1.0, (splitInfo.LightSpaceDepth < tex2Dlod(ShadowMapSampler, float4(splitInfo.TexCoords, 0, 0)).r));
-	return lerp(ShadowBrightness, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
-	/*
+	//return lerp(ShadowBrightness, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
+	
 	float result = 0;
 	
 	for(int s=0; s<numSamples; ++s)
@@ -311,7 +324,7 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 
 	float shadowFactor = result / numSamples * t;
 	return lerp(ShadowBrightness, 1.0, shadowFactor); 
-	*/
+	
 }
 
 float GetShadowFactor( ShadowData shadowData )

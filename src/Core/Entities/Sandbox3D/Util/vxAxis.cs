@@ -35,6 +35,8 @@ namespace vxVertices.Entities.Sandbox3D.Util
         Vector3 StartPosition = Vector3.Zero;
         private object vxcConsole;
 
+        Model model;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="vxVertices.Core.Axis"/> class.
         /// </summary>
@@ -42,8 +44,9 @@ namespace vxVertices.Entities.Sandbox3D.Util
         /// <param name="ParentCursor">Parent cursor.</param>
         /// <param name="AxisDirections">Axis directions.</param>
         public vxAxis(vxEngine vxEngine, vxCursor3D ParentCursor, AxisDirections AxisDirections)
-            : base(vxEngine, vxEngine.Assets.Models.UnitArrow, Vector3.Zero)
+            : base(vxEngine, null, Vector3.Zero)
         {
+            model = vxEngine.Assets.Models.UnitArrow;
             this.ParentCursor = ParentCursor;
             DoShadowMap = false;
             HitBox = new Box(Vector3.Zero, 2, 2, 25);

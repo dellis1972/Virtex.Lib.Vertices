@@ -269,7 +269,7 @@ namespace vxVertices.Core.Scenes
 
 #endregion
 
-#region Update and Draw
+        #region Update and Draw
 
 
 		/// <summary>
@@ -423,14 +423,14 @@ namespace vxVertices.Core.Scenes
                 // do something with entry.Value or entry.Key
                 entry.Value.Update();
             }
-
+#endif
             // determine shadow frustums
             var shadowCamera = mVirtualCameraMode != vxEnumVirtualCameraMode.None ? mVirtualCamera : Camera;
             vxEngine.Renderer.setShadowTransforms(shadowCamera);
 
             // render shadow maps first, then scene
             DrawShadows(gameTime, shadowCamera);
-#endif
+
             DrawMain(gameTime, Camera);
 
             //Draw the Sun (And any post processing that comes with)
@@ -560,12 +560,12 @@ namespace vxVertices.Core.Scenes
                         entity.RenderMeshShadow();
 
                     foreach (InstanceSet instSet in InstanceSetCollection)
-                        instSet.RenderInstancedShadow(instSet.InstancedModel, camera, instSet.instances.Count);
+                        instSet.RenderInstancedShadow(instSet.InstancedModel.ModelShadow, camera, instSet.instances.Count);
 
                     foreach (KeyValuePair<object, InstanceSet> entry in Instances)
                     {
                         // do something with entry.Value or entry.Key
-                        entry.Value.RenderInstancedShadow(entry.Value.InstancedModel, camera, entry.Value.instances.Count);
+                        entry.Value.RenderInstancedShadow(entry.Value.InstancedModel.ModelShadow, camera, entry.Value.instances.Count);
                     }
                 }
 
@@ -605,12 +605,12 @@ namespace vxVertices.Core.Scenes
                 ((vxEntity3D)aeroEntity).RenderMeshPrepPass();
 #if VRTC_PLTFRM_XNA
             foreach (InstanceSet instSet in InstanceSetCollection)
-                instSet.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
+                instSet.RenderInstanced(instSet.InstancedModel.ModelMain, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
 
             foreach (KeyValuePair<object, InstanceSet> entry in Instances)
             {
                 // do something with entry.Value or entry.Key
-                entry.Value.RenderInstanced(entry.Value.InstancedModel, camera, entry.Value.instances.Count, "Technique_PrepPass_Instanced");
+                entry.Value.RenderInstanced(entry.Value.InstancedModel.ModelMain, camera, entry.Value.instances.Count, "Technique_PrepPass_Instanced");
             }
 #endif
 
@@ -671,12 +671,12 @@ namespace vxVertices.Core.Scenes
 
 #if VRTC_PLTFRM_XNA
                         foreach (InstanceSet instSet in InstanceSetCollection)
-                            instSet.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_Main_Instanced");
+                            instSet.RenderInstanced(instSet.InstancedModel.ModelMain, camera, instSet.instances.Count, "Technique_Main_Instanced");
 
                         foreach (KeyValuePair<object, InstanceSet> entry in Instances)
                         {
                             // do something with entry.Value or entry.Key
-                            entry.Value.RenderInstanced(entry.Value.InstancedModel, camera, entry.Value.instances.Count, "Technique_Main_Instanced");
+                            entry.Value.RenderInstanced(entry.Value.InstancedModel.ModelMain, camera, entry.Value.instances.Count, "Technique_Main_Instanced");
                         }
 #endif
                         foreach (vxEntity3D entity in Entities)
@@ -714,6 +714,7 @@ namespace vxVertices.Core.Scenes
             DrawPointLight(new Vector3(5, 2, 15 * (float)Math.Cos(angle)), Color.Orange, 4, 0.25f);
             DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White);
             */
+            DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White*0);
 
             DrawPointLight(new Vector3(0,0, 0), Color.Orange, 0, 0);
             

@@ -103,6 +103,7 @@
     <Compile Include="Cameras\vxCamera3D.cs" />
     <Compile Include="Cameras\vxVirtualCamera.cs" />
     <Compile Include="ContentManagement\Assets.cs" />
+    <Compile Include="ContentManagement\vxContentManager.cs" />
     <Compile Include="DebugUtils\DebugCommandUI.cs" />
     <Compile Include="DebugUtils\DebugManager.cs" />
     <Compile Include="DebugUtils\DebugShapeRenderer.cs" />
@@ -113,7 +114,6 @@
     <Compile Include="DebugUtils\Layout.cs" />
     <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
     <Compile Include="DebugUtils\TimeRuler.cs" />
-    <Compile Include="Entities\boxes\plainModel.cs" />
     <Compile Include="Entities\Enviroment\Sun.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Enviroment\Water_General.cs" />
@@ -122,6 +122,7 @@
     <Compile Include="Entities\vxEntity2D.cs" />
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="Input\Accelerometer.cs" />
     <Compile Include="Input\Events\PlayerIndexEventArgs.cs" />
     <Compile Include="Input\vxInputManager.cs" />

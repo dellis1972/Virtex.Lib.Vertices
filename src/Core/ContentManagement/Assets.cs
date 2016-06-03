@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using vxVertices.Graphics;
 
 namespace vxVertices.Core.ContentManagement
 {
@@ -45,6 +46,7 @@ namespace vxVertices.Core.ContentManagement
 
             public Texture2D Texture_Cube_Null;
 
+            public Texture2D Texture_Diffuse_Null;
             public Texture2D Texture_NormalMap_Null;
             public Texture2D Texture_SpecularMap_Null;
 
@@ -67,12 +69,12 @@ namespace vxVertices.Core.ContentManagement
         public struct AssetModels
         {
             public Model UnitArrow { get; set; }
-            public Model UnitBox { get; set; }
-            public Model UnitSphere { get; set; }
-            public Model UnitPlane { get; set; }
-            public Model WaterPlane { get; set; }
+            public vxModel UnitBox { get; set; }
+            public vxModel UnitSphere { get; set; }
+            public vxModel UnitPlane { get; set; }
+            public vxModel WaterPlane { get; set; }
 
-            public Model Sun_Mask { get; set; }
+            public vxModel Sun_Mask { get; set; }
         };
 
         /// <summary>
@@ -91,6 +93,7 @@ namespace vxVertices.Core.ContentManagement
         public struct AssetShaders
         {
             public Effect MainShader { get; set; }
+            public Effect CascadeShadowShader { get; set; }
             public Effect CartoonShader { get; set; }
             public Effect DistortionShader { get; set; }
             public Effect WaterReflectionShader { get; set; }
@@ -179,10 +182,11 @@ namespace vxVertices.Core.ContentManagement
             textures.Arrow_Left = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Left");
             textures.Arrow_Right = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Right");
 
-            textures.Texture_NormalMap_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/null_normal");
-            textures.Texture_SpecularMap_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/null_specular");
+            textures.Texture_Diffuse_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse");
+            textures.Texture_NormalMap_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_normal");
+            textures.Texture_SpecularMap_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_specular");
 
-            textures.Texture_Cube_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/null_cube");
+            //textures.Texture_Cube_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/null_cube");
 
             //Glow
             textures.Texture_Sun_Glow = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Rays/Rays");
@@ -221,10 +225,11 @@ namespace vxVertices.Core.ContentManagement
 #endif
 
             shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/MainModelShader");
+            shaders.CascadeShadowShader  = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/CascadeShadowShader");
 
 
-			//Bloom
-			postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
+            //Bloom
+            postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
 			postProcessShaders.BloomCombineEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomCombine");
 			postProcessShaders.GaussianBlurEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/GaussianBlur");
 
@@ -260,10 +265,10 @@ namespace vxVertices.Core.ContentManagement
             //Unit Models
             models.UnitArrow = vxEngine.EngineContentManager.Load<Model>("Models/utils/unit_arrow/unit_arrow");
 #endif
-            models.UnitBox = vxEngine.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager);
-			models.UnitPlane = vxEngine.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager);
-			models.UnitSphere = vxEngine.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager);
-			models.Sun_Mask = vxEngine.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager);
+            models.UnitBox = vxEngine.ContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+			models.UnitPlane = vxEngine.ContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+			models.UnitSphere = vxEngine.ContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+			models.Sun_Mask = vxEngine.ContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
             models.WaterPlane = models.Sun_Mask;// vxEngine.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager);
         }
     }

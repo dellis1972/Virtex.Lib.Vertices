@@ -23,6 +23,7 @@ using vxVertices.Network.Events;
 using vxVertices.Network;
 using vxVertices.GUI;
 using vxVertices.GUI.Themes;
+using Virtex.Lib.Vertices.XNA.ContentManagement;
 
 #endregion
 
@@ -77,10 +78,20 @@ namespace vxVertices.Core
 		/// </summary>
 		public float Float_DrawSaveAlpha = 0;
 
-		/// <summary>
-		/// Virtex vxEngine Debug Class
-		/// </summary>
-		public DebugSystem DebugSystem {
+
+        /// <summary>
+        /// Engine Content Manager for specific Virtices Engine fun.
+        /// </summary>
+        public vxContentManager ContentManager{
+            get { return _contentManager; }
+            set { _contentManager = value; }
+		}
+        private vxContentManager _contentManager;
+
+        /// <summary>
+        /// Virtex vxEngine Debug Class
+        /// </summary>
+        public DebugSystem DebugSystem {
 			get { return _debugSystem; }
 			set { _debugSystem = value; }
 		}
@@ -247,7 +258,7 @@ namespace vxVertices.Core
 		/// <summary>
 		/// Globally Accessilble Working Plane Model for Sandbox Working Plane
 		/// </summary>
-		public Model Model_Sandbox_WorkingPlane;
+		public vxModel Model_Sandbox_WorkingPlane;
 
 		/// <summary>
 		/// Boolean to check if the level has been initialised yet.
@@ -388,9 +399,10 @@ namespace vxVertices.Core
 			//Get the vxEngine Version through Reflection
 			EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
 
-			// initialize the debug system with the game and the name of the font 
-			// we want to use for the debugging
-			_debugSystem = DebugSystem.Initialize (this, "Fonts/font_debug");
+
+            // initialize the debug system with the game and the name of the font 
+            // we want to use for the debugging
+            _debugSystem = DebugSystem.Initialize (this, "Fonts/font_debug");
 			_debugSystem.TimeRuler.ShowLog = true;
 
 			// Register's Command too Show Render Targets on the Screen
@@ -467,9 +479,12 @@ namespace vxVertices.Core
 			ContentManager content = Game.Content;
 			_engineContentManager = new ContentManager (Game.Services);
 
-			//string contentLocationTag = "Virtex.Lib.Vertices.XNA.Content";
+            // Initialise the Engine Speciality Content Manager.
+            _contentManager = new vxContentManager(this);
 
-//Set Location of Content Specific too Platform
+            //string contentLocationTag = "Virtex.Lib.Vertices.XNA.Content";
+
+            //Set Location of Content Specific too Platform
 #if VRTC_PLTFRM_XNA
             _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
 
@@ -766,236 +781,6 @@ namespace vxVertices.Core
 
 		#endregion
 
-
-		/// <summary>
-		/// Load a Model and apply the Main Shader Effect to it.
-		/// </summary>
-		/// <param name="Path"></param>
-		/// <returns>A Model Object With the Distortion Shader Applied</returns>
-		public Model LoadDistortionModel (string Path)
-		{
-			Model modelToReturn;
-			Effect replacementEffect = this.Assets.Shaders.DistortionShader;
-
-			modelToReturn = this.Game.Content.Load<Model> (Path);
-
-			try {
-				// Table mapping the original effects to our replacement versions.
-				Dictionary<Effect, Effect> effectMapping = new Dictionary<Effect, Effect> ();
-
-				foreach (ModelMesh mesh in modelToReturn.Meshes) {
-					// Scan over all the effects currently on the mesh.
-					foreach (BasicEffect oldEffect in mesh.Effects) {
-						// If we haven't already seen this effect...
-						if (!effectMapping.ContainsKey (oldEffect)) {
-							// Make a clone of our replacement effect. We can't just use
-							// it directly, because the same effect might need to be
-							// applied several times to different parts of the model using
-							// a different texture each time, so we need a fresh copy each
-							// time we want to set a different texture into it.
-							Effect newEffect = replacementEffect.Clone ();
-
-							//// Copy across the texture from the original effect.
-							//newEffect.Parameters["Texture"].SetValue(oldEffect.Texture);
-
-							//newEffect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
-
-							//newEffect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-							//newEffect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
-
-							effectMapping.Add (oldEffect, newEffect);
-						}
-					}
-
-					// Now that we've found all the effects in use on this mesh,
-					// update it to use our new replacement versions.
-					foreach (ModelMeshPart meshPart in mesh.MeshParts) {
-						meshPart.Effect = effectMapping [meshPart.Effect];
-					}
-				}
-			} catch {
-			}
-
-			return modelToReturn;
-		}
-
-		/// <summary>
-		/// Load a Model and apply the Main Shader Effect to it.
-		/// </summary>
-		/// <param name="Path">The Model File Path</param>
-		/// <returns>A Model Object With the Main Shader Applied</returns>
-		public Model LoadModel (string Path)
-		{
-			return LoadModel (Path, this.Game.Content);
-		}
-
-		/// <summary>
-		/// Load a Model and apply the Main Shader Effect to it.
-		/// </summary>
-		/// <param name="Path">The Model File Path</param>
-		/// <param name="Content">The Content Manager to load the Model with</param>
-		/// <returns>A Model Object With the Main Shader Applied</returns>
-		public Model LoadModel (string Path, ContentManager Content)
-		{
-			Model modelToReturn;
-			Effect replacementEffect;
-			Texture2D baseNormalMap;
-			Texture2D baseSpecularMap;
-
-			modelToReturn = Content.Load<Model> (Path);
-            
-			if (this.Assets != null) {
-				replacementEffect = this.Assets.Shaders.MainShader;
-				baseNormalMap = this.Assets.Textures.Texture_NormalMap_Null;
-				baseSpecularMap = this.Assets.Textures.Texture_SpecularMap_Null;
-			} else {
-				string prefixtag = "";
-
-				//Model Shaders
-#if VRTC_PLTFRM_XNA
-#else
-				prefixtag = "MonoGame/";
-#endif
-				replacementEffect = this.EngineContentManager.Load<Effect> (prefixtag + "Shaders/MainModelShader");
-
-				baseNormalMap = this.EngineContentManager.Load<Texture2D> ("Textures/null_normal");
-				baseSpecularMap = this.EngineContentManager.Load<Texture2D> ("Textures/null_specular");
-			}
-			try {
-				Console.ForegroundColor = ConsoleColor.Magenta;
-				Console.WriteLine ("\t\tImporting Model: " + Path);
-				// Table mapping the original effects to our replacement versions.
-				Dictionary<Effect, Effect> effectMapping = new Dictionary<Effect, Effect> ();
-                
-                foreach (ModelMesh mesh in modelToReturn.Meshes) {
-
-                    Console.WriteLine("\t\t\tMesh Mesh: " + mesh.Name);
-					mesh.Tag = Path;
-					// Scan over all the effects currently on the mesh.
-					foreach (BasicEffect oldEffect in mesh.Effects) {
-						// If we haven't already seen this effect...
-						if (!effectMapping.ContainsKey (oldEffect)) {
-							// Make a clone of our replacement effect. We can't just use
-							// it directly, because the same effect might need to be
-							// applied several times to different parts of the model using
-							// a different texture each time, so we need a fresh copy each
-							// time we want to set a different texture into it.
-							Effect newEffect = replacementEffect.Clone ();
-
-							// Copy across the texture from the original effect.
-							if (newEffect.Parameters ["Texture"] != null)
-								newEffect.Parameters ["Texture"].SetValue (oldEffect.Texture);
-
-							if (newEffect.Parameters ["TextureEnabled"] != null)
-								newEffect.Parameters ["TextureEnabled"].SetValue (oldEffect.TextureEnabled);
-
-							if (newEffect.Parameters ["IsSun"] != null)
-								newEffect.Parameters ["IsSun"].SetValue (false);
-
-                            //Console.WriteLine("Looking For : \n\tNM: {0}\n\tSM: {1}",
-                            //     "Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm",
-                            //     "Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm");
-
-                                if (newEffect.Parameters["NormalMap"] != null &&
-                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm.xnb"))
-                                {
-                                    newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_nm"));
-                                    Console.WriteLine("\t\t\t\tNormal Map Found");
-                                }
-
-
-                            if (newEffect.Parameters["SpecularMap"] != null &&
-                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm.xnb"))
-                            {
-                                
-                                    newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(Path) + "/" + mesh.Name + "_sm"));
-                                Console.WriteLine("\t\t\t\tSpecular Map Found");
-                            }
-                            
-
-#if VRTC_PLTFRM_XNA
-                            if (newEffect.Parameters["LightDirection"] != null)
-                                newEffect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
-
-                            if (newEffect.Parameters["LightColor"] != null)
-                                newEffect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
-
-                            if (newEffect.Parameters["AmbientLightColor"] != null)
-                                newEffect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
-#endif
-
-							effectMapping.Add (oldEffect, newEffect);
-						}
-					}
-
-					// Now that we've found all the effects in use on this mesh,
-					// update it to use our new replacement versions.
-					foreach (ModelMeshPart meshPart in mesh.MeshParts) {
-						meshPart.Effect = effectMapping [meshPart.Effect];
-					}
-				}
-			} catch (Exception ex) {
-				vxConsole.WriteLine ("ERROR IMPORTING FILE: " + Path + "\n" + ex.Message);
-			}
-			//#endif
-			modelToReturn.Tag = Path;
-			return modelToReturn;
-		}
-        
-
-        /// <summary>
-        /// Load a Model and apply the Main Shader Effect to it.
-        /// </summary>
-        /// <param name="Path">The Model File Path</param>
-        /// <param name="Content">The Content Manager to load the Model with</param>
-        /// <returns>A Model Object With the Main Shader Applied</returns>
-        public Model LoadModelAsWaterObject (string Path, ContentManager Content)
-		{
-			Model modelToReturn;
-			Effect replacementEffect;
-
-			modelToReturn = Content.Load<Model> (Path);
-
-#if VRTC_PLTFRM_XNA
-            replacementEffect = this.Assets.Shaders.WaterReflectionShader;
-
-            try
-            {
-                // Table mapping the original effects to our replacement versions.
-                Dictionary<Effect, Effect> effectMapping = new Dictionary<Effect, Effect>();
-
-                foreach (ModelMesh mesh in modelToReturn.Meshes)
-                {
-                    // Scan over all the effects currently on the mesh.
-                    foreach (BasicEffect oldEffect in mesh.Effects)
-                    {
-                        // If we haven't already seen this effect...
-                        if (!effectMapping.ContainsKey(oldEffect))
-                        {
-                            // Make a clone of our replacement effect. We can't just use
-                            // it directly, because the same effect might need to be
-                            // applied several times to different parts of the model using
-                            // a different texture each time, so we need a fresh copy each
-                            // time we want to set a different texture into it.
-                            Effect newEffect = replacementEffect.Clone();
-                            
-                            effectMapping.Add(oldEffect, newEffect);
-                        }
-                    }
-
-                    // Now that we've found all the effects in use on this mesh,
-                    // update it to use our new replacement versions.
-                    foreach (ModelMeshPart meshPart in mesh.MeshParts)
-                    {
-                        meshPart.Effect = effectMapping[meshPart.Effect];
-                    }
-                }
-            }
-            catch { }
-#endif
-
-			return modelToReturn;
-		}
 
 		/// <summary>
 		/// Sets the Resolution and Fullscreen State

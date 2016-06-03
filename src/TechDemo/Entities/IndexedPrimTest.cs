@@ -24,8 +24,8 @@ namespace VerticeEnginePort.Base
         /// Creates a New Instance of the Base Ship Class
         /// </summary>
         /// <param name="AssetPath"></param>
-		public IndexedPrimTest(vxEngine vxEngine, Model entityModel, Vector3 StartPosition)
-            : base(vxEngine, entityModel, StartPosition)
+		public IndexedPrimTest(vxEngine vxEngine, Vector3 StartPosition)
+            : base(vxEngine, StartPosition)
         {
 
 			floorVerts = new VertexPositionTexture[6];
@@ -56,6 +56,8 @@ namespace VerticeEnginePort.Base
 
 			effect.TextureEnabled = true;
 			effect.Texture = vxEngine.Assets.Textures.Texture_Sun_Glow;
+
+            
 
 
 			foreach (var pass in effect.CurrentTechnique.Passes)
