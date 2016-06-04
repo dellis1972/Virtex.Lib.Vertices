@@ -86,9 +86,9 @@
       <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Virtex.Lib.Vertices.GL.csproj">
+    <ProjectReference Include="..\Core\Virtex.Lib.Vertices.Core.GL.csproj">
       <Project>{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}</Project>
-      <Name>Virtex.Lib.Vertices.GL</Name>
+      <Name>Virtex.Lib.Vertices.Core.GL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -50,10 +50,14 @@ namespace vxVertices.Utilities
         /// </code>
         /// </example>
         public static void WriteLine(object output)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
             Console.ForegroundColor = ConsoleColor.Green;
+#endif
 			Console.WriteLine(">>: " + output);
+#if !VRTC_PLTFRM_DROID
             Console.ResetColor();
+#endif
 			if (vxEngine != null)
 				vxEngine.DebugSystem.DebugCommandUI.Echo(">>: " + output.ToString());
 		}
@@ -71,10 +75,14 @@ namespace vxVertices.Utilities
         /// </code>
         /// </example>
         public static void WriteNetworkLine(object output)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.DarkCyan;
+#endif
 			Console.WriteLine("<NETWORK>>:" + output);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor();
+#endif
             if (vxEngine != null)
                 vxEngine.DebugSystem.DebugCommandUI.Echo("<NETWORK>>:" + output.ToString());
         }
@@ -100,12 +108,16 @@ namespace vxVertices.Utilities
         /// </example>
         public static void WriteError(string SourceFile, string output)
         {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Red;
+#endif
             Console.WriteLine("**************************************************");
             Console.WriteLine("Source File   ---   " + SourceFile + "    ---    ");
             Console.WriteLine("ERROR: >>: " + output);
             Console.WriteLine("**************************************************");
+#if !VRTC_PLTFRM_DROID
             Console.ResetColor();
+#endif
             if (vxEngine != null)
             {
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");

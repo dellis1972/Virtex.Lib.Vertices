@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ADB152A3-0AD9-49C3-B1B4-C97FC2D0D06F}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Virtex.Lib.Vertices.DROID</RootNamespace>
+    <AssemblyName>Virtex.Lib.Vertices.DROID</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug2D|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Android\Debug2D\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;VIRTICES_2D, VRTC_PLTFRM_DROID, DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release2D|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Android\Release2D\</OutputPath>
+    <DefineConstants>TRACE;VIRTICES_2D, VRTC_PLTFRM_DROID </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MonoGame.Framework.Android.3.5.1.1679\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animation\AnimationPlayer2D.cs" />
+    <Compile Include="Animation\AnimationSprite2D.cs" />
+    <Compile Include="Audio\AudioManager.cs" />
+    <Compile Include="Base Screens\GameScreen.cs" />
+    <Compile Include="Cameras\Controllers\CameraControlScheme.cs" />
+    <Compile Include="Cameras\Controllers\CharacterCameraControlScheme.cs" />
+    <Compile Include="Cameras\Controllers\CharacterControllerInput.cs" />
+    <Compile Include="Cameras\vxCamera2D.cs" />
+    <Compile Include="Cameras\vxCamera3D.cs" />
+    <Compile Include="Cameras\vxVirtualCamera.cs" />
+    <Compile Include="ContentManagement\Assets.cs" />
+    <Compile Include="ContentManagement\vxContentManager.cs" />
+    <Compile Include="DebugUtils\DebugCommandUI.cs" />
+    <Compile Include="DebugUtils\DebugManager.cs" />
+    <Compile Include="DebugUtils\DebugShapeRenderer.cs" />
+    <Compile Include="DebugUtils\DebugSystem.cs" />
+    <Compile Include="DebugUtils\FpsCounter.cs" />
+    <Compile Include="DebugUtils\IDebugCommandHost.cs" />
+    <Compile Include="DebugUtils\KeyboardUtils.cs" />
+    <Compile Include="DebugUtils\Layout.cs" />
+    <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
+    <Compile Include="DebugUtils\TimeRuler.cs" />
+    <Compile Include="Entities\Enviroment\Sun.cs" />
+    <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
+    <Compile Include="Entities\Enviroment\Water_General.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxAxis.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxCursor3D.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxScaleCube.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxSnapBox.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxWorkingPlane.cs" />
+    <Compile Include="Entities\Sandbox3D\vxSandboxEntity.cs" />
+    <Compile Include="Entities\Sandbox3D\vxSandboxEntityDescription.cs" />
+    <Compile Include="Entities\Sandbox3D\vxSandboxEntityProperty.cs" />
+    <Compile Include="Entities\VehicleInput.cs" />
+    <Compile Include="Entities\vxEntity.cs" />
+    <Compile Include="Entities\vxEntity2D.cs" />
+    <Compile Include="Entities\vxEntity3D.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Geometry\Quad.cs" />
+    <Compile Include="Geometry\Tri.cs" />
+    <Compile Include="Graphics\2D Gameplay\AssetCreator2D.cs" />
+    <Compile Include="Graphics\2D Gameplay\Layer.cs" />
+    <Compile Include="Graphics\2D Gameplay\LineBatch.cs" />
+    <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\BloomComponent.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\BloomSettings.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\LensFlareComponent.cs" />
+    <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
+    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxDirectionalLight.cs" />
+    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
+    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
+    <Compile Include="Graphics\Graphics Enums.cs" />
+    <Compile Include="Graphics\Instancing\InstanceSet.cs" />
+    <Compile Include="Graphics\Instancing\vxMeshSet.cs" />
+    <Compile Include="Graphics\Model\vxModel.cs" />
+    <Compile Include="Graphics\Model\vxModelVoxel.cs" />
+    <Compile Include="Graphics\Renderer\vxRenderer.cs" />
+    <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
+    <Compile Include="GUI\Base\vxGUIBaseEnums.cs" />
+    <Compile Include="GUI\Base\vxGUIBaseEventArgs.cs" />
+    <Compile Include="GUI\Base\vxGUIBaseItem.cs" />
+    <Compile Include="GUI\Controls\Buttons\vxButton.cs" />
+    <Compile Include="GUI\Controls\Buttons\vxButtonImage.cs" />
+    <Compile Include="GUI\Controls\Buttons\vxSandboxItemButton.cs" />
+    <Compile Include="GUI\Controls\Buttons\xButton_Toggle.cs" />
+    <Compile Include="GUI\Controls\Combo Box\vxComboBox.cs" />
+    <Compile Include="GUI\Controls\Combo Box\vxComboBoxEventArgs.cs" />
+    <Compile Include="GUI\Controls\Combo Box\vxComboBoxItem.cs" />
+    <Compile Include="GUI\Controls\Label\vxLabel.cs" />
+    <Compile Include="GUI\Controls\List View\vxListView.cs" />
+    <Compile Include="GUI\Controls\List View\vxListViewBar.cs" />
+    <Compile Include="GUI\Controls\List View\vxListViewItem.cs" />
+    <Compile Include="GUI\Controls\List View\vxListViewSpliter.cs" />
+    <Compile Include="GUI\Controls\Menu Entries\vxMenuEntry.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollBar.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollBarItem.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanel.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelSpliter.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxServerScrollBarItem.cs" />
+    <Compile Include="GUI\Controls\TabControl\vxTabControl.cs" />
+    <Compile Include="GUI\Controls\TabControl\vxTabPage.cs" />
+    <Compile Include="GUI\Controls\Textbox\vxTextbox.cs" />
+    <Compile Include="GUI\Controls\Toolbar\vxToolbar.cs" />
+    <Compile Include="GUI\Controls\Toolbar\vxToolbarButton.cs" />
+    <Compile Include="GUI\Controls\Toolbar\vxToolbarSpliter.cs" />
+    <Compile Include="GUI\Dialogs\vxDialogBase.cs" />
+    <Compile Include="GUI\Dialogs\vxFileDialogItem.cs" />
+    <Compile Include="GUI\Dialogs\vxGraphicSettingsDialog.cs" />
+    <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
+    <Compile Include="GUI\Dialogs\vxOpenFileDialog.cs" />
+    <Compile Include="GUI\Dialogs\vxSeverListDialog.cs" />
+    <Compile Include="GUI\GUI Enums.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBox.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveAs.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
+    <Compile Include="GUI\Theme\vxBaseItemTheme.cs" />
+    <Compile Include="GUI\Theme\vxGUITheme.cs" />
+    <Compile Include="GUI\Theme\vxMenuEntryTheme.cs" />
+    <Compile Include="GUI\Theme\vxMenuTheme.cs" />
+    <Compile Include="GUI\Theme\vxThemeButton.cs" />
+    <Compile Include="GUI\Theme\vxThemeDialog.cs" />
+    <Compile Include="GUI\Theme\vxThemeTextbox.cs" />
+    <Compile Include="GUI\vxGuiManager.cs" />
+    <Compile Include="Input\Accelerometer.cs" />
+    <Compile Include="Input\Events\PlayerIndexEventArgs.cs" />
+    <Compile Include="Input\TouchCollectionExtensions.cs" />
+    <Compile Include="Input\VirtualGamePad.cs" />
+    <Compile Include="Input\vxInputManager.cs" />
+    <Compile Include="Mathematics\vxMathUtils.cs" />
+    <Compile Include="Mathematics\vxSmooth.cs" />
+    <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
+    <Compile Include="Network\Network Enums.cs" />
+    <Compile Include="ParticleSystem\vxParticle3D.cs" />
+    <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Sandbox3D\Sandbox Enums.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.Editor.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.empty.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.EntityManagement.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.Input.cs" />
+    <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.IO.cs" />
+    <Compile Include="Scenes\Scene2D.cs" />
+    <Compile Include="Scenes\Scene3D.cs" />
+    <Compile Include="Scenes\Scene3D.empty.cs" />
+    <Compile Include="Scenes\Scene3D.Network.cs" />
+    <Compile Include="Scenes\SceneBase.cs" />
+    <Compile Include="Screens\Async Screens\BusyScreen.cs" />
+    <Compile Include="Screens\Async Screens\LoadAssetsScreen.cs" />
+    <Compile Include="Screens\Async Screens\LoadingScreen.cs" />
+    <Compile Include="Screens\Menus\AudioMenuScreen.cs" />
+    <Compile Include="Screens\Menus\ControlsMenuScreen.cs" />
+    <Compile Include="Screens\Menus\DebugMenuScreen.cs" />
+    <Compile Include="Screens\Menus\GraphicsSettingsScreen.cs" />
+    <Compile Include="Screens\Menus\MenuScreen.cs" />
+    <Compile Include="Screens\Menus\OptionsMenuScreen.cs" />
+    <Compile Include="Screens\Menus\PauseMenuScreen.cs" />
+    <Compile Include="Screens\Menus\SettingsMenuScreen.cs" />
+    <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Serilization\LevelStats.cs" />
+    <Compile Include="Serilization\Profile.cs" />
+    <Compile Include="Serilization\Settings.cs" />
+    <Compile Include="Serilization\SettingsAudio.cs" />
+    <Compile Include="Serilization\SettingsControls.cs" />
+    <Compile Include="Serilization\SettingsGraphics.cs" />
+    <Compile Include="Serilization\vxSandBoxFileStructure.cs" />
+    <Compile Include="Utilities\vxConsole.cs" />
+    <Compile Include="Utilities\vxGeometryHelper.cs" />
+    <Compile Include="Utilities\vxUtil.cs" />
+    <Compile Include="vxEngine.cs" />
+    <Compile Include="vxEngine.Network.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Content.mgcb" />
+    <None Include="Content\e5c84d96-688c-4d59-a9ee-81f14dce31b1" />
+    <None Include="Content\Fonts\font_debug.spritefont" />
+    <None Include="Content\Fonts\font_gui.spritefont" />
+    <None Include="Content\Fonts\font_gui_title.spritefont" />
+    <None Include="Content\Fonts\font_splash.spritefont" />
+    <None Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\Menu_Click.flp" />
+    <None Include="Content\Gui\DfltThm\vxGUITheme\vxButton\Bckgrnd_Nrml.xcf" />
+    <None Include="Content\Gui\DfltThm\vxGUITheme\vxMenuEntry\Bckgrnd_Lrg.xcf" />
+    <None Include="Content\Gui\DfltThm\vxGUITheme\vxMenuEntry\Bckgrnd_Nrml.xcf" />
+    <None Include="Content\Gui\DfltThm\vxGUITheme\vxMenuScreen\Bckgrnd_Nrml.xcf" />
+    <None Include="Content\Models\lghtng\sphere.x" />
+    <None Include="Content\Models\sun\Rays.xcf" />
+    <None Include="Content\Models\sun\sun.blend" />
+    <None Include="Content\Models\sun\sun.blend1" />
+    <None Include="Content\Models\sun\sun.blend2" />
+    <None Include="Content\Models\sun\sun.fbx" />
+    <None Include="Content\Models\sun\Sun.xcf" />
+    <None Include="Content\Models\sun\Sun_0.xnb" />
+    <None Include="Content\Models\sun\sun_ascii.fbx" />
+    <None Include="Content\Models\sun\sun_mask.fbx" />
+    <None Include="Content\Models\sun\sun_mask.xnb" />
+    <None Include="Content\Models\sun\sun_mask_mg.fbx" />
+    <None Include="Content\Models\test\testbox\testbox.fbx" />
+    <None Include="Content\Models\test\testbox\testbox2.fbx" />
+    <None Include="Content\Models\test\testbox\unit box.blend" />
+    <None Include="Content\Models\test\testbox\unit box.blend1" />
+    <None Include="Content\Models\test\testbox\unit_box_mg.fbx" />
+    <None Include="Content\Models\utils\unit_arrow\unit_arrow.blend" />
+    <None Include="Content\Models\utils\unit_arrow\unit_arrow.blend1" />
+    <None Include="Content\Models\utils\unit_arrow\unit_arrow.blend2" />
+    <None Include="Content\Models\utils\unit_arrow\unit_arrow.fbx" />
+    <None Include="Content\Models\utils\unit_box\unit box.blend" />
+    <None Include="Content\Models\utils\unit_box\unit box.blend1" />
+    <None Include="Content\Models\utils\unit_box\unit_box.fbx" />
+    <None Include="Content\Models\utils\unit_box\unit_box_mg.fbx" />
+    <None Include="Content\Models\utils\unit_plane\image.xcf" />
+    <None Include="Content\Models\utils\unit_plane\plane.blend" />
+    <None Include="Content\Models\utils\unit_plane\plane.blend1" />
+    <None Include="Content\Models\utils\unit_plane\plane.blend2" />
+    <None Include="Content\Models\utils\unit_plane\unit_plane.fbx" />
+    <None Include="Content\Models\utils\unit_plane\unit_plane_mg.fbx" />
+    <None Include="Content\Models\utils\unit_sphere\unitsphere.blend" />
+    <None Include="Content\Models\utils\unit_sphere\unitsphere.blend1" />
+    <None Include="Content\Models\utils\unit_sphere\unit_sphere.fbx" />
+    <None Include="Content\Models\utils\unit_sphere\unit_sphere_mg.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere.blend" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere.blend1" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere_2.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\carWheel_sphere_mg.fbx" />
+    <None Include="Content\Models\Vehicle\Wheel\Thumbs.db" />
+    <None Include="Content\Models\water_plane\image.xcf" />
+    <None Include="Content\Models\water_plane\plane.blend" />
+    <None Include="Content\Models\water_plane\plane.blend1" />
+    <None Include="Content\Models\water_plane\plane.blend2" />
+    <None Include="Content\Models\water_plane\water_plane.fbx" />
+    <None Include="Content\Models\water_plane\water_plane_mg.fbx" />
+    <None Include="Content\obj\Android\.mgcontent" />
+    <None Include="Content\obj\Android\MonoGame\Shaders\MainModelShader.mgcontent" />
+    <None Include="Content\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Content\obj\WindowsGL\.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Gui\DfltThm\vxGUITheme\vxButton\Bckgrnd_Nrml.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Models\lghtng\sphere.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Models\sphere.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Models\utils\unit_box\unit_box_mg.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Models\utils\unit_plane\unit_plane_mg.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Models\utils\unit_sphere\unit_sphere_mg.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\CascadeShadowShader.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\God Rays\GodRaysCombine.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\God Rays\LightRays.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\God Rays\MaskedSun.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\Lighting\ClearGBuffer.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\Lighting\CombineFinal.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\Lighting\DirectionalLight.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\Lighting\PointLight.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\Lighting\RenderGBuffer.mgcontent" />
+    <None Include="Content\obj\WindowsGL\MonoGame\Shaders\MainModelShader.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\Bloom\BloomCombine.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\Bloom\BloomExtract.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\Bloom\GaussianBlur.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\CartoonEdgeDetection.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\DepthOfField\DepthOfField.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\Distorter\Distorters.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Shaders\SkyBoxShader.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\nullTextures\null_cube.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\nullTextures\null_diffuse.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\nullTextures\null_normal.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\nullTextures\null_specular.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\sandbox\tlbr\sel\sel_addItem.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\sandbox\tlbr\sel\sel_addItem_hover.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\sandbox\tlbr\sel\sel_selItem.mgcontent" />
+    <None Include="Content\obj\WindowsGL\Textures\sandbox\tlbr\sel\sel_selItem_hover.mgcontent" />
+    <None Include="Content\obj\Windows\.mgcontent" />
+    <None Include="Content\obj\Windows\Fonts\font_debug.mgcontent" />
+    <None Include="Content\obj\Windows\Fonts\font_gui.mgcontent" />
+    <None Include="Content\obj\Windows\Fonts\font_gui_title.mgcontent" />
+    <None Include="Content\obj\Windows\Fonts\font_splash.mgcontent" />
+    <None Include="Content\obj\Windows\Graphics\Flares\flare1.mgcontent" />
+    <None Include="Content\obj\Windows\Graphics\Flares\flare2.mgcontent" />
+    <None Include="Content\obj\Windows\Graphics\Flares\flare3.mgcontent" />
+    <None Include="Content\obj\Windows\Graphics\Flares\glow.mgcontent" />
+    <None Include="Content\obj\Windows\Models\sun\sun_mask_mg.mgcontent" />
+    <None Include="Content\obj\Windows\Models\utils\unit_box\unit_box_mg.mgcontent" />
+    <None Include="Content\obj\Windows\Models\utils\unit_plane\unit_plane_mg.mgcontent" />
+    <None Include="Content\obj\Windows\Models\utils\unit_sphere\unit_sphere_mg.mgcontent" />
+    <None Include="Content\obj\Windows\Models\water_plane\water_plane_mg.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Cursor.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Materials\blank.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Materials\dots.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Materials\pavement.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Materials\squares.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Materials\waves.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Menu\Slider\Arrow_Left.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Menu\Slider\Arrow_Right.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\new.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\null_cube.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\null_normal.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\null_specular.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\Rays\Rays.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_new.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_new_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_open.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_open_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_save.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_saveas.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_saveas_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\file\file_save_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\io\io_export.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\io\io_export_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\io\io_import.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\io\io_import_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\test\test_restart.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\test\test_restart_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\test\test_run.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\test\test_run_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\test\test_stop.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\tlbr\test\test_stop_hover.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\cntrls\ms_slct_L.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\cntrls\ms_slct_R.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\cntrls\ms_slct_scrll.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Click_AddItems.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Click_Select.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Manage_New.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Manage_Open.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Manage_Save.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Manage_SaveAs.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Test_Repeat.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Test_Start.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Level_Test_Stop.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\sandbox\toolbar_icons\Toolbar_Seperator.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\xGUI\blank.mgcontent" />
+    <None Include="Content\obj\Windows\Textures\xGUI\gradient.mgcontent" />
+    <None Include="Content\obj\x86\Debug2D\Vertices.Engine.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Debug2D\Virtex.Lib.Vertices.Core.XNA.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Debug\Vertices.Engine.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Debug\Vertices.Engine.XNA.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Debug\Virtex.Lib.Vertices.Core.XNA.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Debug\Virtex.Lib.Vertices.XNA.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Release\Vertices.Engine.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\obj\x86\Release\Virtex.Lib.Vertices.Core.XNA.Content.contentprojResolveAssemblyReference.cache" />
+    <None Include="Content\Shaders\Water\watertypes.xcf" />
+    <None Include="Content\Shaders\Water\Water_Plane.blend" />
+    <None Include="Content\Shaders\Water\Water_Plane.blend1" />
+    <None Include="Content\Shaders\Water\Water_Plane.blend2" />
+    <None Include="Content\Shaders\Water\Water_Plane.fbx" />
+    <None Include="Content\Shaders\Water\Water_Plane_mg.fbx" />
+    <None Include="Content\Textures\Cursor.xcf" />
+    <None Include="Content\Textures\Materials\Thumbs.db" />
+    <None Include="Content\Textures\nullTextures\null_normal.tga" />
+    <None Include="Content\Textures\nullTextures\null_specular.tga" />
+    <None Include="Content\Textures\nullTextures\null_textures.xcf" />
+    <None Include="Content\Textures\Rays\Rays.xcf" />
+    <None Include="Content\Textures\Rays\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_new.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_open.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_save.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\file\file_saveas.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_export.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\io\io_import.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\io\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\tlbr\sel\sel_togglemode.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_restart.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_run.xcf" />
+    <None Include="Content\Textures\sandbox\tlbr\test\test_stop.xcf" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\cntrls\Thumbs.db" />
+    <None Include="Content\Textures\sandbox\toolbar_icons\Thumbs.db" />
+    <None Include="Content\Virtex.Lib.Vertices.Core.XNA.Content.contentproj" />
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Graphics\Flares\flare1.png" />
+    <Content Include="Content\Graphics\Flares\flare2.png" />
+    <Content Include="Content\Graphics\Flares\flare3.png" />
+    <Content Include="Content\Graphics\Flares\glow.png" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\1Menu_Click.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\2Menu_Click.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\Click\Menu_Click.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\menuClick.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuConfirm.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuError.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuSound1.wav" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\vxButton\Bckgrnd_Nrml.png" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\vxButton\oldBckgrnd_Nrml.png" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\vxMenuEntry\Bckgrnd_Lrg.png" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\vxMenuEntry\Bckgrnd_Nrml.png" />
+    <Content Include="Content\Gui\DfltThm\vxGUITheme\vxMenuScreen\Bckgrnd_Nrml.png" />
+    <Content Include="Content\Models\sun\Rays.png" />
+    <Content Include="Content\Models\sun\Sun.png" />
+    <Content Include="Content\Models\test\testbox\texture_unitbox.png" />
+    <Content Include="Content\Models\utils\unit_arrow\texture_arrow.png" />
+    <Content Include="Content\Models\utils\unit_box\texture_unitbox.png" />
+    <Content Include="Content\Models\utils\unit_plane\image.png" />
+    <Content Include="Content\Models\utils\unit_sphere\texture_unitbox.png" />
+    <Content Include="Content\Models\Vehicle\Wheel\wheel.png" />
+    <Content Include="Content\Models\water_plane\image.png" />
+    <Content Include="Content\MonoGame\Shaders\CascadeShadowShader.fx" />
+    <Content Include="Content\MonoGame\Shaders\God Rays\GodRaysCombine.fx" />
+    <Content Include="Content\MonoGame\Shaders\God Rays\LightRays.fx" />
+    <Content Include="Content\MonoGame\Shaders\God Rays\MaskedSun.fx" />
+    <Content Include="Content\MonoGame\Shaders\Include\ModelPixelShaders.h" />
+    <Content Include="Content\MonoGame\Shaders\Include\Shadow.h" />
+    <Content Include="Content\MonoGame\Shaders\Lighting\ClearGBuffer.fx" />
+    <Content Include="Content\MonoGame\Shaders\Lighting\CombineFinal.fx" />
+    <Content Include="Content\MonoGame\Shaders\Lighting\DirectionalLight.fx" />
+    <Content Include="Content\MonoGame\Shaders\Lighting\PointLight.fx" />
+    <Content Include="Content\MonoGame\Shaders\Lighting\RenderGBuffer.fx" />
+    <Content Include="Content\MonoGame\Shaders\MainModelShader %28copy%29.fx" />
+    <Content Include="Content\MonoGame\Shaders\MainModelShader.fx" />
+    <Content Include="Content\MonoGame\Shaders\MainModelShader_2.fx" />
+    <Content Include="Content\obj\x86\Debug2D\Vertices.Engine.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Debug2D\Virtex.Lib.Vertices.Core.XNA.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Debug\Vertices.Engine.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Debug\Vertices.Engine.XNA.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Debug\Virtex.Lib.Vertices.Core.XNA.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Debug\Virtex.Lib.Vertices.XNA.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Release\Vertices.Engine.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\obj\x86\Release\Virtex.Lib.Vertices.Core.XNA.Content.contentproj.FileListAbsolute.txt" />
+    <Content Include="Content\Shaders\Bloom\BloomCombine.fx" />
+    <Content Include="Content\Shaders\Bloom\BloomExtract.fx" />
+    <Content Include="Content\Shaders\Bloom\GaussianBlur.fx" />
+    <Content Include="Content\Shaders\CartoonEdgeDetection.Fx" />
+    <Content Include="Content\Shaders\CascadeShadowShader.fx" />
+    <Content Include="Content\Shaders\DepthOfField\DepthOfField.fx" />
+    <Content Include="Content\Shaders\Distorter\Distorters.fx" />
+    <Content Include="Content\Shaders\Distorter\DistortScene.fx" />
+    <Content Include="Content\Shaders\EdgeDetection.Fx" />
+    <Content Include="Content\Shaders\God Rays\GodRaysCombine.fx" />
+    <Content Include="Content\Shaders\God Rays\LightRays.fx" />
+    <Content Include="Content\Shaders\God Rays\MaskedSun.fx" />
+    <Content Include="Content\Shaders\Include\ModelDistorter.h" />
+    <Content Include="Content\Shaders\Include\ModelPixelShaders.h" />
+    <Content Include="Content\Shaders\Include\Shadow.h" />
+    <Content Include="Content\Shaders\Lighting\ClearGBuffer.fx" />
+    <Content Include="Content\Shaders\Lighting\CombineFinal.fx" />
+    <Content Include="Content\Shaders\Lighting\DirectionalLight.fx" />
+    <Content Include="Content\Shaders\Lighting\PointLight.fx" />
+    <Content Include="Content\Shaders\Lighting\RenderGBuffer.fx" />
+    <Content Include="Content\Shaders\MainModelShader - Copy %282%29.fx" />
+    <Content Include="Content\Shaders\MainModelShader - Copy.fx" />
+    <Content Include="Content\Shaders\MainModelShader.fx" />
+    <Content Include="Content\Shaders\SkyBoxShader.fx" />
+    <Content Include="Content\Shaders\Test\blue.fx" />
+    <Content Include="Content\Shaders\Test\red.fx" />
+    <Content Include="Content\Shaders\Water\vxWater.fx" />
+    <Content Include="Content\Shaders\Water\waterbump.jpg" />
+    <Content Include="Content\Shaders\Water\waterdistort.jpg" />
+    <Content Include="Content\Textures\Cursor.png" />
+    <Content Include="Content\Textures\Materials\blank.png" />
+    <Content Include="Content\Textures\Materials\dots.png" />
+    <Content Include="Content\Textures\Materials\pavement.png" />
+    <Content Include="Content\Textures\Materials\squares.png" />
+    <Content Include="Content\Textures\Materials\waves.png" />
+    <Content Include="Content\Textures\Menu\Slider\Arrow_Left.png" />
+    <Content Include="Content\Textures\Menu\Slider\Arrow_Right.png" />
+    <Content Include="Content\Textures\new.png" />
+    <Content Include="Content\Textures\nullTextures\null_cube.dds" />
+    <Content Include="Content\Textures\nullTextures\null_diffuse.png" />
+    <Content Include="Content\Textures\Rays\Rays.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_new.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_new_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_open.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_open_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_save.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_saveas.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_saveas_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\file\file_save_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\io\io_export.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\io\io_export_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\io\io_import.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\io\io_import_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\sel\sel_addItem.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\sel\sel_addItem_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\sel\sel_selItem.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\sel\sel_selItem_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\test\test_restart.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\test\test_restart_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\test\test_run.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\test\test_run_hover.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\test\test_stop.png" />
+    <Content Include="Content\Textures\sandbox\tlbr\test\test_stop_hover.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\cntrls\ms_slct_L.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\cntrls\ms_slct_R.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\cntrls\ms_slct_scrll.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Click_AddItems.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Click_Select.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_New.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_Open.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_Save.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Manage_SaveAs.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Test_Repeat.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Test_Start.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Level_Test_Stop.png" />
+    <Content Include="Content\Textures\sandbox\toolbar_icons\Toolbar_Seperator.png" />
+    <Content Include="Content\Textures\xGUI\blank.png" />
+    <Content Include="Content\Textures\xGUI\gradient.png" />
+    <Content Include="Content\Virtex.Lib.Vertices.Core.XNA.Content.contentproj.user" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\bin\AnyCPU\Debug\" />
+    <Folder Include="Content\bin\x86\Debug2D\" />
+    <Folder Include="Content\bin\x86\Debug\" />
+    <Folder Include="Content\bin\x86\Release\" />
+    <Folder Include="Content\obj\Debug\TempPE\" />
+    <Folder Include="Content\Sound Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.DROID.csproj">
+      <Project>{ac3d5f7b-c558-4cdd-8475-4d00cd382529}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Farseer.DROID</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

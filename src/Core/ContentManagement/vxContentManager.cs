@@ -61,7 +61,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
         /// <returns></returns>
         public vxModel LoadModel(string PathToModel, ContentManager Content, Effect EffectToSet, Effect ShadowEffect)
         {
+#if !VRTC_PLTFRM_DROID
             Console.ForegroundColor = ConsoleColor.Cyan;
+#endif
             Console.WriteLine("\t\tImporting Model: " + PathToModel);
 
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.GL", "src\Core\Virtex.Lib.Vertices.GL.csproj", "{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Core.GL", "src\Core\Virtex.Lib.Vertices.Core.GL.csproj", "{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtex.Lib.Vertices.Physics.Farseer.GL", "src\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj", "{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}"
 EndProject

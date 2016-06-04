@@ -1,20 +1,12 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// LensFlareComponent.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-using vxVertices.Core;
+#if !VRTC_PLTFRM_DROID
 
-
-#endregion
 
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using vxVertices.Core;
 #endregion
 
 namespace vxVertices.Graphics
@@ -24,7 +16,7 @@ namespace vxVertices.Graphics
     /// </summary>
     public class LensFlareComponent //: DrawableGameComponent
     {
-        #region Constants
+#region Constants
 
 
         // How big is the circular glow effect?
@@ -36,9 +28,9 @@ namespace vxVertices.Graphics
         const float querySize = 50;
 
 
-        #endregion
+#endregion
 
-        #region Fields
+#region Fields
 
 
         // These are set by the main game to tell us the position of the camera and sun.
@@ -128,11 +120,11 @@ namespace vxVertices.Graphics
         };
 
 
-        #endregion
+#endregion
 
         vxEngine vxEngine;
 
-        #region Initialization
+#region Initialization
 
 
         /// <summary>
@@ -179,9 +171,9 @@ namespace vxVertices.Graphics
         }
 
     
-        #endregion
+#endregion
         
-        #region Draw
+#region Draw
 
 
         /// <summary>
@@ -374,6 +366,7 @@ namespace vxVertices.Graphics
         }
 
 
-        #endregion
+#endregion
     }
 }
+#endif

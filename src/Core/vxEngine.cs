@@ -374,10 +374,12 @@ namespace vxVertices.Core
 			//This is just temporary, this is re-loaded for global uses when the vxEngine is Initialised.
 			string gameVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
 
+#if !VRTC_PLTFRM_DROID
 			try {
 				Console.Title = "VIRTICES ENGINE DEBUG CONSOLE v." + gameVersion;
 			} catch {
 			}
+#endif
 			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
 			vxConsole.WriteLine (string.Format ("          Vertices Engine - v.{0}", gameVersion));
 			vxConsole.WriteLine (string.Format ("          Starting Game   - {0}", GameName));
@@ -490,11 +492,14 @@ namespace vxVertices.Core
 
 #elif VRTC_PLTFRM_GL
 			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";
-#endif                             
+            
+#elif VRTC_PLTFRM_DROID
+            _engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
+#endif
 
 
 #if VIRTICES_2D
-			LineBatch = new LineBatch (GraphicsDevice);
+            LineBatch = new LineBatch (GraphicsDevice);
 
 			AssetCreator = new AssetCreator2D (GraphicsDevice);
 			AssetCreator.LoadContent (_engineContentManager);
@@ -594,9 +599,9 @@ namespace vxVertices.Core
 		}
 
 
-		#endregion
+#endregion
 
-		#region Update and Draw
+        #region Update and Draw
 
 
 		/// <summary>
@@ -701,9 +706,9 @@ namespace vxVertices.Core
 		}
 
 
-		#endregion
+#endregion
 
-		#region Public Methods
+        #region Public Methods
 
 
 		/// <summary>
@@ -779,7 +784,7 @@ namespace vxVertices.Core
 		}
 
 
-		#endregion
+#endregion
 
 
 		/// <summary>
@@ -845,7 +850,7 @@ namespace vxVertices.Core
                     graphics.GraphicsDevice.SamplerStates[i] = SamplerState.PointClamp;
                 }
 
-                #endregion
+#endregion
 
             }
 #endif
@@ -878,8 +883,10 @@ namespace vxVertices.Core
 		/// <param name="Method">Method.</param>
 		/// <param name="Message">Message.</param>
 		public void WriteError (string File, string Method, string Message)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Red;
+#endif
 			Console.WriteLine ("***********************************************************************");
 			Console.WriteLine ("\t\t\tERROR\n");
 
@@ -887,7 +894,9 @@ namespace vxVertices.Core
 			Console.WriteLine ("Method:\t\t'{0}'", Method);
 			Console.WriteLine ("Message:\t{0}", Message);
 			Console.WriteLine ("***********************************************************************");
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 		/// <summary>
@@ -895,10 +904,14 @@ namespace vxVertices.Core
 		/// </summary>
 		/// <param name="Text">Text.</param>
 		public void WriteLine_White (string Text)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.White;
+#endif
 			Console.WriteLine (Text);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 		/// <summary>
@@ -906,10 +919,14 @@ namespace vxVertices.Core
 		/// </summary>
 		/// <param name="Text">Text.</param>
 		public void WriteLine_Green (string Text)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Green;
+#endif
 			Console.WriteLine (Text);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 		/// <summary>
@@ -917,10 +934,14 @@ namespace vxVertices.Core
 		/// </summary>
 		/// <param name="Text">Text.</param>
 		public void WriteLine_Red (string Text)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Red;
+#endif
 			Console.WriteLine (Text);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 		/// <summary>
@@ -928,10 +949,14 @@ namespace vxVertices.Core
 		/// </summary>
 		/// <param name="Text">Text.</param>
 		public void WriteLine_Yellow (string Text)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Yellow;
+#endif
 			Console.WriteLine (Text);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 		/// <summary>
@@ -939,10 +964,14 @@ namespace vxVertices.Core
 		/// </summary>
 		/// <param name="Text">Text.</param>
 		public void WriteLine_DarkYellow (string Text)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.WriteLine (Text);
+#endif
+            Console.WriteLine (Text);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 		/// <summary>
@@ -950,10 +979,14 @@ namespace vxVertices.Core
 		/// </summary>
 		/// <param name="Text">Text.</param>
 		public void WriteLine_Cyan (string Text)
-		{
+        {
+#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Cyan;
+#endif
 			Console.WriteLine (Text);
+#if !VRTC_PLTFRM_DROID
 			Console.ResetColor ();
+#endif
 		}
 
 	}
