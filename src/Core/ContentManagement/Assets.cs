@@ -65,6 +65,7 @@ namespace vxVertices.Core.ContentManagement
 
 
 
+#if !VRTC_PLTFRM_DROID
 
         public struct AssetModels
         {
@@ -88,7 +89,7 @@ namespace vxVertices.Core.ContentManagement
         private AssetModels models = new AssetModels();
 
 
-        
+
 
         public struct AssetShaders
         {
@@ -149,7 +150,7 @@ namespace vxVertices.Core.ContentManagement
             set { postProcessShaders = value; }
         }
         private AssetPostProcessShaders postProcessShaders = new AssetPostProcessShaders();
-
+#endif
 
 
 
@@ -191,10 +192,13 @@ namespace vxVertices.Core.ContentManagement
             //Glow
             textures.Texture_Sun_Glow = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Rays/Rays");
 
+
+
+
+#if !VRTC_PLTFRM_DROID
             //Water
             textures.Texture_WaterWaves = vxEngine.EngineContentManager.Load<Texture2D>("Shaders/Water/waterbump");
             textures.Texture_WaterDistort = vxEngine.EngineContentManager.Load<Texture2D>("Shaders/Water/waterdistort");
-
 
 
             /********************************************************************************************/
@@ -204,7 +208,7 @@ namespace vxVertices.Core.ContentManagement
 			string prefixtag = "";
 
             //Model Shaders
-            #if VRTC_PLTFRM_XNA
+#if VRTC_PLTFRM_XNA
             //shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/MainModelShader");
 
             //Water
@@ -270,6 +274,7 @@ namespace vxVertices.Core.ContentManagement
 			models.UnitSphere = vxEngine.ContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
 			models.Sun_Mask = vxEngine.ContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
             models.WaterPlane = models.Sun_Mask;// vxEngine.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager);
+#endif
         }
     }
 }

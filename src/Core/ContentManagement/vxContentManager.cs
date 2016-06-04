@@ -27,6 +27,8 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
             this.Engine = Engine;
         }
 
+
+#if !VRTC_PLTFRM_DROID
         /// <summary>
         /// This Loads Models at Run time performing a number of functions. See remarks for full details.
         /// </summary>
@@ -401,5 +403,6 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
             return modelToReturn;
         }
+#endif
     }
 }

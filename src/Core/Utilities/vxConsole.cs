@@ -152,7 +152,7 @@ namespace vxVertices.Utilities
         /// <remarks>NOTE: This is different than the Engine Debug console.</remarks>
         public static void Draw()
 		{
-			SpriteFont font = vxEngine.Assets.Fonts.DebugFont;
+            SpriteFont font = vxEngine.Assets.Fonts.DebugFont;
 			if (vxEngine != null) {
 				if (vxEngine.ShowInGameDebugWindow) {
 					vxEngine.SpriteBatch.Begin ();

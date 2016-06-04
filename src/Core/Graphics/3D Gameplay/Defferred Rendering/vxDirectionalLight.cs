@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if VIRTICES_3D
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -48,3 +49,4 @@ namespace vxVertices.Graphics
 		}
     }
 }
+#endif

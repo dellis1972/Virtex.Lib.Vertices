@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if VIRTICES_3D
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -55,11 +56,11 @@ namespace vxVertices.Graphics
 
         public vxCamera3D camera
         {
-			#if VIRTICES_3D
+#if VIRTICES_3D
             get { return vxEngine.Current3DSceneBase.Camera; }
-        	#else
+#else
 			get { return new vxCamera3D(); }
-			#endif
+#endif
 
 		}
 
@@ -72,9 +73,9 @@ namespace vxVertices.Graphics
         {
 			this.vxEngine = vxEngine;
 
-			#if VIRTICES_3D
+#if VIRTICES_3D
             vxEngine.Current3DSceneBase.LightItems.Add(this);
-			#endif
+#endif
 
 			Position = StartPosition;
 
@@ -129,9 +130,9 @@ namespace vxVertices.Graphics
             pointLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
             pointLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.View * camera.Projection));
             //size of a halfpixel, for texture coordinates alignment
-			#if VIRTICES_3D
+#if VIRTICES_3D
             pointLightEffect.Parameters["halfPixel"].SetValue(vxEngine.Current3DSceneBase.HalfPixel);
-            #endif
+#endif
 			//calculate the distance between the camera and light center
             float cameraToCenter = Vector3.Distance(camera.Position, lightPosition);
             //if we are inside the light volume, draw the sphere's inside face
@@ -143,7 +144,7 @@ namespace vxVertices.Graphics
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
             pointLightEffect.Techniques[0].Passes[0].Apply();
-			#if VIRTICES_3D
+#if VIRTICES_3D
             foreach (ModelMesh mesh in vxEngine.Current3DSceneBase.sphereModel.Meshes)
             {
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
@@ -154,9 +155,10 @@ namespace vxVertices.Graphics
                     vxEngine.GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, meshPart.NumVertices, meshPart.StartIndex, meshPart.PrimitiveCount);
                 }
             }
-			#endif
+#endif
             vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }
     }
 }
+#endif

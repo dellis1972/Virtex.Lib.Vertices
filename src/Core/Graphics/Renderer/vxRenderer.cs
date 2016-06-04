@@ -1,4 +1,4 @@
-//#define RENDER_LIGHT_VIEW
+#if VIRTICES_3D
 
 using System;
 using System.Collections.Generic;
@@ -651,7 +651,7 @@ namespace vxVertices.Graphics
         }
         
 
-        #region Instancing Code
+#region Instancing Code
 
         //************************************************************************************//
         //                          MESH INSTANCING METHODS
@@ -799,9 +799,9 @@ namespace vxVertices.Graphics
 #endif
         }
 
-        #endregion
+#endregion
 
-        #region Post Processing Methods
+#region Post Processing Methods
 
 
         public void CreateBluredScreen(vxEngine vxEngine)
@@ -939,9 +939,9 @@ namespace vxVertices.Graphics
             }
         }
 
-        #endregion
+#endregion
 
-        #region Guassian Blur Code
+#region Guassian Blur Code
 
         /// <summary>
         /// Applies the guassian bloom.
@@ -1070,9 +1070,9 @@ namespace vxVertices.Graphics
 
         }
 
-        #endregion
+#endregion
 
-        #region Drawing Rendertarget Code
+#region Drawing Rendertarget Code
 
         /// <summary>
         /// Helper for drawing a texture into a rendertarget, using
@@ -1229,6 +1229,8 @@ namespace vxVertices.Graphics
                            Math.Exp(-(n * n) / (2 * BlurAmount * BlurAmount)));
         }
 
-        #endregion
+#endregion
     }
 }
+
+#endif

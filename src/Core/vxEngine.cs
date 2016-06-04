@@ -211,20 +211,21 @@ namespace vxVertices.Core
 
 		private ContentManager _engineContentManager;
 
-		/// <summary>
-		/// Virtex Render System
-		/// </summary>
-		public vxRenderer Renderer {
+#if VIRTICES_3D
+        /// <summary>
+        /// Virtex Render System
+        /// </summary>
+        public vxRenderer Renderer {
 			get { return _renderer; }
 			set { _renderer = value; }
 		}
-
 		private vxRenderer _renderer;
+#endif
 
-		/// <summary>
-		/// Assets within the vxEngine
-		/// </summary>
-		public Assets Assets { get; set; }
+        /// <summary>
+        /// Assets within the vxEngine
+        /// </summary>
+        public Assets Assets { get; set; }
 
 		/// <summary>
 		/// Gets or sets the vxGUItheme use by this game.
@@ -274,9 +275,9 @@ namespace vxVertices.Core
 		/// </summary>
 		public Vector2 Mouse_ClickPos = new Vector2 ();
 
-		#endregion
+#endregion
 
-		#region Debug Properties
+#region Debug Properties
 
 		/// <summary>
 		/// Displays Render Targets for Graphics Debugin
@@ -319,9 +320,9 @@ namespace vxVertices.Core
 
 		bool _showInGameDebugWindow = false;
 
-		#endregion
+#endregion
 
-		#region Properties
+#region Properties
 
 
 		/// <summary>
@@ -356,9 +357,9 @@ namespace vxVertices.Core
 		bool _traceEnabled;
 
 
-		#endregion
+#endregion
 
-		#region Initialization
+#region Initialization
 
 
 		/// <summary>
@@ -440,6 +441,9 @@ namespace vxVertices.Core
 			//Initialise the Debug Renderer
 			vxDebugShapeRenderer.Initialize (GraphicsDevice);
 
+
+#if !VRTC_PLTFRM_DROID
+
 			//First Check, if the Profiles Directory Doesn't Exist, Create It
 			if (Directory.Exists (Path_Profiles) == false)
 				Directory.CreateDirectory (Path_Profiles);
@@ -452,13 +456,14 @@ namespace vxVertices.Core
 			if (Directory.Exists ("Temp/Settings") == false)
 				Directory.CreateDirectory ("Temp/Settings");
 
-			vxConsole.vxEngine = this;
+#endif
+            vxConsole.vxEngine = this;
 
 
 #if VRTC_PLTFRM_XNA
 			vxConsole.WriteLine("Starting Vertices Engine with XNA Backend...");
 #else
-			vxConsole.WriteLine ("Starting Vertices Engine with MonoGame Backend...");
+            vxConsole.WriteLine ("Starting Vertices Engine with MonoGame Backend...");
 #endif
 
 
@@ -516,7 +521,10 @@ namespace vxVertices.Core
 			vxGUITheme = new vxGUITheme (this);
 			vxGUITheme.Font = this.Assets.Fonts.MenuFont;
 
+
+#if !VRTC_PLTFRM_DROID
 			Model_Sandbox_WorkingPlane = this.Assets.Models.UnitPlane;
+#endif
 
 			//Load in Profile Data
 			vxConsole.WriteLine ("Loading Settings....");
@@ -534,11 +542,12 @@ namespace vxVertices.Core
 			//graphics.GraphicsDevice.PresentationParameters.MultiSampleCount = 8;
 			graphics.ApplyChanges ();
 
-			//this.Profile.Settings.Graphics.Bloom = vxEnumQuality.None;
-			//this.Profile.Settings.Graphics.DepthOfField = vxEnumQuality.None;// = false;
-			//this.Profile.Settings.Graphics.Bool_DoEdgeDetection = true;
-
+            //this.Profile.Settings.Graphics.Bloom = vxEnumQuality.None;
+            //this.Profile.Settings.Graphics.DepthOfField = vxEnumQuality.None;// = false;
+            //this.Profile.Settings.Graphics.Bool_DoEdgeDetection = true;
+#if VIRTICES_3D
 			Renderer = new vxRenderer (this);
+#endif
 
 			// Tell each of the screens to load their content.
 			foreach (GameScreen screen in screens) {
@@ -601,7 +610,7 @@ namespace vxVertices.Core
 
 #endregion
 
-        #region Update and Draw
+#region Update and Draw
 
 
 		/// <summary>
@@ -708,7 +717,7 @@ namespace vxVertices.Core
 
 #endregion
 
-        #region Public Methods
+#region Public Methods
 
 
 		/// <summary>
@@ -792,11 +801,11 @@ namespace vxVertices.Core
 		/// </summary>
 		public void SetGraphicsSettings ()
 		{
-#if !DEBUG
+#if !DEBUG && !VRTC_PLTFRM_DROID
             if (LoadResolution == true)
             {
 
-#region Set Resolution
+            #region Set Resolution
 
                 GraphicsDeviceManager graphics = Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
 
@@ -828,9 +837,9 @@ namespace vxVertices.Core
                         ResCount++;
                     }
                 }
-#endregion
+            #endregion
 
-#region Set FullScreen or Not
+            #region Set FullScreen or Not
 
                 if (Profile.Settings.Graphics.Bool_FullScreen == false)
                     graphics.IsFullScreen = false;
@@ -850,16 +859,16 @@ namespace vxVertices.Core
                     graphics.GraphicsDevice.SamplerStates[i] = SamplerState.PointClamp;
                 }
 
-#endregion
+            #endregion
 
             }
 #endif
-		}
-        
-		/// <summary>
-		/// Clears the temp directory.
-		/// </summary>
-		public void ClearTempDirectory ()
+        }
+
+        /// <summary>
+        /// Clears the temp directory.
+        /// </summary>
+        public void ClearTempDirectory ()
 		{
 			//Clear Out the Temp Directory
 			DirectoryInfo tempDirectory = new DirectoryInfo ("Temp");
