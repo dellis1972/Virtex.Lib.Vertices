@@ -14,7 +14,7 @@ The Vertices Engine is an in-house developed engine based in built from the grou
 [buildstatusXNA]: https://img.shields.io/badge/build-passing-brightgreen.svg
 [buildstatusDirctX]: https://img.shields.io/badge/build-tbd-blue.svg
 [buildstatusGL]: https://img.shields.io/badge/build-failing-red.svg
-[buildstatusDroid]: https://img.shields.io/badge/build-tbd-blue.svg
+[buildstatusDroid]: https://img.shields.io/badge/build-passing-brightgreen.svg
 
 # Features
 ## Real-time Surface and Water Reflections
