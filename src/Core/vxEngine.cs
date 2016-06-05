@@ -850,20 +850,21 @@ namespace vxVertices.Core
                 
                 //Set Graphics
                 graphics.ApplyChanges();
-
+#if VIRTICES_3D
                 //Reset All Render Targets
-                if(this.Renderer !=null)
+                if (this.Renderer !=null)
                     this.Renderer.InitialiseRenderTargetsAll();
+#endif
                 for (int i = 0; i < 8; i++)
                 {
                     graphics.GraphicsDevice.SamplerStates[i] = SamplerState.PointClamp;
                 }
 
-            #endregion
+#endregion
 
             }
 #endif
-        }
+            }
 
         /// <summary>
         /// Clears the temp directory.

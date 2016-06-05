@@ -571,7 +571,7 @@ namespace vxVertices.GUI
                             //   this.vxEngine.InputManager.Cursor = touchCollection[0].Position;
 
                             //Only Fire Select Once it's been released
-                            if (vxEngine.InputManager.touchCollection[0].State == TouchLocationState.Moved)
+                            if (vxEngine.InputManager.touchCollection[0].State == TouchLocationState.Pressed)
                                 Select();
                             //Hover if and only if Moved is selected
                             else if (vxEngine.InputManager.touchCollection[0].State == TouchLocationState.Moved)

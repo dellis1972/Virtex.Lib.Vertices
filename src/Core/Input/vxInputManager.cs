@@ -158,6 +158,7 @@ namespace vxVertices.Core.Input
         }
 
         public Vector2 Cursor { get; set; }
+        public Vector2 PreviousCursor { get; set; }
 
         public bool IsCursorMoved { get; private set; }
 
@@ -191,6 +192,7 @@ namespace vxVertices.Core.Input
             PreviousKeyboardState = KeyboardState;
             PreviousGamePadState = GamePadState;
             PreviousMouseState = MouseState;
+            PreviousCursor = Cursor;
 
 
             if (_handleVirtualStick)
@@ -453,7 +455,7 @@ namespace vxVertices.Core.Input
         {
             if (touchCollection.Count > 0)
             {
-                return (touchCollection[0].State == TouchLocationState.Moved);
+                return (touchCollection[0].State == TouchLocationState.Released);
             }
             else
                 return false;
