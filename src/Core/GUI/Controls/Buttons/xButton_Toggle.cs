@@ -26,9 +26,9 @@ namespace vxVertices.GUI.Controls
 			length = Math.Max(100, (int)(vxEngine.vxGUITheme.Font.MeasureString(Text).X + Padding * 2)); 
         }
 
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
         }
 
         public override void Draw(vxEngine vxEngine)

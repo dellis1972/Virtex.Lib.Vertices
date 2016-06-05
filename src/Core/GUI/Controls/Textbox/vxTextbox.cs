@@ -115,8 +115,10 @@ namespace vxVertices.GUI.Controls
         }
 
 
-        public override void Update(MouseState mouseState)
-        {			
+        public override void Update(vxEngine vxEngine)
+        {
+            MouseState mouseState = vxEngine.InputManager.MouseState;
+
             if (mouseState.X > BoundingRectangle.Left && mouseState.X < BoundingRectangle.Right && 
                 mouseState.Y < BoundingRectangle.Bottom && mouseState.Y > BoundingRectangle.Top)
                 {

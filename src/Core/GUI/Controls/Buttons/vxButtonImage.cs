@@ -82,9 +82,9 @@ namespace vxVertices.GUI.Controls
             Color_Normal = Color.White;
             Color_Highlight = Color.DarkOrange;
         }
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
             //Update Rectangle
             BoundingRectangle = new Rectangle((int)(Position.X - Padding), (int)(Position.Y - Padding / 2), Width, Height + Padding / 2);

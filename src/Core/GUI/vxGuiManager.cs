@@ -76,7 +76,7 @@ namespace vxVertices.GUI
             {
                 foreach (vxGUIBaseItem guiItem in List_GUIItems)
                 {
-                    guiItem.Update(mouseState);
+                    guiItem.Update(vxEngine);
 
                     if (guiItem.HasFocus == true)
                     {
@@ -86,7 +86,7 @@ namespace vxVertices.GUI
             }
             else
             {
-                this.FocusedItem.Update(mouseState);
+                this.FocusedItem.Update(vxEngine);
             }
         }
 

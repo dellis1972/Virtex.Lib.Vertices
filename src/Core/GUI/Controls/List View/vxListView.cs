@@ -141,9 +141,9 @@ namespace vxVertices.GUI.Controls
 
         }
 
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
             //Recalculate the Bounding rectangle each loop
             BoundingRectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
@@ -155,7 +155,7 @@ namespace vxVertices.GUI.Controls
                 BoundingRectangle.X + BoundingRectangle.Width - Padding - scrollBar.BarWidth,
                 BoundingRectangle.Y + Padding);
 
-            scrollBar.Update(mouseState);
+            scrollBar.Update(vxEngine);
             MouseState ms = Mouse.GetState();
             //Only Update Stuff if it has Focus
             MouseState dummyMouseState = new MouseState(
@@ -173,10 +173,15 @@ namespace vxVertices.GUI.Controls
                     bsGuiItm.Position = PaddingVector + bsGuiItm.OriginalPosition
                         - new Vector2(0, (scrollBar.Percentage * (scrollBar.ScrollLength - this.Height + 2 * Padding)));
 
-                    if (this.HasFocus)
-                        bsGuiItm.Update(dummyMouseState);
-                    else
-                        bsGuiItm.NotHover();
+                if (this.HasFocus)
+                {
+                    MouseState prevMS = vxEngine.InputManager.MouseState;
+                    vxEngine.InputManager.MouseState = dummyMouseState;
+                    bsGuiItm.Update(vxEngine);
+                    vxEngine.InputManager.MouseState = prevMS;
+                }
+                else
+                    bsGuiItm.NotHover();
                 }
 
         }

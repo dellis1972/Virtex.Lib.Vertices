@@ -38,9 +38,9 @@ namespace vxVertices.GUI.Controls
             Color_Highlight = Color.LightBlue;
         }
 
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
         }
 
         public override void Draw(vxEngine vxEngine)

@@ -53,9 +53,9 @@ namespace vxVertices.GUI.Controls
 		/// Updates the GUI Item
 		/// </summary>
 		/// <param name="mouseState">Mouse state.</param>
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
         }
 
         public override void DrawByOwner(vxEngine vxEngine)

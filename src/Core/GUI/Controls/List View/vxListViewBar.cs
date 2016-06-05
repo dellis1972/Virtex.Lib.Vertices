@@ -78,7 +78,7 @@ namespace vxVertices.GUI.Controls
                 BarWidth, ScrollBarHeight);
         }
 
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
             BoundingRectangle = new Rectangle((int)Position.X,
     (int)Position.Y + TravelPosition,
@@ -86,30 +86,30 @@ namespace vxVertices.GUI.Controls
 
             if (HasFocus)
             {
-                if (mouseState.LeftButton == ButtonState.Pressed &&
+                if (vxEngine.InputManager.MouseState.LeftButton == ButtonState.Pressed &&
                     PreviousMouseState.LeftButton == ButtonState.Released)
                 {
-                    StartMousePosition = mouseState.Y;
+                    StartMousePosition = vxEngine.InputManager.MouseState.Y;
                     IsScrolling = true;
                 }
             }
 
-            if (mouseState.LeftButton == ButtonState.Released)
+            if (vxEngine.InputManager.MouseState.LeftButton == ButtonState.Released)
                 IsScrolling = false;
 
 
             if (IsScrolling)
-                TravelPosition = mouseState.Y - StartMousePosition;
+                TravelPosition = vxEngine.InputManager.MouseState.Y - StartMousePosition;
 
             if (HasFocus || ParentPanel.HasFocus)
             {
-                TravelPosition += (mouseState.ScrollWheelValue - ScrollWheel_Previous) / -10;
+                TravelPosition += (vxEngine.InputManager.MouseState.ScrollWheelValue - ScrollWheel_Previous) / -10;
 
                 TravelPosition = Math.Max(Math.Min(TravelPosition, MaxTravel), 0);
             }
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
-            ScrollWheel_Previous = mouseState.ScrollWheelValue;
+            ScrollWheel_Previous = vxEngine.InputManager.MouseState.ScrollWheelValue;
         }
 
         public override void Draw(vxEngine vxEngine)

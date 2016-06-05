@@ -9,12 +9,13 @@ using vxVertices.GUI.Events;
 using vxVertices.Mathematics;
 using Microsoft.Xna.Framework.Graphics;
 using vxVertices.Utilities;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace vxVertices.GUI
 {
-	/// <summary>
-	/// GUI Base Class.
-	/// </summary>
+    /// <summary>
+    /// GUI Base Class.
+    /// </summary>
     public class vxGUIBaseItem
     {
         /// <summary>
@@ -23,11 +24,11 @@ namespace vxVertices.GUI
         /// <value>The vx engine.</value>
         public vxEngine vxEngine { get; set; }
 
-		/// <summary>
-		/// Object variable which allows arbitary data too be passed between methods.
-		/// </summary>
-		/// <value>The user data.</value>
-		public object UserData { get; set; }
+        /// <summary>
+        /// Object variable which allows arbitary data too be passed between methods.
+        /// </summary>
+        /// <value>The user data.</value>
+        public object UserData { get; set; }
 
         /// <summary>
         /// The owning GUI Manger.
@@ -54,26 +55,26 @@ namespace vxVertices.GUI
         }
         string text = "<text>";
 
-		/// <summary>
-		/// Text Of GUI Item
-		/// </summary>
-		public SpriteFont Font
-		{
-			get { return spriteFont; }
-			set { spriteFont = value; }
-		}
-		SpriteFont spriteFont;
+        /// <summary>
+        /// Text Of GUI Item
+        /// </summary>
+        public SpriteFont Font
+        {
+            get { return spriteFont; }
+            set { spriteFont = value; }
+        }
+        SpriteFont spriteFont;
 
-		/// <summary>
-		/// Gets or sets the opacity of the current GUI Item.
-		/// </summary>
-		/// <value>The opacity.</value>
-		public float Opacity
-		{
-			get { return opacity; }
-			set { opacity = value; }
-		}
-		float opacity = 1;
+        /// <summary>
+        /// Gets or sets the opacity of the current GUI Item.
+        /// </summary>
+        /// <value>The opacity.</value>
+        public float Opacity
+        {
+            get { return opacity; }
+            set { opacity = value; }
+        }
+        float opacity = 1;
 
 
         /// <summary>
@@ -113,7 +114,8 @@ namespace vxVertices.GUI
         public bool CaptureInput
         {
             get { return _captureInput; }
-            set {
+            set
+            {
                 _captureInput = value;
                 if (_captureInput == true)
                     this.GUIManager.FocusedItem = this;
@@ -129,7 +131,8 @@ namespace vxVertices.GUI
         public bool IsTogglable
         {
             get { return _isTogglable; }
-            set {
+            set
+            {
                 _isTogglable = value;
                 if (value == true)
                     ToggleState = ToggleState.Off;
@@ -154,10 +157,10 @@ namespace vxVertices.GUI
         }
         float hoverAlpha = 0;
 
-		/// <summary>
-		/// Gets or sets the requested hover alpha for smoothing.
-		/// </summary>
-		/// <value>The hover alpha req.</value>
+        /// <summary>
+        /// Gets or sets the requested hover alpha for smoothing.
+        /// </summary>
+        /// <value>The hover alpha req.</value>
         public float HoverAlphaReq
         {
             get { return hoverAlphaReq; }
@@ -165,10 +168,10 @@ namespace vxVertices.GUI
         }
         float hoverAlphaReq = 0;
 
-		/// <summary>
-		/// Gets or sets the hover alpha max.
-		/// </summary>
-		/// <value>The hover alpha max.</value>
+        /// <summary>
+        /// Gets or sets the hover alpha max.
+        /// </summary>
+        /// <value>The hover alpha max.</value>
         public float HoverAlphaMax
         {
             get { return hoverAlphaMax; }
@@ -176,10 +179,10 @@ namespace vxVertices.GUI
         }
         float hoverAlphaMax = 1;
 
-		/// <summary>
-		/// Gets or sets the hover alpha minimum.
-		/// </summary>
-		/// <value>The hover alpha minimum.</value>
+        /// <summary>
+        /// Gets or sets the hover alpha minimum.
+        /// </summary>
+        /// <value>The hover alpha minimum.</value>
         public float HoverAlphaMin
         {
             get { return hoverAlphaMin; }
@@ -187,10 +190,10 @@ namespace vxVertices.GUI
         }
         float hoverAlphaMin = 0;
 
-		/// <summary>
-		/// Gets or sets the hover alpha delta speed of smoothing.
-		/// </summary>
-		/// <value>The hover alpha delta speed.</value>
+        /// <summary>
+        /// Gets or sets the hover alpha delta speed of smoothing.
+        /// </summary>
+        /// <value>The hover alpha delta speed.</value>
         public float HoverAlphaDeltaSpeed
         {
             get { return hoverAlphaDeltaSpeed; }
@@ -204,9 +207,11 @@ namespace vxVertices.GUI
         public bool IsSelected
         {
             get { return isSelected; }
-            set { isSelected = value; 
-				hoverAlphaReq = 0;
-			}
+            set
+            {
+                isSelected = value;
+                hoverAlphaReq = 0;
+            }
         }
         bool isSelected = false;
 
@@ -227,7 +232,8 @@ namespace vxVertices.GUI
         public bool Enabled
         {
             get { return enabled; }
-            set { 
+            set
+            {
                 enabled = value;
                 // Raise the 'Changed' event.
                 if (EnabledStateChanged != null)
@@ -236,12 +242,12 @@ namespace vxVertices.GUI
         }
         bool enabled = true;
 
-		/// <summary>
-		/// Occurs when enabled state changed.
-		/// </summary>
+        /// <summary>
+        /// Occurs when enabled state changed.
+        /// </summary>
         public event EventHandler<EventArgs> EnabledStateChanged;
         #endregion
-        
+
         #region Colour Properties
 
         /// <summary>
@@ -304,8 +310,9 @@ namespace vxVertices.GUI
         public Vector2 Position
         {
             get { return position; }
-            set { 
-                position = value; 
+            set
+            {
+                position = value;
                 if (PositionChanged != null)
                     PositionChanged(this, new EventArgs());
             }
@@ -399,26 +406,28 @@ namespace vxVertices.GUI
         /// </summary>
         public int Width
         {
-			get { return GetWidth (); }
+            get { return GetWidth(); }
             set { width = value; }
         }
         int width = 50;
-		public virtual int GetWidth(){
-			return width;
-		}
+        public virtual int GetWidth()
+        {
+            return width;
+        }
 
         /// <summary>
         /// Width Of GUI Item
         /// </summary>
         public int Height
         {
-			get { return GetHeight(); }
+            get { return GetHeight(); }
             set { height = value; }
         }
-		int height = 50;
-		public virtual int GetHeight(){
-			return height;
-		}
+        int height = 50;
+        public virtual int GetHeight()
+        {
+            return height;
+        }
 
         #endregion
 
@@ -431,10 +440,10 @@ namespace vxVertices.GUI
             set { previousMouseState = value; }
         }
         MouseState previousMouseState;
-        
-		/// <summary>
-		/// Element Index.
-		/// </summary>
+
+        /// <summary>
+        /// Element Index.
+        /// </summary>
         public int Index = 0;
 
 
@@ -447,24 +456,24 @@ namespace vxVertices.GUI
         public vxGUIBaseItem() { }
 
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUIBaseItem"/> class.
-		/// </summary>
-		/// <param name="position">Position.</param>
-		public vxGUIBaseItem(Vector2 position) 
-		{
-			this.Position = position;
-			this.OriginalPosition = position;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUIBaseItem"/> class.
+        /// </summary>
+        /// <param name="position">Position.</param>
+        public vxGUIBaseItem(Vector2 position)
+        {
+            this.Position = position;
+            this.OriginalPosition = position;
+        }
 
-		/// <summary>
-		/// Initialise this instance.
-		/// </summary>
+        /// <summary>
+        /// Initialise this instance.
+        /// </summary>
         public virtual void Initialise()
         {
             //Set Initial State
             previousMouseState = Mouse.GetState();
-            
+
             //Always Set Initial Colour
             Colour = Color_Normal;
         }
@@ -474,7 +483,7 @@ namespace vxVertices.GUI
         /// <summary>
         /// When the Mouse is NOT over the GUIItem
         /// </summary>
-        public virtual void NotHover() 
+        public virtual void NotHover()
         {
             Colour = Color_Normal;
             isSelected = false;
@@ -493,24 +502,24 @@ namespace vxVertices.GUI
             isSelected = false;
             HasFocus = true;
 
-            if(InitialHover)
+            if (InitialHover)
             {
                 InitialHover = false;
 
                 if (OnInitialHover != null)
-                    OnInitialHover(this, new EventArgs());                
+                    OnInitialHover(this, new EventArgs());
             }
         }
-        
+
         /// <summary>
         /// When the GUIItem is Selected
         /// </summary>
         public virtual void Select()
         {
             if (Enabled)
-            {				
-				//To Show some visible cure the click was registered.
-				HoverAlpha = 0;
+            {
+                //To Show some visible cure the click was registered.
+                HoverAlpha = 0;
 
                 // Raise the Clicked event.
                 if (Clicked != null)
@@ -518,8 +527,10 @@ namespace vxVertices.GUI
 
                 Colour = Color_Selected;
                 isSelected = true;
+                HasFocus = true;
 
-                if (IsTogglable) { 
+                if (IsTogglable)
+                {
                     if (ToggleState == ToggleState.Off)
                         ToggleState = ToggleState.On;
                     else
@@ -528,38 +539,74 @@ namespace vxVertices.GUI
             }
             else
                 Colour *= 0.5f;
-        }   
+        }
 
-
+        
         /// <summary>
         /// Updates the GUI Item
         /// </summary>
-        public virtual void Update(MouseState mouseState)
+        public virtual void Update(vxEngine vxEngine)
         {
-            if (mouseState.X > BoundingRectangle.Left && mouseState.X < BoundingRectangle.Right)
+            //Get Position of either Mouse or Touch Panel Click
+            //Vector2 cursorPos = mouseState.Position.ToVector2();
+
+            Vector2 cursorPos = new Vector2(vxEngine.InputManager.MouseState.X, vxEngine.InputManager.MouseState.Y);
+
+            try
             {
-                if (mouseState.Y < BoundingRectangle.Bottom && mouseState.Y > BoundingRectangle.Top)
+#if VRTC_PLTFRM_DROID
+                if (vxEngine.InputManager.touchCollection.Count > 0)
                 {
-                    if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
+                    cursorPos = vxEngine.InputManager.touchCollection[0].Position;
+                }
+#endif
+
+                if (cursorPos.X > BoundingRectangle.Left && cursorPos.X < BoundingRectangle.Right)
+                {
+                    if (cursorPos.Y < BoundingRectangle.Bottom && cursorPos.Y > BoundingRectangle.Top)
+                    {
+#if VRTC_PLTFRM_DROID
+                        if (vxEngine.InputManager.touchCollection.Count > 0)
+                        {
+                            //   this.vxEngine.InputManager.Cursor = touchCollection[0].Position;
+
+                            //Only Fire Select Once it's been released
+                            if (vxEngine.InputManager.touchCollection[0].State == TouchLocationState.Moved)
+                                Select();
+                            //Hover if and only if Moved is selected
+                            else if (vxEngine.InputManager.touchCollection[0].State == TouchLocationState.Moved)
+                                Hover();
+                        }
+#else
+                    if (vxEngine.InputManager.MouseState.LeftButton == ButtonState.Pressed && 
+                        previousMouseState.LeftButton == ButtonState.Released)
                          Select();                    
                     else
                         Hover();
+#endif
+                    }
+                    else
+                        NotHover();
                 }
                 else
                     NotHover();
             }
-            else
-                NotHover();
-
+            catch
+            {
+                if (vxEngine == null)
+                    Console.WriteLine("Engine");
+                
+            }
             //Set State for next Loop
-            previousMouseState = mouseState;
+            previousMouseState = vxEngine.InputManager.MouseState;
 
             //If it's a Toggle Item, set Toggle State
-            if (IsTogglable) { 
-                if(ToggleState == ToggleState.On)
+            if (IsTogglable)
+            {
+                if (ToggleState == ToggleState.On)
                     hoverAlphaReq = hoverAlphaMax;
                 else
-                   hoverAlphaReq = hasFocus ? hoverAlphaMax : hoverAlphaMin;
+                    hoverAlphaReq = hasFocus ? hoverAlphaMax : hoverAlphaMin;
             }
         }
 
@@ -570,10 +617,11 @@ namespace vxVertices.GUI
         /// </summary>
         public virtual void Draw(vxEngine vxEngine)
         {
-			if (spriteFont == null) {
-				spriteFont = vxEngine.vxGUITheme.Font;
-			}
-			hoverAlpha = vxSmooth.SmoothFloat(hoverAlpha, hoverAlphaReq, HoverAlphaDeltaSpeed);
+            if (spriteFont == null)
+            {
+                spriteFont = vxEngine.vxGUITheme.Font;
+            }
+            hoverAlpha = vxSmooth.SmoothFloat(hoverAlpha, hoverAlphaReq, HoverAlphaDeltaSpeed);
         }
 
         /// <summary>

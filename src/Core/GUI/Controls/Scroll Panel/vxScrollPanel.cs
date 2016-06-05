@@ -243,9 +243,9 @@ namespace vxVertices.GUI.Controls
         /// Updates the GUI Item
         /// </summary>
         /// <param name="mouseState">Mouse state.</param>
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
             //Recalculate the Bounding rectangle each loop
             BoundingRectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
@@ -254,7 +254,7 @@ namespace vxVertices.GUI.Controls
                 BoundingRectangle.X + BoundingRectangle.Width - Padding - scrollBar.BarWidth,
                 BoundingRectangle.Y + Padding);
 
-            scrollBar.Update(mouseState);
+            scrollBar.Update(vxEngine);
 
             //vxConsole.WriteToInGameDebug ("=> " + );
             float dif = Vector2.Subtract(Position, PositionPreviousFrame).Length();
@@ -266,7 +266,7 @@ namespace vxVertices.GUI.Controls
                         - new Vector2(0, (scrollBar.Percentage * (scrollBar.ScrollLength - this.Height + 2 * Padding)));
 
                 if (this.HasFocus && dif < 0.05f)
-                    Items[i].Update(mouseState);
+                    Items[i].Update(vxEngine);
                 else
                     Items[i].NotHover();
             }

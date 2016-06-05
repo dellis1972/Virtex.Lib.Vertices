@@ -79,8 +79,9 @@ namespace vxVertices.GUI.Controls
                 BarWidth, ScrollBarHeight);
         }
 
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
+            MouseState mouseState = vxEngine.InputManager.MouseState;
             BoundingRectangle = new Rectangle((int)Position.X,
     (int)Position.Y + TravelPosition,
     BarWidth, ScrollBarHeight);
@@ -108,7 +109,7 @@ namespace vxVertices.GUI.Controls
 
                 TravelPosition = Math.Max(Math.Min(TravelPosition, MaxTravel), 0);
             }
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
             ScrollWheel_Previous = mouseState.ScrollWheelValue;
         }

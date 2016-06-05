@@ -65,16 +65,16 @@ namespace vxVertices.GUI.Controls
 		/// Updates the GUI Item
 		/// </summary>
 		/// <param name="mouseState">Mouse state.</param>
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
 			Vector2 tempPosition = this.Position + new Vector2(PaddingX, PaddingY);
             foreach (vxGUIBaseItem bsGuiItm in ToolbarItems)
 			{
 				//Set Position
 				bsGuiItm.Position = tempPosition;
-				bsGuiItm.Update(mouseState);
+				bsGuiItm.Update(vxEngine);
 
 
 				//Incrememnet Up the Position

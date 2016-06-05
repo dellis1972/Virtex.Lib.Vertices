@@ -234,7 +234,7 @@ namespace vxVertices.GUI.Controls
 		/// Updates the GUI Item
 		/// </summary>
 		/// <param name="mouseState">Mouse state.</param>
-		public override void Update (MouseState mouseState)
+		public override void Update (vxEngine vxEngine)
 		{
 			SetLengths ();
 			//Position_Requested = Position_Original;
@@ -263,12 +263,12 @@ namespace vxVertices.GUI.Controls
 
 			BoundingRectangle = Rec_Tab;
 
-			base.Update (mouseState);
+			base.Update (vxEngine);
 
 			if (HasFocus == false) {
 				Rec_Back = new Rectangle ((int)(Position.X), (int)(Position.Y), this.Width, this.Height);
 				BoundingRectangle = Rec_Back;
-				base.Update (mouseState);
+				base.Update (vxEngine);
 			}
 
 			//First Set Position
@@ -278,7 +278,7 @@ namespace vxVertices.GUI.Controls
 				bsGuiItm.Position = this.Position + ChildElementOffset
 				+ bsGuiItm.OriginalPosition;
                 
-				bsGuiItm.Update (mouseState);
+				bsGuiItm.Update (vxEngine);
 
 				if (bsGuiItm.HasFocus == true)
 					HasFocus = true;

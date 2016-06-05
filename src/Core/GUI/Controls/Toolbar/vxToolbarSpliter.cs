@@ -52,7 +52,7 @@ namespace vxVertices.GUI.Controls
 
         int clickCapture() { return 0; }
 
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         { }
 
         public override void Draw(vxEngine vxEngine)

@@ -287,7 +287,7 @@ namespace vxVertices.Screens.Menus
             // Update each nested vxMenuEntry object.
             for (int i = 0; i < menuEntries.Count; i++)
             {
-				menuEntries [i].Update (mouseState);
+				menuEntries [i].Update (vxEngine);
             }
         }
 

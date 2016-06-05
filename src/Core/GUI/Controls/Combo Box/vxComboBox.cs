@@ -154,14 +154,14 @@ namespace vxVertices.GUI.Controls
 		/// Updates the GUI Item
 		/// </summary>
 		/// <param name="mouseState">Mouse state.</param>
-        public override void Update(MouseState mouseState)
+        public override void Update(vxEngine vxEngine)
         {
             //Update Each Button
             if (DisplayList)
                 foreach (vxComboBoxItem btn in Items)
-                    btn.Update(mouseState);
+                    btn.Update(vxEngine);
 
-            base.Update(mouseState);
+            base.Update(vxEngine);
 
         }
 
