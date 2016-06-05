@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\MonoGame.GL\Debug</OutputPath>
+    <OutputPath>bin\OpenGL\Debug</OutputPath>
     <DefineConstants>DEBUG;TECHDEMO_PLTFRM_GL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\MonoGame.GL\Release</OutputPath>
+    <OutputPath>bin\OpenGL\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -194,25 +194,85 @@
     <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\modelobjs.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_diff.xnb">
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\concrete_cube.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\concrete_cube.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\texture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_2_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_2_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_2_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\columns_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\columns_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\columns_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_diff_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_nm.xnb">
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\floor_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_sm.xnb">
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\floor_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\floor_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_dds_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_dds_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_nm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\courtyard\td_courtyard.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.mtl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -28,7 +28,11 @@ namespace VerticeEnginePort.Base
         public IndexedCubeTest(vxEngine vxEngine, Vector3 StartPosition)
             : base(vxEngine, StartPosition)
         {
-            model = new vxModelVoxel("Content\\Models\\concrete_cube_obj\\concrete_cube.obj");
+			string path = "Content\\Models\\concrete_cube_obj\\concrete_cube.obj";
+			#if TECHDEMO_PLTFRM_GL
+			path = "Content\\Compiled.WindowsGL\\Models\\concrete_cube_obj\\concrete_cube.obj";
+			#endif
+			model = new vxModelVoxel(path);
 
             // We’ll be assigning texture values later
             effect = new BasicEffect (vxEngine.GraphicsDevice);
@@ -42,12 +46,12 @@ namespace VerticeEnginePort.Base
 
             //GraphicsDevice.BlendState = BlendState.AlphaBlend;
             //GraphicsDevice.DepthStencilState = DepthStencilState.None;
-
+			/*
             this.vxEngine.GraphicsDevice.BlendState = BlendState.Opaque;
             this.vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             this.vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
             this.vxEngine.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-
+*/
             effect.View = vxEngine.Current3DSceneBase.Camera.View;
 			effect.Projection =vxEngine.Current3DSceneBase.Camera.Projection;
 

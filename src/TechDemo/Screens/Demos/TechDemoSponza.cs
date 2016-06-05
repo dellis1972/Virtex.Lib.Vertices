@@ -125,7 +125,9 @@ namespace VerticeEnginePort.Base
 
             //This is a little convenience method used to extract vertices and indices from a model.
             //It doesn't do anything special; any approach that gets valid vertices and indices will work.
-            ModelDataExtractor.GetVerticesAndIndicesFromModel(envr.vxModel.ModelMain, out staticTriangleVertices, out staticTriangleIndices);
+            
+			#if !TECHDEMO_PLTFRM_GL
+			ModelDataExtractor.GetVerticesAndIndicesFromModel(envr.vxModel.ModelMain, out staticTriangleVertices, out staticTriangleIndices);
 
             //var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices, new AffineTransform(Matrix3X3.CreateFromAxisAngle(Vector3.Up, MathHelper.Pi), new Vector3(0, -10, 0)));
             var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices,
@@ -136,7 +138,7 @@ namespace VerticeEnginePort.Base
 
             BEPUPhyicsSpace.Add(staticMesh);
             BEPUDebugDrawer.Add(staticMesh);
-
+			#endif
 
             int size = 100;
 			BEPUPhyicsSpace.Add(new Box (new Vector3(0, -5, 0), size, 10, size));

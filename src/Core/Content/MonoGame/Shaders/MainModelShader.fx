@@ -22,13 +22,13 @@ float4x4 ShadowTransform[NumSplits];
 float4x4 ShadowTransform;
 #endif
 
-float ShadowMapSize = 512.0f;
+//float ShadowMapSize = 512.0f;
 float4 TileBounds[NumSplits];
 float4 SplitColors[NumSplits+1];
 
 float2 PoissonKernel[12];
 
-//float ShadowBrightness = 0.25f;
+float ShadowBrightness = 0.25f;
 
 
 //			Main Properties
@@ -238,7 +238,7 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 	ShadowSplitInfo splitInfo = GetSplitInfo(shadowData);
 	
 	//return lerp(ShadowBrightness, 1.0, (splitInfo.LightSpaceDepth < tex2Dlod(ShadowMapSampler, float4(splitInfo.TexCoords, 0, 0)).r));
-	//return lerp(ShadowBrightness, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
+	return 0.5f * lerp(ShadowBrightness, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
 	
 	float result = 0;
 	
@@ -468,13 +468,14 @@ MainVSOutput MainVSFunction(MainVSInput input, float4x4 worldTransform)
 
 	output.TexCoord = input.TexCoord;
 
+	
 	// calculate tangent space to world space matrix using the world space tangent,
 	// binormal, and normal as basis vectors
 	output.tangentToWorld[0] = mul(input.Tangent, worldTransform);
 	output.tangentToWorld[1] = mul(input.Binormal, worldTransform);
 	output.tangentToWorld[2] = mul(input.Normal, worldTransform);
-
 	
+
 	//Compute Fog Factor
 	if (DoFog==true)
 	{
@@ -482,6 +483,7 @@ MainVSOutput MainVSFunction(MainVSInput input, float4x4 worldTransform)
 	}
 	else
 		output.FogFactor = 0;
+	
 	
 	output.Shadow = GetShadowData(worldPosition, output.Position);
 	
@@ -506,21 +508,25 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 {
 	//First, Get the Diffuse Colour of from the Texture
 	//*********************************************************************************************
+
 	float4 diffusecolor = tex2D(diffuseSampler, input.TexCoord);
+
 
 	//Set Colour From the Diffuse Sampler Colour and the Shadow Factor
 	
 	float shadow = GetShadowFactor(input.Shadow, 1);
 	float4 Color = diffusecolor * shadow;
-
+								
 	Color = lerp(Color, FogColor, input.FogFactor);
 
+	
 	if (ShadowDebug==true)
 	{
 		Color = GetSplitIndexColor(input.Shadow) * shadow;
 	}
-
+	
 	return Color + float4(0, 0, 0, Alpha);
+	
 
 	/*
 	float specFactor = tex2D(specularSampler, input.TexCoord).x;

@@ -102,9 +102,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 #endif
 
 
-                //////////////////////////////////////////////////////////////////////////////////
+                /*********************************************************************************/
                 //                              MAIN MODEL
-                //////////////////////////////////////////////////////////////////////////////////
+				/*********************************************************************************/
 
                 //
                 // Now Apply and Initialise the New Effect on the MainModel Object using the speceified Effect.
@@ -133,12 +133,10 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                             Effect newEffect = EffectToSet.Clone();
 
 
-                            // Set New Textures and Maps from Directory
-
                             //Main Diffuse Texture
                             if (newEffect.Parameters["Texture"] != null)
                             {
-                                if (File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds.xnb"))
+								if (File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds.xnb"))
                                     newEffect.Parameters["Texture"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds"));
                                 else if (this.Engine.Assets != null)
                                     newEffect.Parameters["Texture"].SetValue(this.Engine.Assets.Textures.Texture_Diffuse_Null);
@@ -148,7 +146,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
                             // Normal Map
                             if (newEffect.Parameters["NormalMap"] != null &&
-                                File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
+								File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
                             {
                                 newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
 #if vxDEBUG_VERBOSE
@@ -158,7 +156,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                             
                             // Specular Map
                             if (newEffect.Parameters["SpecularMap"] != null &&
-                                    File.Exists("Content/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
+								File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
                             {
 
                                 newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));

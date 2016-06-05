@@ -489,9 +489,6 @@
     <None Include="Vertices.Engine.Content\Compiled.Android\Textures\xGUI\blank.xnb" />
     <None Include="Vertices.Engine.Content\Compiled.Android\Textures\xGUI\gradient.xnb" />
     <None Include="Content\MonoGame\Shaders\MainModelShader.fx" />
-    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\MainModelShader.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Content\MonoGame\Shaders\Lighting\ClearGBuffer.fx" />
     <None Include="Content\MonoGame\Shaders\Lighting\CombineFinal.fx" />
     <None Include="Content\MonoGame\Shaders\Lighting\DirectionalLight.fx" />
@@ -703,6 +700,7 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveAs.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
     <Compile Include="ContentManagement\vxContentManager.cs" />
+    <Compile Include="Graphics\Model\vxModelVoxel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -813,11 +811,18 @@
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\CascadeShadowShader.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\MainModelShader.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
       <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+      <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

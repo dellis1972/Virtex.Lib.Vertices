@@ -694,6 +694,10 @@ namespace vxVertices.Core.Entities
                                 else
                                     DoShadowMap = true;
 
+
+							//if (effect.Parameters["DoShadow"] != null)
+								//effect.Parameters["ShadowMapSize"].SetValue(512);
+
                                 if (effect.Parameters["DoShadow"] != null)
                                     effect.Parameters["DoShadow"].SetValue(DoShadowMap);
 
