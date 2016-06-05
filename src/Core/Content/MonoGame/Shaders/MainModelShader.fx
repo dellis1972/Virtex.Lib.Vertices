@@ -26,7 +26,6 @@ float4x4 ShadowTransform;
 float4 TileBounds[NumSplits];
 float4 SplitColors[NumSplits+1];
 
-float2 PoissonKernel[12];
 
 float ShadowBrightness = 0.25f;
 
@@ -226,6 +225,20 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 {
 	float  PoissonKernelScale[NumSplits + 1] = { 1.1f, 1.10f, 1.2f, 1.3f, 0.0f };
 
+	float2 PoissonKernel[12] = { float2(-0.326212f, -0.405810f),
+		float2(-0.840144f, -0.073580f),
+		float2(-0.695914f, 0.457137f),
+		float2(-0.203345f, 0.620716f),
+		float2(0.962340f, -0.194983f),
+		float2(0.473434f, -0.480026f),
+		float2(0.519456f, 0.767022f),
+		float2(0.185461f, -0.893124f),
+		float2(0.507431f, 0.064425f),
+		float2(0.896420f, 0.412458f),
+		float2(-0.321940f, -0.932615f),
+		float2(-0.791559f, -0.597710f) };
+
+
 	float4 randomTexCoord3D = float4(shadowData.WorldPosition.xyz*100, 0);
 	float2 randomValues = tex3Dlod(RandomSampler3D, randomTexCoord3D).rg;
 	float2 rotation = randomValues * 2 - 1;
@@ -237,17 +250,23 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 	const int numSamples = 2;
 	ShadowSplitInfo splitInfo = GetSplitInfo(shadowData);
 	
-	//return lerp(ShadowBrightness, 1.0, (splitInfo.LightSpaceDepth < tex2Dlod(ShadowMapSampler, float4(splitInfo.TexCoords, 0, 0)).r));
-	return 0.5f * lerp(ShadowBrightness, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
+	return lerp(0.25f, 1.0, (splitInfo.LightSpaceDepth < tex2Dlod(ShadowMapSampler, float4(splitInfo.TexCoords, 0, 0)).r));
+	//return lerp(0.25f, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
 	
 	float result = 0;
 	
 	for(int s=0; s<numSamples; ++s)
 	{
+		
 		float2 poissonOffset = float2(
 			rotation.x * PoissonKernel[s].x - rotation.y * PoissonKernel[s].y,
 			rotation.y * PoissonKernel[s].x + rotation.x * PoissonKernel[s].y
 		);
+		
+		//float2 poissonOffset = float2(
+		//	rotation.x - rotation.y,
+		//	rotation.y + rotation.x 
+		//	);
 
 		const float4 randomizedTexCoords = float4(splitInfo.TexCoords + poissonOffset * PoissonKernelScale[splitInfo.SplitIndex] * 0.75, 0, 0);
 		//const float4 randomizedTexCoords = float4(splitInfo.TexCoords, 0, 0);
