@@ -78,7 +78,8 @@ namespace vxVertices.Core.Scenes
         public bool DoFog { get; set; }
         public float FogNear { get; set; }
         public float FogFar { get; set; }
-        public Color FogColor { get; set; }
+        public Color FogColor { get { return _FogColor; } set { _FogColor = value; } }
+        private Color _FogColor = Color.White;
 
         /// <summary>
         /// Manages the Sun Class.
@@ -215,8 +216,8 @@ namespace vxVertices.Core.Scenes
 
 
             DoFog = false;
-            FogNear = 5;
-            FogFar = Camera.FarPlane / 4;
+            FogNear = 20;
+            FogFar = Camera.FarPlane/4;
 
             //Setup Sun
             SunEmitter = new Sun (vxEngine);

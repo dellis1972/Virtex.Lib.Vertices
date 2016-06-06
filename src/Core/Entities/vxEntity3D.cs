@@ -716,6 +716,7 @@ namespace vxVertices.Core.Entities
                                 if (effect.Parameters["CameraPos"] != null)
                                     effect.Parameters["CameraPos"].SetValue(vxEngine.Current3DSceneBase.Camera.WorldMatrix.Translation);
 
+                                /*
                                 if (effect.Parameters["FogNear"] != null)
                                     effect.Parameters["FogNear"].SetValue(5.0f);
 
@@ -724,6 +725,16 @@ namespace vxVertices.Core.Entities
 
                                 if (effect.Parameters["FogColor"] != null)
                                     effect.Parameters["FogColor"].SetValue(Vector4.One);
+                                  */
+                                if (effect.Parameters["FogNear"] != null)
+                                    effect.Parameters["FogNear"].SetValue(vxEngine.Current3DSceneBase.FogNear);
+
+                                if (effect.Parameters["FogFar"] != null)
+                                    effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar);
+
+                                if (effect.Parameters["FogColor"] != null)
+                                    effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
+                                
 
                                 if (effect.Parameters["Alpha"] != null)
                                     effect.Parameters["Alpha"].SetValue(AlphaValue);
