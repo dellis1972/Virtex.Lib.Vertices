@@ -246,7 +246,8 @@ namespace vxVertices.GUI.Controls
 			//First Set Position based off of Selection Status
 			if (IsSelected || ForceSelect) {
 				Position_Requested = Position_Original + OffsetVector;
-			} else if (HasFocus == false)
+			} 
+			else if (HasFocus == false)
 				Position_Requested = Position_Original;
 
 			Position = vxSmooth.Smooth2DVector (Position, Position_Requested, 6);

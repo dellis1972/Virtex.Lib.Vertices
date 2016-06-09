@@ -183,8 +183,10 @@ namespace vxVertices.Core.Scenes
 		{
 			base.Update(gameTime, otherScreenHasFocus, false);
 
-			GUIManager.Update(vxEngine);
-
+			//Only update the GUI if the Current Screen is Active
+			if (IsActive) {
+				GUIManager.Update (vxEngine);
+			}
 			// Gradually fade in or out depending on whether we are covered by the pause screen.
 			if (coveredByOtherScreen)
 				pauseAlpha = Math.Min(pauseAlpha + 1f / 32, 1);

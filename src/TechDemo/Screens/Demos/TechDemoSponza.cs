@@ -155,7 +155,7 @@ namespace VerticeEnginePort.Base
             //Add the scrollpanel to the slider tab page.
             Straights.AddItem(ScrollPanel_Straights);
 
-            IndexedCubeTest cube = new IndexedCubeTest(vxEngine, new Vector3(4, 4, 0));
+            //IndexedCubeTest cube = new IndexedCubeTest(vxEngine, new Vector3(4, 4, 0));
 
             /*
             Teapot t = new Teapot((GameEngine)vxEngine, new Vector3(4, 4, 0));

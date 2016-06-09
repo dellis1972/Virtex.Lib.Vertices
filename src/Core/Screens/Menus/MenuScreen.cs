@@ -231,7 +231,7 @@ namespace vxVertices.Screens.Menus
             for (int i = 0; i < menuEntries.Count; i++)
             {
 				vxMenuEntry vxMenuEntry = menuEntries[i];
-				NextMenuItemOffset = new Vector2 (0, vxMenuEntry.Height + vxEngine.vxGUITheme.vxMenuEntries.Padding.Y);    
+				NextMenuItemOffset = new Vector2 (0, vxMenuEntry.Height + vxEngine.vxGUITheme.vxMenuEntries.Margin.Y);    
                 
 				//Set Menu Item Location
 				if(vxEngine.vxGUITheme.vxMenuEntries.TextJustification == vxVertices.GUI.TextJustification.Left)

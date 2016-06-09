@@ -18,6 +18,8 @@ namespace vxVertices.GUI.Themes
 		public Color BackgroundColour { get; set; }
 		public Color BackgroundHoverColour { get; set; }
 
+
+		public Vector2 Margin { get; set; }
 		public Vector2 Padding { get; set; }
 		public Vector2 FineTune { get; set; }
 
@@ -32,6 +34,7 @@ namespace vxVertices.GUI.Themes
 
             BackgroundImage = Engine.Assets.Textures.Blank;
 
+			Margin = new Vector2 (10, 10);
             Padding = new Vector2 (10, 10);
 			FineTune = new Vector2 (0);
 

@@ -203,9 +203,6 @@
     <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\concrete_cube.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\concrete_cube.obj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\texture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
