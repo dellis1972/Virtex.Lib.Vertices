@@ -63,7 +63,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release2D|x86'">
     <OutputPath>bin\x86\Release2D\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS, VRTC_PLTFRM_XNA, VIRTICES_2D</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS, VRTC_PLTFRM_XNA, VIRTICES_2D, DRIVER_OPENAL</DefineConstants>
     <Optimize>true</Optimize>
     <NoStdLib>true</NoStdLib>
     <DebugType>pdbonly</DebugType>

@@ -78,14 +78,32 @@ namespace vxVertices.GUI.Controls
                 (int)Position.Y + TravelPosition,
                 BarWidth, ScrollBarHeight);
         }
-
+        bool isFirstTouchDown = true;
         public override void Update(vxEngine vxEngine)
         {
             MouseState mouseState = vxEngine.InputManager.MouseState;
+
             BoundingRectangle = new Rectangle((int)Position.X,
     (int)Position.Y + TravelPosition,
     BarWidth, ScrollBarHeight);
 
+#if VRTC_PLTFRM_DROID
+            if (HasFocus)
+            {
+                if (vxEngine.InputManager.IsTouchPressed() && isFirstTouchDown == true)
+                {
+                    isFirstTouchDown = false;
+                    StartMousePosition = (int)vxEngine.InputManager.Cursor.Y;
+                    IsScrolling = true;
+                }
+            }
+
+            if (vxEngine.InputManager.touchCollection.Count == 0)
+            {
+                isFirstTouchDown = true;
+                IsScrolling = false;
+            }
+#else
             if (HasFocus)
             {
                 if (mouseState.LeftButton == ButtonState.Pressed &&
@@ -98,10 +116,10 @@ namespace vxVertices.GUI.Controls
 
             if (mouseState.LeftButton == ButtonState.Released)
                 IsScrolling = false;
-
+#endif
 
             if (IsScrolling)
-                TravelPosition = mouseState.Y - StartMousePosition;
+                TravelPosition = (int)vxEngine.InputManager.Cursor.Y - StartMousePosition;
 
             if (HasFocus || ParentPanel.HasFocus)
             {

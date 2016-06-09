@@ -438,12 +438,12 @@ namespace vxVertices.Core.Input
         /// </summary>
         public bool IsMenuSelect()
         {
-            return IsNewKeyPress(Keys.Space) || IsNewKeyPress(Keys.Enter) || IsNewButtonPress(Buttons.A) || IsNewButtonPress(Buttons.Start) || IsNewMouseButtonPress(MouseButtons.LeftButton) || IsTouchPressed();
+            return IsNewKeyPress(Keys.Space) || IsNewKeyPress(Keys.Enter) || IsNewButtonPress(Buttons.A) || IsNewButtonPress(Buttons.Start) || IsNewMouseButtonPress(MouseButtons.LeftButton) || IsTouchReleased();
         }
 
         public bool IsMenuPressed()
         {
-            return KeyboardState.IsKeyDown(Keys.Space) || KeyboardState.IsKeyDown(Keys.Enter) || GamePadState.IsButtonDown(Buttons.A) || GamePadState.IsButtonDown(Buttons.Start) || MouseState.LeftButton == ButtonState.Pressed || IsTouchPressed();
+            return KeyboardState.IsKeyDown(Keys.Space) || KeyboardState.IsKeyDown(Keys.Enter) || GamePadState.IsButtonDown(Buttons.A) || GamePadState.IsButtonDown(Buttons.Start) || MouseState.LeftButton == ButtonState.Pressed || IsTouchReleased();
         }
 
         public bool IsMenuReleased()
@@ -452,6 +452,16 @@ namespace vxVertices.Core.Input
         }
 
         public bool IsTouchPressed()
+        {
+            if (touchCollection.Count > 0)
+            {
+                return (touchCollection[0].State != TouchLocationState.Released);
+            }
+            else
+                return false;
+        }
+
+        public bool IsTouchReleased()
         {
             if (touchCollection.Count > 0)
             {
