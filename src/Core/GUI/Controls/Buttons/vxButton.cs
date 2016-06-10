@@ -63,7 +63,7 @@ namespace vxVertices.GUI.Controls
         {
             //If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
 
-			#if DRIVER_OPENAL
+#if !NO_DRIVER_OPENAL
             SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
             MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
             MenuHighlight.Play();
