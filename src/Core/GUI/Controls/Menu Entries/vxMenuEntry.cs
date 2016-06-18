@@ -72,12 +72,12 @@ namespace vxVertices.GUI.Controls
 
         private void VxMenuEntry_OnInitialHover(object sender, EventArgs e)
 		{
-			#if DRIVER_OPENAL
+#if !NO_DRIVER_OPENAL
             //If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
             SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
             MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
             MenuHighlight.Play();
-			#endif
+#endif
         }
 
         /// <summary>
@@ -85,11 +85,11 @@ namespace vxVertices.GUI.Controls
         /// </summary>
         protected internal virtual void OnSelectEntry(PlayerIndex playerIndex)
 		{
-			#if DRIVER_OPENAL
+#if !NO_DRIVER_OPENAL
             SoundEffectInstance equipInstance = vxEngine.vxGUITheme.SE_Menu_Confirm.CreateInstance();
             equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
             equipInstance.Play();
-			#endif
+#endif
 
             if (Selected != null)
 				Selected(this, new PlayerIndexEventArgs(playerIndex));
