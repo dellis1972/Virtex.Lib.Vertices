@@ -69,6 +69,13 @@ namespace vxVertices.Screens
                 content = new ContentManager(vxEngine.Game.Services, "Content");
 
             TitleFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_splash");
+
+			try
+			{
+			vxEngine.SplashScreen = vxEngine.Game.Content.Load<Texture2D> ("SplashScreen");
+			}
+			catch{
+			}
         }
 
 

@@ -115,6 +115,7 @@ namespace vxVertices.GUI.Dialogs
                 vxConsole.WriteLine("Setting VSync to: " + vxEngine.Profile.Settings.Graphics.Bool_VSync);
             };
 
+			#if VIRTICES_3D
 
             //Shadows
             /*****************************************************************************************************/
@@ -231,7 +232,7 @@ namespace vxVertices.GUI.Dialogs
                 vxConsole.WriteLine("Setting SSAO to: " + vxEngine.Profile.Settings.Graphics.SSAO);
             };
 
-
+			#endif
 
 
             Btn_Apply.Clicked += new EventHandler<vxGuiItemClickEventArgs>(Btn_Apply_Clicked);

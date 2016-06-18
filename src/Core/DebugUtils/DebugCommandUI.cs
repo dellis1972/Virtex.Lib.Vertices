@@ -166,6 +166,11 @@ namespace vxVertices.Core.Debug
 		/// </summary>
         vxEngine vxEngine;
 
+		/// <summary>
+		/// The toggle console key.
+		/// </summary>
+		Keys ToggleConsoleKey;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -183,6 +188,8 @@ namespace vxVertices.Core.Debug
             DrawOrder = int.MaxValue;
 
             // Adding default commands.
+
+			ToggleConsoleKey = Keys.OemTilde;
 
             // Help command displays registered command information.
             RegisterCommand("help", "Show Command helps",
@@ -445,7 +452,7 @@ namespace vxVertices.Core.Debug
             switch (state)
             {
                 case State.Closed:
-                    if (keyState.IsKeyDown(Keys.Tab))
+				if (keyState.IsKeyDown(ToggleConsoleKey))
                         Show();
                     break;
                 case State.Opening:
@@ -489,6 +496,12 @@ namespace vxVertices.Core.Debug
             foreach (Keys key in keys)
             {
                 if (!IsKeyPressed(key, dt)) continue;
+
+				//Break out if the ` Key is pressed.
+				if (key == Keys.OemTilde) {
+					Hide ();
+					break;
+				}
 
                 char ch;
                 if (KeyboardUtils.KeyToString(key, shift, out ch))
@@ -544,9 +557,9 @@ namespace vxVertices.Core.Debug
                                 cursorIndex = commandLine.Length;
                             }
                             break;
-                        case Keys.Tab:
-                            Hide();
-                            break;
+//					case Keys.OemTilde:
+//                            Hide();
+//                            break;
                     }
                 }
             }

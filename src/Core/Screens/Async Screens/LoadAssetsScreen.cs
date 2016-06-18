@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using vxVertices.Core;
+using vxVertices.Utilities;
 
 #endregion
 
@@ -169,7 +170,7 @@ namespace vxVertices.Screens.Async
                 SpriteBatch spriteBatch = vxEngine.SpriteBatch;
 				SpriteFont font = vxEngine.vxGUITheme.Font;
 
-                string message = "loading Engine";
+                string message = "loading";
 
                 // Center the text in the viewport.
                 Viewport viewport = vxEngine.GraphicsDevice.Viewport;
@@ -177,7 +178,6 @@ namespace vxVertices.Screens.Async
                 Vector2 textSize = font.MeasureString(message);
                 Vector2 textPosition = (viewportSize - textSize) * 95/ 100;
 
-                Color color = Color.LightGray * TransitionAlpha;
 
                 // Animate the number of dots after our "Loading..." message.
                 loadAnimationTimer += gameTime.ElapsedGameTime;
@@ -186,12 +186,23 @@ namespace vxVertices.Screens.Async
 
                 message += new string('.', dotCount);
 
+				//vxEngine.vxGUITheme.vxLoadingScreen.PercentageComplete += 1;
                 // Draw the text.
                 spriteBatch.Begin();
-                //spriteBatch.Draw(vxEngine.Texture_SplashScreen, vxEngine.GraphicsDevice.Viewport.TitleSafeArea, color);
-                //spriteBatch.Draw(vxEngine.Texture_Logo, 
+
+				if (vxEngine.SplashScreen != null) {
+					spriteBatch.Draw (vxEngine.SplashScreen, 
+						viewport.Bounds, Color.White * TransitionAlpha);
+				}
+				/*
+				spriteBatch.Draw(vxEngine.vxGUITheme.vxLoadingScreen.SplashScreen, 
+					new Rectangle(0,50,(int)(viewport.Width * vxEngine.vxGUITheme.vxLoadingScreen.PercentageComplete/100),2), 
+					Color.DarkOrange * TransitionAlpha);
+*/
+
+				//spriteBatch.Draw(vxEngine.Texture_Logo, 
                 //    new Rectangle(20, 20, vxEngine.Texture_Logo.Bounds.Width/4, vxEngine.Texture_Logo.Bounds.Height/4), color*0.5f);
-                spriteBatch.DrawString(font, message, textPosition, color);
+				spriteBatch.DrawString(font, message, textPosition, vxEngine.vxGUITheme.vxLoadingScreen.TextColour);
 
 
                 //Draw Version Information

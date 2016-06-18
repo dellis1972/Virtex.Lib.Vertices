@@ -266,6 +266,7 @@ namespace vxVertices.Core
 		/// </summary>
 		public bool isInitialized;
 
+		public Texture2D SplashScreen { get; set; }
 
 		//
 		//Vector3

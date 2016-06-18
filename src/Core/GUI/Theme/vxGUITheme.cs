@@ -59,7 +59,7 @@ namespace vxVertices.GUI.Themes
         public vxMenuEntryTheme vxMenuEntries {get;set;}
 		public vxThemeTextbox vxTextboxes {get;set; }
         public vxThemeDialog vxDialogs { get; set; }
-
+		public vxLoadingScreen vxLoadingScreen { get; set; }
 
 
 
@@ -86,6 +86,7 @@ namespace vxVertices.GUI.Themes
             vxMenuEntries = new vxMenuEntryTheme(Engine);
             vxTextboxes = new vxThemeTextbox(Engine);
             vxDialogs = new vxThemeDialog(Engine);
+			vxLoadingScreen = new vxLoadingScreen (Engine);
 
             //Load the Default Theme first
             //LoadTheme (PathTooFiles, Engine.EngineContentManager);
@@ -107,7 +108,10 @@ namespace vxVertices.GUI.Themes
 			this.vxDialogs.Header_BorderWidth = 2;
 			this.vxDialogs.BackgroundColour = Color.Black*0.75f;
 
-			vxButtons.BackgroundImage = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxButton/Bckgrnd_Nrml");
+			this.vxLoadingScreen.SplashScreen = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxButton/Bckgrnd_Nrml");
+
+
+			vxButtons.BackgroundImage = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxLoadingScreen/SplashScreen");
 
 			/*******************************************/
 			//					MENU ITEM
@@ -163,6 +167,9 @@ namespace vxVertices.GUI.Themes
 			vxMenuEntries.vxMenuItemBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
 			vxMenuEntries.vxMenuSplitterTexture = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
 			vxMenuEntries.TitleBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
+
+			//loading Screen
+			this.vxLoadingScreen.SplashScreen = LoadTexture(contentManager, "vxGUITheme/vxLoadingScreen/SplashScreen");
 		}
 
 

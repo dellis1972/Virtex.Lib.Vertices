@@ -55,7 +55,9 @@ namespace vxVertices.Screens.Menus
 
 			// Add entries to the menu.
 			MenuEntries.Add(resumeGameMenuEntry);
+			#if !VRTC_PLTFRM_DROID
 			MenuEntries.Add(MenuEntry_Graphics);
+			#endif
 			MenuEntries.Add(quitGameMenuEntry);
 		}
 
