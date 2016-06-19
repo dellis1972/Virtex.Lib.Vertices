@@ -209,7 +209,7 @@ namespace vxVertices.Screens.Async
                 spriteBatch.Draw(vxEngine.Assets.Textures.Blank, new Rectangle(20, vxEngine.GraphicsDevice.Viewport.Height - 20,
                     (int)vxEngine.Assets.Fonts.DebugFont.MeasureString(vxEngine.EngineVersion).X + 10, (int)vxEngine.Assets.Fonts.DebugFont.MeasureString(vxEngine.EngineVersion).Y),
                     Color.Black * TransitionAlpha * 0.75f);
-                spriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, vxEngine.EngineVersion, new Vector2(20, vxEngine.GraphicsDevice.Viewport.Height - 20), Color.White * TransitionAlpha * 0.5f);
+                spriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, vxEngine.EngineVersion, new Vector2(25, vxEngine.GraphicsDevice.Viewport.Height - 20), Color.White * TransitionAlpha * 0.5f);
 
 
                 spriteBatch.End();

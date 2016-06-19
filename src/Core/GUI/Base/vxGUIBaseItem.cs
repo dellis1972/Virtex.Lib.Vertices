@@ -591,10 +591,12 @@ namespace vxVertices.GUI
                 else
                     NotHover();
             }
-            catch
+			catch (Exception ex)
             {
-                if (vxEngine == null)
-                    Console.WriteLine("Engine");
+				if (vxEngine == null)
+					Console.WriteLine ("Engine");
+				else
+					vxConsole.WriteError (this.ToString (), ex.Message);
                 
             }
             //Set State for next Loop

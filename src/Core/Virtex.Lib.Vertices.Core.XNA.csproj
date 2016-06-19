@@ -123,6 +123,7 @@
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
+    <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
     <Compile Include="Input\Accelerometer.cs" />
     <Compile Include="Input\Events\PlayerIndexEventArgs.cs" />
     <Compile Include="Input\vxInputManager.cs" />

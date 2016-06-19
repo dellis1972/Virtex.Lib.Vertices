@@ -139,9 +139,9 @@ namespace vxVertices.Core
 
 			get {
 				string path = "Virtex Edge Design/" + GameName + "/Profiles/";
-#if VRTC_PLTFRM_XNA
+//#if VRTC_PLTFRM_XNA
                 path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
-#endif
+//#endif
 				return path;
 			}
 
@@ -153,9 +153,9 @@ namespace vxVertices.Core
 		public string Path_Sandbox {
 			get {
 				string path = "Virtex Edge Design/" + GameName + "/Sandbox/";
-#if VRTC_PLTFRM_XNA
+//#if VRTC_PLTFRM_XNA
                 path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + path;
-#endif
+//#endif
 				return path;
 			}
 		}
@@ -190,10 +190,9 @@ namespace vxVertices.Core
             get { return (vxScene3D)(this.CurrentGameplayScreen); }
         }
 #endif
-		//Tells whether or not the Game has loaded it's
-		///Specific Assets
-
-
+		/// <summary>
+		/// Tells whether or not the Game has loaded it's Specific Assets.
+		/// </summary>
 		public bool HasContentBeenLoaded = false;
 
 		/// <summary>

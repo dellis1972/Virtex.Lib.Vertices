@@ -244,7 +244,7 @@ namespace vxVertices.GUI.Dialogs
                 fileDialogButton.Clicked += GetHighlitedItem;
 
                 //Set Button Width
-                fileDialogButton.ButtonWidth = vxEngine.GraphicsDevice.Viewport.Width - (int)(4 * hPad);
+                fileDialogButton.ButtonWidth = vxEngine.GraphicsDevice.Viewport.Width - (4 * hPad);
 
                 List_Temp_Items.Add(fileDialogButton);
 
