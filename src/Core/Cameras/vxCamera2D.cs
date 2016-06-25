@@ -41,6 +41,7 @@ namespace vxVertices.Core.Cameras
 		{
 			_graphics = graphics;
 			SimProjection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width), ConvertUnits.ToSimUnits(_graphics.Viewport.Height), 0f, 0f, 1f);
+			Console.WriteLine ("W: {0} H:{1}", 1280, 720);
 			SimView = Matrix.Identity;
 			View = Matrix.Identity;
 

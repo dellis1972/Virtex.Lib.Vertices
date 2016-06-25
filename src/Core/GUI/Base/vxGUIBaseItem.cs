@@ -146,6 +146,18 @@ namespace vxVertices.GUI
         /// </summary>
         public ToggleState ToggleState { get; set; }
 
+
+		/// <summary>
+		/// Gets or sets the alpha of the GUI Item.
+		/// </summary>
+		/// <value>The alpha.</value>
+		public float Alpha
+		{
+			get { return _alpha; }
+			set { _alpha = value; }
+		}
+		float _alpha = 1;
+
         /// <summary>
         /// Gets or sets the hover alpha.
         /// </summary>

@@ -29,6 +29,17 @@ namespace vxVertices.GUI
 		/// </summary>
         public bool DoesGuiHaveFocus = false;
 
+		/// <summary>
+		/// Gets or sets the alpha of the GUI Manager.
+		/// </summary>
+		/// <value>The alpha.</value>
+		public float Alpha
+		{
+			get { return _alpha; }
+			set { _alpha = value; }
+		}
+		float _alpha = 1;
+
        /// <summary>
        /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGuiManager"/> class.
        /// </summary>
@@ -76,6 +87,7 @@ namespace vxVertices.GUI
             {
                 foreach (vxGUIBaseItem guiItem in List_GUIItems)
                 {
+					guiItem.Alpha = this.Alpha;
                     guiItem.Update(vxEngine);
 
                     if (guiItem.HasFocus == true)

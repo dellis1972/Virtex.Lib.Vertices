@@ -24,6 +24,7 @@ using vxVertices.Network;
 using vxVertices.GUI;
 using vxVertices.GUI.Themes;
 using Virtex.Lib.Vertices.XNA.ContentManagement;
+using Microsoft.Xna.Framework.Input.Touch;
 
 #endregion
 
@@ -139,9 +140,9 @@ namespace vxVertices.Core
 
 			get {
 				string path = "Virtex Edge Design/" + GameName + "/Profiles/";
-//#if VRTC_PLTFRM_XNA
+#if VRTC_PLTFRM_XNA
                 path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
-//#endif
+#endif
 				return path;
 			}
 
@@ -153,9 +154,9 @@ namespace vxVertices.Core
 		public string Path_Sandbox {
 			get {
 				string path = "Virtex Edge Design/" + GameName + "/Sandbox/";
-//#if VRTC_PLTFRM_XNA
+#if VRTC_PLTFRM_XNA
                 path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + path;
-//#endif
+#endif
 				return path;
 			}
 		}
@@ -170,7 +171,7 @@ namespace vxVertices.Core
         /// </summary>
         public vxSceneBase CurrentGameplayScreen;
 
-		#if VIRTICES_2D
+#if VIRTICES_2D
 		/// <summary>
 		/// Readonly Value of the current 2D scene base class.
 		/// </summary>
@@ -178,9 +179,9 @@ namespace vxVertices.Core
 		public vxScene2D Current2DSceneBase {
 			get{ return (vxScene2D)(this.CurrentGameplayScreen); }
 		}
-		#endif
+#endif
 
-		#if VIRTICES_3D
+#if VIRTICES_3D
         /// <summary>
         /// Readonly Value of the current 3D scene base class.
         /// </summary>
@@ -276,6 +277,49 @@ namespace vxVertices.Core
 		public Vector2 Mouse_ClickPos = new Vector2 ();
 
 #endregion
+
+
+		/// <summary>
+		/// This flag tells the engine whether or not to draw the final result to a master
+		/// render target at a set resolution. This master rendertarget is then scaled and 
+		/// drawn at the native resolution of what ever screen the device has. This is useful
+		/// for Phones and Tablets which have a multitude of different resolutions.
+		/// </summary>
+		public bool FixedRenderTargetEnabled {
+			get { return _fixedRenderTargetEnabled; }
+			set { _fixedRenderTargetEnabled = value; }
+		}
+		bool _fixedRenderTargetEnabled = false;
+
+		/// <summary>
+		/// Gets or sets the width of the fixed render target.
+		/// </summary>
+		/// <value>The width of the fixed render target.</value>
+		public int FixedRenderTargetWidth {
+			get { return _fixedRenderTargetWidth; }
+			set { _fixedRenderTargetWidth = value; }
+		}
+		int _fixedRenderTargetWidth = 1280;
+
+		/// <summary>
+		/// Gets or sets the height of the fixed render target.
+		/// </summary>
+		/// <value>The height of the fixed render target.</value>
+		public int FixedRenderTargetHeight {
+			get { return _fixedRenderTargetHeight; }
+			set { _fixedRenderTargetHeight = value; }
+		}
+		int _fixedRenderTargetHeight = 720;
+
+		/// <summary>
+		/// Gets or sets the fixed render target.
+		/// </summary>
+		/// <value>The fixed render target.</value>
+		public RenderTarget2D FixedRenderTarget {
+			get { return _fixedRenderTarget; }
+			set { _fixedRenderTarget = value; }
+		}
+		RenderTarget2D _fixedRenderTarget;
 
 #region Debug Properties
 
@@ -534,6 +578,12 @@ namespace vxVertices.Core
 			//Set Initial Graphics Settings
 			SetGraphicsSettings ();
 
+			FixedRenderTarget = new RenderTarget2D (this.GraphicsDevice,
+				this.FixedRenderTargetWidth,
+				this.FixedRenderTargetHeight,
+				false, SurfaceFormat.Color, DepthFormat.None, 
+				this.GraphicsDevice.PresentationParameters.MultiSampleCount, RenderTargetUsage.DiscardContents);
+
 
 			GraphicsDeviceManager graphics = Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
 			//graphics.SynchronizeWithVerticalRetrace = false;
@@ -699,16 +749,37 @@ namespace vxVertices.Core
 			// Start measuring time for "Draw".
 			_debugSystem.TimeRuler.BeginMark ("Draw", Color.Yellow);
 
-			foreach (GameScreen screen in screens) {
-				if (screen.ScreenState == ScreenState.Hidden)
-					continue;
+			if (FixedRenderTargetEnabled) {
 
-				screen.Draw (gameTime);
+				this.GraphicsDevice.SetRenderTarget (FixedRenderTarget);
+
+				TouchPanel.DisplayHeight = this.FixedRenderTargetHeight;
+				TouchPanel.DisplayWidth = this.FixedRenderTargetWidth;
 			}
+				foreach (GameScreen screen in screens) {
+					if (screen.ScreenState == ScreenState.Hidden)
+						continue;
 
-			_inputManager.Draw ();
+					screen.Draw (gameTime);
+				}
 
-			vxConsole.Draw ();
+				_inputManager.Draw ();
+
+				vxConsole.Draw ();
+
+			if(FixedRenderTargetEnabled){
+				
+				this.GraphicsDevice.SetRenderTarget (null);
+				this.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
+				this.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+
+				//this.SpriteBatch.Begin ();
+				this.SpriteBatch.Draw(FixedRenderTarget, 
+					new Rectangle(0,0,
+						this.GraphicsDevice.Adapter.CurrentDisplayMode.Width,
+						this.GraphicsDevice.Adapter.CurrentDisplayMode.Height),Color.White);
+				this.SpriteBatch.End ();
+			}
 
 			// Stop measuring time for "Draw".
 			_debugSystem.TimeRuler.EndMark ("Draw");
@@ -801,13 +872,12 @@ namespace vxVertices.Core
 		/// </summary>
 		public void SetGraphicsSettings ()
 		{
+			GraphicsDeviceManager graphics = Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
 #if !DEBUG && !VRTC_PLTFRM_DROID
             if (LoadResolution == true)
             {
 
             #region Set Resolution
-
-                GraphicsDeviceManager graphics = Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
 
                 int ResCount = 0;
 
@@ -861,7 +931,6 @@ namespace vxVertices.Core
                 }
 
 #endregion
-
             }
 #endif
             }

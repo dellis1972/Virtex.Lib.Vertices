@@ -134,7 +134,7 @@ namespace vxVertices.GUI.Themes
             SE_Menu_Hover = Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/Click/Menu_Click");
 			SE_Menu_Confirm = SE_Menu_Hover;// Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuConfirm");
 			SE_Menu_Cancel = SE_Menu_Hover;//Engine.EngineContentManager.Load<SoundEffect>("Gui/DfltThm/vxGUITheme/SndFx/Menu/MenuError");
-			#endif
+#endif
         }
 
 

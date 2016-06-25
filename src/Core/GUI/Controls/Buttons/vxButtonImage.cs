@@ -27,6 +27,12 @@ namespace vxVertices.GUI.Controls
         public Texture2D HoverButtonImage { get; set; }
 
 		/// <summary>
+		/// Gets or sets the blank draw hover background.
+		/// </summary>
+		/// <value>The draw hover background.</value>
+		public bool DrawHoverBackground { get; set; }
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="vxVertices.GUI.Controls.vxButtonImage"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
@@ -81,6 +87,9 @@ namespace vxVertices.GUI.Controls
             //Set Default Colours
             Color_Normal = Color.White;
             Color_Highlight = Color.DarkOrange;
+
+			//Default is true
+			DrawHoverBackground = true;
         }
         public override void Update(vxEngine vxEngine)
         {
@@ -107,14 +116,15 @@ namespace vxVertices.GUI.Controls
             base.DrawByOwner(vxEngine);
 
             //Draw Regular Image
-            vxEngine.SpriteBatch.Draw(ButtonImage, BoundingRectangle, Color_Normal);
+            vxEngine.SpriteBatch.Draw(ButtonImage, BoundingRectangle, Color_Normal * Alpha);
 
             //Draw Hover Items
-            vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha);
+			if(DrawHoverBackground)
+				vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha* Alpha);
 
 
             if (HoverButtonImage != null)
-                vxEngine.SpriteBatch.Draw(HoverButtonImage, BoundingRectangle, Color_Normal * HoverAlpha);
+				vxEngine.SpriteBatch.Draw(HoverButtonImage, BoundingRectangle, Color_Normal * HoverAlpha* Alpha);
 
         }
     }
