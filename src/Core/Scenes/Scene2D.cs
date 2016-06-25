@@ -221,6 +221,10 @@ namespace vxVertices.Core.Scenes
 
 		}
 
+		/// <summary>
+		/// Handles the input base.
+		/// </summary>
+		/// <param name="input">Input.</param>
         public override void HandleInputBase(vxInputManager input)
 		{
 			// get all of our input states
