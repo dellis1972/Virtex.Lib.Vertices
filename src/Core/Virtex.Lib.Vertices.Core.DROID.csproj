@@ -146,6 +146,7 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
     <Compile Include="GUI\Theme\vxBaseItemTheme.cs" />
     <Compile Include="GUI\Theme\vxGUITheme.cs" />
+    <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
     <Compile Include="GUI\Theme\vxMenuEntryTheme.cs" />
     <Compile Include="GUI\Theme\vxMenuTheme.cs" />
     <Compile Include="GUI\Theme\vxThemeButton.cs" />

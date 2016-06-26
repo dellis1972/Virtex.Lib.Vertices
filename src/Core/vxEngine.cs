@@ -26,6 +26,10 @@ using vxVertices.GUI.Themes;
 using Virtex.Lib.Vertices.XNA.ContentManagement;
 using Microsoft.Xna.Framework.Input.Touch;
 
+#if VRTC_PLTFRM_DROID
+using Android.Views;
+#endif
+
 #endregion
 
 namespace vxVertices.Core
@@ -544,6 +548,10 @@ namespace vxVertices.Core
             
 #elif VRTC_PLTFRM_DROID
             _engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
+            
+            Game.Activity.Window.AddFlags(WindowManagerFlags.Fullscreen);
+            Game.Activity.Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
+
 #endif
 
 
