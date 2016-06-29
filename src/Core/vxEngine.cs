@@ -87,7 +87,8 @@ namespace vxVertices.Core
         /// <summary>
         /// Engine Content Manager for specific Virtices Engine fun.
         /// </summary>
-        public vxContentManager ContentManager{
+        public vxContentManager vxContentManager
+        {
             get { return _contentManager; }
             set { _contentManager = value; }
 		}

@@ -101,11 +101,11 @@ namespace VerticeEnginePort.Base
 
             Console.Write("\tLoading Models...\n");
 
-            Model_Items_ModelObjs = ContentManager.LoadModel("Models/modelobjs/modelobjs");
+            Model_Items_ModelObjs = vxContentManager.LoadModel("Models/modelobjs/modelobjs");
 
-            Model_Items_WoodenCrate = ContentManager.LoadModel("Models/items/wooden crate/wooden crate");
-            Model_Items_Concrete = ContentManager.LoadModel("Models/concrete_cube/concrete_cube");
-            Model_Items_Teapot = ContentManager.LoadModel("Models/teapot/teapot");
+            Model_Items_WoodenCrate = vxContentManager.LoadModel("Models/items/wooden crate/wooden crate");
+            Model_Items_Concrete = vxContentManager.LoadModel("Models/concrete_cube/concrete_cube");
+            Model_Items_Teapot = vxContentManager.LoadModel("Models/teapot/teapot");
 
             //Model_Items_WaterCrate = ContentManager.LoadModelAsWaterObject("Models/items/wooden crate/wooden crate", content);
             WriteLine_Green("\t\tDone!");

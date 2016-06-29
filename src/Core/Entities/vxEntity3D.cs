@@ -62,7 +62,7 @@ namespace vxVertices.Core.Entities
 		/// <value>The mesh set.</value>
 		public vxMeshSet MeshSet { get; set; }
 
-        public Color SelectionColor = Color.Black;
+        //public Color SelectionColor = Color.Black;
 
 
         /// <summary>
@@ -188,22 +188,7 @@ namespace vxVertices.Core.Entities
         float _specularPower = 1;
 
         /*
-        /// <summary>
-        /// The Models main diffuse texture.
-        /// </summary>
-        public Texture ModelTexture
-        {
-            set
-            {
-                _modelTexture = value;
-                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
-                {
-                    part.Effect.Parameters["Texture"].SetValue(_modelTexture);
-                }
-            }
-            get { return _modelTexture; }
-        }
-        Texture _modelTexture;
+
         */
 
         /// <summary>
@@ -224,7 +209,26 @@ namespace vxVertices.Core.Entities
             get { return _textureEnabled; }
         }
         bool _textureEnabled;
-        
+
+
+        /// <summary>
+        /// Emissive Colour for use in Highlighting a Model.
+        /// </summary>
+        public Color EmissiveColour
+        {
+            set
+            {
+                _emissiveColour = value;
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                {
+                    if (part.Effect.Parameters["EvissiveColour"] != null)
+                        part.Effect.Parameters["EvissiveColour"].SetValue(_emissiveColour.ToVector4()/2);
+                }
+            }
+            get { return _emissiveColour; }
+        }
+        Color _emissiveColour;
+
 
         /// <summary>
         /// Texture which is applied as the Reflection Map

@@ -205,6 +205,7 @@ namespace vxVertices.Entities.Sandbox3D
 
         public virtual void SetMesh(Matrix NewWorld, bool AddToPhysics, bool ResetWholeMesh)
         {
+            /*
             AddToPhysicsLibrary = AddToPhysics;
             this.Position = NewWorld.Translation;
             World = NewWorld;
@@ -232,6 +233,7 @@ namespace vxVertices.Entities.Sandbox3D
                 Current3DScene.BEPUPhyicsSpace.Add(PhysicsSkin_Main);
                 Current3DScene.BEPUDebugDrawer.Add(PhysicsSkin_Main);
             }
+            */
         }
 
         /// <summary>
@@ -325,13 +327,20 @@ namespace vxVertices.Entities.Sandbox3D
         /// </summary>
         /// <param name="RenderTechnique"></param>
         public override void RenderMesh(string RenderTechnique)
-        {   
+        {
             //Set the Selection Colour based off of Selection State
-            SelectionColor = Color.Black;
-            if(SelectionState == vxEnumSelectionState.Hover)
-                SelectionColor = Color.Orange;
-            if (SelectionState == vxEnumSelectionState.Selected)
-                SelectionColor = Color.CornflowerBlue;
+            switch (SelectionState)
+            {
+                case vxEnumSelectionState.Selected:
+                    EmissiveColour = Color.DarkOrange;
+                    break;
+                case vxEnumSelectionState.Hover:
+                    EmissiveColour = Color.LightSkyBlue;
+                    break;
+                case vxEnumSelectionState.Unseleced:
+                    EmissiveColour = Color.Black;
+                    break;
+            }
 
             //Reset Selection state if it's only hovered
             if (SelectionState == vxEnumSelectionState.Hover)

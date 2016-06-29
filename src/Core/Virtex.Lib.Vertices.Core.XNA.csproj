@@ -278,6 +278,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.XNA.csproj">
+      <Project>{46806426-2647-49a4-ad3f-0f1e332a4358}</Project>
+      <Name>Virtex.Lib.Vertices.Net.Lidgren.XNA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.XNA.csproj">
       <Project>{d12d6ca2-86a3-419b-9ce3-278ab00842fd}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Bepu.XNA</Name>

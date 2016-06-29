@@ -817,9 +817,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
-      <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
-      <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
+    <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+      <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

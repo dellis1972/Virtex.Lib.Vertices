@@ -307,7 +307,7 @@ namespace vxVertices.Core.Cameras
             mFieldOfView = MathHelper.PiOver4;
             mAspectRatio = 600 / 800;
             mNearPlane = 0.1f;
-            mFarPlane = 200;
+            mFarPlane = 1000;
 
             this.CameraType = CameraType;
             

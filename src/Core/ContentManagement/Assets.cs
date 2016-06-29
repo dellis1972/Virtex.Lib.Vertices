@@ -269,10 +269,10 @@ namespace vxVertices.Core.ContentManagement
             //Unit Models
             models.UnitArrow = vxEngine.EngineContentManager.Load<Model>("Models/utils/unit_arrow/unit_arrow");
 #endif
-            models.UnitBox = vxEngine.ContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
-			models.UnitPlane = vxEngine.ContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
-			models.UnitSphere = vxEngine.ContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
-			models.Sun_Mask = vxEngine.ContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+            models.UnitBox = vxEngine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+			models.UnitPlane = vxEngine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+			models.UnitSphere = vxEngine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+			models.Sun_Mask = vxEngine.vxContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
             models.WaterPlane = models.Sun_Mask;// vxEngine.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager);
 #endif
         }

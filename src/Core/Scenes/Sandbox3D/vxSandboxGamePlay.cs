@@ -78,7 +78,7 @@ namespace vxVertices.Scenes.Sandbox3D
         /// <summary>
         /// File Format
         /// </summary>
-		vxSandBoxFileStructure sandBoxFile { get; set; }
+		public vxSandBoxFileStructure sandBoxFile { get; set; }
 
         /// <summary>
         /// List of Current Selected Items

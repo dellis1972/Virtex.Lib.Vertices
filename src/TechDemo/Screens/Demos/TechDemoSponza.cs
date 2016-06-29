@@ -118,7 +118,7 @@ namespace VerticeEnginePort.Base
             g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/sponza/spnza_bricks_sm");
             */
 
-            xEnvrio envr = new xEnvrio(vxEngine, vxEngine.ContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+            xEnvrio envr = new xEnvrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
             //g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_nm");
             //g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_sm");
             envr.SpecularIntensity = 1;

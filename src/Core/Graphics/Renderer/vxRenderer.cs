@@ -415,7 +415,7 @@ namespace vxVertices.Graphics
         }
         private int _shadowMapSize = 512;
 
-        float size = 128;
+        float size = 256;
 
 
 

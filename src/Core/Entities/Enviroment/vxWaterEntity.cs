@@ -62,7 +62,7 @@ namespace vxVertices.Core.Entities
         /// </summary>
         /// <param name="AssetPath"></param>
         public vxWaterEntity(vxEngine vxEngine, Vector3 StartPosition, Vector3 WaterScale)
-            : base(vxEngine, vxEngine.ContentManager.LoadModel("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager, vxEngine.Assets.Shaders.WaterReflectionShader), StartPosition)
+            : base(vxEngine, vxEngine.vxContentManager.LoadModel("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager, vxEngine.Assets.Shaders.WaterReflectionShader), StartPosition)
         {
             waterBumpMap = vxEngine.Assets.Textures.Texture_WaterWaves;
             waterDistortionMap = vxEngine.Assets.Textures.Texture_WaterDistort;

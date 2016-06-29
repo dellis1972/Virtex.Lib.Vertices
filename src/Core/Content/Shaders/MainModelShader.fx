@@ -17,6 +17,7 @@ float3 ViewVector = float3(1, 0, 0);
 // The light direction is shared between the Lambert and Toon lighting techniques.
 float3 LightDirection = normalize(float3(1, 1, 1));
 float4 AmbientLight = float4(0.5, 0.5, 0.5, 1);
+float4 EvissiveColour = float4(0, 0, 0, 0);
 
 //Fog Variables
 float FogNear;
@@ -322,7 +323,7 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 		Color = GetSplitIndexColor(input.Shadow) * shadow;
 	}
 
-	return Color + float4(0, 0, 0, Alpha);
+	return Color + float4(0, 0, 0, Alpha) + EvissiveColour;
 
 	/*
 	float specFactor = tex2D(specularSampler, input.TexCoord).x;
