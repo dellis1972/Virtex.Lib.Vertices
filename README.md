@@ -10,11 +10,13 @@ The Vertices Engine is an in-house developed engine based in built from the grou
 | DirectX  | ![alt text][buildstatusDirctX] |
 | OpenGL   | ![alt text][buildstatusGL]     |
 | Android  | ![alt text][buildstatusDroid]  |
+| iOS  | ![alt text][buildstatusIOS]  |
 
 [buildstatusXNA]: https://img.shields.io/badge/build-passing-brightgreen.svg
 [buildstatusDirctX]: https://img.shields.io/badge/build-tbd-blue.svg
-[buildstatusGL]: https://img.shields.io/badge/build-failing-red.svg
+[buildstatusGL]: https://img.shields.io/badge/build-passing-brightgreen.svg
 [buildstatusDroid]: https://img.shields.io/badge/build-passing-brightgreen.svg
+[buildstatusIOS]: https://img.shields.io/badge/build-tbd-blue.svg
 
 # Features
 ## Real-time Surface and Water Reflections
