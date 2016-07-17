@@ -57,7 +57,12 @@ namespace vxVertices.Entities.Sandbox3D.Util
                         
             base.Update(gameTime);
         }
-        
+
+        public override void RenderMeshShadow()
+        {
+            if(SandboxState == vxEnumSandboxGameState.EditMode)
+                base.RenderMeshShadow();
+        }
 
         public override void RenderMeshPrepPass()
         {

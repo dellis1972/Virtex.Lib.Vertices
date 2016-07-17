@@ -377,11 +377,13 @@ namespace vxVertices.Core.Cameras
                     mouseDelta = Math.Max(mouseDelta, 15);
 				zoom = vxSmooth.SmoothFloat(zoom, mouseDelta, 4);
 
-                    WorldMatrix = Matrix.CreateTranslation(OrbitTarget + new Vector3(0, 0, (zoom) / 50));
+                WorldMatrix = Matrix.CreateTranslation(new Vector3(0, 0, (zoom) / 50));
 
-                    WorldMatrix *= Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);
+                WorldMatrix *= Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);
 
-                    View = Matrix.Invert(WorldMatrix);
+                    WorldMatrix *= Matrix.CreateTranslation(OrbitTarget);
+
+                View = Matrix.Invert(WorldMatrix);
                     this.Position = WorldMatrix.Translation;
 
                     prevMsScrl = vxEngine.InputManager.MouseState.ScrollWheelValue;
