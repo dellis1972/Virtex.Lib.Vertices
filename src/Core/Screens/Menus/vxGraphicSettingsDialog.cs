@@ -32,6 +32,8 @@ namespace vxVertices.GUI.Dialogs
             vxEngine.LoadResolution = true;
             base.LoadContent();
 
+            this.Title = vxEngine.Language.GraphicsSettings;
+
 
 			//All Items below are stored in this column as it's the longest word
 			
@@ -49,7 +51,7 @@ namespace vxVertices.GUI.Dialogs
             string currentRes = string.Format("{0}x{1}", pp.BackBufferWidth, pp.BackBufferHeight);
 
             vxGraphicSettingsItem ResolutionSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "Resolution", currentRes, new Vector2(Margin, horiz));
+                vxEngine, xGUIManager, vxEngine.Language.Resolution, currentRes, new Vector2(Margin, horiz));
             horiz += 45;
 
             bool AddItem = true;
@@ -78,12 +80,12 @@ namespace vxVertices.GUI.Dialogs
             //Full Screen
             /*****************************************************************************************************/
             vxGraphicSettingsItem FullScreenSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "Full Screen",
-                vxEngine.Profile.Settings.Graphics.Bool_FullScreen ? "Full Screen" : "Windowed", 
+                vxEngine, xGUIManager, vxEngine.Language.FullScreen,
+                vxEngine.Profile.Settings.Graphics.Bool_FullScreen ? vxEngine.Language.FullScreen : vxEngine.Language.Windowed, 
                 new Vector2(Margin, horiz));
             horiz += 45;
-            FullScreenSettingsItem.ValueComboBox.AddItem("Full Screen");
-            FullScreenSettingsItem.ValueComboBox.AddItem("Windowed");
+            FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.FullScreen);
+            FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.Windowed);
             FullScreenSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
 
                 if (e.SelectedItem.Text == "Full Screen")

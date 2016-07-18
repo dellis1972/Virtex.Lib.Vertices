@@ -8,12 +8,25 @@
     <CharacterRegions>
       <CharacterRegion>
         <Start>&#32;</Start>
-        <End>&#126;</End>
+        <End>&#130;</End>
       </CharacterRegion>
       <CharacterRegion>
         <Start>&#09;</Start>
         <End>&#09;</End>
       </CharacterRegion>
+      <!-- REQUIRED FRENCH CHARACTERS-->
+      <CharacterRegion>
+        <Start>&#192;</Start>
+        <End>&#255;</End>
+      </CharacterRegion>
+      <!-- REQUIRED KOREAN CHARACTERS-->
+        <CharacterRegion><Start>한</Start><End>한</End></CharacterRegion><!--Korean/Hangul Setting Name-->
+        <CharacterRegion><Start>글</Start><End>글</End></CharacterRegion>
+        <CharacterRegion><Start>그</Start><End>그</End></CharacterRegion><!--Graphics Qaulity-->
+        <CharacterRegion><Start>래</Start><End>래</End></CharacterRegion>
+        <CharacterRegion><Start>픽</Start><End>픽</End></CharacterRegion>
+        <CharacterRegion><Start>품</Start><End>품</End></CharacterRegion>
+        <CharacterRegion><Start>질</Start><End>질</End></CharacterRegion>
     </CharacterRegions>
   </Asset>
 </XnaContent>

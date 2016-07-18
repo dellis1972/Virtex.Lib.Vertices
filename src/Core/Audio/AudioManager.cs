@@ -168,10 +168,15 @@ namespace vxVertices.Audio
         }
 
 
+        public SoundEffectInstance Play3DSound(SoundEffect soundEffect, bool isLooped, Vector3 position)
+        {
+            return Play3DSound(soundEffect, isLooped, position, 1);
+        }
+
         /// <summary>
         /// Triggers a new 3D sound Based off of Entity Position.
         /// </summary>
-        public SoundEffectInstance Play3DSound(SoundEffect soundEffect, bool isLooped, Vector3 position)
+        public SoundEffectInstance Play3DSound(SoundEffect soundEffect, bool isLooped, Vector3 position, float pitch)
         {
             ActiveSound activeSound = new ActiveSound();
 
@@ -190,7 +195,7 @@ namespace vxVertices.Audio
             emitter.Velocity = activeSound.Emitter.Velocity;
             
             activeSound.Instance.Apply3D(listener, emitter);
-
+            
             activeSound.Instance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
 
             activeSound.Instance.Play();

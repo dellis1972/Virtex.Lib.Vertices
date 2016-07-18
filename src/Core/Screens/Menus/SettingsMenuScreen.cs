@@ -35,28 +35,31 @@ namespace vxVertices.Screens.Menus
 
 			// Create our menu entries.
 			vxMenuEntry ControlsMenuEntry = new vxMenuEntry(this, "controls");
-			vxMenuEntry GraphicsMenuEntry = new vxMenuEntry(this, "graphics");
+			vxMenuEntry GraphicsMenuEntry = new vxMenuEntry(this, vxEngine.Language.Graphics);
 			vxMenuEntry AudioMenuEntry = new vxMenuEntry(this, "audio");
+            vxMenuEntry LocalizationMenuEntry = new vxMenuEntry(this, "Localization");
 
-			vxMenuEntry cancelMenuEntry = new vxMenuEntry(this, "back");
+            vxMenuEntry cancelMenuEntry = new vxMenuEntry(this, "back");
 
 			// Hook up menu event handlers.
 			ControlsMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(ControlsMenuEntry_Selected);
 			GraphicsMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(GraphicsMenuEntry_Selected);
 			AudioMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(AudioMenuEntry_Selected);
-
-			//Back
-			cancelMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(cancelMenuEntry_Selected);
+            LocalizationMenuEntry.Selected += LocalizationMenuEntry_Selected;
+            //Back
+            cancelMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(cancelMenuEntry_Selected);
 
 
 
 			// Add entries to the menu.
 			MenuEntries.Add(ControlsMenuEntry);
-			MenuEntries.Add(GraphicsMenuEntry);
+            MenuEntries.Add(LocalizationMenuEntry);
+            MenuEntries.Add(GraphicsMenuEntry);
 			MenuEntries.Add(AudioMenuEntry);
 
-			MenuEntries.Add(cancelMenuEntry);
+            MenuEntries.Add(cancelMenuEntry);
 		}
+
         void ControlsMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
             vxEngine.AddScreen(new ControlsMenuScreen(), e.PlayerIndex);
@@ -70,6 +73,11 @@ namespace vxVertices.Screens.Menus
         void AudioMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
             vxEngine.AddScreen(new AudioMenuScreen(), e.PlayerIndex);
+        }
+
+        private void LocalizationMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
+        {
+            vxEngine.AddScreen(new vxLocalizationDialog(), e.PlayerIndex);
         }
 
         void cancelMenuEntry_Selected(object sender, PlayerIndexEventArgs e)

@@ -199,6 +199,7 @@ namespace vxVertices.Core.Entities
             set
             {
                 _textureEnabled = value;
+                if(vxModel != null)
                 if (vxModel.ModelMain != null)
                     foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
                     {

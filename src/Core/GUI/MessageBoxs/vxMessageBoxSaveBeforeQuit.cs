@@ -136,6 +136,14 @@ namespace vxVertices.GUI.MessageBoxs
             viewport = vxEngine.GraphicsDevice.Viewport;
             textTitleSize = font.MeasureString(Title);
             textSize = font.MeasureString(message);
+            
+            //First Get Length of Text
+            int textLength = (int)textSize.X;
+
+            int totalBtnWidth = (int)(Btn_Save.Width + Btn_DontSave.Width + Btn_Cancel.Width + vxEngine.vxGUITheme.Padding.X * 2);
+
+            textSize = new Vector2(Math.Max(textLength, totalBtnWidth), textSize.Y);
+
             textPosition = (viewportSize - textSize) / 2;
             textTitlePosition = textPosition - new Vector2(0, 2 * vPad + textTitleSize.Y);
 
@@ -144,7 +152,7 @@ namespace vxVertices.GUI.MessageBoxs
             backgroundRectangle = new Rectangle((int)textPosition.X - hPad,
                                                           (int)textPosition.Y - vPad,
                                                           (int)textSize.X + hPad * 2,
-                                                          (int)textSize.Y + vPad + Btn_Cancel.BoundingRectangle.Height + vPad * 2);
+                                                          (int)textSize.Y + vPad + Btn_Cancel.BoundingRectangle.Height + vPad);
 
             TitleRectangle = new Rectangle((int)textPosition.X - hPad,
                                                           (int)textPosition.Y - (int)textTitleSize.Y - vPad * 2 - 5,

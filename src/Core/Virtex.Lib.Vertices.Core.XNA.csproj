@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Virtex.Lib.Vertices.XNA</RootNamespace>
+    <RootNamespace>Virtex.Lib.Vertices</RootNamespace>
     <AssemblyName>Virtex.Lib.Vertices.XNA</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -123,12 +123,17 @@
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
+    <Compile Include="Localization\LanguageKorean.cs" />
+    <Compile Include="Localization\LanguageFrench.cs" />
+    <Compile Include="Localization\LanguageEnglish.cs" />
+    <Compile Include="Localization\vxLocalizationDialog.cs" />
     <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
     <Compile Include="Input\Accelerometer.cs" />
     <Compile Include="Input\Events\PlayerIndexEventArgs.cs" />
     <Compile Include="Input\vxInputManager.cs" />
     <Compile Include="Input\TouchCollectionExtensions.cs" />
     <Compile Include="Input\VirtualGamePad.cs" />
+    <Compile Include="Localization\vxLanguagePack.cs" />
     <Compile Include="ParticleSystem\vxParticle3D.cs" />
     <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
     <Compile Include="Scenes\Scene2D.cs" />
@@ -197,7 +202,7 @@
     <Compile Include="GUI\Dialogs\vxDialogBase.cs" />
     <Compile Include="GUI\Dialogs\vxFileDialogItem.cs" />
     <Compile Include="GUI\Dialogs\vxOpenFileDialog.cs" />
-    <Compile Include="GUI\Dialogs\vxGraphicSettingsDialog.cs" />
+    <Compile Include="Screens\Menus\vxGraphicSettingsDialog.cs" />
     <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
     <Compile Include="GUI\GUI Enums.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBox.cs" />

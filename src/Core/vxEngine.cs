@@ -25,6 +25,7 @@ using vxVertices.GUI;
 using vxVertices.GUI.Themes;
 using Virtex.Lib.Vertices.XNA.ContentManagement;
 using Microsoft.Xna.Framework.Input.Touch;
+using Virtex.Lib.Vertices.Localization;
 
 #if VRTC_PLTFRM_DROID
 using Android.Views;
@@ -326,12 +327,22 @@ namespace vxVertices.Core
 		}
 		RenderTarget2D _fixedRenderTarget;
 
-#region Debug Properties
+        /// <summary>
+        /// A List Containing all Language Packs for this 
+        /// </summary>
+        public List<vxLanguagePack> Languages { get; internal set; }
+        
+        /// <summary>
+        /// The Currently Selected Language
+        /// </summary>
+        public vxLanguagePack Language { get; set; }
 
-		/// <summary>
-		/// Displays Render Targets for Graphics Debugin
-		/// </summary>
-		public bool DisplayRenderTargets {
+        #region Debug Properties
+
+        /// <summary>
+        /// Displays Render Targets for Graphics Debugin
+        /// </summary>
+        public bool DisplayRenderTargets {
 			get { return _displayRenderTargets; }
 			set { _displayRenderTargets = value; }
 		}
@@ -435,9 +446,8 @@ namespace vxVertices.Core
 			vxConsole.WriteLine (string.Format ("          Starting Game   - {0}", GameName));
 			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
 
-			//Console.SetWindowPosition(0, 0);
 
-		}
+        }
 
 
 		/// <summary>
@@ -579,8 +589,22 @@ namespace vxVertices.Core
 			Model_Sandbox_WorkingPlane = this.Assets.Models.UnitPlane;
 #endif
 
-			//Load in Profile Data
-			vxConsole.WriteLine ("Loading Settings....");
+
+            #region Load Base Language
+
+            Languages = new List<vxLanguagePack>();
+
+            Languages.Add(new LanguageEnglish());
+            Languages.Add(new LanguageFrench());
+            Languages.Add(new LanguageKorean());
+
+            //Default is English
+            this.Language = Languages[0];
+
+            #endregion
+
+            //Load in Profile Data
+            vxConsole.WriteLine ("Loading Settings....");
 			Profile.LoadSettings (this);
 			vxConsole.WriteLine ("\t\t\tDone!");
 
@@ -608,8 +632,9 @@ namespace vxVertices.Core
 			Renderer = new vxRenderer (this);
 #endif
 
-			// Tell each of the screens to load their content.
-			foreach (GameScreen screen in screens) {
+
+            // Tell each of the screens to load their content.
+            foreach (GameScreen screen in screens) {
 				screen.LoadContent ();
 			}
 		}
