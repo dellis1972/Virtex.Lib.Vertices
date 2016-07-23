@@ -37,7 +37,7 @@ namespace vxVertices.Core
     /// want to quit" message box, and the main game itself are all implemented
     /// as screens.
     /// </summary>
-    public abstract class GameScreen
+    public abstract class vxGameBaseScreen
     {
         #region Properties
 

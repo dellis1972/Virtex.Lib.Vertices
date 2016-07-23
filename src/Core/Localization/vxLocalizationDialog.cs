@@ -46,7 +46,7 @@ namespace vxVertices.GUI.Dialogs
             //Full Screen
             /*****************************************************************************************************/
             vxGraphicSettingsItem LanguageSelectSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "Language", vxEngine.Language.LanguageName, 
+                vxEngine, InternalvxGUIManager, "Language", vxEngine.Language.LanguageName, 
                 new Vector2(Margin, horiz));
             horiz += 45;
             foreach (vxLanguagePack language in vxEngine.Languages)

@@ -36,7 +36,7 @@ namespace vxVertices.Core.Scenes
     /// placeholder to get the idea across: you'll probably want to
     /// put some more interesting gameplay in here!
     /// </summary>
-    public class vxSceneBase : GameScreen
+    public class vxSceneBase : vxGameBaseScreen
     {
         #region Fields
 
@@ -266,7 +266,7 @@ namespace vxVertices.Core.Scenes
         /// </summary>
         /// <example> 
         /// This sample shows how to override the <see cref="ShowPauseScreen"/> method. 'MyGamesCustomPauseScreen()' inheirts
-        /// from the <see cref="vxVertices.Screens.Menus.MenuScreen"/> Class.
+        /// from the <see cref="vxVertices.Screens.Menus.vxMenuBaseScreen"/> Class.
         /// <code>
         /// //This Allows to show your own custom pause screen.
         /// public override void ShowPauseScreen()

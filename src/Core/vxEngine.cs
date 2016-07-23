@@ -242,12 +242,12 @@ namespace vxVertices.Core
 		/// <summary>
 		/// Screen List
 		/// </summary>
-		List<GameScreen> screens = new List<GameScreen> ();
+		List<vxGameBaseScreen> screens = new List<vxGameBaseScreen> ();
 
 		/// <summary>
 		/// Screens to Update List
 		/// </summary>
-		List<GameScreen> screensToUpdate = new List<GameScreen> ();
+		List<vxGameBaseScreen> screensToUpdate = new List<vxGameBaseScreen> ();
 
 
 		/// <summary>
@@ -528,7 +528,7 @@ namespace vxVertices.Core
 
 
 #if VRTC_INCLDLIB_NET
-			InitialiseNetwork();
+			InitialiseMasterServerConnection();
 #endif
 
 			vxConsole.WriteLine ("Starting Content Manager...");
@@ -634,7 +634,7 @@ namespace vxVertices.Core
 
 
             // Tell each of the screens to load their content.
-            foreach (GameScreen screen in screens) {
+            foreach (vxGameBaseScreen screen in screens) {
 				screen.LoadContent ();
 			}
 		}
@@ -686,7 +686,7 @@ namespace vxVertices.Core
 			ClearTempDirectory ();
 
 			// Tell each of the screens to unload their content.
-			foreach (GameScreen screen in screens) {
+			foreach (vxGameBaseScreen screen in screens) {
 				screen.UnloadContent ();
 			}
 		}
@@ -718,7 +718,7 @@ namespace vxVertices.Core
 				// the process of updating one screen adds or removes others.
 				screensToUpdate.Clear ();
 
-				foreach (GameScreen screen in screens)
+				foreach (vxGameBaseScreen screen in screens)
 					screensToUpdate.Add (screen);
 
 				bool otherScreenHasFocus = !Game.IsActive;
@@ -727,7 +727,7 @@ namespace vxVertices.Core
 				// Loop as long as there are screens waiting to be updated.
 				while (screensToUpdate.Count > 0) {
 					// Pop the topmost screen off the waiting list.
-					GameScreen screen = screensToUpdate [screensToUpdate.Count - 1];
+					vxGameBaseScreen screen = screensToUpdate [screensToUpdate.Count - 1];
 
 					screensToUpdate.RemoveAt (screensToUpdate.Count - 1);
 
@@ -768,7 +768,7 @@ namespace vxVertices.Core
 		{
 			List<string> screenNames = new List<string> ();
 
-			foreach (GameScreen screen in screens)
+			foreach (vxGameBaseScreen screen in screens)
 				screenNames.Add (screen.GetType ().Name);
 
 			//Debug.WriteLine(string.Join(", ", screenNames.ToArray()));
@@ -790,7 +790,7 @@ namespace vxVertices.Core
 				TouchPanel.DisplayHeight = this.FixedRenderTargetHeight;
 				TouchPanel.DisplayWidth = this.FixedRenderTargetWidth;
 			}
-				foreach (GameScreen screen in screens) {
+				foreach (vxGameBaseScreen screen in screens) {
 					if (screen.ScreenState == ScreenState.Hidden)
 						continue;
 
@@ -798,8 +798,11 @@ namespace vxVertices.Core
 				}
 
 				_inputManager.Draw ();
+#if VRTC_INCLDLIB_NET
+            DrawNetworkGameConnectionInfo();
+#endif
 
-				vxConsole.Draw ();
+            vxConsole.Draw ();
 
 			if(FixedRenderTargetEnabled){
 				
@@ -828,7 +831,7 @@ namespace vxVertices.Core
 		/// <summary>
 		/// Adds a new screen to the screen manager.
 		/// </summary>
-		public void AddScreen (GameScreen screen, PlayerIndex? controllingPlayer)
+		public void AddScreen (vxGameBaseScreen screen, PlayerIndex? controllingPlayer)
 		{
 			vxConsole.WriteLine ("Adding Screen: " + screen.ToString ());
 
@@ -852,7 +855,7 @@ namespace vxVertices.Core
 		/// the screen can gradually transition off rather than just being
 		/// instantly removed.
 		/// </summary>
-		public void RemoveScreen (GameScreen screen)
+		public void RemoveScreen (vxGameBaseScreen screen)
 		{
 			// If we have a graphics device, tell the screen to unload content.
 			if (isInitialized) {
@@ -874,7 +877,7 @@ namespace vxVertices.Core
 		/// than the real master list, because screens should only ever be added
 		/// or removed using the AddScreen and RemoveScreen methods.
 		/// </summary>
-		public GameScreen[] GetScreens ()
+		public vxGameBaseScreen[] GetScreens ()
 		{
 			return screens.ToArray ();
 		}

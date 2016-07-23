@@ -19,7 +19,7 @@ namespace vxVertices.GUI.Dialogs
     /// A popup message box screen, used to display "are you sure?"
     /// confirmation messages.
     /// </summary>
-    public class vxDialogBase : GameScreen
+    public class vxDialogBase : vxGameBaseScreen
     {
         #region Fields
 
@@ -48,9 +48,9 @@ namespace vxVertices.GUI.Dialogs
         public Texture2D gradientTexture;
 
         /// <summary>
-        /// Message Box GUI Manager
+        /// The Internal GUI Manager so the Dialog Box can handle it's own items.
         /// </summary>
-        public vxGuiManager xGUIManager {get; set;}
+        public vxGuiManager InternalvxGUIManager {get; set;}
         
         public vxButton Btn_Ok;
         public string btn_ok_text = "Okay";
@@ -116,7 +116,7 @@ namespace vxVertices.GUI.Dialogs
         /// </summary>
         public override void LoadContent()
         {
-            xGUIManager = new vxGuiManager();
+            InternalvxGUIManager = new vxGuiManager();
 
             Vector2 viewportSize = new Vector2(vxEngine.GraphicsDevice.Viewport.Width, vxEngine.GraphicsDevice.Viewport.Height);
 
@@ -129,10 +129,10 @@ namespace vxVertices.GUI.Dialogs
             Btn_Cancel.Clicked += new EventHandler<vxGuiItemClickEventArgs>(Btn_Cancel_Clicked);
 
             if(ButtonTypes == ButtonTypes.OkApplyCancel)
-                xGUIManager.Add(Btn_Apply);
+                InternalvxGUIManager.Add(Btn_Apply);
 
-            xGUIManager.Add(Btn_Ok);
-            xGUIManager.Add(Btn_Cancel);
+            InternalvxGUIManager.Add(Btn_Ok);
+            InternalvxGUIManager.Add(Btn_Cancel);
 
             spriteBatch = vxEngine.SpriteBatch;
 			font = vxEngine.vxGUITheme.Font;
@@ -176,7 +176,7 @@ namespace vxVertices.GUI.Dialogs
 
         }
 
-        void Btn_Cancel_Clicked(object sender, vxGuiItemClickEventArgs e)
+        public virtual void Btn_Cancel_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
             ExitScreen();
         }
@@ -186,7 +186,7 @@ namespace vxVertices.GUI.Dialogs
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
             //Update GUI Manager
-            xGUIManager.Update(vxEngine);
+            InternalvxGUIManager.Update(vxEngine);
         }
 
         #region Draw
@@ -216,7 +216,7 @@ namespace vxVertices.GUI.Dialogs
             spriteBatch.End();
 
             //Draw the GUI
-            xGUIManager.Draw(vxEngine);
+            InternalvxGUIManager.Draw(vxEngine);
         }
 
         #endregion

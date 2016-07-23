@@ -42,7 +42,15 @@ namespace vxVertices.GUI.Controls
         /// <summary>
         /// The width of the scroll bar.
         /// </summary>
-        public int ScrollBarWidth = 20;
+        public int ScrollBarWidth
+        {
+            get { return scrollBar.BarWidth; }
+            set
+            {
+                if(scrollBar != null)
+                    scrollBar.BarWidth = value;
+            }
+        }
         
         /// <summary>
         /// The panel layout.
@@ -151,7 +159,8 @@ namespace vxVertices.GUI.Controls
         public void AddItem(vxGUIBaseItem guiItem)
         {
             //vxConsole.WriteLine ("Adding Item: " + guiItem.GetType ().ToString ());
-            if (guiItem.GetType() == typeof(vxFileDialogItem))
+            if (guiItem.GetType() == typeof(vxFileDialogItem) ||
+                guiItem.GetType() == typeof(vxServerListItem))
                 Padding = 5;
 
             //int temp_height = 0;
@@ -185,7 +194,8 @@ namespace vxVertices.GUI.Controls
             /****************************************************************************************************/
             //if (guiItem.Position.X + guiItem.BoundingRectangle.Width > this.Position.X + BoundingRectangle.Width - Padding * 2 - ScrollBarWidth ||
             if (guiItem.Position.X + guiItem.BoundingRectangle.Width > BoundingRectangle.Width - Padding * 2 - ScrollBarWidth ||
-                guiItem.GetType() == typeof(vxFileDialogItem))
+                guiItem.GetType() == typeof(vxFileDialogItem)||
+                guiItem.GetType() == typeof(vxServerListItem))
             {
                 if (Items.Count > 0)
                 {
@@ -205,6 +215,10 @@ namespace vxVertices.GUI.Controls
             //TODO: Put Item Spefic code in the items classes them selves, not here.
             if (guiItem.GetType() == typeof(vxFileDialogItem))
                 ((vxFileDialogItem)guiItem).ButtonWidth = BoundingRectangle.Width - Padding * 4 - ScrollBarWidth;
+
+            if (guiItem.GetType() == typeof(vxServerListItem))
+                ((vxServerListItem)guiItem).ButtonWidth = BoundingRectangle.Width - Padding * 4 - ScrollBarWidth;
+
 
             //Finally Add the newly Positioned and Sized Item.
             Items.Add(guiItem);

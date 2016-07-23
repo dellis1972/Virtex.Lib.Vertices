@@ -20,7 +20,7 @@ namespace vxVertices.Screens
     /// It draws a background image that remains fixed in place regardless
     /// of whatever transitions the screens on top of it may be doing.
     /// </summary>
-    public class TitleScreen : GameScreen
+    public class TitleScreen : vxGameBaseScreen
     {
         #region Fields
 

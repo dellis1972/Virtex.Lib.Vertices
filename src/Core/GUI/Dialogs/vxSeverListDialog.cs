@@ -82,7 +82,7 @@ namespace vxVertices.GUI.Dialogs
                 backgroundRectangle.Width - hPad * 2,
                 backgroundRectangle.Height - Btn_Ok.BoundingRectangle.Height - vPad * 3);            
 
-            xGUIManager.Add(ScrollPanel);
+            InternalvxGUIManager.Add(ScrollPanel);
 
 
             vxEngine.GameServerListRecieved += new EventHandler<vxGameServerListRecievedEventArgs>(Engine_GameServerListRecieved);

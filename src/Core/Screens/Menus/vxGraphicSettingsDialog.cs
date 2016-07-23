@@ -51,7 +51,7 @@ namespace vxVertices.GUI.Dialogs
             string currentRes = string.Format("{0}x{1}", pp.BackBufferWidth, pp.BackBufferHeight);
 
             vxGraphicSettingsItem ResolutionSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, vxEngine.Language.Resolution, currentRes, new Vector2(Margin, horiz));
+                vxEngine, InternalvxGUIManager, vxEngine.Language.Resolution, currentRes, new Vector2(Margin, horiz));
             horiz += 45;
 
             bool AddItem = true;
@@ -80,7 +80,7 @@ namespace vxVertices.GUI.Dialogs
             //Full Screen
             /*****************************************************************************************************/
             vxGraphicSettingsItem FullScreenSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, vxEngine.Language.FullScreen,
+                vxEngine, InternalvxGUIManager, vxEngine.Language.FullScreen,
                 vxEngine.Profile.Settings.Graphics.Bool_FullScreen ? vxEngine.Language.FullScreen : vxEngine.Language.Windowed, 
                 new Vector2(Margin, horiz));
             horiz += 45;
@@ -100,7 +100,7 @@ namespace vxVertices.GUI.Dialogs
             //VSync
             /*****************************************************************************************************/
             vxGraphicSettingsItem VSyncSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "VSync",
+                vxEngine, InternalvxGUIManager, "VSync",
                 vxEngine.Profile.Settings.Graphics.Bool_VSync ? "On" : "Off",
                 new Vector2(Margin, horiz));
             horiz += 45;
@@ -122,7 +122,7 @@ namespace vxVertices.GUI.Dialogs
             //Shadows
             /*****************************************************************************************************/
             vxGraphicSettingsItem ShadowsSettingsItem = new vxGraphicSettingsItem(
-               vxEngine, xGUIManager, "Shadows",
+               vxEngine, InternalvxGUIManager, "Shadows",
                vxEngine.Profile.Settings.Graphics.ShadowQuality.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
 
@@ -141,7 +141,7 @@ namespace vxVertices.GUI.Dialogs
             //Bloom
             /*****************************************************************************************************/
             vxGraphicSettingsItem BloomSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "Bloom",
+                vxEngine, InternalvxGUIManager, "Bloom",
                 vxEngine.Profile.Settings.Graphics.Bloom.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
             BloomSettingsItem.ValueComboBox.AddItem(vxEnumQuality.None.ToString());
@@ -160,7 +160,7 @@ namespace vxVertices.GUI.Dialogs
             //Edge Detect
             /*****************************************************************************************************/
             vxGraphicSettingsItem EdgeDetectSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "Edge Detect",
+                vxEngine, InternalvxGUIManager, "Edge Detect",
                 vxEngine.Profile.Settings.Graphics.Bool_DoEdgeDetection ? "On" : "Off",
                 new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
@@ -181,7 +181,7 @@ namespace vxVertices.GUI.Dialogs
             //Depth of Field
             /*****************************************************************************************************/
             vxGraphicSettingsItem DOFSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "Depth of Field",
+                vxEngine, InternalvxGUIManager, "Depth of Field",
                 vxEngine.Profile.Settings.Graphics.DepthOfField.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
 
@@ -200,7 +200,7 @@ namespace vxVertices.GUI.Dialogs
             //Crepuscular Rays
             /*****************************************************************************************************/
             vxGraphicSettingsItem GodRaySettingsItem = new vxGraphicSettingsItem(
-               vxEngine, xGUIManager, "Crepuscular Rays",
+               vxEngine, InternalvxGUIManager, "Crepuscular Rays",
                vxEngine.Profile.Settings.Graphics.GodRays.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
 
@@ -219,7 +219,7 @@ namespace vxVertices.GUI.Dialogs
             //SSAO
             /*****************************************************************************************************/
             vxGraphicSettingsItem SSAOSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, xGUIManager, "SSAO",
+                vxEngine, InternalvxGUIManager, "SSAO",
                 vxEngine.Profile.Settings.Graphics.SSAO.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
 

@@ -28,7 +28,7 @@ namespace vxVertices.Screens.Menus
     /// Base class for screens that contain a menu of options. The user can
     /// move up and down to select an entry, or cancel to back out of the screen.
     /// </summary>
-    public abstract class MenuScreen : GameScreen
+    public abstract class vxMenuBaseScreen : vxGameBaseScreen
     {
 		#region Properties
 
@@ -109,7 +109,7 @@ namespace vxVertices.Screens.Menus
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MenuScreen(string menuTitle)
+        public vxMenuBaseScreen(string menuTitle)
         {
             this.menuTitle = menuTitle;
 
@@ -274,21 +274,26 @@ namespace vxVertices.Screens.Menus
             offset = 10;
             selectedEntry = -1;
 
-			foreach (vxMenuEntry mEntry in MenuEntries)
+
+            if (otherScreenHasFocus == false)
             {
-                //Always set this to false intially
-                mEntry.IsSelected = false;
-				if(mEntry.HasFocus == true)
-					selectedEntry = selectionIndex;
-				
-				selectionIndex++;
+                foreach (vxMenuEntry mEntry in MenuEntries)
+                {
+                    //Always set this to false intially
+                    mEntry.IsSelected = false;
+                    if (mEntry.HasFocus == true)
+                        selectedEntry = selectionIndex;
+
+                    selectionIndex++;
+                }
+
+                // Update each nested vxMenuEntry object.
+                for (int i = 0; i < menuEntries.Count; i++)
+                {
+                    menuEntries[i].Update(vxEngine);
+                }
             }
 
-            // Update each nested vxMenuEntry object.
-            for (int i = 0; i < menuEntries.Count; i++)
-            {
-				menuEntries [i].Update (vxEngine);
-            }
         }
 
 

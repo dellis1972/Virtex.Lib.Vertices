@@ -77,14 +77,14 @@ namespace vxVertices.Utilities
         public static void WriteNetworkLine(object output)
         {
 #if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			Console.ForegroundColor = ConsoleColor.Yellow;
 #endif
-			Console.WriteLine("<NETWORK>>:" + output);
+			Console.WriteLine("\tNET >>:" + output);
 #if !VRTC_PLTFRM_DROID
 			Console.ResetColor();
 #endif
             if (vxEngine != null)
-                vxEngine.DebugSystem.DebugCommandUI.Echo("<NETWORK>>:" + output.ToString());
+                vxEngine.DebugSystem.DebugCommandUI.Echo("     NET >>:" + output.ToString());
         }
 
         /// <summary>

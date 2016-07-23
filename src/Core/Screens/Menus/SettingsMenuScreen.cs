@@ -15,7 +15,7 @@ namespace vxVertices.Screens.Menus
     /// screen, and gives the user a chance to configure the game
     /// in various hopefully useful ways.
     /// </summary>
-    public class SettingsMenuScreen : MenuScreen
+    public class SettingsMenuScreen : vxMenuBaseScreen
     {
         #region Initialization
 

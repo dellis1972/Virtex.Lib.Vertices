@@ -25,14 +25,14 @@ namespace vxVertices.Screens.Async
     ///   next screen, which may take a long time to load its data. The loading
     ///   screen will be the only thing displayed while this load is taking place.
     /// </summary>
-    public class LoadAssetsScreen : GameScreen
+    public class LoadAssetsScreen : vxGameBaseScreen
     {
         #region Fields
 
         bool loadingIsSlow;
         bool otherScreensAreGone;
 
-        GameScreen[] screensToLoad;
+        vxGameBaseScreen[] screensToLoad;
 
         Thread backgroundThread;
         EventWaitHandle backgroundThreadExit;
@@ -52,7 +52,7 @@ namespace vxVertices.Screens.Async
         /// be activated via the static Load method instead.
         /// </summary>
         private LoadAssetsScreen(vxEngine screenManager, bool loadingIsSlow,
-                              GameScreen[] screensToLoad)
+                              vxGameBaseScreen[] screensToLoad)
         {
             this.loadingIsSlow = loadingIsSlow;
             this.screensToLoad = screensToLoad;
@@ -77,10 +77,10 @@ namespace vxVertices.Screens.Async
         /// </summary>
         public static void Load(vxEngine screenManager, bool loadingIsSlow,
                                 PlayerIndex? controllingPlayer,
-                                params GameScreen[] screensToLoad)
+                                params vxGameBaseScreen[] screensToLoad)
         {
             // Tell all the current screens to transition off.
-            foreach (GameScreen screen in screenManager.GetScreens())
+            foreach (vxGameBaseScreen screen in screenManager.GetScreens())
                 screen.ExitScreen();
 
             // Create and activate the loading screen.
@@ -120,7 +120,7 @@ namespace vxVertices.Screens.Async
                 // Perform the load operation.
                 vxEngine.RemoveScreen(this);
 
-                foreach (GameScreen screen in screensToLoad)
+                foreach (vxGameBaseScreen screen in screensToLoad)
                 {
                     if (screen != null)
                     {

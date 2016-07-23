@@ -25,7 +25,7 @@ namespace vxVertices.Screens.Menus
     /// The pause menu comes up over the top of the game,
     /// giving the player options to resume or quit.
     /// </summary>
-    public class PauseMenuScreen : MenuScreen
+    public class PauseMenuScreen : vxMenuBaseScreen
     {
         #region Initialization
 

@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\XNA\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS, VIRTICES_NET, VRTC_PLTFRM_XNA, VIRTICES_3D,</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS, VRTC_INCLDLIB_NET, VRTC_PLTFRM_XNA, VIRTICES_3D,</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -34,7 +34,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\XNA\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS, VIRTICES_NET, VRTC_PLTFRM_XNA, VIRTICES_3D</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS, VRTC_INCLDLIB_NET, VRTC_PLTFRM_XNA, VIRTICES_3D</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -92,10 +92,10 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation\AnimationPlayer2D.cs" />
-    <Compile Include="Animation\AnimationSprite2D.cs" />
-    <Compile Include="Audio\AudioManager.cs" />
-    <Compile Include="Base Screens\GameScreen.cs" />
+    <Compile Include="Animation\vxAnimationPlayer2D.cs" />
+    <Compile Include="Animation\vxAnimationSprite2D.cs" />
+    <Compile Include="Audio\vxAudioManager.cs" />
+    <Compile Include="Base Screens\vxGameBaseScreen.cs" />
     <Compile Include="Cameras\Controllers\CameraControlScheme.cs" />
     <Compile Include="Cameras\Controllers\CharacterCameraControlScheme.cs" />
     <Compile Include="Cameras\Controllers\CharacterControllerInput.cs" />
@@ -123,6 +123,7 @@
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
+    <Compile Include="GUI\Dialogs\vxServerListItem.cs" />
     <Compile Include="Localization\LanguageKorean.cs" />
     <Compile Include="Localization\LanguageFrench.cs" />
     <Compile Include="Localization\LanguageEnglish.cs" />
@@ -134,6 +135,8 @@
     <Compile Include="Input\TouchCollectionExtensions.cs" />
     <Compile Include="Input\VirtualGamePad.cs" />
     <Compile Include="Localization\vxLanguagePack.cs" />
+    <Compile Include="Network\vxSeverLobbyDialog.cs" />
+    <Compile Include="Network\vxSeverLocalListDialog.cs" />
     <Compile Include="ParticleSystem\vxParticle3D.cs" />
     <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
     <Compile Include="Scenes\Scene2D.cs" />
@@ -261,7 +264,7 @@
     <Compile Include="Screens\Menus\GraphicsSettingsScreen.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screens\Menus\MenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxMenuBaseScreen.cs" />
     <Compile Include="Screens\Menus\OptionsMenuScreen.cs">
       <SubType>Code</SubType>
     </Compile>

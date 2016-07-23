@@ -27,7 +27,7 @@ namespace vxVertices.GUI.MessageBoxs
     /// A popup message box screen, used to display "are you sure?"
     /// confirmation messages.
     /// </summary>
-    public class vxMessageBox : GameScreen
+    public class vxMessageBox : vxGameBaseScreen
     {
         #region Fields
 

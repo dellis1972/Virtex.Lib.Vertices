@@ -94,7 +94,7 @@ namespace vxVertices.GUI.MessageBoxs
 
             LogInText += new string('.', (int)(Inc / 10) % 5);
 
-            if (vxEngine.ConnectionStatus == vxEnumNetworkConnectionStatus.Running)
+            if (vxEngine.MasterServerConnectionStatus == vxEnumNetworkConnectionStatus.Running)
             {
                 Title = "Success";
                 LogInText = "Logged In!";
@@ -109,7 +109,7 @@ namespace vxVertices.GUI.MessageBoxs
                         LogInSuccessful(this, new EventArgs());
                 }
             }
-            else if (Inc > 250 && vxEngine.ConnectionStatus == vxEnumNetworkConnectionStatus.Stopped)
+            else if (Inc > 250 && vxEngine.MasterServerConnectionStatus == vxEnumNetworkConnectionStatus.Stopped)
             {
                 Title = "Connection Timed Out";
                 LogInText = "Please Try Again Later.";

@@ -18,7 +18,7 @@ namespace vxVertices.GUI.Controls
 		/// <summary>
 		/// The Parent Menu Screen for this Menu Entry.
 		/// </summary>
-		public MenuScreen ParentScreen { get; set; }
+		public vxMenuBaseScreen ParentScreen { get; set; }
 
 		/// <summary>
 		/// Gets or sets the texture for this Menu Entry Background.
@@ -36,7 +36,7 @@ namespace vxVertices.GUI.Controls
         /// </summary>
         /// <param name="ParentScreen">Parent screen.</param>
         /// <param name="text">Text.</param>
-		public vxMenuEntry(MenuScreen ParentScreen, string text)
+		public vxMenuEntry(vxMenuBaseScreen ParentScreen, string text)
 			: base(Vector2.Zero)
 		{			
 			//Set Engine

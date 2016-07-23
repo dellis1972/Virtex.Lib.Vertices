@@ -9,18 +9,16 @@ using vxVertices.Network;
 using Lidgren.Network;
 using System;
 using vxVertices.Network.Events;
-
+using vxVertices.Mathematics;
 
 namespace vxVertices.Core
 {
-    /// <summary>
-    /// The screen manager is a component which manages one or more GameScreen
-    /// instances. It maintains a stack of screens, calls their Update and Draw
-    /// methods at the appropriate times, and automatically routes input to the
-    /// topmost active screen.
-    /// </summary>
+
+
 	public partial class vxEngine : DrawableGameComponent
     {
+
+
 		/// <summary>
 		/// Network boolean of whether or not the current player is logged in or not.
 		/// </summary>
@@ -29,21 +27,39 @@ namespace vxVertices.Core
 		/// <summary>
 		/// The s client.
 		/// </summary>
-		private NetClient s_client;
+		private NetClient MasterSeverClient;
 
-		/// <summary>
-		/// Gets or sets the connection status.
-		/// </summary>
-		/// <value>The connection status.</value>
-		public vxEnumNetworkConnectionStatus ConnectionStatus {get;set;} 
+        /// <summary>
+        /// The Game Server Object used to Manage Games when the user is the Server.
+        /// </summary>
+        public NetServer GameSever;
 
-		public void InitialiseNetwork()
+        /// <summary>
+        /// The Game Client Object used to Manage Games when the user is the Client.
+        /// </summary>
+        public NetClient GameClient;
+
+        /// <summary>
+        /// Gets or sets the connection status for the Master Server Connection.
+        /// </summary>
+        /// <value>The connection status.</value>
+        public vxEnumNetworkConnectionStatus MasterServerConnectionStatus {get;set;}
+
+        /// <summary>
+        /// Gets or sets the connection status for Games.
+        /// </summary>
+        public vxEnumNetworkConnectionStatus GameConnectionStatus { get; set; }
+
+        public vxEnumNetworkPlayerRole NetworkedGameRoll { get; set; }
+
+
+        public void InitialiseMasterServerConnection()
 		{
 			vxConsole.WriteLine("Setting Up Network System...");
-			ConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
+			MasterServerConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
 			var config = new NetPeerConfiguration("Virtex_Main_Server");
-			s_client = new NetClient(config);
-			s_client.RegisterReceivedCallback(new SendOrPostCallback(GotMessage)); 
+			MasterSeverClient = new NetClient(config);
+			MasterSeverClient.RegisterReceivedCallback(new SendOrPostCallback(GotMessage)); 
 		}
 
 
@@ -54,7 +70,7 @@ namespace vxVertices.Core
 		public void GotMessage(object peer)
 		{
 			NetIncomingMessage im;
-			while ((im = s_client.ReadMessage()) != null)
+			while ((im = MasterSeverClient.ReadMessage()) != null)
 			{
 				// handle incoming message
 				switch (im.MessageType)
@@ -70,17 +86,17 @@ namespace vxVertices.Core
 					NetConnectionStatus status = (NetConnectionStatus)im.ReadByte();
 
 					if (status == NetConnectionStatus.Connected)
-						ConnectionStatus = vxEnumNetworkConnectionStatus.Running;
+						MasterServerConnectionStatus = vxEnumNetworkConnectionStatus.Running;
 					else
-						ConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
+						MasterServerConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
 
 					if (status == NetConnectionStatus.Disconnected)
 					{
-						ConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
+						MasterServerConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
 					}
 
 					string reason = im.ReadString();
-					vxConsole.WriteNetworkLine(status.ToString() + ": " + reason);
+					vxConsole.WriteNetworkLine(status.ToString() + " : " + reason);
 
 					break;
 				case NetIncomingMessageType.Data:
@@ -106,7 +122,7 @@ namespace vxVertices.Core
 					vxConsole.WriteNetworkLine("Unhandled type: " + im.MessageType + " " + im.LengthBytes + " bytes");
 					break;
 				}
-				s_client.Recycle(im);
+				MasterSeverClient.Recycle(im);
 			}
 		}
 
@@ -120,9 +136,9 @@ namespace vxVertices.Core
 		{
 			vxConsole.WriteNetworkLine("Connecting to Server...");
 
-			s_client.Start();
-			NetOutgoingMessage hail = s_client.CreateMessage(HailMsg);
-			s_client.Connect(ipAddress, port, hail);
+			MasterSeverClient.Start();
+			NetOutgoingMessage hail = MasterSeverClient.CreateMessage(HailMsg);
+			MasterSeverClient.Connect(ipAddress, port, hail);
 
 			vxConsole.WriteNetworkLine("Done!");
 		}
@@ -135,7 +151,7 @@ namespace vxVertices.Core
 		{
 			vxConsole.WriteNetworkLine("Disconnecting from Server...");
 
-			s_client.Disconnect(ShutdownMsg);
+			MasterSeverClient.Disconnect(ShutdownMsg);
 			vxConsole.WriteNetworkLine("Done!");
 
 		}
@@ -148,12 +164,59 @@ namespace vxVertices.Core
 		{
 			if (stringToSend != "")
 			{
-				var message = s_client.CreateMessage();
+				var message = MasterSeverClient.CreateMessage();
 				message.Write(stringToSend);
-				s_client.SendMessage(message, NetDeliveryMethod.ReliableOrdered);
+				MasterSeverClient.SendMessage(message, NetDeliveryMethod.ReliableOrdered);
 				vxConsole.WriteNetworkLine("Sending Message: " + stringToSend);
 			}
 		}
+
+        int local = -50;
+        int Req = -50;
+        /// <summary>
+        /// Small Debug Utility that draws to the screen Connection Info. Debug Purposes only.
+        /// </summary>
+        void DrawNetworkGameConnectionInfo()
+        {
+            Req = -50;
+            SpriteBatch.Begin();
+            if (GameSever != null)
+            {
+                Req = 5;
+                   local = vxSmooth.SmoothInt(local, Req, 8);
+                string output = string.Format(
+                    "NETWORK DEBUG INFO: | User Roll: {3} | Server Name: {0} | Port: {1} | Broadcast Address: {2} | Status: {4}",
+                    GameSever.Configuration.AppIdentifier,
+                    GameSever.Configuration.Port.ToString(),
+                    GameSever.Configuration.BroadcastAddress,
+                    this.NetworkedGameRoll.ToString(),
+                    GameSever.Status.ToString());
+
+                int pad = 3;
+                
+                SpriteBatch.Draw(this.Assets.Textures.Blank, new Rectangle(0, local + 0, 1000, (int)this.Assets.Fonts.DebugFont.MeasureString(output).Y + 2 * pad), Color.Black * 0.75f);
+                SpriteBatch.DrawString(this.Assets.Fonts.DebugFont, output, new Vector2(pad, local + pad), Color.White);
+            }
+            else if (GameClient != null)
+            {
+                Req = 5;
+                local = vxSmooth.SmoothInt(local, Req, 8);
+                string output = string.Format(
+                    "NETWORK DEBUG INFO: | User Roll: {3} | Client Name: {0} | Port: {1} | Broadcast Address: {2} | Status: {4}",
+                    GameClient.Configuration.AppIdentifier,
+                    GameClient.Configuration.Port.ToString(),
+                    GameClient.Configuration.BroadcastAddress,
+                    this.NetworkedGameRoll.ToString(),
+                    GameClient.Status.ToString());
+
+                int pad = 3;
+
+                SpriteBatch.Draw(this.Assets.Textures.Blank, new Rectangle(0, local + 0, 1000, (int)this.Assets.Fonts.DebugFont.MeasureString(output).Y + 2 * pad), Color.Black * 0.75f);
+                SpriteBatch.DrawString(this.Assets.Fonts.DebugFont, output, new Vector2(pad, local + pad), Color.White);
+            }
+
+            SpriteBatch.End();
+        }
 		
     }
 }
