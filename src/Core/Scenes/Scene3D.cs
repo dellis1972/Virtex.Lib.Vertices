@@ -225,11 +225,12 @@ namespace vxVertices.Core.Scenes
 			//Setup Audio Manager
 			AudioManager = new vxAudioManager (vxEngine);
 
-			// Create and add the lensflare component.
-			//lensFlare = new LensFlareComponent(vxEngine);
-			//lensFlare.LoadContent();
+            // Create and add the lensflare component.
+            //lensFlare = new LensFlareComponent(vxEngine);
+            //lensFlare.LoadContent();
 
-
+            if (GameType == vxEnumGameType.Networked)
+                IsPausable = false; 
 
 			//Setup Renderer.
 			vxEngine.Renderer = new vxRenderer (vxEngine);
@@ -242,7 +243,7 @@ namespace vxVertices.Core.Scenes
 			Camera.AspectRatio = mGraphicsManager.GraphicsDevice.Viewport.AspectRatio;
 
 #if VRTC_INCLDLIB_NET
-            InitialiseNetwork ();
+            //InitialiseNetwork ();
 #endif
 		}
 
@@ -254,7 +255,7 @@ namespace vxVertices.Core.Scenes
 		public override void UnloadContent ()
         {
 #if VRTC_INCLDLIB_NET
-			DeinitialiseNetwork ();
+			//DeinitialiseNetwork ();
 #endif
 
             content.Unload ();
@@ -329,7 +330,7 @@ namespace vxVertices.Core.Scenes
 
 
 #if VRTC_INCLDLIB_NET
-				UpdateNetwork ();
+				//UpdateNetwork ();
 #endif
 
 				//

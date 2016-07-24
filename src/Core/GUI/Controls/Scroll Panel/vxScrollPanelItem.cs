@@ -7,72 +7,72 @@ using vxVertices.GUI.Events;
 
 namespace vxVertices.GUI.Dialogs
 {
-	/// <summary>
-	/// File Chooser Dialor Item.
-	/// </summary>
-    public class vxServerListItem : vxGUIBaseItem
+    /// <summary>
+    /// File Chooser Dialor Item.
+    /// </summary>
+    public class vxScrollPanelItem : vxGUIBaseItem
     {
-		/// <summary>
-		/// The button image.
-		/// </summary>
+        /// <summary>
+        /// The button image.
+        /// </summary>
         public Texture2D ButtonImage;
-		Rectangle ImageRectangle;
-
-		/// <summary>
-		/// The default width of the button.
-		/// </summary>
-		public int ButtonWidth = 512;
-                
-
-		int ButtonHeight = 64;
-
-		/// <summary>
-		/// The name of the Server.
-		/// </summary>
-		public string ServerName = "";
+        Rectangle ImageRectangle;
 
         /// <summary>
-        /// The Server Addess
+        /// Should this Scroll Panel Item Show the Icon.
         /// </summary>
-        public string ServerAddress = "";
+        public bool ShowIcon = true;
 
         /// <summary>
-        /// The Server Port
+        /// The width of the button.
         /// </summary>
-        public string ServerPort = "";
+        public int ButtonWidth = 512;
 
         /// <summary>
-        /// Sets up a Serve List Dialog Item which holds information pertaining too a Discovered Server.
+        /// The Button Height
         /// </summary>
-        /// <param name="vxEngine"></param>
-        /// <param name="ServerName"></param>
-        /// <param name="ServerAddress"></param>
-        /// <param name="ServerPort"></param>
-        /// <param name="Position"></param>
-        /// <param name="buttonImage"></param>
-        /// <param name="ElementIndex"></param>
-        public vxServerListItem(vxEngine vxEngine, 
-            string ServerName,
-            string ServerAddress,
-            string ServerPort,
-            Vector2 Position, 
-			Texture2D buttonImage, 
+        public int ButtonHeight = 64;
+
+        /// <summary>
+        /// Returns a Harcoded Type
+        /// </summary>
+        /// <returns></returns>
+        public override Type GetBaseGuiType()
+        {
+            return typeof(vxScrollPanelItem);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="vxVertices.GUI.xFileDialogItem"/> class.
+        /// </summary>
+        /// <param name="vxEngine">Vx engine.</param>
+        /// <param name="FilePath">File path.</param>
+        /// <param name="Position">Position.</param>
+        /// <param name="buttonImage">Button image.</param>
+        /// <param name="ElementIndex">Element index.</param>
+        /// <param name="function">Function.</param>
+        public vxScrollPanelItem(vxEngine vxEngine,
+            string Text,
+            Vector2 Position,
+            Texture2D buttonImage,
             int ElementIndex)
         {
-			Padding = 4;
-
-            this.ServerName = ServerName;
-            this.ServerAddress = ServerAddress;
-            this.ServerPort = ServerPort;
+            Padding = 4;
+            this.vxEngine = vxEngine;
             
-            Text = ServerName;
+            //Set Text
+            this.Text = Text;
+
+            //Set Position
             this.Position = Position;
             OriginalPosition = Position;
 
+            //Set Index
             Index = ElementIndex;
+
+            //Set Button Image
             ButtonImage = buttonImage;
             BoundingRectangle = new Rectangle(0, 0, 64, 64);
-            this.vxEngine = vxEngine;
 
             Width = 3000;
 
@@ -91,7 +91,7 @@ namespace vxVertices.GUI.Dialogs
             Color_Normal = Color.DarkOrange;
             Colour_Text = Color.Black;
         }
-        
+
         public override void Draw(vxEngine vxEngine)
         {
             vxEngine.SpriteBatch.Begin();
@@ -102,8 +102,6 @@ namespace vxVertices.GUI.Dialogs
         public override void DrawByOwner(vxEngine vxEngine)
         {
             base.DrawByOwner(vxEngine);
-
-            //Console.WriteLine(this.Text + " _ " + this.Index);
 
             //
             //Update Rectangle
@@ -119,16 +117,18 @@ namespace vxVertices.GUI.Dialogs
             {
                 i = 1.250f;
             }
+
+            //Draw Button Background
             vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Normal * i);
+
+            //Draw Icon
             vxEngine.SpriteBatch.Draw(ButtonImage, new Rectangle((int)(Position.X + 2), (int)(Position.Y + 2),
                 ButtonHeight - 4, ButtonHeight - 4), Color.LightGray * i);
 
-            vxEngine.SpriteBatch.DrawString(vxEngine.vxGUITheme.Font, "Name: " + Text,
+            //Draw Text String
+            vxEngine.SpriteBatch.DrawString(vxEngine.vxGUITheme.Font, Text,
                 new Vector2((int)(Position.X + ButtonHeight + Padding * 2), (int)(Position.Y + 8)),
                 Colour_Text);
-            vxEngine.SpriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, "Path: " + ServerAddress,
-                new Vector2((int)(Position.X + ButtonHeight + Padding * 2), (int)(Position.Y + vxEngine.vxGUITheme.Font.MeasureString(Text).Y + 10)),
-    Colour_Text);
         }
     }
 }

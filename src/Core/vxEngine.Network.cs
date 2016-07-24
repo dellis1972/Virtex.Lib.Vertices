@@ -10,6 +10,7 @@ using Lidgren.Network;
 using System;
 using vxVertices.Network.Events;
 using vxVertices.Mathematics;
+using System.Collections.Generic;
 
 namespace vxVertices.Core
 {
@@ -40,6 +41,11 @@ namespace vxVertices.Core
         public NetClient GameClient;
 
         /// <summary>
+        /// A Collection of Players Currently In The Server. This should only be modified only by updates from the connected server.
+        /// </summary>
+        public List<NetworkPlayerInfo> NetworkPlayers = new List<NetworkPlayerInfo>();
+
+        /// <summary>
         /// Gets or sets the connection status for the Master Server Connection.
         /// </summary>
         /// <value>The connection status.</value>
@@ -50,6 +56,9 @@ namespace vxVertices.Core
         /// </summary>
         public vxEnumNetworkConnectionStatus GameConnectionStatus { get; set; }
 
+        /// <summary>
+        /// What is the roll of this user in the Networked Game.
+        /// </summary>
         public vxEnumNetworkPlayerRole NetworkedGameRoll { get; set; }
 
 

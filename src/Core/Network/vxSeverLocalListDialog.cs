@@ -22,19 +22,7 @@ using vxVertices.Network;
 
 namespace vxVertices.GUI.Dialogs
 {
-    public class LobbyPlayerInfo
-    {
-        public string Name;
-        public int Level;
-        public string Token;
 
-        public LobbyPlayerInfo(string name, int level, string token)
-        {
-            Name = name;
-            Level = level;
-            Token = token;
-        }
-    }
 
     /// <summary>
     /// This is a Server Dialog which searches and retrieves any game servers on this subnet.
@@ -411,8 +399,17 @@ public void SendMessage(string stringToSend)
             //Now Unregister the Callback Listener for this Page
             vxEngine.GameClient.UnregisterReceivedCallback(ClientCallBackLoop);
 
-            vxEngine.AddScreen(new vxSeverLobbyDialog("Lobby"), PlayerIndex.One);
+            OpenServerLobby();
             ExitScreen();
+        }
+
+        /// <summary>
+        /// This Method is Called to Open the Server Lobby. If your game uses an inherited version of vxSeverLobbyDialog then
+        /// you should override this function.
+        /// </summary>
+        public virtual void OpenServerLobby()
+        {
+            vxEngine.AddScreen(new vxSeverLobbyDialog("Lobby"), PlayerIndex.One);
         }
 
         /// <summary>
@@ -430,7 +427,7 @@ public void SendMessage(string stringToSend)
             vxEngine.GameClient.UnregisterReceivedCallback(ClientCallBackLoop);
 
             //Now Add go to the Server Lobby. The Lobby info will be added in by the global Client Connection Object.
-            vxEngine.AddScreen(new vxSeverLobbyDialog("Lobby"), PlayerIndex.One);
+            OpenServerLobby();
             ExitScreen();
         }
 
@@ -454,9 +451,7 @@ public void SendMessage(string stringToSend)
         /// <param name="e"></param>
         public virtual void Btn_Refresh_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
-            Console.WriteLine("Refresh");
-            //SendDiscoverySignal();
-            AddDiscoveredServer("sdfsdf");
+            SendDiscoverySignal();
         }
 
 

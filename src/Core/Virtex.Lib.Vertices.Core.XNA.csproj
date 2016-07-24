@@ -123,7 +123,9 @@
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
-    <Compile Include="GUI\Dialogs\vxServerListItem.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
+    <Compile Include="Network\Server Lobby\vxServerLobbyPlayerItem.cs" />
+    <Compile Include="Network\vxServerListItem.cs" />
     <Compile Include="Localization\LanguageKorean.cs" />
     <Compile Include="Localization\LanguageFrench.cs" />
     <Compile Include="Localization\LanguageEnglish.cs" />
@@ -135,7 +137,7 @@
     <Compile Include="Input\TouchCollectionExtensions.cs" />
     <Compile Include="Input\VirtualGamePad.cs" />
     <Compile Include="Localization\vxLanguagePack.cs" />
-    <Compile Include="Network\vxSeverLobbyDialog.cs" />
+    <Compile Include="Network\Server Lobby\vxSeverLobbyDialog.cs" />
     <Compile Include="Network\vxSeverLocalListDialog.cs" />
     <Compile Include="ParticleSystem\vxParticle3D.cs" />
     <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
@@ -192,10 +194,8 @@
     <Compile Include="GUI\Controls\List View\vxListViewSpliter.cs" />
     <Compile Include="GUI\Controls\Menu Entries\vxMenuEntry.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollBar.cs" />
-    <Compile Include="GUI\Controls\Scroll Panel\vxScrollBarItem.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanel.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelSpliter.cs" />
-    <Compile Include="GUI\Controls\Scroll Panel\vxServerScrollBarItem.cs" />
     <Compile Include="GUI\Controls\TabControl\vxTabControl.cs" />
     <Compile Include="GUI\Controls\TabControl\vxTabPage.cs" />
     <Compile Include="GUI\Controls\Textbox\vxTextbox.cs" />
@@ -219,7 +219,7 @@
     <Compile Include="GUI\vxGuiManager.cs" />
     <Compile Include="Mathematics\vxMathUtils.cs" />
     <Compile Include="Mathematics\vxSmooth.cs" />
-    <Compile Include="GUI\Dialogs\vxSeverListDialog.cs" />
+    <Compile Include="Network\vxSeverListDialog.cs" />
     <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />

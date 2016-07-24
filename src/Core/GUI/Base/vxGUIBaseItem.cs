@@ -36,6 +36,14 @@ namespace vxVertices.GUI
         public vxGuiManager GUIManager { get; set; }
 
         /// <summary>
+        /// A string that is set in the base class of many items.
+        /// </summary>
+        public virtual Type GetBaseGuiType()
+        {
+            return typeof(vxGUIBaseItem);
+        }
+
+        /// <summary>
         /// Name Of GUI Item to help Identify it, not to be confused with Text
         /// </summary>
         public string Name
@@ -465,7 +473,7 @@ namespace vxVertices.GUI
         /// <summary>
         /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUIBaseItem"/> class.
         /// </summary>
-        public vxGUIBaseItem() { }
+        public vxGUIBaseItem() {  }
 
 
         /// <summary>

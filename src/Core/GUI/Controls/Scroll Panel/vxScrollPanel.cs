@@ -160,7 +160,7 @@ namespace vxVertices.GUI.Controls
         {
             //vxConsole.WriteLine ("Adding Item: " + guiItem.GetType ().ToString ());
             if (guiItem.GetType() == typeof(vxFileDialogItem) ||
-                guiItem.GetType() == typeof(vxServerListItem))
+                guiItem.GetBaseGuiType() == typeof(vxScrollPanelItem))
                 Padding = 5;
 
             //int temp_height = 0;
@@ -194,8 +194,8 @@ namespace vxVertices.GUI.Controls
             /****************************************************************************************************/
             //if (guiItem.Position.X + guiItem.BoundingRectangle.Width > this.Position.X + BoundingRectangle.Width - Padding * 2 - ScrollBarWidth ||
             if (guiItem.Position.X + guiItem.BoundingRectangle.Width > BoundingRectangle.Width - Padding * 2 - ScrollBarWidth ||
-                guiItem.GetType() == typeof(vxFileDialogItem)||
-                guiItem.GetType() == typeof(vxServerListItem))
+                guiItem.GetType() == typeof(vxFileDialogItem) ||
+                guiItem.GetBaseGuiType() == typeof(vxScrollPanelItem))
             {
                 if (Items.Count > 0)
                 {
@@ -216,9 +216,8 @@ namespace vxVertices.GUI.Controls
             if (guiItem.GetType() == typeof(vxFileDialogItem))
                 ((vxFileDialogItem)guiItem).ButtonWidth = BoundingRectangle.Width - Padding * 4 - ScrollBarWidth;
 
-            if (guiItem.GetType() == typeof(vxServerListItem))
-                ((vxServerListItem)guiItem).ButtonWidth = BoundingRectangle.Width - Padding * 4 - ScrollBarWidth;
-
+            if (guiItem.GetBaseGuiType() == typeof(vxScrollPanelItem))
+                ((vxScrollPanelItem)guiItem).ButtonWidth = BoundingRectangle.Width - Padding * 4 - ScrollBarWidth;
 
             //Finally Add the newly Positioned and Sized Item.
             Items.Add(guiItem);

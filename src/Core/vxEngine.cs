@@ -177,6 +177,9 @@ namespace vxVertices.Core
         /// </summary>
         public vxSceneBase CurrentGameplayScreen;
 
+
+
+
 #if VIRTICES_2D
 		/// <summary>
 		/// Readonly Value of the current 2D scene base class.
