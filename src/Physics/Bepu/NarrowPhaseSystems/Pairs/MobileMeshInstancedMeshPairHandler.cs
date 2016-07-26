@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using BEPUutilities.ResourceManagement;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Handles a mobile mesh-mobile mesh collision pair.

@@ -3,7 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
 {
     ///<summary>
     /// State describing the position, orientation, and velocity of an entity.

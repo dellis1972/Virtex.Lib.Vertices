@@ -1,5 +1,5 @@
 ﻿#if VIRTICES_3D && VRTC_INCLDLIB_NET
-using vxVertices.Network;
+using Virtex.Lib.Vertices.Network;
 
 
 #region Using Statements
@@ -18,26 +18,26 @@ using System.Collections;
 
 
 
-using vxVertices.Core;
-using vxVertices.Physics.BEPU;
-using vxVertices.Mathematics;
-using vxVertices.Core.Particles;
-using vxVertices.Graphics;
-using vxVertices.Audio;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Mathematics;
+using Virtex.Lib.Vertices.Core.Particles;
+using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vertices.Audio;
 using BEPUphysicsDrawer.Models;
 using BEPUutilities.Threading;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Utilities;
 using Lidgren.Network;
-using vxVertices.Core.Entities;
-using vxVertices.Geometry;
-using vxVertices.Core.Debug;
-using vxVertices.Core.Cameras;
-using vxVertices.Screens.Menus;
-using vxVertices.Core.Scenes;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Geometry;
+using Virtex.Lib.Vertices.Core.Debug;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vertices.Core.Scenes;
 
 #endregion
 
-namespace vxVertices.Core.Scenes
+namespace Virtex.Lib.Vertices.Core.Scenes
 {
     public partial class vxScene3D : vxSceneBase
     {
@@ -70,7 +70,7 @@ namespace vxVertices.Core.Scenes
 //            ) : this()
 //        {
 //            //Set Game Type as Networked for this Constructor
-//            this.GameType = vxVertices.Core.vxEnumGameType.Networked;
+//            this.GameType = Virtex.Lib.Vertices.Core.vxEnumGameType.Networked;
 
 //            //Set the Player Role
 //            this.PlayerNetworkRole = PlayerNetworkRole;

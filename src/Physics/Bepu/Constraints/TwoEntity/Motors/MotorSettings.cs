@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.Motors
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors
 {
     /// <summary>
     /// Defines the behavior style of a motor.

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Core;
 
-namespace vxVertices.GUI.Themes
+namespace Virtex.Lib.Vertices.GUI.Themes
 {
 	public class vxLoadingScreen : vxBaseItemTheme {
 

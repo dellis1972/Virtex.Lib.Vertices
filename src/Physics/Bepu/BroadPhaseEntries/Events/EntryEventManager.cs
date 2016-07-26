@@ -1,12 +1,12 @@
-﻿using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
-using vxVertices.Physics.BEPU.OtherSpaceStages;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
 using BEPUutilities;
 using System;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries.Events
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events
 {
 
     ///<summary>

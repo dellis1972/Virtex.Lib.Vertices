@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Utilities;
-using vxVertices.Core;
-using vxVertices.GUI.Events;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI.Events;
 
-namespace vxVertices.GUI.Dialogs
+namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
     /// <summary>
     /// File Chooser Dialor Item.
@@ -43,7 +43,7 @@ namespace vxVertices.GUI.Dialogs
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.xFileDialogItem"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.xFileDialogItem"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="FilePath">File path.</param>

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.CollisionTests
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests
 {
     ///<summary>
     /// Contact data created by collision detection.

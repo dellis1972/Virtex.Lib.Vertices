@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries.Events;
-using vxVertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
 using System;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     ///<summary>
     /// Collidable used by compound shapes.

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace vxVertices.Physics.BEPU.CollisionRuleManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement
 {
     /// <summary>
     /// A group which can have interaction rules created between it and other collision groups.

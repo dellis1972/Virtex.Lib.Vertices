@@ -12,24 +12,24 @@ using System.Linq;
 //Virtex vxEngine Declaration
 using System.Collections;
 
-using vxVertices.Core;
-using vxVertices.Mathematics;
-using vxVertices.Graphics;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Mathematics;
+using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vertices.Utilities;
 
 
 #if VIRTICES_3D
-using vxVertices.Audio;
-using vxVertices.Core.Particles;
+using Virtex.Lib.Vertices.Audio;
+using Virtex.Lib.Vertices.Core.Particles;
 #endif
-using vxVertices.GUI;
-using vxVertices.Core.Entities;
-using vxVertices.Core.Input;
-using vxVertices.Screens.Menus;
+using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Screens.Menus;
 
 #endregion
 
-namespace vxVertices.Core.Scenes
+namespace Virtex.Lib.Vertices.Core.Scenes
 {
     /// <summary>
     /// This screen implements the actual game logic. It is just a
@@ -174,7 +174,7 @@ namespace vxVertices.Core.Scenes
         #region Update and Draw
 
 		/// <summary>
-		/// Updates the state of the game. This method checks the GameScreen.IsActive
+		/// Updates the state of the game. This method checks the vxGameBaseScreen.IsActive
 		/// property, so the game will stop updating when the pause menu is active,
 		/// or if you tab away to a different application.
 		/// </summary>
@@ -266,7 +266,7 @@ namespace vxVertices.Core.Scenes
         /// </summary>
         /// <example> 
         /// This sample shows how to override the <see cref="ShowPauseScreen"/> method. 'MyGamesCustomPauseScreen()' inheirts
-        /// from the <see cref="vxVertices.Screens.Menus.vxMenuBaseScreen"/> Class.
+        /// from the <see cref="Virtex.Lib.Vertices.Screens.Menus.vxMenuBaseScreen"/> Class.
         /// <code>
         /// //This Allows to show your own custom pause screen.
         /// public override void ShowPauseScreen()

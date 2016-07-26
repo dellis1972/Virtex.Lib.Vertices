@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace vxVertices.Entities.Sandbox3D
+namespace Virtex.Lib.Vertices.Entities.Sandbox3D
 {
     public enum vxSandboxEntityPropertyType
     {

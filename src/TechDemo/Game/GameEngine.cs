@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 
-using vxVertices.Core;
-using vxVertices.Screens.Async;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Screens.Async;
+using Virtex.Lib.Vertices.Graphics;
 
 namespace VerticeEnginePort.Base
 {
@@ -54,7 +54,7 @@ namespace VerticeEnginePort.Base
         public override void vxEngineMainEntryPoint()
         {
 			LoadAssetsScreen.Load(this, true, null, new IntroBackground(),
-                    new MainMenuScreen());
+                    new MainvxMenuBaseScreen());
         }
         
         /// <summary>

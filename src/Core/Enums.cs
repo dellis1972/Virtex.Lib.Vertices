@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace vxVertices.Core
+namespace Virtex.Lib.Vertices.Core
 {
 
 	/// <summary>

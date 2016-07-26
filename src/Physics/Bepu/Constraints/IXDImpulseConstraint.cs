@@ -2,7 +2,7 @@
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Implemented by solver updateables which have a one dimensional impulse.

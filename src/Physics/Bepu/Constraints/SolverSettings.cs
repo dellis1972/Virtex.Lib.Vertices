@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace vxVertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Contains information about how a wheel solves its constraints.

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries.Events;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
-using vxVertices.Physics.BEPU.Materials;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
 using System;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     ///<summary>
     /// Collidable used by compound shapes.

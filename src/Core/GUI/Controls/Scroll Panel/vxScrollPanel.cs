@@ -5,11 +5,11 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Utilities;
-using vxVertices.Core;
-using vxVertices.GUI.Dialogs;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI.Dialogs;
 
-namespace vxVertices.GUI.Controls
+namespace Virtex.Lib.Vertices.GUI.Controls
 {
     /// <summary>
     /// Panel layout.
@@ -92,7 +92,7 @@ namespace vxVertices.GUI.Controls
         }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="vxVertices.GUI.Controls.vxScrollPanel"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxScrollPanel"/> class.
 		/// </summary>
 		/// <param name="Position">Position.</param>
 		/// <param name="Width">Width.</param>

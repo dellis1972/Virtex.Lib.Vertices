@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace vxVertices.Graphics.Animation
+namespace Virtex.Lib.Vertices.Graphics.Animation
 {
     /// <summary>
     /// Represents an animated texture.
@@ -108,7 +108,7 @@ namespace vxVertices.Graphics.Animation
 		Vector2 offset;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.Graphics.Animation.vxAnimationSprite2D"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Graphics.Animation.vxAnimationSprite2D"/> class.
         /// </summary>
         /// <param name="texture">The main Sprite Texture.</param>
         /// <param name="frameCount">Number of frames in the Sprite Texture.</param>

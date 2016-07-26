@@ -1,12 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 
 
-namespace vxVertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
 {
 
     ///<summary>

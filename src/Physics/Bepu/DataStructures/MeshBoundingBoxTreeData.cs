@@ -2,7 +2,7 @@
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
 {
     ///<summary>
     /// Superclass of the data used to create triangle mesh bounding box trees.

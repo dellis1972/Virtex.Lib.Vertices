@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Paths
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// Superclass of a variety of classes that can be evaluated at a time to retrieve a value associated with that time.

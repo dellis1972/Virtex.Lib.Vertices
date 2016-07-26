@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
 {
     /// <summary>
     /// Superclass of all objects which live inside the broad phase.

@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.CollisionTests.Manifolds
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds
 {
     ///<summary>
     /// Manages persistent contacts for two convex collidables.

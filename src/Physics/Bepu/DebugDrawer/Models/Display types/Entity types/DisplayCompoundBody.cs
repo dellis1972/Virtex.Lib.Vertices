@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using Microsoft.Xna.Framework;
 
 

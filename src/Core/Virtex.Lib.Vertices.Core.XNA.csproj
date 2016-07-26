@@ -120,9 +120,13 @@
     <Compile Include="Entities\VehicleInput.cs" />
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
+    <Compile Include="Entities\vxAlphaEntity3D.cs" />
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
+    <Compile Include="GUI\Art Providers\IGuiArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxMenuScreenArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
     <Compile Include="Network\Server Lobby\vxServerLobbyPlayerItem.cs" />
     <Compile Include="Network\vxServerListItem.cs" />
@@ -168,7 +172,6 @@
     <Compile Include="Graphics\3D Gameplay\Components\BloomSettings.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxDirectionalLight.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
-    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\LensFlareComponent.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
     <Compile Include="Graphics\Instancing\InstanceSet.cs" />

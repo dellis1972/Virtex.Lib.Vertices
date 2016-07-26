@@ -7,10 +7,10 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
 
-namespace vxVertices.Core.Entities
+namespace Virtex.Lib.Vertices.Core.Entities
 {
 
     public class Sun : vxEntity3D

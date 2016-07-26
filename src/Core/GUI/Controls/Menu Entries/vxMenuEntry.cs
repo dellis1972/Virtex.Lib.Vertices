@@ -2,13 +2,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using vxVertices.Core;
-using vxVertices.Core.Input.Events;
-using vxVertices.Screens.Menus;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vertices.Utilities;
 using Microsoft.Xna.Framework.Audio;
+using Virtex.Lib.Vertices.GUI.GuiArtProvider;
 
-namespace vxVertices.GUI.Controls
+namespace Virtex.Lib.Vertices.GUI.Controls
 {
 	/// <summary>
 	/// Basic Button GUI Control.
@@ -20,27 +21,51 @@ namespace vxVertices.GUI.Controls
 		/// </summary>
 		public vxMenuBaseScreen ParentScreen { get; set; }
 
-		/// <summary>
-		/// Gets or sets the texture for this Menu Entry Background.
-		/// </summary>
-		/// <value>The texture.</value>
-		public Texture2D Texture { get; set; }
-
-		/// <summary>
-		/// Event raised when the menu entry is selected.
-		/// </summary>
-		public event EventHandler<PlayerIndexEventArgs> Selected;
+        /// <summary>
+        /// Gets or Sets the Icon for this Menu Entry.
+        /// </summary>
+        public Texture2D Icon { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.Controls.vxMenuEntry"/> class.
+        /// Gets or sets the texture for this Menu Entry Background.
+        /// </summary>
+        /// <value>The texture.</value>
+        public Texture2D Texture { get; set; }
+
+        /// <summary>
+        /// Event raised when the menu entry is selected.
+        /// </summary>
+        public event EventHandler<PlayerIndexEventArgs> Selected;
+
+
+        /// <summary>
+        /// The given Art Provider of the Menu Entry. 
+        /// </summary>
+        public vxMenuItemArtProvider ArtProvider { get; internal set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxMenuEntry"/> class.
         /// </summary>
         /// <param name="ParentScreen">Parent screen.</param>
         /// <param name="text">Text.</param>
 		public vxMenuEntry(vxMenuBaseScreen ParentScreen, string text)
-			: base(Vector2.Zero)
-		{			
-			//Set Engine
-			this.vxEngine = ParentScreen.vxEngine;
+            : this(ParentScreen , text, null)
+        {
+
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxMenuEntry"/> class.
+        /// </summary>
+        /// <param name="ParentScreen"></param>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        public vxMenuEntry(vxMenuBaseScreen ParentScreen, string text, Texture2D icon)
+    : base(Vector2.Zero)
+        {
+            //Set Engine
+            this.vxEngine = ParentScreen.vxEngine;
 
 			//Set Font from Global Engine Font
 			this.Font = vxEngine.vxGUITheme.Font;
@@ -51,8 +76,10 @@ namespace vxVertices.GUI.Controls
 			//Text
 			this.Text = text;
 
+            this.Icon = icon;
+
 			//Engine
-			this.vxEngine = vxEngine;
+			//this.vxEngine = vxEngine;
 
 			//Get Settings
             this.Color_Normal = vxEngine.vxGUITheme.vxMenuEntries.BackgroundColour;
@@ -68,6 +95,8 @@ namespace vxVertices.GUI.Controls
 			Texture = vxEngine.vxGUITheme.vxMenuEntries.vxMenuItemBackground;
 
             this.OnInitialHover += VxMenuEntry_OnInitialHover;
+
+            this.ArtProvider = (vxMenuItemArtProvider)vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Clone();
         }
 
         private void VxMenuEntry_OnInitialHover(object sender, EventArgs e)
@@ -105,49 +134,14 @@ namespace vxVertices.GUI.Controls
 			return (int)(vxEngine.vxGUITheme.Font.MeasureString(this.Text).Y + vxEngine.vxGUITheme.vxMenuEntries.Padding.Y * 2);
         }
 
+        public virtual void SetArtProvider(vxMenuItemArtProvider NewArtProvider)
+        {
+            this.ArtProvider = (vxMenuItemArtProvider)NewArtProvider.Clone();
+        }
+
         public override void Draw (vxEngine vxEngine)
 		{
-			//Update Rectangle
-			BoundingRectangle = new Rectangle(
-				(int)(Position.X - vxEngine.vxGUITheme.vxMenuEntries.Padding.X/2), 
-				(int)(Position.Y - vxEngine.vxGUITheme.vxMenuEntries.Padding.Y/2), 
-				(int)(this.Font.MeasureString(Text).X + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.X), 
-				(int)(this.Font.MeasureString(Text).Y + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.Y));
-
-			//Set Opacity from Parent Screen Transition Alpha
-			Opacity = ParentScreen.TransitionAlpha;
-
-			//Do a last second null check.
-			if (Texture == null)
-				Texture = vxEngine.Assets.Textures.Blank;
-			
-			//Draw Button
-            if(vxEngine.vxGUITheme.vxMenuEntries.DrawBackgroungImage)
-			    vxEngine.SpriteBatch.Draw(Texture, BoundingRectangle, Colour * Opacity);
-
-
-			//Set Text Colour Based on Focus
-            Colour_Text = HasFocus ? vxEngine.vxGUITheme.vxMenuEntries.TextHover : vxEngine.vxGUITheme.vxMenuEntries.TextColour;
-
-			//Update Left Justifications
-			if (vxEngine.vxGUITheme.vxMenuEntries.TextJustification == TextJustification.Left) {
-				vxEngine.SpriteBatch.DrawString (this.Font, Text,
-					new Vector2 (
-						Position.X + Padding,
-						Position.Y + Padding),
-					Colour_Text * Opacity);
-
-			}
-
-			//Update Center Justifications
-			else if (vxEngine.vxGUITheme.vxMenuEntries.TextJustification == TextJustification.Center){
-
-			vxEngine.SpriteBatch.DrawString(
-					this.Font, 
-					Text, 
-					Position + vxEngine.vxGUITheme.vxMenuEntries.Padding/2,
-					Colour_Text * Opacity);
-			}
+            this.ArtProvider.Draw(this);
 		}
     }
 }

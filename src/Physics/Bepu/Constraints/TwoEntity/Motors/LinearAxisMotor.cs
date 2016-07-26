@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.Motors
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors
 {
     /// <summary>
     /// Constrains anchors on two entities to move relative to each other on a line.

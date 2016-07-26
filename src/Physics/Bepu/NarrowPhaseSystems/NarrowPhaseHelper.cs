@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems
 {
     /// <summary>
     /// Contains the various factories that are used by default in the engine.

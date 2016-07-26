@@ -9,18 +9,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using vxVertices.Core;
-using vxVertices.Utilities;
-using vxVertices.Core.Input;
-using vxVertices.GUI.Controls;
-using vxVertices.GUI.Events;
-using vxVertices.GUI.Dialogs;
-using vxVertices.Network.Events;
-using vxVertices.GUI;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI.Events;
+using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vertices.Network.Events;
+using Virtex.Lib.Vertices.GUI;
 
 
 
-namespace vxVertices.GUI.Dialogs
+namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
     /// <summary>
     /// This Dislog Displays all active server's on the connected master server.

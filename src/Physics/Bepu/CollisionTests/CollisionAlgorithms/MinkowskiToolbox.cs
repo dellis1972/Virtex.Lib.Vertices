@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
 {
     ///<summary>
     /// Helper class that supports other systems using minkowski space operations.

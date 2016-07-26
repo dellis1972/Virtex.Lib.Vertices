@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Paths
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// Defines how a curve behaves beyond an endpoint.

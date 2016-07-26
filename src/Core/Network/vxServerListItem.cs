@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Utilities;
-using vxVertices.Core;
-using vxVertices.GUI.Events;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI.Events;
 
-namespace vxVertices.GUI.Dialogs
+namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
     /// <summary>
     /// File Chooser Dialor Item.

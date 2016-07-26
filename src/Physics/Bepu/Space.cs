@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.BroadPhaseSystems.Hierarchies;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using vxVertices.Physics.BEPU.Constraints;
-using vxVertices.Physics.BEPU.DeactivationManagement;
-using vxVertices.Physics.BEPU.Entities;
-using vxVertices.Physics.BEPU.EntityStateManagement;
-using vxVertices.Physics.BEPU.OtherSpaceStages;
-using vxVertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.Hierarchies;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
+using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems;
-using vxVertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU
+namespace Virtex.Lib.Vertices.Physics.BEPU
 {
     ///<summary>
-    /// Main simulation class of vxVertices.Physics.BEPU.  Contains various updating stages addition/removal methods for getting objects into the simulation.
+    /// Main simulation class of Virtex.Lib.Vertices.Physics.BEPU.  Contains various updating stages addition/removal methods for getting objects into the simulation.
     ///</summary>
     public class Space
     {

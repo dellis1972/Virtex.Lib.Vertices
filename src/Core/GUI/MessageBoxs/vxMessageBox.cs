@@ -14,14 +14,14 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Core;
-using vxVertices.Core.Input;
-using vxVertices.Core.Input.Events;
-using vxVertices.GUI;
-using vxVertices.GUI.Controls;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vertices.GUI.Controls;
 #endregion
 
-namespace vxVertices.GUI.MessageBoxs
+namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"
@@ -175,7 +175,7 @@ namespace vxVertices.GUI.MessageBoxs
 		/// <summary>
 		/// Raise the accepted event, then exit the message box.
 		/// </summary>
-		void Btn_Ok_Clicked (object sender, vxVertices.GUI.Events.vxGuiItemClickEventArgs e)
+		void Btn_Ok_Clicked (object sender, Virtex.Lib.Vertices.GUI.Events.vxGuiItemClickEventArgs e)
 		{
 			if (Accepted != null)
 				Accepted(this, new PlayerIndexEventArgs(ControllingPlayer.Value));
@@ -186,7 +186,7 @@ namespace vxVertices.GUI.MessageBoxs
 		/// <summary>
 		// Raise the cancelled event, then exit the message box.
 		/// </summary>
-		void Btn_Cancel_Clicked (object sender, vxVertices.GUI.Events.vxGuiItemClickEventArgs e)
+		void Btn_Cancel_Clicked (object sender, Virtex.Lib.Vertices.GUI.Events.vxGuiItemClickEventArgs e)
 		{
 			Method_Cancel ();
 		}

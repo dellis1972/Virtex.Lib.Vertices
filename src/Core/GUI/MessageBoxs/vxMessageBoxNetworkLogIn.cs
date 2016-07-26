@@ -1,10 +1,10 @@
 ﻿#if VRTC_INCLDLIB_NET 
 using System;
 using Microsoft.Xna.Framework;
-using vxVertices.GUI.Controls;
-using vxVertices.GUI.MessageBoxs;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI.MessageBoxs;
 
-namespace vxVertices.GUI.MessageBoxs
+namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"

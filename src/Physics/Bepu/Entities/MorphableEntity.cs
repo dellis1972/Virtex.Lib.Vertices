@@ -1,8 +1,8 @@
-﻿using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
 
-namespace vxVertices.Physics.BEPU.Entities
+namespace Virtex.Lib.Vertices.Physics.BEPU.Entities
 {
     ///<summary>
     /// Entity with modifiable collision information.

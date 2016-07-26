@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace vxVertices.Engine {
+namespace Virtex.Lib.Vertices.Engine {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace vxVertices.Engine {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("vxVertices.Engine.DrawerResource", typeof(DrawerResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Virtex.Lib.Vertices.Engine.DrawerResource", typeof(DrawerResource).Assembly);
                     resourceMan = temp;//BEPUphysicsDrawer
                 }
                 return resourceMan;

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems
 {
     ///<summary>
     /// Defines an object which is updated by the space.

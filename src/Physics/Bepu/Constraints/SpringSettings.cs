@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Contains the error reduction factor and softness of a constraint.

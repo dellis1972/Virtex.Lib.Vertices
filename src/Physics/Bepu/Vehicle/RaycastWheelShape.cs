@@ -1,16 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.Entities;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
 
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
 using System;
 
-namespace vxVertices.Physics.BEPU.Vehicle
+namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Uses a raycast as the shape of a wheel.

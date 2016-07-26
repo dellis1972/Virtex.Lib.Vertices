@@ -9,9 +9,9 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 using System.Xml.Serialization;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Core;
 
-namespace vxVertices.Core.Settings
+namespace Virtex.Lib.Vertices.Core.Settings
 {
     public class PlayerProfile
     {

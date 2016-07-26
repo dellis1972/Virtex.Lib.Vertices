@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using vxVertices.Physics.BEPU.DataStructures;
-using vxVertices.Physics.BEPU.Entities;
-using vxVertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

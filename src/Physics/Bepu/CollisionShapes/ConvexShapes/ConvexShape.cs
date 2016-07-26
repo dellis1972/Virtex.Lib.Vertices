@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 
-namespace vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes
 {
     ///<summary>
     /// Superclass of convex collision shapes.

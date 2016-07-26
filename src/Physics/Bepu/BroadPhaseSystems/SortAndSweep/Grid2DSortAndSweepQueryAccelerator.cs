@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 using BEPUutilities;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
  
 
-namespace vxVertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
 {
     public class Grid2DSortAndSweepQueryAccelerator : IQueryAccelerator
     {

@@ -12,17 +12,17 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Threading;
-using vxVertices.Core.Input;
-using vxVertices.Graphics;
-using vxVertices.Core.Scenes;
-using vxVertices.Core.Debug;
-using vxVertices.Core.Settings;
-using vxVertices.Core.ContentManagement;
-using vxVertices.Utilities;
-using vxVertices.Network.Events;
-using vxVertices.Network;
-using vxVertices.GUI;
-using vxVertices.GUI.Themes;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vertices.Core.Scenes;
+using Virtex.Lib.Vertices.Core.Debug;
+using Virtex.Lib.Vertices.Core.Settings;
+using Virtex.Lib.Vertices.Core.ContentManagement;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Network.Events;
+using Virtex.Lib.Vertices.Network;
+using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vertices.GUI.Themes;
 using Virtex.Lib.Vertices.XNA.ContentManagement;
 using Microsoft.Xna.Framework.Input.Touch;
 using Virtex.Lib.Vertices.Localization;
@@ -33,10 +33,10 @@ using Android.Views;
 
 #endregion
 
-namespace vxVertices.Core
+namespace Virtex.Lib.Vertices.Core
 {
 	/// <summary>
-	/// The vxEngine is a component which manages one or more GameScreen
+	/// The vxEngine is a component which manages one or more vxGameBaseScreen
 	/// instances. It maintains a stack of screens, calls their Update and Draw
 	/// methods at the appropriate times, and automatically routes input to the
 	/// topmost active screen.
@@ -854,7 +854,7 @@ namespace vxVertices.Core
 
 		/// <summary>
 		/// Removes a screen from the screen manager. You should normally
-		/// use GameScreen.ExitScreen instead of calling this directly, so
+		/// use vxGameBaseScreen.ExitScreen instead of calling this directly, so
 		/// the screen can gradually transition off rather than just being
 		/// instantly removed.
 		/// </summary>

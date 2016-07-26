@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Utilities;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core;
 
-namespace vxVertices.GUI.Controls
+namespace Virtex.Lib.Vertices.GUI.Controls
 {
 	/// <summary>
 	/// List view item base class.
@@ -19,7 +19,7 @@ namespace vxVertices.GUI.Controls
         public int ButtonWidth = 512;
 
        /// <summary>
-       /// Initializes a new instance of the <see cref="vxVertices.GUI.vxListViewItem"/> class.
+       /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxListViewItem"/> class.
        /// </summary>
        /// <param name="vxEngine">Vx engine.</param>
        /// <param name="Text">Text.</param>

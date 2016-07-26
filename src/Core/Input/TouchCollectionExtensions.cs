@@ -9,7 +9,7 @@
 
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace vxVertices.Core.Input
+namespace Virtex.Lib.Vertices.Core.Input
 {
     /// <summary>
     /// Provides extension methods for the TouchCollection type.

@@ -5,7 +5,7 @@
 // XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using vxVertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI.Controls;
 
 
 #endregion
@@ -13,10 +13,10 @@ using vxVertices.GUI.Controls;
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
-using vxVertices.GUI;
+using Virtex.Lib.Vertices.GUI;
 #endregion
 
-namespace vxVertices.GUI.Events
+namespace Virtex.Lib.Vertices.GUI.Events
 {
     /// <summary>
     /// Event Args for Combo Box Selection Change

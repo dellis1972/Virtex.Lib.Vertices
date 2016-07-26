@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework.Content;
 //using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-////using vxVertices.Physics.BEPU.Collidables.MobileCollidables;
-////using vxVertices.Physics.BEPU.Collidables;
-using vxVertices.Physics.BEPU.DataStructures;
+////using Virtex.Lib.Vertices.Physics.BEPU.Collidables.MobileCollidables;
+////using Virtex.Lib.Vertices.Physics.BEPU.Collidables;
+using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
 
 
 
-namespace vxVertices.Core.Entities
+namespace Virtex.Lib.Vertices.Core.Entities
 {
     public class Water_General : vxEntity3D
     {

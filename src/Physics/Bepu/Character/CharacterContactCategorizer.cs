@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
-using vxVertices.Physics.BEPU.CollisionTests;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vertices.Physics.BEPU.Character
 {
     /// <summary>
     /// Used by characters to figure out how to interpret a character's collisions for the purposes of movement.

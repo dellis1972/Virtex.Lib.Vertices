@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU
 {
     ///<summary>
     /// Defines an object which can be managed by an Space.

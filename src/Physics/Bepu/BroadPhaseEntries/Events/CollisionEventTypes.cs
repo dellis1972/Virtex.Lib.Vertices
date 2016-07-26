@@ -1,9 +1,9 @@
-﻿using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.CollisionTests;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries.Events
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events
 {
     //TODO: Contravariance isn't supported on all platforms...
 

@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
 
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
 {
     ///<summary>
     /// Persistent tester that compares triangles against convex objects.

@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Constraints.SolverGroups
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups
 {
     /// <summary>
     /// Constraint made from other constraints.

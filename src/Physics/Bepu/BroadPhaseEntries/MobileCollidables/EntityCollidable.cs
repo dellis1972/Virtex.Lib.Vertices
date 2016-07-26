@@ -1,15 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries.Events;
-using vxVertices.Physics.BEPU.CollisionShapes;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
  
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 using System;
-using vxVertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     ///<summary>
     /// Mobile collidable acting as a collision proxy for an entity.

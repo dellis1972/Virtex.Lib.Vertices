@@ -1,13 +1,13 @@
 
 
 using System.Collections.Generic;
-using vxVertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU;
 using BEPUutilities;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Physics.BEPU.CollisionShapes;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using System;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;

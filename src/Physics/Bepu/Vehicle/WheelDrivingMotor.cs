@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Constraints;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
  
-using vxVertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Vehicle
+namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Handles a wheel's driving force for a vehicle.

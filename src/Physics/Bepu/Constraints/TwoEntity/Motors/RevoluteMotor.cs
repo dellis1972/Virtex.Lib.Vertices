@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
  
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.Motors
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors
 {
     /// <summary>
     /// Tries to rotate two entities so that they reach a specified relative orientation or speed around an axis.

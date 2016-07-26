@@ -8,16 +8,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Scenes.Sandbox;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Scenes.Sandbox;
 
-using vxVertices.Core.Cameras;
-using vxVertices.Physics.BEPU.Entities.Prefabs;
-using vxVertices.Entities.Sandbox3D;
-using vxVertices.Scenes.Sandbox3D;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vertices.Entities.Sandbox3D;
+using Virtex.Lib.Vertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vertices.Graphics;
 
-namespace vxVertices.Entities.Sandbox3D.Util
+namespace Virtex.Lib.Vertices.Entities.Sandbox3D.Util
 {
 
     public class vxSnapBox : vxSandboxEntity
@@ -37,7 +37,7 @@ namespace vxVertices.Entities.Sandbox3D.Util
 
             Current3DScene.BEPUPhyicsSpace.Add(HitBox);
             //PhysicsSkin_Main.CollisionRules.Personal = Physics.CollisionRuleManagement.CollisionRule.NoSolver;
-			HitBox.CollisionInformation.CollisionRules.Personal = vxVertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
+			HitBox.CollisionInformation.CollisionRules.Personal = Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
             ((vxSandboxGamePlay)Current3DScene).Items.Add(this);            
         }
 
@@ -53,7 +53,7 @@ namespace vxVertices.Entities.Sandbox3D.Util
                 this.DisposeEntity();
 
             if (PhysicsSkin_Main != null)
-				PhysicsSkin_Main.CollisionRules.Personal = vxVertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
+				PhysicsSkin_Main.CollisionRules.Personal = Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
                         
             base.Update(gameTime);
         }

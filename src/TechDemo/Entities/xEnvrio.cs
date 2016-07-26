@@ -3,9 +3,9 @@
 using Microsoft.Xna.Framework;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Core.Entities;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Graphics;
 
 namespace VerticeEnginePort.Base
 {

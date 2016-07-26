@@ -6,17 +6,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input.Touch;
-using vxVertices.Core;
-using vxVertices.Physics.Farseer.Dynamics;
-using vxVertices.Physics.Farseer.Factories;
-using vxVertices.Physics.Farseer;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vertices.Physics.Farseer.Factories;
+using Virtex.Lib.Vertices.Physics.Farseer;
 using System.Collections.Generic;
-using vxVertices.Utilities;
-using vxVertices.Core.Entities;
-using vxVertices.Core.Input;
-using vxVertices.Core.Cameras;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Core.Cameras;
 
-namespace vxVertices.Core.Scenes
+namespace Virtex.Lib.Vertices.Core.Scenes
 {
 	/// <summary>
 	/// This is the main type for your game
@@ -114,7 +114,7 @@ namespace vxVertices.Core.Scenes
         float pauseAlpha;
 
         /// <summary>
-        /// Updates the state of the game. This method checks the GameScreen.IsActive
+        /// Updates the state of the game. This method checks the vxGameBaseScreen.IsActive
         /// property, so the game will stop updating when the pause menu is active,
         /// or if you tab away to a different application.
         /// </summary>

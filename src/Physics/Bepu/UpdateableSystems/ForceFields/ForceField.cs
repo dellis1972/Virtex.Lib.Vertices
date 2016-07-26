@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
 using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems.ForceFields
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems.ForceFields
 {
     /// <summary>
     /// Superclass of objects which apply forces to entities in some field.

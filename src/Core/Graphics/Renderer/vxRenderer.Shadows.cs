@@ -10,12 +10,12 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Utilities;
-using vxVertices.Core.Cameras;
-using vxVertices.Core.Settings;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Core.Settings;
 
-namespace vxVertices.Graphics
+namespace Virtex.Lib.Vertices.Graphics
 {
 
     /// <summary>

@@ -2,7 +2,7 @@
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
 {
     ///<summary>
     /// Accesses an entity's interpolated states.

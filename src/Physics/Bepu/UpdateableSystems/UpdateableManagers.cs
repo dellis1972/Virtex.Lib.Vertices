@@ -1,6 +1,6 @@
 ﻿using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems
 {
 
     ///<summary>

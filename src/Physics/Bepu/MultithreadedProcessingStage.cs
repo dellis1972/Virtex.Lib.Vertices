@@ -1,7 +1,7 @@
 ﻿using System;
 using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU
+namespace Virtex.Lib.Vertices.Physics.BEPU
 {
     ///<summary>
     /// Superclass of processing systems which can use multiple threads.

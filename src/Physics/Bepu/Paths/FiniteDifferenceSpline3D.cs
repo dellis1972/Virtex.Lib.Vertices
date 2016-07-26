@@ -2,7 +2,7 @@
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// 3D hermite curve that uses the finite difference method to compute tangents.

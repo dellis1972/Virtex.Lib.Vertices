@@ -9,7 +9,7 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace vxVertices.Core.Settings
+namespace Virtex.Lib.Vertices.Core.Settings
 {
 	public enum vxEnumQuality
 	{

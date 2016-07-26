@@ -2,7 +2,7 @@
 using BEPUutilities;
 
 
-namespace vxVertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// Wraps a curve that is traveled along with arbitrary defined angular speed.

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems
 {
     public class BruteForce : BroadPhase
     {

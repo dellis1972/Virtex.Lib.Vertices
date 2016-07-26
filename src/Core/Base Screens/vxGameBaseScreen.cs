@@ -1,11 +1,11 @@
 #region File Description
 //-----------------------------------------------------------------------------
-// GameScreen.cs
+// vxGameBaseScreen.cs
 //
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using vxVertices.Core.Input;
+using Virtex.Lib.Vertices.Core.Input;
 
 
 #endregion
@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework;
 using System.IO;
 #endregion
 
-namespace vxVertices.Core
+namespace Virtex.Lib.Vertices.Core
 {
     /// <summary>
     /// Enum describes the screen transition state.

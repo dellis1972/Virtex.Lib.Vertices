@@ -1,9 +1,9 @@
 ﻿using System;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
 {
     ///<summary>
     /// Manages the buffered and interpolated states of entities.

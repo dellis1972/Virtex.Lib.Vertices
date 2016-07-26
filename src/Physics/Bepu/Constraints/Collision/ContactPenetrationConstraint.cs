@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
-using vxVertices.Physics.BEPU.CollisionTests;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
 {
     /// <summary>
     /// Computes the forces necessary to keep two entities from going through each other at a contact point.

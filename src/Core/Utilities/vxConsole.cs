@@ -6,9 +6,9 @@ using System.IO;
 using System.IO.Compression;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Core;
 
-namespace vxVertices.Utilities
+namespace Virtex.Lib.Vertices.Utilities
 {
 	/// <summary>
 	/// Console Utility which provides output too both the in-game console window as well as 
@@ -29,7 +29,7 @@ namespace vxVertices.Utilities
 		/// <summary>
 		/// The debug string location.
 		/// </summary>
-		public static Vector2 DebugStringLocation = new Vector2(25,25);
+		public static Vector2 DebugStringLocation = new Vector2(5,5);
 
         /// <summary>
         /// Writes a debug line which is outputed to both the engine debug window and the system console.
@@ -123,6 +123,48 @@ namespace vxVertices.Utilities
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
                 vxEngine.DebugSystem.DebugCommandUI.Echo("Source File   ---   " + SourceFile + "    ---    ");
                 vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR: >>: " + output);
+                vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
+            }
+        }
+
+
+
+        /// <summary>
+        /// Writes out a warning to the debug and system console.
+        /// </summary>
+        /// <param name="SourceFile">Source file where the warning is being sent from. Helpful for tracking where warning's 
+        /// are being generated. </param>
+        /// <param name="output">The object holding the warning data too be outputed in the console.</param>
+        /// <example> 
+        /// This sample shows how to call the <see cref="WriteWarning"/> method.
+        /// <code>
+        ///     try
+        ///     {
+        ///         foo.bar();
+        ///     }
+        ///     catch(Exception ex)
+        ///     {
+        ///         vxConsole.WriteWarning(this.ToString(), ex.Message);
+        ///     }
+        /// </code>
+        /// </example>
+        public static void WriteWarning(string SourceFile, string output)
+        {
+#if !VRTC_PLTFRM_DROID
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+#endif
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("Source File   ---   " + SourceFile + "    ---    ");
+            Console.WriteLine("WARNING: >>: " + output);
+            Console.WriteLine("**************************************************");
+#if !VRTC_PLTFRM_DROID
+            Console.ResetColor();
+#endif
+            if (vxEngine != null)
+            {
+                vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
+                vxEngine.DebugSystem.DebugCommandUI.Echo("Source File   ---   " + SourceFile + "    ---    ");
+                vxEngine.DebugSystem.DebugCommandUI.Echo("WARNING: >>: " + output);
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
             }
         }

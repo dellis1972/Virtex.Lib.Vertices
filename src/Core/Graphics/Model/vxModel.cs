@@ -4,11 +4,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace vxVertices.Graphics
+namespace Virtex.Lib.Vertices.Graphics
 {
 	/// <summary>
 	/// A Model Class which loads and processes all data at runtime. Although this add's to load times,
     /// it allows for more control as well as modding for any and all models which are used in the game.
+    /// Using three different models to handle different types of rendering does add too over all installation
+    /// size, it is necessary to allow the shaders to be compiled for cross platform use.
 	/// </summary>
 	public class vxModel
 	{
@@ -35,6 +37,18 @@ namespace vxVertices.Graphics
             set { _modelShadow = value; }
         }
         private Model _modelShadow;
+
+        /// <summary>
+        /// This third model holds a utility model which corresponds to the 
+        /// 'ModelMain'. This model is used for Defferred Rendering and setting up
+        /// Depth/Normal buffers.
+        /// </summary>
+        public Model ModelUtility
+        {
+            get { return _modelutility; }
+            set { _modelutility = value; }
+        }
+        private Model _modelutility;
 
         /// <summary>
         /// Basic Constructor. Note: All Items must be instantiated outside of this function.

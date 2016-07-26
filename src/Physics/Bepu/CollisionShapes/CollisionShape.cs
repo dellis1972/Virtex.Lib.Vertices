@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace vxVertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
 {
     ///<summary>
     /// Superclass of all collision shapes.

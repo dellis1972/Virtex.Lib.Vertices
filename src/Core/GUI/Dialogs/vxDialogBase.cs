@@ -6,14 +6,14 @@ using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using vxVertices.Core;
-using vxVertices.GUI;
-using vxVertices.Utilities;
-using vxVertices.Core.Input.Events;
-using vxVertices.GUI.Controls;
-using vxVertices.GUI.Events;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI.Events;
 
-namespace vxVertices.GUI.Dialogs
+namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"

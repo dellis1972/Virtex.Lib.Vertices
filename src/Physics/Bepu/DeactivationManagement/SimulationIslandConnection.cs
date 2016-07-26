@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.DeactivationManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement
 {
     
     /// <summary>

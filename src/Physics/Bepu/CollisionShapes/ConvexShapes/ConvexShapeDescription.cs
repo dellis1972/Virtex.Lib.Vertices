@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes
 {
     /// <summary>
     /// Stores information needed by all convex shapes.

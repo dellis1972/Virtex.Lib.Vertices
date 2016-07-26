@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.CollisionRuleManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement
 {
     /// <summary>
     /// Stores how an object can interact with other objects through collisions.

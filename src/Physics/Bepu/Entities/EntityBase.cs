@@ -1,23 +1,23 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using vxVertices.Physics.BEPU.DeactivationManagement;
-using vxVertices.Physics.BEPU.EntityStateManagement;
-using vxVertices.Physics.BEPU.OtherSpaceStages;
-using vxVertices.Physics.BEPU.PositionUpdating;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 
 using BEPUutilities;
-using vxVertices.Physics.BEPU.Materials;
-using vxVertices.Physics.BEPU.CollisionShapes;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
 using MathChecker = BEPUutilities.MathChecker;
 
-namespace vxVertices.Physics.BEPU.Entities
+namespace Virtex.Lib.Vertices.Physics.BEPU.Entities
 {
     ///<summary>
     /// Superclass of movable rigid bodies.  Contains information for

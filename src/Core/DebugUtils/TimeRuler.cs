@@ -19,7 +19,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
-namespace vxVertices.Core.Debug
+namespace Virtex.Lib.Vertices.Core.Debug
 {
     /// <summary>
     /// Realtime CPU measuring tool

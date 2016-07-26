@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.OtherSpaceStages
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages
 {
     ///<summary>
     /// Defines an object which can create deferred events.

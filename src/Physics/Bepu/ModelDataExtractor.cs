@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.BEPU
+namespace Virtex.Lib.Vertices.Physics.BEPU
 {
     /// <summary>
     /// Contains helper methods for extracting vertices and indices from XNA models.

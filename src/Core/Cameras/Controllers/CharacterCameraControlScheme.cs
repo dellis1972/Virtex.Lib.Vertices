@@ -6,10 +6,10 @@ using System.Text;
 using BEPUutilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using vxVertices.Physics.BEPU.Character;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Physics.BEPU.Character;
+using Virtex.Lib.Vertices.Utilities;
 
-namespace vxVertices.Core.Cameras.Controllers
+namespace Virtex.Lib.Vertices.Core.Cameras.Controllers
 {
     public class CharacterCameraControlScheme : CameraControlScheme
     {

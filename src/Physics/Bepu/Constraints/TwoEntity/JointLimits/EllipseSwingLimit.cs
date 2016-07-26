@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.JointLimits
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits
 {
     /// <summary>
     /// Constrains the relative orientation of two entities to within an ellipse.

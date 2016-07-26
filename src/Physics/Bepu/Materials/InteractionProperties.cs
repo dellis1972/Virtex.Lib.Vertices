@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Materials
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Materials
 {
     ///<summary>
     /// Contains the blended friction and bounciness of a pair of objects.

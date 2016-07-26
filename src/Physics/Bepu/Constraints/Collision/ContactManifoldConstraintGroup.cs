@@ -1,9 +1,9 @@
-﻿using vxVertices.Physics.BEPU.Constraints.SolverGroups;
-using vxVertices.Physics.BEPU.Entities;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using System;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
 {
     ///<summary>
     /// Constraint group containing multiple contact manifold constraints.

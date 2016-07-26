@@ -36,7 +36,7 @@
 
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Core.Debug
+namespace Virtex.Lib.Vertices.Core.Debug
 {
     /// <summary>
     /// DebugSystem is a helper class that streamlines the creation of the various GameDebug

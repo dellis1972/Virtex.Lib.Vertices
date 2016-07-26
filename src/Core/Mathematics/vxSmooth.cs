@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
 
-namespace vxVertices.Mathematics
+namespace Virtex.Lib.Vertices.Mathematics
 {
 	/// <summary>
 	/// Smooths out Values based off of what they should be, what they are, and how many steps it should take to get there.

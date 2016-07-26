@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
 using BEPUutilities.DataStructures;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Superclass of pairs between collidables that generate contact points.

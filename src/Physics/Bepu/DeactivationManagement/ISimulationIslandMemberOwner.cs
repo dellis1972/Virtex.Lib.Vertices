@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace vxVertices.Physics.BEPU.DeactivationManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement
 {
     /// <summary>
     /// Defines an object which owns a SimulationIslandMember.

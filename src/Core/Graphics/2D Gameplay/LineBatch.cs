@@ -1,10 +1,10 @@
 ﻿#if VIRTICES_2D
 using System;
-using vxVertices.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vertices.Physics.Farseer.Collision.Shapes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace vxVertices.Graphics
+namespace Virtex.Lib.Vertices.Graphics
 {
 	public class LineBatch : IDisposable
 	{

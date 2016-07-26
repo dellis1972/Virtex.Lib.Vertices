@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
  
 using BEPUutilities.DataStructures;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
 {
     /// <summary>
     /// Computes the friction force for a contact when central friction cannot be used.

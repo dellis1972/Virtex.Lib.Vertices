@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.CollisionTests
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests
 {
     /// <summary>
     /// Handles information about a contact point during a collision between two bodies.

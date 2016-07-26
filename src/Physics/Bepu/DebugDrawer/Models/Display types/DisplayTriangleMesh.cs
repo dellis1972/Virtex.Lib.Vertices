@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using vxVertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

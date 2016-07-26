@@ -1,7 +1,7 @@
-﻿using vxVertices.Physics.BEPU.Constraints;
-using vxVertices.Physics.BEPU.CollisionTests;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Defines a pair handler which can have children.

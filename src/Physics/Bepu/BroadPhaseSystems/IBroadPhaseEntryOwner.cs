@@ -1,6 +1,6 @@
-﻿using vxVertices.Physics.BEPU.BroadPhaseEntries;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems
 {
     ///<summary>
     /// Requires that a class own a BroadPhaseEntry.

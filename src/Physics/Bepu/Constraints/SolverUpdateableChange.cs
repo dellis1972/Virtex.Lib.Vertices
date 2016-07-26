@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Constraints
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
 {
     ///<summary>
     /// Stores an enqueued solver updateable addition or removal.

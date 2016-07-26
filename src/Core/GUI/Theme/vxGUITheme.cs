@@ -1,12 +1,13 @@
 ﻿using System;
-using vxVertices.Core;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Virtex.Lib.Vertices.GUI.GuiArtProvider;
 
-namespace vxVertices.GUI.Themes
+namespace Virtex.Lib.Vertices.GUI.Themes
 {	
 	
 
@@ -46,7 +47,14 @@ namespace vxVertices.GUI.Themes
 			set{ padding = value; }
 		}
 		Vector2 padding = new Vector2 (10, 10);
-        
+
+
+
+        /*******************************************/
+        //				ART PROVIDER
+        /*******************************************/
+        public vxMenuScreenArtProvider ArtProviderForMenuScreen { get; set; }
+        public vxMenuItemArtProvider ArtProviderForMenuScreenItems { get; set; }
 
         /*******************************************/
         //					LABEL
@@ -75,7 +83,7 @@ namespace vxVertices.GUI.Themes
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUITheme"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxGUITheme"/> class.
         /// </summary>
         /// <param name="Engine">Engine.</param>
         public vxGUITheme(vxEngine Engine)
@@ -91,7 +99,12 @@ namespace vxVertices.GUI.Themes
             //Load the Default Theme first
             //LoadTheme (PathTooFiles, Engine.EngineContentManager);
 
-			SetDefaultTheme ();
+            //Initialise Art Providers
+            ArtProviderForMenuScreen = new vxMenuScreenArtProvider(Engine);
+            ArtProviderForMenuScreenItems = new vxMenuItemArtProvider(Engine);
+
+
+            SetDefaultTheme ();
 		}
 
 		public void SetDefaultTheme()

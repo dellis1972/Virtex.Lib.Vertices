@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace vxVertices.Network
+namespace Virtex.Lib.Vertices.Network
 {
     public class NetworkPlayerInfo
     {

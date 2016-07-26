@@ -1,20 +1,20 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionTests;
-using vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
-using vxVertices.Physics.BEPU.CollisionTests.Manifolds;
-using vxVertices.Physics.BEPU.Constraints.Collision;
-using vxVertices.Physics.BEPU.PositionUpdating;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision;
+using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
  
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Handles a triangle-convex collision pair.

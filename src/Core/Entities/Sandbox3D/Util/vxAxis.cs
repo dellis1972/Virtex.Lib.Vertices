@@ -1,16 +1,16 @@
 ﻿#if VIRTICES_3D
 using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Core;
-using vxVertices.Utilities;
-using vxVertices.Physics.BEPU.Entities.Prefabs;
-using vxVertices.Core.Debug;
-using vxVertices.Core.Input;
-using vxVertices.Core.Cameras;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vertices.Core.Debug;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Core.Cameras;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vertices.Scenes.Sandbox3D;
 
-namespace vxVertices.Entities.Sandbox3D.Util
+namespace Virtex.Lib.Vertices.Entities.Sandbox3D.Util
 {
     public enum AxisDirections
     {
@@ -38,7 +38,7 @@ namespace vxVertices.Entities.Sandbox3D.Util
         Model model;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.Core.Axis"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Axis"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="ParentCursor">Parent cursor.</param>
@@ -73,7 +73,7 @@ namespace vxVertices.Entities.Sandbox3D.Util
             //Current3DScene.Physics3DDebugDrawer.Add(HitBox);
             HitBox.CollisionInformation.Tag = AxisDirections;
 
-			HitBox.CollisionInformation.CollisionRules.Personal = vxVertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
+			HitBox.CollisionInformation.CollisionRules.Personal = Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
 
             //Remove from the main list so that it can be drawn over the entire scene
             //Current3DScene.List_Entities.Remove(this);

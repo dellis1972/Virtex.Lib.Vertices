@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseSystems.Hierarchies
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.Hierarchies
 {
     internal abstract class Node
     {

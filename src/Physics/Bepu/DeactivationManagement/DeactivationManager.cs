@@ -5,7 +5,7 @@ using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU.DeactivationManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement
 {
     ///<summary>
     /// Manages the sleeping states of objects.

@@ -1,11 +1,11 @@
 #region File Description
 //-----------------------------------------------------------------------------
-// MainMenuScreen.cs
+// MainvxMenuBaseScreen.cs
 //
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using vxVertices.Network;
+using Virtex.Lib.Vertices.Network;
 
 
 #endregion
@@ -13,13 +13,13 @@ using vxVertices.Network;
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Screens.Menus;
-using vxVertices.GUI.Dialogs;
-using vxVertices.GUI.Controls;
-using vxVertices.Core.Input.Events;
-using vxVertices.Core;
-using vxVertices.GUI.MessageBoxs;
-using vxVertices.Screens.Async;
+using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI.MessageBoxs;
+using Virtex.Lib.Vertices.Screens.Async;
 #endregion
 
 namespace VerticeEnginePort.Base
@@ -27,14 +27,14 @@ namespace VerticeEnginePort.Base
     /// <summary>
     /// The main menu screen is the first thing displayed when the game starts up.
     /// </summary>
-    class MainMenuScreen : MenuScreen
+    class MainvxMenuBaseScreen : vxMenuBaseScreen
     {
         #region Initialization
         
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public MainMenuScreen()
+        public MainvxMenuBaseScreen()
             : base("Vertice Engine - Tech Demo")
         {
             

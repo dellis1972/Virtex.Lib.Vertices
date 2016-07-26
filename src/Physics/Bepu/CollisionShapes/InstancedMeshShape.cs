@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
 {
     ///<summary>
     /// Local space data associated with an instanced mesh.

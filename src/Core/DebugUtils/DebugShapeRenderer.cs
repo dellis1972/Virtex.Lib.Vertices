@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace vxVertices.Core.Debug
+namespace Virtex.Lib.Vertices.Core.Debug
 {
     /// <summary>
     /// A system for handling rendering of various debug shapes.

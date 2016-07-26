@@ -10,10 +10,10 @@
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
-using vxVertices.GUI;
+using Virtex.Lib.Vertices.GUI;
 #endregion
 
-namespace vxVertices.Network.Events
+namespace Virtex.Lib.Vertices.Network.Events
 {
     /// <summary>
     /// Event Args for when the server list is recieved

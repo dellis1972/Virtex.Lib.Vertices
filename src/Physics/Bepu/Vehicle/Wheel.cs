@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
-using vxVertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
 
 using BEPUutilities;
-using vxVertices.Physics.BEPU.Materials;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
 
-namespace vxVertices.Physics.BEPU.Vehicle
+namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Supports a Vehicle.

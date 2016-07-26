@@ -1,4 +1,4 @@
-﻿using vxVertices.Physics.BEPU.Constraints;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
 
 namespace BEPUphysicsDrawer.Lines
 {

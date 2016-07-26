@@ -5,7 +5,7 @@ using BEPUutilities;
 using BEPUutilities.DataStructures;
 
 
-namespace vxVertices.Physics.BEPU.CollisionTests
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests
 {
     ///<summary>
     /// Helper class that reduces contact manifolds to reasonable numbers of contacts.

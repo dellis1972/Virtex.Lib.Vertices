@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries.Events;
-using vxVertices.Physics.BEPU.CollisionShapes;
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
 using System.Collections.Generic;
 using RigidTransform = BEPUutilities.RigidTransform;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
 {
     ///<summary>
     /// Collection of unmoving collidable objects.

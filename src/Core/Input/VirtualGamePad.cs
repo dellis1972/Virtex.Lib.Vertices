@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace vxVertices.Core.Input
+namespace Virtex.Lib.Vertices.Core.Input
 {
 	public class VirtualGamePad
     {

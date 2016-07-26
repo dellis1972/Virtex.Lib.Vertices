@@ -3,11 +3,11 @@
 //using System.Linq;
 //using System.Text;
 //using Microsoft.Xna.Framework.Graphics;
-//using vxVertices.Physics.BEPU.DataStructures;
-//using vxVertices.Physics.BEPU;
-//using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+//using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+//using Virtex.Lib.Vertices.Physics.BEPU;
+//using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
 //using Microsoft.Xna.Framework;
-//using vxVertices.Physics.BEPU.Entities;
+//using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 
 //namespace BEPUphysicsDrawer.Lines
 //{
@@ -101,9 +101,9 @@
 using System.Collections.Generic;
 using BEPUutilities.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU;
 using Microsoft.Xna.Framework;
-using vxVertices.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
 
 
 namespace BEPUphysicsDrawer.Lines

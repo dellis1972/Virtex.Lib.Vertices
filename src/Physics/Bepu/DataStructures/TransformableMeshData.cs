@@ -3,7 +3,7 @@
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
 {
     ///<summary>
     /// Collection of mesh data which transforms its vertices before returning them.

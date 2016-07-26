@@ -1,6 +1,6 @@
 #region File Description
 //-----------------------------------------------------------------------------
-// MainMenuScreen.cs
+// MainvxMenuBaseScreen.cs
 //
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
@@ -9,10 +9,10 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
-using vxVertices.GUI.Controls;
-using vxVertices.Core.Input.Events;
-using vxVertices.Screens.Async;
-using vxVertices.Screens.Menus;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.Screens.Async;
+using Virtex.Lib.Vertices.Screens.Menus;
 #endregion
 
 namespace VerticeEnginePort.Base
@@ -20,7 +20,7 @@ namespace VerticeEnginePort.Base
     /// <summary>
     /// The main menu screen is the first thing displayed when the game starts up.
     /// </summary>
-    class DemoSelectScreen : MenuScreen
+    class DemoSelectScreen : vxMenuBaseScreen
     {
         #region Initialization
 

@@ -5,21 +5,21 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using vxVertices.Core.Input.Events;
-using vxVertices.GUI.Controls;
-using vxVertices.GUI.Dialogs;
-using vxVertices.GUI.MessageBoxs;
-using vxVertices.Screens.Async;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vertices.GUI.MessageBoxs;
+using Virtex.Lib.Vertices.Screens.Async;
 
 
 #endregion
 
 #region Using Statements
 using Microsoft.Xna.Framework;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Core;
 #endregion
 
-namespace vxVertices.Screens.Menus
+namespace Virtex.Lib.Vertices.Screens.Menus
 {
     /// <summary>
     /// The pause menu comes up over the top of the game,

@@ -9,18 +9,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using vxVertices.Core;
-using vxVertices.Utilities;
-using vxVertices.Core.Input;
-using vxVertices.GUI.Controls;
-using vxVertices.GUI.Events;
-using vxVertices.GUI.Dialogs;
-using vxVertices.Network.Events;
-using vxVertices.GUI;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI.Events;
+using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vertices.Network.Events;
+using Virtex.Lib.Vertices.GUI;
 using Lidgren.Network;
-using vxVertices.Network;
+using Virtex.Lib.Vertices.Network;
 
-namespace vxVertices.GUI.Dialogs
+namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
 
 
@@ -145,6 +145,7 @@ namespace vxVertices.GUI.Dialogs
 
             // Enable DiscoveryResponse messages
             config.EnableMessageType(NetIncomingMessageType.DiscoveryResponse);
+            config.EnableMessageType(NetIncomingMessageType.ConnectionLatencyUpdated);
 
             vxEngine.GameClient = new NetClient(config);
             ClientCallBackLoop = new SendOrPostCallback(ClientMsgCallback);
@@ -386,6 +387,7 @@ public void SendMessage(string stringToSend)
             //Setup Connection Approvals
             newServerConfig.EnableMessageType(NetIncomingMessageType.ConnectionApproval);
             newServerConfig.EnableMessageType(NetIncomingMessageType.DiscoveryRequest);
+            newServerConfig.EnableMessageType(NetIncomingMessageType.ConnectionLatencyUpdated);
 
             //Initialise the Net Server Object (Note: This doesn't start the server itsself, Start(); needs to be called still)
             vxEngine.GameSever = new NetServer(newServerConfig);

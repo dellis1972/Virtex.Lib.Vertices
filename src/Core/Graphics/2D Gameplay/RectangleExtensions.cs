@@ -10,7 +10,7 @@
 using System;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Graphics
+namespace Virtex.Lib.Vertices.Graphics
 {
     /// <summary>
     /// A set of helpful methods for working with rectangles.

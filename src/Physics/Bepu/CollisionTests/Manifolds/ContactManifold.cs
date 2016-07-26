@@ -1,9 +1,9 @@
 ﻿using System;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 
-namespace vxVertices.Physics.BEPU.CollisionTests.Manifolds
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds
 {
     ///<summary>
     /// Superclass of manifolds which manage persistent contacts over multiple frames.

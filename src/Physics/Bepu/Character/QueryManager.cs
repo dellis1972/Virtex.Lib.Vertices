@@ -1,16 +1,16 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 
-namespace vxVertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vertices.Physics.BEPU.Character
 {
     /// <summary>
     /// Helps a character identify supports by finding contacts and ray cast intersections with its immediate surroundings.

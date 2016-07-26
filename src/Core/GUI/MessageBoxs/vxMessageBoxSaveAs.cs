@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using vxVertices.GUI;
-using vxVertices.GUI.MessageBoxs;
-using vxVertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vertices.GUI.MessageBoxs;
+using Virtex.Lib.Vertices.GUI.Controls;
 
 
 #endregion
 
-namespace vxVertices.GUI.MessageBoxs
+namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"

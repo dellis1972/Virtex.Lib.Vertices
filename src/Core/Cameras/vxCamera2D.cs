@@ -2,10 +2,10 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Physics.Farseer;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vertices.Physics.Farseer;
+using Virtex.Lib.Vertices.Physics.Farseer.Dynamics;
 
-namespace vxVertices.Core.Cameras
+namespace Virtex.Lib.Vertices.Core.Cameras
 {
 	public class vxCamera2D
 	{

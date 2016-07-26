@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using BEPUutilities.Threading;
-using vxVertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems
 {
 
     ///<summary>

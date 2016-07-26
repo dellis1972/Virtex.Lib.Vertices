@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.PositionUpdating
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating
 {
     ///<summary>
     /// Update modes for position updateables.

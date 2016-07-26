@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using vxVertices.Core;
-using vxVertices.GUI.Events;
-using vxVertices.Mathematics;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI.Events;
+using Virtex.Lib.Vertices.Mathematics;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Utilities;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace vxVertices.GUI
+namespace Virtex.Lib.Vertices.GUI
 {
     /// <summary>
     /// GUI Base Class.
@@ -471,13 +471,13 @@ namespace vxVertices.GUI
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUIBaseItem"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxGUIBaseItem"/> class.
         /// </summary>
         public vxGUIBaseItem() {  }
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.vxGUIBaseItem"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxGUIBaseItem"/> class.
         /// </summary>
         /// <param name="position">Position.</param>
         public vxGUIBaseItem(Vector2 position)

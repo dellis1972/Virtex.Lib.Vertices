@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.CollisionRuleManagement
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement
 {
     /// <summary>
     /// Defines a set of rules that collisions can adhere to.

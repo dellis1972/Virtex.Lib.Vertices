@@ -2,8 +2,8 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Screens;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Screens;
+using Virtex.Lib.Vertices.Utilities;
 #endregion
 
 namespace VerticeEnginePort.Base

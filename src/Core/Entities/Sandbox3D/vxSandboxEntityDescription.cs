@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Core;
 
-namespace vxVertices.Entities.Sandbox3D
+namespace Virtex.Lib.Vertices.Entities.Sandbox3D
 {
     public class vxSandboxEntityDescription
     {

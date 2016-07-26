@@ -1,7 +1,7 @@
 ﻿using BEPUutilities;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.OtherSpaceStages
+namespace Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages
 {
 
 

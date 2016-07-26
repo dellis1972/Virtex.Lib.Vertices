@@ -13,25 +13,25 @@ using System.Linq;
 //Virtex vxEngine Declaration
 using System.Collections;
 
-using vxVertices.Core;
-using vxVertices.Physics.BEPU;
-using vxVertices.Mathematics;
-using vxVertices.Core.Particles;
-using vxVertices.Graphics;
-using vxVertices.Audio;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Mathematics;
+using Virtex.Lib.Vertices.Core.Particles;
+using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vertices.Audio;
 using BEPUphysicsDrawer.Models;
 using BEPUutilities.Threading;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Utilities;
 
-using vxVertices.Core.Entities;
-using vxVertices.Geometry;
-using vxVertices.Core.Debug;
-using vxVertices.Core.Cameras;
-using vxVertices.Screens.Menus;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Geometry;
+using Virtex.Lib.Vertices.Core.Debug;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Screens.Menus;
 
 #endregion
 
-namespace vxVertices.Core.Scenes
+namespace Virtex.Lib.Vertices.Core.Scenes
 {
 	/// <summary>
 	/// The vxScene3D class implements the actual game logic for 3D Games. It is 
@@ -275,7 +275,7 @@ namespace vxVertices.Core.Scenes
 
 
 		/// <summary>
-		/// Updates the state of the game. This method checks the GameScreen.IsActive
+		/// Updates the state of the game. This method checks the vxGameBaseScreen.IsActive
 		/// property, so the game will stop updating when the pause menu is active,
 		/// or if you tab away to a different application.
 		/// </summary>

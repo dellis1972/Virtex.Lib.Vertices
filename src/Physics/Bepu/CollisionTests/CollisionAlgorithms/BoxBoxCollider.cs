@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework;
 using BEPUutilities.DataStructures;
 using BEPUutilities;
  
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 
-namespace vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
 {
     /// <summary>
     /// Stores basic data used by some collision systems.

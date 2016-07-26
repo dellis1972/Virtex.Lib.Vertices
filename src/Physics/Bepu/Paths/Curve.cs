@@ -1,7 +1,7 @@
 ﻿using System;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// Manages a curve in 3D space that supports interpolation.

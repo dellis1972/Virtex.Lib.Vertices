@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using vxVertices.Core;
-using vxVertices.Graphics;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vertices.Utilities;
 
 namespace Virtex.Lib.Vertices.XNA.ContentManagement
 {
@@ -61,7 +61,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
         /// <param name="PathToModel"></param>
         /// <param name="EffectToSet"></param>
         /// <returns></returns>
-        public vxModel LoadModel(string PathToModel, ContentManager Content, Effect EffectToSet, Effect ShadowEffect)
+        public vxModel LoadModel(string PathToModel, ContentManager Content, Effect EffectToSet, Effect ShadowEffect, Effect UtilityEffect)
         {
 #if !VRTC_PLTFRM_DROID
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -79,20 +79,34 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                 newModel.ModelMain = Content.Load<Model>(PathToModel);
 
                 //Now Check too see if the shadow model exits, if not, then create a copy in the same directory.
-                
+
                 string shadowModelPath = Content.RootDirectory + "/" + PathToModel + "_shdw.xnb";
+                string utilModelPath = Content.RootDirectory + "/" + PathToModel + "_util.xnb";
 
 
 #if DEBUG
                 //Always Copy a new one during debug.
                 File.Copy(Content.RootDirectory + "/" + PathToModel + ".xnb", shadowModelPath, true);
+                File.Copy(Content.RootDirectory + "/" + PathToModel + ".xnb", utilModelPath, true);
 #else
                 
-                Console.WriteLine("\t\t\tLooking For Shadow Model: " + shadowModelPath);
+                Console.Write("\t\t\tLooking For Shadow Model: '{0}' ...", shadowModelPath);
                 if (File.Exists(shadowModelPath) == false)
                 {
-                    Console.Write("\t\t\tCreating At Shadow Model: ...");
+                    Console.Write("\n\t\t\tCreating At Shadow Model: ...");
                     File.Copy(Content.RootDirectory + "/" + PathToModel + ".xnb", shadowModelPath);
+                    Console.WriteLine("Done!");
+                }
+                else
+                {
+                    Console.WriteLine("Found!");
+                }
+
+                Console.Write("\t\t\tLooking For Utility Model: '{0}' ...", utilModelPath);
+                if (File.Exists(utilModelPath) == false)
+                {
+                    Console.Write("\n\t\t\tCreating At Utility Model: ...");
+                    File.Copy(Content.RootDirectory + "/" + PathToModel + ".xnb", utilModelPath);
                     Console.WriteLine("Done!");
                 }
                 else
@@ -102,9 +116,10 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 #endif
 
 
+                #region Main Model Loading
                 /*********************************************************************************/
                 //                              MAIN MODEL
-				/*********************************************************************************/
+                /*********************************************************************************/
 
                 //
                 // Now Apply and Initialise the New Effect on the MainModel Object using the speceified Effect.
@@ -115,9 +130,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
                 foreach (ModelMesh mesh in newModel.ModelMain.Meshes)
                 {
-//#if vxDEBUG_VERBOSE
+                    //#if vxDEBUG_VERBOSE
                     Console.WriteLine("\t\t\tMesh Name: " + mesh.Name);
-//#endif
+                    //#endif
                     mesh.Tag = PathToModel;
                     // Scan over all the effects currently on the mesh.
                     foreach (Effect oldEffect in mesh.Effects)
@@ -136,27 +151,32 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                             //Main Diffuse Texture
                             if (newEffect.Parameters["Texture"] != null)
                             {
-								if (File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds.xnb"))
+                                if (File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds.xnb"))
                                     newEffect.Parameters["Texture"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds"));
                                 else if (this.Engine.Assets != null)
+                                {
                                     newEffect.Parameters["Texture"].SetValue(this.Engine.Assets.Textures.Texture_Diffuse_Null);
+#if vxDEBUG_VERBOSE
+                                    vxConsole.WriteWarning(this.ToString(), "DEFAULT DEIFFUSE TEXTURE NOT FOUND FOR MODEL :" + PathToModel);
+#endif
+                                }
                                 else
                                     newEffect.Parameters["Texture"].SetValue(this.Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse"));
                             }
 
                             // Normal Map
                             if (newEffect.Parameters["NormalMap"] != null &&
-								File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
+                                File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
                             {
                                 newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
 #if vxDEBUG_VERBOSE
                                 Console.WriteLine("\t\t\t\tNormal Map Found");
 #endif
                             }
-                            
+
                             // Specular Map
                             if (newEffect.Parameters["SpecularMap"] != null &&
-								File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
+                                File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
                             {
 
                                 newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));
@@ -170,7 +190,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
                             if (newEffect.Parameters["IsSun"] != null)
                                 newEffect.Parameters["IsSun"].SetValue(false);
-                            
+
 
 
 #if VRTC_PLTFRM_XNA
@@ -195,7 +215,9 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                         meshPart.Effect = effectMapping[meshPart.Effect];
                     }
                 }
+                #endregion
 
+                #region Loading Shadow Model
 #if vxDEBUG_VERBOSE
                 Console.WriteLine("\t\t\t------------------------");
 #endif
@@ -223,7 +245,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                     foreach (Effect oldEffect in mesh.Effects)
                     {
                         // If we haven't already seen this effect...
-                        if (!effectMapping.ContainsKey(oldEffect))
+                        if (!effectShadowMapping.ContainsKey(oldEffect))
                         {
                             // Make a clone of our replacement effect. We can't just use
                             // it directly, because the same effect might need to be
@@ -232,7 +254,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                             // time we want to set a different texture into it.
                             Effect newEffect = CascadeShadowShader.Clone();
 
-                            effectMapping.Add(oldEffect, newEffect);
+                            effectShadowMapping.Add(oldEffect, newEffect);
                         }
                     }
 
@@ -240,7 +262,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
                     // update it to use our new replacement versions.
                     foreach (ModelMeshPart meshPart in mesh.MeshParts)
                     {
-                        meshPart.Effect = effectMapping[meshPart.Effect];
+                        meshPart.Effect = effectShadowMapping[meshPart.Effect];
                     }
                 }
             }
@@ -248,6 +270,114 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
             {
                 vxConsole.WriteError("vxContentManager.LoadModel", "ERROR IMPORTING FILE: " + PathToModel + "\n" + ex.Message);
             }
+            #endregion
+
+            #region Utility Model Loading
+            /*********************************************************************************/
+            //                              UTILITY MODEL
+            /*********************************************************************************/
+
+
+            //
+            // Now do the same for the shadow model.
+            //
+            newModel.ModelUtility = Content.Load<Model>(PathToModel + "_util");
+            //Grab the CascadeShadowShader.
+            Effect UtilityShader = UtilityEffect;
+
+            // Table mapping the original effects to our replacement versions.
+            Dictionary<Effect, Effect> effectUtilityMapping = new Dictionary<Effect, Effect>();
+
+            foreach (ModelMesh mesh in newModel.ModelUtility.Meshes)
+            {
+#if vxDEBUG_VERBOSE
+                Console.WriteLine("\t\t\tMesh Name: " + mesh.Name);
+#endif
+                mesh.Tag = PathToModel;
+                // Scan over all the effects currently on the mesh.
+                foreach (Effect oldEffect in mesh.Effects)
+                {
+                    // If we haven't already seen this effect...
+                    if (!effectUtilityMapping.ContainsKey(oldEffect))
+                    {
+                        // Make a clone of our replacement effect. We can't just use
+                        // it directly, because the same effect might need to be
+                        // applied several times to different parts of the model using
+                        // a different texture each time, so we need a fresh copy each
+                        // time we want to set a different texture into it.
+                        Effect newEffect = UtilityShader.Clone();
+
+
+                        //Main Diffuse Texture
+                        if (newEffect.Parameters["Texture"] != null)
+                        {
+                            if (File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds.xnb"))
+                                newEffect.Parameters["Texture"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds"));
+                            else if (this.Engine.Assets != null)
+                            {
+                                newEffect.Parameters["Texture"].SetValue(this.Engine.Assets.Textures.Texture_Diffuse_Null);
+#if vxDEBUG_VERBOSE
+                                    vxConsole.WriteWarning(this.ToString(), "DEFAULT DEIFFUSE TEXTURE NOT FOUND FOR MODEL :" + PathToModel);
+#endif
+                            }
+                            else
+                                newEffect.Parameters["Texture"].SetValue(this.Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse"));
+                        }
+
+                        // Normal Map
+                        if (newEffect.Parameters["NormalMap"] != null &&
+                            File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
+                        {
+                            newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
+#if vxDEBUG_VERBOSE
+                                Console.WriteLine("\t\t\t\tNormal Map Found");
+#endif
+                        }
+
+                        // Specular Map
+                        if (newEffect.Parameters["SpecularMap"] != null &&
+                            File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
+                        {
+
+                            newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));
+#if vxDEBUG_VERBOSE
+                                Console.WriteLine("\t\t\t\tSpecular Map Found");
+#endif
+                        }
+
+                        if (newEffect.Parameters["TextureEnabled"] != null)
+                            newEffect.Parameters["TextureEnabled"].SetValue(true);
+
+                        if (newEffect.Parameters["IsSun"] != null)
+                            newEffect.Parameters["IsSun"].SetValue(false);
+
+
+
+#if VRTC_PLTFRM_XNA
+                        if (newEffect.Parameters["LightDirection"] != null)
+                            newEffect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
+
+                        if (newEffect.Parameters["LightColor"] != null)
+                            newEffect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+
+                        if (newEffect.Parameters["AmbientLightColor"] != null)
+                            newEffect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
+#endif
+
+                        effectUtilityMapping.Add(oldEffect, newEffect);
+                    }
+                }
+
+                // Now that we've found all the effects in use on this mesh,
+                // update it to use our new replacement versions.
+                foreach (ModelMeshPart meshPart in mesh.MeshParts)
+                {
+                    meshPart.Effect = effectUtilityMapping[meshPart.Effect];
+                }
+            }
+            #endregion
+
+
             newModel.ModelMain.Tag = PathToModel;
 
             return newModel;
@@ -276,7 +406,7 @@ namespace Virtex.Lib.Vertices.XNA.ContentManagement
 
         public vxModel LoadModel(string Path, ContentManager Content, Effect EffectToSet)
         {
-            return LoadModel(Path, Content, EffectToSet, Engine.Assets.Shaders.CascadeShadowShader);
+            return LoadModel(Path, Content, EffectToSet, Engine.Assets.Shaders.CascadeShadowShader, Engine.Assets.Shaders.UtilityShader);
         }
 
 

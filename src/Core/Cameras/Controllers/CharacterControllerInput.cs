@@ -5,10 +5,10 @@ using System;
 using System.Diagnostics;
 
 using BEPUutilities;
-using vxVertices.Physics.BEPU.Character;
-using vxVertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU.Character;
+using Virtex.Lib.Vertices.Physics.BEPU;
 
-namespace vxVertices.Core.Cameras.Controllers
+namespace Virtex.Lib.Vertices.Core.Cameras.Controllers
 {
     /// <summary>
     /// Handles input and movement of a character in the game.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     internal struct SpeedControlledCurveSample
     {

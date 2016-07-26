@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
  
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes
 {
     ///<summary>
     /// Symmetrical object with a circular bottom and top.

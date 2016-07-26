@@ -10,11 +10,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Core.Entities;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Graphics;
 
-namespace vxVertices.Scenes.Sandbox.Entities
+namespace Virtex.Lib.Vertices.Scenes.Sandbox.Entities
 {
     public class vxWorkingPlane : vxEntity3D
     {

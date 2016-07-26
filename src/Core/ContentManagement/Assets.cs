@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Graphics;
 
-namespace vxVertices.Core.ContentManagement
+namespace Virtex.Lib.Vertices.Core.ContentManagement
 {
     /// <summary>
     /// Class for holding all vxEngine Assets
@@ -95,6 +95,7 @@ namespace vxVertices.Core.ContentManagement
         {
             public Effect MainShader { get; set; }
             public Effect CascadeShadowShader { get; set; }
+            public Effect UtilityShader { get; set; }
             public Effect CartoonShader { get; set; }
             public Effect DistortionShader { get; set; }
             public Effect WaterReflectionShader { get; set; }
@@ -230,7 +231,7 @@ namespace vxVertices.Core.ContentManagement
 
             shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/MainModelShader");
             shaders.CascadeShadowShader  = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/CascadeShadowShader");
-
+            shaders.UtilityShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/UtilityShader");
 
             //Bloom
             postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
@@ -269,10 +270,10 @@ namespace vxVertices.Core.ContentManagement
             //Unit Models
             models.UnitArrow = vxEngine.EngineContentManager.Load<Model>("Models/utils/unit_arrow/unit_arrow");
 #endif
-            models.UnitBox = vxEngine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
-			models.UnitPlane = vxEngine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
-			models.UnitSphere = vxEngine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
-			models.Sun_Mask = vxEngine.vxContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader);
+            models.UnitBox = vxEngine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			models.UnitPlane = vxEngine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			models.UnitSphere = vxEngine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			models.Sun_Mask = vxEngine.vxContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
             models.WaterPlane = models.Sun_Mask;// vxEngine.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager);
 #endif
         }

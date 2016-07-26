@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Utilities;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core;
 
-namespace vxVertices.GUI.Controls
+namespace Virtex.Lib.Vertices.GUI.Controls
 {
 	/// <summary>
 	/// Tab Control which managers Tab Pages.
@@ -41,7 +41,7 @@ namespace vxVertices.GUI.Controls
         public int TabHeight = 36;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.vxTabControl"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxTabControl"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="Width">Width.</param>

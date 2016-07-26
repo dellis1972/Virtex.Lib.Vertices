@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.Entities.Prefabs;
-using vxVertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
-using vxVertices.Physics.BEPU.Materials;
-using vxVertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
 using System.Threading;
 
-namespace vxVertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vertices.Physics.BEPU.Character
 {
     /// <summary>
     /// Gives a physical object simple and cheap FPS-like control.

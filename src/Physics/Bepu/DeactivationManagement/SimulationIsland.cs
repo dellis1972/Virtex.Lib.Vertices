@@ -3,7 +3,7 @@ using System.Threading;
 using BEPUutilities.DataStructures;
 using System.Collections.ObjectModel;
 
-namespace vxVertices.Physics.BEPU.DeactivationManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement
 {
     ///<summary>
     /// A collection of simulation island members bound together with connections.

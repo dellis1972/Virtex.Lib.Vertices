@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
  
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.Motors
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors
 {
     /// <summary>
     /// Attempts to achieve some defined relative twist angle between the entities.

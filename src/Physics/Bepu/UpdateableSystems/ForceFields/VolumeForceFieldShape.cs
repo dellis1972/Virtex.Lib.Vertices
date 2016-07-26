@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems.ForceFields
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems.ForceFields
 {
     /// <summary>
     /// Defines the area in which a force field works using an entity's shape.

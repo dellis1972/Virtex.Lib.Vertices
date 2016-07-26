@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Paths
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// Superclass of speed-controlled curves that have a constant speed.

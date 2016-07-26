@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using vxVertices.Physics.BEPU.Constraints;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems
 {
     ///<summary>
     /// A class which is both a space updateable and a Solver Updateable.

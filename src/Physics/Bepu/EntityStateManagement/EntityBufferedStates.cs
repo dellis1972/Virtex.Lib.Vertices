@@ -1,6 +1,6 @@
-﻿using vxVertices.Physics.BEPU.Entities;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 
-namespace vxVertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
 {
     ///<summary>
     /// Contains a single entity's buffered states.

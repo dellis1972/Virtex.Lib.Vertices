@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
  
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.Joints
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints
 {
     /// <summary>
     /// Constrains two bodies so that they can rotate relative to each other like a modified door hinge.

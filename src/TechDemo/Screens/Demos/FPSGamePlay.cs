@@ -10,20 +10,20 @@ using System.Diagnostics;
 using System.Linq;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core.Scenes;
-using vxVertices.Core.Cameras.Controllers;
-using vxVertices.Core.Input;
-using vxVertices.Screens.Menus;
-using vxVertices.Physics.BEPU;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Core.Scenes;
+using Virtex.Lib.Vertices.Core.Cameras.Controllers;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using BEPUutilities;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
-using vxVertices.Core.Cameras;
-using vxVertices.Core.Entities;
-using vxVertices.Utilities;
-using vxVertices.Physics.BEPU.Entities.Prefabs;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vertices.Graphics;
 
 
 namespace VerticeEnginePort.Base

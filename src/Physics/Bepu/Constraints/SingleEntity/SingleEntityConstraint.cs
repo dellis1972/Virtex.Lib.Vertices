@@ -1,7 +1,7 @@
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.Constraints.SingleEntity
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity
 {
     /// <summary>
     /// Abstract superclass of constraints which control a single entity.

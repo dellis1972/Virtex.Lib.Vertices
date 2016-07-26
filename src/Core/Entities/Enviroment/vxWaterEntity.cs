@@ -10,17 +10,17 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Physics.BEPU.UpdateableSystems;
-using vxVertices.Scenes.Sandbox.Entities;
-using vxVertices.Scenes.Sandbox;
-using vxVertices.Utilities;
-using vxVertices.Core.Debug;
-using vxVertices.Entities.Sandbox3D;
-using vxVertices.Entities.Sandbox3D.Util;
-using vxVertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vertices.Scenes.Sandbox.Entities;
+using Virtex.Lib.Vertices.Scenes.Sandbox;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Debug;
+using Virtex.Lib.Vertices.Entities.Sandbox3D;
+using Virtex.Lib.Vertices.Entities.Sandbox3D.Util;
+using Virtex.Lib.Vertices.Scenes.Sandbox3D;
 
-namespace vxVertices.Core.Entities
+namespace Virtex.Lib.Vertices.Core.Entities
 {
     public class vxWaterEntity : vxSandboxEntity
     {
@@ -51,7 +51,7 @@ namespace vxVertices.Core.Entities
             get
             {
                 return new vxSandboxEntityDescription(
-                "vxVertices.Core.Entities.vxWaterEntity",
+                "Virtex.Lib.Vertices.Core.Entities.vxWaterEntity",
                 "Water",
                 "Textures/engine/water/water");
             }

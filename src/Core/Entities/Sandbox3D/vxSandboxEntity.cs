@@ -8,19 +8,19 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Core.Entities;
-using vxVertices.Utilities;
-using vxVertices.Physics.BEPU;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities;
-using vxVertices.Core.Input;
-using vxVertices.GUI.Controls;
-using vxVertices.GUI;
-using vxVertices.Scenes.Sandbox3D;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vertices.Graphics;
 
-namespace vxVertices.Entities.Sandbox3D
+namespace Virtex.Lib.Vertices.Entities.Sandbox3D
 {  
     /// <summary>
 	/// Sandbox Entity for use in the vxSandboxGamePlay class.

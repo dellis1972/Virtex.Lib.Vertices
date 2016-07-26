@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace vxVertices.Physics.BEPU.CollisionRuleManagement
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement
 {
 
     /// <summary>

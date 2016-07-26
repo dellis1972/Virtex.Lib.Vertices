@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using vxVertices.Physics.BEPU.Constraints.TwoEntity;
-using vxVertices.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity;
+using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.Entities
+namespace Virtex.Lib.Vertices.Physics.BEPU.Entities
 {
     ///<summary>
     /// Convenience collection for easily scanning the two entity constraints connected to an entity.

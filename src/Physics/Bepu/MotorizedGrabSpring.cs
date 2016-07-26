@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 
 using BEPUutilities;
-using vxVertices.Physics.BEPU.UpdateableSystems;
-using vxVertices.Physics.BEPU.Constraints.SingleEntity;
-using vxVertices.Physics.BEPU.Constraints.TwoEntity.Motors;
-using vxVertices.Physics.BEPU.Entities;
-using vxVertices.Physics.BEPU;
+using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU;
 
-namespace vxVertices.Physics.BEPU
+namespace Virtex.Lib.Vertices.Physics.BEPU
 {
     /// <summary>
     /// Grabs an entity at a specified location and applies corrective impulses to keep the grabbed location near the goal location.

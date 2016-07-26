@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
 
-namespace vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes
 {
 
     ///<summary>

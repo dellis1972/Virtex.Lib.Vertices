@@ -1,15 +1,15 @@
-﻿using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.CollisionTests.Manifolds;
-using vxVertices.Physics.BEPU.Entities;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
  
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using vxVertices.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
 using BEPUutilities.DataStructures;
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
 
-namespace vxVertices.Physics.BEPU
+namespace Virtex.Lib.Vertices.Physics.BEPU
 {
     /// <summary>
     /// Handles allocation and management of commonly used resources.

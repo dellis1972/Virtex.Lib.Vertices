@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Materials
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Materials
 {
     ///<summary>
     /// Defines an object that has a material.

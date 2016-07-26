@@ -15,7 +15,7 @@ using System.Text;
 
 #endregion
 
-namespace vxVertices.Core.Debug
+namespace Virtex.Lib.Vertices.Core.Debug
 {
     /// <summary>
     /// Options for StringBuilder extension methods.

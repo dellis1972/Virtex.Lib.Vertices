@@ -2,7 +2,7 @@
 using BEPUutilities;
 
 
-namespace vxVertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK
+namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK
 {
 
     ///<summary>

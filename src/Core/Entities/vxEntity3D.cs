@@ -10,15 +10,15 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Audio;
-using vxVertices.Utilities;
-using vxVertices.Core.Scenes;
-using vxVertices.Core.Cameras;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Audio;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Scenes;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Graphics;
 
 
-namespace vxVertices.Core.Entities
+namespace Virtex.Lib.Vertices.Core.Entities
 {
     /// <summary>
     /// Base Entity in the Virtex vxEngine which controls all Rendering and Provides
@@ -495,6 +495,35 @@ namespace vxVertices.Core.Entities
                         SpecularPower = 1;
                     }
                 }
+
+                if (vxModel.ModelUtility != null)
+                {
+                    foreach (var part in vxModel.ModelUtility.Meshes.SelectMany(m => m.MeshParts))
+                    {
+                        if (part.Effect.Parameters["LightDirection"] != null)
+                            part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
+
+                        if (part.Effect.Parameters["LightColor"] != null)
+                            part.Effect.Parameters["LightColor"].SetValue(new Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+
+                        if (part.Effect.Parameters["AmbientLightColor"] != null)
+                            part.Effect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
+
+                        if (part.Effect.Parameters["PoissonKernel"] != null)
+                            part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
+
+                        if (part.Effect.Parameters["RandomTexture3D"] != null)
+                            part.Effect.Parameters["RandomTexture3D"].SetValue(vxEngine.Renderer.RandomTexture3D);
+                        if (part.Effect.Parameters["RandomTexture2D"] != null)
+                            part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
+
+                        //By Default, Don't Show Fog
+                        DoFog = vxEngine.Current3DSceneBase.DoFog;
+
+                        SpecularIntensity = 0;
+                        SpecularPower = 1;
+                    }
+                }
             }
 
         }
@@ -753,19 +782,19 @@ namespace vxVertices.Core.Entities
         }
 
         /// <summary>
-        /// Renders to the Normal Depth Map for Edge Detection
+        /// Renders to the Normal Depth Map for Edge Detection using the Utility Model in the vxModel Object.
         /// </summary>
         public virtual void RenderMeshPrepPass()
         {
-            if (vxModel != null &&  vxModel.ModelMain != null)
+            if (vxModel != null &&  vxModel.ModelUtility != null)
             {
                 // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
+                Matrix[] transforms = new Matrix[vxModel.ModelUtility.Bones.Count];
 
-                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
-
+                vxModel.ModelUtility.CopyAbsoluteBoneTransformsTo(transforms);
+                
                 // Draw the model.
-                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelUtility.Meshes)
                 {
                     foreach (Effect effect in mesh.Effects)
                     {

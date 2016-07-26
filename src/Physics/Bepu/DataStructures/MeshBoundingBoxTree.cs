@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
 {    
     ///<summary>
     /// Acceleration structure of triangles surrounded by axis aligned bounding boxes, supporting various speedy queries.

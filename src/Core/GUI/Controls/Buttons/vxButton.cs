@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using vxVertices.Core;
+using Virtex.Lib.Vertices.Core;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
 
-namespace vxVertices.GUI.Controls
+namespace Virtex.Lib.Vertices.GUI.Controls
 {
     /// <summary>
     /// Basic Button GUI Control.
@@ -22,7 +22,7 @@ namespace vxVertices.GUI.Controls
         public Texture2D BackgroundTexture { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.GUI.Controls.vxButton"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxButton"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="text">Text.</param>

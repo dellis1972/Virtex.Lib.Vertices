@@ -1,6 +1,6 @@
 ﻿using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
+namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
 {
     class GridCell2D
     {

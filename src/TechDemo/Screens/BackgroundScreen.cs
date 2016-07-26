@@ -5,7 +5,7 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using vxVertices.Core.Settings;
+using Virtex.Lib.Vertices.Core.Settings;
 
 
 #endregion
@@ -16,9 +16,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using vxVertices.Core;
-using vxVertices.Graphics;
-using vxVertices.Screens.Async;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vertices.Screens.Async;
 #endregion
 
 namespace VerticeEnginePort.Base
@@ -28,7 +28,7 @@ namespace VerticeEnginePort.Base
     /// It draws a background image that remains fixed in place regardless
     /// of whatever transitions the screens on top of it may be doing.
     /// </summary>
-    class BackgroundScreen : GameScreen
+    class BackgroundScreen : vxGameBaseScreen
     {
         #region Fields
 

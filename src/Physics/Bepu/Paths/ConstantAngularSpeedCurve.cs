@@ -2,7 +2,7 @@
 using BEPUutilities;
 
 
-namespace vxVertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// Wrapper around an orientation curve that specifies a specific velocity at which to travel.

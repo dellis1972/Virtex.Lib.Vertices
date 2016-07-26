@@ -1,8 +1,8 @@
 ﻿using System;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.Constraints.SolverGroups
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups
 {
     /// <summary>
     /// Superclass of constraints that are composed of multiple subconstraints.

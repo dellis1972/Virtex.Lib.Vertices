@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace vxVertices.Physics.BEPU.UpdateableSystems
+namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems
 {
     ///<summary>
     /// Convenience superclass of Updateables.

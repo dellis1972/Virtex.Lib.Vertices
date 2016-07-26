@@ -5,10 +5,10 @@
 // XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using vxVertices.Core.Input;
-using vxVertices.Core.Input.Events;
-using vxVertices.Core;
-using vxVertices.GUI.Controls;
+using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vertices.Core.Input.Events;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.GUI.Controls;
 
 
 #endregion
@@ -19,10 +19,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using vxVertices.Utilities;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.GUI.GuiArtProvider;
 #endregion
 
-namespace vxVertices.Screens.Menus
+namespace Virtex.Lib.Vertices.Screens.Menus
 {
     /// <summary>
     /// Base class for screens that contain a menu of options. The user can
@@ -30,40 +31,29 @@ namespace vxVertices.Screens.Menus
     /// </summary>
     public abstract class vxMenuBaseScreen : vxGameBaseScreen
     {
-		#region Properties
+        #region Properties
 
-		/// <summary>
-		/// Gets the list of menu entries, so derived classes can add
-		/// or change the menu contents.
-		/// </summary>
-		public IList<vxMenuEntry> MenuEntries
+
+        /// <summary>
+        /// The Art provider for the Menu Screen.
+        /// </summary>
+        public vxMenuScreenArtProvider ArtProvider { get; internal set; }
+
+        /// <summary>
+        /// The Art provider for the Menu Items.
+        /// </summary>
+        //public vxMenuItemArtProvider MenuItemArtProvider { get; internal set; }
+
+        /// <summary>
+        /// Gets the list of menu entries, so derived classes can add
+        /// or change the menu contents.
+        /// </summary>
+        public IList<vxMenuEntry> MenuEntries
 		{
 			get { return menuEntries; }
 		}
 		List<vxMenuEntry> menuEntries = new List<vxMenuEntry>();
-
-		/// <summary>
-		/// Gets or sets the menu start position.
-		/// </summary>
-		/// <value>The menu start position.</value>
-		public Vector2 MenuStartPosition { 
-			get{ return menuStartPosition; }
-			set{ menuStartPosition = value; }
-		}
-		Vector2 menuStartPosition = new Vector2(200, 200);
-		Vector2 position = new Vector2(0, 0);
-
-		/// <summary>
-		/// Gets or sets the offset between Menu Item
-		/// </summary>
-		/// <value>The offset for the next menu item.</value>
-		public Vector2 NextMenuItemOffset { 
-			get{ return nextMenuItemOffset; }
-			set{ nextMenuItemOffset = value; }
-		}
-		Vector2 nextMenuItemOffset = new Vector2(0,0);
-
-
+        
 
         /// <summary>
         /// Menu Screen Title
@@ -75,31 +65,10 @@ namespace vxVertices.Screens.Menus
         }
         string menuTitle;
 
-        /// <summary>
-        /// Title Position.
-        /// </summary>
-        public Vector2 TitlePosition
-        {
-            get { return titlePosition; }
-            set { titlePosition = value; }
-        }
-		public Vector2 titlePosition = new Vector2(0,0);
-
-        /// <summary>
-        /// Is there a background image on the title
-        /// </summary>
-        public bool DoTitleBackground
-        {
-            get { return doTitleBackground; }
-            set { doTitleBackground = value; }
-        }
-        public bool doTitleBackground = true;
 
 		int selectionIndex;
         int selectedEntry = 0;
-
-        MouseState mouseState;
-        int offset;
+        
 
         #endregion
 
@@ -124,15 +93,9 @@ namespace vxVertices.Screens.Menus
         public override void LoadContent()
         {
             base.LoadContent();
-            titlePosition = new Vector2(vxEngine.GraphicsDevice.Viewport.Width / 2, 80);
-
-			//Set Menu Item Location
-			if(vxEngine.vxGUITheme.vxMenuEntries.TextJustification == vxVertices.GUI.TextJustification.Left)
-				menuStartPosition = new Vector2(200, 200);
-			else if(vxEngine.vxGUITheme.vxMenuEntries.TextJustification == vxVertices.GUI.TextJustification.Center)
-				menuStartPosition = new Vector2(vxEngine.GraphicsDevice.Viewport.Width / 2, 200);
-
-            titlePosition = vxEngine.vxGUITheme.vxMenuEntries.TitlePosition;
+            
+            //Initialise Art Providers.
+            ArtProvider = vxEngine.vxGUITheme.ArtProviderForMenuScreen;
         }
 
 
@@ -212,48 +175,9 @@ namespace vxVertices.Screens.Menus
 
         #region Update and Draw
 
-
-        /// <summary>
-        /// Allows the screen the chance to position the menu entries. By default
-        /// all menu entries are lined up in a vertical list, centered on the screen.
-        /// </summary>
-        protected virtual void UpdateMenuEntryLocations()
+        public virtual void SetArtProvider(vxMenuScreenArtProvider NewArtProvider)
         {
-            // Make the menu slide into place during transitions, using a
-            // power curve to make things look more interesting (this makes
-            // the movement slow down as it nears the end).
-            float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
-
-            //Set the Top Menu Start Position
-			position = menuStartPosition;
-
-            // update each menu entry's location in turn
-            for (int i = 0; i < menuEntries.Count; i++)
-            {
-				vxMenuEntry vxMenuEntry = menuEntries[i];
-				NextMenuItemOffset = new Vector2 (0, vxMenuEntry.Height + vxEngine.vxGUITheme.vxMenuEntries.Margin.Y);    
-                
-				//Set Menu Item Location
-				if(vxEngine.vxGUITheme.vxMenuEntries.TextJustification == vxVertices.GUI.TextJustification.Left)
-                	position.X = menuStartPosition.X;// -vxMenuEntry.Width / 2;
-				else if(vxEngine.vxGUITheme.vxMenuEntries.TextJustification == vxVertices.GUI.TextJustification.Center)
-						position.X = menuStartPosition.X - vxMenuEntry.Width / 2;
-
-                if (ScreenState == ScreenState.TransitionOn)
-                    position.X -= transitionOffset * 256;
-                else
-                    position.X += transitionOffset * 512;
-
-                // set the entry's position
-                vxMenuEntry.Position = position;
-                //vxConsole.WriteToInGameDebug(position);
-
-                // move down for the next entry the size of this entry
-				position += NextMenuItemOffset;
-
-
-                this.vxEngine.InputManager.ShowCursor = true;
-            }
+            this.ArtProvider = NewArtProvider;
         }
 
 
@@ -268,10 +192,8 @@ namespace vxVertices.Screens.Menus
             //
             //Set Menu Selection if Mouse is over
             //
-            mouseState = Mouse.GetState();
             selectionIndex = 0;
 
-            offset = 10;
             selectedEntry = -1;
 
 
@@ -302,63 +224,22 @@ namespace vxVertices.Screens.Menus
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
-            // make sure our entries are in the right place before we draw them
-            UpdateMenuEntryLocations();
-
-            GraphicsDevice graphics = vxEngine.GraphicsDevice;
             SpriteBatch spriteBatch = vxEngine.SpriteBatch;
-			SpriteFont font = vxEngine.vxGUITheme.Font;
 
             spriteBatch.Begin();
-			/*
-            //Draw Background
-            spriteBatch.Draw(vxEngine.Assets.Textures.Blank,
-                new Rectangle(50 - buffer, 0, menuBackWidth + 2 * buffer, vxEngine.GraphicsDevice.Viewport.Height), Color.Orange * TransitionAlpha);
-			*/
+
+            this.ArtProvider.Draw(this);
+
             // Draw each menu entry in turn.
             for (int i = 0; i < menuEntries.Count; i++)
             {
 				vxMenuEntry vxMenuEntry = menuEntries[i];
-				vxMenuEntry.Draw (vxEngine);
+                vxMenuEntry.Draw (vxEngine);
             }
 
-            // Make the menu slide into place during transitions, using a
-            // power curve to make things look more interesting (this makes
-            // the movement slow down as it nears the end).
-            float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
-
-
-
-            // Draw the menu title centered on the screen
-            //titlePosition = new Vector2(graphics.Viewport.Width / 2, 80);
-            //Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
-            //Color titleColor = vxEngine.vxGUITheme.vxMenuEntries.TitleColor * TransitionAlpha;
-
-            float titleScale = 1;
-
-
-
-            //titlePosition.Y -= transitionOffset * 100;
-			Rectangle BoundingRectangle = new Rectangle(
-				(int)(titlePosition.X - font.MeasureString(menuTitle).X/2 - vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.X), 
-				(int)(titlePosition.Y - font.MeasureString(menuTitle).Y/2 - vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.Y),
-				(int)(font.MeasureString(menuTitle).X + vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.X), 
-				(int)(font.MeasureString(menuTitle).Y + vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.Y));
-
-            if (DoTitleBackground)
-            {
-				vxEngine.SpriteBatch.Draw(vxEngine.vxGUITheme.vxMenuEntries.TitleBackground, 
-					BoundingRectangle, vxEngine.vxGUITheme.vxMenuEntries.TitleBackgroundColor * TransitionAlpha);
-            }
-
-			spriteBatch.DrawString(font, menuTitle, titlePosition - (font.MeasureString(menuTitle)+vxEngine.vxGUITheme.vxMenuEntries.TitlePadding)/2, 
-				vxEngine.vxGUITheme.vxMenuEntries.TitleColor * TransitionAlpha,
-				0, Vector2.Zero, titleScale, SpriteEffects.None, 0);
             
             spriteBatch.End();
         }
-
-
-        #endregion
+        #endregion        
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
  
-using vxVertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vertices.Physics.BEPU.Settings;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
 {
     /// <summary>
     /// Computes the forces to slow down and stop sliding motion between two entities when centralized friction is active.

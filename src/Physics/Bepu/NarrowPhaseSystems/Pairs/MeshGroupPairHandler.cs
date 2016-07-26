@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using vxVertices.Physics.BEPU.BroadPhaseEntries;
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.Constraints;
-using vxVertices.Physics.BEPU.Constraints.Collision;
-using vxVertices.Physics.BEPU.CollisionRuleManagement;
-using vxVertices.Physics.BEPU.CollisionTests;
-using vxVertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vertices.Physics.BEPU.Materials;
 using BEPUutilities.DataStructures;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     /// <summary>
     /// Contains a triangle collidable and its index.  Used by mobile mesh-mesh collisions.

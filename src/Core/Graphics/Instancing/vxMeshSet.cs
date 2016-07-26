@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using vxVertices.Core.Entities;
+using Virtex.Lib.Vertices.Core.Entities;
 
-namespace vxVertices.Graphics
+namespace Virtex.Lib.Vertices.Graphics
 {
     /// <summary>
     /// This is an experimental system which works with *obj models on their most

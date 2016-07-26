@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Constraints
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Implemented by constraints that support springlike behavior.

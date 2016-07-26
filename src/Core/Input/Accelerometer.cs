@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 #endregion
 
-namespace vxVertices.Core.Input
+namespace Virtex.Lib.Vertices.Core.Input
 {
     /// <summary>
     /// A static encapsulation of accelerometer input to provide games with a polling-based

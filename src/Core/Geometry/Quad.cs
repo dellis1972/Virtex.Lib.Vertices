@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using vxVertices.Core.Debug;
+using Virtex.Lib.Vertices.Core.Debug;
 
-namespace vxVertices.Geometry
+namespace Virtex.Lib.Vertices.Geometry
 {
     public class Quad
     {

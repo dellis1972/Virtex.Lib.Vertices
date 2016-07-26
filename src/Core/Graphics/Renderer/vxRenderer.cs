@@ -10,12 +10,12 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core;
-using vxVertices.Utilities;
-using vxVertices.Core.Cameras;
-using vxVertices.Core.Settings;
+using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Core.Settings;
 
-namespace vxVertices.Graphics
+namespace Virtex.Lib.Vertices.Graphics
 {
 
     /// <summary>
@@ -444,7 +444,7 @@ namespace vxVertices.Graphics
 
         //TODO: Add More Input parameters (i.e. Size, Shadow Map Size, etc...).
         /// <summary>
-        /// Initializes a new instance of the <see cref="vxVertices.Graphics.vxRenderer"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Graphics.vxRenderer"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         public vxRenderer(vxEngine vxEngine)
@@ -879,11 +879,11 @@ namespace vxVertices.Graphics
                 // Smaller settings will make it pick up more subtle edges, while larger values get
                 // rid of unwanted noise.
                 parameters["NormalThreshold"].SetValue(0.5f);
-                parameters["DepthThreshold"].SetValue(0.1f);
+                parameters["DepthThreshold"].SetValue(0.001f);
 
                 // How dark should the edges get in response to changes in the input data?
                 parameters["NormalSensitivity"].SetValue(1.0f);
-                parameters["DepthSensitivity"].SetValue(10.0f);
+                parameters["DepthSensitivity"].SetValue(10000.0f);
 
 
                 // Activate the appropriate effect technique.

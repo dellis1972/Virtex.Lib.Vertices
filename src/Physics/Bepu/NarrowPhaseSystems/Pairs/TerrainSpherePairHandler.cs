@@ -1,6 +1,6 @@
-﻿using vxVertices.Physics.BEPU.CollisionTests.Manifolds;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
 
-namespace vxVertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Handles a terrain-sphere collision pair.

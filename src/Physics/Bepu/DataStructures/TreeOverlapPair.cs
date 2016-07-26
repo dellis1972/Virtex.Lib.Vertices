@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace vxVertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
 {
     ///<summary>
     /// Result of an overlap test between two trees of specified type.

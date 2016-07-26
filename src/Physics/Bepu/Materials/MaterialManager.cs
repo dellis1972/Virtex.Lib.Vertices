@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace vxVertices.Physics.BEPU.Materials
+namespace Virtex.Lib.Vertices.Physics.BEPU.Materials
 {
     /// <summary>
     /// A function which takes two materials and computes the interaction properties between them.

@@ -4,7 +4,7 @@ using BEPUutilities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace vxVertices.Physics.BEPU.OtherSpaceStages
+namespace Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages
 {
     ///<summary>
     /// Applies forces to managed objects.

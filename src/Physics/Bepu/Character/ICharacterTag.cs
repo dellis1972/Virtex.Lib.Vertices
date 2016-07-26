@@ -1,6 +1,6 @@
-﻿using vxVertices.Physics.BEPU.Entities;
+﻿using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 
-namespace vxVertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vertices.Physics.BEPU.Character
 {
     /// <summary>
     /// Defines a class which uniquely identifies a character.

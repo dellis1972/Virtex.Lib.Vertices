@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.Constraints.SingleEntity
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity
 {
     /// <summary>
     /// Prevents the target entity from moving faster than the specified speeds.

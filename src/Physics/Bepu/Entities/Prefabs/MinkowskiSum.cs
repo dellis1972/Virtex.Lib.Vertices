@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using vxVertices.Physics.BEPU.EntityStateManagement;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement;
  
-using vxVertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Entities.Prefabs
+namespace Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs
 {
     /// <summary>
     /// Shape representing the sweeping of one entity through another.  Can collide and move.  After making an entity, add it to a Space so that the engine can manage it.

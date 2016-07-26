@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.Constraints.TwoEntity;
-using vxVertices.Physics.BEPU.Constraints.TwoEntity.Joints;
-using vxVertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity;
+using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints;
+using Virtex.Lib.Vertices.Physics.BEPU.Entities;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.Constraints.SolverGroups
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups
 {
     /// <summary>
     /// Restricts the linear and angular motion between two entities.

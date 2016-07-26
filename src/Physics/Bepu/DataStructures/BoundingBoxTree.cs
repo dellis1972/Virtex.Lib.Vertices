@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using vxVertices.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
 using BEPUutilities;
 
-namespace vxVertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
 {
     ///<summary>
     /// Acceleration structure of objects surrounded by axis aligned bounding boxes, supporting various speedy queries.

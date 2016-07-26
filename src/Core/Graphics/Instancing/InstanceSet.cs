@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using vxVertices.Core.Entities;
-using vxVertices.Core.Cameras;
-using vxVertices.Graphics;
+using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Graphics;
 
-namespace vxVertices.Core
+namespace Virtex.Lib.Vertices.Core
 {
     /// <summary>
     /// A Set which includes all the instance data for a specific model

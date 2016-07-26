@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace vxVertices.Physics.BEPU.Constraints.TwoEntity.Joints
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints
 {
     /// <summary>
     /// Superclass of position-based constraints.

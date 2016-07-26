@@ -1,4 +1,4 @@
-﻿namespace vxVertices.Physics.BEPU.Paths
+﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
 {
     /// <summary>
     /// One dimensional-valued curve that does not interpolate values.

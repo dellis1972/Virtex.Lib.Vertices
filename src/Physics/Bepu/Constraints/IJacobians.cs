@@ -2,7 +2,7 @@
 using BEPUutilities;
  
 
-namespace vxVertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Denotes a class that uses a single linear jacobian axis.
