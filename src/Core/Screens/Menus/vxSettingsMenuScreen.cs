@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vertices.Core.Input.Events;
 using Virtex.Lib.Vertices.GUI.Controls;
 using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vertices.Localization;
 
 
 #endregion
@@ -15,7 +16,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
     /// screen, and gives the user a chance to configure the game
     /// in various hopefully useful ways.
     /// </summary>
-    public class SettingsMenuScreen : vxMenuBaseScreen
+    public class vxSettingsMenuScreen : vxMenuBaseScreen
     {
         #region Initialization
 
@@ -23,7 +24,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
         /// <summary>
         /// Constructor.
         /// </summary>
-        public SettingsMenuScreen()
+        public vxSettingsMenuScreen()
             : base("settings")
         {
 			
@@ -33,19 +34,23 @@ namespace Virtex.Lib.Vertices.Screens.Menus
 		{
 			base.LoadContent ();
 
-			// Create our menu entries.
-			vxMenuEntry ControlsMenuEntry = new vxMenuEntry(this, "controls");
-			vxMenuEntry GraphicsMenuEntry = new vxMenuEntry(this, vxEngine.Language.Graphics);
-			vxMenuEntry AudioMenuEntry = new vxMenuEntry(this, "audio");
-            vxMenuEntry LocalizationMenuEntry = new vxMenuEntry(this, "Localization");
+            this.MenuTitle = LanguagePack.Get(vxLocalization.Main_Settings);
 
-            vxMenuEntry cancelMenuEntry = new vxMenuEntry(this, "back");
+            // Create our menu entries.
+            vxMenuEntry ControlsMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Settings_Controls));
+            vxMenuEntry LocalizationMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Settings_Localization));
+            vxMenuEntry GraphicsMenuEntry = new vxMenuEntry(this, vxEngine.Language.Get(vxLocalization.Settings_Graphics));
+			vxMenuEntry AudioMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Settings_Audio));
+            vxMenuEntry displayDebugHUDMenuEntry = new vxMenuEntry(this, "debug");
+
+            vxMenuEntry cancelMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Misc_Back));
 
 			// Hook up menu event handlers.
 			ControlsMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(ControlsMenuEntry_Selected);
 			GraphicsMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(GraphicsMenuEntry_Selected);
-			AudioMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(AudioMenuEntry_Selected);
             LocalizationMenuEntry.Selected += LocalizationMenuEntry_Selected;
+            AudioMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(AudioMenuEntry_Selected);
+            displayDebugHUDMenuEntry.Selected += DisplayDebugHUDMenuEntry_Selected;
             //Back
             cancelMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(cancelMenuEntry_Selected);
 
@@ -57,12 +62,16 @@ namespace Virtex.Lib.Vertices.Screens.Menus
             MenuEntries.Add(GraphicsMenuEntry);
 			MenuEntries.Add(AudioMenuEntry);
 
+#if DEBUG
+            MenuEntries.Add(displayDebugHUDMenuEntry);
+#endif
+
             MenuEntries.Add(cancelMenuEntry);
 		}
 
         void ControlsMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
-            vxEngine.AddScreen(new ControlsMenuScreen(), e.PlayerIndex);
+            vxEngine.AddScreen(new vxControlsMenuScreen(), e.PlayerIndex);
         }
 
         void GraphicsMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -70,14 +79,19 @@ namespace Virtex.Lib.Vertices.Screens.Menus
             vxEngine.AddScreen(new vxGraphicSettingsDialog(), e.PlayerIndex);
         }
 
-        void AudioMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
-        {
-            vxEngine.AddScreen(new AudioMenuScreen(), e.PlayerIndex);
-        }
-
         private void LocalizationMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
             vxEngine.AddScreen(new vxLocalizationDialog(), e.PlayerIndex);
+        }
+
+        void AudioMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
+        {
+            vxEngine.AddScreen(new vxAudioMenuScreen(), e.PlayerIndex);
+        }
+
+        private void DisplayDebugHUDMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
+        {
+            vxEngine.AddScreen(new vxDebugMenuScreen(), e.PlayerIndex);
         }
 
         void cancelMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -85,6 +99,6 @@ namespace Virtex.Lib.Vertices.Screens.Menus
             ExitScreen();
         }
         
-        #endregion
+#endregion
     }
 }

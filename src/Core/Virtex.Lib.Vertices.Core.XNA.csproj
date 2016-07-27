@@ -128,11 +128,24 @@
     <Compile Include="GUI\Art Providers\vxMenuScreenArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
+    <Compile Include="Network\Events\vxNetServerEvents.cs" />
+    <Compile Include="Network\Events\vxNetClientEvents.cs" />
+    <Compile Include="Network\Messages\vxNetMsgRemovePlayer.cs" />
+    <Compile Include="Network\Messages\vxNetMsgUpdatePlayerList.cs" />
+    <Compile Include="Network\Messages\vxNetMsgUpdatePlayerLobbyStatus.cs" />
+    <Compile Include="Network\Messages\vxNetMsgAddPlayer.cs" />
+    <Compile Include="Network\Messages\vxNetMsgServerInfo.cs" />
+    <Compile Include="Network\Network Managers\INetworkManager.cs" />
+    <Compile Include="Network\Messages\INetworkMessage.cs" />
+    <Compile Include="Network\Network Managers\vxNetworkClientManager.cs" />
+    <Compile Include="Network\Player Manager\vxNetPlayerInfo.cs" />
+    <Compile Include="Network\Network Managers\vxNetworkServerManager.cs" />
+    <Compile Include="Network\Player Manager\vxNetPlayerManager.cs" />
     <Compile Include="Network\Server Lobby\vxServerLobbyPlayerItem.cs" />
-    <Compile Include="Network\vxServerListItem.cs" />
-    <Compile Include="Localization\LanguageKorean.cs" />
-    <Compile Include="Localization\LanguageFrench.cs" />
-    <Compile Include="Localization\LanguageEnglish.cs" />
+    <Compile Include="Network\Server List\vxServerListItem.cs" />
+    <Compile Include="Localization\vxLanguagePackKoreanBase.cs" />
+    <Compile Include="Localization\vxLanguagePackFrenchBase.cs" />
+    <Compile Include="Localization\vxLanguagePackEnglishBase.cs" />
     <Compile Include="Localization\vxLocalizationDialog.cs" />
     <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
     <Compile Include="Input\Accelerometer.cs" />
@@ -140,9 +153,9 @@
     <Compile Include="Input\vxInputManager.cs" />
     <Compile Include="Input\TouchCollectionExtensions.cs" />
     <Compile Include="Input\VirtualGamePad.cs" />
-    <Compile Include="Localization\vxLanguagePack.cs" />
+    <Compile Include="Localization\vxLanguagePackBase.cs" />
     <Compile Include="Network\Server Lobby\vxSeverLobbyDialog.cs" />
-    <Compile Include="Network\vxSeverLocalListDialog.cs" />
+    <Compile Include="Network\Server List\vxSeverLocalListDialog.cs" />
     <Compile Include="ParticleSystem\vxParticle3D.cs" />
     <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
     <Compile Include="Scenes\Scene2D.cs" />
@@ -222,7 +235,7 @@
     <Compile Include="GUI\vxGuiManager.cs" />
     <Compile Include="Mathematics\vxMathUtils.cs" />
     <Compile Include="Mathematics\vxSmooth.cs" />
-    <Compile Include="Network\vxSeverListDialog.cs" />
+    <Compile Include="Network\Server List\vxSeverListDialog.cs" />
     <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />
@@ -249,30 +262,24 @@
     <Compile Include="Screens\Async Screens\BusyScreen.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screens\Async Screens\LoadAssetsScreen.cs">
+    <Compile Include="Screens\Async Screens\vxLoadAssetsScreen.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screens\Async Screens\LoadingScreen.cs">
+    <Compile Include="Screens\Async Screens\vxLoadingScreen.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screens\Menus\AudioMenuScreen.cs">
+    <Compile Include="Screens\Menus\vxAudioMenuScreen.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screens\Menus\ControlsMenuScreen.cs">
+    <Compile Include="Screens\Menus\vxControlsMenuScreen.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screens\Menus\DebugMenuScreen.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Screens\Menus\GraphicsSettingsScreen.cs">
+    <Compile Include="Screens\Menus\vxDebugMenuScreen.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Screens\Menus\vxMenuBaseScreen.cs" />
-    <Compile Include="Screens\Menus\OptionsMenuScreen.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Screens\Menus\PauseMenuScreen.cs" />
-    <Compile Include="Screens\Menus\SettingsMenuScreen.cs">
+    <Compile Include="Screens\Menus\vxPauseMenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxSettingsMenuScreen.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Screens\TitleScreen.cs">
@@ -287,7 +294,9 @@
     <None Include="Resources\InstancedEffectXbox.xnb" />
     <None Include="VerticesEngineKey.pfx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Network\Server Lobby\misc.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.XNA.csproj">
       <Project>{46806426-2647-49a4-ad3f-0f1e332a4358}</Project>

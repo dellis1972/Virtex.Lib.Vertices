@@ -1,5 +1,4 @@
-#include "Include/Shadow.h"
-//#include "Include/ModelPixelShaders.h"
+#include "../Include/Shadow.h"
 
 
 //			Main Properties

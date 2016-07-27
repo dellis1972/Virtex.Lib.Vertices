@@ -14,6 +14,7 @@ using Virtex.Lib.Vertices.Core.Input;
 using System;
 using Microsoft.Xna.Framework;
 using System.IO;
+using Virtex.Lib.Vertices.Localization;
 #endregion
 
 namespace Virtex.Lib.Vertices.Core
@@ -41,6 +42,13 @@ namespace Virtex.Lib.Vertices.Core
     {
         #region Properties
 
+        /// <summary>
+        /// Returns the current Language Pack being used by the Engine.
+        /// </summary>
+        public vxLanguagePackBase LanguagePack
+        {
+            get { return vxEngine.Language;  }
+        }
 
         /// <summary>
         /// Normally when one screen is brought up over the top of another,

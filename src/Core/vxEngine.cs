@@ -333,12 +333,12 @@ namespace Virtex.Lib.Vertices.Core
         /// <summary>
         /// A List Containing all Language Packs for this 
         /// </summary>
-        public List<vxLanguagePack> Languages { get; internal set; }
+        public List<vxLanguagePackBase> Languages { get; internal set; }
         
         /// <summary>
         /// The Currently Selected Language
         /// </summary>
-        public vxLanguagePack Language { get; set; }
+        public vxLanguagePackBase Language { get; set; }
 
         #region Debug Properties
 
@@ -593,13 +593,15 @@ namespace Virtex.Lib.Vertices.Core
 #endif
 
 
+#if VRTC_INCLDLIB_NET
+            ServerManager = new vxNetworkServerManager(this, 14242);
+            ClientManager = new vxNetworkClientManager(this);
+#endif
+
             #region Load Base Language
 
-            Languages = new List<vxLanguagePack>();
-
-            Languages.Add(new LanguageEnglish());
-            Languages.Add(new LanguageFrench());
-            Languages.Add(new LanguageKorean());
+            Languages = new List<vxLanguagePackBase>();
+            LoadLanguagePacks();
 
             //Default is English
             this.Language = Languages[0];
@@ -651,6 +653,18 @@ namespace Virtex.Lib.Vertices.Core
 
 		}
 
+        /// <summary>
+        /// Loads the Language Packs. Override this method to add your custom packs.
+        /// </summary>
+        public virtual void LoadLanguagePacks()
+        {
+            vxConsole.WriteLine("     Loading Language Packs...");
+
+            Languages.Add(new vxLanguagePackEnglishBase());
+            Languages.Add(new vxLanguagePackFrenchBase());
+            Languages.Add(new vxLanguagePackKoreanBase());
+        }
+
 		/// <summary>
 		/// This is the Main Entry point for the game external to the Engine.
 		/// </summary>
@@ -666,8 +680,6 @@ namespace Virtex.Lib.Vertices.Core
 		{
 		}
 
-		//TODO: Add too Netork Event File.
-		public event EventHandler<vxGameServerListRecievedEventArgs> GameServerListRecieved;
 
 
 		/// <summary>

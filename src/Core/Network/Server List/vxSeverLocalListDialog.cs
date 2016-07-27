@@ -19,6 +19,7 @@ using Virtex.Lib.Vertices.Network.Events;
 using Virtex.Lib.Vertices.GUI;
 using Lidgren.Network;
 using Virtex.Lib.Vertices.Network;
+using Virtex.Lib.Vertices.Network.Messages;
 
 namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
@@ -131,34 +132,24 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
             InternalvxGUIManager.Add(ScrollPanel);
 
+            //Initialise the network client
+            vxEngine.ClientManager.Init();
 
-
-
+            //Now setup the Event Handlers
+            vxEngine.ClientManager.DiscoverySignalResponseRecieved += ClientManager_DiscoverySignalResponseRecieved;
 
             //By Default, The Game will start looking for other networked games as a client.
             vxEngine.NetworkedGameRoll = vxEnumNetworkPlayerRole.Client;
-
-            vxConsole.WriteLine("Setting Up Network System...");
-            vxEngine.GameConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
-
-            var config = new NetPeerConfiguration(ServerName);
-
-            // Enable DiscoveryResponse messages
-            config.EnableMessageType(NetIncomingMessageType.DiscoveryResponse);
-            config.EnableMessageType(NetIncomingMessageType.ConnectionLatencyUpdated);
-
-            vxEngine.GameClient = new NetClient(config);
-            ClientCallBackLoop = new SendOrPostCallback(ClientMsgCallback);
-            vxEngine.GameClient.RegisterReceivedCallback(ClientCallBackLoop);
-            vxEngine.GameClient.Start();
-
+            
+            //Finally at the end, send out a pulse of discovery signals 
             vxConsole.WriteLine("Sending Discovery Signal...");
             SendDiscoverySignal();
-
-            
         }
 
-        SendOrPostCallback ClientCallBackLoop;
+        private void ClientManager_DiscoverySignalResponseRecieved(object sender, vxNetClientEventDiscoverySignalResponse e)
+        {
+            AddDiscoveredServer(e.NetMsgServerInfo);
+        }
 
         void SendDiscoverySignal()
         {
@@ -166,117 +157,117 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
             ScrollPanel.Clear();
 
+            //TODO: increase port range (send out a 100 signals?)
             // Emit a discovery signal
-            vxEngine.GameClient.DiscoverLocalPeers(14242);
+            this.vxEngine.ClientManager.SendDiscoverySignal(14242);
         }
 
 
         #region Client Networking Code
 
 
-        /// <summary>
-        /// Method for Receiving Messages. Only Peer Disovery Is Needed for this one.
-        /// </summary>
-        /// <param name="peer">Peer.</param>
-        public void ClientMsgCallback(object peer)
-        {
-            NetIncomingMessage im;
-            while ((im = vxEngine.GameClient.ReadMessage()) != null)
-            {
-                // handle incoming message
-                switch (im.MessageType)
-                {
-                    case NetIncomingMessageType.DebugMessage:
-                    case NetIncomingMessageType.ErrorMessage:
-                    case NetIncomingMessageType.WarningMessage:
-                    case NetIncomingMessageType.VerboseDebugMessage:
-                        string text = im.ReadString();
-                        vxConsole.WriteNetworkLine(im.MessageType + " : " + text);
-                        break;
+        ///// <summary>
+        ///// Method for Receiving Messages. Only Peer Disovery Is Needed for this one.
+        ///// </summary>
+        ///// <param name="peer">Peer.</param>
+        //public void ClientMsgCallback(object peer)
+        //{
+        //    NetIncomingMessage im;
+        //    while ((im = vxEngine.GameClient.ReadMessage()) != null)
+        //    {
+        //        // handle incoming message
+        //        switch (im.MessageType)
+        //        {
+        //            case NetIncomingMessageType.DebugMessage:
+        //            case NetIncomingMessageType.ErrorMessage:
+        //            case NetIncomingMessageType.WarningMessage:
+        //            case NetIncomingMessageType.VerboseDebugMessage:
+        //                string text = im.ReadString();
+        //                vxConsole.WriteNetworkLine(im.MessageType + " : " + text);
+        //                break;
 
 
-                    /**************************************************************/
-                    //DiscoveryResponse
-                    /**************************************************************/
-                    case NetIncomingMessageType.DiscoveryResponse:
+        //            /**************************************************************/
+        //            //DiscoveryResponse
+        //            /**************************************************************/
+        //            case NetIncomingMessageType.DiscoveryResponse:
 
-                        //Read In The Discovery Response
-                        string receivedMsg = im.ReadString();
+        //                //Read In The Discovery Response
+        //                string receivedMsg = im.ReadString();
 
-                        vxConsole.WriteNetworkLine("Server found at: " + im.SenderEndPoint + "\nmsg: " + receivedMsg);
-                        AddDiscoveredServer(receivedMsg);
-                        break;
+        //                vxConsole.WriteNetworkLine("Server found at: " + im.SenderEndPoint + "\nmsg: " + receivedMsg);
+        //                AddDiscoveredServer(receivedMsg);
+        //                break;
 
 
-                    /**************************************************************/
-                    //StatusChanged
-                    /**************************************************************/
-                    case NetIncomingMessageType.StatusChanged:
-                        NetConnectionStatus status = (NetConnectionStatus)im.ReadByte();
+        //            /**************************************************************/
+        //            //StatusChanged
+        //            /**************************************************************/
+        //            case NetIncomingMessageType.StatusChanged:
+        //                NetConnectionStatus status = (NetConnectionStatus)im.ReadByte();
 
                         
-                        string reason = im.ReadString();
-                        vxConsole.WriteNetworkLine(NetUtility.ToHexString(im.SenderConnection.RemoteUniqueIdentifier) + " " + status + ": " + reason);
-                        break;
+        //                string reason = im.ReadString();
+        //                vxConsole.WriteNetworkLine(NetUtility.ToHexString(im.SenderConnection.RemoteUniqueIdentifier) + " " + status + ": " + reason);
+        //                break;
 
 
 
-                    /**************************************************************/
-                    //ConnectionApproval
-                    /**************************************************************/
-                    case NetIncomingMessageType.ConnectionApproval:
+        //            /**************************************************************/
+        //            //ConnectionApproval
+        //            /**************************************************************/
+        //            case NetIncomingMessageType.ConnectionApproval:
 
-                        Console.WriteLine("Connetion Approval From: " + im.SenderEndPoint + "\nmsg: " + im.ReadString());
+        //                Console.WriteLine("Connetion Approval From: " + im.SenderEndPoint + "\nmsg: " + im.ReadString());
 
-                        break;
+        //                break;
 
 
-                    /**************************************************************/
-                    //Data
-                    /**************************************************************/
-                    case NetIncomingMessageType.Data:
-                        // incoming chat message from a client
-                        string chat = im.ReadString();
+        //            /**************************************************************/
+        //            //Data
+        //            /**************************************************************/
+        //            case NetIncomingMessageType.Data:
+        //                // incoming chat message from a client
+        //                string chat = im.ReadString();
 
-                        //Split the Text By Carriage Return
-                        string[] result = chat.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+        //                //Split the Text By Carriage Return
+        //                string[] result = chat.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                        switch (result[0])
-                        {
-                            default:
-                                vxConsole.WriteNetworkLine("Broadcasting '" + chat + "'");
-                                /*
-                                // broadcast this to all connections, except sender
-                                List<NetConnection> all = vxEngine.GameSever.Connections; // get copy
-                                all.Remove(im.SenderConnection);
+        //                switch (result[0])
+        //                {
+        //                    default:
+        //                        vxConsole.WriteNetworkLine("Broadcasting '" + chat + "'");
+        //                        /*
+        //                        // broadcast this to all connections, except sender
+        //                        List<NetConnection> all = vxEngine.GameSever.Connections; // get copy
+        //                        all.Remove(im.SenderConnection);
 
-                                if (all.Count > 0)
-                                {
-                                    NetOutgoingMessage om2 = vxEngine.GameSever.CreateMessage();
-                                    om2.Write(NetUtility.ToHexString(im.SenderConnection.RemoteUniqueIdentifier) + " said: " + chat);
-                                    vxEngine.GameSever.SendMessage(om2, all, NetDeliveryMethod.ReliableOrdered, 0);
-                                }
-                                */
-                                break;
-                        }
-                        break;
-                    default:
-                        vxConsole.WriteNetworkLine("Unhandled type: " + im.MessageType + " " + im.LengthBytes + " bytes");
-                        break;
-                }
-                vxEngine.GameClient.Recycle(im);
-            }
-        }
+        //                        if (all.Count > 0)
+        //                        {
+        //                            NetOutgoingMessage om2 = vxEngine.GameSever.CreateMessage();
+        //                            om2.Write(NetUtility.ToHexString(im.SenderConnection.RemoteUniqueIdentifier) + " said: " + chat);
+        //                            vxEngine.GameSever.SendMessage(om2, all, NetDeliveryMethod.ReliableOrdered, 0);
+        //                        }
+        //                        */
+        //                        break;
+        //                }
+        //                break;
+        //            default:
+        //                vxConsole.WriteNetworkLine("Unhandled type: " + im.MessageType + " " + im.LengthBytes + " bytes");
+        //                break;
+        //        }
+        //        vxEngine.GameClient.Recycle(im);
+        //    }
+        //}
 
-        private void AddDiscoveredServer(string response)
+
+        private void AddDiscoveredServer(vxNetMsgServerInfo response)
         {
-            string receivedMsg = response;
-
             Texture2D thumbnail = vxEngine.Assets.Textures.Arrow_Right;
             vxServerListItem item = new vxServerListItem(vxEngine,
-                vxUtil.ReadXML(receivedMsg, "name"),
-                vxUtil.ReadXML(receivedMsg, "ip"),
-                vxUtil.ReadXML(receivedMsg, "port"),
+                response.ServerName,
+                response.ServerIP,
+               response.ServerPort,
         new Vector2(
             (int)(2 * hPad),
             vPad + (vPad / 10 + 68) * (List_Items.Count + 1)),
@@ -323,13 +314,13 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         /// <param name="HailMsg">Hail message.</param>
         public void Connect(string ipAddress, int port)
         {
-            vxConsole.WriteNetworkLine(string.Format("Connecting to Server: {0} : {1}", ipAddress, port));
+            vxEngine.ClientManager.LogClient(string.Format("Connecting to Server: {0} : {1}", ipAddress, port));
             
-            NetOutgoingMessage approval = vxEngine.GameClient.CreateMessage();
+            NetOutgoingMessage approval = vxEngine.ClientManager.CreateMessage();
             approval.Write("secret");
-            vxEngine.GameClient.Connect(ipAddress, port, approval);
+            vxEngine.ClientManager.Connect(ipAddress, port, approval);
 
-            vxConsole.WriteNetworkLine("Done!");
+            vxEngine.ClientManager.LogClient("Done!");
         }
 
         /*
@@ -371,38 +362,19 @@ public void SendMessage(string stringToSend)
         /// <param name="e"></param>
         public virtual void Btn_CreateNewLocalServer_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
-            //vxEngine.GameClient.Shutdown("shut down - starting as server");
-
-            //Set up The Server Name
-            newServerConfig = new NetPeerConfiguration(ServerName);
-
-            //Set the Port Always Off of the Default
-            newServerConfig.Port = ServerPort;
-
-            //newServerConfig.EnableUPnP = true;
+            try
+            {
+                vxEngine.ServerManager.Connect(14242);
 
 
-            // Enable DiscoveryRequest messages
+                //Set the User's Network Roll to be Server.
+                vxEngine.NetworkedGameRoll = vxEnumNetworkPlayerRole.Server;
 
-            //Setup Connection Approvals
-            newServerConfig.EnableMessageType(NetIncomingMessageType.ConnectionApproval);
-            newServerConfig.EnableMessageType(NetIncomingMessageType.DiscoveryRequest);
-            newServerConfig.EnableMessageType(NetIncomingMessageType.ConnectionLatencyUpdated);
-
-            //Initialise the Net Server Object (Note: This doesn't start the server itsself, Start(); needs to be called still)
-            vxEngine.GameSever = new NetServer(newServerConfig);
-
-            // attempt to forward port 14242
-            //vxEngine.GameSever.UPnP.ForwardPort(14242, "Text detail here");
-
-            //Set the User's Network Roll to be Server.
-            vxEngine.NetworkedGameRoll = vxEnumNetworkPlayerRole.Server;
-
-            //Now Unregister the Callback Listener for this Page
-            vxEngine.GameClient.UnregisterReceivedCallback(ClientCallBackLoop);
-
-            OpenServerLobby();
-            ExitScreen();
+                OpenServerLobby();
+                ExitScreen();
+            }
+            catch
+            { Console.WriteLine("SERVER COULD NOT BE STARTED!"); }
         }
 
         /// <summary>
@@ -421,12 +393,10 @@ public void SendMessage(string stringToSend)
         /// <param name="e"></param>
         public virtual void Btn_Ok_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
+
             //Connect to the Selected Server
             Connect(NetUtility.Resolve("localhost").ToString(),
                 Convert.ToInt32(List_Items[CurrentlySelected].ServerPort));
-
-            //Now Remove the Client Callback
-            vxEngine.GameClient.UnregisterReceivedCallback(ClientCallBackLoop);
 
             //Now Add go to the Server Lobby. The Lobby info will be added in by the global Client Connection Object.
             OpenServerLobby();
@@ -441,9 +411,6 @@ public void SendMessage(string stringToSend)
         public override void Btn_Cancel_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
             base.Btn_Cancel_Clicked(sender, e);
-
-            //Now Remove the Client Callback
-            vxEngine.GameClient.UnregisterReceivedCallback(ClientCallBackLoop);
         }
 
         /// <summary>
@@ -459,6 +426,9 @@ public void SendMessage(string stringToSend)
 
         public override void UnloadContent()
         {
+            //Now Deactivate all Event Handlers
+            vxEngine.ClientManager.DiscoverySignalResponseRecieved -= ClientManager_DiscoverySignalResponseRecieved;
+
             base.UnloadContent();
         }
 

@@ -335,7 +335,7 @@ namespace Virtex.Lib.Vertices.Entities.Sandbox3D
                     EmissiveColour = Color.DarkOrange;
                     break;
                 case vxEnumSelectionState.Hover:
-                    EmissiveColour = Color.LightSkyBlue;
+                    EmissiveColour = Color.DeepSkyBlue;
                     break;
                 case vxEnumSelectionState.Unseleced:
                     EmissiveColour = Color.Black;

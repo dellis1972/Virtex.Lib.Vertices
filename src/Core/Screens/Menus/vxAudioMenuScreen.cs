@@ -15,7 +15,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
     /// screen, and gives the user a chance to configure the game
     /// in various hopefully useful ways.
     /// </summary>
-    class AudioMenuScreen : vxMenuBaseScreen
+    class vxAudioMenuScreen : vxMenuBaseScreen
     {
         #region Fields
 
@@ -30,7 +30,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
         /// <summary>
         /// Constructor.
         /// </summary>
-        public AudioMenuScreen()
+        public vxAudioMenuScreen()
             : base("audio")
         {
 

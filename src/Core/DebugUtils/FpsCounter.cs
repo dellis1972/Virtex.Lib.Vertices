@@ -60,7 +60,7 @@ namespace Virtex.Lib.Vertices.Core.Debug
         public FpsCounter(Game game)
             : base(game)
         {
-            SampleSpan = TimeSpan.FromSeconds(1);
+            SampleSpan = TimeSpan.FromSeconds(0.5f);
         }
 
         public override void Initialize()

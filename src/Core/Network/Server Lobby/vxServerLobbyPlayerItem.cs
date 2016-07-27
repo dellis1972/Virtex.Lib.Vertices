@@ -16,7 +16,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         /// <summary>
         /// Get's the Player's Info
         /// </summary>
-        public NetworkPlayerInfo Player;
+        public vxNetPlayerInfo Player;
 
         /// <summary>
         /// Sets up a Serve List Dialog Item which holds information pertaining too a Discovered Server.
@@ -29,10 +29,10 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         /// <param name="buttonImage"></param>
         /// <param name="ElementIndex"></param>
         public vxServerLobbyPlayerItem(vxEngine vxEngine,
-            NetworkPlayerInfo player,
+            vxNetPlayerInfo player,
             Vector2 Position,
             Texture2D buttonImage,
-            int ElementIndex):base(vxEngine, player.Name, Position, buttonImage, ElementIndex)
+            int ElementIndex):base(vxEngine, player.UserName, Position, buttonImage, ElementIndex)
         {
             Player = player;
         }
@@ -41,7 +41,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         {
             base.DrawByOwner(vxEngine);
 
-            vxEngine.SpriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, "Ready: " + Player.Ready,
+            vxEngine.SpriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, "Status: " +vxEngine.ClientManager.PlayerManager.Players[Player.ID].Status,
                 new Vector2((int)(Position.X + ButtonHeight + Padding * 2), (int)(Position.Y + vxEngine.vxGUITheme.Font.MeasureString(Text).Y + 10)),
     Colour_Text);
 

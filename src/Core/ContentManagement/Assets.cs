@@ -221,7 +221,7 @@ namespace Virtex.Lib.Vertices.Core.ContentManagement
 			postProcessShaders.distortTechnique = postProcessShaders.distortEffect.Techniques["Distort"];
 			postProcessShaders.distortBlurTechnique = postProcessShaders.distortEffect.Techniques["DistortBlur"];
 
-            postProcessShaders.EdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/EdgeDetection");
+            postProcessShaders.EdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/EdgeDetection");
 #else
 
 			prefixtag = "MonoGame/";
@@ -229,9 +229,13 @@ namespace Virtex.Lib.Vertices.Core.ContentManagement
 
 #endif
 
-            shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/MainModelShader");
-            shaders.CascadeShadowShader  = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/CascadeShadowShader");
-            shaders.UtilityShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/UtilityShader");
+            shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/MainModelShader");
+            shaders.CascadeShadowShader  = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Shadows/CascadeShadowShader");
+            shaders.UtilityShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Utility/UtilityShader");
+
+            //Shader Collection
+            shaders.CartoonShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/CellModelShader");
+            
 
             //Bloom
             postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
@@ -243,7 +247,7 @@ namespace Virtex.Lib.Vertices.Core.ContentManagement
 
 			//Post Processing Shaders            
 			
-			postProcessShaders.CartoonEdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/CartoonEdgeDetection");
+			postProcessShaders.CartoonEdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/CartoonEdgeDetection");
 
 
 

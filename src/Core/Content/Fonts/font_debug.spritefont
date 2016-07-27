@@ -5,6 +5,9 @@
     <Size>8</Size>
     <Spacing>1</Spacing>
     <Style>Regular</Style>
+
+    <!-- Defualut Character Incase Something's Missing -->
+    <DefaultCharacter>*</DefaultCharacter>
     <CharacterRegions>
       <CharacterRegion>
         <Start>&#32;</Start>

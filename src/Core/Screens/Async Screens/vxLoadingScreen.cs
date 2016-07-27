@@ -32,7 +32,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
     ///   next screen, which may take a long time to load its data. The loading
     ///   screen will be the only thing displayed while this load is taking place.
     /// </summary>
-    public class LoadingScreen : vxGameBaseScreen
+    public class vxLoadingScreen : vxGameBaseScreen
     {
         #region Fields
 
@@ -62,7 +62,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
         /// be activated via the static Load method instead.
         /// </summary>
 
-        private LoadingScreen(vxEngine screenManager, bool loadingIsSlow,
+        private vxLoadingScreen(vxEngine screenManager, bool loadingIsSlow,
                               vxGameBaseScreen[] screensToLoad)
         {
             this.loadingIsSlow = loadingIsSlow;
@@ -97,7 +97,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
                 screen.ExitScreen();
 
             // Create and activate the loading screen.
-            LoadingScreen loadingScreen = new LoadingScreen(screenManager,
+            vxLoadingScreen loadingScreen = new vxLoadingScreen(screenManager,
                                                             loadingIsSlow,
                                                             screensToLoad);
 
@@ -117,7 +117,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
                 screen.ExitScreen();
 
             // Create and activate the loading screen.
-            LoadingScreen loadingScreen = new LoadingScreen(screenManager,
+            vxLoadingScreen loadingScreen = new vxLoadingScreen(screenManager,
                                                             loadingIsSlow,
                                                             screensToLoad);
 

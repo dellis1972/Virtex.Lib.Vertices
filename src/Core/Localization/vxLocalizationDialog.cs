@@ -49,7 +49,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
                 vxEngine, InternalvxGUIManager, "Language", vxEngine.Language.LanguageName, 
                 new Vector2(Margin, horiz));
             horiz += 45;
-            foreach (vxLanguagePack language in vxEngine.Languages)
+            foreach (vxLanguagePackBase language in vxEngine.Languages)
             {
                 LanguageSelectSettingsItem.ValueComboBox.AddItem(language.LanguageName);
             }

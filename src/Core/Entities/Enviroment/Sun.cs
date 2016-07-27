@@ -37,11 +37,11 @@ namespace Virtex.Lib.Vertices.Core.Entities
 			//IsSkyBox = true;
         }
         float inc = 0;
-        public int TextureSize = 2;
+        public int TextureSize = 3;
 		public void DrawGlow()
         {
             float scale = vxEngine.Current3DSceneBase.Camera.FarPlane;
-            //inc += 0.001667f;
+            inc += 0.001667f;
             //Set the Position for Screen Positioning
             World = Matrix.CreateScale(scale * 0.1f) *
                 Matrix.CreateRotationX(MathHelper.PiOver2) *

@@ -107,6 +107,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         }
         #endregion
 
+        public Vector2 viewportSize;
 
         /// <summary>
         /// Loads graphics content for this screen. This uses the shared ContentManager
@@ -118,7 +119,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         {
             InternalvxGUIManager = new vxGuiManager();
 
-            Vector2 viewportSize = new Vector2(vxEngine.GraphicsDevice.Viewport.Width, vxEngine.GraphicsDevice.Viewport.Height);
+            viewportSize = new Vector2(vxEngine.GraphicsDevice.Viewport.Width, vxEngine.GraphicsDevice.Viewport.Height);
 
             Btn_Apply = new vxButton(vxEngine, btn_Apply_text, new Vector2(viewportSize.X / 2 - 115, viewportSize.Y / 2 + 20));
             Btn_Ok = new vxButton(vxEngine, btn_ok_text, new Vector2(viewportSize.X / 2 - 115, viewportSize.Y / 2 + 20));
@@ -138,14 +139,14 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 			font = vxEngine.vxGUITheme.Font;
 
             // Center the message text in the viewport.
-            viewport = vxEngine.GraphicsDevice.Viewport;
+            //viewport = vxEngine.GraphicsDevice.Viewport;
             textTitleSize = font.MeasureString(Title);
             
 
             textTitlePosition = new Vector2(2 * hPad, 1.5f * vPad);
 
             TitleRectangle = new Rectangle((int)hPad, (int)vPad,
-                                                           viewport.Width - hPad * 2,
+                                                           (int)viewportSize.X - hPad * 2,
                                                           (int)textTitleSize.Y + vPad);
 
 
@@ -157,8 +158,8 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
 
             backgroundRectangle = new Rectangle((int)hPad, TitleRectangle.Y + TitleRectangle.Height + vPad / 4,
-                                                          viewport.Width - hPad * 2,
-                                                          viewport.Height - vPad - TitleRectangle.Y - TitleRectangle.Height - vPad / 4);
+                                                           (int)viewportSize.X - hPad * 2,
+                                                           (int)viewportSize.Y - vPad - TitleRectangle.Y - TitleRectangle.Height - vPad / 4);
 
 
             //Reset Gui Item Positions Based off of Background Rectangle

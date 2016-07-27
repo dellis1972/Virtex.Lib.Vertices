@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Virtex.Lib.Vertices.Localization
 {
-    public class LanguageEnglish : vxLanguagePack
+    public class vxLanguagePackEnglishBase : vxLanguagePackBase
     {
-        public LanguageEnglish():base ("English")
+        public vxLanguagePackEnglishBase():base ("English")
         {
 
         }

@@ -277,7 +277,7 @@ namespace Virtex.Lib.Vertices.Core.Scenes
         /// </example>
         public virtual void ShowPauseScreen()
         {
-            vxEngine.AddScreen(new PauseMenuScreen(), ControllingPlayer);
+            vxEngine.AddScreen(new vxPauseMenuScreen(), ControllingPlayer);
         }
 
 

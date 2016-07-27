@@ -150,7 +150,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shaders\EdgeDetection.Fx">
+    <Compile Include="Shaders\Edge Detection\EdgeDetection.Fx">
       <Name>EdgeDetection</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -246,7 +246,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shaders\MainModelShader.fx">
+    <Compile Include="Shaders\Model Shaders\MainModelShader.fx">
       <Name>MainModelShader</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -260,7 +260,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shaders\SkyBoxShader.fx">
+    <Compile Include="Shaders\Skybox\SkyBoxShader.fx">
       <Name>SkyBoxShader</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -402,7 +402,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Shaders\CartoonEdgeDetection.Fx">
+    <Compile Include="Shaders\Edge Detection\CartoonEdgeDetection.Fx">
       <Name>CartoonEdgeDetection</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -441,6 +441,11 @@
       <Name>MenuSound1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Shaders\Model Shaders\CellModelShader.fx">
+      <Name>CellModelShader</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
     </Compile>
     <Content Include="Shaders\Include\ModelDistorter.h">
       <Name>ModelDistorter</Name>
@@ -557,17 +562,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Shaders\Test\red.fx">
-      <Name>red</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Shaders\Test\blue.fx">
-      <Name>blue</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Shaders\CascadeShadowShader.fx">
+    <Compile Include="Shaders\Shadows\CascadeShadowShader.fx">
       <Name>CascadeShadowShader</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -577,7 +572,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Shaders\UtilityShader.fx">
+    <Compile Include="Shaders\Utility\UtilityShader.fx">
       <Name>UtilityShader</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>

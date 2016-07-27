@@ -28,6 +28,8 @@ namespace Virtex.Lib.Vertices.Core.Entities
         /// </summary>
         public vxEngine vxEngine { get; set; }
 
+        
+
         /// <summary>
         /// The current scene of the game
         /// </summary>

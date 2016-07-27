@@ -15,7 +15,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
     /// screen, and gives the user a chance to configure the game
     /// in various hopefully useful ways.
     /// </summary>
-    class DebugMenuScreen : vxMenuBaseScreen
+    class vxDebugMenuScreen : vxMenuBaseScreen
     {
         #region Fields
 
@@ -32,7 +32,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
         /// <summary>
         /// Constructor.
         /// </summary>
-        public DebugMenuScreen()
+        public vxDebugMenuScreen()
             : base("Debug")
         {
            

@@ -25,7 +25,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
     ///   next screen, which may take a long time to load its data. The loading
     ///   screen will be the only thing displayed while this load is taking place.
     /// </summary>
-    public class LoadAssetsScreen : vxGameBaseScreen
+    public class vxLoadAssetsScreen : vxGameBaseScreen
     {
         #region Fields
 
@@ -51,7 +51,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
         /// The constructor is private: loading screens should
         /// be activated via the static Load method instead.
         /// </summary>
-        private LoadAssetsScreen(vxEngine screenManager, bool loadingIsSlow,
+        private vxLoadAssetsScreen(vxEngine screenManager, bool loadingIsSlow,
                               vxGameBaseScreen[] screensToLoad)
         {
             this.loadingIsSlow = loadingIsSlow;
@@ -84,7 +84,7 @@ namespace Virtex.Lib.Vertices.Screens.Async
                 screen.ExitScreen();
 
             // Create and activate the loading screen.
-            LoadAssetsScreen loadingScreen = new LoadAssetsScreen(screenManager,
+            vxLoadAssetsScreen loadingScreen = new vxLoadAssetsScreen(screenManager,
                                                             loadingIsSlow,
                                                             screensToLoad);
 
@@ -194,15 +194,8 @@ namespace Virtex.Lib.Vertices.Screens.Async
 					spriteBatch.Draw (vxEngine.SplashScreen, 
 						viewport.Bounds, Color.White * TransitionAlpha);
 				}
-				/*
-				spriteBatch.Draw(vxEngine.vxGUITheme.vxLoadingScreen.SplashScreen, 
-					new Rectangle(0,50,(int)(viewport.Width * vxEngine.vxGUITheme.vxLoadingScreen.PercentageComplete/100),2), 
-					Color.DarkOrange * TransitionAlpha);
-*/
 
-				//spriteBatch.Draw(vxEngine.Texture_Logo, 
-                //    new Rectangle(20, 20, vxEngine.Texture_Logo.Bounds.Width/4, vxEngine.Texture_Logo.Bounds.Height/4), color*0.5f);
-				spriteBatch.DrawString(font, message, textPosition, vxEngine.vxGUITheme.vxLoadingScreen.TextColour);
+				spriteBatch.DrawString(font, message, textPosition, Color.White);
 
 
                 //Draw Version Information

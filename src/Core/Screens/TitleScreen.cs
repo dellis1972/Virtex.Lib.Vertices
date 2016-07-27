@@ -39,7 +39,11 @@ namespace Virtex.Lib.Vertices.Screens
 
         #region Initialization
 
+#if DEBUG
         int UpdateTime = 5;
+#else
+        int UpdateTime = 200;
+#endif
 
         /// <summary>
         /// Constructor.

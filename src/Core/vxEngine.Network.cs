@@ -33,17 +33,17 @@ namespace Virtex.Lib.Vertices.Core
         /// <summary>
         /// The Game Server Object used to Manage Games when the user is the Server.
         /// </summary>
-        public NetServer GameSever;
+        public vxNetworkServerManager ServerManager;
 
         /// <summary>
         /// The Game Client Object used to Manage Games when the user is the Client.
         /// </summary>
-        public NetClient GameClient;
+        public vxNetworkClientManager ClientManager;
 
         /// <summary>
         /// A Collection of Players Currently In The Server. This should only be modified only by updates from the connected server.
         /// </summary>
-        public List<NetworkPlayerInfo> NetworkPlayers = new List<NetworkPlayerInfo>();
+        //public List<NetworkPlayerInfo> NetworkPlayers = new List<NetworkPlayerInfo>();
 
         /// <summary>
         /// Gets or sets the connection status for the Master Server Connection.
@@ -60,6 +60,9 @@ namespace Virtex.Lib.Vertices.Core
         /// What is the roll of this user in the Networked Game.
         /// </summary>
         public vxEnumNetworkPlayerRole NetworkedGameRoll { get; set; }
+
+        //TODO: Add too Netork Manager Event File.
+        public event EventHandler<vxGameServerListRecievedEventArgs> GameServerListRecieved;
 
 
         public void InitialiseMasterServerConnection()
@@ -189,34 +192,34 @@ namespace Virtex.Lib.Vertices.Core
         {
             Req = -50;
             SpriteBatch.Begin();
-            if (GameSever != null)
+            if (ServerManager.Server != null)
             {
                 Req = 5;
                    local = vxSmooth.SmoothInt(local, Req, 8);
                 string output = string.Format(
                     "NETWORK DEBUG INFO: | User Roll: {3} | Server Name: {0} | Port: {1} | Broadcast Address: {2} | Status: {4}",
-                    GameSever.Configuration.AppIdentifier,
-                    GameSever.Configuration.Port.ToString(),
-                    GameSever.Configuration.BroadcastAddress,
+                    ServerManager.Server.Configuration.AppIdentifier,
+                    ServerManager.Server.Configuration.Port.ToString(),
+                    ServerManager.Server.Configuration.BroadcastAddress,
                     this.NetworkedGameRoll.ToString(),
-                    GameSever.Status.ToString());
+                    ServerManager.Server.Status.ToString());
 
                 int pad = 3;
                 
                 SpriteBatch.Draw(this.Assets.Textures.Blank, new Rectangle(0, local + 0, 1000, (int)this.Assets.Fonts.DebugFont.MeasureString(output).Y + 2 * pad), Color.Black * 0.75f);
                 SpriteBatch.DrawString(this.Assets.Fonts.DebugFont, output, new Vector2(pad, local + pad), Color.White);
             }
-            else if (GameClient != null)
+            else if (ClientManager.Client != null)
             {
                 Req = 5;
                 local = vxSmooth.SmoothInt(local, Req, 8);
                 string output = string.Format(
                     "NETWORK DEBUG INFO: | User Roll: {3} | Client Name: {0} | Port: {1} | Broadcast Address: {2} | Status: {4}",
-                    GameClient.Configuration.AppIdentifier,
-                    GameClient.Configuration.Port.ToString(),
-                    GameClient.Configuration.BroadcastAddress,
+                    ClientManager.Client.Configuration.AppIdentifier,
+                    ClientManager.Client.Configuration.Port.ToString(),
+                    ClientManager.Client.Configuration.BroadcastAddress,
                     this.NetworkedGameRoll.ToString(),
-                    GameClient.Status.ToString());
+                    ClientManager.Client.Status.ToString());
 
                 int pad = 3;
 

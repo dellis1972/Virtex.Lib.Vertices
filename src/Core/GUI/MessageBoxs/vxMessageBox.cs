@@ -19,6 +19,7 @@ using Virtex.Lib.Vertices.Core.Input;
 using Virtex.Lib.Vertices.Core.Input.Events;
 using Virtex.Lib.Vertices.GUI;
 using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vertices.Localization;
 #endregion
 
 namespace Virtex.Lib.Vertices.GUI.MessageBoxs
@@ -118,6 +119,9 @@ namespace Virtex.Lib.Vertices.GUI.MessageBoxs
         public override void LoadContent()
         {
             xGUIManager = new vxGuiManager();
+
+            btn_ok_text = LanguagePack.Get(vxLocalization.Misc_OK);
+            btn_ok_Cancel = LanguagePack.Get(vxLocalization.Misc_Cancel);
 
             Vector2 viewportSize = new Vector2(vxEngine.GraphicsDevice.Viewport.Width, vxEngine.GraphicsDevice.Viewport.Height);
 

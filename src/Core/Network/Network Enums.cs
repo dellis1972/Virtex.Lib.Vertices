@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Virtex.Lib.Vertices.Network
 {
+    /*
     public class NetworkPlayerInfo
     {
         public string Name;
@@ -25,6 +26,7 @@ namespace Virtex.Lib.Vertices.Network
             Ready = ready;
         }
     }
+    */
 
     /// <summary>
     /// Connection status for networked games.

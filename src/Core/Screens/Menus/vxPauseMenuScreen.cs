@@ -17,6 +17,7 @@ using Virtex.Lib.Vertices.Screens.Async;
 #region Using Statements
 using Microsoft.Xna.Framework;
 using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vertices.Localization;
 #endregion
 
 namespace Virtex.Lib.Vertices.Screens.Menus
@@ -25,7 +26,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
     /// The pause menu comes up over the top of the game,
     /// giving the player options to resume or quit.
     /// </summary>
-    public class PauseMenuScreen : vxMenuBaseScreen
+    public class vxPauseMenuScreen : vxMenuBaseScreen
     {
         #region Initialization
 
@@ -33,7 +34,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PauseMenuScreen()
+        public vxPauseMenuScreen()
             : base("Paused")
         {
 			
@@ -43,13 +44,15 @@ namespace Virtex.Lib.Vertices.Screens.Menus
 		{
 			base.LoadContent ();
 
-			// Create our menu entries.
-			vxMenuEntry resumeGameMenuEntry = new vxMenuEntry(this, "Resume Game");
-			vxMenuEntry MenuEntry_Graphics = new vxMenuEntry(this, "Graphics");
-			vxMenuEntry quitGameMenuEntry = new vxMenuEntry(this, "Quit Game");
+            this.MenuTitle = LanguagePack.Get(vxLocalization.Pause);
 
-			// Hook up menu event handlers.
-			resumeGameMenuEntry.Selected += OnCancel;
+            // Create our menu entries.
+            vxMenuEntry resumeGameMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Pause_Resume));
+            vxMenuEntry MenuEntry_Graphics = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Main_Settings));
+			vxMenuEntry quitGameMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Main_Exit));
+
+            // Hook up menu event handlers.
+            resumeGameMenuEntry.Selected += OnCancel;
 			MenuEntry_Graphics.Selected += new System.EventHandler<PlayerIndexEventArgs>(MenuEntry_Graphics_Selected);
 			quitGameMenuEntry.Selected += QuitGameMenuEntrySelected;
 
@@ -63,7 +66,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
 
         void MenuEntry_Graphics_Selected(object sender, PlayerIndexEventArgs e)
         {
-            vxEngine.AddScreen(new vxGraphicSettingsDialog(), e.PlayerIndex);
+            vxEngine.AddScreen(new vxSettingsMenuScreen(), e.PlayerIndex);
         }
 
 
@@ -77,9 +80,9 @@ namespace Virtex.Lib.Vertices.Screens.Menus
         /// </summary>
         void QuitGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            const string message = "Are you sure you want to quit this game?";
+            string message = LanguagePack.Get(vxLocalization.Pause_AreYouSureYouWantToQuit);
 
-			vxMessageBox confirmQuitMessageBox = new vxMessageBox(message, "Pause");
+			vxMessageBox confirmQuitMessageBox = new vxMessageBox(message, LanguagePack.Get(vxLocalization.Pause));
 
             confirmQuitMessageBox.Accepted += ConfirmQuitMessageBoxAccepted;
 
@@ -94,7 +97,7 @@ namespace Virtex.Lib.Vertices.Screens.Menus
         /// </summary>
         void ConfirmQuitMessageBoxAccepted(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(vxEngine, false, null, new TitleScreen(2));
+            vxLoadingScreen.Load(vxEngine, false, null, new TitleScreen(2));
         }
 
 

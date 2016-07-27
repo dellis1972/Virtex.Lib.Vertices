@@ -8,6 +8,7 @@ using Virtex.Lib.Vertices.GUI.Events;
 using Virtex.Lib.Vertices.GUI.Controls;
 using Virtex.Lib.Vertices.Core.Settings;
 using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vertices.Localization;
 
 namespace Virtex.Lib.Vertices.GUI.Dialogs
 {
@@ -32,13 +33,13 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
             vxEngine.LoadResolution = true;
             base.LoadContent();
 
-            this.Title = vxEngine.Language.GraphicsSettings;
+            this.Title = vxEngine.Language.Get(vxLocalization.Settings_Graphics);
 
 
 			//All Items below are stored in this column as it's the longest word
 			
-            float Margin = 25;
-            float MarginTwo = 400;
+            float Margin = vxEngine.GraphicsDevice.Viewport.Width/2 - this.viewportSize.X/2 + 25;
+            float MarginTwo = Margin + 375;
 
             int horiz = 75;
             int horizTwo = 75;
@@ -51,7 +52,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
             string currentRes = string.Format("{0}x{1}", pp.BackBufferWidth, pp.BackBufferHeight);
 
             vxGraphicSettingsItem ResolutionSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, InternalvxGUIManager, vxEngine.Language.Resolution, currentRes, new Vector2(Margin, horiz));
+                vxEngine, InternalvxGUIManager, vxEngine.Language.Get(vxLocalization.Graphics_Resolution), currentRes, new Vector2(Margin, horiz));
             horiz += 45;
 
             bool AddItem = true;
@@ -80,15 +81,15 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
             //Full Screen
             /*****************************************************************************************************/
             vxGraphicSettingsItem FullScreenSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, InternalvxGUIManager, vxEngine.Language.FullScreen,
-                vxEngine.Profile.Settings.Graphics.Bool_FullScreen ? vxEngine.Language.FullScreen : vxEngine.Language.Windowed, 
+                vxEngine, InternalvxGUIManager, vxEngine.Language.Get(vxLocalization.Graphics_FullScreen),
+                vxEngine.Profile.Settings.Graphics.Bool_FullScreen ? vxEngine.Language.Get(vxLocalization.Graphics_FullScreen) : vxEngine.Language.Get(vxLocalization.Graphics_Windowed), 
                 new Vector2(Margin, horiz));
             horiz += 45;
-            FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.FullScreen);
-            FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.Windowed);
+            FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.Get(vxLocalization.Graphics_FullScreen));
+            FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.Get(vxLocalization.Graphics_Windowed));
             FullScreenSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
 
-                if (e.SelectedItem.Text == "Full Screen")
+                if (e.SelectedItem.Text == vxEngine.Language.Get(vxLocalization.Graphics_FullScreen))
                     vxEngine.Profile.Settings.Graphics.Bool_FullScreen = true;
                 else
                     vxEngine.Profile.Settings.Graphics.Bool_FullScreen = false;
