@@ -12,11 +12,11 @@ namespace Virtex.Lib.Vertices.Network.Events
     /// </summary>
     public class vxNetClientEventDiscoverySignalResponse : EventArgs
     {
-        public vxNetMsgServerInfo NetMsgServerInfo
+        public vxNetmsgServerInfo NetMsgServerInfo
         {
             get { return m_vxNetMsgServerInfo; }
         }
-        vxNetMsgServerInfo m_vxNetMsgServerInfo;
+        vxNetmsgServerInfo m_vxNetMsgServerInfo;
 
         /// <summary>
         /// The address of where the Discovery Signal originates from.
@@ -37,7 +37,7 @@ namespace Virtex.Lib.Vertices.Network.Events
         /// <summary>
         /// Constructor.
         /// </summary>
-        public vxNetClientEventDiscoverySignalResponse(vxNetMsgServerInfo NetMsgServerInfo)
+        public vxNetClientEventDiscoverySignalResponse(vxNetmsgServerInfo NetMsgServerInfo)
         {
             this.m_vxNetMsgServerInfo = NetMsgServerInfo;
         }
@@ -143,6 +143,65 @@ namespace Virtex.Lib.Vertices.Network.Events
         public vxNetClientEventPlayerStatusUpdate(vxNetPlayerInfo player)
         {
             m_playerToUpdate = player;
+        }
+    }
+
+
+    /// <summary>
+    /// This event is fired whenever a client disconnects to this server.
+    /// </summary>
+    public class vxNetClientEventSessionStatusUpdated : EventArgs
+    {
+        /// <summary>
+        /// ID of the Client that has been added.
+        /// </summary>
+        public vxEnumSessionStatus NewSessionStatus { get; set; }
+
+        public vxEnumSessionStatus PreviousSessionStatus { get; set; }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public vxNetClientEventSessionStatusUpdated(vxEnumSessionStatus oldStatus, vxEnumSessionStatus newStatus)
+        {
+            NewSessionStatus = newStatus;
+
+            PreviousSessionStatus = oldStatus;
+        }
+    }
+
+    /// <summary>
+    /// This event is fired on the client side whenever a player needs to be updated with information from the server.
+    /// </summary>
+    public class vxNetClientEventPlayerStateUpdate : EventArgs
+    {
+        /// <summary>
+        /// The player that needs updating.
+        /// </summary>
+        public vxNetPlayerInfo PlayerToUpdate
+        {
+            get { return m_playerToUpdate; }
+        }
+        vxNetPlayerInfo m_playerToUpdate;
+
+        /// <summary>
+        /// The time difference between when the message was sent and when it was recieved by the recieving client.
+        /// </summary>
+        public float TimeDelay
+        {
+            get { return m_timeDelay; }
+        }
+        float m_timeDelay;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public vxNetClientEventPlayerStateUpdate(vxNetmsgUpdatePlayerEntityState updateMsg, float delay)
+        {
+            m_playerToUpdate = updateMsg.PlayerInfo;
+
+
+            m_timeDelay = delay;
         }
     }
 }

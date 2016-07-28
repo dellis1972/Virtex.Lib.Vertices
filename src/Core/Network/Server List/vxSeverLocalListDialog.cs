@@ -261,7 +261,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         //}
 
 
-        private void AddDiscoveredServer(vxNetMsgServerInfo response)
+        private void AddDiscoveredServer(vxNetmsgServerInfo response)
         {
             Texture2D thumbnail = vxEngine.Assets.Textures.Arrow_Right;
             vxServerListItem item = new vxServerListItem(vxEngine,

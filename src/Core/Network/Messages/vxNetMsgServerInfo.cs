@@ -10,7 +10,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
     /// <summary>
     /// This message is used during the discovery phase to glean basic server information.
     /// </summary>
-    public class vxNetMsgServerInfo : INetworkMessage
+    public class vxNetmsgServerInfo : INetworkMessage
     {
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
             /// <param name="ServerName"></param>
             /// <param name="ServerIP"></param>
             /// <param name="ServerPort"></param>
-        public vxNetMsgServerInfo(string ServerName, string ServerIP, string ServerPort)
+        public vxNetmsgServerInfo(string ServerName, string ServerIP, string ServerPort)
         {
             this.ServerName = ServerName;
             this.ServerIP = ServerIP;
@@ -48,7 +48,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
         /// Decoding Constructor to be used by client.
         /// </summary>
         /// <param name="im"></param>
-        public vxNetMsgServerInfo(NetIncomingMessage im)
+        public vxNetmsgServerInfo(NetIncomingMessage im)
         {
             this.DecodeMsg(im);
         }

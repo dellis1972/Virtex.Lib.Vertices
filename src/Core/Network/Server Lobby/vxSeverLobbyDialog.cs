@@ -208,6 +208,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         }
         private void ClientManager_OtherPlayerDisconnected(object sender, vxNetClientEventPlayerDisconnected e)
         {
+            Console.WriteLine("DISCONNECTED IN LOBBY!: " + e.DisconnectedPlayer.UserName);
             for (int i = 0; i < List_Items.Count; i++)
             {
                 if (List_Items[i].Player.ID == e.DisconnectedPlayer.ID)
@@ -239,6 +240,11 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
                 //Turn off the Server
                 vxEngine.ServerManager.Server.Configuration.AcceptIncomingConnections = false;
             }
+
+            //Now untether handles
+
+            vxEngine.ClientManager.OtherPlayerConnected -= ClientManager_OtherPlayerConnected;
+            vxEngine.ClientManager.OtherPlayerDisconnected -= ClientManager_OtherPlayerDisconnected;
         }
 
         /// <summary>
@@ -268,7 +274,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
 
             vxEngine.ClientManager.PlayerInfo.Status = ReadyState ? vxEnumNetPlayerStatus.InServerLobbyReady : vxEnumNetPlayerStatus.InServerLobbyNotReady;
-            vxEngine.ClientManager.SendMessage(new vxNetMsgUpdatePlayerLobbyStatus(vxEngine.ClientManager.PlayerInfo));
+            vxEngine.ClientManager.SendMessage(new vxNetmsgUpdatePlayerLobbyStatus(vxEngine.ClientManager.PlayerInfo));
 
         }
 
@@ -330,7 +336,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         float LoadingAlpha = 0;
         float LoadingAlpha_Req = 1;
 
-        float LaunchCountdown = 5;
+        float LaunchCountdown = 1.5f;
 
         bool HasLaunched = false;
 
@@ -353,7 +359,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
                 vxEngine.ClientManager.PlayerInfo.Status = vxEnumNetPlayerStatus.InServerLobbyNotReady;
 
                 //Send message with User Data
-                vxEngine.ClientManager.SendMessage(new vxNetMsgAddPlayer(vxEngine.ClientManager.PlayerInfo));
+                vxEngine.ClientManager.SendMessage(new vxNetmsgAddPlayer(vxEngine.ClientManager.PlayerInfo));
             }
 
             if (vxEngine.ClientManager.PlayerManager.Players.Count > 1 && LaunchCountdown > 0)
@@ -373,7 +379,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
             if (SessionStateForClient == SessionState.Idle)
             {
-                LaunchCountdown = 5;
+                LaunchCountdown = 1.5f;
                 this.Title = originalTitle;
             }
             else if (SessionStateForClient == SessionState.Countdown)

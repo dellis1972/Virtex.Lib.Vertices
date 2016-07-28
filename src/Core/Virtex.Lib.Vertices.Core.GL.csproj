@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\MonoGame.Debug.3D</OutputPath>
-    <DefineConstants>DEBUG;VIRTICES_3D;VRTC_PLTFRM_GL ; TRACE</DefineConstants>
+    <DefineConstants>DEBUG;VIRTICES_3D;VRTC_PLTFRM_GL ; TRACE; VRTC_INCLDLIB_NET</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -115,9 +115,6 @@
     <None Include="Content\Models\water_plane\plane.blend2" />
     <None Include="Content\Models\water_plane\water_plane.fbx" />
     <None Include="Content\Models\water_plane\water_plane_mg.fbx" />
-    <None Include="Content\Shaders\EdgeDetection.Fx" />
-    <None Include="Content\Shaders\MainModelShader.fx" />
-    <None Include="Content\Shaders\SkyBoxShader.fx" />
     <None Include="Content\Shaders\Bloom\BloomCombine.fx" />
     <None Include="Content\Shaders\Bloom\BloomExtract.fx" />
     <None Include="Content\Shaders\Bloom\GaussianBlur.fx" />
@@ -203,9 +200,6 @@
     <None Include="Content\Graphics\Flares\flare3.png" />
     <None Include="Content\Graphics\Flares\glow.png" />
     <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_debug.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_gui.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_gui_title.xnb">
@@ -523,7 +517,6 @@
     <None Include="Content\MonoGame\Shaders\God Rays\LightRays.fx" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
-    <None Include="Content\Shaders\CartoonEdgeDetection.Fx" />
     <None Include="Content\MonoGame\Shaders\Include\ModelPixelShaders.h" />
     <None Include="Content\MonoGame\Shaders\God Rays\MaskedSun.fx" />
     <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\DfltThm\vxGUITheme\SndFx\Menu\MenuConfirm.xnb" />
@@ -547,19 +540,13 @@
     <None Include="Vertices.Engine.Content\Compiled.WindowsGL\Textures\nullTextures\null_specular.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Network\Server Lobby\misc.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
     <Compile Include="Screens\Async Screens\BusyScreen.cs" />
-    <Compile Include="Screens\Async Screens\LoadAssetsScreen.cs" />
-    <Compile Include="Screens\Async Screens\LoadingScreen.cs" />
-    <Compile Include="Screens\Menus\AudioMenuScreen.cs" />
-    <Compile Include="Screens\Menus\ControlsMenuScreen.cs" />
-    <Compile Include="Screens\Menus\DebugMenuScreen.cs" />
-    <Compile Include="Screens\Menus\GraphicsSettingsScreen.cs" />
-    <Compile Include="Screens\Menus\SettingsMenuScreen.cs" />
     <Compile Include="Graphics\2D Gameplay\Layer.cs" />
     <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs" />
     <Compile Include="Graphics\2D Gameplay\LineBatch.cs" />
@@ -575,11 +562,7 @@
     <Compile Include="Mathematics\vxMathUtils.cs" />
     <Compile Include="Geometry\Quad.cs" />
     <Compile Include="Geometry\Tri.cs" />
-    <Compile Include="Audio\AudioManager.cs" />
-    <Compile Include="Screens\Menus\PauseMenuScreen.cs" />
     <Compile Include="Graphics\2D Gameplay\AssetCreator2D.cs" />
-    <Compile Include="Animation\AnimationPlayer2D.cs" />
-    <Compile Include="Screens\Menus\MenuScreen.cs" />
     <Compile Include="GUI\Controls\Buttons\vxButton.cs" />
     <Compile Include="GUI\Controls\Buttons\xButton_Toggle.cs" />
     <Compile Include="GUI\Controls\Combo Box\vxComboBox.cs" />
@@ -590,7 +573,6 @@
     <Compile Include="GUI\Controls\List View\vxListViewItem.cs" />
     <Compile Include="GUI\Controls\List View\vxListViewSpliter.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollBar.cs" />
-    <Compile Include="GUI\Controls\Scroll Panel\vxScrollBarItem.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanel.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelSpliter.cs" />
     <Compile Include="GUI\Controls\TabControl\vxTabControl.cs" />
@@ -602,7 +584,6 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBox.cs" />
     <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
     <Compile Include="GUI\Controls\Buttons\vxButtonImage.cs" />
-    <Compile Include="GUI\Controls\Scroll Panel\vxServerScrollBarItem.cs" />
     <Compile Include="GUI\Controls\Label\vxLabel.cs" />
     <Compile Include="Network\Network Enums.cs" />
     <Compile Include="GUI\GUI Enums.cs" />
@@ -611,8 +592,6 @@
     <Compile Include="Utilities\vxGeometryHelper.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxDirectionalLight.cs" />
-    <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxPointLight.cs" />
-    <Compile Include="Animation\AnimationSprite2D.cs" />
     <Compile Include="GUI\Controls\Menu Entries\vxMenuEntry.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\BloomComponent.cs" />
     <Compile Include="Graphics\3D Gameplay\Components\BloomSettings.cs" />
@@ -624,7 +603,6 @@
     <Compile Include="GUI\Theme\vxThemeButton.cs" />
     <Compile Include="GUI\Theme\vxThemeTextbox.cs" />
     <Compile Include="GUI\Controls\Buttons\vxSandboxItemButton.cs" />
-    <Compile Include="GUI\Dialogs\vxGraphicSettingsDialog.cs" />
     <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
     <Compile Include="GUI\Theme\vxThemeDialog.cs" />
     <Compile Include="Graphics\Model\vxModel.cs" />
@@ -632,7 +610,6 @@
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.cs" />
     <Compile Include="Graphics\Instancing\vxMeshSet.cs" />
-    <Compile Include="Base Screens\GameScreen.cs" />
     <Compile Include="Cameras\vxCamera2D.cs" />
     <Compile Include="Cameras\vxCamera3D.cs" />
     <Compile Include="Cameras\vxVirtualCamera.cs" />
@@ -665,7 +642,6 @@
     <Compile Include="Entities\Sandbox3D\Util\vxScaleCube.cs" />
     <Compile Include="Entities\Sandbox3D\Util\vxSnapBox.cs" />
     <Compile Include="Entities\Sandbox3D\Util\vxWorkingPlane.cs" />
-    <Compile Include="Entities\boxes\plainModel.cs" />
     <Compile Include="ParticleSystem\vxParticle3D.cs" />
     <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
     <Compile Include="Input\Accelerometer.cs" />
@@ -702,6 +678,51 @@
     <Compile Include="ContentManagement\vxContentManager.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
+    <Compile Include="Animation\vxAnimationPlayer2D.cs" />
+    <Compile Include="Animation\vxAnimationSprite2D.cs" />
+    <Compile Include="Audio\vxAudioManager.cs" />
+    <Compile Include="Base Screens\vxGameBaseScreen.cs" />
+    <Compile Include="GUI\Art Providers\IGuiArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxMenuScreenArtProvider.cs" />
+    <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
+    <Compile Include="GUI\Theme\vxMenuTheme.cs" />
+    <Compile Include="Network\Entity States\vxNetEntity3DState.cs" />
+    <Compile Include="Network\Events\vxNetClientEvents.cs" />
+    <Compile Include="Network\Events\vxNetServerEvents.cs" />
+    <Compile Include="Network\Messages\INetworkMessage.cs" />
+    <Compile Include="Network\Messages\vxNetMsgAddPlayer.cs" />
+    <Compile Include="Network\Messages\vxNetMsgRemovePlayer.cs" />
+    <Compile Include="Network\Messages\vxNetMsgServerInfo.cs" />
+    <Compile Include="Network\Messages\vxNetmsgUpdatePlayerEntityState.cs" />
+    <Compile Include="Network\Messages\vxNetMsgUpdatePlayerList.cs" />
+    <Compile Include="Network\Messages\vxNetMsgUpdatePlayerLobbyStatus.cs" />
+    <Compile Include="Network\Messages\vxNetmsgUpdateSessionStatus.cs" />
+    <Compile Include="Network\Network Managers\INetworkManager.cs" />
+    <Compile Include="Network\Network Managers\vxNetworkClientManager.cs" />
+    <Compile Include="Network\Network Managers\vxNetworkServerManager.cs" />
+    <Compile Include="Network\Player Manager\vxNetPlayerInfo.cs" />
+    <Compile Include="Network\Player Manager\vxNetPlayerManager.cs" />
+    <Compile Include="Network\Server List\vxServerListItem.cs" />
+    <Compile Include="Network\Server List\vxSeverListDialog.cs" />
+    <Compile Include="Network\Server List\vxSeverLocalListDialog.cs" />
+    <Compile Include="Network\Server Lobby\vxServerLobbyPlayerItem.cs" />
+    <Compile Include="Network\Server Lobby\vxSeverLobbyDialog.cs" />
+    <Compile Include="Screens\Async Screens\vxLoadAssetsScreen.cs" />
+    <Compile Include="Screens\Async Screens\vxLoadingScreen.cs" />
+    <Compile Include="Screens\Menus\OptionsMenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxAudioMenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxControlsMenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxDebugMenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxGraphicSettingsDialog.cs" />
+    <Compile Include="Screens\Menus\vxMenuBaseScreen.cs" />
+    <Compile Include="Screens\Menus\vxPauseMenuScreen.cs" />
+    <Compile Include="Screens\Menus\vxSettingsMenuScreen.cs" />
+    <Compile Include="Localization\vxLanguagePackBase.cs" />
+    <Compile Include="Localization\vxLanguagePackEnglishBase.cs" />
+    <Compile Include="Localization\vxLanguagePackFrenchBase.cs" />
+    <Compile Include="Localization\vxLanguagePackKoreanBase.cs" />
+    <Compile Include="Localization\vxLocalizationDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -722,10 +743,11 @@
     <Folder Include="GUI\Theme\" />
     <Folder Include="Graphics\Model\" />
     <Folder Include="Graphics\Instancing\" />
-    <Folder Include="Graphics\3D Gameplay\3D Gameplay\" />
     <Folder Include="Graphics\Renderer\" />
     <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\vxButton\" />
     <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\Gui\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Shadows\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Graphics\Flares\flare1.xnb">
@@ -815,11 +837,33 @@
     <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\MainModelShader.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Model Shaders\CellModelShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Model Shaders\MainModelShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Shadows\CascadeShadowShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\MonoGame\Shaders\Utility\UtilityShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Shaders\Edge Detection\CartoonEdgeDetection.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vertices.Engine.Content\Compiled.WindowsGL\Fonts\font_gui.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
       <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj">
+      <Project>{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}</Project>
+      <Name>Virtex.Lib.Vertices.Net.Lidgren.GL</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

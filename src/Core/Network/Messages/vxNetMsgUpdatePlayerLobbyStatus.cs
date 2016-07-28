@@ -10,7 +10,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
     /// <summary>
     /// This message is used during the discovery phase to glean basic server information.
     /// </summary>
-    public class vxNetMsgUpdatePlayerLobbyStatus : INetworkMessage
+    public class vxNetmsgUpdatePlayerLobbyStatus : INetworkMessage
     {
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
             /// <param name="ServerName"></param>
             /// <param name="ServerIP"></param>
             /// <param name="ServerPort"></param>
-        public vxNetMsgUpdatePlayerLobbyStatus(vxNetPlayerInfo playerinfo)
+        public vxNetmsgUpdatePlayerLobbyStatus(vxNetPlayerInfo playerinfo)
         {
             this.PlayerInfo = playerinfo;
         }
@@ -33,7 +33,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
         /// Decoding Constructor to be used by client.
         /// </summary>
         /// <param name="im"></param>
-        public vxNetMsgUpdatePlayerLobbyStatus(NetIncomingMessage im)
+        public vxNetmsgUpdatePlayerLobbyStatus(NetIncomingMessage im)
         {
             this.DecodeMsg(im);
         }
@@ -45,7 +45,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
         {
             get
             {
-                return vxNetworkMessageTypes.UpdatePlayerState;
+                return vxNetworkMessageTypes.UpdatePlayerLobbyStatus;
             }
         }
 

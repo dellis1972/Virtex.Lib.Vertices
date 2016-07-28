@@ -139,6 +139,7 @@
     <Compile Include="Platform\PlatformWin32.cs" />
     <Compile Include="Platform\PlatformWinRT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XNAExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LidgrenTestKey.pfx" />

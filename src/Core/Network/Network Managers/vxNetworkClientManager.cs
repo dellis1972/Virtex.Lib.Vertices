@@ -23,6 +23,8 @@ namespace Virtex.Lib.Vertices.Network
         /// </summary>
         public vxNetPlayerInfo PlayerInfo;
 
+        public vxEnumSessionStatus SessionStatus = vxEnumSessionStatus.WaitingForPlayers;
+
         /// <summary>
         /// The NetPeer Server object
         /// </summary>
@@ -83,7 +85,18 @@ namespace Virtex.Lib.Vertices.Network
         /// When ever new information of a player is recieved.
         /// </summary>
         public event EventHandler<vxNetClientEventPlayerStatusUpdate> UpdatedPlayerInfoRecieved;
-        
+
+        /// <summary>
+        /// When the server updates the session status.
+        /// </summary>
+        public event EventHandler<vxNetClientEventSessionStatusUpdated> UpdateSessionStatus;
+
+
+        /// <summary>
+        /// This event fires when an updated Entity State is recieved from the Server.
+        /// </summary>
+        public event EventHandler<vxNetClientEventPlayerStateUpdate> UpdatePlayerEntityState;
+
 
         #endregion
 
@@ -173,7 +186,7 @@ namespace Virtex.Lib.Vertices.Network
 
                         //Fire the RecieveDiscoverySignalResponse Event by passing down the decoded Network Message
                         if (DiscoverySignalResponseRecieved != null)
-                            DiscoverySignalResponseRecieved(this, new vxNetClientEventDiscoverySignalResponse(new vxNetMsgServerInfo(im)));
+                            DiscoverySignalResponseRecieved(this, new vxNetClientEventDiscoverySignalResponse(new vxNetmsgServerInfo(im)));
                         
                         break;
 
@@ -211,7 +224,7 @@ namespace Virtex.Lib.Vertices.Network
                             case vxNetworkMessageTypes.UpdatePlayersList:
                                 
                                 //Get the Message Containing the Updated Player List
-                                var updatedPlayerList = new vxNetMsgUpdatePlayerList(im);
+                                var updatedPlayerList = new vxNetmsgUpdatePlayerList(im);
 
                                 //Now Loop through each player in the list
                                 foreach(vxNetPlayerInfo serverPlayer in updatedPlayerList.Players)
@@ -238,7 +251,7 @@ namespace Virtex.Lib.Vertices.Network
                                 //For what ever reason, a player has disconnected, so we need to remove it from the player list
 
                                 //Send a message to all clients to remove this client from their list.
-                                var rmvMsg = new vxNetMsgRemovePlayer(im);
+                                var rmvMsg = new vxNetmsgRemovePlayer(im);
 
                                 //Fire the Connected Event
                                 if (OtherPlayerDisconnected != null)
@@ -250,10 +263,10 @@ namespace Virtex.Lib.Vertices.Network
 
                                 break;
 
-                            case vxNetworkMessageTypes.UpdatePlayerState:
+                            case vxNetworkMessageTypes.UpdatePlayerLobbyStatus:
 
                                 //Decode the list
-                                var updatePlayerState = new vxNetMsgUpdatePlayerLobbyStatus(im);
+                                var updatePlayerState = new vxNetmsgUpdatePlayerLobbyStatus(im);
 
                                 //Update the internal server list
                                 PlayerManager.Players[updatePlayerState.PlayerInfo.ID] = updatePlayerState.PlayerInfo;
@@ -264,9 +277,41 @@ namespace Virtex.Lib.Vertices.Network
     
                                 break;
 
+                            case vxNetworkMessageTypes.SessionStatus:
 
-                            case vxNetworkMessageTypes.AddItem:
+                                //Get Old Status for information
+                                vxEnumSessionStatus oldStatus = this.SessionStatus;
+                                var newSessionStatus = new vxNetmsgUpdateSessionStatus(im);
                                 
+                                //Set the new Session Status
+                                this.SessionStatus = newSessionStatus.SessionStatus;
+
+                                //Fire any connected events
+                                if (UpdateSessionStatus != null)
+                                    UpdateSessionStatus(this, new vxNetClientEventSessionStatusUpdated(oldStatus, this.SessionStatus));
+
+                                break;
+
+
+                            case vxNetworkMessageTypes.UpdatePlayerEntityState:
+                                
+                                //First decode the message
+                                var updatePlayerEntityState = new vxNetmsgUpdatePlayerEntityState(im);
+
+                                var timeDelay = (float)(NetTime.Now - im.SenderConnection.GetLocalTime(updatePlayerEntityState.MessageTime));
+
+                                //Console.WriteLine("Client:" + timeDelay);
+
+                                //Only set the information if it isn't our own info
+                                if (this.PlayerInfo.ID != updatePlayerEntityState.PlayerInfo.ID)
+                                {
+                                    //Then Update the Player in the client List
+                                    PlayerManager.Players[updatePlayerEntityState.PlayerInfo.ID] = updatePlayerEntityState.PlayerInfo;
+
+                                    //Then fire any connected events
+                                    if (UpdatePlayerEntityState != null)
+                                        UpdatePlayerEntityState(this, new vxNetClientEventPlayerStateUpdate(updatePlayerEntityState, timeDelay));
+                                }
                                 break;
 
                             case vxNetworkMessageTypes.RemoveItem:

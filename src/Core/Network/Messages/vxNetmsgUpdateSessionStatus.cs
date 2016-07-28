@@ -7,31 +7,33 @@ using System.Net;
 
 namespace Virtex.Lib.Vertices.Network.Messages
 {
+    public enum vxEnumSessionStatus
+    {
+        WaitingForPlayers,
+        ReadyToPlay,
+        Ending,
+    }
     /// <summary>
     /// This message is used during the discovery phase to glean basic server information.
     /// </summary>
-    public class vxNetmsgRemovePlayer : INetworkMessage
+    public class vxNetmsgUpdateSessionStatus : INetworkMessage
     {
-
-        /// <summary>
-        /// The Server Name
-        /// </summary>
-        public vxNetPlayerInfo PlayerInfo { get; set; }
+        public vxEnumSessionStatus SessionStatus { get; internal set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="playerinfo"></param>
-        public vxNetmsgRemovePlayer(vxNetPlayerInfo playerinfo)
+        public vxNetmsgUpdateSessionStatus(vxEnumSessionStatus status)
         {
-            this.PlayerInfo = playerinfo;
+            SessionStatus = status;
         }
-
+        
         /// <summary>
         /// Decoding Constructor to be used by client.
         /// </summary>
         /// <param name="im"></param>
-        public vxNetmsgRemovePlayer(NetIncomingMessage im)
+        public vxNetmsgUpdateSessionStatus(NetIncomingMessage im)
         {
             this.DecodeMsg(im);
         }
@@ -43,23 +45,18 @@ namespace Virtex.Lib.Vertices.Network.Messages
         {
             get
             {
-                return vxNetworkMessageTypes.PlayerDisconnected;
+                return vxNetworkMessageTypes.SessionStatus;
             }
         }
 
         public void DecodeMsg(NetIncomingMessage im)
         {
-            PlayerInfo = new vxNetPlayerInfo(
-                im.ReadInt64(),
-                im.ReadString(),vxEnumNetPlayerStatus.None);
-            string dummy = im.ReadString();
+            SessionStatus = (vxEnumSessionStatus)im.ReadInt32();
         }
 
         public void EncodeMsg(NetOutgoingMessage om)
         {
-            om.Write(this.PlayerInfo.ID);
-            om.Write(this.PlayerInfo.UserName);
-            om.Write(this.PlayerInfo.Status.ToString());
+            om.Write((int)SessionStatus);
         }
     }
 }

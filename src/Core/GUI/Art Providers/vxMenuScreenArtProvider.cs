@@ -20,7 +20,7 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
         /// <summary>
         /// The Game Engine Instance.
         /// </summary>
-        public vxEngine vxEngine { get; }
+		public vxEngine vxEngine { get; set; }
 
         /// <summary>
         /// The Owning Menu Screen.

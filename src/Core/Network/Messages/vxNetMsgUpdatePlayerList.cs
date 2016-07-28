@@ -10,7 +10,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
     /// <summary>
     /// This message is used during the discovery phase to glean basic server information.
     /// </summary>
-    public class vxNetMsgUpdatePlayerList : INetworkMessage
+    public class vxNetmsgUpdatePlayerList : INetworkMessage
     {
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
         /// 
         /// </summary>
         /// <param name="playerinfo"></param>
-        public vxNetMsgUpdatePlayerList(vxNetPlayerManager playerManager)
+        public vxNetmsgUpdatePlayerList(vxNetPlayerManager playerManager)
         {
             Players = new List<vxNetPlayerInfo>();
 
@@ -37,7 +37,7 @@ namespace Virtex.Lib.Vertices.Network.Messages
         /// Decoding Constructor to be used by client.
         /// </summary>
         /// <param name="im"></param>
-        public vxNetMsgUpdatePlayerList(NetIncomingMessage im)
+        public vxNetmsgUpdatePlayerList(NetIncomingMessage im)
         {
             Players = new List<vxNetPlayerInfo>();
             this.DecodeMsg(im);

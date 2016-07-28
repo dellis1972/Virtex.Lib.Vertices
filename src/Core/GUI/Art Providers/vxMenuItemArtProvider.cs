@@ -16,7 +16,7 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
         /// <summary>
         /// The Game Engine Instance.
         /// </summary>
-        public vxEngine vxEngine { get; }
+		public vxEngine vxEngine { get; set; }
 
         /// <summary>
         /// Defines whether or not the icon should be shown. The default is false.

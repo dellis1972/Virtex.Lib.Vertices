@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Virtex.Lib.Vertices.Network.Messages;
 
 namespace Virtex.Lib.Vertices.Network.Events
 {
@@ -84,6 +85,8 @@ namespace Virtex.Lib.Vertices.Network.Events
     }
 
 
+
+
     /// <summary>
     /// This event is fired whenever a client disconnects to this server.
     /// </summary>
@@ -122,6 +125,29 @@ namespace Virtex.Lib.Vertices.Network.Events
         /// Constructor.
         /// </summary>
         public vxNetServerEventPlayerStatusUpdate(vxNetPlayerInfo player)
+        {
+            m_playerToUpdate = player;
+        }
+    }
+
+    /// <summary>
+    /// This event is fired on the client side whenever a player needs to be updated with information from the server.
+    /// </summary>
+    public class vxNetServerEventPlayerStateUpdate : EventArgs
+    {
+        /// <summary>
+        /// The player that needs updating.
+        /// </summary>
+        public vxNetPlayerInfo PlayerToUpdate
+        {
+            get { return m_playerToUpdate; }
+        }
+        vxNetPlayerInfo m_playerToUpdate;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public vxNetServerEventPlayerStateUpdate(vxNetPlayerInfo player)
         {
             m_playerToUpdate = player;
         }

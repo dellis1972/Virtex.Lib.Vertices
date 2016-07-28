@@ -9,7 +9,7 @@ namespace Virtex.Lib.Vertices.Network
 {
     public class vxNetPlayerManager
     {
-        vxEngine Engine { get; }
+		vxEngine Engine { get; set; }
 
         /// <summary>
         /// An entity collection containing all Network Players

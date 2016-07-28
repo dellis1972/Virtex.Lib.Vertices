@@ -55,6 +55,11 @@ namespace Virtex.Lib.Vertices.Network.Messages
         /// </summary>
         PlayerDisconnected,
 
+        /// <summary>
+        /// Updates the status of the session.
+        /// </summary>
+        SessionStatus,
+
 
         /// <summary>
         /// An Item has been added to the server.
@@ -67,14 +72,20 @@ namespace Virtex.Lib.Vertices.Network.Messages
         RemoveItem,
 
         /// <summary>
-        /// 
+        /// Updates the Player list
         /// </summary>
         UpdatePlayersList,
 
         /// <summary>
         /// The update player state.
         /// </summary>
-        UpdatePlayerState,
+        UpdatePlayerLobbyStatus,
+        
+        /// <summary>
+        /// Updates the State of a player. This is fired both during the heart beat as well as when ever a player presses a key, it updates
+        /// it's state with the server, and the server updates all clients with the new information.
+        /// </summary>
+        UpdatePlayerEntityState,
 
         /// <summary>
         /// A Chat message is recieved.

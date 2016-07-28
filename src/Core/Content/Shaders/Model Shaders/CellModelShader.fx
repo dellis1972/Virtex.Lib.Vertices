@@ -181,6 +181,7 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	{
 		Color = GetSplitIndexColor(input.Shadow) * shadow;
 	}
+	// diffusecolor * shadow + float4(0, 0, 0, Alpha);//
 
 	return Color + float4(0, 0, 0, Alpha) + EvissiveColour;
 

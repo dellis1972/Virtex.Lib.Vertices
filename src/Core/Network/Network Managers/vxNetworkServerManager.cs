@@ -38,8 +38,9 @@ namespace Virtex.Lib.Vertices.Network
 
         int defaultPort;
 
+        public vxEnumSessionStatus SessionStatus = vxEnumSessionStatus.WaitingForPlayers;
 
-        public vxNetPlayerManager PlayerManager { get; }
+		public vxNetPlayerManager PlayerManager { get; set; }
 
 
         SendOrPostCallback ServerCallBackLoop;
@@ -69,6 +70,12 @@ namespace Virtex.Lib.Vertices.Network
         /// </summary>
         public event EventHandler<vxNetServerEventPlayerStatusUpdate> UpdatePlayerStatus;
 
+        /// <summary>
+        /// This Event fires when ever the server recieves updated information for an Entity State 
+        /// from a client.
+        /// </summary>
+        public event EventHandler<vxNetServerEventPlayerStateUpdate> UpdatePlayerEntityState;
+
         #endregion
 
         public vxNetworkServerManager(vxEngine engine, int defaultPort)
@@ -85,30 +92,6 @@ namespace Virtex.Lib.Vertices.Network
         }
         
         #region Callback Loop
-
-
-        public void LogServer(string log)
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("SERVER >> " + log);
-            Console.ResetColor();
-        }
-
-        public void LogServerError(string log)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("SERVER >> " + log);
-            Console.ResetColor();
-        }
-
-        public void ServerSendMessage(INetworkMessage gameMessage)
-        {
-            NetOutgoingMessage om = this.netServer.CreateMessage();
-            om.Write((byte)gameMessage.MessageType);
-            gameMessage.EncodeMsg(om);
-
-            this.netServer.SendToAll(om, NetDeliveryMethod.ReliableUnordered);
-        }
 
         private void ServerMsgCallBack(object peer)
         {
@@ -150,7 +133,7 @@ namespace Virtex.Lib.Vertices.Network
 
                             //Send Back Connection Information, the client will still need to Authenticate with a Secret though                            
                             //response.Write(discoveryRequestEvent.Response);
-                            var resp = new vxNetMsgServerInfo("Test Server", 
+                            var resp = new vxNetmsgServerInfo("Test Server", 
                                 this.Server.Configuration.BroadcastAddress.ToString(), 
                                 this.Server.Configuration.Port.ToString());
 
@@ -206,7 +189,7 @@ namespace Virtex.Lib.Vertices.Network
                                 //For what ever reason, a player has disconnected, so we need to remove it from the player list
 
                                 //Send a message to all clients to remove this client from their list.
-                                var rmvMsg = new vxNetMsgRemovePlayer(PlayerManager.Players[im.SenderConnection.RemoteUniqueIdentifier]);
+                                var rmvMsg = new vxNetmsgRemovePlayer(PlayerManager.Players[im.SenderConnection.RemoteUniqueIdentifier]);
 
                                 //Send the message to all clients.
                                 SendMessage(rmvMsg);
@@ -229,10 +212,16 @@ namespace Virtex.Lib.Vertices.Network
                         var gameMessageType = (vxNetworkMessageTypes)im.ReadByte();
                         switch (gameMessageType)
                         {
+
+
+
+                            /**************************************************************/
+                            //Handle New Player Connection
+                            /**************************************************************/
                             case vxNetworkMessageTypes.PlayerConnected:
 
                                 //Decode the Message
-                                var newPlayer = new vxNetMsgAddPlayer(im);
+                                var newPlayer = new vxNetmsgAddPlayer(im);
 
                                 //Add the new player info to the Server List
                                 PlayerManager.Add(newPlayer.PlayerInfo);
@@ -240,15 +229,20 @@ namespace Virtex.Lib.Vertices.Network
                                 newPlayer.PlayerInfo.Status = vxEnumNetPlayerStatus.InServerLobbyNotReady;
 
                                 //Now Update all clients with the Player list using the server Player List
-                                var newPlayerList = new vxNetMsgUpdatePlayerList(this.PlayerManager);
+                                var newPlayerList = new vxNetmsgUpdatePlayerList(this.PlayerManager);
                                 SendMessage(newPlayerList);
 
                                 break;
 
-                            case vxNetworkMessageTypes.UpdatePlayerState:
+
+
+                            /**************************************************************/
+                            //Handle Player Lobby Status Update
+                            /**************************************************************/
+                            case vxNetworkMessageTypes.UpdatePlayerLobbyStatus:
 
                                 //Decode the list
-                                var updatePlayerState = new vxNetMsgUpdatePlayerLobbyStatus(im);
+                                var updatePlayerState = new vxNetmsgUpdatePlayerLobbyStatus(im);
                                 
                                 //Update the internal server list
                                 PlayerManager.Players[updatePlayerState.PlayerInfo.ID] = updatePlayerState.PlayerInfo;
@@ -258,6 +252,32 @@ namespace Virtex.Lib.Vertices.Network
 
                                 if (UpdatePlayerStatus != null)
                                     UpdatePlayerStatus(this, new vxNetServerEventPlayerStatusUpdate(updatePlayerState.PlayerInfo));
+                                break;
+
+
+
+                            /**************************************************************/
+                            //Handles an Update to a Player's Entity State
+                            /**************************************************************/
+                            case vxNetworkMessageTypes.UpdatePlayerEntityState:
+                                
+                                //First decode the message
+                                var updatePlayerEntityState = new vxNetmsgUpdatePlayerEntityState(im);
+                                
+                                //get the time delay
+                                var timeDelay = (float)(NetTime.Now - im.SenderConnection.GetLocalTime(updatePlayerEntityState.MessageTime));
+                                
+                                //Then Update the Player in the Server List
+                                PlayerManager.Players[updatePlayerEntityState.PlayerInfo.ID] = updatePlayerEntityState.PlayerInfo;
+                                
+                                //Then fire any tied events in the server
+                                if (UpdatePlayerEntityState != null)
+                                    UpdatePlayerEntityState(this, new vxNetServerEventPlayerStateUpdate(updatePlayerEntityState.PlayerInfo));
+
+                                
+                                //Finally, relay the updated state too all clients.
+                                SendMessage(updatePlayerEntityState);
+
                                 break;
 
 
@@ -402,6 +422,21 @@ namespace Virtex.Lib.Vertices.Network
 
                 this.isDisposed = true;
             }
+        }
+
+
+        public void LogServer(string log)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("SERVER >> " + log);
+            Console.ResetColor();
+        }
+
+        public void LogServerError(string log)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("SERVER >> " + log);
+            Console.ResetColor();
         }
 
         #endregion
