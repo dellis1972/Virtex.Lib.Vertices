@@ -12,24 +12,24 @@ using System.Linq;
 //Virtex vxEngine Declaration
 using System.Collections;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Mathematics;
-using Virtex.Lib.Vertices.Graphics;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Mathematics;
+using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Utilities;
 
 
 #if VIRTICES_3D
-using Virtex.Lib.Vertices.Audio;
-using Virtex.Lib.Vertices.Core.Particles;
+using Virtex.Lib.Vrtc.Audio;
+using Virtex.Lib.Vrtc.Core.Particles;
 #endif
-using Virtex.Lib.Vertices.GUI;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vrtc.GUI;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Screens.Menus;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Scenes
+namespace Virtex.Lib.Vrtc.Core.Scenes
 {
     /// <summary>
     /// This screen implements the actual game logic. It is just a
@@ -266,7 +266,7 @@ namespace Virtex.Lib.Vertices.Core.Scenes
         /// </summary>
         /// <example> 
         /// This sample shows how to override the <see cref="ShowPauseScreen"/> method. 'MyGamesCustomPauseScreen()' inheirts
-        /// from the <see cref="Virtex.Lib.Vertices.Screens.Menus.vxMenuBaseScreen"/> Class.
+        /// from the <see cref="Virtex.Lib.Vrtc.Screens.Menus.vxMenuBaseScreen"/> Class.
         /// <code>
         /// //This Allows to show your own custom pause screen.
         /// public override void ShowPauseScreen()

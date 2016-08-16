@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Superclass for the shape of the tires of a vehicle.

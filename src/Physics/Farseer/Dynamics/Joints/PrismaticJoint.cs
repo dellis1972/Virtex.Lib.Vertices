@@ -22,10 +22,10 @@
 
 using System;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics.Joints
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints
 {
     // Linear constraint (point-to-line)
     // d = p2 - p1 = x2 + r2 - x1 - r1

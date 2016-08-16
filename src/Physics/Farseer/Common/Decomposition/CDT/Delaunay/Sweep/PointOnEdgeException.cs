@@ -31,7 +31,7 @@
 
 using System;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep
 {
     internal class PointOnEdgeException : NotImplementedException
     {

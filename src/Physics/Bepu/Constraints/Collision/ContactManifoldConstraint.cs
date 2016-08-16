@@ -1,12 +1,12 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SolverGroups;
 using BEPUutilities.DataStructures;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision
 {
     ///<summary>
     /// Superclass of collision constraints that include multiple contact subconstraints.

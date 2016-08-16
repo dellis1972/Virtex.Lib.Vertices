@@ -10,8 +10,8 @@ namespace BEPUik
     /// to full body inverse kinematics subject to a variety of constraints.
     /// </para>
     /// <para>
-    /// It's currently separated from the rest of Virtex.Lib.Vertices.Physics.BEPU library internals because the immediate goal is to test out 
-    /// features to be potentially integrated into a blender content pipeline. Virtex.Lib.Vertices.Physics.BEPU interactions with this system
+    /// It's currently separated from the rest of Virtex.Lib.Vrtc.Physics.BEPU library internals because the immediate goal is to test out 
+    /// features to be potentially integrated into a blender content pipeline. Virtex.Lib.Vrtc.Physics.BEPU interactions with this system
     /// will have to go through the interfaces like everything else for now.
     /// </para>
     /// </summary>

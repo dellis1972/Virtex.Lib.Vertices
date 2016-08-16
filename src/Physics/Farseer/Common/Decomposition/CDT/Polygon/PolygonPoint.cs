@@ -34,7 +34,7 @@
 // Future possibilities
 //   Documentation!
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Polygon
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Polygon
 {
     internal class PolygonPoint : TriangulationPoint
     {

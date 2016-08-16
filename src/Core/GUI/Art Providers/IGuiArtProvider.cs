@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Virtex.Lib.Vrtc.Core;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace Virtex.Lib.Vertices.GUI
+namespace Virtex.Lib.Vrtc.GUI
 {
     /// <summary>
     /// The GUI Art provider acts as the "Renderer" for GUI Elements. This provides an easy way to override

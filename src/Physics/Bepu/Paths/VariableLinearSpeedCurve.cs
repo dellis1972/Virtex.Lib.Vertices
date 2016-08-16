@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Wraps a curve that is traveled along with arbitrary defined linear speed.

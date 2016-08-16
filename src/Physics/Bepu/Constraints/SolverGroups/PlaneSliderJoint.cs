@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.JointLimits;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Motors;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SolverGroups
 {
     /// <summary>
     /// Restricts one linear degree of freedom.

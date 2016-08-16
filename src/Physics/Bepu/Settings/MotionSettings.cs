@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating;
 using System;
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Settings
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Settings
 {
     ///<summary>
     /// Contains global settings about motion updating.

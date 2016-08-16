@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Motors
 {
     /// <summary>
     /// Superclass of constraints which do work and change the velocity of connected entities, but have no specific position target.

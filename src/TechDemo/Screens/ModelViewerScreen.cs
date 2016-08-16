@@ -10,9 +10,9 @@ using System.Diagnostics;
 using System.Linq;
 
 //Virtex vxEngine Declaration
-using vxVertices.Core.Scenes;
-using vxVertices.Core.Cameras;
-using vxVertices.Core.Input;
+using Virtex.Lib.Vertices.Core.Scenes;
+using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vertices.Core.Input;
 
 namespace VerticeEnginePort.Base
 {

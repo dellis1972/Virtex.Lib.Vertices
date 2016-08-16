@@ -8,11 +8,11 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Virtex.Lib.Vertices.DROID")]
+[assembly: AssemblyTitle("Virtex.Lib.Vrtc.DROID")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Virtex.Lib.Vertices.DROID")]
+[assembly: AssemblyProduct("Virtex.Lib.Vrtc.DROID")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -37,8 +37,8 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Virtex.Lib.Vertices.XNA")]
-[assembly: AssemblyProduct("Virtex.Lib.Vertices.XNA")]
+[assembly: AssemblyTitle("Virtex.Lib.Vrtc.XNA")]
+[assembly: AssemblyProduct("Virtex.Lib.Vrtc.XNA")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]

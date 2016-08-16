@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SingleEntity;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SolverGroups;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.JointLimits;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

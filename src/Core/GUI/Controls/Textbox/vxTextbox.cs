@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Mathematics;
-using Virtex.Lib.Vertices.Core.Debug;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Mathematics;
+using Virtex.Lib.Vrtc.Core.Debug;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
     enum InputJustification
     {
@@ -56,7 +56,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 		private const float keyRepeatDuration = 0.03f;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxTextbox"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxTextbox"/> class.
         /// </summary>
 		/// <param name="vxEngine">Engine.</param>
         /// <param name="text">Text.</param>
@@ -67,7 +67,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxTextbox"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxTextbox"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Engine.</param>
 		/// <param name="text">Text.</param>

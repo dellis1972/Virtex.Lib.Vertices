@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems.SortAndSweep
 {
     class Grid2DEntry
     {

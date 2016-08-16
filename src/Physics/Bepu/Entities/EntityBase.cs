@@ -1,23 +1,23 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
-using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.EntityStateManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
 using MathChecker = BEPUutilities.MathChecker;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Entities
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Entities
 {
     ///<summary>
     /// Superclass of movable rigid bodies.  Contains information for

@@ -1,9 +1,9 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement
+namespace Virtex.Lib.Vrtc.Physics.BEPU.DeactivationManagement
 {
     /// <summary>
     /// Object owned by an entity which lives in a simulation island.

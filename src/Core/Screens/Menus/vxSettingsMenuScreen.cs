@@ -1,15 +1,15 @@
 #region Using Statements
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.GUI.Dialogs;
-using Virtex.Lib.Vertices.Localization;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI.Dialogs;
+using Virtex.Lib.Vrtc.Localization;
 
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Screens.Menus
+namespace Virtex.Lib.Vrtc.Screens.Menus
 {
     /// <summary>
     /// The options screen is brought up over the top of the main menu

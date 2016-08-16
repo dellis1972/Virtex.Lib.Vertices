@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vrtc.Physics.BEPU.DataStructures
 {
     ///<summary>
     /// Data structure containing triangle mesh data and its associated bounding box tree.

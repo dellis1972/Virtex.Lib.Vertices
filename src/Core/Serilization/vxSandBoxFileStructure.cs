@@ -5,9 +5,9 @@ using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.Scenes.Sandbox3D
+namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 {
 	/// <summary>
 	/// Sand box file structure.

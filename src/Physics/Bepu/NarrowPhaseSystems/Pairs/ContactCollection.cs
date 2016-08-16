@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Convenience collection of contacts and their associated data.

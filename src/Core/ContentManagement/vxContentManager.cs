@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Graphics;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Utilities;
 
-namespace Virtex.Lib.Vertices.XNA.ContentManagement
+namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 {
     /// <summary>
     /// Class which encorporates a number of different functions for asset loading and content management.

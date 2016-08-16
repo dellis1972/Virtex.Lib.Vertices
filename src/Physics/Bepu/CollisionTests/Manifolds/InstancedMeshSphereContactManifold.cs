@@ -1,7 +1,7 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds
 {
     ///<summary>
     /// Manages persistent contacts between a convex and an instanced mesh.

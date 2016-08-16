@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.DataStructures;
 using BEPUutilities;
 using System;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes
 {
     ///<summary>
     /// Local space data associated with a mobile mesh.

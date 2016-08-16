@@ -2,14 +2,14 @@
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Character
 {
     /// <summary>
     /// Keeps a character glued to the ground, if possible.

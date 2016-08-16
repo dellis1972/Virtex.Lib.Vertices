@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU
+namespace Virtex.Lib.Vrtc.Physics.BEPU
 {
     /// <summary>
     /// Contains conditional extensions to check for bad values in various structures.

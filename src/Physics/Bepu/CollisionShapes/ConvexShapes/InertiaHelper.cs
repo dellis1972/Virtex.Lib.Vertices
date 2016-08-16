@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes
 {
     ///<summary>
     /// Helper class used to compute volume distribution information, which is in turn used to compute inertia tensor information.

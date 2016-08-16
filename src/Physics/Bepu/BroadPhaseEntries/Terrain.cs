@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.Events;
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries
 {
     ///<summary>
     /// Heightfield-based unmovable collidable object.

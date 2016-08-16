@@ -31,7 +31,7 @@
 
 using System.Collections.Generic;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Sets
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Sets
 {
     /*
      * Extends the PointSet by adding some Constraints on how it will be triangulated<br>

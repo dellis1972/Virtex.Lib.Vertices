@@ -24,7 +24,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics.Joints
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints
 {
     public enum JointType
     {

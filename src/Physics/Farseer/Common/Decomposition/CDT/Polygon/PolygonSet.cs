@@ -37,7 +37,7 @@
 
 using System.Collections.Generic;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Polygon
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Polygon
 {
     internal class PolygonSet
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
 
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.JointLimits
 {
     /// <summary>
     /// Constraint which prevents the connected entities from rotating relative to each other around an axis beyond given limits.

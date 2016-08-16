@@ -14,15 +14,15 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.GUI;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.Localization;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.GUI;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.Localization;
 #endregion
 
-namespace Virtex.Lib.Vertices.GUI.MessageBoxs
+namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"
@@ -146,13 +146,13 @@ namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 
             //Set Gui Item Positions
 
-			int length = Math.Max (vxEngine.vxGUITheme.vxButtons.Width * 2 + (int)vxEngine.vxGUITheme.Padding.X * 2, (int)textSize.X);
+			int length = Math.Max (vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 2 + (int)vxEngine.vxGUITheme.Padding.X * 2, (int)textSize.X);
 
             backgroundRectangle = new Rectangle(
 				(int)textPosition.X - hPad,
                 (int)textPosition.Y - vPad,
 				length + hPad * 2,
-				(int)textSize.Y + vPad + vxEngine.vxGUITheme.vxButtons.Height + vPad * 2);
+				(int)textSize.Y + vPad + vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight + vPad * 2);
 
             TitleRectangle = new Rectangle(
 				(int)textPosition.X - hPad,
@@ -161,12 +161,12 @@ namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 				(int)textTitleSize.Y + vPad);
 
 			Btn_Ok.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-				backgroundRectangle.Width - vxEngine.vxGUITheme.vxButtons.Width * 2 - vxEngine.vxGUITheme.Padding.X * 2, 
-				backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 2 - vxEngine.vxGUITheme.Padding.X * 2, 
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 
 			Btn_Cancel.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-				backgroundRectangle.Width - vxEngine.vxGUITheme.vxButtons.Width - vxEngine.vxGUITheme.Padding.X, 
-				backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth - vxEngine.vxGUITheme.Padding.X, 
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 			
         }
 
@@ -179,7 +179,7 @@ namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 		/// <summary>
 		/// Raise the accepted event, then exit the message box.
 		/// </summary>
-		void Btn_Ok_Clicked (object sender, Virtex.Lib.Vertices.GUI.Events.vxGuiItemClickEventArgs e)
+		void Btn_Ok_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
 		{
 			if (Accepted != null)
 				Accepted(this, new PlayerIndexEventArgs(ControllingPlayer.Value));
@@ -190,7 +190,7 @@ namespace Virtex.Lib.Vertices.GUI.MessageBoxs
 		/// <summary>
 		// Raise the cancelled event, then exit the message box.
 		/// </summary>
-		void Btn_Cancel_Clicked (object sender, Virtex.Lib.Vertices.GUI.Events.vxGuiItemClickEventArgs e)
+		void Btn_Cancel_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
 		{
 			Method_Cancel ();
 		}

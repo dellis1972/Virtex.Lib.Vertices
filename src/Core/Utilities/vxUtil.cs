@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using System.IO.Compression;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.Utilities
+namespace Virtex.Lib.Vrtc.Utilities
 {
     public class vxUtil
     {

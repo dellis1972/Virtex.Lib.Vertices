@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common.TextureTools;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.TextureTools;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common
 {
     public static class PolygonTools
     {

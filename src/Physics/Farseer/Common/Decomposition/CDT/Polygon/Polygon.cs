@@ -41,9 +41,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Polygon
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Polygon
 {
     internal class Polygon : Triangulatable
     {

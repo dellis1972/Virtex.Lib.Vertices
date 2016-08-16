@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems.ForceFields
+namespace Virtex.Lib.Vrtc.Physics.BEPU.UpdateableSystems.ForceFields
 {
     /// <summary>
     /// Superclass of force field shapes that test whether or not entities are affected by a forcefield.

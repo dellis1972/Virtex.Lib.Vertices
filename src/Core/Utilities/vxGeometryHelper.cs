@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.Utilities
+namespace Virtex.Lib.Vrtc.Utilities
 {
 	/// <summary>
 	/// Collection of Statix Methods which provide helpful Gemoetry Functions.

@@ -21,10 +21,10 @@
 */
 
 using System;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics.Joints
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints
 {
     /// <summary>
     /// A revolute joint constrains to bodies to share a common point while they

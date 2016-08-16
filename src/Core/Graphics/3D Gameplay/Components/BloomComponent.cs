@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
 	/// <summary>
 	/// Component for Providing Guassian Bloom too the Scene

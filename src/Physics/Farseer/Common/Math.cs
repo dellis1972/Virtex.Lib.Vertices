@@ -25,7 +25,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common
 {
     public static class MathUtils
     {

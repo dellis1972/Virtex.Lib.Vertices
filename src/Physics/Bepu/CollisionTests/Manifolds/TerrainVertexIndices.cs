@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds
 {
     internal struct TerrainVertexIndices
     {

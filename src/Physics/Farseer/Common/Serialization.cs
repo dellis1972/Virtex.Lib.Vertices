@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Dynamics;
-using vxVertices.Physics.Farseer.Dynamics.Joints;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common
 {
     /// <summary>
     /// Serialize the world into an XML file

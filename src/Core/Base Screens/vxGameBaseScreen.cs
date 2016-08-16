@@ -5,7 +5,7 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using Virtex.Lib.Vertices.Core.Input;
+using Virtex.Lib.Vrtc.Core.Input;
 
 
 #endregion
@@ -14,10 +14,10 @@ using Virtex.Lib.Vertices.Core.Input;
 using System;
 using Microsoft.Xna.Framework;
 using System.IO;
-using Virtex.Lib.Vertices.Localization;
+using Virtex.Lib.Vrtc.Localization;
 #endregion
 
-namespace Virtex.Lib.Vertices.Core
+namespace Virtex.Lib.Vrtc.Core
 {
     /// <summary>
     /// Enum describes the screen transition state.

@@ -23,12 +23,12 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics.Contacts
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Contacts
 {
     /// <summary>
     /// A contact edge is used to connect bodies and contacts together

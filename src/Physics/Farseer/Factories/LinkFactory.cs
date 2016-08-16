@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Factories
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Factories
 {
     public static class LinkFactory
     {

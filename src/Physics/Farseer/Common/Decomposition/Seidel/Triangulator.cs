@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.Seidel
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.Seidel
 {
     internal class Triangulator
     {

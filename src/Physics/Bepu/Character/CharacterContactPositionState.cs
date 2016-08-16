@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Character
 {
     /// <summary>
     /// State of a contact relative to a speculative character position.

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Virtex.Lib.Vertices.Physics.BEPU.Materials
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Materials
 {
     ///<summary>
     /// A pair of materials.

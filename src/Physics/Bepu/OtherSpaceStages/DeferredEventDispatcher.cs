@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages
+namespace Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages
 {
     ///<summary>
     /// Manages the deferred events spawned by IDeferredEventCreators and dispatches them on update.

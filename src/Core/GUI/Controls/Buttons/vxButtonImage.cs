@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
 	/// <summary>
 	/// Button which has no text, only an Image.
@@ -33,7 +33,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 		public bool DrawHoverBackground { get; set; }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxButtonImage"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxButtonImage"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="position">Position.</param>
@@ -53,7 +53,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxButtonImage"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxButtonImage"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="position">Position.</param>

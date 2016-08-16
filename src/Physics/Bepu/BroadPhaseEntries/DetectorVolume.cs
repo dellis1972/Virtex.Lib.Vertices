@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
-using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vrtc.Physics.BEPU.DataStructures;
 using BEPUutilities.DataStructures;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries
 {
     /// <summary>
     /// Stores flags regarding an object's degree of inclusion in a volume.

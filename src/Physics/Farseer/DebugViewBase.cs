@@ -4,11 +4,11 @@
 */
 
 using System;
-using vxVertices.Physics.Farseer.Common;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer
+namespace Virtex.Lib.Vrtc.Physics.Farseer
 {
     [Flags]
     public enum DebugViewFlags

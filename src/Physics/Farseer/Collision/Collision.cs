@@ -24,11 +24,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Collision
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Collision
 {
     internal enum ContactFeatureType : byte
     {

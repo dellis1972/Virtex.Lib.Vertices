@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
     /// <summary>
     /// Class holds all the settings used to tweak the bloom effect.

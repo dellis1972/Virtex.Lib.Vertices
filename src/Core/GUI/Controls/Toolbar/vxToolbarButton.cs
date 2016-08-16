@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 using Microsoft.Xna.Framework.Content;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
     
 	/// <summary>
@@ -30,7 +30,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxToolbarButton"/> class. Note the texutres
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxToolbarButton"/> class. Note the texutres
 		/// are loaded by the Games Content manager.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
@@ -41,7 +41,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 		}
 
         /// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxToolbarButton"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxToolbarButton"/> class.
         /// </summary>
         /// <param name="vxEngine">The current Vertices vxEngine Instance</param>
 		/// <param name="Content">Content Manager too load the Textures with.</param>

@@ -1,14 +1,15 @@
-﻿using Lidgren.Network;
+﻿#if VRTC_INCLDLIB_NET 
+using Lidgren.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Network.Events;
-using Virtex.Lib.Vertices.Network.Messages;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Network.Events;
+using Virtex.Lib.Vrtc.Network.Messages;
 
-namespace Virtex.Lib.Vertices.Network
+namespace Virtex.Lib.Vrtc.Network
 {
     public class vxNetworkServerManager : INetworkManager
     {
@@ -83,6 +84,11 @@ namespace Virtex.Lib.Vertices.Network
             this.Engine = engine;
             this.defaultPort = defaultPort;
             PlayerManager = new vxNetPlayerManager(engine);
+
+
+			//Why? Bc Linux hates me.
+			if (SynchronizationContext.Current == null)
+				SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
         }
 
 
@@ -442,3 +448,4 @@ namespace Virtex.Lib.Vertices.Network
         #endregion
     }
 }
+#endif

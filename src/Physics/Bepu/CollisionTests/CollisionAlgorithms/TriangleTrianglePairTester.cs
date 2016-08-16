@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms
 {
     /// <summary>
     /// Generates candidates between two triangles and manages the persistent state of the pair.

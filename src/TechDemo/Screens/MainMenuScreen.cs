@@ -129,7 +129,7 @@ namespace VerticeEnginePort.Base
         /// </summary>
         void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            vxEngine.AddScreen(new SettingsMenuScreen(), e.PlayerIndex);
+            vxEngine.AddScreen(new vxSettingsMenuScreen(), e.PlayerIndex);
         }
 
 

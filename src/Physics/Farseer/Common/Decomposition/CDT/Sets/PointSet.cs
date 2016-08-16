@@ -30,9 +30,9 @@
  */
 
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Sets
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Sets
 {
     internal class PointSet : Triangulatable
     {

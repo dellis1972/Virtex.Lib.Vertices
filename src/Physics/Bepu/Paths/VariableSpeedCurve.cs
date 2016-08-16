@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Curve that wraps another curve and travels along it with specified speeds.

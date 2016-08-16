@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Motors
 {
     /// <summary>
     /// Constraint which attempts to restrict the relative angular motion of two entities.

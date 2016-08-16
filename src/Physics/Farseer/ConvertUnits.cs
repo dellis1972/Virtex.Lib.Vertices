@@ -5,7 +5,7 @@
 
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer
+namespace Virtex.Lib.Vrtc.Physics.Farseer
 {
     /// <summary>
     /// Convert units between display and simulation units.

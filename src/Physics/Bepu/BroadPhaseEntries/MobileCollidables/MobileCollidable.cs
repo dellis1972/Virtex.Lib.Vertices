@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     //This is implemented by anything which wants the engine to update its bounding box every frame (so long as it is 'active').
     ///<summary>

@@ -21,9 +21,9 @@
 */
 
 using System;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 
-namespace vxVertices.Physics.Farseer
+namespace Virtex.Lib.Vrtc.Physics.Farseer
 {
     public static class Settings
     {

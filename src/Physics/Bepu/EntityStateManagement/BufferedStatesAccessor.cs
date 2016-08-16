@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vrtc.Physics.BEPU.EntityStateManagement
 {
     ///<summary>
     /// Acts as an entity's view into the buffered states system.

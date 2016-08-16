@@ -1,7 +1,7 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vrtc.Physics.BEPU.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     ///<summary>
     /// Hierarchy of children used to accelerate queries and tests for compound collidables.

@@ -10,18 +10,18 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Scenes.Sandbox.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.Paths.PathFollowing;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
-using Virtex.Lib.Vertices.Scenes.Sandbox;
-using Virtex.Lib.Vertices.Core.Debug;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Scenes.Sandbox.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Paths.PathFollowing;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Scenes.Sandbox;
+using Virtex.Lib.Vrtc.Core.Debug;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
-namespace Virtex.Lib.Vertices.Entities.Sandbox3D.Util
+namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 {
     public class vxScaleCube : vxSandboxEntity
     {

@@ -1,6 +1,6 @@
 ﻿using BEPUutilities.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Physics.BEPU;
+using Virtex.Lib.Vrtc.Physics.BEPU;
 using Microsoft.Xna.Framework;
 
 

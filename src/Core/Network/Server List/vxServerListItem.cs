@@ -1,11 +1,12 @@
-﻿using System;
+﻿#if VRTC_INCLDLIB_NET 
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Events;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Events;
 
-namespace Virtex.Lib.Vertices.GUI.Dialogs
+namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
     /// <summary>
     /// File Chooser Dialor Item.
@@ -78,3 +79,4 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         }
     }
 }
+#endif

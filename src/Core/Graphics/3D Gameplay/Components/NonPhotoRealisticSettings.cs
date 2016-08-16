@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
     /// <summary>
     /// Class holds all the settings used to tweak the non-photorealistic rendering.
@@ -19,7 +19,7 @@ namespace Virtex.Lib.Vertices.Graphics
         public readonly bool EnableToonShading;
 
         // Settings for the edge detect filter.
-        public readonly bool EnableEdgeDetect;
+        public bool EnableEdgeDetect;
         public readonly float EdgeWidth;
         public readonly float EdgeIntensity;
 

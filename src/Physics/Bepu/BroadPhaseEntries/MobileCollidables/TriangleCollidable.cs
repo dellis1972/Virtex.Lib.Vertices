@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     ///<summary>
     /// Special case collidable for reuseable triangles.

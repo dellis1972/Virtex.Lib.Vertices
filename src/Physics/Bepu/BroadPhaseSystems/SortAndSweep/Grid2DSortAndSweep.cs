@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems.SortAndSweep
 {
     /// <summary>
     /// Broad phase implementation that partitions objects into a 2d grid, and then performs a sort and sweep on the final axis.

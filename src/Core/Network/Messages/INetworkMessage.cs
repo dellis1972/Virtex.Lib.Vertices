@@ -1,10 +1,11 @@
-﻿using Lidgren.Network;
+﻿#if VRTC_INCLDLIB_NET 
+using Lidgren.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Network.Messages
+namespace Virtex.Lib.Vrtc.Network.Messages
 {
     /// <summary>
     /// The Network Message Intergace for exchanging data between
@@ -99,3 +100,4 @@ namespace Virtex.Lib.Vertices.Network.Messages
         Other,
     }
 }
+#endif

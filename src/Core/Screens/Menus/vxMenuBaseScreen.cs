@@ -5,10 +5,10 @@
 // XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Controls;
 
 
 #endregion
@@ -19,11 +19,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.GUI.GuiArtProvider;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.GUI.GuiArtProvider;
 #endregion
 
-namespace Virtex.Lib.Vertices.Screens.Menus
+namespace Virtex.Lib.Vrtc.Screens.Menus
 {
     /// <summary>
     /// Base class for screens that contain a menu of options. The user can

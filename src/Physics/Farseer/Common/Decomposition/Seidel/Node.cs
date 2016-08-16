@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.Seidel
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.Seidel
 {
     // Node for a Directed Acyclic graph (DAG)
     internal abstract class Node

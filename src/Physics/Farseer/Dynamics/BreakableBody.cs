@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common;
-using vxVertices.Physics.Farseer.Dynamics.Contacts;
-using vxVertices.Physics.Farseer.Factories;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Contacts;
+using Virtex.Lib.Vrtc.Physics.Farseer.Factories;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics
 {
     /// <summary>
     /// A type of body that supports multiple fixtures that can break apart.

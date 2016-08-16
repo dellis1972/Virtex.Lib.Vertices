@@ -1,5 +1,5 @@
 ﻿
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
 
 using Microsoft.Xna.Framework;

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
 	public class Layer
 	{

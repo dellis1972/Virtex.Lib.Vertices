@@ -24,16 +24,16 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common;
-using vxVertices.Physics.Farseer.Common.PhysicsLogic;
-using vxVertices.Physics.Farseer.Controllers;
-using vxVertices.Physics.Farseer.Dynamics.Contacts;
-using vxVertices.Physics.Farseer.Dynamics.Joints;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.PhysicsLogic;
+using Virtex.Lib.Vrtc.Physics.Farseer.Controllers;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Contacts;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics
 {
     /// <summary>
     /// The body type.

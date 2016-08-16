@@ -1,11 +1,11 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
 using BEPUutilities.DataStructures;
 using System;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems
 {
     ///<summary>
     /// Superclass of all broad phases.  Broad phases collect overlapping broad phase entry pairs.

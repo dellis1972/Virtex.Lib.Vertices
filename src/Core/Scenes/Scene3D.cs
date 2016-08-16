@@ -13,25 +13,25 @@ using System.Linq;
 //Virtex vxEngine Declaration
 using System.Collections;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Physics.BEPU;
-using Virtex.Lib.Vertices.Mathematics;
-using Virtex.Lib.Vertices.Core.Particles;
-using Virtex.Lib.Vertices.Graphics;
-using Virtex.Lib.Vertices.Audio;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Physics.BEPU;
+using Virtex.Lib.Vrtc.Mathematics;
+using Virtex.Lib.Vrtc.Core.Particles;
+using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Audio;
 using BEPUphysicsDrawer.Models;
 using BEPUutilities.Threading;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Utilities;
 
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Geometry;
-using Virtex.Lib.Vertices.Core.Debug;
-using Virtex.Lib.Vertices.Core.Cameras;
-using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Geometry;
+using Virtex.Lib.Vrtc.Core.Debug;
+using Virtex.Lib.Vrtc.Core.Cameras;
+using Virtex.Lib.Vrtc.Screens.Menus;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Scenes
+namespace Virtex.Lib.Vrtc.Core.Scenes
 {
 	/// <summary>
 	/// The vxScene3D class implements the actual game logic for 3D Games. It is 
@@ -411,9 +411,6 @@ namespace Virtex.Lib.Vertices.Core.Scenes
 		/// </summary>
 		public override void DrawScene (GameTime gameTime)
 		{
-
-
-
 #if VRTC_PLTFRM_XNA
             foreach (InstanceSet instSet in InstanceSetCollection)
             {
@@ -603,8 +600,8 @@ namespace Virtex.Lib.Vertices.Core.Scenes
             //Set the Depth Buffer appropriately
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            foreach (vxEntity aeroEntity in Entities)
-                ((vxEntity3D)aeroEntity).RenderMeshPrepPass();
+            foreach (vxEntity entity in Entities)
+				((vxEntity3D)entity).RenderMeshPrepPass();
 #if VRTC_PLTFRM_XNA
             foreach (InstanceSet instSet in InstanceSetCollection)
                 instSet.RenderInstanced(instSet.InstancedModel.ModelMain, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");

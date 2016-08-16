@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
-using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Physics.BEPU.UpdateableSystems;
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
-using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
+using Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Character
 {
     /// <summary>
     /// Gives a physical object FPS-like control, including stepping and jumping.

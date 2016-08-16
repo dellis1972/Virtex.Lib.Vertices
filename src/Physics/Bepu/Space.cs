@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.Hierarchies;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
-using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
-using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems.Hierarchies;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints;
+using Virtex.Lib.Vrtc.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.EntityStateManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating;
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems;
-using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.UpdateableSystems;
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU
+namespace Virtex.Lib.Vrtc.Physics.BEPU
 {
     ///<summary>
-    /// Main simulation class of Virtex.Lib.Vertices.Physics.BEPU.  Contains various updating stages addition/removal methods for getting objects into the simulation.
+    /// Main simulation class of Virtex.Lib.Vrtc.Physics.BEPU.  Contains various updating stages addition/removal methods for getting objects into the simulation.
     ///</summary>
     public class Space
     {

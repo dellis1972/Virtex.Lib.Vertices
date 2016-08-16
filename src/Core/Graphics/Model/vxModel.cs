@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
 	/// <summary>
 	/// A Model Class which loads and processes all data at runtime. Although this add's to load times,

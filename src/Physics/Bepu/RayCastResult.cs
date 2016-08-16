@@ -1,7 +1,7 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU
+namespace Virtex.Lib.Vrtc.Physics.BEPU
 {
     ///<summary>
     /// Contains information about a ray cast hit.

@@ -1,8 +1,8 @@
 ﻿using System;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Controllers
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Controllers
 {
     public abstract class AbstractForceController : Controller
     {

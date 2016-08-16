@@ -22,7 +22,7 @@
 
 using System;
 
-namespace vxVertices.Physics.Farseer.Common
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common
 {
     public struct FixedArray2<T>
     {

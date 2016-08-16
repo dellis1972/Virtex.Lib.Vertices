@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 
 namespace BEPUphysicsDrawer.Models
 {

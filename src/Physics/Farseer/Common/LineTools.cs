@@ -1,8 +1,8 @@
 ﻿using System;
-using vxVertices.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common
 {
     /// <summary>
     /// Collection of helper methods for misc collisions.

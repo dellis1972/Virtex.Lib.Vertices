@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Point defining the shape of a 3D curve.

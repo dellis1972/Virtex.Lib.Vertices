@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.Events
 {
     /// <summary>
     /// Event manager for use with the CompoundCollidable.

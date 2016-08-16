@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Graphics;
 
-namespace Virtex.Lib.Vertices.Core.Particles
+namespace Virtex.Lib.Vrtc.Core.Particles
 {
 	/// <summary>
 	/// 3D Particle Object for use in the vxParticleSystem3D Manager Class.
@@ -21,7 +21,7 @@ namespace Virtex.Lib.Vertices.Core.Particles
         public bool Alive = true;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Particles.vxParticle3D"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.Particles.vxParticle3D"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="model">Model.</param>

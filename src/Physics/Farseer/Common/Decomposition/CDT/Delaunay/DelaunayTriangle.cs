@@ -41,10 +41,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep;
-using vxVertices.Physics.Farseer.Common.Decomposition.CDT.Util;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Util;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay
 {
     internal class DelaunayTriangle
     {

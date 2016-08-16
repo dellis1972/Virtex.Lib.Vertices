@@ -6,14 +6,14 @@ using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.GUI.Events;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI.Events;
 
-namespace Virtex.Lib.Vertices.GUI.Dialogs
+namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"
@@ -164,16 +164,16 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
             //Reset Gui Item Positions Based off of Background Rectangle
 			Btn_Apply.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-				backgroundRectangle.Width - vxEngine.vxGUITheme.vxButtons.Width * 3 - vxEngine.vxGUITheme.Padding.X * 3, 
-				backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 3 - vxEngine.vxGUITheme.Padding.X * 3, 
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 			
 			Btn_Ok.Position =  new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-				backgroundRectangle.Width - vxEngine.vxGUITheme.vxButtons.Width * 2 - vxEngine.vxGUITheme.Padding.X * 2, 
-				backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 2 - vxEngine.vxGUITheme.Padding.X * 2, 
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 			
 			Btn_Cancel.Position =  new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-				backgroundRectangle.Width - vxEngine.vxGUITheme.vxButtons.Width - vxEngine.vxGUITheme.Padding.X, 
-				backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth - vxEngine.vxGUITheme.Padding.X, 
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 
         }
 

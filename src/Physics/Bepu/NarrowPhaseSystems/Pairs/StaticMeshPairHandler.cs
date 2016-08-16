@@ -1,16 +1,16 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision;
-using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision;
+using Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Handles a static mesh-convex collision pair.

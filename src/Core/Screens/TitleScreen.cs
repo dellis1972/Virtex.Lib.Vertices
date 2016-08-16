@@ -9,11 +9,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Screens
+namespace Virtex.Lib.Vrtc.Screens
 {
     /// <summary>
     /// The background screen sits behind all the other menu screens.

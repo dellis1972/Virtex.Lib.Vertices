@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT
 {
     internal enum Orientation
     {

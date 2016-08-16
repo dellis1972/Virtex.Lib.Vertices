@@ -35,7 +35,7 @@
 // Future possibilities
 //   Comments!
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep
 {
     internal class AdvancingFrontNode
     {

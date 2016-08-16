@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.GUI.Events;
-using Virtex.Lib.Vertices.Mathematics;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI.Events;
+using Virtex.Lib.Vrtc.Mathematics;
 using System.Xml.Serialization;
-using Virtex.Lib.Vertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
-namespace Virtex.Lib.Vertices.GUI.Dialogs
+namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
     /// <summary>
     /// Open File Dialog
@@ -55,7 +55,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.vxOpenFileDialog"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.vxOpenFileDialog"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="path">Path.</param>

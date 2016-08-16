@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.UpdateableSystems
 {
     ///<summary>
     /// Defines an object which is updated by the space before the narrow phase runs.

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Virtex.Lib.Vertices.Physics.BEPU.Settings
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Settings
 {
     ///<summary>
     /// Settings class containing global information about collision detection.

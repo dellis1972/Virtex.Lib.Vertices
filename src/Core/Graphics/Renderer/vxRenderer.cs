@@ -10,12 +10,12 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core.Cameras;
-using Virtex.Lib.Vertices.Core.Settings;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core.Cameras;
+using Virtex.Lib.Vrtc.Core.Settings;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
 
     /// <summary>
@@ -415,7 +415,7 @@ namespace Virtex.Lib.Vertices.Graphics
         }
         private int _shadowMapSize = 512;
 
-        float size = 512;
+        float size = 256;
 
 
 
@@ -444,7 +444,7 @@ namespace Virtex.Lib.Vertices.Graphics
 
         //TODO: Add More Input parameters (i.e. Size, Shadow Map Size, etc...).
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Graphics.vxRenderer"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Graphics.vxRenderer"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         public vxRenderer(vxEngine vxEngine)

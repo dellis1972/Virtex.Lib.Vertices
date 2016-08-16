@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.PhysicsLogic
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.PhysicsLogic
 {
     // Original Code by Steven Lu - see http://www.box2d.org/forum/viewtopic.php?f=3&t=1688
     // Ported to Farseer 3.0 by Nicolás Hormazábal

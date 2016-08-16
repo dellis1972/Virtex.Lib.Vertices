@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
  
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms
 {
     ///<summary>
     /// Helper class to test spheres against each other.

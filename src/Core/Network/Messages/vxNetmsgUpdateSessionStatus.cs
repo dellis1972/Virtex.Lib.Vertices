@@ -1,11 +1,12 @@
-﻿using System;
+﻿#if VRTC_INCLDLIB_NET 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lidgren.Network;
 using System.Net;
 
-namespace Virtex.Lib.Vertices.Network.Messages
+namespace Virtex.Lib.Vrtc.Network.Messages
 {
     public enum vxEnumSessionStatus
     {
@@ -60,3 +61,4 @@ namespace Virtex.Lib.Vertices.Network.Messages
         }
     }
 }
+#endif

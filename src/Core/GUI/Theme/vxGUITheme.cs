@@ -1,13 +1,13 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Virtex.Lib.Vertices.GUI.GuiArtProvider;
+using Virtex.Lib.Vrtc.GUI.GuiArtProvider;
 
-namespace Virtex.Lib.Vertices.GUI.Themes
+namespace Virtex.Lib.Vrtc.GUI.Themes
 {	
 	
 
@@ -48,11 +48,13 @@ namespace Virtex.Lib.Vertices.GUI.Themes
 		}
 		Vector2 padding = new Vector2 (10, 10);
 
-
+		//Misc
+		public Texture2D SplitterTexture { get; set; }
 
         /*******************************************/
-        //				ART PROVIDER
-        /*******************************************/
+        //				ART PROVIDERS
+		/*******************************************/
+		public vxButtonArtProvider ArtProviderForButtons { get; set; }
         public vxMenuScreenArtProvider ArtProviderForMenuScreen { get; set; }
         public vxMenuItemArtProvider ArtProviderForMenuScreenItems { get; set; }
 
@@ -63,8 +65,7 @@ namespace Virtex.Lib.Vertices.GUI.Themes
 
 
 
-        public vxThemeButton vxButtons { get; set; }
-        public vxMenuEntryTheme vxMenuEntries {get;set;}
+
 		public vxThemeTextbox vxTextboxes {get;set; }
         public vxThemeDialog vxDialogs { get; set; }
 		public vxLoadingScreen vxLoadingScreen { get; set; }
@@ -83,15 +84,15 @@ namespace Virtex.Lib.Vertices.GUI.Themes
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxGUITheme"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.vxGUITheme"/> class.
         /// </summary>
         /// <param name="Engine">Engine.</param>
         public vxGUITheme(vxEngine Engine)
 		{
 			this.Engine = Engine;
 
-            vxButtons = new vxThemeButton(Engine);
-            vxMenuEntries = new vxMenuEntryTheme(Engine);
+            //vxButtons = new vxThemeButton(Engine);
+            //vxMenuEntries = new vxMenuEntryTheme(Engine);
             vxTextboxes = new vxThemeTextbox(Engine);
             vxDialogs = new vxThemeDialog(Engine);
 			vxLoadingScreen = new vxLoadingScreen (Engine);
@@ -100,6 +101,7 @@ namespace Virtex.Lib.Vertices.GUI.Themes
             //LoadTheme (PathTooFiles, Engine.EngineContentManager);
 
             //Initialise Art Providers
+			ArtProviderForButtons = new vxButtonArtProvider(Engine);
             ArtProviderForMenuScreen = new vxMenuScreenArtProvider(Engine);
             ArtProviderForMenuScreenItems = new vxMenuItemArtProvider(Engine);
 
@@ -109,14 +111,6 @@ namespace Virtex.Lib.Vertices.GUI.Themes
 
 		public void SetDefaultTheme()
 		{
-			//this.vxMenuEntries.TextJustification = TextJustification.Left;
-			//this.vxButtons.BackgroundImage = vxEngine.Assets.Textures.Blank;
-			this.vxButtons.DoBorder = true;
-			this.vxButtons.BorderWidth = 2;
-			this.vxButtons.TextColour = Color.Black;
-			this.vxButtons.BackgroundColour = Color.DarkOrange;
-			this.vxButtons.BackgroundHoverColour = Color.DarkOrange * 1.2f;
-
 			this.vxDialogs.Header_BackgroundColour = Color.DarkOrange;
 			this.vxDialogs.Header_BorderWidth = 2;
 			this.vxDialogs.BackgroundColour = Color.Black*0.75f;
@@ -124,22 +118,12 @@ namespace Virtex.Lib.Vertices.GUI.Themes
 			this.vxLoadingScreen.SplashScreen = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxButton/Bckgrnd_Nrml");
 
 
-			vxButtons.BackgroundImage = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxLoadingScreen/SplashScreen");
-
+			// Misc ITEM
 			/*******************************************/
-			//					MENU ITEM
-			/*******************************************/
-			//this.vxMenuEntries.TitleColor = Color.Black;
-			vxMenuEntries.Padding = new Vector2 (10, 4);
-			vxMenuEntries.vxMenuItemBackground = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
-			vxMenuEntries.vxMenuSplitterTexture = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
-			vxMenuEntries.TitleBackground = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
+			SplitterTexture = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
 
 
-
-
-            /*******************************************/
-            //					Sound Effects
+            // Sound Effects
             /*******************************************/
 
             //Menu Values
@@ -169,20 +153,9 @@ namespace Virtex.Lib.Vertices.GUI.Themes
 		{
 			this.PathTooFiles = PathTooFiles;
 
-            /*******************************************/
-            //					BUTTON
-            /*******************************************/
-            vxButtons.BackgroundImage = LoadTexture(contentManager, "vxGUITheme/vxButton/Bckgrnd_Nrml");
-
-			/*******************************************/
-			//					MENU ITEM
-			/*******************************************/
-			vxMenuEntries.vxMenuItemBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
-			vxMenuEntries.vxMenuSplitterTexture = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
-			vxMenuEntries.TitleBackground = LoadTexture(contentManager, "vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
-
 			//loading Screen
 			this.vxLoadingScreen.SplashScreen = LoadTexture(contentManager, "vxGUITheme/vxLoadingScreen/SplashScreen");
+			SplitterTexture = LoadTexture(contentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
 		}
 
 

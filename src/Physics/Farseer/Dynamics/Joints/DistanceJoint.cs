@@ -22,10 +22,10 @@
 
 using System;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics.Joints
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints
 {
     // 1-D rained system
     // m (v2 - v1) = lambda

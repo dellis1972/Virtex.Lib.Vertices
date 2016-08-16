@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Defines a three dimensional orthonormal basis used by a constraint.

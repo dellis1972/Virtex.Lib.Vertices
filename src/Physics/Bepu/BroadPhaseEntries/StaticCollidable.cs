@@ -1,10 +1,10 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries
 {
     ///<summary>
     /// Superclass of static collidable objects which can be added directly to a space.  Static objects cannot move.

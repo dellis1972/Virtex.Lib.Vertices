@@ -20,10 +20,10 @@
 * 3. This notice may not be removed or altered from any source distribution. 
 */
 
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Collision.Shapes
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes
 {
     /// <summary>
     /// A line segment (edge) shape. These can be connected in chains or loops

@@ -1,4 +1,4 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints;
 using Microsoft.Xna.Framework;
 
 

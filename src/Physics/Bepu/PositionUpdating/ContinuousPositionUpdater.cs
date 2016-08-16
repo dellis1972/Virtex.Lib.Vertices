@@ -2,7 +2,7 @@
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating
+namespace Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating
 {
     ///<summary>
     /// Updates objects according to the position update mode.

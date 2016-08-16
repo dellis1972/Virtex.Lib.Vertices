@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.JointLimits
 {
     /// <summary>
     /// Superclass of constraints which have a limited area of free movement.

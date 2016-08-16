@@ -41,13 +41,13 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\Virtex.Game.MetricRacer\src\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="NVorbis">
-      <HintPath>..\..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\NVorbis.dll</HintPath>
+      <HintPath>..\..\..\..\Virtex.Game.MetricRacer\src\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\NVorbis.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK">
-      <HintPath>..\..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\OpenTK.dll</HintPath>
+      <HintPath>..\..\..\..\Virtex.Game.MetricRacer\src\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\OpenTK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />

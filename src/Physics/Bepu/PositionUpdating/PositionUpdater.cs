@@ -1,7 +1,7 @@
 ﻿using System;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating
+namespace Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating
 {
     ///<summary>
     /// Superclass of updaters which manage the position of objects.

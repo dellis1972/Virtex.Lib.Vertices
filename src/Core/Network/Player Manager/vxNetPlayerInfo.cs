@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Network
+namespace Virtex.Lib.Vrtc.Network
 {
     public enum vxEnumNetPlayerStatus
     {

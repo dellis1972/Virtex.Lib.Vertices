@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Contact and some associated data used by the convenience ContactCollection.

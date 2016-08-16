@@ -9,20 +9,20 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.GUI.Events;
-using Virtex.Lib.Vertices.GUI.Dialogs;
-using Virtex.Lib.Vertices.Network.Events;
-using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI.Events;
+using Virtex.Lib.Vrtc.GUI.Dialogs;
+using Virtex.Lib.Vrtc.Network.Events;
+using Virtex.Lib.Vrtc.GUI;
 using Lidgren.Network;
-using Virtex.Lib.Vertices.Network;
-using Virtex.Lib.Vertices.GUI.MessageBoxs;
-using Virtex.Lib.Vertices.Network.Messages;
+using Virtex.Lib.Vrtc.Network;
+using Virtex.Lib.Vrtc.GUI.MessageBoxs;
+using Virtex.Lib.Vrtc.Network.Messages;
 
-namespace Virtex.Lib.Vertices.GUI.Dialogs
+namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
 
     enum SessionState
@@ -151,7 +151,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
                 //Set the Button's Position relative too the background rectangle.
                 Btn_LaunchServer.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
                     vxEngine.vxGUITheme.Padding.X * 2,
-                    backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+                    backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 
                 Btn_LaunchServer.Clicked += Btn_LaunchServer_Clicked; ;
                 InternalvxGUIManager.Add(Btn_LaunchServer);

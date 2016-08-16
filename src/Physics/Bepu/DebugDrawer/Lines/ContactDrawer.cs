@@ -1,7 +1,7 @@
 ﻿using BEPUutilities.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Physics.BEPU;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
 using Microsoft.Xna.Framework;
 
 

@@ -10,10 +10,10 @@
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vrtc.GUI;
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Input.Events
+namespace Virtex.Lib.Vrtc.Core.Input.Events
 {
     /// <summary>
     /// Custom event argument which includes the index of the player who
@@ -60,7 +60,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 #endregion
 
-namespace Virtex.Lib.Vertices.Core
+namespace Virtex.Lib.Vrtc.Core
 {
     /// <summary>
     /// Helper for reading input from keyboard, gamepad, and touch input. This class 

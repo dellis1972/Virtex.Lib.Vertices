@@ -2,7 +2,7 @@
 using BEPUutilities;
 
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Defines a 3D curve using linear interpolation.

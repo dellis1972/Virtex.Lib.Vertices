@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
 using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
  
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests
 {
     ///<summary>
     /// Helper class that refreshes manifolds to keep them recent.

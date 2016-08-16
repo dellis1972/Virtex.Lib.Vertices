@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 using Microsoft.Xna.Framework.Content;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Utilities;
 using Microsoft.Xna.Framework;
 
-namespace Virtex.Lib.Vertices.GUI
+namespace Virtex.Lib.Vrtc.GUI
 {
 	/// <summary>
 	/// GUI Manager for a given Game Scene. This Handles all GUI Items within a given scene.
@@ -41,7 +41,7 @@ namespace Virtex.Lib.Vertices.GUI
 		float _alpha = 1;
 
        /// <summary>
-       /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.vxGuiManager"/> class.
+       /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.vxGuiManager"/> class.
        /// </summary>
         public vxGuiManager()
         {

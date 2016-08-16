@@ -1,10 +1,10 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.DeactivationManagement;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints
 {
     ///<summary>
     /// Iteratively solves solver updateables, converging to a solution for simulated joints and collision pair contact constraints.

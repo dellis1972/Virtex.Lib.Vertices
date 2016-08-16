@@ -1,4 +1,5 @@
-﻿#region File Description
+﻿#if VRTC_INCLDLIB_NET 
+#region File Description
 //-----------------------------------------------------------------------------
 // PlayerIndexEventArgs.cs
 //
@@ -10,10 +11,10 @@
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.GUI;
+using Virtex.Lib.Vrtc.GUI;
 #endregion
 
-namespace Virtex.Lib.Vertices.Network.Events
+namespace Virtex.Lib.Vrtc.Network.Events
 {
     /// <summary>
     /// Event Args for when the server list is recieved
@@ -39,3 +40,4 @@ namespace Virtex.Lib.Vertices.Network.Events
         string[] serverList;
     }
 }
+#endif

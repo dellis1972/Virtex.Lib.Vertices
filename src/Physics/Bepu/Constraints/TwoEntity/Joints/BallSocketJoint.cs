@@ -1,11 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
  
 using System.Diagnostics;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints
 {
     /// <summary>
     /// Connects two entities with a spherical joint.  Acts like an unrestricted shoulder joint.

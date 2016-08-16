@@ -2,14 +2,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.Screens.Menus;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.Screens.Menus;
+using Virtex.Lib.Vrtc.Utilities;
 using Microsoft.Xna.Framework.Audio;
-using Virtex.Lib.Vertices.GUI.GuiArtProvider;
+using Virtex.Lib.Vrtc.GUI.GuiArtProvider;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
 	/// <summary>
 	/// Basic Button GUI Control.
@@ -44,7 +44,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
         public vxMenuItemArtProvider ArtProvider { get; internal set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxMenuEntry"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxMenuEntry"/> class.
         /// </summary>
         /// <param name="ParentScreen">Parent screen.</param>
         /// <param name="text">Text.</param>
@@ -56,7 +56,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxMenuEntry"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxMenuEntry"/> class.
         /// </summary>
         /// <param name="ParentScreen"></param>
         /// <param name="text"></param>
@@ -82,17 +82,17 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 			//this.vxEngine = vxEngine;
 
 			//Get Settings
-            this.Color_Normal = vxEngine.vxGUITheme.vxMenuEntries.BackgroundColour;
-            this.Color_Highlight = vxEngine.vxGUITheme.vxMenuEntries.BackgroundHoverColour;
+			this.Color_Normal = vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.BackgroundColour;
+			this.Color_Highlight = vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.BackgroundHoverColour;
 
 			//Set up Bounding Rectangle
 			BoundingRectangle = new Rectangle(
-				(int)(Position.X - vxEngine.vxGUITheme.vxMenuEntries.Padding.X/2), 
-				(int)(Position.Y - vxEngine.vxGUITheme.vxMenuEntries.Padding.Y/2), 
-				(int)(this.Font.MeasureString(Text).X + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.X), 
-				(int)(this.Font.MeasureString(Text).Y + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.Y));
+				(int)(Position.X - vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Padding.X/2), 
+				(int)(Position.Y - vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Padding.Y/2), 
+				(int)(this.Font.MeasureString(Text).X + 2 * vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Padding.X), 
+				(int)(this.Font.MeasureString(Text).Y + 2 * vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Padding.Y));
 
-			Texture = vxEngine.vxGUITheme.vxMenuEntries.vxMenuItemBackground;
+			Texture = vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.BackgroundImage;
 
             this.OnInitialHover += VxMenuEntry_OnInitialHover;
 
@@ -126,12 +126,12 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 
         public override int GetWidth()
         {
-			return (int)(vxEngine.vxGUITheme.Font.MeasureString(this.Text).X + vxEngine.vxGUITheme.vxMenuEntries.Padding.X * 2);
+			return (int)(vxEngine.vxGUITheme.Font.MeasureString(this.Text).X + vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Padding.X * 2);
         }
 
         public override int GetHeight()
         {
-			return (int)(vxEngine.vxGUITheme.Font.MeasureString(this.Text).Y + vxEngine.vxGUITheme.vxMenuEntries.Padding.Y * 2);
+			return (int)(vxEngine.vxGUITheme.Font.MeasureString(this.Text).Y + vxEngine.vxGUITheme.ArtProviderForMenuScreenItems.Padding.Y * 2);
         }
 
         public virtual void SetArtProvider(vxMenuItemArtProvider NewArtProvider)

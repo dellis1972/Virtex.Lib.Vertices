@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.Scenes.Sandbox3D
+namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 {
 	/// <summary>
 	/// Selection state, useful for Sandbox items. 

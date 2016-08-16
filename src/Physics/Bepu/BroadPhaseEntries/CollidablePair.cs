@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries
 {
     ///<summary>
     /// Pair of collidables.

@@ -5,20 +5,20 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
 	/// <summary>
-	/// Toolbar control that holds <see cref="Virtex.Lib.Vertices.GUI.Controls.vxToolbarButton"/> 
+	/// Toolbar control that holds <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxToolbarButton"/> 
 	/// </summary>
     public class vxToolbar : vxGUIBaseItem
     {
         public List<vxGUIBaseItem> ToolbarItems = new List<vxGUIBaseItem>();
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxToolbar"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxToolbar"/> class.
 		/// </summary>
 		/// <param name="position">Position.</param>
 		public vxToolbar(Vector2 position): base(position)

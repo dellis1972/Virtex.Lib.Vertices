@@ -1,5 +1,5 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SingleEntity;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Motors;
 using Microsoft.Xna.Framework;
 
 

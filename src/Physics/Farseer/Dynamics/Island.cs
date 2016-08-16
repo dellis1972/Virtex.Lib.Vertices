@@ -22,12 +22,12 @@
 
 using System;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common;
-using vxVertices.Physics.Farseer.Dynamics.Contacts;
-using vxVertices.Physics.Farseer.Dynamics.Joints;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Contacts;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics
 {
     /// <summary>
     /// This is an internal class.

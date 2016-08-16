@@ -1,10 +1,10 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages
+namespace Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages
 {
     ///<summary>
     /// Updates the bounding box of managed objects.

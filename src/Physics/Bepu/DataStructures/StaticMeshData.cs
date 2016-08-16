@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 
 using BEPUutilities;
-namespace Virtex.Lib.Vertices.Physics.BEPU.DataStructures
+namespace Virtex.Lib.Vrtc.Physics.BEPU.DataStructures
 {
     ///<summary>
     /// Collection of triangle mesh data that directly returns vertices from its vertex buffer instead of transforming them first.

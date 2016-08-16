@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Wrapper around a 3d position curve that specifies a specific velocity at which to travel.

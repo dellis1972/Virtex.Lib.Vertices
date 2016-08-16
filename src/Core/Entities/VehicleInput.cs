@@ -5,23 +5,23 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using Virtex.Lib.Vertices.Core;
-//using Virtex.Lib.Vertices.Core.PhysicsDrawer.Models;
-using Virtex.Lib.Vertices.Physics.BEPU;
-using Virtex.Lib.Vertices.Physics.BEPU.Vehicle;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Core;
+//using Virtex.Lib.Vrtc.Core.PhysicsDrawer.Models;
+using Virtex.Lib.Vrtc.Physics.BEPU;
+using Virtex.Lib.Vrtc.Physics.BEPU.Vehicle;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 
-using Virtex.Lib.Vertices.Physics.BEPU;
+using Virtex.Lib.Vrtc.Physics.BEPU;
 
 #if XNA
-using Virtex.Lib.Vertices.Core.PhysicsDrawer.Models;
+using Virtex.Lib.Vrtc.Core.PhysicsDrawer.Models;
 #else
 using BEPUphysicsDrawer.Models;
 #endif
 
-namespace Virtex.Lib.Vertices.Core
+namespace Virtex.Lib.Vrtc.Core
 {
     /// <summary>
     /// Handles input and movement of a Vehicle in the game.

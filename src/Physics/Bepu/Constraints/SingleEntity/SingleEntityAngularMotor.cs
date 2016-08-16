@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Motors;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SingleEntity
 {
     /// <summary>
     /// Constraint which attempts to restrict the relative angular velocity of two entities to some value.

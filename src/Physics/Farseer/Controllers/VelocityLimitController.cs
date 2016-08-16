@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 
-namespace vxVertices.Physics.Farseer.Controllers
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Controllers
 {
     /// <summary>
     /// Put a limit on the linear (translation - the movespeed) and angular (rotation) velocity

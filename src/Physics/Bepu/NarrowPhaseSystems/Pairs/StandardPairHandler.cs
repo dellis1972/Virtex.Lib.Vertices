@@ -1,10 +1,10 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Handles a standard pair handler that has a direct manifold and constraint.

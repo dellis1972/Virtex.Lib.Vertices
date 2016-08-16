@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
 using BEPUutilities;
 using BEPUutilities.ResourceManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
-using Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages;
 using RigidTransform = BEPUutilities.RigidTransform;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries
 {
     ///<summary>
     /// Collidable mesh which can be created from a reusable InstancedMeshShape.

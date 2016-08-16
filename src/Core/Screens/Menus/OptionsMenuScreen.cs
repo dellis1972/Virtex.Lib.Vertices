@@ -5,18 +5,18 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.GUI.Controls;
 
 
 #endregion
 
 #region Using Statements
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 #endregion
 
-namespace Virtex.Lib.Vertices.Screens.Menus
+namespace Virtex.Lib.Vrtc.Screens.Menus
 {
     /// <summary>
     /// The options screen is brought up over the top of the main menu

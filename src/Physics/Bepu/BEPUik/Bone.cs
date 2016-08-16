@@ -204,7 +204,7 @@ namespace BEPUik
             Orientation.Normalize();
 
             //Eliminate any latent velocity in the bone to prevent unwanted simulation feedback.
-            //This is the only thing conceptually separating this "IK" solver from the regular dynamics loop in Virtex.Lib.Vertices.Physics.BEPU.
+            //This is the only thing conceptually separating this "IK" solver from the regular dynamics loop in Virtex.Lib.Vrtc.Physics.BEPU.
             //(Well, that and the whole lack of collision detection...)
             linearVelocity = new Vector3();
             angularVelocity = new Vector3();

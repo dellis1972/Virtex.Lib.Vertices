@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes
 {
     ///<summary>
     /// Superclass of all collision shapes that are used by Entities.

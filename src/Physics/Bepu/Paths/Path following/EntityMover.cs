@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SingleEntity;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Motors;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SingleEntity;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Motors;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.UpdateableSystems;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths.PathFollowing
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths.PathFollowing
 {
     /// <summary>
     /// Pushes an entity around according to goal positions and orientations.

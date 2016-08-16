@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Virtex.Lib.Vertices.Core.Cameras
+namespace Virtex.Lib.Vrtc.Core.Cameras
 {
 	public class vxVirtualCamera : vxCamera3D
     {

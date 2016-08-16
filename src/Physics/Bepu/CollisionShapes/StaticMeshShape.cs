@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 
 using BEPUutilities; 
-using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vrtc.Physics.BEPU.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes
 {
     ///<summary>
     /// The local space information needed by a StaticMesh.

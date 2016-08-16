@@ -6,17 +6,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input.Touch;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Physics.Farseer.Dynamics;
-using Virtex.Lib.Vertices.Physics.Farseer.Factories;
-using Virtex.Lib.Vertices.Physics.Farseer;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Factories;
+using Virtex.Lib.Vrtc.Physics.Farseer;
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Core.Cameras;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Core.Cameras;
 
-namespace Virtex.Lib.Vertices.Core.Scenes
+namespace Virtex.Lib.Vrtc.Core.Scenes
 {
 	/// <summary>
 	/// This is the main type for your game

@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     /// <summary>
     /// Implemented by detector volume pair handlers with children.

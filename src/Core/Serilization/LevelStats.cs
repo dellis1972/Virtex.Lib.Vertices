@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Virtex.Lib.Vertices.Core.Settings
+namespace Virtex.Lib.Vrtc.Core.Settings
 {
     public class LevelStats
     {

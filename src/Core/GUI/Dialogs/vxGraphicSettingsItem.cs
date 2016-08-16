@@ -5,13 +5,13 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
     /// <summary>
-    /// Toolbar control that holds <see cref="Virtex.Lib.Vertices.GUI.Controls.vxGraphicSettingsItem"/> 
+    /// Toolbar control that holds <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxGraphicSettingsItem"/> 
     /// </summary>
     public class vxGraphicSettingsItem : vxGUIBaseItem
     {
@@ -19,7 +19,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
         public vxComboBox ValueComboBox;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxGraphicSettingsItem"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxGraphicSettingsItem"/> class.
         /// </summary>
         /// <param name="position">Position.</param>
         public vxGraphicSettingsItem(vxEngine Engine, vxGuiManager GUIManager, string Title, string Value, Vector2 position): base(position)

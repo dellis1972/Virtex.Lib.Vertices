@@ -1,10 +1,10 @@
 using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.JointLimits
 {
     /// <summary>
     /// A modified distance constraint allowing a range of lengths between two anchor points.

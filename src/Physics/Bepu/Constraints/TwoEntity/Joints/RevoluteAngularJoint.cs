@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
 
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints
 {
     /// <summary>
     /// Constrains two entities to rotate only around a single axis.

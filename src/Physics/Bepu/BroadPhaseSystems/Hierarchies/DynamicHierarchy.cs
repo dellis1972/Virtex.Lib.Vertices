@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 using BEPUutilities;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.Hierarchies
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems.Hierarchies
 {
     /// <summary>
     /// Broad phase that incrementally updates the internal tree acceleration structure.

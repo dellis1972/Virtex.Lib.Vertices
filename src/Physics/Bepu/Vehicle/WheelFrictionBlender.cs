@@ -1,5 +1,5 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.Materials;
-namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Function which takes the friction values from a wheel and a supporting material and computes the blended friction.

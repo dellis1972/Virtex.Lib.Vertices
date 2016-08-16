@@ -2,15 +2,15 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI;
-using Virtex.Lib.Vertices.GUI.Events;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.Core.Settings;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Localization;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI;
+using Virtex.Lib.Vrtc.GUI.Events;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.Core.Settings;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Localization;
 
-namespace Virtex.Lib.Vertices.GUI.Dialogs
+namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"

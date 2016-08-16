@@ -10,16 +10,16 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Scenes.Sandbox;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Core.Cameras;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Entities.Sandbox3D;
-using Virtex.Lib.Vertices.Scenes.Sandbox3D;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Scenes.Sandbox;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Core.Cameras;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Entities.Sandbox3D;
+using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
-namespace Virtex.Lib.Vertices.Entities.Sandbox3D.Util
+namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 {
 	/// <summary>
 	/// 3D Cursor for use in Sandbox Entity Position Change.
@@ -72,7 +72,7 @@ namespace Virtex.Lib.Vertices.Entities.Sandbox3D.Util
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Cursor3D"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.Cursor3D"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         public vxCursor3D(vxEngine vxEngine)
@@ -94,7 +94,7 @@ namespace Virtex.Lib.Vertices.Entities.Sandbox3D.Util
             //Remove from the main list so that it can be drawn over the entire scene
             Current3DScene.Entities.Remove(this);
             Current3DScene.List_OverlayItems.Add(this);
-            HitBox.CollisionInformation.CollisionRules.Personal = Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
+            HitBox.CollisionInformation.CollisionRules.Personal = Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
         }
 
         public override void SetIndex(int NewIndex)

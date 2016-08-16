@@ -1,11 +1,12 @@
-﻿using System;
+﻿#if VRTC_INCLDLIB_NET 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using Virtex.Lib.Vertices.Network.Messages;
+using Virtex.Lib.Vrtc.Network.Messages;
 
-namespace Virtex.Lib.Vertices.Network.Events
+namespace Virtex.Lib.Vrtc.Network.Events
 {
     /// <summary>
     /// This event is fired whenever a discovery response is recieved from a server.
@@ -205,4 +206,4 @@ namespace Virtex.Lib.Vertices.Network.Events
         }
     }
 }
-
+#endif

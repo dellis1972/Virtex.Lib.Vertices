@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
  
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 using RigidTransform = BEPUutilities.RigidTransform;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK
 {
     ///<summary>
     /// Helper class containing various tests based on GJK.

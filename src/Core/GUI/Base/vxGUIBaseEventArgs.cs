@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vrtc.GUI.Dialogs;
 
-namespace Virtex.Lib.Vertices.GUI.Events
+namespace Virtex.Lib.Vrtc.GUI.Events
 {
     public class vxGuiItemClickEventArgs : EventArgs
     {

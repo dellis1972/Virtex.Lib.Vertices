@@ -9,9 +9,9 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 using System.Xml.Serialization;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.Core.Settings
+namespace Virtex.Lib.Vrtc.Core.Settings
 {
     public class PlayerProfile
     {
@@ -64,10 +64,12 @@ namespace Virtex.Lib.Vertices.Core.Settings
                     if (mode.Width > 599 || mode.Height > 479)
                     {
                         LoopCount++;
+						Console.WriteLine ("res: {0}x{1}",mode.Width, mode.Height);
                     }
                 }
                 vxEngine.Profile.Settings.Graphics.Int_Resolution = LoopCount-1;
-                Settings.Graphics.Int_Resolution = LoopCount - 1;
+				//TODO: The order of resolutions may not always be in ascending order.
+				Settings.Graphics.Int_Resolution = 1;//LoopCount - 1;
                 Console.Write("Saving New Settings File...");
                 SaveSettings(vxEngine);
                 vxEngine.WriteLine_Green("Done!");

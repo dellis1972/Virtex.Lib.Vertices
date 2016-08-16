@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.DataStructures;
+using Virtex.Lib.Vrtc.Physics.BEPU.DataStructures;
 using BEPUutilities;
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes
 {
     ///<summary>
     /// The shape information used by a StaticGroup.

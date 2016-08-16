@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.GUI;
-using Virtex.Lib.Vertices.GUI.MessageBoxs;
-using Virtex.Lib.Vertices.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI;
+using Virtex.Lib.Vrtc.GUI.MessageBoxs;
+using Virtex.Lib.Vrtc.GUI.Controls;
 
 
 #endregion
 
-namespace Virtex.Lib.Vertices.GUI.MessageBoxs
+namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
 {
     /// <summary>
     /// A popup message box screen, used to display "are you sure?"
@@ -73,31 +73,41 @@ namespace Virtex.Lib.Vertices.GUI.MessageBoxs
             // Center the message text in the viewport.
             viewport = vxEngine.GraphicsDevice.Viewport;
             textTitleSize = font.MeasureString(Title);
-            textSize = font.MeasureString(message);
+			textSize = font.MeasureString(message);
+
+			//First Get Length of Text
+			int textLength = (int)textSize.X;
+
+			int totalBtnWidth = (int)(vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 2 + vxEngine.vxGUITheme.Padding.X * 4);
+
+			textSize = new Vector2(Math.Max(textLength, totalBtnWidth), textSize.Y);
+
             textPosition = (viewportSize - textSize) / 2;
             textTitlePosition = textPosition - new Vector2(0, 2 * vPad + textTitleSize.Y);
 
             //Next Set Window Size as 
-            backgroundRectangle = new Rectangle((int)textPosition.X - hPad,
+            backgroundRectangle = new Rectangle(
+				(int)textPosition.X - hPad,
 				(int)textPosition.Y - vPad,
-				(int)Textbox.Textbox_Length + hPad * 2,
+				(int)textSize.X + hPad * 2,
 				(int)textSize.Y + vPad*2 + (int)Textbox.Textbox_height + Btn_Cancel.BoundingRectangle.Height + vPad * 2);
 
-			TitleRectangle = new Rectangle((int)textPosition.X - hPad,
+			TitleRectangle = new Rectangle(
+				(int)textPosition.X - hPad,
 				(int)textPosition.Y - (int)textTitleSize.Y - vPad * 2 - 5,
-				(int)Textbox.Textbox_Length + hPad * 2,
+				(int)textSize.X + hPad * 2,
 				(int)textTitleSize.Y + vPad);
 
             //Reset the Button Positions
             //Set Gui Item Positions
 
             Btn_Ok.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-                backgroundRectangle.Width - Btn_Ok.Width - Btn_Cancel.Width - vxEngine.vxGUITheme.Padding.X * 2,
-                backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 2 - vxEngine.vxGUITheme.Padding.X * 2,
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 
             Btn_Cancel.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-                backgroundRectangle.Width - vxEngine.vxGUITheme.vxButtons.Width - vxEngine.vxGUITheme.Padding.X,
-                backgroundRectangle.Height - vxEngine.vxGUITheme.vxButtons.Height - vxEngine.vxGUITheme.Padding.Y * 2);
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth - vxEngine.vxGUITheme.Padding.X,
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
         }
         #endregion
     }

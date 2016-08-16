@@ -1,8 +1,8 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
 using System;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems
 {
     /// <summary>
     /// Superclass of the generic typed NarrowPhasePairFactory.  Offers interaction with the factory on a INarrowPhasePair level.

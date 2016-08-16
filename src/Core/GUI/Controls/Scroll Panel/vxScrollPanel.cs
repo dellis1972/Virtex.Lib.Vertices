@@ -5,11 +5,11 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Dialogs;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Dialogs;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
     /// <summary>
     /// Panel layout.
@@ -92,7 +92,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
         }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxScrollPanel"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxScrollPanel"/> class.
 		/// </summary>
 		/// <param name="Position">Position.</param>
 		/// <param name="Width">Width.</param>
@@ -349,9 +349,13 @@ namespace Virtex.Lib.Vertices.GUI.Controls
 				//Then draw the scroll bar
 				scrollBar.DrawByOwner (vxEngine);
 
-				foreach (vxGUIBaseItem bsGuiItm in Items) {
-					bsGuiItm.DrawByOwner (vxEngine);
+				//use for loops, items can be removed while rendereing through the
+				//loop. This is generally an issue during networking games when a
+				//signal is recieved to remove an item while it's already rendering.
+				for (int i = 0; i < Items.Count; i++) {
+					Items [i].DrawByOwner (vxEngine);
 				}
+
 				//Console.WriteLine(rec);
 				//Reset scissor rectangle to the saved value
 				vxEngine.SpriteBatch.GraphicsDevice.ScissorRectangle = currentRect;

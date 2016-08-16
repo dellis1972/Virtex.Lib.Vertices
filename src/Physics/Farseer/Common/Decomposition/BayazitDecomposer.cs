@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition
 {
     //From phed rev 36: http://code.google.com/p/phed/source/browse/trunk/Polygon.cpp
 

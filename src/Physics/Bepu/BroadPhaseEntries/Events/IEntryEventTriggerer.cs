@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.Events
 {
     /// <summary>
     /// Manages triggers for events in an EntryEventManager.

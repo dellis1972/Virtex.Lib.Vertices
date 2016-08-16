@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Input;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Debug
+namespace Virtex.Lib.Vrtc.Core.Debug
 {
     /// <summary>
     /// Helper class for keyboard input.

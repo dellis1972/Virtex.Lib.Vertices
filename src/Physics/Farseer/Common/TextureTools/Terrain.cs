@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Common.Decomposition;
-using vxVertices.Physics.Farseer.Common.PolygonManipulation;
-using vxVertices.Physics.Farseer.Dynamics;
-using vxVertices.Physics.Farseer.Factories;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.PolygonManipulation;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Factories;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.TextureTools
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.TextureTools
 {
     /// <summary>
     /// Simple class to maintain a terrain. It can keep track

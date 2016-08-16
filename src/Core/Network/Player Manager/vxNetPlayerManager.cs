@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Entities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Entities;
 
-namespace Virtex.Lib.Vertices.Network
+namespace Virtex.Lib.Vrtc.Network
 {
     public class vxNetPlayerManager
     {

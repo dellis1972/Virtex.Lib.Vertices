@@ -1,8 +1,8 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
 using System.Collections.Generic;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision
 {
     ///<summary>
     /// Collision constraint for non-convex manifolds.  These manifolds are usually used in cases

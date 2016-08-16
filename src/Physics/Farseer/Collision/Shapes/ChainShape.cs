@@ -21,10 +21,10 @@
 */
 
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Collision.Shapes
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes
 {
     /// <summary>
     /// A chain shape is a free form sequence of line segments.

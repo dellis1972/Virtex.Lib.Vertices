@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Virtex.Lib.Vertices.Graphics.Animation
+namespace Virtex.Lib.Vrtc.Graphics.Animation
 {
     /// <summary>
     /// Controls playback of an Animation.

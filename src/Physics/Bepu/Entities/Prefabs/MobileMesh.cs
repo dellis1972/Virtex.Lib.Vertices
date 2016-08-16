@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
  
 using BEPUutilities.DataStructures;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes;
 using BEPUutilities;
 using System.Collections.ObjectModel;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs
 {
     /// <summary>
     /// Acts as a grouping of multiple other objects.  Can be used to form physically simulated concave shapes.

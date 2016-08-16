@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common.Decomposition;
-using vxVertices.Physics.Farseer.Dynamics;
-using vxVertices.Physics.Farseer.Dynamics.Joints;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common
 {
     /// <summary>
     /// An easy to use manager for creating paths.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.TextureTools
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.TextureTools
 {
     // User contribution from Sickbattery aka David Reschke.
 

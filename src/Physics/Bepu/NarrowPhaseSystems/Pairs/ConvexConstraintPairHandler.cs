@@ -1,20 +1,20 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision;
-using Virtex.Lib.Vertices.Physics.BEPU.PositionUpdating;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms.GJK;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision;
+using Virtex.Lib.Vrtc.Physics.BEPU.PositionUpdating;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
  
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Pair handler that manages a pair of two boxes.

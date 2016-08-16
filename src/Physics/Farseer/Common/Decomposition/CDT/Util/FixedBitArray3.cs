@@ -33,7 +33,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Util
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Util
 {
     internal struct FixedBitArray3 : IEnumerable<bool>
     {

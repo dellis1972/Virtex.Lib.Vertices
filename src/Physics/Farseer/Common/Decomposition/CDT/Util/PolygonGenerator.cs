@@ -30,9 +30,9 @@
  */
 
 using System;
-using vxVertices.Physics.Farseer.Common.Decomposition.CDT.Polygon;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Polygon;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Util
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Util
 {
     internal class PolygonGenerator
     {

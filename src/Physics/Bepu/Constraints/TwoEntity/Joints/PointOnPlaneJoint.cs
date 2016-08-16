@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.Joints
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.Joints
 {
     /// <summary>
     /// Constrains a point on one body to be on a plane defined by another body.

@@ -36,7 +36,7 @@
  * 
  * @author Thomas Åhlén, thahlen@gmail.com
  */
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT
 {
     internal class TriangulationConstraint
     {

@@ -1,11 +1,12 @@
-﻿using Lidgren.Network;
+﻿#if VRTC_INCLDLIB_NET 
+using Lidgren.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Network.Messages;
+using Virtex.Lib.Vrtc.Network.Messages;
 
-namespace Virtex.Lib.Vertices.Network
+namespace Virtex.Lib.Vrtc.Network
 {
     public interface INetworkManager
     {
@@ -50,3 +51,4 @@ namespace Virtex.Lib.Vertices.Network
         void SendMessage(INetworkMessage gameMessage);
     }
 }
+#endif

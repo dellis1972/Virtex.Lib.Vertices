@@ -19,7 +19,7 @@
 
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Dynamics
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics
 {
     /// <summary>
     /// This is an internal structure.

@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities;
 using BEPUutilities.Threading;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement
+namespace Virtex.Lib.Vrtc.Physics.BEPU.EntityStateManagement
 {
     ///<summary>
     /// Manages the interpolated states of entities.  Interpolated states are those

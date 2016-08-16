@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Virtex.Lib.Vertices.Core.Particles
+namespace Virtex.Lib.Vrtc.Core.Particles
 {
     public class vxParticleSystem3D
     {

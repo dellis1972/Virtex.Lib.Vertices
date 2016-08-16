@@ -38,7 +38,7 @@
 using System;
 using System.Text;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /**
      * @author Thomas Åhlen (thahlen@gmail.com)

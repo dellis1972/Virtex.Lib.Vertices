@@ -2,7 +2,7 @@
 
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems
 {
     ///<summary>
     /// Requires that a class have a BoundingBox.

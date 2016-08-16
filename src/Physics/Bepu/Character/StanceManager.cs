@@ -1,16 +1,16 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Character
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Character
 {
     /// <summary>
     /// Handles a cylindrical character's stances, like standing or crouching, and their transitions.

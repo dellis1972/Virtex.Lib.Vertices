@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Allows the connected wheel and vehicle to smoothly absorb bumps.

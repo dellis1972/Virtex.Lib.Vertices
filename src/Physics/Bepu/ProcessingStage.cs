@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU
+namespace Virtex.Lib.Vrtc.Physics.BEPU
 {
     ///<summary>
     /// Superclass of singlethreaded update systems.

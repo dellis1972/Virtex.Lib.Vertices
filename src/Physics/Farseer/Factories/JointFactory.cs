@@ -1,8 +1,8 @@
-﻿using vxVertices.Physics.Farseer.Dynamics;
-using vxVertices.Physics.Farseer.Dynamics.Joints;
+﻿using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Factories
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Factories
 {
     /// <summary>
     /// An easy to use factory for using joints.

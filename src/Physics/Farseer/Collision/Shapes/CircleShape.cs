@@ -22,10 +22,10 @@
 
 using System;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Collision.Shapes
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes
 {
     /// <summary>
     /// A circle shape.

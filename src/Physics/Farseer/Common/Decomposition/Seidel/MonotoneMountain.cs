@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.Seidel
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.Seidel
 {
     internal class MonotoneMountain
     {

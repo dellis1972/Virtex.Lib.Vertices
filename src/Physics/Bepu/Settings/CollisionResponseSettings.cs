@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.Settings
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.Settings
 {
     ///<summary>
     /// Contains global settings relating to the collision response system.

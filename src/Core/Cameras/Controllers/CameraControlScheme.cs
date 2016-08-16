@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Virtex.Lib.Vertices.Core.Cameras.Controllers
+namespace Virtex.Lib.Vrtc.Core.Cameras.Controllers
 {
     /// <summary>
     /// Superclass of implementations which control the behavior of a camera.

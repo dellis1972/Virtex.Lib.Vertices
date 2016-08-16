@@ -20,12 +20,12 @@
 * 3. This notice may not be removed or altered from any source distribution. 
 */
 
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Controllers;
-using vxVertices.Physics.Farseer.Dynamics.Contacts;
-using vxVertices.Physics.Farseer.Dynamics.Joints;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Controllers;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Contacts;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Joints;
 
-namespace vxVertices.Physics.Farseer.Dynamics
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics
 {
     /// <summary>
     /// This delegate is called when a contact is deleted

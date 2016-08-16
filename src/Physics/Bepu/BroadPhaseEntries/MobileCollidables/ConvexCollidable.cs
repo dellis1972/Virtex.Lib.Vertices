@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.Events;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables
 {
     ///<summary>
     /// Collidable with a convex shape.

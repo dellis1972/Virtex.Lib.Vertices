@@ -22,10 +22,10 @@
 //#define USE_ACTIVE_CONTACT_SET
 
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Dynamics.Contacts;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics.Contacts;
 
-namespace vxVertices.Physics.Farseer.Dynamics
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Dynamics
 {
     public class ContactManager
     {

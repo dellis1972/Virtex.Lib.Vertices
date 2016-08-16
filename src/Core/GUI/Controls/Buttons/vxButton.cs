@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
+using Virtex.Lib.Vrtc.GUI.GuiArtProvider;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
     /// <summary>
     /// Basic Button GUI Control.
     /// </summary>
     public class vxButton : vxGUIBaseItem
     {
+		vxButtonArtProvider ArtProvider {get; set;}
+
         /// <summary>
         /// Gets or sets the texture for this Menu Entry Background.
         /// </summary>
@@ -22,7 +25,7 @@ namespace Virtex.Lib.Vertices.GUI.Controls
         public Texture2D BackgroundTexture { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.Controls.vxButton"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxButton"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="text">Text.</param>
@@ -40,21 +43,24 @@ namespace Virtex.Lib.Vertices.GUI.Controls
             this.Font = vxEngine.vxGUITheme.Font;
 
             //Get Settings
-            this.Color_Normal = vxEngine.vxGUITheme.vxButtons.BackgroundColour;
-            this.Color_Highlight = vxEngine.vxGUITheme.vxButtons.BackgroundHoverColour;
-            this.Colour_Text = vxEngine.vxGUITheme.vxButtons.TextColour;
-
-            //Set Width and Height
-            Width = Math.Max(vxEngine.vxGUITheme.vxButtons.Width, (int)(this.Font.MeasureString(Text).X + Padding * 2));
-            Height = Math.Max(vxEngine.vxGUITheme.vxButtons.Height, (int)this.Font.MeasureString(Text).Y + Padding * 2);
-
+//            this.Color_Normal = vxEngine.vxGUITheme.vxButtons.BackgroundColour;
+//            this.Color_Highlight = vxEngine.vxGUITheme.vxButtons.BackgroundHoverColour;
+//            this.Colour_Text = vxEngine.vxGUITheme.vxButtons.TextColour;
+//
+//            //Set Width and Height
+//            Width = Math.Max(vxEngine.vxGUITheme.vxButtons.Width, (int)(this.Font.MeasureString(Text).X + Padding * 2));
+//            Height = Math.Max(vxEngine.vxGUITheme.vxButtons.Height, (int)this.Font.MeasureString(Text).Y + Padding * 2);
+//
             BoundingRectangle = new Rectangle(
                 (int)(Position.X - Padding),
                 (int)(Position.Y - Padding / 2),
                 Width, Height);
+//
+//
+//            BackgroundTexture = vxEngine.vxGUITheme.vxButtons.BackgroundImage;
 
-
-            BackgroundTexture = vxEngine.vxGUITheme.vxButtons.BackgroundImage;
+			//Have this button get a clone of the current Art Provider
+			this.ArtProvider = (vxButtonArtProvider)vxEngine.vxGUITheme.ArtProviderForButtons.Clone ();
 
             this.OnInitialHover += VxMenuEntry_OnInitialHover;
         }
@@ -91,22 +97,8 @@ namespace Virtex.Lib.Vertices.GUI.Controls
                 (int)(Position.Y - Padding / 2),
                 Width, Height);
 
-
-            Rectangle BorderRectangle = new Rectangle(
-                (int)(Position.X - Padding) - vxEngine.vxGUITheme.vxButtons.BorderWidth,
-                (int)(Position.Y - Padding / 2) - vxEngine.vxGUITheme.vxButtons.BorderWidth,
-                Width + vxEngine.vxGUITheme.vxButtons.BorderWidth * 2, 
-                Height + vxEngine.vxGUITheme.vxButtons.BorderWidth * 2);
-
-            //Draw Button
-            if(vxEngine.vxGUITheme.vxButtons.DoBorder)
-                vxEngine.SpriteBatch.Draw(BackgroundTexture, BorderRectangle, Color.Black * Opacity);
-            vxEngine.SpriteBatch.Draw(BackgroundTexture, BoundingRectangle, Colour * Opacity);
-            vxEngine.SpriteBatch.DrawString(this.Font, Text,
-                new Vector2(
-                    Position.X + Width / 2 - this.Font.MeasureString(Text).X / 2 - Padding,
-                    Position.Y + Height / 2 - this.Font.MeasureString(Text).Y / 2),
-                Colour_Text * Opacity);
+			//Now get the Art Provider to draw the scene
+			this.ArtProvider.Draw (this);
         }
     }
 }

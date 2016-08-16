@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if VRTC_INCLDLIB_NET 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Net;
 //using Lidgren.Network.Xna;
 using Microsoft.Xna.Framework;
 
-namespace Virtex.Lib.Vertices.Network.Messages
+namespace Virtex.Lib.Vrtc.Network.Messages
 {
     /// <summary>
     /// This message is used during the discovery phase to glean basic server information.
@@ -112,3 +113,4 @@ namespace Virtex.Lib.Vertices.Network.Messages
         }
     }
 }
+#endif

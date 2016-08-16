@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
  
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms
 {
     ///<summary>
     /// Static class with methods to help with testing box shapes against sphere shapes.

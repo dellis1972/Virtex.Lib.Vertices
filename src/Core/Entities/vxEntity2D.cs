@@ -1,12 +1,12 @@
 ﻿#if VIRTICES_2D
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Physics.Farseer.Dynamics;
-using Virtex.Lib.Vertices.Physics.Farseer;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Mathematics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Mathematics;
 
-namespace Virtex.Lib.Vertices.Core.Entities
+namespace Virtex.Lib.Vrtc.Core.Entities
 {
 	/// <summary>
 	/// A Two Dimensional Entity which uses a Farseerer Body too set it's position, or vice versa.
@@ -137,7 +137,7 @@ namespace Virtex.Lib.Vertices.Core.Entities
 		public float Highlite = 1;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Entities.vxEntity2D"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.Entities.vxEntity2D"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="sprite">Sprite.</param>
@@ -149,7 +149,7 @@ namespace Virtex.Lib.Vertices.Core.Entities
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Entities.vxEntity2D"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.Entities.vxEntity2D"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="texture">Texture.</param>
@@ -162,7 +162,7 @@ namespace Virtex.Lib.Vertices.Core.Entities
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Entities.vxEntity2D"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.Entities.vxEntity2D"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="texture">Texture.</param>

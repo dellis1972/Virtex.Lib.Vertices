@@ -1,9 +1,9 @@
 ﻿using BEPUutilities;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
-using Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.Events
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.Events
 {
 
     ///<summary>

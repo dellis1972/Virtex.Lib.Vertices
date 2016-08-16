@@ -30,9 +30,9 @@
  */
 
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT.Delaunay.Sweep;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition.CDT
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition.CDT
 {
     internal class TriangulationPoint
     {

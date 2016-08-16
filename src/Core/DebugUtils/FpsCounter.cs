@@ -19,7 +19,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Debug
+namespace Virtex.Lib.Vrtc.Core.Debug
 {
     /// <summary>
     /// Component for FPS measure and draw.

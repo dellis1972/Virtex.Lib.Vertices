@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement
  {
      ///<summary>
      /// Defines a class which must own CollisionRules.

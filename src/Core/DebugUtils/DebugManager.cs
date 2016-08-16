@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Content;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Debug
+namespace Virtex.Lib.Vrtc.Core.Debug
 {
     /// <summary>
     /// DebugManager class that holds graphics resources for debug

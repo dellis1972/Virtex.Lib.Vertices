@@ -1,4 +1,4 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity.JointLimits;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity.JointLimits;
 using Microsoft.Xna.Framework;
 
 namespace BEPUphysicsDrawer.Lines

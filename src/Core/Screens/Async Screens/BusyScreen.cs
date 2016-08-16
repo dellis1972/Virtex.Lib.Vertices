@@ -13,10 +13,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Threading;
 using System.Diagnostics;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 #endregion
 
-namespace Virtex.Lib.Vertices.Screens.Async
+namespace Virtex.Lib.Vrtc.Screens.Async
 {
     /// <summary>
     /// The loading screen coordinates transitions between the menu system and the

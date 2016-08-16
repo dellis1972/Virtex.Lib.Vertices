@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
 using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 

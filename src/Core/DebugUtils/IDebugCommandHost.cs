@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core.Debug
+namespace Virtex.Lib.Vrtc.Core.Debug
 {
     /// <summary>
     /// Message types for debug command.

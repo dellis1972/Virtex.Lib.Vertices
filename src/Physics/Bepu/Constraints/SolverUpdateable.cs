@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups;
-using Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SolverGroups;
+using Virtex.Lib.Vrtc.Physics.BEPU.DeactivationManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints
 {
     /// <summary>
     /// Superclass of objects types which require solving by the velocity solver.

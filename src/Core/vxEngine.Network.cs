@@ -3,16 +3,16 @@ using System.Threading;
 
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Network;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Network;
 
 using Lidgren.Network;
 using System;
-using Virtex.Lib.Vertices.Network.Events;
-using Virtex.Lib.Vertices.Mathematics;
+using Virtex.Lib.Vrtc.Network.Events;
+using Virtex.Lib.Vrtc.Mathematics;
 using System.Collections.Generic;
 
-namespace Virtex.Lib.Vertices.Core
+namespace Virtex.Lib.Vrtc.Core
 {
 
 

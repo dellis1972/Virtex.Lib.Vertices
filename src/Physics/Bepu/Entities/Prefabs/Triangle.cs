@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.EntityStateManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.EntityStateManagement;
  
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs
 {
     /// <summary>
     /// Triangle-shaped object that can collide and move.  After making an entity, add it to a Space so that the engine can manage it.

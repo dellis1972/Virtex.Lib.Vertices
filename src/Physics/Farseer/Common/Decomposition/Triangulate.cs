@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common.ConvexHull;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.ConvexHull;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition
 {
     public enum TriangulationAlgorithm
     {

@@ -1,8 +1,8 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
 using System.Collections.Generic;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision
 {
     ///<summary>
     /// Contact manifold constraint that is used by manifolds whose normals are assumed to be

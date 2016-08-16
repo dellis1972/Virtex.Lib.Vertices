@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.CollisionAlgorithms;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.CollisionAlgorithms;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using BEPUutilities.ResourceManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.Settings;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes.ConvexShapes;
+using Virtex.Lib.Vrtc.Physics.BEPU.Settings;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes.ConvexShapes;
 using BEPUutilities;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds
 {
     ///<summary>
     /// Manages persistent contact data between a triangle mesh and a convex.

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
 
-namespace Virtex.Lib.Vertices.Mathematics
+namespace Virtex.Lib.Vrtc.Mathematics
 {
 	/// <summary>
 	/// Math Utility

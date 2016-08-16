@@ -1,23 +1,21 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Controls;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.Utilities;
 
-namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
+namespace Virtex.Lib.Vrtc.GUI.GuiArtProvider
 {    /// <summary>
      /// The Art Provider for Menu Screen Items. If you want to customize the draw call, then create an inherited class
      /// of this one and override this draw call. 
      /// </summary>
-    public class vxMenuItemArtProvider : IGuiArtProvider
+	public class vxMenuItemArtProvider : vxArtProviderBase, IGuiArtProvider
     {
-        /// <summary>
-        /// The Game Engine Instance.
-        /// </summary>
-		public vxEngine vxEngine { get; set; }
-
         /// <summary>
         /// Defines whether or not the icon should be shown. The default is false.
         /// </summary>
@@ -33,10 +31,26 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
         }
         private Vector2 _iconPadding = new Vector2(4);
 
-        public vxMenuItemArtProvider(vxEngine engine)
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.GuiArtProvider.vxMenuItemArtProvider"/> class.
+		/// </summary>
+		/// <param name="engine">Engine.</param>
+		public vxMenuItemArtProvider(vxEngine engine):base(engine)
         {
             vxEngine = engine;
-            ShowIcon = false;
+			ShowIcon = false;
+			Padding = new Vector2 (10, 4);
+
+			BackgroundColour = Color.White;
+			BackgroundHoverColour = Color.DarkOrange;
+
+			TextColour = Color.Black;
+			TextHoverColour = Color.Black;
+
+			DrawBackgroungImage = true;
+
+			BackgroundImage = vxEngine.EngineContentManager.Load<Texture2D>("Gui/DfltThm/vxGUITheme/vxMenuEntry/Bckgrnd_Nrml");
         }
 
 
@@ -58,10 +72,10 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
 
             //Update Rectangle
             menuEntry.BoundingRectangle = new Rectangle(
-                (int)(menuEntry.Position.X - vxEngine.vxGUITheme.vxMenuEntries.Padding.X / 2),
-                (int)(menuEntry.Position.Y - vxEngine.vxGUITheme.vxMenuEntries.Padding.Y / 2),
-                (int)(menuEntry.Font.MeasureString(menuEntry.Text).X + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.X),
-                (int)(menuEntry.Font.MeasureString(menuEntry.Text).Y + 2 * vxEngine.vxGUITheme.vxMenuEntries.Padding.Y));
+                (int)(menuEntry.Position.X - Padding.X / 2),
+                (int)(menuEntry.Position.Y - Padding.Y / 2),
+                (int)(menuEntry.Font.MeasureString(menuEntry.Text).X + 2 * Padding.X),
+                (int)(menuEntry.Font.MeasureString(menuEntry.Text).Y + 2 * Padding.Y));
 
             //Set Opacity from Parent Screen Transition Alpha
             menuEntry.Opacity = menuEntry.ParentScreen.TransitionAlpha;
@@ -71,34 +85,15 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
                 menuEntry.Texture = vxEngine.Assets.Textures.Blank;
 
             //Draw Button
-            if (vxEngine.vxGUITheme.vxMenuEntries.DrawBackgroungImage)
-                vxEngine.SpriteBatch.Draw(menuEntry.Texture, menuEntry.BoundingRectangle, menuEntry.Colour * menuEntry.Opacity);
+            if (DrawBackgroungImage)
+                vxEngine.SpriteBatch.Draw(BackgroundImage, menuEntry.BoundingRectangle, menuEntry.Colour * menuEntry.Opacity);
 
 
-            //Set Text Colour Based on Focus
-            menuEntry.Colour_Text = menuEntry.HasFocus ? vxEngine.vxGUITheme.vxMenuEntries.TextHover : vxEngine.vxGUITheme.vxMenuEntries.TextColour;
-
-            //Update Left Justifications
-            if (vxEngine.vxGUITheme.vxMenuEntries.TextJustification == TextJustification.Left)
-            {
-                vxEngine.SpriteBatch.DrawString(menuEntry.Font, menuEntry.Text,
-                    new Vector2(
-                        menuEntry.Position.X + menuEntry.Padding,
-                        menuEntry.Position.Y + menuEntry.Padding),
-                    menuEntry.Colour_Text * menuEntry.Opacity);
-
-            }
-
-            //Update Center Justifications
-            else if (vxEngine.vxGUITheme.vxMenuEntries.TextJustification == TextJustification.Center)
-            {
-
-                vxEngine.SpriteBatch.DrawString(
-                        menuEntry.Font,
-                        menuEntry.Text,
-                        menuEntry.Position + vxEngine.vxGUITheme.vxMenuEntries.Padding / 2,
-                        menuEntry.Colour_Text * menuEntry.Opacity);
-            }
+			vxEngine.SpriteBatch.DrawString(
+				menuEntry.Font,
+				menuEntry.Text,
+				menuEntry.Position + Padding / 2,
+				(menuEntry.HasFocus ? TextHoverColour : TextColour) * menuEntry.Opacity);
         }
     }
 }

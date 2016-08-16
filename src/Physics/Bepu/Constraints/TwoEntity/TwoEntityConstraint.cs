@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
 
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities.Prefabs;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
  
 using BEPUutilities.DataStructures;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Constraints.TwoEntity
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Constraints.TwoEntity
 {
     /// <summary>
     /// Abstract superclass of constraints involving two bodies.

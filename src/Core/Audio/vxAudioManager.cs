@@ -3,13 +3,13 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Core;
 
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Audio
+namespace Virtex.Lib.Vrtc.Audio
 {
     /// <summary>
     /// Audio manager keeps track of what 3D sounds are playing, updating

@@ -23,10 +23,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Collision
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Collision
 {
     /// <summary>
     /// A node in the dynamic tree. The client does not interact with this directly.

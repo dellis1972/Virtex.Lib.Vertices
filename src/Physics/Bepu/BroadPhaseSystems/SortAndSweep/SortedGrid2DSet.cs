@@ -1,7 +1,7 @@
 ﻿using BEPUutilities.DataStructures;
 using BEPUutilities.ResourceManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.SortAndSweep
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems.SortAndSweep
 {
     internal class SortedGrid2DSet
     {

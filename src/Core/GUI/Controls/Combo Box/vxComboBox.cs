@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Events;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Events;
+using Virtex.Lib.Vrtc.Utilities;
 
-namespace Virtex.Lib.Vertices.GUI.Controls
+namespace Virtex.Lib.Vrtc.GUI.Controls
 {
 	/// <summary>
 	/// Provides a ComboBox Control which can be populated be vxComboBoxItems.

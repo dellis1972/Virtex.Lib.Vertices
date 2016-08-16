@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Dynamics;
-using vxVertices.Physics.Farseer.Factories;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Factories;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.PolygonManipulation
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.PolygonManipulation
 {
     public static class CuttingTools
     {

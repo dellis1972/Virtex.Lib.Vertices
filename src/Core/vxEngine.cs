@@ -12,28 +12,33 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Threading;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Graphics;
-using Virtex.Lib.Vertices.Core.Scenes;
-using Virtex.Lib.Vertices.Core.Debug;
-using Virtex.Lib.Vertices.Core.Settings;
-using Virtex.Lib.Vertices.Core.ContentManagement;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Network.Events;
-using Virtex.Lib.Vertices.Network;
-using Virtex.Lib.Vertices.GUI;
-using Virtex.Lib.Vertices.GUI.Themes;
-using Virtex.Lib.Vertices.XNA.ContentManagement;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Core.Scenes;
+using Virtex.Lib.Vrtc.Core.Debug;
+using Virtex.Lib.Vrtc.Core.Settings;
+using Virtex.Lib.Vrtc.Core.ContentManagement;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.GUI;
+using Virtex.Lib.Vrtc.GUI.Themes;
+using Virtex.Lib.Vrtc.XNA.ContentManagement;
 using Microsoft.Xna.Framework.Input.Touch;
-using Virtex.Lib.Vertices.Localization;
+using Virtex.Lib.Vrtc.Localization;
 
+//Internal Network Libraries
+#if VRTC_INCLDLIB_NET 
+using Virtex.Lib.Vrtc.Network;
+using Virtex.Lib.Vrtc.Network.Events;
+#endif
+
+//Android Libraries
 #if VRTC_PLTFRM_DROID
 using Android.Views;
 #endif
 
 #endregion
 
-namespace Virtex.Lib.Vertices.Core
+namespace Virtex.Lib.Vrtc.Core
 {
 	/// <summary>
 	/// The vxEngine is a component which manages one or more vxGameBaseScreen
@@ -461,6 +466,8 @@ namespace Virtex.Lib.Vertices.Core
 
 			base.Initialize ();
 
+			#region Initialise Debug Console
+
 			//Get the vxEngine Version through Reflection
 			EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
 
@@ -503,6 +510,8 @@ namespace Virtex.Lib.Vertices.Core
 			//Initialise the Debug Renderer
 			vxDebugShapeRenderer.Initialize (GraphicsDevice);
 
+			#endregion
+
 
 #if !VRTC_PLTFRM_DROID
 
@@ -521,7 +530,8 @@ namespace Virtex.Lib.Vertices.Core
 #endif
             vxConsole.vxEngine = this;
 
-
+//THere's only two choices for a backend, XNA or MonoGame. The entire code base will be eventually
+//be moved over ONLY too MonoGame as XNA is no longer supported.
 #if VRTC_PLTFRM_XNA
 			vxConsole.WriteLine("Starting Vertices Engine with XNA Backend...");
 #else
@@ -551,11 +561,11 @@ namespace Virtex.Lib.Vertices.Core
             // Initialise the Engine Speciality Content Manager.
             _contentManager = new vxContentManager(this);
 
-            //string contentLocationTag = "Virtex.Lib.Vertices.XNA.Content";
+            //string contentLocationTag = "Virtex.Lib.Vrtc.XNA.Content";
 
             //Set Location of Content Specific too Platform
 #if VRTC_PLTFRM_XNA
-            _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
+            _engineContentManager.RootDirectory = "Virtex.Lib.Vrtc.Core.XNA.Content";
 
 #elif VRTC_PLTFRM_GL
 			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";
@@ -565,7 +575,6 @@ namespace Virtex.Lib.Vertices.Core
             
             Game.Activity.Window.AddFlags(WindowManagerFlags.Fullscreen);
             Game.Activity.Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
-
 #endif
 
 
@@ -613,6 +622,8 @@ namespace Virtex.Lib.Vertices.Core
 			Profile.LoadSettings (this);
 			vxConsole.WriteLine ("\t\t\tDone!");
 
+			vxConsole.WriteLine (string.Format("LoadResolution: {0}",LoadResolution.ToString()));
+
 			//Set Initial Graphics Settings
 			SetGraphicsSettings ();
 
@@ -624,15 +635,12 @@ namespace Virtex.Lib.Vertices.Core
 
 
 			GraphicsDeviceManager graphics = Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
-			//graphics.SynchronizeWithVerticalRetrace = false;
+			graphics.SynchronizeWithVerticalRetrace = false;
 			Game.IsFixedTimeStep = false;
 			//graphics.PreferMultiSampling = true;
 			//graphics.GraphicsDevice.PresentationParameters.MultiSampleCount = 8;
 			graphics.ApplyChanges ();
 
-            //this.Profile.Settings.Graphics.Bloom = vxEnumQuality.None;
-            //this.Profile.Settings.Graphics.DepthOfField = vxEnumQuality.None;// = false;
-            //this.Profile.Settings.Graphics.Bool_DoEdgeDetection = true;
 #if VIRTICES_3D
 			Renderer = new vxRenderer (this);
 #endif
@@ -673,13 +681,15 @@ namespace Virtex.Lib.Vertices.Core
 
 		}
 
+		/*
 		/// <summary>
 		/// Starts the menu set.
 		/// </summary>
 		public virtual void StartMenuSet ()
 		{
+			
 		}
-
+		*/
 
 
 		/// <summary>
@@ -925,7 +935,7 @@ namespace Virtex.Lib.Vertices.Core
 		public void SetGraphicsSettings ()
 		{
 			GraphicsDeviceManager graphics = Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
-#if !DEBUG && !VRTC_PLTFRM_DROID
+#if !VRTC_PLTFRM_DROID //!DEBUG && 
             if (LoadResolution == true)
             {
 

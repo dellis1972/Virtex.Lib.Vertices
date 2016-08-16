@@ -6,10 +6,10 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 #endregion
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
     /// <summary>
     /// Reusable component for drawing a lensflare effect over the top of a 3D scene.

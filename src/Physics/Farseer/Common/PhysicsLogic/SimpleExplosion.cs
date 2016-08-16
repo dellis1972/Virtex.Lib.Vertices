@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.PhysicsLogic
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.PhysicsLogic
 {
     /// <summary>
     /// Creates a simple explosion that ignores other bodies hiding behind static bodies.

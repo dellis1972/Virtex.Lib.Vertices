@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Defines a quaternion curve using spherical linear interpolation.

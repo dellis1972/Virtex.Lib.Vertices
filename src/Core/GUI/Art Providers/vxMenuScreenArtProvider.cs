@@ -4,24 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.GUI.GuiArtProvider;
-using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI.GuiArtProvider;
+using Virtex.Lib.Vrtc.Screens.Menus;
 
-namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
+namespace Virtex.Lib.Vrtc.GUI.GuiArtProvider
 {
     /// <summary>
     /// The Art Provider for Menu Screens. If you want to customize the draw call, then create an inherited class
     /// of this one and override this draw call. 
     /// </summary>
-    public class vxMenuScreenArtProvider : IGuiArtProvider
+	public class vxMenuScreenArtProvider : vxArtProviderBase, IGuiArtProvider
     {
-        /// <summary>
-        /// The Game Engine Instance.
-        /// </summary>
-		public vxEngine vxEngine { get; set; }
-
         /// <summary>
         /// The Owning Menu Screen.
         /// </summary>
@@ -62,6 +57,25 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
         }
         public Vector2 titlePosition = new Vector2(0, 0);
 
+		/// <summary>
+		/// Gets or sets the color of the title.
+		/// </summary>
+		/// <value>The color of the title.</value>
+		public Color TitleColor { get; set; }
+
+		/// <summary>
+		/// Gets or sets the title padding.
+		/// </summary>
+		/// <value>The title padding.</value>
+		public Vector2 TitlePadding { get; set; }
+
+
+		/// <summary>
+		/// Gets or sets the title background.
+		/// </summary>
+		/// <value>The title background.</value>
+		public Texture2D TitleBackground { get; set; }
+
         /// <summary>
         /// Is there a background image on the title
         /// </summary>
@@ -74,19 +88,38 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
 
 
 
+		/// <summary>
+		/// Gets or sets the color of the title background.
+		/// </summary>
+		/// <value>The color of the title background.</value>
+		public Color TitleBackgroundColor { get; set; }
+
+
+
+		/// <summary>
+		/// The text justification.
+		/// </summary>
+		public TextJustification TextJustification;
+
+
         /// <summary>
         /// Constructor for the Menu Screen Art Provider.
         /// </summary>
         /// <param name="engine"></param>
         /// <param name="MenuScreen"></param>
-        public vxMenuScreenArtProvider(vxEngine engine)
+		public vxMenuScreenArtProvider(vxEngine engine):base(engine)
         {
             vxEngine = engine;
             this.MenuScreen = MenuScreen;
 
-            //Set up default values
-            titlePosition = new Vector2(vxEngine.GraphicsDevice.Viewport.Width / 2, 80);            
-            menuStartPosition = new Vector2(200, 200);
+			//Set up default values
+			menuStartPosition = new Vector2(200, 200);
+            titlePosition = new Vector2(vxEngine.GraphicsDevice.Viewport.Width / 2, 80);
+			TitleColor = Color.White;
+			TitleBackgroundColor = Color.White;
+			TitlePadding = new Vector2 (10, 10);
+
+			TitleBackground = vxEngine.EngineContentManager.Load<Texture2D>("Gui/DfltThm/vxGUITheme/vxMenuScreen/Bckgrnd_Nrml");
         }
 
         public object Clone()
@@ -103,35 +136,38 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
         {
             MenuScreen = (vxMenuBaseScreen)menuScreen;
 
+
+			GraphicsDevice graphics = vxEngine.GraphicsDevice;
+			SpriteBatch spriteBatch = vxEngine.SpriteBatch;
+			SpriteFont font = vxEngine.vxGUITheme.Font;
+
+			TitlePosition = new Vector2(vxEngine.GraphicsDevice.Viewport.Width / 2, 80) - font.MeasureString (MenuScreen.MenuTitle) / 2;
+
             // make sure our entries are in the right place before we draw them
             UpdateMenuEntryLocations();
-
-            GraphicsDevice graphics = vxEngine.GraphicsDevice;
-            SpriteBatch spriteBatch = vxEngine.SpriteBatch;
-            SpriteFont font = vxEngine.vxGUITheme.Font;
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
             // the movement slow down as it nears the end).
-            float transitionOffset = (float)Math.Pow(MenuScreen.TransitionPosition, 2);
+            //float transitionOffset = (float)Math.Pow(MenuScreen.TransitionPosition, 2);
             
             float titleScale = 1;
 
+
             Rectangle BoundingRectangle = new Rectangle(
-                (int)(TitlePosition.X - font.MeasureString(MenuScreen.MenuTitle).X / 2 - vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.X),
-                (int)(TitlePosition.Y - font.MeasureString(MenuScreen.MenuTitle).Y / 2 - vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.Y),
-                (int)(font.MeasureString(MenuScreen.MenuTitle).X + vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.X),
-                (int)(font.MeasureString(MenuScreen.MenuTitle).Y + vxEngine.vxGUITheme.vxMenuEntries.TitlePadding.Y));
+                (int)(TitlePosition.X - TitlePadding.X),
+                (int)(TitlePosition.Y - TitlePadding.Y),
+                (int)(font.MeasureString(MenuScreen.MenuTitle).X + TitlePadding.X * 2),
+                (int)(font.MeasureString(MenuScreen.MenuTitle).Y + TitlePadding.Y * 2));
 
             if (DoTitleBackground)
             {
-                vxEngine.SpriteBatch.Draw(vxEngine.vxGUITheme.vxMenuEntries.TitleBackground,
-                    BoundingRectangle, vxEngine.vxGUITheme.vxMenuEntries.TitleBackgroundColor * MenuScreen.TransitionAlpha);
+                vxEngine.SpriteBatch.Draw(TitleBackground,
+                    BoundingRectangle, TitleBackgroundColor * MenuScreen.TransitionAlpha);
             }
 
             spriteBatch.DrawString(font, MenuScreen.MenuTitle, TitlePosition,
-                vxEngine.vxGUITheme.vxMenuEntries.TitleColor * MenuScreen.TransitionAlpha,
-                0, Vector2.Zero, titleScale, SpriteEffects.None, 0);
+                TitleColor * MenuScreen.TransitionAlpha, 0, Vector2.Zero, titleScale, SpriteEffects.None, 0);
         }
 
 
@@ -153,13 +189,16 @@ namespace Virtex.Lib.Vertices.GUI.GuiArtProvider
             for (int i = 0; i < MenuScreen.MenuEntries.Count; i++)
             {
                 vxMenuEntry vxMenuEntry = MenuScreen.MenuEntries[i];
-                NextMenuItemOffset = new Vector2(0, vxMenuEntry.Height + vxEngine.vxGUITheme.vxMenuEntries.Margin.Y);
+                NextMenuItemOffset = new Vector2(0, vxMenuEntry.Height + Margin.Y);
 
                 //Set Menu Item Location
-                if (vxEngine.vxGUITheme.vxMenuEntries.TextJustification == Virtex.Lib.Vertices.GUI.TextJustification.Left)
+                if (TextJustification == Virtex.Lib.Vrtc.GUI.TextJustification.Left)
                     position.X = menuStartPosition.X;// -vxMenuEntry.Width / 2;
-                else if (vxEngine.vxGUITheme.vxMenuEntries.TextJustification == Virtex.Lib.Vertices.GUI.TextJustification.Center)
-                    position.X = menuStartPosition.X - vxMenuEntry.Width / 2;
+                else if (TextJustification == Virtex.Lib.Vrtc.GUI.TextJustification.Center)
+					position.X = menuStartPosition.X - vxMenuEntry.Width / 2;
+				else if (TextJustification == Virtex.Lib.Vrtc.GUI.TextJustification.Right)
+					position.X = menuStartPosition.X - vxMenuEntry.Width;
+				
 
                 if (MenuScreen.ScreenState == ScreenState.TransitionOn)
                     position.X -= transitionOffset * 256;

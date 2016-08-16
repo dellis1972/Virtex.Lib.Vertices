@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU.OtherSpaceStages
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU.OtherSpaceStages
 {
     ///<summary>
     /// Defines an object that owns a deferred event creator.

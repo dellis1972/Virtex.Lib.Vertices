@@ -1,8 +1,8 @@
 ﻿using System;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems
 {
     /// <summary>
     /// A pair of overlapping BroadPhaseEntries.

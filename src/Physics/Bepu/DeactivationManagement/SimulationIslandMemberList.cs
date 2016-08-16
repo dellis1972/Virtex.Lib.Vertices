@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BEPUutilities.DataStructures;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.DeactivationManagement
+namespace Virtex.Lib.Vrtc.Physics.BEPU.DeactivationManagement
 {
     /// <summary>
     /// Read only list containing the simulation island members associated with a simulation island connection.

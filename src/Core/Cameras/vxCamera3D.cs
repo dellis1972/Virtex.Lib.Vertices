@@ -4,11 +4,11 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Virtex.Lib.Vertices.Core.Input;
-using Virtex.Lib.Vertices.Mathematics;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Mathematics;
+using Virtex.Lib.Vrtc.Utilities;
 
-namespace Virtex.Lib.Vertices.Core.Cameras
+namespace Virtex.Lib.Vrtc.Core.Cameras
 {
     /// <summary>
     /// Whether or not to use the default free-flight camera controls.

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 using BEPUutilities;
  
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems.Hierarchies
+namespace Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems.Hierarchies
 {
     ///<summary>
     /// Interface to the DynamicHierarchy's volume query systems.

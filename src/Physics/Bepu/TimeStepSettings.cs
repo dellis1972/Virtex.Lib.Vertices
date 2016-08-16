@@ -1,4 +1,4 @@
-﻿namespace Virtex.Lib.Vertices.Physics.BEPU
+﻿namespace Virtex.Lib.Vrtc.Physics.BEPU
 {
     ///<summary>
     /// Contains settings for the instance's time step.

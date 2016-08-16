@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.TextureTools
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.TextureTools
 {
     // Ported by Matthew Bettcher - Feb 2011
 

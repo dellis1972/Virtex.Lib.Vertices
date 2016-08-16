@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Utilities;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.Events;
+using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.Events;
 
-namespace Virtex.Lib.Vertices.GUI.Dialogs
+namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
     /// <summary>
     /// File Chooser Dialor Item.
@@ -43,7 +43,7 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.GUI.xFileDialogItem"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.xFileDialogItem"/> class.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="FilePath">File path.</param>
@@ -122,8 +122,10 @@ namespace Virtex.Lib.Vertices.GUI.Dialogs
             vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Normal * i);
 
             //Draw Icon
-            vxEngine.SpriteBatch.Draw(ButtonImage, new Rectangle((int)(Position.X + 2), (int)(Position.Y + 2),
-                ButtonHeight - 4, ButtonHeight - 4), Color.LightGray * i);
+			if (ButtonImage != null) {
+				vxEngine.SpriteBatch.Draw (ButtonImage, new Rectangle ((int)(Position.X + 2), (int)(Position.Y + 2),
+					ButtonHeight - 4, ButtonHeight - 4), Color.LightGray * i);
+			}
 
             //Draw Text String
             vxEngine.SpriteBatch.DrawString(vxEngine.vxGUITheme.Font, Text,

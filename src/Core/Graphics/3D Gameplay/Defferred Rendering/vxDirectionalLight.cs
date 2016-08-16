@@ -10,12 +10,12 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Utilities;
 
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
 	/// <summary>
 	/// Base class for a 3D Light Entity used in Defferred Rendering.
@@ -28,7 +28,7 @@ namespace Virtex.Lib.Vertices.Graphics
 		public Vector3 LightDirection { get; set; }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Graphics.vxDirectionalLight"/> class.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Graphics.vxDirectionalLight"/> class.
 		/// </summary>
 		/// <param name="vxEngine">Vx engine.</param>
 		/// <param name="LightDirection">Light direction.</param>

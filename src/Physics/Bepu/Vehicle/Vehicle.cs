@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
 using BEPUutilities.DataStructures;
-using Virtex.Lib.Vertices.Physics.BEPU.UpdateableSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.UpdateableSystems;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Vehicle
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Vehicle
 {
     /// <summary>
     /// Simulates wheeled vehicles using a variety of constraints and shape casts.

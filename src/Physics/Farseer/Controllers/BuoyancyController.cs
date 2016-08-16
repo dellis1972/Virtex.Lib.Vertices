@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using vxVertices.Physics.Farseer.Collision;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Controllers
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Controllers
 {
     public sealed class BuoyancyController : Controller
     {

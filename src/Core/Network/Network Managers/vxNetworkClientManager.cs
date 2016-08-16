@@ -1,16 +1,17 @@
-﻿using Lidgren.Network;
+﻿#if VRTC_INCLDLIB_NET 
+using Lidgren.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Network.Events;
-using Virtex.Lib.Vertices.Network.Messages;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Network.Events;
+using Virtex.Lib.Vrtc.Network.Messages;
+using Virtex.Lib.Vrtc.Utilities;
 
-namespace Virtex.Lib.Vertices.Network
+namespace Virtex.Lib.Vrtc.Network
 {
     public class vxNetworkClientManager : INetworkManager
     {
@@ -127,6 +128,11 @@ namespace Virtex.Lib.Vertices.Network
 
             Random rand = new Random(DateTime.Now.Second);
             UserName = UserNames[rand.Next(0, UserNames.Count)];
+
+
+			//Why? Bc Linux hates me.
+			if (SynchronizationContext.Current == null)
+				SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
         }
 
         public void Init()
@@ -458,3 +464,4 @@ namespace Virtex.Lib.Vertices.Network
         #endregion
     }
 }
+#endif

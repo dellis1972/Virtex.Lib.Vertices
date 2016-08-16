@@ -2,7 +2,7 @@
 
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Paths
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Paths
 {
     /// <summary>
     /// Cardinal spline implementation of the 3D hermite curve.  Uses a tension parameter to control

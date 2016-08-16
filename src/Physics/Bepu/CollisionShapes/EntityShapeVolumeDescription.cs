@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionShapes
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionShapes
 {
     public struct EntityShapeVolumeDescription
     {

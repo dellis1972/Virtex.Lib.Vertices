@@ -65,7 +65,7 @@ namespace VerticeEnginePort.Base
 		/// </summary>
 		void introLevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
 		{
-			LoadingScreen.Load(vxEngine, true, e.PlayerIndex,
+			vxLoadingScreen.Load(vxEngine, true, e.PlayerIndex,
 				new IntroBackground());
 		}
 
@@ -75,7 +75,7 @@ namespace VerticeEnginePort.Base
         /// </summary>
         void spoznzaMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(vxEngine, true, e.PlayerIndex,
+            vxLoadingScreen.Load(vxEngine, true, e.PlayerIndex,
                  new TechDemoSponza());
         }
 
@@ -85,7 +85,7 @@ namespace VerticeEnginePort.Base
         /// </summary>
         void fpsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(vxEngine, true, e.PlayerIndex,
+            vxLoadingScreen.Load(vxEngine, true, e.PlayerIndex,
                                new FPSGamePlay());
         }
 

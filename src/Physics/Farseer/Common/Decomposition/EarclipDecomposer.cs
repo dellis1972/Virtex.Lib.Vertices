@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Common.Decomposition
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition
 {
     /// <summary>
     /// Convex decomposition algorithm using ear clipping

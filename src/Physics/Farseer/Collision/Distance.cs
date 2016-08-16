@@ -22,11 +22,11 @@
 
 using System;
 using System.Diagnostics;
-using vxVertices.Physics.Farseer.Collision.Shapes;
-using vxVertices.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
 using Microsoft.Xna.Framework;
 
-namespace vxVertices.Physics.Farseer.Collision
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Collision
 {
     /// <summary>
     /// A distance proxy is used by the GJK algorithm.

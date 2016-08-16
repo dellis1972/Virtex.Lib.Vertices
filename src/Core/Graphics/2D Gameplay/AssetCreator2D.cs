@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Physics.Farseer;
-using Virtex.Lib.Vertices.Physics.Farseer.Collision;
-using Virtex.Lib.Vertices.Physics.Farseer.Collision.Shapes;
-using Virtex.Lib.Vertices.Physics.Farseer.Common;
-using Virtex.Lib.Vertices.Physics.Farseer.Common.Decomposition;
-using Virtex.Lib.Vertices.Physics.Farseer.Dynamics;
+using Virtex.Lib.Vrtc.Physics.Farseer;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision;
+using Virtex.Lib.Vrtc.Physics.Farseer.Collision.Shapes;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common;
+using Virtex.Lib.Vrtc.Physics.Farseer.Common.Decomposition;
+using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 
-namespace Virtex.Lib.Vertices.Graphics
+namespace Virtex.Lib.Vrtc.Graphics
 {
 	public enum MaterialType
 	{

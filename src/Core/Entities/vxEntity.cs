@@ -5,12 +5,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Scenes;
-using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Scenes;
+using Virtex.Lib.Vrtc.Graphics;
 
 
-namespace Virtex.Lib.Vertices.Core.Entities
+namespace Virtex.Lib.Vrtc.Core.Entities
 {
     /// <summary>
     /// Base Entity in the Virtex vxEngine which controls all Rendering and Provides
@@ -114,7 +114,7 @@ namespace Virtex.Lib.Vertices.Core.Entities
 
 
         /// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vertices.Core.Entities.vxEntity"/> class. The Base Entity Object for the vxEngine.
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Core.Entities.vxEntity"/> class. The Base Entity Object for the vxEngine.
         /// </summary>
         /// <param name="vxEngine">Vx engine.</param>
         public vxEntity(vxEngine vxEngine)

@@ -1,15 +1,15 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries;
-using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseSystems;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionRuleManagement;
-using Virtex.Lib.Vertices.Physics.BEPU.Entities;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.Collision;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests.Manifolds;
-using Virtex.Lib.Vertices.Physics.BEPU.CollisionTests;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
+using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseSystems;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
+using Virtex.Lib.Vrtc.Physics.BEPU.Entities;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.Collision;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests.Manifolds;
+using Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests;
 using System;
-using Virtex.Lib.Vertices.Physics.BEPU.Constraints.SolverGroups;
-using Virtex.Lib.Vertices.Physics.BEPU.Materials;
+using Virtex.Lib.Vrtc.Physics.BEPU.Constraints.SolverGroups;
+using Virtex.Lib.Vrtc.Physics.BEPU.Materials;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.NarrowPhaseSystems.Pairs
+namespace Virtex.Lib.Vrtc.Physics.BEPU.NarrowPhaseSystems.Pairs
 {
     ///<summary>
     /// Superclass of pairs between collidables that generate contact points.

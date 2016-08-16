@@ -6,9 +6,9 @@ using System.IO;
 using System.IO.Compression;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Core;
+using Virtex.Lib.Vrtc.Core;
 
-namespace Virtex.Lib.Vertices.Utilities
+namespace Virtex.Lib.Vrtc.Utilities
 {
 	/// <summary>
 	/// Console Utility which provides output too both the in-game console window as well as 

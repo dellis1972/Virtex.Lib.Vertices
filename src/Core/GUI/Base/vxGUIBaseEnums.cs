@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Virtex.Lib.Vertices.GUI
+namespace Virtex.Lib.Vrtc.GUI
 {
     public enum vxGUIItemOrientation
     {

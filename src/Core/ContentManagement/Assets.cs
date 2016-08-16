@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
-using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vrtc.Graphics;
 
-namespace Virtex.Lib.Vertices.Core.ContentManagement
+namespace Virtex.Lib.Vrtc.Core.ContentManagement
 {
     /// <summary>
     /// Class for holding all vxEngine Assets

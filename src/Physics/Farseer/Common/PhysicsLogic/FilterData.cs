@@ -1,6 +1,6 @@
-﻿using vxVertices.Physics.Farseer.Dynamics;
+﻿using Virtex.Lib.Vrtc.Physics.Farseer.Dynamics;
 
-namespace vxVertices.Physics.Farseer.Common.PhysicsLogic
+namespace Virtex.Lib.Vrtc.Physics.Farseer.Common.PhysicsLogic
 {
     /// <summary>
     /// Contains filter data that can determine whether an object should be processed or not.

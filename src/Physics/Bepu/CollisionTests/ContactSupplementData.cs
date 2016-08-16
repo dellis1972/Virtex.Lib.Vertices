@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.CollisionTests
+namespace Virtex.Lib.Vrtc.Physics.BEPU.CollisionTests
 {
     ///<summary>
     /// Extra data associated with a contact point used to refresh contacts each frame.

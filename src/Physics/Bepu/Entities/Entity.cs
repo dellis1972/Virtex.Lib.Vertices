@@ -1,7 +1,7 @@
-﻿using Virtex.Lib.Vertices.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
+﻿using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using BEPUutilities;
 
-namespace Virtex.Lib.Vertices.Physics.BEPU.Entities
+namespace Virtex.Lib.Vrtc.Physics.BEPU.Entities
 {
     ///<summary>
     /// Superclass of all entities which have a defined collidable type.
