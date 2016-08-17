@@ -125,6 +125,8 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="GUI\Art Providers\IGuiArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
+    <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuScreenArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />

@@ -565,11 +565,10 @@ namespace Virtex.Lib.Vrtc.Core
 
             //Set Location of Content Specific too Platform
 #if VRTC_PLTFRM_XNA
-            _engineContentManager.RootDirectory = "Virtex.Lib.Vrtc.Core.XNA.Content";
+            _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
 
 #elif VRTC_PLTFRM_GL
-			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";
-            
+			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";            
 #elif VRTC_PLTFRM_DROID
             _engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
             
