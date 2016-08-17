@@ -9,9 +9,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 //Virtex vxEngine Declaration
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Core.Entities;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Core.Entities;
+using Virtex.Lib.Vrtc.Utilities;
 
 
 namespace VerticeEnginePort.Base

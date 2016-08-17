@@ -5,6 +5,12 @@ using System.Text;
 
 namespace Virtex.Lib.Vrtc.Network
 {
+	public enum vxEnumSessionStatus
+	{
+		WaitingForPlayers,
+		ReadyToPlay,
+		Ending,
+	}
     /*
     public class NetworkPlayerInfo
     {

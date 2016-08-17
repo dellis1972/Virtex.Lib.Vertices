@@ -8,7 +8,9 @@ The Vertices Engine is an in-house developed engine based in built from the grou
 |----------|--------------------------------|
 | XNA      | ![alt text][buildstatusXNA]    |
 | DirectX  | ![alt text][buildstatusDirctX] |
-| OpenGL   | ![alt text][buildstatusGL]     |
+| Windows (OpenGL)   | ![alt text][buildstatusGL]     |
+| OSX (OpenGL)   | ![alt text][buildstatusGL]     |
+| Linux (OpenGL)   | ![alt text][buildstatusGL]     |
 | Android  | ![alt text][buildstatusDroid]  |
 | iOS  | ![alt text][buildstatusIOS]  |
 

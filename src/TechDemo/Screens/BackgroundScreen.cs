@@ -5,7 +5,7 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using Virtex.Lib.Vertices.Core.Settings;
+using Virtex.Lib.Vrtc.Core.Settings;
 
 
 #endregion
@@ -16,9 +16,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Graphics;
-using Virtex.Lib.Vertices.Screens.Async;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Screens.Async;
 #endregion
 
 namespace VerticeEnginePort.Base

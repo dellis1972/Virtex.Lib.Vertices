@@ -3,33 +3,26 @@
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{9B831FEF-F496-498F-9FE8-180DA5CB4258};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{01EA47C4-E03C-4B42-A767-6560AE5BF1AC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>VerticePort.Base</RootNamespace>
-    <AssemblyName>Vertices Engine MonoGame Port</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AssemblyName>Virtex.App.Vertices.TechDemo.GL</AssemblyName>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
-    <OutputPath>bin\OpenGL\Debug</OutputPath>
-    <DefineConstants>DEBUG;TECHDEMO_PLTFRM_GL</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <OutputPath>bin\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>DEBUG; TECHDEMO_PLTFRM_GL</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\OpenGL\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <PlatformTarget>x86</PlatformTarget>
     <DefineConstants>TECHDEMO_PLTFRM_GL</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
@@ -37,13 +30,13 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="NVorbis">
-      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\NVorbis.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\NVorbis.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK">
-      <HintPath>..\..\packages\MonoGame.Framework.Linux.3.5.0.1678\lib\net40\OpenTK.dll</HintPath>
+      <HintPath>..\..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\OpenTK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,12 +63,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <ItemGroup>
-    <None Include="OpenTK.dll.config" />
-    <None Include="packages.config" />
     <None Include="Content\Compiled.WindowsGL\Models\sponza\spnza_bricks_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">

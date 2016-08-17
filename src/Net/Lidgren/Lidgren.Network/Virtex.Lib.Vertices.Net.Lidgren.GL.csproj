@@ -55,7 +55,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encryption\NetAESEncryption.cs">

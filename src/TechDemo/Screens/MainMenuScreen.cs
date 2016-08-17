@@ -5,7 +5,7 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
-using Virtex.Lib.Vertices.Network;
+using Virtex.Lib.Vrtc.Network;
 
 
 #endregion
@@ -13,13 +13,13 @@ using Virtex.Lib.Vertices.Network;
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.Screens.Menus;
-using Virtex.Lib.Vertices.GUI.Dialogs;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.GUI.MessageBoxs;
-using Virtex.Lib.Vertices.Screens.Async;
+using Virtex.Lib.Vrtc.Screens.Menus;
+using Virtex.Lib.Vrtc.GUI.Dialogs;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.GUI.MessageBoxs;
+using Virtex.Lib.Vrtc.Screens.Async;
 #endregion
 
 namespace VerticeEnginePort.Base

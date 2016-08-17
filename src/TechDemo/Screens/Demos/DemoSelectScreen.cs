@@ -9,10 +9,10 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
-using Virtex.Lib.Vertices.GUI.Controls;
-using Virtex.Lib.Vertices.Core.Input.Events;
-using Virtex.Lib.Vertices.Screens.Async;
-using Virtex.Lib.Vertices.Screens.Menus;
+using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.Core.Input.Events;
+using Virtex.Lib.Vrtc.Screens.Async;
+using Virtex.Lib.Vrtc.Screens.Menus;
 #endregion
 
 namespace VerticeEnginePort.Base

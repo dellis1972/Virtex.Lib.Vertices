@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 
-using Virtex.Lib.Vertices.Core;
-using Virtex.Lib.Vertices.Screens.Async;
-using Virtex.Lib.Vertices.Graphics;
+using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Screens.Async;
+using Virtex.Lib.Vrtc.Graphics;
 
 namespace VerticeEnginePort.Base
 {

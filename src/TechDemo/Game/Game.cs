@@ -2,8 +2,8 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Virtex.Lib.Vertices.Screens;
-using Virtex.Lib.Vertices.Utilities;
+using Virtex.Lib.Vrtc.Screens;
+using Virtex.Lib.Vrtc.Utilities;
 #endregion
 
 namespace VerticeEnginePort.Base
@@ -36,8 +36,11 @@ namespace VerticeEnginePort.Base
 
 
             graphics = new GraphicsDeviceManager(this);
+
+			#if DEBUG
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
+			#endif
 			graphics.SynchronizeWithVerticalRetrace = true;
 
 

@@ -8,12 +8,7 @@ using System.Net;
 
 namespace Virtex.Lib.Vrtc.Network.Messages
 {
-    public enum vxEnumSessionStatus
-    {
-        WaitingForPlayers,
-        ReadyToPlay,
-        Ending,
-    }
+
     /// <summary>
     /// This message is used during the discovery phase to glean basic server information.
     /// </summary>
