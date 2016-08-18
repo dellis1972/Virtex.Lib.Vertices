@@ -37,8 +37,8 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Virtex.Lib.Vrtc.XNA")]
-[assembly: AssemblyProduct("Virtex.Lib.Vrtc.XNA")]
+[assembly: AssemblyTitle("Virtex.Lib.Vrtc")]
+[assembly: AssemblyProduct("Virtex.Lib.Vrtc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
@@ -63,5 +63,5 @@ using Android.App;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.4.*")]
+[assembly: AssemblyVersion("0.5.*")]
 #endif

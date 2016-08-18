@@ -30,7 +30,7 @@ namespace Virtex.Lib.Vrtc.Screens
 
         float pauseAlpha;
 
-        int UpdateCount = 0;
+        float UpdateCount = 0;
 
         KeyboardState CurrentKeyboardState = new KeyboardState();
         KeyboardState PreviousKeyboardState = new KeyboardState();
@@ -40,13 +40,13 @@ namespace Virtex.Lib.Vrtc.Screens
         #region Initialization
 
 #if DEBUG
-        int UpdateTime = 5;
+        float UpdateTime = 0.5f;
 #else
-        int UpdateTime = 200;
+        float UpdateTime = 5;
 #endif
 
         /// <summary>
-        /// Constructor.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Screens.TitleScreen"/> class.
         /// </summary>
         public TitleScreen()
         {
@@ -54,6 +54,10 @@ namespace Virtex.Lib.Vrtc.Screens
             TransitionOffTime = TimeSpan.FromSeconds(1.5);
         }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Screens.TitleScreen"/> class.
+		/// </summary>
+		/// <param name="UpdateTime">Update time.</param>
         public TitleScreen(int UpdateTime):this()
         {
             this.UpdateTime = UpdateTime;
@@ -73,12 +77,14 @@ namespace Virtex.Lib.Vrtc.Screens
                 content = new ContentManager(vxEngine.Game.Services, "Content");
 
             TitleFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_splash");
-
 			try
 			{
-			vxEngine.SplashScreen = vxEngine.Game.Content.Load<Texture2D> ("SplashScreen");
+				Console.WriteLine ("Loading Splash Screen");
+				vxEngine.SplashScreen = vxEngine.Game.Content.Load<Texture2D> ("SplashScreen");
+				Console.WriteLine ("Success");
 			}
-			catch{
+			catch {
+				Console.WriteLine ("Error Loading Splash Screen");
 			}
         }
 
@@ -119,8 +125,8 @@ namespace Virtex.Lib.Vrtc.Screens
 
             CurrentKeyboardState = Keyboard.GetState();
 
-            UpdateCount++;
-            if (UpdateCount == UpdateTime || CurrentKeyboardState.IsKeyDown(Keys.Enter))
+			UpdateCount += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (UpdateCount > UpdateTime || CurrentKeyboardState.IsKeyDown(Keys.Enter))
             {
 				vxEngine.vxEngineMainEntryPoint();
             }

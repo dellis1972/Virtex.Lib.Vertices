@@ -349,6 +349,10 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 				//Update the Physics System.
 				vxConsole.WriteToInGameDebug ("Physics");
+
+				//vxConsole.WriteToInGameDebug(((float)gameTime.ElapsedGameTime.Milliseconds)/1000);
+				//vxConsole.WriteToInGameDebug((float)gameTime.ElapsedGameTime.TotalSeconds);
+				//BEPUPhyicsSpace.Update ((float)gameTime.ElapsedGameTime.TotalSeconds);
 				BEPUPhyicsSpace.Update ();
 
 				// Stop measuring time for "Draw".

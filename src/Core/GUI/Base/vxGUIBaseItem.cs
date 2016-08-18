@@ -536,7 +536,7 @@ namespace Virtex.Lib.Vrtc.GUI
         /// </summary>
         public virtual void Select()
         {
-            if (Enabled)
+            if (Enabled && HasMouseBeenUpYet)
             {
                 //To Show some visible cure the click was registered.
                 HoverAlpha = 0;
@@ -561,7 +561,20 @@ namespace Virtex.Lib.Vrtc.GUI
                 Colour *= 0.5f;
         }
 
-        
+		/// <summary>
+		/// Gets a value indicating whether the mouse left button been up yet.
+		/// </summary>
+		/// <remarks>A check for if the Left Button has been in the Release State yet. This is to prevent
+		// the 'Click' event being fired if the button is created where the mouse is 
+		// and if the mouse is currently being clicked.</remarks>
+		/// <value><c>true</c> The mouse left button has been in the 'Release' state since this GUI item has been instantiated; otherwise, <c>false</c>.</value>
+		public bool HasMouseBeenUpYet {
+			get {
+				return hasMouseBeenUpYet;
+			}
+		}	
+		private bool hasMouseBeenUpYet = false;
+
         /// <summary>
         /// Updates the GUI Item
         /// </summary>
@@ -571,6 +584,12 @@ namespace Virtex.Lib.Vrtc.GUI
             //Vector2 cursorPos = mouseState.Position.ToVector2();
 
             Vector2 cursorPos = new Vector2(vxEngine.InputManager.MouseState.X, vxEngine.InputManager.MouseState.Y);
+
+			// A check for if the Left Button has been in the Release State yet. This is to prevent
+			// the 'Click' event being fired if the button is created where the mouse is 
+			// and if the mouse is currently being clicked.
+			if (vxEngine.InputManager.MouseState.LeftButton == ButtonState.Released)
+				hasMouseBeenUpYet = true;
 
             try
             {

@@ -634,7 +634,7 @@ namespace Virtex.Lib.Vrtc.Core
 
 
 			GraphicsDeviceManager graphics = Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
-			graphics.SynchronizeWithVerticalRetrace = false;
+			//graphics.SynchronizeWithVerticalRetrace = false;
 			Game.IsFixedTimeStep = false;
 			//graphics.PreferMultiSampling = true;
 			//graphics.GraphicsDevice.PresentationParameters.MultiSampleCount = 8;

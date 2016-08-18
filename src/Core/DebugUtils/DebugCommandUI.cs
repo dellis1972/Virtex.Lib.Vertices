@@ -40,12 +40,12 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         /// <summary>
         /// Maximum lines that shows in Debug command window.
         /// </summary>
-        const int MaxLineCount = 20;
+        const int MaxLineCount = 27;
 
         /// <summary>
         /// Maximum command history number.
         /// </summary>
-        const int MaxCommandHistory = 32;
+        const int MaxCommandHistory = 128;
 
         /// <summary>
         /// Cursor character.
@@ -199,11 +199,12 @@ namespace Virtex.Lib.Vrtc.Core.Debug
                 foreach (CommandInfo cmd in commandTable.Values)
                     maxLen = Math.Max(maxLen, cmd.command.Length);
 
-                string fmt = String.Format("{{0,-{0}}}    {{1}}", maxLen);
+                //string fmt = String.Format("{{0,-{0}}}    {{1}}", maxLen);
 
                 foreach (CommandInfo cmd in commandTable.Values)
                 {
-                    Echo(String.Format(fmt, cmd.command, cmd.description));
+						int cmdlen = cmd.command.Length;
+						Echo(String.Format("{0}"+new String(' ', 16 - cmdlen)+"{1}", cmd.command, cmd.description));
                 }
             });
 
