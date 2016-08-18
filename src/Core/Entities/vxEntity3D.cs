@@ -823,7 +823,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                             if (effect.Parameters["FogColor"] != null)
                                 effect.Parameters["FogColor"].SetValue(Vector4.One);
 
-#if VRTC_PLTFRM_XNA
+//#if VRTC_PLTFRM_XNA
                             if (effect.Parameters["ShadowDebug"] != null)
                                 effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
 
@@ -835,7 +835,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                                 effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
                             if (effect.Parameters["SplitColors"] != null)
                                 effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-#endif
+//#endif
                         }
 
                         mesh.Draw();
