@@ -40,7 +40,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         /// <summary>
         /// Maximum lines that shows in Debug command window.
         /// </summary>
-        const int MaxLineCount = 27;
+        int MaxLineCount = 45;
 
         /// <summary>
         /// Maximum command history number.
@@ -192,7 +192,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 			ToggleConsoleKey = Keys.OemTilde;
 
             // Help command displays registered command information.
-            RegisterCommand("help", "Show Command helps",
+            RegisterCommand("help", "Show Debug Console Command help",
             delegate(IDebugCommandHost host, string command, IList<string> args)
             {
                 int maxLen = 0;
@@ -200,23 +200,27 @@ namespace Virtex.Lib.Vrtc.Core.Debug
                     maxLen = Math.Max(maxLen, cmd.command.Length);
 
                 //string fmt = String.Format("{{0,-{0}}}    {{1}}", maxLen);
+					Echo("");
+					Echo("\t\tVertices Debug Console Help");
+					Echo("`---------------------------------------------------");
 
                 foreach (CommandInfo cmd in commandTable.Values)
                 {
 						int cmdlen = cmd.command.Length;
-						Echo(String.Format("{0}"+new String(' ', 16 - cmdlen)+"{1}", cmd.command, cmd.description));
-                }
+						Echo(String.Format("\t\t{0}"+new String('.', 10 - cmdlen)+"{1}", cmd.command, cmd.description));
+					}
+					Echo("");
             });
 
             // Clear screen command
-            RegisterCommand("cls", "Clear Screen",
+            RegisterCommand("cls", "Clears the Debug Console Screen",
             delegate(IDebugCommandHost host, string command, IList<string> args)
             {
                 lines.Clear();
             });
 
             // Echo command
-            RegisterCommand("echo", "Display Messages",
+            RegisterCommand("echo", "Echo a given line of text",
             delegate(IDebugCommandHost host, string command, IList<string> args)
             {
                 Echo(command.Substring(5));
@@ -446,6 +450,9 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         {
             KeyboardState keyState = Keyboard.GetState();
 
+			//Reset Line Count
+			MaxLineCount = this.vxEngine.GraphicsDevice.Viewport.Height / (int)debugManager.DebugFont.MeasureString("A").Y - 3;
+
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             const float OpenSpeed = 8.0f;
             const float CloseSpeed = 8.0f;
@@ -633,15 +640,17 @@ namespace Virtex.Lib.Vrtc.Core.Debug
             // Draw each lines.
             Vector2 pos = new Vector2(leftMargin, topMargin);
 
+			Color consoleColour = new Color(0,255,0,255);
+
             //Show Title Bar
-            spriteBatch.DrawString(font, "          " + vxEngine.EngineVersion, pos, Color.White);
+			spriteBatch.DrawString(font, "          " + vxEngine.EngineVersion, pos,consoleColour);
             pos.Y += font.LineSpacing;
-            spriteBatch.DrawString(font, "==================================================", pos, Color.White);
+			spriteBatch.DrawString(font, "==================================================", pos, consoleColour);
             pos.Y += font.LineSpacing;
 
             foreach (string line in lines)
             {
-                spriteBatch.DrawString(font, line, pos, Color.White);
+				spriteBatch.DrawString(font, line, pos, consoleColour);
                 pos.Y += font.LineSpacing;
             }
 
@@ -651,8 +660,25 @@ namespace Virtex.Lib.Vrtc.Core.Debug
             cursorPos.Y = pos.Y;
 
             spriteBatch.DrawString(font,
-                String.Format("{0}{1}", Prompt, commandLine), pos, Color.White);
-            spriteBatch.DrawString(font, Cursor, cursorPos, Color.White);
+				String.Format("{0}{1}", Prompt, commandLine), pos, consoleColour);
+			spriteBatch.DrawString(font, Cursor, cursorPos, consoleColour);
+
+			spriteBatch.Draw (vxEngine.Assets.Textures.Blank, 
+				new Rectangle (0, (MaxLineCount+2) * (int)font.MeasureString ("A").Y, 2000, 4),
+				Color.Black * 0.25f);
+
+			spriteBatch.Draw (vxEngine.Assets.Textures.Blank, 
+				new Rectangle (0, (MaxLineCount+2) * (int)font.MeasureString ("A").Y, 2000, 3),
+				Color.Black * 0.6f);
+
+			spriteBatch.Draw (vxEngine.Assets.Textures.Blank, 
+				new Rectangle (0, (MaxLineCount+2) * (int)font.MeasureString ("A").Y, 2000, 2),
+				Color.Black);
+			
+			spriteBatch.Draw (vxEngine.Assets.Textures.Blank, 
+				new Rectangle (0, (MaxLineCount+2) * (int)font.MeasureString ("A").Y, 2000, 1),
+				Color.White*0.75f);
+
 
             spriteBatch.End();
         }

@@ -75,9 +75,9 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         /// </summary>
         void SetMenuEntryText()
         {
-            displayDebugHUDMenuEntry.Text = "Display Debug HUD: " + (vxEngine.DisplayDebugMesh ? "Yes" : "No");
-            displayDebugRenderTargets.Text = "Display Debug Render Targets: " + (vxEngine.DisplayRenderTargets ? "Yes" : "No");
-            displayDebugInformation.Text = "Display Debug Info: " + (vxEngine.DisplayDebugInformation ? "Yes" : "No");
+			displayDebugHUDMenuEntry.Text = "Display Debug HUD: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var ? "Yes" : "No");
+			displayDebugRenderTargets.Text = "Display Debug Render Targets: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var ? "Yes" : "No");
+            //displayDebugInformation.Text = "Display Debug Info: " + (vxEngine.DisplayDebugInformation ? "Yes" : "No");
         }
 
         void cancelMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -106,19 +106,19 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         
         void displayDebugHUDMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
-            vxEngine.DisplayDebugMesh = !vxEngine.DisplayDebugMesh;
+           // vxEngine.DisplayDebugMesh = !vxEngine.DisplayDebugMesh;
             SetMenuEntryText();
         }
 
         void displayDebugRenderTargets_Selected(object sender, PlayerIndexEventArgs e)
         {
-            vxEngine.DisplayRenderTargets = !vxEngine.DisplayRenderTargets;
+            //vxEngine.DisplayRenderTargets = !vxEngine.DisplayRenderTargets;
             SetMenuEntryText();
         }
 
         void displayDebugInformation_Selected(object sender, PlayerIndexEventArgs e)
         {
-            vxEngine.DisplayDebugInformation = !vxEngine.DisplayDebugInformation;
+            //vxEngine.DisplayDebugInformation = !vxEngine.DisplayDebugInformation;
             SetMenuEntryText();
         }
 

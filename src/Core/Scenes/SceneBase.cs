@@ -124,7 +124,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
         {
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-
         }
 
 		/// <summary>

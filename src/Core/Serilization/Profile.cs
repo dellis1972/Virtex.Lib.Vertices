@@ -45,7 +45,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
             {
                 //Console.Write("Loading Settings...");
                 XmlSerializer deserializer = new XmlSerializer(typeof(vxSettings));
-                TextReader reader = new StreamReader(vxEngine.Path_Profiles + "settings.set");
+				TextReader reader = new StreamReader(vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString() + "settings.set");
                 object obj = deserializer.Deserialize(reader);
                 Settings = (vxSettings)obj;
                 reader.Close();
@@ -82,7 +82,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
             {
                 //Write The Sandbox File
                 XmlSerializer serializer = new XmlSerializer(typeof(vxSettings));
-                using (TextWriter writer = new StreamWriter(vxEngine.Path_Profiles + "settings.set"))
+				using (TextWriter writer = new StreamWriter(vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString() + "settings.set"))
                 {
                     serializer.Serialize(writer, Settings);
                 }

@@ -16,7 +16,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\MonoGame.Debug.2D</OutputPath>
-    <DefineConstants>DEBUG;VIRTICES_2D;VRTC_PLTFRM_GL;NO_DRIVER_OPENAL</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;VIRTICES_2D;VRTC_PLTFRM_GL;NO_DRIVER_OPENAL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -123,13 +123,13 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\Virtex.Game.CartoonSandbox\src\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="NVorbis">
-      <HintPath>..\..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\NVorbis.dll</HintPath>
+      <HintPath>..\..\..\Virtex.Game.CartoonSandbox\src\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\NVorbis.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK">
-      <HintPath>..\..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\OpenTK.dll</HintPath>
+      <HintPath>..\..\..\Virtex.Game.CartoonSandbox\src\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\OpenTK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -791,6 +791,7 @@
     <Compile Include="Localization\vxLocalizationDialog.cs" />
     <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
+    <Compile Include="DebugUtils\EnvVar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -928,14 +929,6 @@
     <ProjectReference Include="..\Physics\Farseer\Virtex.Lib.Vertices.Physics.Farseer.GL.csproj">
       <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj">
-      <Project>{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}</Project>
-      <Name>Virtex.Lib.Vertices.Net.Lidgren.GL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
-      <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
-      <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

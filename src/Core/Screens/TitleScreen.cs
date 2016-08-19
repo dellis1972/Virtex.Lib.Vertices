@@ -103,6 +103,7 @@ namespace Virtex.Lib.Vrtc.Screens
         #region Update and Draw
 
 
+
         /// <summary>
         /// Updates the background screen. Unlike most screens, this should not
         /// transition off even if it has been covered by another screen: it is
@@ -126,7 +127,7 @@ namespace Virtex.Lib.Vrtc.Screens
             CurrentKeyboardState = Keyboard.GetState();
 
 			UpdateCount += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (UpdateCount > UpdateTime || CurrentKeyboardState.IsKeyDown(Keys.Enter))
+            if (UpdateCount > UpdateTime || CurrentKeyboardState.IsKeyDown(Keys.Enter) || vxEngine.HasContentBeenLoaded)
             {
 				vxEngine.vxEngineMainEntryPoint();
             }

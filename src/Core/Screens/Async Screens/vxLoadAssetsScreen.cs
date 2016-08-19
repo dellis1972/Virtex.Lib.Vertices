@@ -122,7 +122,7 @@ namespace Virtex.Lib.Vrtc.Screens.Async
 
                 foreach (vxGameBaseScreen screen in screensToLoad)
                 {
-                    if (screen != null)
+                    if (screen != null && screen.IsInitialised == false)
                     {
                         vxEngine.AddScreen(screen, ControllingPlayer);
                     }

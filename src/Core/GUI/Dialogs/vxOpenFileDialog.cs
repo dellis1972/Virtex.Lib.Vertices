@@ -204,7 +204,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         
         public virtual void BckgrndWrkr_FileOpen_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            string[] filePaths = Directory.GetFiles(vxEngine.Path_Sandbox, "*.sbx");
+			string[] filePaths = Directory.GetFiles(vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString(), "*.sbx");
 
             List<vxFileDialogItem> List_Temp_Items = new List<vxFileDialogItem>();
 

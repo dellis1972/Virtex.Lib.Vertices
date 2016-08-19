@@ -6,6 +6,7 @@
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
 using Virtex.Lib.Vrtc.Core.Input;
+using Virtex.Lib.Vrtc.Utilities;
 
 
 #endregion
@@ -24,9 +25,24 @@ namespace Virtex.Lib.Vrtc.Core
     /// </summary>
     public enum ScreenState
     {
+		/// <summary>
+		/// Transitioning on.
+		/// </summary>
         TransitionOn,
+
+		/// <summary>
+		/// Screen is active.
+		/// </summary>
         Active,
+
+		/// <summary>
+		/// Transitioning off.
+		/// </summary>
         TransitionOff,
+
+		/// <summary>
+		/// The screen is hidden.
+		/// </summary>
         Hidden,
     }
 
@@ -194,16 +210,31 @@ namespace Virtex.Lib.Vrtc.Core
         #region Initialization
 
 
+		public bool IsInitialised
+		{
+			get { return isInitialised; }
+			set { isInitialised = value; }
+		}
+		bool isInitialised = false;
+
+		public vxGameBaseScreen()
+		{
+		}
+
+
         /// <summary>
         /// Load graphics content for the screen.
         /// </summary>
-        public virtual void LoadContent() { }
+		public virtual void LoadContent() {  
+		}
 
 
         /// <summary>
         /// Unload content for the screen.
         /// </summary>
-        public virtual void UnloadContent() { }
+        public virtual void UnloadContent() {
+
+		}
 
 
         #endregion

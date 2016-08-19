@@ -127,7 +127,7 @@ namespace Virtex.Lib.Vrtc.Core
 		/// <value>The vxEngine version.</value>
 		public string EngineVersion {
 			get { return _engineVersion; }
-			set { _engineVersion = "Virteces Engine - v." + value; }
+			set { _engineVersion = "Vertices Engine - v." + value; }
 		}
 
 		string _engineVersion = "v. 0.0.0.0";
@@ -144,6 +144,7 @@ namespace Virtex.Lib.Vrtc.Core
 
 		Texture2D _currentScreenshot;
 
+		/*
 		/// <summary>
 		/// Path to save the Profiles
 		/// </summary>
@@ -172,7 +173,7 @@ namespace Virtex.Lib.Vrtc.Core
 			}
 		}
 
-
+		*/
         public Color FadeToBackBufferColor = Color.Black;
         public Color LoadingScreenBackColor = Color.Black;
         public Color LoadingScreenTextColor = Color.White;
@@ -345,8 +346,16 @@ namespace Virtex.Lib.Vrtc.Core
         /// </summary>
         public vxLanguagePackBase Language { get; set; }
 
+		/// <summary>
+		/// Gets or sets the enviroment variables for the Engine and Game.
+		/// </summary>
+		/// <value>The enviroment variables.</value>
+		public Dictionary<object, EnvVar> EnviromentVariables { get; set; }
+
+
         #region Debug Properties
 
+		/*
         /// <summary>
         /// Displays Render Targets for Graphics Debugin
         /// </summary>
@@ -356,7 +365,6 @@ namespace Virtex.Lib.Vrtc.Core
 		}
 
 		bool _displayRenderTargets = false;
-
 
 		/// <summary>
 		/// Displays Debug Meshes
@@ -387,7 +395,7 @@ namespace Virtex.Lib.Vrtc.Core
 		}
 
 		bool _showInGameDebugWindow = false;
-
+		*/
 #endregion
 
 #region Properties
@@ -440,22 +448,8 @@ namespace Virtex.Lib.Vrtc.Core
 
 			Game.IsMouseVisible = true;
 
-			//This is just temporary, this is re-loaded for global uses when the vxEngine is Initialised.
-			string gameVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
-
-#if !VRTC_PLTFRM_DROID
-			try {
-				Console.Title = "VIRTICES ENGINE DEBUG CONSOLE v." + gameVersion;
-			} catch {
-			}
-#endif
-			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
-			vxConsole.WriteLine (string.Format ("          Vertices Engine - v.{0}", gameVersion));
-			vxConsole.WriteLine (string.Format ("          Starting Game   - {0}", GameName));
-			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
-
-
-        }
+			EnviromentVariables = new Dictionary<object, EnvVar>();
+		}
 
 
 		/// <summary>
@@ -463,6 +457,43 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public override void Initialize ()
 		{
+			#region Init Enviroment Variables
+
+			EnviromentVariables.Add(vxEnumEnvVarType.RES_X.ToString(), new EnvVar (this.GraphicsDevice.PresentationParameters.BackBufferWidth, 
+				"Width of the Current Backbuffer"));
+			EnviromentVariables.Add(vxEnumEnvVarType.RES_Y.ToString(), new EnvVar (this.GraphicsDevice.PresentationParameters.BackBufferHeight, 
+				"Heigh of the Current Backbuffer"));
+
+			EnviromentVariables.Add(vxEnumEnvVarType.FLSCRN.ToString(), new EnvVar (this.GraphicsDevice.PresentationParameters.IsFullScreen, 
+				"Set's whether it's Fullscreen or not"));
+
+			EnviromentVariables.Add(vxEnumEnvVarType.VSYNC.ToString(), new EnvVar (false, 
+				"Set's whether the Vertical Sync is on or not."));
+
+			string path = "Virtex Edge Design/" + GameName + "/Profiles/";
+			#if VRTC_PLTFRM_XNA
+			path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
+			#endif
+			EnviromentVariables.Add(vxEnumEnvVarType.PATH_SETTINGS.ToString(), new EnvVar (path, 
+				"Path to the Settings Folder"));
+
+
+			string sndpath = "Virtex Edge Design/" + GameName + "/Sandbox/";
+			#if VRTC_PLTFRM_XNA
+			sndpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + path;
+			#endif
+			EnviromentVariables.Add(vxEnumEnvVarType.PATH_SANDBOX.ToString(), new EnvVar (sndpath, 
+				"Path to the Sandbox Folder"));
+
+
+			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_MESH.ToString(), new EnvVar (false, 
+				"Toggles the Debug Mesh for Physics"));
+			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString(), new EnvVar (false, 
+				"Toggles viewing the Individual Render Targets"));
+			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_INGMECNSL.ToString(), new EnvVar (false, 
+				"Toggles the In-Game Debug Window"));
+
+			#endregion
 
 			base.Initialize ();
 
@@ -477,21 +508,41 @@ namespace Virtex.Lib.Vrtc.Core
             _debugSystem = DebugSystem.Initialize (this, "Fonts/font_debug");
 			_debugSystem.TimeRuler.ShowLog = true;
 
+
+
 			// Register's Command too Show Render Targets on the Screen
+			/*****************************************************************************************************/
 			_debugSystem.DebugCommandUI.RegisterCommand (
 				"rt",              // Name of command
-				"Displays Render Targets",     // Description of command
+				"Toggle Viewing Individual Render Targets",     // Description of command
 				delegate (IDebugCommandHost host, string command, IList<string> args) {
-					DisplayRenderTargets = !DisplayRenderTargets;
+					//DisplayRenderTargets = !DisplayRenderTargets;
+
+					if((bool)EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var == true)
+						EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var = false;
+					else
+						EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var = true;
 				});
 
-			// Register's Command too Show Render Targets on the Screen
-			_debugSystem.DebugCommandUI.RegisterCommand (
-				"dm",              // Name of command
-				"Displays Debug Mesh's",     // Description of command
-				(IDebugCommandHost host, string command, IList<string> args) => DisplayDebugMesh = !DisplayDebugMesh);
 
 			// Register's Command too Show Render Targets on the Screen
+			/*****************************************************************************************************/
+			_debugSystem.DebugCommandUI.RegisterCommand (
+				"dm",              // Name of command
+				"Toggles Debug Mesh's",     // Description of command
+				delegate (IDebugCommandHost host, string command, IList<string> args) {
+					//DisplayDebugMesh = !DisplayDebugMesh
+
+					if((bool)EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var == true)
+						EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var = false;
+					else
+						EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var = true;
+				});
+
+
+
+			// Register's Command too Show Render Targets on the Screen
+			/*****************************************************************************************************/
 			_debugSystem.DebugCommandUI.RegisterCommand (
 				"bm",              // Name of command
 				"Toggle Bloom",     // Description of command
@@ -499,46 +550,110 @@ namespace Virtex.Lib.Vrtc.Core
 					//this.Profile.Settings.Graphics.Bool_DoBloom = !this.Profile.Settings.Graphics.Bool_DoBloom;
 				});
 
+
+
 			// Register's Command too Show Render Targets on the Screen
+			/*****************************************************************************************************/
 			_debugSystem.DebugCommandUI.RegisterCommand (
 				"cn",              // Name of command
-				"Toggle In Game Console",     // Description of command
+				"Toggle the in-game console which won't pause the game (Different than this console)",     // Description of command
 				delegate (IDebugCommandHost host, string command, IList<string> args) {
-					ShowInGameDebugWindow = !ShowInGameDebugWindow;
+					//ShowInGameDebugWindow = !ShowInGameDebugWindow;
+
+					if((bool)EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var == true)
+						EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var = false;
+					else
+						EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var = true;					
+				});
+
+
+
+
+			// Register's Command too Show Render Targets on the Screen
+			/*****************************************************************************************************/
+			_debugSystem.DebugCommandUI.RegisterCommand (
+				"set",              // Name of command
+				"Set's a value to a specific variable which is preregisgtered with the debug system. add -help for more information",     // Description of command
+				delegate (IDebugCommandHost host, string command, IList<string> args) {
+
+					switch(args[0])
+					{
+					case "-help":
+						_debugSystem.DebugCommandUI.Echo("");
+						_debugSystem.DebugCommandUI.Echo("Set the Enviroment Variable by issueing the command:");
+						_debugSystem.DebugCommandUI.Echo("");
+
+						_debugSystem.DebugCommandUI.Echo("set [var] [value]");
+
+						_debugSystem.DebugCommandUI.Echo("");
+						_debugSystem.DebugCommandUI.Echo("Enviroment Variables List");
+						_debugSystem.DebugCommandUI.Echo("------------------------------");
+
+						int length = 20;
+						//Get Length
+						foreach(KeyValuePair<object, EnvVar> entry in EnviromentVariables)
+						{
+							string str = String.Format("\t\t{0} = {1}", 
+								entry.Key, entry.Value.Var);
+							
+							length = Math.Max(length, str.Length);
+						}
+						length += 5;
+
+						//Now Echo the Values
+						foreach(KeyValuePair<object, EnvVar> entry in EnviromentVariables)
+						{
+							string val = String.Format("\t\t{0} = {1}", 
+								entry.Key, entry.Value.Var);
+
+							int cmdlen = val.Length;
+							_debugSystem.DebugCommandUI.Echo(String.Format("\t\t{0}"+new String('.', length - cmdlen)+" : {1}", 
+								val, entry.Value.Description));
+						}
+						_debugSystem.DebugCommandUI.Echo("");
+						break;
+						default:
+						if(args.Count > 1)
+							{
+							try
+							{								
+								EnviromentVariables[args[0]].Var = args[1];
+							}
+							catch(Exception ex)
+							{
+								vxConsole.WriteLine (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+								vxConsole.WriteLine ("Error Setting Enviroment Variable");
+								vxConsole.WriteLine (ex.Message);
+								vxConsole.WriteLine (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+							}
+							}
+						break;
+					}
 				});
 
 			//Initialise the Debug Renderer
 			vxDebugShapeRenderer.Initialize (GraphicsDevice);
 
 			#endregion
+			vxConsole.Init(this);
+
 
 
 #if !VRTC_PLTFRM_DROID
 
 			//First Check, if the Profiles Directory Doesn't Exist, Create It
-			if (Directory.Exists (Path_Profiles) == false)
-				Directory.CreateDirectory (Path_Profiles);
+			if (Directory.Exists (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString()) == false)
+				Directory.CreateDirectory (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString());
 
 			//First Check, if the Sandbox Directory Doesn't Exist, Create It
-			if (Directory.Exists (Path_Sandbox) == false)
-				Directory.CreateDirectory (Path_Sandbox);
+			if (Directory.Exists (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString()) == false)
+				Directory.CreateDirectory (EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString());
 
 			//First Check, if the Temp Directory Doesn't Exist, Create It
 			if (Directory.Exists ("Temp/Settings") == false)
 				Directory.CreateDirectory ("Temp/Settings");
 
 #endif
-            vxConsole.vxEngine = this;
-
-//THere's only two choices for a backend, XNA or MonoGame. The entire code base will be eventually
-//be moved over ONLY too MonoGame as XNA is no longer supported.
-#if VRTC_PLTFRM_XNA
-			vxConsole.WriteLine("Starting Vertices Engine with XNA Backend...");
-#else
-            vxConsole.WriteLine ("Starting Vertices Engine with MonoGame Backend...");
-#endif
-
-
 
 #if VRTC_INCLDLIB_NET
 			InitialiseMasterServerConnection();
@@ -680,15 +795,7 @@ namespace Virtex.Lib.Vrtc.Core
 
 		}
 
-		/*
-		/// <summary>
-		/// Starts the menu set.
-		/// </summary>
-		public virtual void StartMenuSet ()
-		{
-			
-		}
-		*/
+
 
 
 		/// <summary>
@@ -857,8 +964,9 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public void AddScreen (vxGameBaseScreen screen, PlayerIndex? controllingPlayer)
 		{
-			vxConsole.WriteLine ("Adding Screen: " + screen.ToString ());
+			Console.WriteLine ("Adding Screen: " + screen.ToString ());
 
+			screen.IsInitialised = true;
 			screen.ControllingPlayer = controllingPlayer;
 			screen.vxEngine = this;
 			screen.IsExiting = false;
@@ -881,6 +989,9 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public void RemoveScreen (vxGameBaseScreen screen)
 		{
+			Console.WriteLine ("Removing Screen: " + screen.ToString ());
+
+
 			// If we have a graphics device, tell the screen to unload content.
 			if (isInitialized) {
 				screen.UnloadContent ();

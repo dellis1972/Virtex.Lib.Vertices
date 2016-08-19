@@ -280,7 +280,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
                                                                     as IDebugCommandHost;
             if (host != null)
             {
-                host.RegisterCommand("tr", "TimeRuler", this.CommandExecute);
+                host.RegisterCommand("tr", "Toggles the time ruler to measure system performace for different code regions.", this.CommandExecute);
                 this.Visible = false;
             }
 
