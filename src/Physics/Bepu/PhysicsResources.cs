@@ -23,7 +23,6 @@ namespace Virtex.Lib.Vrtc.Physics.BEPU
 
         public static void ResetPools()
         {
-
             SubPoolRayCastResultList = new LockingResourcePool<RawList<RayCastResult>>();
             SubPoolBroadPhaseEntryList = new LockingResourcePool<RawList<BroadPhaseEntry>>();
             SubPoolCollidableList = new LockingResourcePool<RawList<Collidable>>();

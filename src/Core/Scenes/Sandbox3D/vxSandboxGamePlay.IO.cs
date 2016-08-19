@@ -66,7 +66,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         /// <param name="e"></param>
         public virtual void Event_OpenFileToolbarItem_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
-            OpenFileDialog = new vxOpenFileDialog(vxEngine, vxEngine.Path_Sandbox, "*.sbx");
+			OpenFileDialog = new vxOpenFileDialog(vxEngine, vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString(), "*.sbx");
             vxEngine.AddScreen(OpenFileDialog, ControllingPlayer);
             OpenFileDialog.Accepted += new EventHandler<PlayerIndexEventArgs>(Event_OpenFileDialog_Accepted);
         }
@@ -128,7 +128,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             sandBoxFile.textureWidth = thumbnail.Width;
             sandBoxFile.textureHeight = thumbnail.Height;
 
-            string path = vxEngine.Path_Sandbox;
+			string path =  vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString();
             //string path = "Temp/Sandbox/" + LevelFile.Name;
 
             //First Check, if the Items Directory Doesn't Exist, Create It
@@ -196,7 +196,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         public virtual void ExportFileToolbarItem_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
             //string path = vxEngine.Path_Sandbox + "\\" + sandBoxFile.Name;
-            string path = vxEngine.Path_Sandbox + "\\Export\\";
+			string path =  vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString() + "\\Export\\";
 
             //First Check, if the Items Directory Doesn't Exist, Create It
             if (Directory.Exists(path) == false)

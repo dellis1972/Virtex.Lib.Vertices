@@ -930,5 +930,13 @@
       <Project>{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}</Project>
       <Name>Virtex.Lib.Vertices.Physics.Farseer.GL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Physics\Bepu\Virtex.Lib.Vertices.Physics.Bepu.GL.csproj">
+      <Project>{0AAD36E3-51A6-4A07-AB60-5C8A66BD38B7}</Project>
+      <Name>Virtex.Lib.Vertices.Physics.Bepu.GL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Net\Lidgren\Lidgren.Network\Virtex.Lib.Vertices.Net.Lidgren.GL.csproj">
+      <Project>{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}</Project>
+      <Name>Virtex.Lib.Vertices.Net.Lidgren.GL</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

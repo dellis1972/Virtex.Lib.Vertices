@@ -634,7 +634,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         public virtual void RenderMesh(string RenderTechnique)
         {
             if (vxModel!=null && vxModel.ModelMain != null)
-                if (vxEngine.DisplayDebugMesh == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
+			if ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
                 {
                     //updateTechnique();
 

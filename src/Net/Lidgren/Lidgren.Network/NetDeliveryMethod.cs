@@ -22,7 +22,7 @@ namespace Lidgren.Network
 		/// Unreliable, unordered delivery
 		/// </summary>
 		Unreliable = 1,
-
+		//
 		/// <summary>
 		/// Unreliable delivery, but automatically dropping late messages
 		/// </summary>
