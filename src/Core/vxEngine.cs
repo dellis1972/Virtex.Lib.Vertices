@@ -571,7 +571,7 @@ namespace Virtex.Lib.Vrtc.Core
 				Directory.CreateDirectory (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString());
 
 			//First Check, if the Sandbox Directory Doesn't Exist, Create It
-			if (Directory.Exists (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString()) == false)
+			if (Directory.Exists (EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString()) == false)
 				Directory.CreateDirectory (EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString());
 
 			//First Check, if the Temp Directory Doesn't Exist, Create It

@@ -165,7 +165,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			World.Step(Math.Min((float)gameTime.ElapsedGameTime.TotalSeconds, (1f / 60f)));
 			}
 			catch(Exception ex) {
-				Console.WriteLine ("ERROR IN FARSEER: " + ex.Message);
+				//Console.WriteLine ("ERROR IN FARSEER: " + ex.Message);
 			}
 			gameTimeBase = gameTime;
 

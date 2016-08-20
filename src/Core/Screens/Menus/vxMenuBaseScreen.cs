@@ -39,10 +39,6 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         /// </summary>
         public vxMenuScreenArtProvider ArtProvider { get; internal set; }
 
-        /// <summary>
-        /// The Art provider for the Menu Items.
-        /// </summary>
-        //public vxMenuItemArtProvider MenuItemArtProvider { get; internal set; }
 
         /// <summary>
         /// Gets the list of menu entries, so derived classes can add
