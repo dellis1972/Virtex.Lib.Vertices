@@ -34,6 +34,8 @@
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
     <AssemblyName>Virtex.Lib.Vertices.Core.GL.2D</AssemblyName>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.3D|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -785,6 +787,7 @@
     <Compile Include="DebugUtils\EnvVar.cs" />
     <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
     <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
+    <Compile Include="DebugUtils\CrashHandlerGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

@@ -26,6 +26,9 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Virtex.Lib.Vrtc.Localization;
 
 //Internal Network Libraries
+using Microsoft.Xna.Framework.Input;
+
+
 #if VRTC_INCLDLIB_NET 
 using Virtex.Lib.Vrtc.Network;
 using Virtex.Lib.Vrtc.Network.Events;
@@ -586,8 +589,7 @@ namespace Virtex.Lib.Vrtc.Core
 
 			vxConsole.WriteLine ("Starting Content Manager...");
 		}
-
-
+			
 
 		/// <summary>
 		/// Load your graphics content.
