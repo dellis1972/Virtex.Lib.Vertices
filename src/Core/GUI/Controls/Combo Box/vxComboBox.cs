@@ -185,7 +185,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
                     (int)(BoundingRectangle.Width + Padding),
                     (int)(BoundingRectangle.Height + Padding));
 
-
+		
             //Draw Each Button
             if (DisplayList)
             {

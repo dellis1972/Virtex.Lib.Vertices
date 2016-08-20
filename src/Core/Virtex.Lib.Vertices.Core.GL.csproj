@@ -18,22 +18,22 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\MonoGame.Debug.2D</OutputPath>
-    <DefineConstants>DEBUG;TRACE;VIRTICES_2D;VRTC_PLTFRM_GL;NO_DRIVER_OPENAL</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;VIRTICES_2D;VRTC_PLTFRM_GL;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AssemblyName>Virtex.Lib.Vertices.Core.OpenGL.2D.DEBUG</AssemblyName>
+    <AssemblyName>Virtex.Lib.Vertices.Core.GL.2D.DEBUG</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release.2D|x86' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\MonoGame.Release.2D</OutputPath>
-    <DefineConstants>VIRTICES_2D;VRTC_PLTFRM_GL;NO_DRIVER_OPENAL</DefineConstants>
+    <DefineConstants>VIRTICES_2D;VRTC_PLTFRM_GL;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\MonoGame.Release.2D\Engine.xml</DocumentationFile>
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
-    <AssemblyName>Virtex.Lib.Vertices.Core.OpenGL.2D</AssemblyName>
+    <AssemblyName>Virtex.Lib.Vertices.Core.GL.2D</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.3D|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,7 +62,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\MonoGame.Debug.3D</OutputPath>
-    <DefineConstants>DEBUG;TRACE;VIRTICES_3D;VRTC_PLTFRM_GL;VRTC_INCLDLIB_NET;NO_DRIVER_OPENAL</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;VIRTICES_3D;VRTC_PLTFRM_GL;VRTC_INCLDLIB_NET;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -71,7 +71,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release.3D.Network|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\MonoGame.Release.3D</OutputPath>
-    <DefineConstants>VIRTICES_3D;VRTC_PLTFRM_GL;VRTC_INCLDLIB_NET;NO_DRIVER_OPENAL</DefineConstants>
+    <DefineConstants>VIRTICES_3D;VRTC_PLTFRM_GL;VRTC_INCLDLIB_NET;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -89,17 +89,6 @@
     <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
     <AssemblyName>Virtex.Lib.Vertices.Core.GL</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.2D.Any|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\MonoGame.Debug.2D</OutputPath>
-    <DefineConstants>DEBUG;TRACE;VIRTICES_2D;VRTC_PLTFRM_GL;NO_DRIVER_OPENAL</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>Virtex.Lib.Vertices.Core.OpenGL.2D.DEBUG</AssemblyName>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.3D|x86' ">
     <Optimize>false</Optimize>
@@ -619,7 +608,6 @@
     <Compile Include="Screens\Async Screens\BusyScreen.cs" />
     <Compile Include="Graphics\2D Gameplay\Layer.cs" />
     <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs" />
-    <Compile Include="Graphics\2D Gameplay\LineBatch.cs" />
     <Compile Include="GUI\vxGuiManager.cs" />
     <Compile Include="GUI\Dialogs\vxDialogBase.cs" />
     <Compile Include="GUI\Dialogs\vxFileDialogItem.cs" />
@@ -632,7 +620,6 @@
     <Compile Include="Mathematics\vxMathUtils.cs" />
     <Compile Include="Geometry\Quad.cs" />
     <Compile Include="Geometry\Tri.cs" />
-    <Compile Include="Graphics\2D Gameplay\AssetCreator2D.cs" />
     <Compile Include="GUI\Controls\Buttons\vxButton.cs" />
     <Compile Include="GUI\Controls\Buttons\xButton_Toggle.cs" />
     <Compile Include="GUI\Controls\Combo Box\vxComboBox.cs" />
@@ -796,6 +783,8 @@
     <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
     <Compile Include="DebugUtils\EnvVar.cs" />
+    <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
+    <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

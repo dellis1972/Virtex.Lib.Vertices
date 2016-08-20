@@ -22,7 +22,11 @@ namespace Virtex.Lib.Vrtc.Graphics
 		Pavement
 	}
 
-	public class AssetCreator2D
+	/// <summary>
+	/// This is a 2D Asset Creator which can generate Textures from Farseer Assets. This has been taken and 
+	/// slightly modified from the Farseer Test Bed.
+	/// </summary>
+	public class vxAssetCreator2D
 	{
 		private const int CircleSegments = 32;
 
@@ -30,7 +34,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		private BasicEffect _effect;
 		private Dictionary<MaterialType, Texture2D> _materials = new Dictionary<MaterialType, Texture2D>();
 
-		public AssetCreator2D(GraphicsDevice device)
+		public vxAssetCreator2D(GraphicsDevice device)
 		{
 			_device = device;
 			_effect = new BasicEffect(_device);

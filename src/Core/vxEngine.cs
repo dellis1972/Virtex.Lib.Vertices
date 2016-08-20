@@ -66,13 +66,13 @@ namespace Virtex.Lib.Vrtc.Core
 		/// The asset creator is used in 2D Games to create stand in Textures which match(simple) 2D Physics Bodies.
 		/// </summary>
 		/// <value>The asset creator.</value>
-		public AssetCreator2D AssetCreator { get; private set; }
+		public vxAssetCreator2D AssetCreator { get; private set; }
 
 		/// <summary>
 		/// Line Batch Manager which draw's a number of 2D Lines to the screen.
 		/// </summary>
 		/// <value>The line batch.</value>
-		public LineBatch LineBatch { get; private set; }
+		public vxLineBatch LineBatch { get; private set; }
 		#endif
 		/// <summary>
 		/// Boolean value of whether or not to allow the resolution to be changeable.
@@ -144,36 +144,6 @@ namespace Virtex.Lib.Vrtc.Core
 
 		Texture2D _currentScreenshot;
 
-		/*
-		/// <summary>
-		/// Path to save the Profiles
-		/// </summary>
-		public string Path_Profiles {
-
-			get {
-				string path = "Virtex Edge Design/" + GameName + "/Profiles/";
-#if VRTC_PLTFRM_XNA
-                path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
-#endif
-				return path;
-			}
-
-		}
-
-		/// <summary>
-		/// Path to save the Sandbox Files
-		/// </summary>
-		public string Path_Sandbox {
-			get {
-				string path = "Virtex Edge Design/" + GameName + "/Sandbox/";
-#if VRTC_PLTFRM_XNA
-                path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + path;
-#endif
-				return path;
-			}
-		}
-
-		*/
         public Color FadeToBackBufferColor = Color.Black;
         public Color LoadingScreenBackColor = Color.Black;
         public Color LoadingScreenTextColor = Color.White;
@@ -352,51 +322,6 @@ namespace Virtex.Lib.Vrtc.Core
 		/// <value>The enviroment variables.</value>
 		public Dictionary<object, EnvVar> EnviromentVariables { get; set; }
 
-
-        #region Debug Properties
-
-		/*
-        /// <summary>
-        /// Displays Render Targets for Graphics Debugin
-        /// </summary>
-        public bool DisplayRenderTargets {
-			get { return _displayRenderTargets; }
-			set { _displayRenderTargets = value; }
-		}
-
-		bool _displayRenderTargets = false;
-
-		/// <summary>
-		/// Displays Debug Meshes
-		/// </summary>
-		public bool DisplayDebugMesh {
-			get { return _displayDebugMesh; }
-			set { _displayDebugMesh = value; }
-		}
-
-		bool _displayDebugMesh = false;
-
-		/// <summary>
-		/// Displays Debug Information
-		/// </summary>
-		public bool DisplayDebugInformation {
-			get { return _displayDebugInformation; }
-			set { _displayDebugInformation = value; }
-		}
-
-		bool _displayDebugInformation = false;
-
-		/// <summary>
-		/// Displays Debug Information
-		/// </summary>
-		public bool ShowInGameDebugWindow {
-			get { return _showInGameDebugWindow; }
-			set { _showInGameDebugWindow = value; }
-		}
-
-		bool _showInGameDebugWindow = false;
-		*/
-#endregion
 
 #region Properties
 
@@ -693,9 +618,9 @@ namespace Virtex.Lib.Vrtc.Core
 
 
 #if VIRTICES_2D
-            LineBatch = new LineBatch (GraphicsDevice);
+            LineBatch = new vxLineBatch (GraphicsDevice);
 
-			AssetCreator = new AssetCreator2D (GraphicsDevice);
+			AssetCreator = new vxAssetCreator2D (GraphicsDevice);
 			AssetCreator.LoadContent (_engineContentManager);
 #endif
 			_inputManager = new vxInputManager (this);
@@ -784,7 +709,7 @@ namespace Virtex.Lib.Vrtc.Core
 
             Languages.Add(new vxLanguagePackEnglishBase());
             Languages.Add(new vxLanguagePackFrenchBase());
-            Languages.Add(new vxLanguagePackKoreanBase());
+            //Languages.Add(new vxLanguagePackKoreanBase());
         }
 
 		/// <summary>

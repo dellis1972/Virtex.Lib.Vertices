@@ -7,7 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Virtex.Lib.Vrtc.Graphics
 {
-	public class LineBatch : IDisposable
+	/// <summary>
+	/// This is a Line Batch Drawer which can draw lines based off a number of different inputs (i.e. Shapes, Vertices etc...).
+	/// This has been taken and slightly modified from the Farseer Test Bed.
+	/// </summary>
+	public class vxLineBatch : IDisposable
 	{
 		private const int DefaultBufferSize = 500;
 
@@ -26,7 +30,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		private VertexPositionColor[] _lineVertices;
 		private int _lineVertsCount;
 
-		public LineBatch(GraphicsDevice graphicsDevice, int bufferSize = DefaultBufferSize)
+		public vxLineBatch(GraphicsDevice graphicsDevice, int bufferSize = DefaultBufferSize)
 		{
 			if (graphicsDevice == null)
 				throw new ArgumentNullException("graphicsDevice");
@@ -88,7 +92,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 				throw new InvalidOperationException("Begin must be called before DrawLineShape can be called.");
 
 			if (shape.ShapeType != ShapeType.Edge && shape.ShapeType != ShapeType.Chain)
-				throw new NotSupportedException("The specified shapeType is not supported by LineBatch.");
+				throw new NotSupportedException("The specified shapeType is not supported by vxLineBatch.");
 
 			if (shape.ShapeType == ShapeType.Edge)
 			{
