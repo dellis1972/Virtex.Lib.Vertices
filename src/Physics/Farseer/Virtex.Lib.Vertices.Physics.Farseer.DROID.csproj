@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Virtex.Lib.Vertices.Physics.Farseer.DROID</RootNamespace>
-    <AssemblyName>Virtex.Lib.Vertices.Physics.Farseer.DROID</AssemblyName>
+    <RootNamespace>Virtex.Lib.Vrtcs.Physics.Farseer.DROID</RootNamespace>
+    <AssemblyName>Virtex.Lib.Vrtc.Physics.Farseer.DROID</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -170,7 +170,6 @@
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>

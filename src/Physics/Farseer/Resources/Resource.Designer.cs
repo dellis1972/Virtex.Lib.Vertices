@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Virtex.Lib.Vertices.Physics.Farseer.DROID.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Virtex.Lib.Vrtcs.Physics.Farseer.DROID.Resource", IsApplication=false)]
 
-namespace Virtex.Lib.Vertices.Physics.Farseer.DROID
+namespace Virtex.Lib.Vrtcs.Physics.Farseer.DROID
 {
 	
 	

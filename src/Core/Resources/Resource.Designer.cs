@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Virtex.Lib.Vertices.DROID.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Virtex.Lib.Vrtc.DROID.Resource", IsApplication=false)]
 
-namespace Virtex.Lib.Vertices.DROID
+namespace Virtex.Lib.Vrtc.DROID
 {
 	
 	

@@ -3,7 +3,7 @@
 
 /outputDir:..\Vertices.Engine.Content\Compiled.$(Platform)
 /intermediateDir:obj/$(Platform)
-/platform:DesktopGL
+/platform:Android
 /config:
 /profile:HiDef
 /compress:False

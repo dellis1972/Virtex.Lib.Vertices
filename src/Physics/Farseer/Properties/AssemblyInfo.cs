@@ -8,11 +8,11 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Virtex.Lib.Vertices.Physics.Farseer.DROID")]
+[assembly: AssemblyTitle("Virtex.Lib.Vrtc.Physics.Farseer.DROID")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Virtex.Lib.Vertices.Physics.Farseer.DROID")]
+[assembly: AssemblyProduct("Virtex.Lib.Vrtc.Physics.Farseer.DROID")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
