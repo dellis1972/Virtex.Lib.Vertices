@@ -245,6 +245,21 @@ namespace Virtex.Lib.Vrtc.Core.Input
             else
             {
                 Cursor = new Vector2(MouseState.X, MouseState.Y);// - _manager.Game.Window.Position.ToVector2();
+
+
+				//TODO: There's a current bug in OSX DesktopGL in MonoGame 3.5 which doesn't update the mouse position
+				//if the left or right button is pressed down. This is a workaround until the problem is solved in MG 3.6.
+			#if VRTC_PLTFRM_GL
+
+				//Get the Mouses Relative Position to the Window
+				Point mouseRelative = new Point(
+					System.Windows.Forms.Control.MousePosition.X - _manager.Game.Window.ClientBounds.X, 
+					System.Windows.Forms.Control.MousePosition.Y - _manager.Game.Window.ClientBounds.Y);
+
+				//Now set the Cursor to the relative position
+				Cursor = mouseRelative.ToVector2();
+
+				#endif
             }
 #endif
             Cursor = new Vector2(MathHelper.Clamp(Cursor.X, 0f, _manager.GraphicsDevice.Viewport.Width), MathHelper.Clamp(Cursor.Y, 0f, _manager.GraphicsDevice.Viewport.Height));

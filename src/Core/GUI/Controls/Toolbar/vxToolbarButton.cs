@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Core;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Virtex.Lib.Vrtc.GUI.Controls
 {
@@ -66,7 +67,31 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
             //Set Default Colours
             Color_Normal = Color.White;
             Color_Highlight = Color.DarkOrange;
-        }
+
+			//Setup initial Events to handle mouse sounds
+			this.OnInitialHover += this_OnInitialHover;
+			this.Clicked += this_Clicked;
+		}
+
+		private void this_OnInitialHover(object sender, EventArgs e)
+		{
+			//If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
+			MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
+			MenuHighlight.Play();
+
+			#endif
+		}
+
+		void this_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
+		{
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance equipInstance = vxEngine.vxGUITheme.SE_Menu_Confirm.CreateInstance();
+			equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
+			equipInstance.Play();
+			#endif
+		}
 
 		/// <summary>
 		/// Draws the GUI Item

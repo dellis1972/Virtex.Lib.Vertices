@@ -31,6 +31,10 @@ namespace Virtex.Lib.Vrtc.Utilities
 		/// </summary>
 		public static Vector2 DebugStringLocation = new Vector2(5,5);
 
+		/// <summary>
+		/// Initialises the vxConsole Static Object.
+		/// </summary>
+		/// <param name="engine">Engine.</param>
 		public static void Init(vxEngine engine)
 		{
 			vxEngine = engine;
@@ -45,28 +49,32 @@ namespace Virtex.Lib.Vrtc.Utilities
 			}
 			#endif
 
+			string backend = "COMPILER FLAG NOT FOUND";
+			//There's only two choices for a backend, XNA or MonoGame. The entire code base will be eventually
+			//be moved over ONLY too MonoGame as XNA is no longer supported.
+			#if VRTC_PLTFRM_XNA
+			backend = "XNA";
+			#elif VRTC_PLTFRM_DRTCX
+			backend = "MonoGame [DirectX]";
+			#elif VRTC_PLTFRM_GL
+			backend = "MonoGame [OpenGL]";
+			#elif VRTC_PLTFRM_DROID
+			backend = "MonoGame [Android]";
+			#elif VRTC_PLTFRM_IOS
+			backend = "MonoGame [iOS]";
+			#endif
+
 			vxConsole.WriteLine ("____   ____             __  .__                     ");
 			vxConsole.WriteLine ("\\   \\ /   /____________/  |_|__| ____  ____   ______");
 			vxConsole.WriteLine (" \\   Y   // __ \\_  __ \\   __\\  |/ ___\\/ __ \\ /  ___/");
 			vxConsole.WriteLine ("  \\     /\\  ___/|  | \\/|  | |  \\  \\__\\  ___/ \\___ \\ ");
 			vxConsole.WriteLine ("   \\___/  \\___  >__|   |__| |__|\\___  >___  >____  >");
 			vxConsole.WriteLine ("              \\/                    \\/    \\/     \\/ ");
+			vxConsole.WriteLine ("VERTICES ENGINE - (C) VIRTEX EDGE DESIGN");
 			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
-			vxConsole.WriteLine (string.Format ("Vertices Engine - v.{0}", gameVersion));
-			vxConsole.WriteLine (string.Format ("Game Name:\t{0}", engine.GameName));
-			//There's only two choices for a backend, XNA or MonoGame. The entire code base will be eventually
-			//be moved over ONLY too MonoGame as XNA is no longer supported.
-			#if VRTC_PLTFRM_XNA
-			vxConsole.WriteLine("Backend: XNA");
-			#elif VRTC_PLTFRM_DRTCX
-			vxConsole.WriteLine("Backend:\t\t\tMonoGame [DirectX]");
-			#elif VRTC_PLTFRM_GL
-			vxConsole.WriteLine("Backend:\t\t\tMonoGame [OpenGL]");
-			#elif VRTC_PLTFRM_DROID
-			vxConsole.WriteLine("Backend:\t\t\tMonoGame [Android]");
-			#elif VRTC_PLTFRM_IOS
-			vxConsole.WriteLine("Backend:\t\t\tMonoGame [iOS]");
-			#endif
+			vxConsole.WriteLine (string.Format ("Engine Version      v.{0}", gameVersion));
+			vxConsole.WriteLine (string.Format ("Game Name:          {0}", engine.GameName));
+			vxConsole.WriteLine (string.Format ("Graphical Backend:  {0}", backend));
 			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
 		}
 

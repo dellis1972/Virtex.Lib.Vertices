@@ -59,9 +59,6 @@ namespace VerticeEnginePort.Base
 
             vxEngine.LoadResolution = false;
 
-            // Activate the first screens.
-            //vxEngine.AddScreen(new GUITestScreen(), null);
-
 #if !VIRTICES_XNA
 			//this.Window.Position = new Point (0, 0);
 #endif

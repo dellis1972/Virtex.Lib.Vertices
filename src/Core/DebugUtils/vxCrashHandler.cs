@@ -51,7 +51,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
 			int MAX_NUM_OF_CHARS_PER_LINE = scrnwidth / CharWidth - 5;
 
-			string text = "";
+			string text = "\n";
 
 			text += " __   _____ ___ _____ ___ ___ ___ ___    ___ _  _  ___ ___ _  _ ___     ___ ___    _   ___ _  _    _  _   _   _  _ ___  _    ___ ___ \n";
 			text += " \\ \\ / / __| _ \\_   _|_ _/ __| __/ __|  | __| \\| |/ __|_ _| \\| | __|   / __| _ \\  /_\\ / __| || |  | || | /_\\ | \\| |   \\| |  | __| _ \\\n";
@@ -61,13 +61,13 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 			text += new string ('=', MAX_NUM_OF_CHARS_PER_LINE) + "\n";
 
 
-			text += "\n\nWHY AM I SEEING THIS???\n===================================================================\n";
-			text += "Despite our best efforts, it seems a bug did make it's way through our QA. Don't worry, this is\n";
-			text += "an in game catch which displays any and all crash information.\n";
+			text += "\nWHY AM I SEEING THIS???\n===================================================================\n";
+			text += "Despite our best efforts, it seems a bug did make it's way through our QA. Don't worry, this is ";
+			text += "an in game catch which displays any and all crash information.\n\n";
 
-			text += "To get outside of this screen, alt-tab or close the progam/app in your system.\n\n";
+			text += "To get outside of this screen, alt-tab or close the progam/app in your system. ";
 
-			text +=	"The log's files for this crash can be found at the root directory of the game under the 'log' folder.\n\n";
+			text +=	"The log's files for this crash can be found at the root directory of the\ngame under the 'log' folder.\n\n";
 
 			text += "If this is a reoccuring issue, please contact either Virtex Edge Design (contact@virtexedgedesign.com) or the Game Vendor.\n\n";
 
@@ -75,6 +75,14 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
 			text += "\n\nERROR INFORMATION [ " + time + " ]\n=====================================\n";
 			text += string.Format("File Source:   {0}\n",exception.Source);
+			//Set Location of Content Specific too Platform
+			#if VRTC_PLTFRM_XNA
+			text += string.Format("Platform:      XNA\n");
+			#elif VRTC_PLTFRM_GL
+			text += string.Format("Platform:      MonoGame - DesktopGL\n");
+			#elif VRTC_PLTFRM_DROID
+			text += string.Format("Platform:      MonoGame - Android\n");
+			#endif
 			text += string.Format("Method Source: {0}\n",exception.TargetSite);
 			text += string.Format("Error Messge:  {0}\n",exception.Message);
 			text += string.Format("Error Data:    {0}\n",exception.Data);
@@ -104,39 +112,65 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
 			text += stacktrace;
 
+
+			try
+			{
 			if (Directory.Exists ("log") == false)
 				Directory.CreateDirectory ("log");
 
 			StreamWriter writer = new StreamWriter (string.Format("log/CRASH LOG {0}.log", time));
 			writer.Write (text);
 			writer.Close ();
-
+			}
+			catch (Exception writeException) {
+				text = "  NOTE: CRASH LOG COULD NOT BE WRITTEN.\n"+writeException.Message + text;
+			}
 			int i = 0;
+			int j = 0;
 			bool loop = true;
+			string spinner = "|";
 			while(loop)
 			{
-				game.GraphicsDevice.Clear (Color.Purple);
+				game.GraphicsDevice.Clear (Color.DarkMagenta);
 				i++;
 
 				KeyboardState ks = Keyboard.GetState ();
 
-				if (ks.IsKeyDown (Keys.A) == true || i > 1000)
+				if (ks.IsKeyDown (Keys.A) == true)
 					loop = false;
 
+				//Adds a spinner to the top of the BSOD so that the player can still see some movement and they
+				// don't worry that their system is locked up
+				if (i % 10 == 0) {
+					j++;
+
+					switch(j%4)
+					{
+					case 0:
+						spinner = "|";
+						break;
+						case 1:
+						spinner = "/";
+						break;
+						case 2:
+						spinner = "-";
+						break;
+						case 3:
+						spinner = "\\";
+						break;
+					}
+				}
 
 
 				//TODO: Add your drawing code here
 				CrashSpriteBatch.Begin();
-				CrashSpriteBatch.DrawString(CrashFont, text,new Vector2(10,10), Color.White);
+				CrashSpriteBatch.DrawString(CrashFont, spinner + " DON'T PANIC"  + text,new Vector2(10,10), Color.White);
 				CrashSpriteBatch.End ();
 				//GameTime gameTime = new GameTime (new TimeSpan (1), new TimeSpan (1));
 
 
 				game.GraphicsDevice.Present ();
-
 			}
-
-
 
 			//Once the player clicks Space, then exit
 			game.Exit ();

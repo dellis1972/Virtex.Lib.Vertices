@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Core;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Virtex.Lib.Vrtc.GUI.Controls
 {
@@ -90,7 +91,31 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 
 			//Default is true
 			DrawHoverBackground = true;
-        }
+			this.OnInitialHover += VxMenuEntry_OnInitialHover;
+			this.Clicked += VxButtonImage_Clicked;
+		}
+
+		void VxButtonImage_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
+		{
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance equipInstance = vxEngine.vxGUITheme.SE_Menu_Confirm.CreateInstance();
+			equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
+			equipInstance.Play();
+			#endif
+		}
+
+		private void VxMenuEntry_OnInitialHover(object sender, EventArgs e)
+		{
+			//If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
+
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
+			MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
+			MenuHighlight.Play();
+
+			#endif
+		}
+
         public override void Update(vxEngine vxEngine)
         {
             base.Update(vxEngine);
@@ -120,11 +145,11 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 
             //Draw Hover Items
 			if(DrawHoverBackground)
-				vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha* Alpha);
+				vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha * Alpha);
 
 
             if (HoverButtonImage != null)
-				vxEngine.SpriteBatch.Draw(HoverButtonImage, BoundingRectangle, Color_Normal * HoverAlpha* Alpha);
+				vxEngine.SpriteBatch.Draw(HoverButtonImage, BoundingRectangle, Color_Highlight * HoverAlpha * Alpha);
 
         }
     }

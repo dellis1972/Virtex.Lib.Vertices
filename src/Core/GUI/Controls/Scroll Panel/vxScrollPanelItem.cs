@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Core;
 using Virtex.Lib.Vrtc.GUI.Events;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
@@ -78,8 +79,30 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             Color_Normal = new Color(0.15f, 0.15f, 0.15f, 0.5f);
             Color_Highlight = Color.DarkOrange;
-            Colour_Text = Color.LightGray;
-        }
+			Colour_Text = Color.LightGray;
+			this.OnInitialHover += this_OnInitialHover;
+			this.Clicked += this_Clicked;
+		}
+
+		private void this_OnInitialHover(object sender, EventArgs e)
+		{
+			//If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
+			MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
+			MenuHighlight.Play();
+
+			#endif
+		}
+
+		void this_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
+		{
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance equipInstance = vxEngine.vxGUITheme.SE_Menu_Confirm.CreateInstance();
+			equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
+			equipInstance.Play();
+			#endif
+		}
 
         public void UnSelect()
         {
@@ -98,6 +121,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             DrawByOwner(vxEngine);
             vxEngine.SpriteBatch.End();
         }
+
+
 
         public override void DrawByOwner(vxEngine vxEngine)
         {

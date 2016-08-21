@@ -62,19 +62,29 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 			//Have this button get a clone of the current Art Provider
 			this.ArtProvider = (vxButtonArtProvider)vxEngine.vxGUITheme.ArtProviderForButtons.Clone ();
 
-            this.OnInitialHover += VxMenuEntry_OnInitialHover;
-        }
+			this.OnInitialHover += this_OnInitialHover;
+			this.Clicked += this_Clicked;
+		}
 
-        private void VxMenuEntry_OnInitialHover(object sender, EventArgs e)
+		private void this_OnInitialHover(object sender, EventArgs e)
         {
             //If Previous Selection = False and Current is True, then Create Highlite Sound Instsance
-
 #if !NO_DRIVER_OPENAL
             SoundEffectInstance MenuHighlight = vxEngine.vxGUITheme.SE_Menu_Hover.CreateInstance();
             MenuHighlight.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume / 6;
             MenuHighlight.Play();
+
+#endif
+		}
+
+		void this_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
+		{
+			#if !NO_DRIVER_OPENAL
+			SoundEffectInstance equipInstance = vxEngine.vxGUITheme.SE_Menu_Confirm.CreateInstance();
+			equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
+			equipInstance.Play();
 			#endif
-        }
+		}
 
         /// <summary>
         /// Draws the GUI Item

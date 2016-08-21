@@ -201,13 +201,13 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
                 //string fmt = String.Format("{{0,-{0}}}    {{1}}", maxLen);
 					Echo("");
-					Echo("\t\tVertices Debug Console Help");
-					Echo("`---------------------------------------------------");
+					Echo("     Vertices Debug Console Help");
+					Echo("---------------------------------------------------");
 
                 foreach (CommandInfo cmd in commandTable.Values)
                 {
 						int cmdlen = cmd.command.Length;
-						Echo(String.Format("\t\t{0}"+new String('.', 10 - cmdlen)+"{1}", cmd.command, cmd.description));
+						Echo(String.Format("     {0}"+new String('.', 10 - cmdlen)+"{1}", cmd.command, cmd.description));
 					}
 					Echo("");
             });

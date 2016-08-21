@@ -339,14 +339,15 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
 
         public virtual void Update(GameTime time)
         {
+			vxConsole.WriteToInGameDebug (CameraType);
             if (CameraType == CameraType.CharacterFPS)
             {
                 //Only move around if the camera has control over its own position.
 				float dt = ((float)time.ElapsedGameTime.Milliseconds)/1000;//0.0167f;
-                //float distance = Speed * dt;
+				//float distance = Speed * dt;
 
-                    Yaw += (200- vxEngine.InputManager.MouseState.X) * dt * .12f;
-                    Pitch += (200- vxEngine.InputManager.MouseState.Y) * dt * .12f;
+                Yaw += (200- vxEngine.InputManager.Cursor.X) * dt * .12f;
+				Pitch += (200- vxEngine.InputManager.Cursor.Y) * dt * .12f;
 
 				//Yaw += (vxEngine.InputManager.PreviousMouseState.X - vxEngine.InputManager.MouseState.X) * dt * .12f;
 				//Pitch += (vxEngine.InputManager.PreviousMouseState.Y - vxEngine.InputManager.MouseState.Y) * dt * .12f;
@@ -355,21 +356,20 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
                 WorldMatrix = WorldMatrix * Matrix.CreateTranslation(Position);
                 View = Matrix.Invert(WorldMatrix);
                 Mouse.SetPosition(200, 200);
-                 
             }
 
             if (CameraType == CameraType.Orbit)
             {
                 if (vxEngine.InputManager.IsNewMouseButtonPress(MouseButtons.MiddleButton))
                 {
-                    vxEngine.Mouse_ClickPos = new Vector2(vxEngine.InputManager.MouseState.X, vxEngine.InputManager.MouseState.Y);
+					vxEngine.Mouse_ClickPos = new Vector2(vxEngine.InputManager.Cursor.X, vxEngine.InputManager.Cursor.Y);
                 }
 
                 if (vxEngine.InputManager.MouseState.MiddleButton == ButtonState.Pressed)
                 {
                     float dt = 0.0167f;
-                    Yaw += ((int)vxEngine.Mouse_ClickPos.X - vxEngine.InputManager.MouseState.X) * dt * .12f;
-                    Pitch += ((int)vxEngine.Mouse_ClickPos.Y - vxEngine.InputManager.MouseState.Y) * dt * .12f;
+					Yaw += ((int)vxEngine.Mouse_ClickPos.X - vxEngine.InputManager.Cursor.X) * dt * .12f;
+					Pitch += ((int)vxEngine.Mouse_ClickPos.Y - vxEngine.InputManager.Cursor.Y) * dt * .12f;
                     Mouse.SetPosition((int)vxEngine.Mouse_ClickPos.X, (int)vxEngine.Mouse_ClickPos.Y);
                 }
 
@@ -397,8 +397,8 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
 
                 if (vxEngine.InputManager.MouseState.MiddleButton == ButtonState.Pressed)
                 {
-                    Yaw += ((int)vxEngine.Mouse_ClickPos.X - vxEngine.InputManager.MouseState.X) * dt * .12f;
-                    Pitch += ((int)vxEngine.Mouse_ClickPos.Y - vxEngine.InputManager.MouseState.Y) * dt * .12f;
+					Yaw += ((int)vxEngine.Mouse_ClickPos.X - vxEngine.InputManager.Cursor.X) * dt * .12f;
+					Pitch += ((int)vxEngine.Mouse_ClickPos.Y - vxEngine.InputManager.Cursor.Y) * dt * .12f;
                 }
 
                 WorldMatrix = Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);

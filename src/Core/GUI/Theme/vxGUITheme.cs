@@ -57,6 +57,7 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
 		public vxButtonArtProvider ArtProviderForButtons { get; set; }
         public vxMenuScreenArtProvider ArtProviderForMenuScreen { get; set; }
         public vxMenuItemArtProvider ArtProviderForMenuScreenItems { get; set; }
+		public vxMessageBoxArtProvider ArtProviderForMessageBoxes { get; set; }
 
         /*******************************************/
         //					LABEL
@@ -104,7 +105,7 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
 			ArtProviderForButtons = new vxButtonArtProvider(Engine);
             ArtProviderForMenuScreen = new vxMenuScreenArtProvider(Engine);
             ArtProviderForMenuScreenItems = new vxMenuItemArtProvider(Engine);
-
+			ArtProviderForMessageBoxes = new vxMessageBoxArtProvider (Engine);
 
             SetDefaultTheme ();
 		}

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 #if TECHDEMO_PLTFRM_XNA
-[assembly: AssemblyTitle("VerticesEngineTextDemo.XNA")]
+[assembly: AssemblyTitle("VerticesEngineTextDemo [XNA]")]
 #elif TECHDEMO_PLTFRM_GL
-[assembly: AssemblyTitle("VerticesEngineTextDemo.Linux")]
+[assembly: AssemblyTitle("Vertices Engine - Test Bed [MonoGame OpenGL]")]
 #endif
 [assembly: AssemblyProduct("VerticesEngineTextDemo.Base Source")]
 [assembly: AssemblyDescription("")]

@@ -5,6 +5,7 @@
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
+using Virtex.Lib.Vrtc.GUI.GuiArtProvider;
 
 
 #endregion
@@ -79,6 +80,12 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
         // The background includes a border somewhat larger than the text itself.
         public int hPad = 12;
         public int vPad = 12;
+
+
+		/// <summary>
+		/// The given Art Provider of the Menu Entry. 
+		/// </summary>
+		public vxMessageBoxArtProvider ArtProvider { get; internal set; }
 
         #endregion
 
@@ -167,7 +174,9 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
 			Btn_Cancel.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
 				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth - vxEngine.vxGUITheme.Padding.X, 
 				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
-			
+
+
+			this.ArtProvider = (vxMessageBoxArtProvider)vxEngine.vxGUITheme.ArtProviderForMessageBoxes.Clone();
         }
 
 
@@ -233,25 +242,18 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
         {
             // Darken down any other screens that were drawn beneath the popup.
             vxEngine.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
-            
-            // Fade the popup alpha during transitions.
-            Color color = Color.Black * TransitionAlpha;
 
-            spriteBatch.Begin();
-
-            // Draw the Title
-            spriteBatch.Draw(vxEngine.Assets.Textures.Blank, TitleRectangle, color * 0.75f);
-            spriteBatch.DrawString(font, Title, textTitlePosition, Color.White);
-            
-            // Draw the message box text.
-            spriteBatch.Draw(vxEngine.Assets.Textures.Blank, backgroundRectangle, color * 0.55f);
-            spriteBatch.DrawString(font, message, textPosition, Color.White);
-
-            spriteBatch.End();
+			this.ArtProvider.Draw(this);
 
             //Draw the GUI
             xGUIManager.Draw(vxEngine);
         }
+
+
+		public virtual void SetArtProvider(vxMessageBoxArtProvider NewArtProvider)
+		{
+			this.ArtProvider = (vxMessageBoxArtProvider)NewArtProvider.Clone();
+		}
 
 
         #endregion
