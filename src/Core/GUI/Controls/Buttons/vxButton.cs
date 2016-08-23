@@ -16,13 +16,18 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
     /// </summary>
     public class vxButton : vxGUIBaseItem
     {
-		vxButtonArtProvider ArtProvider {get; set;}
+		/// <summary>
+		/// Gets or sets the art provider.
+		/// </summary>
+		/// <value>The art provider.</value>
+		public vxButtonArtProvider ArtProvider {get; set;}
 
         /// <summary>
         /// Gets or sets the texture for this Menu Entry Background.
         /// </summary>
         /// <value>The texture.</value>
         public Texture2D BackgroundTexture { get; set; }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxButton"/> class.
@@ -55,9 +60,6 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
                 (int)(Position.X - Padding),
                 (int)(Position.Y - Padding / 2),
                 Width, Height);
-//
-//
-//            BackgroundTexture = vxEngine.vxGUITheme.vxButtons.BackgroundImage;
 
 			//Have this button get a clone of the current Art Provider
 			this.ArtProvider = (vxButtonArtProvider)vxEngine.vxGUITheme.ArtProviderForButtons.Clone ();
@@ -105,7 +107,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
             BoundingRectangle = new Rectangle(
                 (int)(Position.X - Padding),
                 (int)(Position.Y - Padding / 2),
-                Width, Height);
+				Width, Height);
 
 			//Now get the Art Provider to draw the scene
 			this.ArtProvider.Draw (this);

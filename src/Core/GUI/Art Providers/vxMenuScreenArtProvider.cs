@@ -132,9 +132,9 @@ namespace Virtex.Lib.Vrtc.GUI.GuiArtProvider
         /// of this one and override this draw call. 
         /// </summary>
         /// <param name="guiItem"></param>
-        public virtual void Draw(object menuScreen)
+		public virtual void Draw(object guiItem)
         {
-            MenuScreen = (vxMenuBaseScreen)menuScreen;
+			MenuScreen = (vxMenuBaseScreen)guiItem;
 
 
 			GraphicsDevice graphics = vxEngine.GraphicsDevice;

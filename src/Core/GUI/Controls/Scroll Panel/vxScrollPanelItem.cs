@@ -34,6 +34,11 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         /// </summary>
         public int ButtonHeight = 64;
 
+		/// <summary>
+		/// The is item selected.
+		/// </summary>
+		public bool IsItemSelected = false;
+
         /// <summary>
         /// Returns a Harcoded Type
         /// </summary>
@@ -107,12 +112,16 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         public void UnSelect()
         {
             Color_Normal = new Color(0.15f, 0.15f, 0.15f, 0.5f);
-            Colour_Text = Color.LightGray;
+			Colour_Text = Color.LightGray;
+
+			IsItemSelected = false;
         }
         public void ThisSelect()
         {
             Color_Normal = Color.DarkOrange;
             Colour_Text = Color.Black;
+
+			IsItemSelected = true;
         }
 
         public override void Draw(vxEngine vxEngine)

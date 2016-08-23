@@ -60,6 +60,10 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
         /// </summary>
         public vxGuiManager xGUIManager;
 
+
+		public vxButton Btn_Apply;
+		public string btn_Apply_text = "Apply";
+
         public vxButton Btn_Ok;
         public string btn_ok_text = "OK";
         public vxButton Btn_Cancel;
@@ -81,6 +85,9 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
         public int hPad = 12;
         public int vPad = 12;
 
+		public int gap1 = 0;
+		public int gap2 = 0;
+
 
 		/// <summary>
 		/// The given Art Provider of the Menu Entry. 
@@ -91,31 +98,61 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
 
         #region Events
 
+		/// <summary>
+		/// Occurs when apply. This can also act as a Miscelanous third button.
+		/// </summary>
+		public event EventHandler<PlayerIndexEventArgs> Apply;
+
+		/// <summary>
+		/// Occurs when accepted.
+		/// </summary>
         public event EventHandler<PlayerIndexEventArgs> Accepted;
+
+		/// <summary>
+		/// Occurs when cancelled.
+		/// </summary>
         public event EventHandler<PlayerIndexEventArgs> Cancelled;
 
         #endregion
 
         #region Initialization
 
-
+		/// <summary>
+		/// The button types for this Message Box.
+		/// </summary>
+		vxEnumButtonTypes ButtonTypes;
 
         /// <summary>
         /// Constructor lets the caller specify whether to include the standard
         /// "A=ok, B=cancel" usage text prompt.
         /// </summary>
-		public vxMessageBox(string message, string title)
+		public vxMessageBox(string message, string title) :this(message, title, vxEnumButtonTypes.OkCancel)
         {
-            this.message = message;
-
-            Title = title;
-
-            IsPopup = true;
-
-            TransitionOnTime = TimeSpan.FromSeconds(0.2);
-            TransitionOffTime = TimeSpan.FromSeconds(0.2);
+            
         }
 
+		public vxMessageBox(string message, string title, vxEnumButtonTypes ButtonTypes)
+		{
+			this.message = message;
+
+			Title = title;
+
+			IsPopup = true;
+
+			TransitionOnTime = TimeSpan.FromSeconds(0.2);
+			TransitionOffTime = TimeSpan.FromSeconds(0.2);
+
+			this.ButtonTypes = ButtonTypes;
+		}
+
+		/// <summary>
+		/// Sets the button text.
+		/// </summary>
+		public virtual void SetButtonText()
+		{
+			btn_ok_text = LanguagePack.Get(vxLocalization.Misc_OK);
+			btn_ok_Cancel = LanguagePack.Get(vxLocalization.Misc_Cancel);
+		}
 
         /// <summary>
         /// Loads graphics content for this screen. This uses the shared ContentManager
@@ -127,17 +164,22 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
         {
             xGUIManager = new vxGuiManager();
 
-            btn_ok_text = LanguagePack.Get(vxLocalization.Misc_OK);
-            btn_ok_Cancel = LanguagePack.Get(vxLocalization.Misc_Cancel);
+			SetButtonText ();
 
             Vector2 viewportSize = new Vector2(vxEngine.GraphicsDevice.Viewport.Width, vxEngine.GraphicsDevice.Viewport.Height);
 
+			//Setup Buttons
+			Btn_Apply = new vxButton(vxEngine, btn_Apply_text, new Vector2(viewportSize.X / 2 - 115, viewportSize.Y / 2 + 20));
+			Btn_Apply.Clicked += Btn_Apply_Clicked;
 			Btn_Ok = new vxButton (vxEngine, btn_ok_text, new Vector2 (viewportSize.X / 2 - 115, viewportSize.Y / 2 + 20));
-			Btn_Ok.Clicked += Btn_Ok_Clicked;;
+			Btn_Ok.Clicked += Btn_Ok_Clicked;
             Btn_Cancel = new vxButton(vxEngine, btn_ok_Cancel, new Vector2(viewportSize.X / 2 + 15, viewportSize.Y / 2 + 20));
-			Btn_Cancel.Clicked += Btn_Cancel_Clicked;;
+			Btn_Cancel.Clicked += Btn_Cancel_Clicked;
 
-            xGUIManager.Add(Btn_Ok);
+			if(ButtonTypes == vxEnumButtonTypes.OkApplyCancel)
+				xGUIManager.Add (Btn_Apply);
+            
+			xGUIManager.Add(Btn_Ok);
             xGUIManager.Add(Btn_Cancel);
             
 
@@ -167,6 +209,13 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
 				length + hPad * 2,
 				(int)textTitleSize.Y + vPad);
 
+			SpriteFont ButtonFont = vxEngine.vxGUITheme.ArtProviderForButtons.Font;
+
+			Btn_Apply.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
+				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 3 - vxEngine.vxGUITheme.Padding.X * 3, 
+				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
+			
+
 			Btn_Ok.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
 				backgroundRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 2 - vxEngine.vxGUITheme.Padding.X * 2, 
 				backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
@@ -184,6 +233,18 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
 
         #region Handle Input
 
+		/// <summary>
+		/// Buttons the apply clicked.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
+		void Btn_Apply_Clicked (object sender, Virtex.Lib.Vrtc.GUI.Events.vxGuiItemClickEventArgs e)
+		{
+			if (Apply != null)
+				Apply(this, new PlayerIndexEventArgs(ControllingPlayer.Value));
+
+			ExitScreen();
+		}
 
 		/// <summary>
 		/// Raise the accepted event, then exit the message box.

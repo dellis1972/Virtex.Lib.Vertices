@@ -58,6 +58,7 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
         public vxMenuScreenArtProvider ArtProviderForMenuScreen { get; set; }
         public vxMenuItemArtProvider ArtProviderForMenuScreenItems { get; set; }
 		public vxMessageBoxArtProvider ArtProviderForMessageBoxes { get; set; }
+		public vxDialogArtProvider ArtProviderForDialogs{ get; set; }
 
         /*******************************************/
         //					LABEL
@@ -68,7 +69,7 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
 
 
 		public vxThemeTextbox vxTextboxes {get;set; }
-        public vxThemeDialog vxDialogs { get; set; }
+        //public vxThemeDialog vxDialogs { get; set; }
 		public vxLoadingScreen vxLoadingScreen { get; set; }
 
 
@@ -95,7 +96,7 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
             //vxButtons = new vxThemeButton(Engine);
             //vxMenuEntries = new vxMenuEntryTheme(Engine);
             vxTextboxes = new vxThemeTextbox(Engine);
-            vxDialogs = new vxThemeDialog(Engine);
+            //vxDialogs = new vxThemeDialog(Engine);
 			vxLoadingScreen = new vxLoadingScreen (Engine);
 
             //Load the Default Theme first
@@ -106,15 +107,13 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
             ArtProviderForMenuScreen = new vxMenuScreenArtProvider(Engine);
             ArtProviderForMenuScreenItems = new vxMenuItemArtProvider(Engine);
 			ArtProviderForMessageBoxes = new vxMessageBoxArtProvider (Engine);
+			ArtProviderForDialogs = new vxDialogArtProvider (Engine);
 
             SetDefaultTheme ();
 		}
 
 		public void SetDefaultTheme()
 		{
-			this.vxDialogs.Header_BackgroundColour = Color.DarkOrange;
-			this.vxDialogs.Header_BorderWidth = 2;
-			this.vxDialogs.BackgroundColour = Color.Black*0.75f;
 
 			this.vxLoadingScreen.SplashScreen = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxButton/Bckgrnd_Nrml");
 
@@ -171,8 +170,7 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
                 return contentManager.Load<Texture2D>(PathTooFiles + path);
 			}
 			catch(Exception ex){
-				vxConsole.WriteError ("vxGUITheme", 
-					string.Format("ERROR LOADING THEME TEXTURE: PATH: '{0}'      --------------         ER MSG: {1}", PathTooFiles + path, ex.Message));
+				vxConsole.WriteError (ex);
 
 				return Engine.Assets.Textures.Blank;
 			}

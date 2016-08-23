@@ -43,6 +43,20 @@ namespace Virtex.Lib.Vrtc.GUI
             return typeof(vxGUIBaseItem);
         }
 
+		/// <summary>
+		/// Gets or sets a value indicating whether this instance is visible.
+		/// </summary>
+		/// <value><c>true</c> if this instance is visible; otherwise, <c>false</c>.</value>
+		public bool IsVisible {
+			get {
+				return _isVisible;
+			}
+			set {
+				_isVisible = value;
+			}
+		}
+		bool _isVisible = true;
+
         /// <summary>
         /// Name Of GUI Item to help Identify it, not to be confused with Text
         /// </summary>
@@ -635,7 +649,7 @@ namespace Virtex.Lib.Vrtc.GUI
 				if (vxEngine == null)
 					Console.WriteLine ("Engine");
 				else
-					vxConsole.WriteError (this.ToString (), ex.Message);
+					vxConsole.WriteError (ex);
                 
             }
             //Set State for next Loop

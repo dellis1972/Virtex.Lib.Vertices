@@ -9,7 +9,7 @@ namespace Virtex.Lib.Vrtc.GUI
 	/// <summary>
 	/// Button types.
 	/// </summary>
-    public enum ButtonTypes
+    public enum vxEnumButtonTypes
     {
 		/// <summary>
 		/// The ok.

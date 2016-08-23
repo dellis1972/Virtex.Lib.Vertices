@@ -735,7 +735,6 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLogIn.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveAs.cs" />
-    <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
     <Compile Include="ContentManagement\vxContentManager.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
@@ -791,6 +790,8 @@
     <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
     <Compile Include="DebugUtils\vxCrashHandler.cs" />
     <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
+    <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
+    <Compile Include="GUI\Art Providers\vxDialogArtProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

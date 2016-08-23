@@ -760,6 +760,7 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public override void Update (GameTime gameTime)
 		{
+			Profile.Settings.Audio.Double_SFX_Volume = 0.2f;
 			// tell the TimeRuler that we're starting a new frame. you always want
 			// to call this at the start of Update
 			_debugSystem.TimeRuler.StartFrame ();

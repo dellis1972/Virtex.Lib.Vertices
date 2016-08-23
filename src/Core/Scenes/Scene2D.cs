@@ -72,7 +72,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 			Accelerometer.Initialize();            
 
-			ConvertUnits.SetDisplayUnitToSimUnitRatio(24f);
+			ConvertUnits.SetDisplayUnitToSimUnitRatio(32);
 			//Initialise Physics vxEngine
 			World = new World(Vector2.UnitY*20);
 
@@ -111,7 +111,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		}
 		public bool AllowCameraInput = true;
 
-        float pauseAlpha;
+        //float pauseAlpha;
 
         /// <summary>
         /// Updates the state of the game. This method checks the vxGameBaseScreen.IsActive
@@ -122,16 +122,16 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                                             bool coveredByOtherScreen)
         {//vxEngine.Game.IsFixedTimeStep = false;
 
-            base.Update(gameTime, otherScreenHasFocus, false);
+			base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
             // GUIManager.Update(vxEngine);
-
+			/*
             // Gradually fade in or out depending on whether we are covered by the pause screen.
             if (coveredByOtherScreen && IsPausable)
                 pauseAlpha = Math.Min(pauseAlpha + 1f / 32, 1);
             else
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
-
+			*/
             if (IsActive || IsPausable == false)
             {
                 UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);

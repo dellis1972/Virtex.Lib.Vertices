@@ -23,7 +23,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         /// The Graphics Settings Dialog
         /// </summary>
         public vxGraphicSettingsDialog()
-            : base("Graphics Settings", ButtonTypes.OkApplyCancel)
+			: base("Graphics Settings", vxEnumButtonTypes.OkApplyCancel)
         {
 
         }

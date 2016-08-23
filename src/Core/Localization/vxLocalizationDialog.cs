@@ -23,7 +23,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         /// The Graphics Settings Dialog
         /// </summary>
         public vxLocalizationDialog()
-            : base("Localization", ButtonTypes.OkApplyCancel)
+			: base("Localization", vxEnumButtonTypes.OkApplyCancel)
         {
 
         }

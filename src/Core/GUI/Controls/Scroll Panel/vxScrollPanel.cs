@@ -32,8 +32,6 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
     /// </summary>
     public class vxScrollPanel : vxGUIBaseItem
     {
-        //int Height = 32+2;
-
         /// <summary>
         /// The alpha.
         /// </summary>
@@ -60,7 +58,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
         /// <summary>
         /// Collection of the vxGUIBaseItem's in this Panel.
         /// </summary>
-        List<vxGUIBaseItem> Items = new List<vxGUIBaseItem>();
+        public List<vxGUIBaseItem> Items = new List<vxGUIBaseItem>();
 
         /// <summary>
         /// The Scroll Bar Control.
@@ -78,6 +76,11 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 		/// A Specific Rasterizer State to preform Rectangle Sizzoring.
 		/// </summary>
 		RasterizerState _rasterizerState;
+
+		/// <summary>
+		/// The background colour.
+		/// </summary>
+		public Color BackgroundColour = Color.Black;
 
         /// <summary>
         /// Scroll Panael to Hold a Grid or Detail list of Items
@@ -288,6 +291,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 
         }
 
+
         /// <summary>
         /// Draws the GUI Item
         /// </summary>
@@ -326,7 +330,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
                         Width,
                         Height);			
             }
-            catch (Exception ex) { vxConsole.WriteError(this.ToString(), "ScrollPanel: "+ex.Message); }
+            catch (Exception ex) { vxConsole.WriteError(ex); }
 
 			//Only draw if the rectangle is larger than 2 pixels. This is to avoid
 			//artifacts where the minimum size is 1 pixel, which is pointless.
@@ -337,7 +341,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 					null, null, _rasterizerState);
 
 				//First Draw The Background
-				vxEngine.SpriteBatch.Draw (vxEngine.Assets.Textures.Blank, BoundingRectangle, Color.Black * Alpha);
+				vxEngine.SpriteBatch.Draw (vxEngine.Assets.Textures.Blank, BoundingRectangle, BackgroundColour * Alpha);
 
 
 				//Copy the current scissor rect so we can restore it after

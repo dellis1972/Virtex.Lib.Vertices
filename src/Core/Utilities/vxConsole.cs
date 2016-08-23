@@ -153,14 +153,14 @@ namespace Virtex.Lib.Vrtc.Utilities
         ///     }
         /// </code>
         /// </example>
-        public static void WriteError(string SourceFile, string output)
+        public static void WriteError(Exception ex)
         {
 #if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Red;
 #endif
             Console.WriteLine("**************************************************");
-            Console.WriteLine("Source File   ---   " + SourceFile + "    ---    ");
-            Console.WriteLine("ERROR: >>: " + output);
+			Console.WriteLine("ERROR: >>: " + ex.Message);
+			Console.WriteLine("Stack Trace File " + ex.StackTrace);
             Console.WriteLine("**************************************************");
 #if !VRTC_PLTFRM_DROID
             Console.ResetColor();
@@ -168,8 +168,8 @@ namespace Virtex.Lib.Vrtc.Utilities
             if (vxEngine != null)
             {
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
-                vxEngine.DebugSystem.DebugCommandUI.Echo("Source File   ---   " + SourceFile + "    ---    ");
-                vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR: >>: " + output);
+				vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR: >>: " + ex.Message);
+				vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR: >>: " + ex.StackTrace);
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
             }
         }

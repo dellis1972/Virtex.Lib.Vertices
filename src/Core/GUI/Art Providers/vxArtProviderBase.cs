@@ -28,7 +28,9 @@ namespace Virtex.Lib.Vrtc.GUI
 		/// Gets or sets the margin.
 		/// </summary>
 		/// <value>The margin.</value>
-		public Vector2 Margin { get; set; }
+		public Vector4 Margin { get; set; }
+
+		public float Alpha { get; set; }
 
 		/// <summary>
 		/// Gets or sets the text colour.
@@ -113,6 +115,8 @@ namespace Virtex.Lib.Vrtc.GUI
 
 			DefaultWidth = 150;
 			DefaultHeight = 24;
+
+			Alpha = 1;
 		}
 	}
 }

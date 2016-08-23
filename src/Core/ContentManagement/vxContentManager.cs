@@ -268,7 +268,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
             }
             catch (Exception ex)
             {
-                vxConsole.WriteError("vxContentManager.LoadModel", "ERROR IMPORTING FILE: " + PathToModel + "\n" + ex.Message);
+                vxConsole.WriteError(ex);
             }
             #endregion
 

@@ -27,7 +27,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
         /// Gets or sets the button image.
         /// </summary>
         /// <value>The button image.</value>
-        Texture2D HoverButtonImage { get; set; }
+        public Texture2D HoverButtonImage { get; set; }
 
 
 		/// <summary>

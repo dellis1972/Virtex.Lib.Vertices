@@ -18,7 +18,7 @@ namespace Virtex.Lib.Vrtc.GUI.MessageBoxs
     /// A popup message box screen, used to display "are you sure?"
     /// confirmation messages.
     /// </summary>
-	public class vxMessageBoxSaveAs : vxMessageBox
+	public class vxMessageBoxSaveAs : vxMessageBox 
     {
         #region Fields
         

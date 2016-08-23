@@ -61,7 +61,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         /// <param name="path">Path.</param>
         /// <param name="FileExtentionFilter">File extention filter.</param>
         public vxOpenFileDialog(vxEngine vxEngine, string path, string FileExtentionFilter)
-            : base("Open a Sandbox File", ButtonTypes.OkCancel)
+			: base("Open a Sandbox File", vxEnumButtonTypes.OkCancel)
         {
             this.vxEngine = vxEngine;
 
@@ -74,7 +74,6 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             BckgrndWrkr_FileOpen.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(BckgrndWrkr_FileOpen_ProgressChanged);
             BckgrndWrkr_FileOpen.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(BckgrndWrkr_FileOpen_RunWorkerCompleted);
         }
-
 
         /// <summary>
         /// Loads graphics content for this screen. This uses the shared ContentManager
@@ -89,13 +88,15 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             Btn_Ok.Clicked += new EventHandler<vxGuiItemClickEventArgs>(Btn_Ok_Clicked);
             Btn_Cancel.Clicked += new EventHandler<vxGuiItemClickEventArgs>(Btn_Cancel_Clicked);
 
+
             ScrollPanel = new vxScrollPanel(
                 new Vector2(
-                    backgroundRectangle.X + hPad, 
-                    backgroundRectangle.Y + vPad),
-                backgroundRectangle.Width - hPad * 2,
-                backgroundRectangle.Height - Btn_Ok.BoundingRectangle.Height - vPad * 3);
+					this.ArtProvider.BoundingGUIRectangle.X + this.ArtProvider.Padding.X, 
+					this.ArtProvider.BoundingGUIRectangle.Y + this.ArtProvider.Padding.Y) + this.ArtProvider.PosOffset,
+				this.ArtProvider.BoundingGUIRectangle.Width - (int)this.ArtProvider.Padding.X * 2,
+				this.ArtProvider.BoundingGUIRectangle.Height - Btn_Ok.BoundingRectangle.Height - (int)this.ArtProvider.Padding.Y * 4);
 
+			
             InternalvxGUIManager.Add(ScrollPanel);
         }
 
@@ -197,7 +198,10 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             WaitingText += new string('.', (int)((periodCount/2) % 5));
             
 			spriteBatch.DrawString(vxEngine.vxGUITheme.Font, WaitingText, 
-                new Vector2(viewport.Width / 2 - 50, viewport.Height / 2), Color.WhiteSmoke * LoadingAlpha*0.75f);
+                new Vector2(
+					vxEngine.GraphicsDevice.Viewport.Width / 2 - 50, 
+					vxEngine.GraphicsDevice.Viewport.Height / 2), 
+				Color.WhiteSmoke * LoadingAlpha*0.75f);
 
             spriteBatch.End();
         }
@@ -237,14 +241,14 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
                     vxEngine,
                     file,
                     new Vector2(
-                        (int)(2 * hPad),
-                        vPad + (vPad / 10 + 68) * (index + 1)),
+						(int)(2 * this.ArtProvider.Padding.X),
+						this.ArtProvider.Padding.Y + (this.ArtProvider.Padding.Y / 10 + 68) * (index + 1)),
                     thumbnail, index);
 
                 fileDialogButton.Clicked += GetHighlitedItem;
 
                 //Set Button Width
-                fileDialogButton.ButtonWidth = vxEngine.GraphicsDevice.Viewport.Width - (4 * hPad);
+				fileDialogButton.ButtonWidth = vxEngine.GraphicsDevice.Viewport.Width - (4 * (int)this.ArtProvider.Padding.X);
 
                 List_Temp_Items.Add(fileDialogButton);
 

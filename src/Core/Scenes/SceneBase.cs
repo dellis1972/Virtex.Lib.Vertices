@@ -55,6 +55,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		/// </summary>
 		public vxGuiManager GUIManager { get; set; }
 
+		//TODO: Should be added to the Network Managers
+		/*
         /// <summary>
         /// Connected Server IP
         /// </summary>
@@ -69,12 +71,24 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
         /// Connection Port
         /// </summary>
         public int Port = 14242;
+		*/
 
 		//TODO: Should this be kept?
 		/// <summary>
 		/// Should the GUI be shown?
 		/// </summary>
 		public bool ShowGUI = true;
+
+
+		/// <summary>
+		/// Whether or not to dim the background screen when it's covered by another screen.
+		/// </summary>
+		public bool DimOnCover 
+		{
+			get{ return _dimOnCover; }
+			set { _dimOnCover = value; }
+		}
+		bool _dimOnCover = true;
 
         /// <summary>
         /// Graphics Device Manger for accessing Graphics info
@@ -97,7 +111,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		/// This is the Pause Alpha Amount based off of the poisition the screen is in terms of
 		/// transitioning too a new screen.
 		/// </summary>
-        float pauseAlpha;
+		public float PauseAlpha
+		{
+			get{ return _pauseAlpha; }
+			set { _pauseAlpha = value; }
+		}
+        float _pauseAlpha;
 
 		/// <summary>
 		/// Gets or sets a value indicating whether this instance is pausable.
@@ -172,6 +191,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
         #region Update and Draw
 
+
 		/// <summary>
 		/// Updates the state of the game. This method checks the vxGameBaseScreen.IsActive
 		/// property, so the game will stop updating when the pause menu is active,
@@ -186,11 +206,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			if (IsActive) {
 				GUIManager.Update (vxEngine);
 			}
+
 			// Gradually fade in or out depending on whether we are covered by the pause screen.
-			if (coveredByOtherScreen)
-				pauseAlpha = Math.Min(pauseAlpha + 1f / 32, 1);
+			if (coveredByOtherScreen && _dimOnCover)
+				_pauseAlpha = Math.Min(_pauseAlpha + 1f / 32, 1);
 			else
-				pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
+				_pauseAlpha = Math.Max(_pauseAlpha - 1f / 32, 0);
 
 			if (IsActive || _isPausable == false)
 			{
@@ -301,10 +322,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			LastFrame = (Texture2D)vxEngine.GraphicsDevice.Textures [0];
 
 			// If the game is transitioning on or off, fade it out to black.
-			if (TransitionPosition > 0 || pauseAlpha > 0)
+			if (TransitionPosition > 0 || _pauseAlpha > 0)
 			{
-				float alpha = MathHelper.Lerp(1f - TransitionAlpha, 1f, pauseAlpha / 2);
-
+				float alpha = MathHelper.Lerp(1f - TransitionAlpha, 1f, _pauseAlpha / 2);
 				vxEngine.FadeBackBufferToBlack(alpha);
 			}
 		}
