@@ -70,6 +70,7 @@
     <Compile Include="DebugUtils\Layout.cs" />
     <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
     <Compile Include="DebugUtils\TimeRuler.cs" />
+    <Compile Include="DebugUtils\vxCrashHandler.cs" />
     <Compile Include="Entities\Enviroment\Sun.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Enviroment\Water_General.cs" />
@@ -106,11 +107,14 @@
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
+    <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
     <Compile Include="GUI\Art Providers\IGuiArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
     <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxDialogArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuScreenArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
     <Compile Include="GUI\Base\vxGUIBaseEnums.cs" />
     <Compile Include="GUI\Base\vxGUIBaseEventArgs.cs" />
     <Compile Include="GUI\Base\vxGUIBaseItem.cs" />

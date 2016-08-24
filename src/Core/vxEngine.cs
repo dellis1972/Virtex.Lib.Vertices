@@ -271,16 +271,20 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public Vector2 Mouse_ClickPos = new Vector2 ();
 
-#endregion
+        #endregion
 
 
-		/// <summary>
-		/// This flag tells the engine whether or not to draw the final result to a master
-		/// render target at a set resolution. This master rendertarget is then scaled and 
-		/// drawn at the native resolution of what ever screen the device has. This is useful
-		/// for Phones and Tablets which have a multitude of different resolutions.
-		/// </summary>
-		public bool FixedRenderTargetEnabled {
+#if VRTC_PLTFRM_DROID
+        public Android.App.Activity Activity;
+#endif
+
+        /// <summary>
+        /// This flag tells the engine whether or not to draw the final result to a master
+        /// render target at a set resolution. This master rendertarget is then scaled and 
+        /// drawn at the native resolution of what ever screen the device has. This is useful
+        /// for Phones and Tablets which have a multitude of different resolutions.
+        /// </summary>
+        public bool FixedRenderTargetEnabled {
 			get { return _fixedRenderTargetEnabled; }
 			set { _fixedRenderTargetEnabled = value; }
 		}

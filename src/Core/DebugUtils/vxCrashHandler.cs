@@ -26,17 +26,17 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 			//First Load the Debug Font
 			ContentManager CrashContentManager = new ContentManager(game.Services);
 
-			//Set Location of Content Specific too Platform
-			#if VRTC_PLTFRM_XNA
+            //Set Location of Content Specific too Platform
+#if VRTC_PLTFRM_XNA
 			Content.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
 
-			#elif VRTC_PLTFRM_GL
+#elif VRTC_PLTFRM_GL
 			CrashContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";            
-			#elif VRTC_PLTFRM_DROID
-			Content.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
+#elif VRTC_PLTFRM_DROID
+            CrashContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
 
-			this.Activity.Window.AddFlags(WindowManagerFlags.Fullscreen);
-			this.Activity.Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
+			//this.Activity.Window.AddFlags(WindowManagerFlags.Fullscreen);
+			//this.Activity.Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
 			#endif
 
 			SpriteFont CrashFont = CrashContentManager.Load<SpriteFont> ("Fonts/font_debug");
