@@ -395,54 +395,55 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public override void Initialize ()
 		{
-			#region Init Enviroment Variables
-
-			EnviromentVariables.Add(vxEnumEnvVarType.RES_X.ToString(), new EnvVar (this.GraphicsDevice.PresentationParameters.BackBufferWidth, 
-				"Width of the Current Backbuffer"));
-			EnviromentVariables.Add(vxEnumEnvVarType.RES_Y.ToString(), new EnvVar (this.GraphicsDevice.PresentationParameters.BackBufferHeight, 
-				"Heigh of the Current Backbuffer"));
-
-			EnviromentVariables.Add(vxEnumEnvVarType.FLSCRN.ToString(), new EnvVar (this.GraphicsDevice.PresentationParameters.IsFullScreen, 
-				"Set's whether it's Fullscreen or not"));
-
-			EnviromentVariables.Add(vxEnumEnvVarType.VSYNC.ToString(), new EnvVar (false, 
-				"Set's whether the Vertical Sync is on or not."));
-
-			string path = "Virtex Edge Design/" + GameName + "/Profiles/";
-			#if VRTC_PLTFRM_XNA
-			path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
-			#endif
-			EnviromentVariables.Add(vxEnumEnvVarType.PATH_SETTINGS.ToString(), new EnvVar (path, 
-				"Path to the Settings Folder"));
-
-
-			string sndpath = "Virtex Edge Design/" + GameName + "/Sandbox/";
-			#if VRTC_PLTFRM_XNA
-			sndpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + path;
-			#endif
-			EnviromentVariables.Add(vxEnumEnvVarType.PATH_SANDBOX.ToString(), new EnvVar (sndpath, 
-				"Path to the Sandbox Folder"));
-
-
-			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_MESH.ToString(), new EnvVar (false, 
-				"Toggles the Debug Mesh for Physics"));
-			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString(), new EnvVar (false, 
-				"Toggles viewing the Individual Render Targets"));
-			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_INGMECNSL.ToString(), new EnvVar (false, 
-				"Toggles the In-Game Debug Window"));
-			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_FPS.ToString(), new EnvVar (false, 
-				"Toggles the FPS Counter"));
-			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString(), new EnvVar (false, 
-				"Toggles the Time Ruler Debuger"));
-
-			#endregion
-
 			base.Initialize ();
 
-			#region Initialise Debug Console
 
-			//Get the vxEngine Version through Reflection
-			EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
+            #region Init Enviroment Variables
+
+            EnviromentVariables.Add(vxEnumEnvVarType.RES_X.ToString(), new EnvVar(this.GraphicsDevice.PresentationParameters.BackBufferWidth,
+                "Width of the Current Backbuffer"));
+            EnviromentVariables.Add(vxEnumEnvVarType.RES_Y.ToString(), new EnvVar(this.GraphicsDevice.PresentationParameters.BackBufferHeight,
+                "Heigh of the Current Backbuffer"));
+
+            EnviromentVariables.Add(vxEnumEnvVarType.FLSCRN.ToString(), new EnvVar(this.GraphicsDevice.PresentationParameters.IsFullScreen,
+                "Set's whether it's Fullscreen or not"));
+
+            EnviromentVariables.Add(vxEnumEnvVarType.VSYNC.ToString(), new EnvVar(false,
+                "Set's whether the Vertical Sync is on or not."));
+
+            string path = "Virtex Edge Design/" + GameName + "/Profiles/";
+#if VRTC_PLTFRM_XNA
+            path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
+#endif
+            EnviromentVariables.Add(vxEnumEnvVarType.PATH_SETTINGS.ToString(), new EnvVar(path,
+                "Path to the Settings Folder"));
+
+
+            string sndpath = "Virtex Edge Design/" + GameName + "/Sandbox/";
+#if VRTC_PLTFRM_XNA
+            sndpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + sndpath;
+#endif
+            EnviromentVariables.Add(vxEnumEnvVarType.PATH_SANDBOX.ToString(), new EnvVar(sndpath,
+                "Path to the Sandbox Folder"));
+
+
+            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_MESH.ToString(), new EnvVar(false,
+                "Toggles the Debug Mesh for Physics"));
+            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString(), new EnvVar(false,
+                "Toggles viewing the Individual Render Targets"));
+            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_INGMECNSL.ToString(), new EnvVar(false,
+                "Toggles the In-Game Debug Window"));
+            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_FPS.ToString(), new EnvVar(false,
+                "Toggles the FPS Counter"));
+            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString(), new EnvVar(false,
+                "Toggles the Time Ruler Debuger"));
+
+            #endregion
+
+            #region Initialise Debug Console
+
+            //Get the vxEngine Version through Reflection
+            EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
 
 
             // initialize the debug system with the game and the name of the font 
@@ -572,16 +573,22 @@ namespace Virtex.Lib.Vrtc.Core
 
 #if !VRTC_PLTFRM_DROID
 
-			//First Check, if the Profiles Directory Doesn't Exist, Create It
-			if (Directory.Exists (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString()) == false)
-				Directory.CreateDirectory (EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString());
+            string settings = EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString();
+            string sandbox = EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString();
 
-			//First Check, if the Sandbox Directory Doesn't Exist, Create It
-			if (Directory.Exists (EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString()) == false)
-				Directory.CreateDirectory (EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString());
+            Console.WriteLine(settings);
+            Console.WriteLine(sandbox);
 
-			//First Check, if the Temp Directory Doesn't Exist, Create It
-			if (Directory.Exists ("Temp/Settings") == false)
+            //First Check, if the Profiles Directory Doesn't Exist, Create It
+            if (Directory.Exists (settings) == false)
+				Directory.CreateDirectory (settings);
+
+            //First Check, if the Sandbox Directory Doesn't Exist, Create It
+            if (Directory.Exists(sandbox) == false)
+                Directory.CreateDirectory(sandbox);
+
+            //First Check, if the Temp Directory Doesn't Exist, Create It
+            if (Directory.Exists ("Temp/Settings") == false)
 				Directory.CreateDirectory ("Temp/Settings");
 
 #endif
@@ -608,14 +615,12 @@ namespace Virtex.Lib.Vrtc.Core
             // Initialise the Engine Speciality Content Manager.
             _contentManager = new vxContentManager(this);
 
-            //string contentLocationTag = "Virtex.Lib.Vrtc.XNA.Content";
-
             //Set Location of Content Specific too Platform
 #if VRTC_PLTFRM_XNA
             _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
 
 #elif VRTC_PLTFRM_GL
-			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";            
+			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.DesktopGL";            
 #elif VRTC_PLTFRM_DROID
             _engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
             

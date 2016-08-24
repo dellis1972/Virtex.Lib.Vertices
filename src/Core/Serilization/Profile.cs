@@ -28,7 +28,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
                 new vxSettingsControlsGamePad(1, 1)
                 ),
             //Graphics
-            new vxSettingsGraphics(4, false, false, vxEnumQuality.Medium, true, vxEnumQuality.Medium, vxEnumQuality.Medium, vxEnumQuality.Medium, vxEnumQuality.Medium),
+            new vxSettingsGraphics(4, false, false, vxEnumQuality.Medium, true, vxEnumQuality.Medium, vxEnumQuality.None, vxEnumQuality.None, vxEnumQuality.Medium),
             //Audio
             new vxSettingsAudio(1, 1, 1));
 

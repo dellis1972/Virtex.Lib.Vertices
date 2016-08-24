@@ -108,12 +108,14 @@
     <Compile Include="DebugUtils\DebugManager.cs" />
     <Compile Include="DebugUtils\DebugShapeRenderer.cs" />
     <Compile Include="DebugUtils\DebugSystem.cs" />
+    <Compile Include="DebugUtils\EnvVar.cs" />
     <Compile Include="DebugUtils\FpsCounter.cs" />
     <Compile Include="DebugUtils\IDebugCommandHost.cs" />
     <Compile Include="DebugUtils\KeyboardUtils.cs" />
     <Compile Include="DebugUtils\Layout.cs" />
     <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
     <Compile Include="DebugUtils\TimeRuler.cs" />
+    <Compile Include="DebugUtils\vxCrashHandler.cs" />
     <Compile Include="Entities\Enviroment\Sun.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Enviroment\Water_General.cs" />
@@ -123,12 +125,17 @@
     <Compile Include="Entities\vxAlphaEntity3D.cs" />
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
+    <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
     <Compile Include="Graphics\Model\vxModelVoxel.cs" />
+    <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
     <Compile Include="GUI\Art Providers\IGuiArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
     <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxDialogArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuScreenArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
+    <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
     <Compile Include="Network\Entity States\vxNetEntity3DState.cs" />
     <Compile Include="Network\Events\vxNetServerEvents.cs" />
@@ -178,11 +185,9 @@
     <Compile Include="vxEngine.Network.cs" />
     <Compile Include="Geometry\Quad.cs" />
     <Compile Include="Geometry\Tri.cs" />
-    <Compile Include="Graphics\2D Gameplay\AssetCreator2D.cs" />
     <Compile Include="Graphics\2D Gameplay\Layer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Graphics\2D Gameplay\LineBatch.cs" />
     <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs">
       <SubType>Code</SubType>
     </Compile>

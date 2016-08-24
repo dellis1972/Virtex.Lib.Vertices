@@ -130,8 +130,8 @@ namespace Virtex.Lib.Vrtc.Graphics
 				this.GraphicsDeviceManager.ApplyChanges();
 			#if VIRTICES_3D
 			//Reset All Render Targets
-			if (this.Renderer !=null)
-			this.Renderer.InitialiseRenderTargetsAll();
+			if (this.Engine.Renderer !=null)
+					this.Engine.Renderer.InitialiseRenderTargetsAll();
 			#endif
 				for (int i = 0; i < 8; i++)
 				{

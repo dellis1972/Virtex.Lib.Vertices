@@ -42,9 +42,10 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 			//All Items below are stored in this column as it's the longest word
 			
             float Margin = vxEngine.GraphicsDevice.Viewport.Width/2 - this.viewportSize.X/2 + 25;
-            //float MarginTwo = Margin + 375;
+            float MarginTwo = Margin + 375;
 
             int horiz = 0;
+			int horizTwo = 0;
 
             //Resolutions
             /*****************************************************************************************************/
@@ -126,7 +127,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             /*****************************************************************************************************/
             vxSettingsGUIItem ShadowsSettingsItem = new vxSettingsGUIItem(
                vxEngine, InternalvxGUIManager, "Shadows",
-               vxEngine.Profile.Settings.Graphics.ShadowQuality.ToString(), new Vector2(MarginTwo, horizTwo));
+               vxEngine.Profile.Settings.Graphics.ShadowQuality.ToString(), 
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X + MarginTwo, this.ArtProvider.BoundingGUIRectangle.Y + horizTwo));
             horizTwo += 45;
 
             ShadowsSettingsItem.ValueComboBox.AddItem(vxEnumQuality.None.ToString());
@@ -145,7 +147,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             /*****************************************************************************************************/
             vxSettingsGUIItem BloomSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Bloom",
-                vxEngine.Profile.Settings.Graphics.Bloom.ToString(), new Vector2(MarginTwo, horizTwo));
+                vxEngine.Profile.Settings.Graphics.Bloom.ToString(), 
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X + MarginTwo, this.ArtProvider.BoundingGUIRectangle.Y + horizTwo));
             horizTwo += 45;
             BloomSettingsItem.ValueComboBox.AddItem(vxEnumQuality.None.ToString());
             BloomSettingsItem.ValueComboBox.AddItem(vxEnumQuality.Low.ToString());
@@ -165,7 +168,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             vxSettingsGUIItem EdgeDetectSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Edge Detect",
                 vxEngine.Profile.Settings.Graphics.Bool_DoEdgeDetection ? "On" : "Off",
-                new Vector2(MarginTwo, horizTwo));
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X + MarginTwo, this.ArtProvider.BoundingGUIRectangle.Y + horizTwo));
             horizTwo += 45;
 
             EdgeDetectSettingsItem.ValueComboBox.AddItem("Off");
@@ -185,7 +188,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             /*****************************************************************************************************/
             vxSettingsGUIItem DOFSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Depth of Field",
-                vxEngine.Profile.Settings.Graphics.DepthOfField.ToString(), new Vector2(MarginTwo, horizTwo));
+                vxEngine.Profile.Settings.Graphics.DepthOfField.ToString(), 
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X + MarginTwo, this.ArtProvider.BoundingGUIRectangle.Y + horizTwo));
             horizTwo += 45;
 
             DOFSettingsItem.ValueComboBox.AddItem(vxEnumQuality.None.ToString());
@@ -204,7 +208,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             /*****************************************************************************************************/
             vxSettingsGUIItem GodRaySettingsItem = new vxSettingsGUIItem(
                vxEngine, InternalvxGUIManager, "Crepuscular Rays",
-               vxEngine.Profile.Settings.Graphics.GodRays.ToString(), new Vector2(MarginTwo, horizTwo));
+               vxEngine.Profile.Settings.Graphics.GodRays.ToString(), 
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X + MarginTwo, this.ArtProvider.BoundingGUIRectangle.Y + horizTwo));
             horizTwo += 45;
 
             GodRaySettingsItem.ValueComboBox.AddItem(vxEnumQuality.None.ToString());
@@ -223,7 +228,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             /*****************************************************************************************************/
             vxSettingsGUIItem SSAOSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "SSAO",
-                vxEngine.Profile.Settings.Graphics.SSAO.ToString(), new Vector2(MarginTwo, horizTwo));
+                vxEngine.Profile.Settings.Graphics.SSAO.ToString(), 
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X + MarginTwo, this.ArtProvider.BoundingGUIRectangle.Y + horizTwo));
             horizTwo += 45;
 
             SSAOSettingsItem.ValueComboBox.AddItem(vxEnumQuality.None.ToString());

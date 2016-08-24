@@ -6,6 +6,13 @@ using Virtex.Lib.Vrtc.Core;
 using Virtex.Lib.Vrtc.GUI.Controls;
 
 
+#if VRTC_PLTFRM_DROID
+using Android.App;
+using Android.Content;
+using Android.Views;
+using Android.Views.InputMethods;
+#endif
+
 #endregion
 
 namespace Virtex.Lib.Vrtc.Screens.Menus
@@ -108,12 +115,25 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         
         void displayDebugHUDMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
-			#if VRTC_PLTFRM_DROID
-			var pView = vxEngine.Game.Services.GetService<View>();
-			var inputMethodManager = Application.GetSystemService(Context.InputMethodService) as InputMethodManager;
-			inputMethodManager.ShowSoftInput(pView, ShowFlags.Forced);
-			inputMethodManager.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
-			#endif
+
+#if VRTC_PLTFRM_DROID
+            
+            /*
+            InputMethodManager imm = (InputMethodManager)vxEngine.Activity.GetSystemService(Activity.INPUT_METHOD_SERVICE);
+            //Find the currently focused view, so we can grab the correct window token from it.
+            View view = activity.getCurrentFocus();
+            //If no view currently has focus, create a new one, just so we can grab a window token from it
+            if (view == null)
+            {
+                view = new View(activity);
+            }
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            */
+            var pView = vxEngine.Game.Services.GetService<View>();
+            var inputMethodManager = vxEngine.Activity.GetSystemService(Context.InputMethodService) as InputMethodManager;
+            inputMethodManager.ShowSoftInput(pView, ShowFlags.Forced);
+            inputMethodManager.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
+#endif
             SetMenuEntryText();
         }
 

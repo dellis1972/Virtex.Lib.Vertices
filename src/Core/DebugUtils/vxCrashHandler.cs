@@ -28,7 +28,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
             //Set Location of Content Specific too Platform
 #if VRTC_PLTFRM_XNA
-			Content.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
+            CrashContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
 
 #elif VRTC_PLTFRM_GL
 			CrashContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.WindowsGL";            
@@ -86,8 +86,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 			text += string.Format("Method Source: {0}\n",exception.TargetSite);
 			text += string.Format("Error Messge:  {0}\n",exception.Message);
 			text += string.Format("Error Data:    {0}\n",exception.Data);
-			text += string.Format("HResult:       {0}\n",exception.HResult);
-
+            
 
 			text += "\n\nSTACK TRACE\n========================================================================================\n";
 

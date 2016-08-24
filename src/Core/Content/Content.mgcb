@@ -787,12 +787,6 @@
 /processorParam:TextureFormat=Color
 /build:Shaders/Water/waterdistort.jpg
 
-#begin MonoGame/Shaders/MainModelShader.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/MainModelShader.fx
-
 #begin MonoGame/Shaders/Lighting/ClearGBuffer.fx
 /importer:EffectImporter
 /processor:EffectProcessor
@@ -822,11 +816,6 @@
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:MonoGame/Shaders/Lighting/RenderGBuffer.fx
-
-#begin MonoGame/Shaders/Include/Shadow.h
-/importer:
-/processor:
-/build:MonoGame/Shaders/Include/Shadow.h
 
 #begin Models/lghtng/sphere.x
 /importer:OpenAssetImporter
@@ -937,11 +926,6 @@
 /processorParam:DebugMode=Auto
 /build:Shaders/DepthOfField/DepthOfField.fx
 
-#begin MonoGame/Shaders/Include/ModelPixelShaders.h
-/importer:
-/processor:
-/build:MonoGame/Shaders/Include/ModelPixelShaders.h
-
 #begin Gui/DfltThm/vxGUITheme/vxMenuEntry/Bckgrnd_Lrg.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1034,12 +1018,6 @@
 /importer:
 /processor:
 /build:Shaders/Include/Shadow.h
-
-#begin MonoGame/Shaders/CascadeShadowShader.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/CascadeShadowShader.fx
 
 #begin Textures/nullTextures/null_diffuse.png
 /importer:TextureImporter

@@ -11,6 +11,15 @@
 //
 // It has been modified for the Virtices Engine.
 //-----------------------------------------------------------------------------
+#if OPENGL
+	#define SV_POSITION POSITION
+	#define VS_SHADERMODEL vs_3_0
+	#define PS_SHADERMODEL ps_3_0
+#else
+	#define VS_SHADERMODEL vs_4_0_level_9_1
+	#define PS_SHADERMODEL ps_4_0_level_9_1
+#endif
+
 #define NumSplits 4
 #define CSM
 
@@ -66,6 +75,8 @@ sampler RandomSampler2D = sampler_state
 };
 
 
+
+
 //			Main Properties
 //*********************************************************************************************
 float4x4 World;
@@ -91,12 +102,12 @@ bool ShadowDebug = false;
 
 struct VertexShaderInput_Sdw
 {
-    float4 Position			: POSITION0;
+    float4 Position			: SV_POSITION;
 };
 
 struct VertexShaderOutput_Sdw
 {
-    float4 Position			: POSITION0;
+    float4 Position			: SV_POSITION;
 	float  Depth			: COLOR0;
 };
 
@@ -136,16 +147,7 @@ technique Shadow
 {
     pass Pass1
     {
-		VertexShader = compile vs_3_0 ShadowNonInstancedVS();
-        PixelShader = compile ps_3_0 ShadowPS();
-    }
-}
-
-technique ShadowInstanced
-{
-    pass Pass1
-    {
-		VertexShader = compile vs_3_0 ShadowInstancedVS();
-        PixelShader = compile ps_3_0 ShadowPS();
+		VertexShader = compile VS_SHADERMODEL ShadowNonInstancedVS();
+        PixelShader = compile PS_SHADERMODEL ShadowPS();
     }
 }

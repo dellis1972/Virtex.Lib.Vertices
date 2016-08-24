@@ -29,38 +29,41 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 
 #if !VRTC_PLTFRM_DROID
-        /// <summary>
-        /// This Loads Models at Run time performing a number of functions. See remarks for full details.
-        /// </summary>
-        /// <remarks>
-        /// Model Loading
-        /// =============================
-        /// This loads a vxModel with a Specified Effect as well as applies the CascadeShadowEffect to 
-        /// the vxModel's internal Shadow Model as well. XNA and potentially other back ends do not allow
-        /// multiple loading of the same asset, therefore if a Shadow Model.xnb is not found, then it is created
-        /// from a copy of the main model as 'mainmodelname_shdw.xnb'. 
-        /// 
-        /// 
-        /// Texture Loading
-        /// =============================
-        /// Furthermore, Textures are loaded based off of the name of the model mesh name.
-        /// 
-        /// For Example
-        /// -------------
-        /// ModelMesh Name = "ship"
-        /// 
-        /// Then the content importer will look for textures under the following names:
-        /// 
-        /// Diffuse Texture:    ship_dds
-        /// Normal Map:         ship_nm
-        /// Specular Map:       ship_sm
-        /// 
-        /// The path to each of these is saved in the vxModel as well too allow for reloading of
-        /// other resolution packs later on.
-        /// </remarks>
-        /// <param name="PathToModel"></param>
-        /// <param name="EffectToSet"></param>
-        /// <returns></returns>
+		/// <summary>
+		/// This Loads Models at Run time performing a number of functions. See remarks for full details.
+		/// </summary>
+		/// <remarks>
+		/// Model Loading
+		/// =============================
+		/// This loads a vxModel with a Specified Effect as well as applies the CascadeShadowEffect to 
+		/// the vxModel's internal Shadow Model as well. XNA and potentially other back ends do not allow
+		/// multiple loading of the same asset, therefore if a Shadow Model.xnb is not found, then it is created
+		/// from a copy of the main model as 'mainmodelname_shdw.xnb'. 
+		/// 
+		/// 
+		/// Texture Loading
+		/// =============================
+		/// Furthermore, Textures are loaded based off of the name of the model mesh name.
+		/// 
+		/// For Example
+		/// -------------
+		/// ModelMesh Name = "ship"
+		/// 
+		/// Then the content importer will look for textures under the following names:
+		/// 
+		/// Diffuse Texture:    ship_dds
+		/// Normal Map:         ship_nm
+		/// Specular Map:       ship_sm
+		/// 
+		/// The path to each of these is saved in the vxModel as well too allow for reloading of
+		/// other resolution packs later on.
+		/// </remarks>
+        /// <returns>The model.</returns>
+        /// <param name="PathToModel">Path to model.</param>
+        /// <param name="Content">Content.</param>
+        /// <param name="EffectToSet">Effect to set.</param>
+        /// <param name="ShadowEffect">Shadow effect.</param>
+        /// <param name="UtilityEffect">Utility effect.</param>
         public vxModel LoadModel(string PathToModel, ContentManager Content, Effect EffectToSet, Effect ShadowEffect, Effect UtilityEffect)
         {
 #if !VRTC_PLTFRM_DROID

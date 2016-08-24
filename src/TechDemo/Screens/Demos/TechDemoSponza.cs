@@ -26,6 +26,7 @@ using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 using Virtex.Lib.Vrtc.Entities.Sandbox3D;
+using Virtex.Lib.Vrtc.Graphics;
 
 namespace VerticeEnginePort.Base
 {
@@ -71,7 +72,7 @@ namespace VerticeEnginePort.Base
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
         }
-
+		vxLightEntity light;
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -118,10 +119,14 @@ namespace VerticeEnginePort.Base
             g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/sponza/spnza_bricks_sm");
             */
 
-            xEnvrio envr = new xEnvrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+			xEnvrio envr = new xEnvrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard", this.vxEngine.Game.Content,
+				this.vxEngine.Assets.Shaders.CartoonShader), Vector3.Zero);
             //g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_nm");
             //g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_sm");
-            envr.SpecularIntensity = 1;
+            envr.SpecularIntensity = 100;
+			envr.SpecularPower = 5f;
+
+			light = new vxLightEntity (vxEngine, new Vector3 (0, 2, 0), LightType.Point, Color.Orange, 10, 1);
 
             //This is a little convenience method used to extract vertices and indices from a model.
             //It doesn't do anything special; any approach that gets valid vertices and indices will work.
@@ -167,6 +172,8 @@ namespace VerticeEnginePort.Base
 
             ModelObjs mo = new ModelObjs((GameEngine)vxEngine, new Vector3(-4, 4, 0));
             mo.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, 8)), true, true);
+
+			vxEngine.InputManager.ShowCursor = true;
         }
 
         public override void UnloadContent()
@@ -184,7 +191,7 @@ namespace VerticeEnginePort.Base
                     break;
 
                 default:
-                    vxConsole.WriteError(this.ToString(), string.Format("'{0}' Key Not Found!", key));
+				vxConsole.WriteError(new Exception( string.Format("'{0}' Key Not Found!", key)));
                     return base.GetNewEntity(key);
                     break;
             }
@@ -201,7 +208,7 @@ namespace VerticeEnginePort.Base
         {
             character.Update((float)gameTime.ElapsedGameTime.TotalSeconds, vxEngine.InputManager.PreviousKeyboardState,
     vxEngine.InputManager.KeyboardState, vxEngine.InputManager.PreviousGamePadState, vxEngine.InputManager.GamePadState);
-
+			light.Position = this.Camera.Position;
             //if (vxEngine.InputManager.MouseState.MiddleButton == ButtonState.Pressed)
             //    Mouse.SetPosition((int)vxEngine.Mouse_ClickPos.X, (int)vxEngine.Mouse_ClickPos.Y);
 

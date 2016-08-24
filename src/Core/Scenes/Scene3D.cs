@@ -650,7 +650,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             //    foreach (vxEntity aeroEntity in List_Entities)
             //        ((vxEntity3D)aeroEntity).RenderMeshForWaterReflectionPass(water.WrknPlane);
 
-
             //if (instSet.InstancedModel != null)
             //    vxEngine.Renderer.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
 
@@ -868,7 +867,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			//Plain Render
 			//
 			TitleText = "Plain Render";
-			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_ColourMap, new Rectangle (0, 0, width, height), Color.White);
+			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_LightMap, new Rectangle (0, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
 				new Vector2 (width / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
 

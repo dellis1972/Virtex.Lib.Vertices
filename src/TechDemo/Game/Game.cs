@@ -59,18 +59,7 @@ namespace VerticeEnginePort.Base
 
             vxEngine.LoadResolution = false;
 
-#if !VIRTICES_XNA
-			//this.Window.Position = new Point (0, 0);
-#endif
             vxEngine.AddScreen(new TitleScreen(), null);
-
-            vxConsole.WriteLine("=========================================");
-#if VIRTICES_XNA            
-            vxConsole.WriteLine("Starting Game Under XNA");            
-#elif VIRTICES_MONOGAME            
-            vxConsole.WriteLine("Starting Game Under MonoGame");                        
-#endif
-            vxConsole.WriteLine("=========================================");
         }
 
 
