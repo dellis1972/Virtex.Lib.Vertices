@@ -17,6 +17,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 	/// </summary>
     public class vxToolbarButton : vxGUIBaseItem
     {
+
 		/// <summary>
 		/// Gets or sets the button image.
 		/// </summary>
@@ -91,6 +92,8 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 			equipInstance.Volume = vxEngine.Profile.Settings.Audio.Double_SFX_Volume;
 			equipInstance.Play();
 			#endif
+
+
 		}
 
 		/// <summary>
@@ -113,10 +116,16 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 			if (Enabled) {
 
 				//Draw Hover Items
-				vxEngine.SpriteBatch.Draw (vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha);
+				//vxEngine.SpriteBatch.Draw (vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha);
 
 				if (HoverButtonImage != null)
 					vxEngine.SpriteBatch.Draw (HoverButtonImage, BoundingRectangle, Color_Normal * HoverAlpha);
+
+				if (IsTogglable && ToggleState) {
+
+					if (HoverButtonImage != null)
+						vxEngine.SpriteBatch.Draw (HoverButtonImage, BoundingRectangle, Color_Normal);
+				}
 			}
                 
             vxEngine.SpriteBatch.End();

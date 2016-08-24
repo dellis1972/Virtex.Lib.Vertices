@@ -52,7 +52,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         /// Constructor.
         /// </summary>
         public vxSeverListDialog()
-            : base("Server List", ButtonTypes.OkApplyCancel)
+            : base("Server List", vxEnumButtonTypes.OkApplyCancel)
         {
             
             BckgrndWrkr_FileOpen = new System.ComponentModel.BackgroundWorker();
@@ -80,10 +80,10 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             ScrollPanel = new vxListView(
                 new Vector2(
-                    backgroundRectangle.X + hPad, 
-                    backgroundRectangle.Y + vPad),
-                backgroundRectangle.Width - hPad * 2,
-                backgroundRectangle.Height - Btn_Ok.BoundingRectangle.Height - vPad * 3);            
+					this.ArtProvider.BoundingGUIRectangle.X + this.ArtProvider.Padding.X, 
+					this.ArtProvider.BoundingGUIRectangle.Y + this.ArtProvider.Padding.Y),
+				(int)(this.ArtProvider.BoundingGUIRectangle.Width - this.ArtProvider.Padding.X * 2),
+				(int)(this.ArtProvider.BoundingGUIRectangle.Height - Btn_Ok.BoundingRectangle.Height - this.ArtProvider.Padding.Y * 3));            
 
             InternalvxGUIManager.Add(ScrollPanel);
 
@@ -114,7 +114,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
                     vxListViewItem item = new vxListViewItem(vxEngine,                        
 						vxUtil.ReadXML(parsestring, "ip"));
-                    item.ButtonWidth = ScrollPanel.Width - (int)(4 * hPad);
+					item.ButtonWidth = ScrollPanel.Width - (int)(4 * this.ArtProvider.Padding.X);
                     
                     ScrollPanel.AddItem(item);
                 }

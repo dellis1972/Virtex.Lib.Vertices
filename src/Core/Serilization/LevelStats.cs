@@ -32,7 +32,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
         //Level Values
         //
 
-        static bool testLevel = true;
+        static bool testLevel = false;
 
         public static LevelStats[] LevelValues =
         {
@@ -132,7 +132,31 @@ namespace Virtex.Lib.Vrtc.Core.Settings
             new LevelStats("L. 77 : going up...",17,35613,testLevel) ,
             new LevelStats("L. 78 : this must be how frogs feel...",18,44216,testLevel),
             new LevelStats("L. 79 : going up...",19,35613,testLevel),
-            new LevelStats("L. 80 : this must be how frogs feel...",20,44216,testLevel)
+			new LevelStats("L. 80 : this must be how frogs feel...",20,44216,testLevel),
+
+			//Chapter 9
+			new LevelStats("L. 61 : this must be how frogs feel...",16,44216,testLevel),
+			new LevelStats("L. 62 : going up...",17,35613,testLevel) ,
+			new LevelStats("L. 63 : this must be how frogs feel...",18,44216,testLevel),
+			new LevelStats("L. 64 : going up...",19,35613,testLevel),
+			new LevelStats("L. 65 : this must be how frogs feel...",20,44216,testLevel),
+			new LevelStats("L. 66 : this must be how frogs feel...",16,44216,testLevel),
+			new LevelStats("L. 67 : going up...",17,35613,testLevel) ,
+			new LevelStats("L. 68 : this must be how frogs feel...",18,44216,testLevel),
+			new LevelStats("L. 69 : going up...",19,35613,testLevel),
+			new LevelStats("L. 70 : this must be how frogs feel...",20,44216,testLevel),
+
+			//Chapter 10
+			new LevelStats("L. 71 : this must be how frogs feel...",16,44216,testLevel),
+			new LevelStats("L. 72 : going up...",17,35613,testLevel) ,
+			new LevelStats("L. 73 : this must be how frogs feel...",18,44216,testLevel),
+			new LevelStats("L. 74 : going up...",19,35613,testLevel),
+			new LevelStats("L. 75 : this must be how frogs feel...",20,44216,testLevel),
+			new LevelStats("L. 76 : this must be how frogs feel...",16,44216,testLevel),
+			new LevelStats("L. 77 : going up...",17,35613,testLevel) ,
+			new LevelStats("L. 78 : this must be how frogs feel...",18,44216,testLevel),
+			new LevelStats("L. 79 : going up...",19,35613,testLevel),
+			new LevelStats("L. 80 : this must be how frogs feel...",20,44216,testLevel)
         };
     }
 }

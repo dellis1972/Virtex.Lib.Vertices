@@ -38,14 +38,14 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
         private void AddItemModeToolbarItem_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
-            AddItemModeToolbarItem.ToggleState = ToggleState.On;
-            SelectItemModeToolbarItem.ToggleState = ToggleState.Off;
+            AddItemModeToolbarItem.ToggleState = true;
+            SelectItemModeToolbarItem.ToggleState = false;
             MouseClickState = vxEnumSanboxMouseClickState.AddItem;
         }
 
         private void SelectItemModeToolbarItem_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
-            AddItemModeToolbarItem.ToggleState = ToggleState.Off;
+            AddItemModeToolbarItem.ToggleState = false;
             MouseClickState = vxEnumSanboxMouseClickState.SelectItem;
             DisposeOfTempPart();
         }

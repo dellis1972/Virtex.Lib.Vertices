@@ -156,8 +156,9 @@ namespace Virtex.Lib.Vrtc.GUI
             set
             {
                 _isTogglable = value;
+
                 if (value == true)
-                    ToggleState = ToggleState.Off;
+                    ToggleState = false;
 
             }
         }
@@ -166,7 +167,7 @@ namespace Virtex.Lib.Vrtc.GUI
         /// <summary>
         /// Toggle State of the GUI Item. Note: IsTogglable must be set too true.
         /// </summary>
-        public ToggleState ToggleState { get; set; }
+        public bool ToggleState { get; set; }
 
 
 		/// <summary>
@@ -552,6 +553,10 @@ namespace Virtex.Lib.Vrtc.GUI
         {
             if (Enabled && HasMouseBeenUpYet)
             {
+				//Set Toggle Status if this item is Toggleable
+				if (IsTogglable)
+					ToggleState = !ToggleState;
+
                 //To Show some visible cure the click was registered.
                 HoverAlpha = 0;
 
@@ -562,14 +567,6 @@ namespace Virtex.Lib.Vrtc.GUI
                 Colour = Color_Selected;
                 isSelected = true;
                 HasFocus = true;
-
-                if (IsTogglable)
-                {
-                    if (ToggleState == ToggleState.Off)
-                        ToggleState = ToggleState.On;
-                    else
-                        ToggleState = ToggleState.Off;
-                }
             }
             else
                 Colour *= 0.5f;
@@ -658,7 +655,7 @@ namespace Virtex.Lib.Vrtc.GUI
             //If it's a Toggle Item, set Toggle State
             if (IsTogglable)
             {
-                if (ToggleState == ToggleState.On)
+                if (ToggleState)
                     hoverAlphaReq = hoverAlphaMax;
                 else
                     hoverAlphaReq = hasFocus ? hoverAlphaMax : hoverAlphaMin;

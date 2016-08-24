@@ -146,7 +146,7 @@ namespace Virtex.Lib.Vrtc.Screens
         {            
             SpriteBatch spriteBatch = vxEngine.SpriteBatch;
             Viewport viewport = vxEngine.GraphicsDevice.Viewport;
-            Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
+            
             vxEngine.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
             
             vxEngine.GraphicsDevice.Clear(ClearOptions.Target, Color.GhostWhite, 0, 0);

@@ -223,8 +223,8 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                     return AddWaterVolume(Vector3.Zero);
                     break;
 
-                default:
-                    vxConsole.WriteError(this.ToString(), string.Format("'{0}' Key Not Found!", key));
+			default:
+				vxConsole.WriteError(new Exception (string.Format("'{0}' Key Not Found!", key)));
                     return null;
                     break;
             }
@@ -251,7 +251,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                 if (Items[i] != null)
                     Items[i].SetIndex(i);
                 else
-                    vxConsole.WriteError(this.ToString(), "ITEM ENTITY IS NULL");
+					vxConsole.WriteError(new Exception ("ITEM ENTITY IS NULL"));
             }
         }
 

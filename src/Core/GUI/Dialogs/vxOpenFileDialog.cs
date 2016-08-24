@@ -113,7 +113,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         #region Handle Input
 
 
-        void Btn_Ok_Clicked(object sender, vxGuiItemClickEventArgs e)
+        public override void Btn_Ok_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
             if (FileName != "")
             {
@@ -125,7 +125,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             }
         }
 
-        void Btn_Cancel_Clicked(object sender, vxGuiItemClickEventArgs e)
+		public override void Btn_Cancel_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
             // Raise the cancelled event, then exit the message box.
             if (Cancelled != null)

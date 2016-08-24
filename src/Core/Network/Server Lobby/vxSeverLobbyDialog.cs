@@ -101,7 +101,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         /// Constructor.
         /// </summary>
         public vxSeverLobbyDialog(string Title)
-            : base(Title, ButtonTypes.OkCancel)
+            : base(Title, vxEnumButtonTypes.OkCancel)
         {
             originalTitle = Title;
         }
@@ -124,11 +124,11 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
 
             ScrollPanel = new vxScrollPanel(
-                new Vector2(
-                    backgroundRectangle.X + hPad,
-                    backgroundRectangle.Y + vPad),
-                backgroundRectangle.Width - hPad * 2,
-                backgroundRectangle.Height - Btn_Ok.BoundingRectangle.Height - vPad * 3);
+				new Vector2(
+					this.ArtProvider.BoundingGUIRectangle.X + this.ArtProvider.Padding.X,
+					this.ArtProvider.BoundingGUIRectangle.Y + this.ArtProvider.Padding.Y),
+				(int)(this.ArtProvider.BoundingGUIRectangle.Width - this.ArtProvider.Padding.X * 2),
+				(int)(this.ArtProvider.BoundingGUIRectangle.Height - Btn_Ok.BoundingRectangle.Height - this.ArtProvider.Padding.Y * 3));
 
             ScrollPanel.ScrollBarWidth = 15;
 
@@ -149,9 +149,11 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
                 Btn_LaunchServer = new vxButton(vxEngine, "Launch Game", new Vector2(viewportSize.X / 2 - 115, viewportSize.Y / 2 + 20));
 
                 //Set the Button's Position relative too the background rectangle.
-                Btn_LaunchServer.Position = new Vector2(backgroundRectangle.X, backgroundRectangle.Y) + new Vector2(
-                    vxEngine.vxGUITheme.Padding.X * 2,
-                    backgroundRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
+                Btn_LaunchServer.Position = new Vector2(
+					this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y) + 
+					new Vector2(
+                    	vxEngine.vxGUITheme.Padding.X * 2,
+						this.ArtProvider.BoundingGUIRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight - vxEngine.vxGUITheme.Padding.Y * 2);
 
                 Btn_LaunchServer.Clicked += Btn_LaunchServer_Clicked; ;
                 InternalvxGUIManager.Add(Btn_LaunchServer);
@@ -186,14 +188,14 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             vxServerLobbyPlayerItem item = new vxServerLobbyPlayerItem(vxEngine,
                 e.ConnectedPlayer,
         new Vector2(
-            (int)(2 * hPad),
-            vPad + (vPad / 10 + 68) * (List_Items.Count + 1)),
+					(int)(2 * this.ArtProvider.Padding.X),
+					this.ArtProvider.Padding.Y + (this.ArtProvider.Padding.Y / 10 + 68) * (List_Items.Count + 1)),
         thumbnail,
         List_Items.Count);
 
 
             //Set Item Width
-            item.ButtonWidth = ScrollPanel.Width - (int)(2 * hPad) - ScrollPanel.ScrollBarWidth;
+			item.ButtonWidth = ScrollPanel.Width - (int)(2 * this.ArtProvider.Padding.X) - ScrollPanel.ScrollBarWidth;
 
             //Set Clicked Event
             item.Clicked += GetHighlitedItem;

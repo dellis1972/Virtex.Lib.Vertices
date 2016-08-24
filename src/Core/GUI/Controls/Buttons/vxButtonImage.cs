@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Core;
 using Microsoft.Xna.Framework.Audio;
+using Virtex.Lib.Vrtc.Utilities;
 
 namespace Virtex.Lib.Vrtc.GUI.Controls
 {
@@ -87,7 +88,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 
             //Set Default Colours
             Color_Normal = Color.White;
-            Color_Highlight = Color.DarkOrange;
+			Color_Highlight = Color.White;
 
 			//Default is true
 			DrawHoverBackground = true;
@@ -142,15 +143,20 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 
             //Draw Regular Image
             vxEngine.SpriteBatch.Draw(ButtonImage, BoundingRectangle, Color_Normal * Alpha);
-
+			/*
             //Draw Hover Items
 			if(DrawHoverBackground)
 				vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Color_Highlight * HoverAlpha * Alpha);
-
-
+			*/
             if (HoverButtonImage != null)
 				vxEngine.SpriteBatch.Draw(HoverButtonImage, BoundingRectangle, Color_Highlight * HoverAlpha * Alpha);
 
+
+			if (IsTogglable && ToggleState) {
+
+				if (HoverButtonImage != null)
+					vxEngine.SpriteBatch.Draw (HoverButtonImage, BoundingRectangle, Color_Normal);
+			}
         }
     }
 }

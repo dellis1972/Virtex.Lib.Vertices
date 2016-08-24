@@ -333,7 +333,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             #endregion
 
             //Set Initial State
-            SelectItemModeToolbarItem.ToggleState = ToggleState.On;
+            SelectItemModeToolbarItem.ToggleState = true;
             MouseClickState = vxEnumSanboxMouseClickState.SelectItem;
         }
 

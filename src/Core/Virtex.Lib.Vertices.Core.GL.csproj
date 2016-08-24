@@ -792,6 +792,7 @@
     <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
     <Compile Include="GUI\Art Providers\vxDialogArtProvider.cs" />
+    <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

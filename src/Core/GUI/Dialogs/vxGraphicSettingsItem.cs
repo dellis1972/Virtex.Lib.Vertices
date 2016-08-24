@@ -11,18 +11,18 @@ using Virtex.Lib.Vrtc.Core;
 namespace Virtex.Lib.Vrtc.GUI.Controls
 {
     /// <summary>
-    /// Toolbar control that holds <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxGraphicSettingsItem"/> 
+    /// Toolbar control that holds <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxSettingsGUIItem"/> 
     /// </summary>
-    public class vxGraphicSettingsItem : vxGUIBaseItem
+	public class vxSettingsGUIItem : vxGUIBaseItem
     {
         public vxLabel Label;
         public vxComboBox ValueComboBox;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxGraphicSettingsItem"/> class.
+        /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxSettingsGUIItem"/> class.
         /// </summary>
         /// <param name="position">Position.</param>
-        public vxGraphicSettingsItem(vxEngine Engine, vxGuiManager GUIManager, string Title, string Value, Vector2 position): base(position)
+        public vxSettingsGUIItem(vxEngine Engine, vxGuiManager GUIManager, string Title, string Value, Vector2 position): base(position)
         {
             GUIManager.Add(this);
 

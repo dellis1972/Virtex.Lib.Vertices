@@ -61,8 +61,14 @@ namespace Virtex.Lib.Vrtc.Core
 			get { return _gameName; }
 			set { _gameName = value; }
 		}
-
 		private string _gameName = "default_gamename";
+
+
+		/// <summary>
+		/// Gets or sets the graphics settings manager.
+		/// </summary>
+		/// <value>The graphics settings manager.</value>
+		public vxGraphicsSettingsManager GraphicsSettingsManager { get; set; }
 
 		#if VIRTICES_2D
 		/// <summary>
@@ -144,8 +150,8 @@ namespace Virtex.Lib.Vrtc.Core
 			get { return _currentScreenshot; }
 			set { _currentScreenshot = value; }
 		}
-
 		Texture2D _currentScreenshot;
+
 
         public Color FadeToBackBufferColor = Color.Black;
         public Color LoadingScreenBackColor = Color.Black;
@@ -254,11 +260,12 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public bool isInitialized;
 
+		/// <summary>
+		/// Gets or sets the splash screen.
+		/// </summary>
+		/// <value>The splash screen.</value>
 		public Texture2D SplashScreen { get; set; }
 
-		//
-		//Vector3
-		//
 		/// <summary>
 		/// The mouse click position.
 		/// </summary>
@@ -336,7 +343,6 @@ namespace Virtex.Lib.Vrtc.Core
 		public SpriteBatch SpriteBatch {
 			get { return _spriteBatch; }
 		}
-
 		SpriteBatch _spriteBatch;
 
 		/// <summary>
@@ -420,6 +426,10 @@ namespace Virtex.Lib.Vrtc.Core
 				"Toggles viewing the Individual Render Targets"));
 			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_INGMECNSL.ToString(), new EnvVar (false, 
 				"Toggles the In-Game Debug Window"));
+			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_FPS.ToString(), new EnvVar (false, 
+				"Toggles the FPS Counter"));
+			EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString(), new EnvVar (false, 
+				"Toggles the Time Ruler Debuger"));
 
 			#endregion
 
@@ -465,17 +475,6 @@ namespace Virtex.Lib.Vrtc.Core
 						EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var = false;
 					else
 						EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var = true;
-				});
-
-
-
-			// Register's Command too Show Render Targets on the Screen
-			/*****************************************************************************************************/
-			_debugSystem.DebugCommandUI.RegisterCommand (
-				"bm",              // Name of command
-				"Toggle Bloom",     // Description of command
-				delegate (IDebugCommandHost host, string command, IList<string> args) {
-					//this.Profile.Settings.Graphics.Bool_DoBloom = !this.Profile.Settings.Graphics.Bool_DoBloom;
 				});
 
 
@@ -586,6 +585,8 @@ namespace Virtex.Lib.Vrtc.Core
 #if VRTC_INCLDLIB_NET
 			InitialiseMasterServerConnection();
 #endif
+			//Now Setup Settings Managers
+			GraphicsSettingsManager = new vxGraphicsSettingsManager (this);
 
 			vxConsole.WriteLine ("Starting Content Manager...");
 		}
@@ -711,7 +712,7 @@ namespace Virtex.Lib.Vrtc.Core
 
             Languages.Add(new vxLanguagePackEnglishBase());
             Languages.Add(new vxLanguagePackFrenchBase());
-            //Languages.Add(new vxLanguagePackKoreanBase());
+            Languages.Add(new vxLanguagePackKoreanBase());
         }
 
 		/// <summary>
@@ -892,7 +893,7 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public void AddScreen (vxGameBaseScreen screen, PlayerIndex? controllingPlayer)
 		{
-			Console.WriteLine ("Adding Screen: " + screen.ToString ());
+			//Console.WriteLine ("Adding Screen: " + screen.ToString ());
 
 			screen.IsInitialised = true;
 			screen.ControllingPlayer = controllingPlayer;
@@ -917,7 +918,7 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public void RemoveScreen (vxGameBaseScreen screen)
 		{
-			Console.WriteLine ("Removing Screen: " + screen.ToString ());
+			//Console.WriteLine ("Removing Screen: " + screen.ToString ());
 
 
 			// If we have a graphics device, tell the screen to unload content.
@@ -973,7 +974,7 @@ namespace Virtex.Lib.Vrtc.Core
 		public void SetGraphicsSettings ()
 		{
 			GraphicsDeviceManager graphics = Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
-#if !VRTC_PLTFRM_DROID //!DEBUG && 
+#if !VRTC_PLTFRM_DROID 
             if (LoadResolution == true)
             {
 

@@ -74,8 +74,8 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         public virtual void Event_OpenFileDialog_Accepted(object sender, PlayerIndexEventArgs e)
         {
             vxMessageBoxSaveBeforeQuit saveBeforeCloseCheck = new vxMessageBoxSaveBeforeQuit("Are you sure you want to close without Saving?\nAll un-saved work will be lost", "Close Without Saving?");
-            saveBeforeCloseCheck.Save += new EventHandler<PlayerIndexEventArgs>(Event_SaveBeforeCloseCheck_Save);
-            saveBeforeCloseCheck.DontSave += new EventHandler<PlayerIndexEventArgs>(Event_SaveBeforeCloseCheck_DontSave);
+            saveBeforeCloseCheck.Apply += new EventHandler<PlayerIndexEventArgs>(Event_SaveBeforeCloseCheck_Save);
+            saveBeforeCloseCheck.Accepted += new EventHandler<PlayerIndexEventArgs>(Event_SaveBeforeCloseCheck_DontSave);
             vxEngine.AddScreen(saveBeforeCloseCheck, ControllingPlayer);
         }
 
@@ -98,7 +98,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             }
             catch (Exception ex)
             {
-                vxConsole.WriteError(this.ToString(), ex.Message);
+                vxConsole.WriteError(ex);
             }
             sandBoxFile.items.Clear();
 

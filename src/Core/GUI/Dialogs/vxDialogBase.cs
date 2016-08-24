@@ -138,7 +138,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 				this.ArtProvider.BoundingGUIRectangle.Y) + this.ArtProvider.PosOffset
 				+ new Vector2(
 					this.ArtProvider.BoundingGUIRectangle.Width - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultWidth * 3 - vxEngine.vxGUITheme.Padding.X * 3, 
-					this.ArtProvider.BoundingGUIRectangle.Bottom - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight * 3 - vxEngine.vxGUITheme.Padding.Y * 2);
+					this.ArtProvider.BoundingGUIRectangle.Height - vxEngine.vxGUITheme.ArtProviderForButtons.DefaultHeight * 2 - vxEngine.vxGUITheme.Padding.Y * 2);
 			
 			Btn_Ok.Position =  new Vector2(
 				this.ArtProvider.BoundingGUIRectangle.X, 

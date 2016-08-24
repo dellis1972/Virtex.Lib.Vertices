@@ -262,7 +262,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D
             }
             catch (Exception ex)
             {
-                vxConsole.WriteError(this.ToString(), ex.Message);
+                vxConsole.WriteError(ex);
             }
 
             base.DisposeEntity();

@@ -44,7 +44,7 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
 
 			displayDebugHUDMenuEntry = new vxMenuEntry(this, "Display Debug Mesh: " + (false ? "Yes" : "No"));
 			displayDebugRenderTargets = new vxMenuEntry(this, "Display Debug Render Targets: " + (false ? "Yes" : "No"));
-			displayDebugInformation = new vxMenuEntry(this, "Display Debug Info: " + (false ? "Yes" : "No"));
+			displayDebugInformation = new vxMenuEntry(this, "Display FPS Info: " + (false ? "Yes" : "No"));
 
 			//SetMenuEntryText();
 
@@ -60,8 +60,10 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
 
 
 			// Add entries to the menu.
+			#if VRTC_PLTFRM_DROID
 			MenuEntries.Add(displayDebugHUDMenuEntry);
-			MenuEntries.Add(displayDebugRenderTargets);
+			#endif
+			//MenuEntries.Add(displayDebugRenderTargets);
 			MenuEntries.Add(displayDebugInformation);
 			MenuEntries.Add(backMenuEntry);
 
@@ -75,9 +77,9 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         /// </summary>
         void SetMenuEntryText()
         {
-			displayDebugHUDMenuEntry.Text = "Display Debug HUD: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var ? "Yes" : "No");
+			displayDebugHUDMenuEntry.Text = "Test Android Keyboard";
 			displayDebugRenderTargets.Text = "Display Debug Render Targets: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var ? "Yes" : "No");
-            //displayDebugInformation.Text = "Display Debug Info: " + (vxEngine.DisplayDebugInformation ? "Yes" : "No");
+			displayDebugInformation.Text = "Display Debug Info: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_SHW_FPS.ToString()].Var ? "Yes" : "No");
         }
 
         void cancelMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -106,7 +108,12 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         
         void displayDebugHUDMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
         {
-           // vxEngine.DisplayDebugMesh = !vxEngine.DisplayDebugMesh;
+			#if VRTC_PLTFRM_DROID
+			var pView = vxEngine.Game.Services.GetService<View>();
+			var inputMethodManager = Application.GetSystemService(Context.InputMethodService) as InputMethodManager;
+			inputMethodManager.ShowSoftInput(pView, ShowFlags.Forced);
+			inputMethodManager.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
+			#endif
             SetMenuEntryText();
         }
 
@@ -118,8 +125,17 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
 
         void displayDebugInformation_Selected(object sender, PlayerIndexEventArgs e)
         {
-            //vxEngine.DisplayDebugInformation = !vxEngine.DisplayDebugInformation;
-            SetMenuEntryText();
+			if ((bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var == true) {
+				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var = false;
+				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Var = false;
+			} else {
+				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var = true;
+				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Var = true;
+			}
+
+			this.vxEngine.DebugSystem.FpsCounter.Visible = (bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var;
+			this.vxEngine.DebugSystem.TimeRuler.Visible = (bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Var;
+			SetMenuEntryText();
         }
 
         #endregion

@@ -32,23 +32,15 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
         {
             vxEngine.LoadResolution = true;
             base.LoadContent();
-
-
-			//All Items below are stored in this column as it's the longest word
-			
-            float Margin = 25;
-            float MarginTwo = 400;
-
-            int horiz = 75;
-            int horizTwo = 75;
             
 
             //Full Screen
             /*****************************************************************************************************/
-            vxGraphicSettingsItem LanguageSelectSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem LanguageSelectSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Language", vxEngine.Language.LanguageName, 
-                new Vector2(Margin, horiz));
-            horiz += 45;
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y));
+
+			//Add in languages
             foreach (vxLanguagePackBase language in vxEngine.Languages)
             {
                 LanguageSelectSettingsItem.ValueComboBox.AddItem(language.LanguageName);

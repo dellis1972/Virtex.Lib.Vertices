@@ -81,8 +81,6 @@ namespace Virtex.Lib.Vrtc.GUI
 
             DoesGuiHaveFocus = false;
 
-            MouseState mouseState = Mouse.GetState();
-
             if (this.FocusedItem == null)
             {
                 foreach (vxGUIBaseItem guiItem in List_GUIItems)

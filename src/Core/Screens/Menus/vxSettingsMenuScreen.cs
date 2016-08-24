@@ -41,7 +41,7 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
             vxMenuEntry LocalizationMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Settings_Localization));
             vxMenuEntry GraphicsMenuEntry = new vxMenuEntry(this, vxEngine.Language.Get(vxLocalization.Settings_Graphics));
 			vxMenuEntry AudioMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Settings_Audio));
-            vxMenuEntry displayDebugHUDMenuEntry = new vxMenuEntry(this, "debug");
+            vxMenuEntry displayDebugHUDMenuEntry = new vxMenuEntry(this, "Debug");
 
             vxMenuEntry cancelMenuEntry = new vxMenuEntry(this, LanguagePack.Get(vxLocalization.Misc_Back));
 
@@ -59,10 +59,13 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
 			// Add entries to the menu.
 			MenuEntries.Add(ControlsMenuEntry);
             MenuEntries.Add(LocalizationMenuEntry);
+			#if !VRTC_PLTFRM_DROID
             MenuEntries.Add(GraphicsMenuEntry);
+			#endif
+
 			MenuEntries.Add(AudioMenuEntry);
 
-#if DEBUG
+#if DEBUG || VRTC_PLTFRM_DROID
             MenuEntries.Add(displayDebugHUDMenuEntry);
 #endif
 

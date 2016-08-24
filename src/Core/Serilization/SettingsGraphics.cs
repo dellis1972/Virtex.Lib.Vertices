@@ -41,7 +41,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
         [XmlElement("DepthOfField")]
         public vxEnumQuality DepthOfField;
 
-        [XmlElement(";")]
+		[XmlElement("SSAO")]
         public vxEnumQuality SSAO;
 
         public vxSettingsGraphics() { }

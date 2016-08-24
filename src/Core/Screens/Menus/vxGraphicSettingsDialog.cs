@@ -28,6 +28,9 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
         }
 
+		/// <summary>
+		/// Load graphics content for the screen.
+		/// </summary>
         public override void LoadContent()
         {
             vxEngine.LoadResolution = true;
@@ -39,11 +42,9 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 			//All Items below are stored in this column as it's the longest word
 			
             float Margin = vxEngine.GraphicsDevice.Viewport.Width/2 - this.viewportSize.X/2 + 25;
-            float MarginTwo = Margin + 375;
+            //float MarginTwo = Margin + 375;
 
-            int horiz = 75;
-            int horizTwo = 75;
-
+            int horiz = 0;
 
             //Resolutions
             /*****************************************************************************************************/
@@ -51,8 +52,9 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             PresentationParameters pp = vxEngine.GraphicsDevice.PresentationParameters;
             string currentRes = string.Format("{0}x{1}", pp.BackBufferWidth, pp.BackBufferHeight);
 
-            vxGraphicSettingsItem ResolutionSettingsItem = new vxGraphicSettingsItem(
-                vxEngine, InternalvxGUIManager, vxEngine.Language.Get(vxLocalization.Graphics_Resolution), currentRes, new Vector2(Margin, horiz));
+            vxSettingsGUIItem ResolutionSettingsItem = new vxSettingsGUIItem(
+                vxEngine, InternalvxGUIManager, vxEngine.Language.Get(vxLocalization.Graphics_Resolution), currentRes, 
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y + horiz));
             horiz += 45;
 
             bool AddItem = true;
@@ -80,10 +82,10 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //Full Screen
             /*****************************************************************************************************/
-            vxGraphicSettingsItem FullScreenSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem FullScreenSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, vxEngine.Language.Get(vxLocalization.Graphics_FullScreen),
                 vxEngine.Profile.Settings.Graphics.Bool_FullScreen ? vxEngine.Language.Get(vxLocalization.Graphics_FullScreen) : vxEngine.Language.Get(vxLocalization.Graphics_Windowed), 
-                new Vector2(Margin, horiz));
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y + horiz));
             horiz += 45;
             FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.Get(vxLocalization.Graphics_FullScreen));
             FullScreenSettingsItem.ValueComboBox.AddItem(vxEngine.Language.Get(vxLocalization.Graphics_Windowed));
@@ -100,10 +102,10 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //VSync
             /*****************************************************************************************************/
-            vxGraphicSettingsItem VSyncSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem VSyncSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "VSync",
                 vxEngine.Profile.Settings.Graphics.Bool_VSync ? "On" : "Off",
-                new Vector2(Margin, horiz));
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y + horiz));
             horiz += 45;
 
             VSyncSettingsItem.ValueComboBox.AddItem("Off");
@@ -122,7 +124,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //Shadows
             /*****************************************************************************************************/
-            vxGraphicSettingsItem ShadowsSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem ShadowsSettingsItem = new vxSettingsGUIItem(
                vxEngine, InternalvxGUIManager, "Shadows",
                vxEngine.Profile.Settings.Graphics.ShadowQuality.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
@@ -141,7 +143,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //Bloom
             /*****************************************************************************************************/
-            vxGraphicSettingsItem BloomSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem BloomSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Bloom",
                 vxEngine.Profile.Settings.Graphics.Bloom.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
@@ -160,7 +162,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //Edge Detect
             /*****************************************************************************************************/
-            vxGraphicSettingsItem EdgeDetectSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem EdgeDetectSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Edge Detect",
                 vxEngine.Profile.Settings.Graphics.Bool_DoEdgeDetection ? "On" : "Off",
                 new Vector2(MarginTwo, horizTwo));
@@ -181,7 +183,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //Depth of Field
             /*****************************************************************************************************/
-            vxGraphicSettingsItem DOFSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem DOFSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "Depth of Field",
                 vxEngine.Profile.Settings.Graphics.DepthOfField.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
@@ -200,7 +202,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //Crepuscular Rays
             /*****************************************************************************************************/
-            vxGraphicSettingsItem GodRaySettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem GodRaySettingsItem = new vxSettingsGUIItem(
                vxEngine, InternalvxGUIManager, "Crepuscular Rays",
                vxEngine.Profile.Settings.Graphics.GodRays.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
@@ -219,7 +221,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             //SSAO
             /*****************************************************************************************************/
-            vxGraphicSettingsItem SSAOSettingsItem = new vxGraphicSettingsItem(
+            vxSettingsGUIItem SSAOSettingsItem = new vxSettingsGUIItem(
                 vxEngine, InternalvxGUIManager, "SSAO",
                 vxEngine.Profile.Settings.Graphics.SSAO.ToString(), new Vector2(MarginTwo, horizTwo));
             horizTwo += 45;
@@ -247,7 +249,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             SetSettings();
         }
 
-        void Btn_Ok_Clicked(object sender, vxGuiItemClickEventArgs e)
+        public override void Btn_Ok_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
             SetSettings();
             ExitScreen();
