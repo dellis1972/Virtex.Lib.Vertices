@@ -104,18 +104,18 @@
     <Compile Include="Cameras\vxVirtualCamera.cs" />
     <Compile Include="ContentManagement\Assets.cs" />
     <Compile Include="ContentManagement\vxContentManager.cs" />
-    <Compile Include="DebugUtils\DebugCommandUI.cs" />
-    <Compile Include="DebugUtils\DebugManager.cs" />
-    <Compile Include="DebugUtils\DebugShapeRenderer.cs" />
-    <Compile Include="DebugUtils\DebugSystem.cs" />
-    <Compile Include="DebugUtils\EnvVar.cs" />
-    <Compile Include="DebugUtils\FpsCounter.cs" />
     <Compile Include="DebugUtils\IDebugCommandHost.cs" />
     <Compile Include="DebugUtils\KeyboardUtils.cs" />
     <Compile Include="DebugUtils\Layout.cs" />
     <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
-    <Compile Include="DebugUtils\TimeRuler.cs" />
     <Compile Include="DebugUtils\vxCrashHandler.cs" />
+    <Compile Include="DebugUtils\vxDebugCntrlFpsCounter.cs" />
+    <Compile Include="DebugUtils\vxDebugCntrlTimeRuler.cs" />
+    <Compile Include="DebugUtils\vxDebugCommandUI.cs" />
+    <Compile Include="DebugUtils\vxDebugManager.cs" />
+    <Compile Include="DebugUtils\vxDebugShapeRenderer.cs" />
+    <Compile Include="DebugUtils\vxDebugSystem.cs" />
+    <Compile Include="DebugUtils\vxVar.cs" />
     <Compile Include="Entities\Enviroment\Sun.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Enviroment\Water_General.cs" />
@@ -175,12 +175,14 @@
     <Compile Include="Scenes\Scene3D.Network.cs" />
     <Compile Include="Scenes\SceneBase.cs" />
     <Compile Include="Scenes\Scene3D.empty.cs" />
+    <Compile Include="Screens\vxTitleScreen.cs" />
     <Compile Include="Serilization\LevelStats.cs" />
     <Compile Include="Serilization\Profile.cs" />
     <Compile Include="Serilization\SettingsAudio.cs" />
-    <Compile Include="Serilization\SettingsGraphics.cs" />
     <Compile Include="Serilization\SettingsControls.cs" />
-    <Compile Include="Serilization\Settings.cs" />
+    <Compile Include="Serilization\vxGraphicsSettingsFileStructure.cs" />
+    <Compile Include="Serilization\vxSettingsFileStructure.cs" />
+    <Compile Include="Utilities\vxEnviroment.cs" />
     <Compile Include="vxEngine.cs" />
     <Compile Include="vxEngine.Network.cs" />
     <Compile Include="Geometry\Quad.cs" />
@@ -290,9 +292,6 @@
     <Compile Include="Screens\Menus\vxMenuBaseScreen.cs" />
     <Compile Include="Screens\Menus\vxPauseMenuScreen.cs" />
     <Compile Include="Screens\Menus\vxSettingsMenuScreen.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Screens\TitleScreen.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utilities\vxConsole.cs" />

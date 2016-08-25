@@ -81,13 +81,13 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Envrio.cs" />
     <Compile Include="Entities\IndexedCubeTest.cs" />
     <Compile Include="Entities\IndexedPrimTest.cs" />
     <Compile Include="Entities\ModelObjs.cs" />
     <Compile Include="Entities\Teapot.cs" />
     <Compile Include="Entities\ConcreteCube.cs" />
     <Compile Include="Entities\WoodenCrate.cs" />
-    <Compile Include="Entities\xEnvrio.cs" />
     <Compile Include="Game\Enums.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameEngine.cs" />

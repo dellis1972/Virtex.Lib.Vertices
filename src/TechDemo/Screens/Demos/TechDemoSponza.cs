@@ -37,7 +37,7 @@ namespace VerticeEnginePort.Base
     /// </summary>
     public class TechDemoSponza : vxSandboxGamePlay
     {
-		/*
+		
         //
         //Player
         //
@@ -66,7 +66,7 @@ namespace VerticeEnginePort.Base
         }
 
         #endregion
-		*/
+		
         public TechDemoSponza()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
@@ -122,15 +122,16 @@ namespace VerticeEnginePort.Base
 
 
 			Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
-			
-			//Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard", this.vxEngine.Game.Content,
-			//	this.vxEngine.Assets.Shaders.CartoonShader), Vector3.Zero);
 
-            envr.SpecularIntensity = 100;
-			envr.SpecularPower = 5f;
-			envr.DoFog = false;
+            //Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard", this.vxEngine.Game.Content,
+            //	this.vxEngine.Assets.Shaders.CartoonShader), Vector3.Zero);
 
-			light = new vxLightEntity (vxEngine, new Vector3 (0, 2, 0), LightType.Point, Color.Orange, 10, 1);
+            envr.SpecularIntensity = 1;
+            //envr.SpecularIntensity = 100;
+            //envr.SpecularPower = 5f;
+            //envr.DoFog = false;
+
+            light = new vxLightEntity (vxEngine, new Vector3 (0, 2, 0), LightType.Point, Color.Orange, 10, 1);
 
             //This is a little convenience method used to extract vertices and indices from a model.
             //It doesn't do anything special; any approach that gets valid vertices and indices will work.
