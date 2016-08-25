@@ -194,6 +194,16 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
                             if (newEffect.Parameters["IsSun"] != null)
                                 newEffect.Parameters["IsSun"].SetValue(false);
 
+							Vector4[] ShadowSplitColors = new[] {
+								new Vector4 (255, 0, 0, 255),
+								new Vector4 (0, 255, 0, 255),
+								new Vector4 (0, 0, 255, 255),
+								new Vector4 (160, 32, 240, 255)
+							};
+
+							//if (part.Effect.Parameters ["SplitColors"] != null)
+							newEffect.Parameters ["SplitColors"].SetValue (ShadowSplitColors);
+							Console.WriteLine(ShadowSplitColors);
 
 
 #if VRTC_PLTFRM_XNA

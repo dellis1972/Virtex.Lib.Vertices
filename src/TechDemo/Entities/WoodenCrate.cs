@@ -74,6 +74,8 @@ namespace VerticeEnginePort.Base
             vxEngine.Current3DSceneBase.BEPUDebugDrawer.Add(entity);
             vxEngine.Current3DSceneBase.BEPUPhyicsSpace.Add(entityMover);
 
+			InitShaders ();
+
         }
         Matrix preMat = Matrix.Identity;
         public override void ToggleSimulation(bool IsRunning)

@@ -56,6 +56,7 @@ namespace VerticeEnginePort.Base
 							part.Effect.Parameters ["ToonBrightnessLevels"].SetValue (ToonBrightnessLevels);
 */
 
+						
 						if (part.Effect.Parameters ["FogColor"] != null)
 							part.Effect.Parameters ["FogColor"].SetValue (new Vector4(1,1,1,1));
 

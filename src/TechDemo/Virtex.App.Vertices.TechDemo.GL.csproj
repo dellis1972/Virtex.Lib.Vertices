@@ -101,9 +101,6 @@
     <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_side_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_side_nm.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_top_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -261,6 +258,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Compiled.WindowsGL\Models\courtyard\td_courtyard.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\Cube_dds.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\Cube_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\Cube_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

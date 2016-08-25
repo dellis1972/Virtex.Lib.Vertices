@@ -478,6 +478,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
 						//if (part.Effect.Parameters["EvissiveColour"] != null)
 							part.Effect.Parameters["EvissiveColour"].SetValue(new Vector4(0.5f));
+					
 
                         //By Default, Don't Show Fog
                         DoFog = vxEngine.Current3DSceneBase.DoFog;
@@ -746,11 +747,14 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 								//effect.Parameters["ShadowMapSize"].SetValue(512);
 
                                 if (effect.Parameters["DoShadow"] != null)
-                                    effect.Parameters["DoShadow"].SetValue(DoShadowMap);
+								effect.Parameters["DoShadow"].SetValue(DoShadowMap);
+							
+							if (effect.Parameters["ShadowDebug"] != null)
+								effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
 
                                 if (effect.Parameters["ViewVector"] != null)
                                     effect.Parameters["ViewVector"].SetValue(vxEngine.Current3DSceneBase.Camera.View.Forward);
-
+							
                                 if (effect.Parameters["ShadowMap"] != null)
                                     effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
                                 if (effect.Parameters["ShadowTransform"] != null)
@@ -777,7 +781,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                                     effect.Parameters["FogNear"].SetValue(vxEngine.Current3DSceneBase.FogNear);
 
                                 if (effect.Parameters["FogFar"] != null)
-                                    effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar);
+                                    effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar/5);
 
                                 if (effect.Parameters["FogColor"] != null)
                                     effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
