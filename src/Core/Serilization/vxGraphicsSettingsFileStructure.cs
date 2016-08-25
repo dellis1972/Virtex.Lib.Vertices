@@ -14,17 +14,36 @@ namespace Virtex.Lib.Vrtc.Core.Settings
 	/// <summary>
 	/// Serializable Settings.
 	/// </summary>
-    public class vxSettingsGraphics
+	public class vxGraphicsSettingsFileStructure
     {
         //Graphics
-        [XmlElement("Int_Resolution")]
-        public int Int_Resolution;
+        [XmlElement("Int_Resolution_X")]
+		public int Int_Resolution_X
+		{
+			get { return vxEnviroment.GetVar (vxEnumEnvVarType.RES_X).GetAsInt (); }
+			set { vxEnviroment.GetVar (vxEnumEnvVarType.RES_X).Value = value; }
+		}
+
+		[XmlElement("Int_Resolution_Y")]
+		public int Int_Resolution_Y
+		{
+			get { return vxEnviroment.GetVar (vxEnumEnvVarType.RES_Y).GetAsInt (); }
+			set { vxEnviroment.GetVar (vxEnumEnvVarType.RES_Y).Value = value; }
+		}
 
         [XmlElement("Bool_FullScreen")]
-        public bool Bool_FullScreen;
+		public bool Bool_FullScreen
+		{
+			get { return vxEnviroment.GetVar (vxEnumEnvVarType.FLSCRN).GetAsBool (); }
+			set { vxEnviroment.GetVar (vxEnumEnvVarType.FLSCRN).Value = value; }
+		}
 
         [XmlElement("Bool_VSync")]
-        public bool Bool_VSync;
+		public bool Bool_VSync
+		{
+			get { return vxEnviroment.GetVar (vxEnumEnvVarType.VSYNC).GetAsBool (); }
+			set { vxEnviroment.GetVar (vxEnumEnvVarType.VSYNC).Value = value; }
+		}
 
         [XmlElement("ShadowQuality")]
         public vxEnumQuality ShadowQuality;
@@ -44,12 +63,13 @@ namespace Virtex.Lib.Vrtc.Core.Settings
 		[XmlElement("SSAO")]
         public vxEnumQuality SSAO;
 
-        public vxSettingsGraphics() { }
+		public vxGraphicsSettingsFileStructure() { }
         //
         //Constructor
         //
-        public vxSettingsGraphics(
-            int Int_Resolution,
+		public vxGraphicsSettingsFileStructure(
+			int Resolution_X,
+			int Resolution_Y,
             bool Bool_FullScreen,
             bool Bool_VSync,
             vxEnumQuality ShadowQuality,
@@ -61,7 +81,10 @@ namespace Virtex.Lib.Vrtc.Core.Settings
         {
             
             //Graphics
-            this.Int_Resolution = Int_Resolution;
+			try
+			{
+			this.Int_Resolution_X = Resolution_X;
+			this.Int_Resolution_Y = Resolution_Y;
             this.Bool_FullScreen = Bool_FullScreen;
             this.Bool_VSync = Bool_VSync;
             
@@ -71,6 +94,10 @@ namespace Virtex.Lib.Vrtc.Core.Settings
             this.Bloom = DoBloom;
             this.DepthOfField = DoDepthOfField;
             this.SSAO = DoSSAO;
+			}
+			catch(Exception ex){
+				//Console.WriteLine (ex.Message);
+			}
         }   
     }
 }

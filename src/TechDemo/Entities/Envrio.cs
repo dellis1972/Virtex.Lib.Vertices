@@ -10,13 +10,13 @@ using System.Linq;
 
 namespace VerticeEnginePort.Base
 {
-    public class xEnvrio : vxEntity3D
+    public class Envrio : vxEntity3D
     {
         /// <summary>
         /// Creates a New Instance of the Base Ship Class
         /// </summary>
         /// <param name="AssetPath"></param>
-        public xEnvrio(vxEngine vxEngine, vxModel entityModel, Vector3 StartPosition)
+		public Envrio(vxEngine vxEngine, vxModel entityModel, Vector3 StartPosition)
             : base(vxEngine, entityModel, StartPosition)
         {
             //World = Matrix.CreateRotationX(-MathHelper.PiOver2);
@@ -41,7 +41,7 @@ namespace VerticeEnginePort.Base
 						if (part.Effect.Parameters ["PoissonKernel"] != null)
 							part.Effect.Parameters ["PoissonKernel"].SetValue (vxEngine.Renderer.poissonKernel);
 
-
+						/*
 						float[] thres = new float[2];
 						thres[0] = 0.8f;
 						thres[1] = 0.4f;
@@ -54,7 +54,7 @@ namespace VerticeEnginePort.Base
 						ToonBrightnessLevels[2] = 0.2f;
 						if (part.Effect.Parameters ["ToonBrightnessLevels"] != null)
 							part.Effect.Parameters ["ToonBrightnessLevels"].SetValue (ToonBrightnessLevels);
-
+*/
 
 						if (part.Effect.Parameters ["FogColor"] != null)
 							part.Effect.Parameters ["FogColor"].SetValue (new Vector4(1,1,1,1));

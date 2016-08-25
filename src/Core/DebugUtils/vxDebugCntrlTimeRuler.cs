@@ -59,7 +59,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
     /// So, don't forget remove "TRACE" constant when you release your game.
     /// 
     /// </remarks>
-    public class TimeRuler : DrawableGameComponent
+	public class vxDebugCntrlTimeRuler : DrawableGameComponent
     {
         #region Constants
 
@@ -212,7 +212,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         }
 
         // Reference of debug manager.
-        DebugManager debugManager;
+        vxDebugManager debugManager;
 
         // Logs for each frames.
         FrameLog[] logs;
@@ -258,18 +258,18 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
         #region Initialization
 
-        public TimeRuler(Game game)
+		public vxDebugCntrlTimeRuler(Game game)
             : base(game)
         {
             // Add this as a service.
-            Game.Services.AddService(typeof(TimeRuler), this);
+			Game.Services.AddService(typeof(vxDebugCntrlTimeRuler), this);
         }
 
         public override void Initialize()
         {
 #if TRACE
             debugManager =
-                Game.Services.GetService(typeof(DebugManager)) as DebugManager;
+				Game.Services.GetService(typeof(vxDebugManager)) as vxDebugManager;
 
             if (debugManager == null)
                 throw new InvalidOperationException("DebugManager is not registered.");

@@ -294,7 +294,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
             foreach (ModelMesh mesh in newModel.ModelUtility.Meshes)
             {
 #if vxDEBUG_VERBOSE
-                Console.WriteLine("\t\t\tMesh Name: " + mesh.Name);
+                Console.WriteLine("\t\t\tUtility Mesh Name: " + mesh.Name);
 #endif
                 mesh.Tag = PathToModel;
                 // Scan over all the effects currently on the mesh.

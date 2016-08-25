@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Audio;
 using Virtex.Lib.Vrtc.Core;
 using Virtex.Lib.Vrtc.Screens.Async;
 using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Utilities;
 
 namespace VerticeEnginePort.Base
 {
@@ -33,7 +34,7 @@ namespace VerticeEnginePort.Base
         /// <summary>
         /// vxEngine Interface on Game Side, Add in all Global Assets specific to the game here.
         /// </summary>
-        public GameEngine(Game game) : base(game, "vertices_techDemo") { }
+        public GameEngine(Game game) : base(game, "VerticesEngineTechDemo") { }
 
 
         /// <summary>
@@ -67,30 +68,23 @@ namespace VerticeEnginePort.Base
 
             GameVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             
-            WriteLine_White("Loading Global Content...");
+			vxConsole.WriteLine("Loading Global Content...");
 
             ////////////////////////////////////////////////////////////////////////////////////////////
             //Fonts
             ////////////////////////////////////////////////////////////////////////////////////////////
-            Console.Write("\tLoading Fonts...");
 
-            WriteLine_Green("\t\tDone!");
 
             ////////////////////////////////////////////////////////////////////////////////////////////
             //Images
             ////////////////////////////////////////////////////////////////////////////////////////////
-            Console.Write("\tLoading Textures...");
 
-
-            WriteLine_Green("\t\tDone!");
 
 
             ////////////////////////////////////////////////////////////////////////////////////////////
             //Shaders
             ////////////////////////////////////////////////////////////////////////////////////////////
-            Console.Write("\tLoading Shaders...");
 
-            WriteLine_Green("\t\tDone!");
 
 
 
@@ -99,7 +93,6 @@ namespace VerticeEnginePort.Base
             //MODELS
             ////////////////////////////////////////////////////////////////////////////////////////////
 
-            Console.Write("\tLoading Models...\n");
 
             Model_Items_ModelObjs = vxContentManager.LoadModel("Models/modelobjs/modelobjs");
 
@@ -109,25 +102,17 @@ namespace VerticeEnginePort.Base
             
 			Model_Items_Teapot = vxContentManager.LoadModel("Models/teapot/teapot");
 
-            //Model_Items_WaterCrate = ContentManager.LoadModelAsWaterObject("Models/items/wooden crate/wooden crate", content);
-            WriteLine_Green("\t\tDone!");
 
 
             ////////////////////////////////////////////////////////////////////////////////////////////
             //Sounde Effects
             ////////////////////////////////////////////////////////////////////////////////////////////
-            Console.Write("\tLoading Sound Effects...");
 
-
-            WriteLine_Green("\tDone!");
 
             ////////////////////////////////////////////////////////////////////////////////////////////
             // Music
             ////////////////////////////////////////////////////////////////////////////////////////////
-            Console.Write("\tLoading Music...");
-            
 
-            WriteLine_Green("\t\tDone!");
         }
         #endregion
 

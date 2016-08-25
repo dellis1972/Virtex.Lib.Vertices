@@ -68,6 +68,12 @@ namespace Virtex.Lib.Vrtc.Core
         public void InitialiseMasterServerConnection()
 		{
 			vxConsole.WriteLine("Setting Up Network System...");
+
+
+			//Why? Bc Linux hates me.
+			if (SynchronizationContext.Current == null)
+				SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+
 			MasterServerConnectionStatus = vxEnumNetworkConnectionStatus.Stopped;
 			var config = new NetPeerConfiguration("Virtex_Main_Server");
 			MasterSeverClient = new NetClient(config);

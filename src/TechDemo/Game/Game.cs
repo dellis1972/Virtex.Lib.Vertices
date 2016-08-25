@@ -59,7 +59,7 @@ namespace VerticeEnginePort.Base
 
             vxEngine.LoadResolution = false;
 
-            vxEngine.AddScreen(new TitleScreen(), null);
+            vxEngine.AddScreen(new vxTitleScreen(), null);
         }
 
 

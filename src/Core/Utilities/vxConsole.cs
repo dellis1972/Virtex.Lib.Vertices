@@ -35,7 +35,7 @@ namespace Virtex.Lib.Vrtc.Utilities
 		/// Initialises the vxConsole Static Object.
 		/// </summary>
 		/// <param name="engine">Engine.</param>
-		public static void Init(vxEngine engine)
+		public static void Initialize(vxEngine engine)
 		{
 			vxEngine = engine;
 
@@ -78,6 +78,8 @@ namespace Virtex.Lib.Vrtc.Utilities
 			vxConsole.WriteLine ("///////////////////////////////////////////////////////////////////////");
 		}
 
+
+
         /// <summary>
         /// Writes a debug line which is outputed to both the engine debug window and the system console.
         /// </summary>
@@ -105,7 +107,20 @@ namespace Virtex.Lib.Vrtc.Utilities
 #if !VRTC_PLTFRM_DROID
             Console.ResetColor();
 #endif
-			if (vxEngine != null)
+			if (vxEngine != null && vxEngine.DebugSystem != null)
+				vxEngine.DebugSystem.DebugCommandUI.Echo(">>: " + output.ToString());
+		}
+
+		public static void WriteLine(object output, ConsoleColor consoleColor)
+		{
+			#if !VRTC_PLTFRM_DROID
+			Console.ForegroundColor = consoleColor;
+			#endif
+			Console.WriteLine(">>: " + output);
+			#if !VRTC_PLTFRM_DROID
+			Console.ResetColor();
+			#endif
+			if (vxEngine != null && vxEngine.DebugSystem != null)
 				vxEngine.DebugSystem.DebugCommandUI.Echo(">>: " + output.ToString());
 		}
 
@@ -243,7 +258,7 @@ namespace Virtex.Lib.Vrtc.Utilities
 		{
             SpriteFont font = vxEngine.Assets.Fonts.DebugFont;
 			if (vxEngine != null) {
-				if ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var == true) {
+				if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_INGMECNSL).GetAsBool()== true) {
 					vxEngine.SpriteBatch.Begin ();
 
 					string outputText = "InGame Debug Console:";

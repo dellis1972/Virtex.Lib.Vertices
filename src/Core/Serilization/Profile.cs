@@ -10,6 +10,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Xml.Serialization;
 using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
 
 namespace Virtex.Lib.Vrtc.Core.Settings
 {
@@ -20,7 +21,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
         public string String_ProfileName = "v.1";
 
         //Default Settings
-        public vxSettings Settings = new vxSettings(
+		public vxSettingsFileStructure Settings = new vxSettingsFileStructure(
             //Controls
             new vxSettingsControls(
                 new vxSettingsControlsMouse(1, 1), 
@@ -28,7 +29,7 @@ namespace Virtex.Lib.Vrtc.Core.Settings
                 new vxSettingsControlsGamePad(1, 1)
                 ),
             //Graphics
-            new vxSettingsGraphics(4, false, false, vxEnumQuality.Medium, true, vxEnumQuality.Medium, vxEnumQuality.None, vxEnumQuality.None, vxEnumQuality.Medium),
+            new vxGraphicsSettingsFileStructure(1280,720, false, false, vxEnumQuality.Medium, true, vxEnumQuality.Medium, vxEnumQuality.None, vxEnumQuality.None, vxEnumQuality.Medium),
             //Audio
             new vxSettingsAudio(1, 1, 1));
 
@@ -43,53 +44,57 @@ namespace Virtex.Lib.Vrtc.Core.Settings
         {
             try
             {
-                //Console.Write("Loading Settings...");
-                XmlSerializer deserializer = new XmlSerializer(typeof(vxSettings));
-				TextReader reader = new StreamReader(vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString() + "settings.set");
+				vxConsole.WriteLine(string.Format("Loading Settings at: {0}", 
+					vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SETTINGS).Value.ToString() + "settings.set"));
+				XmlSerializer deserializer = new XmlSerializer(typeof(vxSettingsFileStructure));
+				TextReader reader = new StreamReader(vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SETTINGS).Value.ToString() + "settings.set");
                 object obj = deserializer.Deserialize(reader);
-                Settings = (vxSettings)obj;
+				Settings = (vxSettingsFileStructure)obj;
                 reader.Close();
-                //Console.WriteLine("Done!");
+				vxConsole.WriteLine("Done!");
             }
 
             catch (Exception exception)
             {
-                Console.WriteLine("Error!");
-                vxEngine.WriteError("Profile.cs", "LoadSettings", exception.Message);
-            
-                // Create our menu entries.
-                int LoopCount = 0;
+				vxConsole.WriteLine("Error Loading Settings! " + exception.Message);
+                
+				// Create our menu entries.
                 foreach (DisplayMode mode in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
                 {
                     if (mode.Width > 599 || mode.Height > 479)
                     {
-                        LoopCount++;
-						Console.WriteLine ("res: {0}x{1}",mode.Width, mode.Height);
+						//Set the Largest Resolution as default
+						if (Settings.Graphics.Int_Resolution_X < mode.Width && 
+							Settings.Graphics.Int_Resolution_Y < mode.Height) {
+
+							//Set the New Resolution
+							Settings.Graphics.Int_Resolution_X = mode.Width;
+							Settings.Graphics.Int_Resolution_Y = mode.Height;
+							Console.WriteLine ("res: {0}x{1}",mode.Width, mode.Height);
+						}
                     }
                 }
-                vxEngine.Profile.Settings.Graphics.Int_Resolution = LoopCount-1;
-				//TODO: The order of resolutions may not always be in ascending order.
-				Settings.Graphics.Int_Resolution = 1;//LoopCount - 1;
-                Console.Write("Saving New Settings File...");
+
                 SaveSettings(vxEngine);
-                vxEngine.WriteLine_Green("Done!");
             }
         }
         
         public void SaveSettings(vxEngine vxEngine)
         {
             try
-            {
+			{
+				vxConsole.WriteLine("Saving New Settings File...");
                 //Write The Sandbox File
-                XmlSerializer serializer = new XmlSerializer(typeof(vxSettings));
-				using (TextWriter writer = new StreamWriter(vxEngine.EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString() + "settings.set"))
+				XmlSerializer serializer = new XmlSerializer(typeof(vxSettingsFileStructure));
+				using (TextWriter writer = new StreamWriter(vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SETTINGS).Value.ToString() + "settings.set"))
                 {
                     serializer.Serialize(writer, Settings);
-                }
+				}
+				vxConsole.WriteLine("Done!", ConsoleColor.Green);
             }
             catch (Exception exception)
             {
-                vxEngine.WriteError("Profile.cs", "SaveSettings", exception.Message);
+                vxConsole.WriteLine("Error Saving Settings : " + exception.Message);
             }
         }
     }

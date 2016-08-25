@@ -24,7 +24,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
     /// <summary>
     /// Component for FPS measure and draw.
     /// </summary>
-    public class FpsCounter : DrawableGameComponent
+    public class vxDebugCntrlFpsCounter : DrawableGameComponent
     {
         #region Properties
 
@@ -43,7 +43,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         #region Fields
 
         // Reference for debug manager.
-        private DebugManager debugManager;
+        private vxDebugManager debugManager;
 
         // Stopwatch for fps measuring.
         private Stopwatch stopwatch;
@@ -57,7 +57,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
         #region Initialize
 
-        public FpsCounter(Game game)
+		public vxDebugCntrlFpsCounter(Game game)
             : base(game)
         {
             SampleSpan = TimeSpan.FromSeconds(0.5f);
@@ -67,7 +67,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         {
             // Get debug manager from game service.
             debugManager =
-                Game.Services.GetService(typeof(DebugManager)) as DebugManager;
+				Game.Services.GetService(typeof(vxDebugManager)) as vxDebugManager;
 
             if (debugManager == null)
                 throw new InvalidOperationException("DebugManaer is not registered.");

@@ -20,7 +20,7 @@ namespace Virtex.Lib.Vrtc.Screens
     /// It draws a background image that remains fixed in place regardless
     /// of whatever transitions the screens on top of it may be doing.
     /// </summary>
-    public class TitleScreen : vxGameBaseScreen
+    public class vxTitleScreen : vxGameBaseScreen
     {
         #region Fields
 
@@ -48,7 +48,7 @@ namespace Virtex.Lib.Vrtc.Screens
         /// <summary>
         /// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Screens.TitleScreen"/> class.
         /// </summary>
-        public TitleScreen()
+		public vxTitleScreen()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(1.5);
@@ -58,7 +58,7 @@ namespace Virtex.Lib.Vrtc.Screens
 		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.Screens.TitleScreen"/> class.
 		/// </summary>
 		/// <param name="UpdateTime">Update time.</param>
-        public TitleScreen(int UpdateTime):this()
+		public vxTitleScreen(int UpdateTime):this()
         {
             this.UpdateTime = UpdateTime;
         }
@@ -75,6 +75,7 @@ namespace Virtex.Lib.Vrtc.Screens
         {
             if (content == null)
                 content = new ContentManager(vxEngine.Game.Services, "Content");
+			
 
             TitleFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_splash");
 			try

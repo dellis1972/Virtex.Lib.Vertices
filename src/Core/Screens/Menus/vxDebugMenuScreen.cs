@@ -85,8 +85,8 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         void SetMenuEntryText()
         {
 			displayDebugHUDMenuEntry.Text = "Test Android Keyboard";
-			displayDebugRenderTargets.Text = "Display Debug Render Targets: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var ? "Yes" : "No");
-			displayDebugInformation.Text = "Display Debug Info: " + ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_SHW_FPS.ToString()].Var ? "Yes" : "No");
+			displayDebugRenderTargets.Text = "Display Debug Render Targets: " + (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_RNDRTRGT).GetAsBool() ? "Yes" : "No");
+			displayDebugInformation.Text = "Display Debug Info: " + (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_SHW_FPS).GetAsBool() ? "Yes" : "No");
         }
 
         void cancelMenuEntry_Selected(object sender, PlayerIndexEventArgs e)
@@ -145,16 +145,16 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
 
         void displayDebugInformation_Selected(object sender, PlayerIndexEventArgs e)
         {
-			if ((bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var == true) {
-				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var = false;
-				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Var = false;
+			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_SHW_FPS).GetAsBool() == true) {
+				vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_SHW_FPS).Value = false;
+				vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_SHW_TIMERULES).Value = false;
 			} else {
-				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var = true;
-				this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Var = true;
+				vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_SHW_FPS).Value = true;
+				vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_SHW_TIMERULES).Value = true;
 			}
 
-			this.vxEngine.DebugSystem.FpsCounter.Visible = (bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Var;
-			this.vxEngine.DebugSystem.TimeRuler.Visible = (bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Var;
+			//this.vxEngine.DebugSystem.FpsCounter.Visible = (bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_FPS.ToString ()].Value;
+			//this.vxEngine.DebugSystem.TimeRuler.Visible = (bool)this.vxEngine.EnviromentVariables [vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString ()].Value;
 			SetMenuEntryText();
         }
 

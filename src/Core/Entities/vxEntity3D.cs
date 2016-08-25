@@ -162,6 +162,11 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                     if (part.Effect.Parameters["SpecularIntensity"] != null)
                         part.Effect.Parameters["SpecularIntensity"].SetValue(_specularIntensity);
                 }
+				foreach (var part in vxModel.ModelUtility.Meshes.SelectMany(m => m.MeshParts))
+				{
+					if (part.Effect.Parameters["SpecularIntensity"] != null)
+						part.Effect.Parameters["SpecularIntensity"].SetValue(_specularIntensity);
+				}
             }
             get { return _specularIntensity; }
         }
@@ -182,6 +187,11 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                     if (part.Effect.Parameters["SpecularPower"] != null)
                         part.Effect.Parameters["SpecularPower"].SetValue(_specularPower);
                 }
+				foreach (var part in vxModel.ModelUtility.Meshes.SelectMany(m => m.MeshParts))
+				{
+					if (part.Effect.Parameters["SpecularPower"] != null)
+						part.Effect.Parameters["SpecularPower"].SetValue(_specularPower);
+				}
             }
             get { return _specularPower; }
         }
@@ -466,6 +476,9 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                         if (part.Effect.Parameters["RandomTexture2D"] != null)
                             part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
 
+						//if (part.Effect.Parameters["EvissiveColour"] != null)
+							part.Effect.Parameters["EvissiveColour"].SetValue(new Vector4(0.5f));
+
                         //By Default, Don't Show Fog
                         DoFog = vxEngine.Current3DSceneBase.DoFog;
 
@@ -634,7 +647,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         public virtual void RenderMesh(string RenderTechnique)
         {
             if (vxModel!=null && vxModel.ModelMain != null)
-			if ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
+			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool() == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
                 {
                     //updateTechnique();
 

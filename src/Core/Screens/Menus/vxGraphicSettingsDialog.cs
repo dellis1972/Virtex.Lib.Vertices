@@ -9,6 +9,8 @@ using Virtex.Lib.Vrtc.GUI.Controls;
 using Virtex.Lib.Vrtc.Core.Settings;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Localization;
+using System.Collections.Generic;
+
 
 namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
@@ -39,6 +41,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             this.Title = vxEngine.Language.Get(vxLocalization.Settings_Graphics);
 
 
+
+
 			//All Items below are stored in this column as it's the longest word
 			
             float Margin = vxEngine.GraphicsDevice.Viewport.Width/2 - this.viewportSize.X/2 + 25;
@@ -66,7 +70,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
                 //Don't Show All Resolutions
                 if (mode.Width > 599 || mode.Height > 479)
                 {
-                    string menuItemText = string.Format("{0}x{1}", mode.Width, mode.Height);
+                    string menuItemText = string.Format("{0} x {1}", mode.Width, mode.Height);
 
                     //If Good Resolution and Not being repeated, Add Item
                     if (AddItem)
@@ -76,8 +80,22 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             ResolutionSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
 
-                vxEngine.Profile.Settings.Graphics.Int_Resolution = e.SelectedIndex;
-                vxConsole.WriteLine("Setting Resolution Index to: " + vxEngine.Profile.Settings.Graphics.Int_Resolution);
+				int index = 0;
+				foreach (DisplayMode mode in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
+				{
+					//Don't Show All Resolutions
+					if (mode.Width > 599 || mode.Height > 479)
+					{
+						if(index == e.SelectedIndex)
+						{
+							vxEngine.Profile.Settings.Graphics.Int_Resolution_X = mode.Width;
+							vxEngine.Profile.Settings.Graphics.Int_Resolution_Y = mode.Height;
+						}
+
+						//Increment for next loop
+						index++;
+					}
+				}
             };
 
 
@@ -263,12 +281,11 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
         void SetSettings()
         {
-            Console.WriteLine("Setting Items");
             //Save Settings
             vxEngine.Profile.SaveSettings(vxEngine);
 
             //Set Graphics
-            vxEngine.SetGraphicsSettings();
+            vxEngine.GraphicsSettingsManager.Apply();
         }
     }
 }

@@ -465,12 +465,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 			DrawHUD();
 
-			if ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var)
+			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool())
 				BEPUDebugDrawer.Draw (Camera.View, Camera.Projection);
 
 			vxDebugShapeRenderer.Draw (gameTime, Camera.View, Camera.Projection);
 
-			if ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var)
+			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_RNDRTRGT).GetAsBool())
 				DrawDebugRenderTargetsToScreen ();
 
 			// If the game is transitioning on or off, fade it out to black.
@@ -663,7 +663,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             vxEngine.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, SkyColour, 1.0f, 0);
-			if ((bool)vxEngine.EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var == false)
+			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool() == false)
             {
                 switch (mSceneShadowMode)
                 {

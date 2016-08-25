@@ -73,7 +73,7 @@ namespace VerticeEnginePort.Base
 
 		}
 
-		xEnvrio d;
+		Envrio d;
 		/// <summary>
 		/// LoadContent will be called once per game and is the place to load
 		/// all of your content.
@@ -86,10 +86,10 @@ namespace VerticeEnginePort.Base
 
 			InitialiseLevel();
 
-			//d = new xEnvrio(vxEngine, vxEngine.ContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+			d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
 			//d.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_nm");
 			//d.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_sm");
-			//d.SpecularIntensity = 1;
+			d.SpecularIntensity = 1;
 
 
 			int size = 100;

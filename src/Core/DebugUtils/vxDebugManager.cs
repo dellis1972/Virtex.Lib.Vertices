@@ -20,7 +20,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
     /// <summary>
     /// DebugManager class that holds graphics resources for debug
     /// </summary>
-    public class DebugManager : DrawableGameComponent
+    public class vxDebugManager : DrawableGameComponent
     {
         // the name of the font to load
         private string debugFont;
@@ -48,11 +48,11 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
         #region Initialize
 
-		public DebugManager(vxEngine vxEngine, Game game, string debugFont)
+		public vxDebugManager(vxEngine vxEngine, Game game, string debugFont)
             : base(game)
         {
             // Added as a Service.
-            Game.Services.AddService(typeof(DebugManager), this);
+			Game.Services.AddService(typeof(vxDebugManager), this);
             this.debugFont = debugFont;
 
             // This component doesn't need be call neither update nor draw.

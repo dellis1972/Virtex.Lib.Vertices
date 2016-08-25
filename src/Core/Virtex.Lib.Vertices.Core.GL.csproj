@@ -95,7 +95,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.3D|x86' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\x86\Debug3D</OutputPath>
-    <DefineConstants>DEBUG;TRACE;VIRTICES_3D;VRTC_PLTFRM_GL;NO_DRIVER_OPENAL2</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;VIRTICES_3D;VRTC_PLTFRM_GL;vxDEBUG_VERBOSE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AssemblyName>Virtex.Lib.Vertices.Core.GL</AssemblyName>
     <PlatformTarget>x86</PlatformTarget>
@@ -557,7 +557,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\TitleScreen.cs" />
     <Compile Include="Screens\Async Screens\BusyScreen.cs" />
     <Compile Include="Graphics\2D Gameplay\Layer.cs" />
     <Compile Include="Graphics\2D Gameplay\RectangleExtensions.cs" />
@@ -627,16 +626,10 @@
     <Compile Include="Cameras\Controllers\CharacterCameraControlScheme.cs" />
     <Compile Include="Cameras\Controllers\CharacterControllerInput.cs" />
     <Compile Include="ContentManagement\Assets.cs" />
-    <Compile Include="DebugUtils\DebugCommandUI.cs" />
-    <Compile Include="DebugUtils\DebugManager.cs" />
-    <Compile Include="DebugUtils\DebugShapeRenderer.cs" />
-    <Compile Include="DebugUtils\DebugSystem.cs" />
-    <Compile Include="DebugUtils\FpsCounter.cs" />
     <Compile Include="DebugUtils\IDebugCommandHost.cs" />
     <Compile Include="DebugUtils\KeyboardUtils.cs" />
     <Compile Include="DebugUtils\Layout.cs" />
     <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
-    <Compile Include="DebugUtils\TimeRuler.cs" />
     <Compile Include="Entities\VehicleInput.cs" />
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
@@ -673,10 +666,8 @@
     <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.empty.cs" />
     <Compile Include="Serilization\LevelStats.cs" />
     <Compile Include="Serilization\Profile.cs" />
-    <Compile Include="Serilization\Settings.cs" />
     <Compile Include="Serilization\SettingsAudio.cs" />
     <Compile Include="Serilization\SettingsControls.cs" />
-    <Compile Include="Serilization\SettingsGraphics.cs" />
     <Compile Include="Serilization\vxSandBoxFileStructure.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="vxEngine.Network.cs" />
@@ -734,7 +725,6 @@
     <Compile Include="Localization\vxLocalizationDialog.cs" />
     <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
-    <Compile Include="DebugUtils\EnvVar.cs" />
     <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
     <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
     <Compile Include="DebugUtils\vxCrashHandler.cs" />
@@ -742,6 +732,17 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
     <Compile Include="GUI\Art Providers\vxDialogArtProvider.cs" />
     <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
+    <Compile Include="Utilities\vxEnviroment.cs" />
+    <Compile Include="DebugUtils\vxVar.cs" />
+    <Compile Include="Serilization\vxSettingsFileStructure.cs" />
+    <Compile Include="Serilization\vxGraphicsSettingsFileStructure.cs" />
+    <Compile Include="Screens\vxTitleScreen.cs" />
+    <Compile Include="DebugUtils\vxDebugSystem.cs" />
+    <Compile Include="DebugUtils\vxDebugManager.cs" />
+    <Compile Include="DebugUtils\vxDebugCommandUI.cs" />
+    <Compile Include="DebugUtils\vxDebugShapeRenderer.cs" />
+    <Compile Include="DebugUtils\vxDebugCntrlFpsCounter.cs" />
+    <Compile Include="DebugUtils\vxDebugCntrlTimeRuler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

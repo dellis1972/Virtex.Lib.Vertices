@@ -33,7 +33,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
     /// 2) Register command by RegisterCommand method.
     /// 3) Open/Close Debug window by Tab key.
     /// </remarks>
-    public class DebugCommandUI : DrawableGameComponent, IDebugCommandHost
+    public class vxDebugCommandUI : DrawableGameComponent, IDebugCommandHost
     {
         #region Constants
 
@@ -108,7 +108,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         }
 
         // Reference to DebugManager.
-        private DebugManager debugManager;
+        private vxDebugManager debugManager;
 
         // Current state
         private State state = State.Closed;
@@ -174,7 +174,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         /// <summary>
         /// Constructor
         /// </summary>
-        public DebugCommandUI(vxEngine vxEngine)
+		public vxDebugCommandUI(vxEngine vxEngine)
             : base(vxEngine.Game)
         {
             this.vxEngine = vxEngine;
@@ -233,7 +233,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
         public override void Initialize()
         {
             debugManager =
-                Game.Services.GetService(typeof(DebugManager)) as DebugManager;
+				Game.Services.GetService(typeof(vxDebugManager)) as vxDebugManager;
 
             if (debugManager == null)
                 throw new InvalidOperationException("Coudn't find DebugManager.");

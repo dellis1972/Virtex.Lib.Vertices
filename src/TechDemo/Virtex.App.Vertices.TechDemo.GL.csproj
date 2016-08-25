@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="Entities\xEnvrio.cs" />
     <Compile Include="Game\Enums.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameEngine.cs" />
@@ -65,6 +64,7 @@
     <Compile Include="Entities\IndexedPrimTest.cs" />
     <Compile Include="Screens\Demos\IntroBackground.cs" />
     <Compile Include="Entities\IndexedCubeTest.cs" />
+    <Compile Include="Entities\Envrio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

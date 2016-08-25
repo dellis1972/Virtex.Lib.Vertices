@@ -27,6 +27,7 @@ using Virtex.Lib.Vrtc.Localization;
 
 //Internal Network Libraries
 using Microsoft.Xna.Framework.Input;
+using System.IO.IsolatedStorage;
 
 
 #if VRTC_INCLDLIB_NET 
@@ -112,12 +113,12 @@ namespace Virtex.Lib.Vrtc.Core
         /// <summary>
         /// Virtex vxEngine Debug Class
         /// </summary>
-        public DebugSystem DebugSystem {
+		public vxDebugSystem DebugSystem {
 			get { return _debugSystem; }
 			set { _debugSystem = value; }
 		}
 
-		private DebugSystem _debugSystem;
+		private vxDebugSystem _debugSystem;
 
 		/// <summary>
 		/// Gets or sets the game version.
@@ -140,6 +141,8 @@ namespace Virtex.Lib.Vrtc.Core
 		}
 
 		string _engineVersion = "v. 0.0.0.0";
+
+
 
   
 		/// <summary>
@@ -245,7 +248,6 @@ namespace Virtex.Lib.Vrtc.Core
 			get { return _inputManager; }
 			set { _inputManager = value; }
 		}
-
 		private vxInputManager _inputManager;
 
 
@@ -279,48 +281,6 @@ namespace Virtex.Lib.Vrtc.Core
 #endif
 
         /// <summary>
-        /// This flag tells the engine whether or not to draw the final result to a master
-        /// render target at a set resolution. This master rendertarget is then scaled and 
-        /// drawn at the native resolution of what ever screen the device has. This is useful
-        /// for Phones and Tablets which have a multitude of different resolutions.
-        /// </summary>
-        public bool FixedRenderTargetEnabled {
-			get { return _fixedRenderTargetEnabled; }
-			set { _fixedRenderTargetEnabled = value; }
-		}
-		bool _fixedRenderTargetEnabled = false;
-
-		/// <summary>
-		/// Gets or sets the width of the fixed render target.
-		/// </summary>
-		/// <value>The width of the fixed render target.</value>
-		public int FixedRenderTargetWidth {
-			get { return _fixedRenderTargetWidth; }
-			set { _fixedRenderTargetWidth = value; }
-		}
-		int _fixedRenderTargetWidth = 1280;
-
-		/// <summary>
-		/// Gets or sets the height of the fixed render target.
-		/// </summary>
-		/// <value>The height of the fixed render target.</value>
-		public int FixedRenderTargetHeight {
-			get { return _fixedRenderTargetHeight; }
-			set { _fixedRenderTargetHeight = value; }
-		}
-		int _fixedRenderTargetHeight = 720;
-
-		/// <summary>
-		/// Gets or sets the fixed render target.
-		/// </summary>
-		/// <value>The fixed render target.</value>
-		public RenderTarget2D FixedRenderTarget {
-			get { return _fixedRenderTarget; }
-			set { _fixedRenderTarget = value; }
-		}
-		RenderTarget2D _fixedRenderTarget;
-
-        /// <summary>
         /// A List Containing all Language Packs for this 
         /// </summary>
         public List<vxLanguagePackBase> Languages { get; internal set; }
@@ -329,12 +289,6 @@ namespace Virtex.Lib.Vrtc.Core
         /// The Currently Selected Language
         /// </summary>
         public vxLanguagePackBase Language { get; set; }
-
-		/// <summary>
-		/// Gets or sets the enviroment variables for the Engine and Game.
-		/// </summary>
-		/// <value>The enviroment variables.</value>
-		public Dictionary<object, EnvVar> EnviromentVariables { get; set; }
 
 
 #region Properties
@@ -384,222 +338,21 @@ namespace Virtex.Lib.Vrtc.Core
 		{
 			this.GameName = GameName;
 
-			Game.IsMouseVisible = true;
-
-			EnviromentVariables = new Dictionary<object, EnvVar>();
+			this.Game.IsMouseVisible = true;
 		}
 
-
+		bool isInitialised = false;
 		/// <summary>
 		/// Initializes the screen manager component.
 		/// </summary>
 		public override void Initialize ()
 		{
-			base.Initialize ();
+			if (isInitialised == false) {
+				isInitialised = true;
+				base.Initialize ();
 
-
-            #region Init Enviroment Variables
-
-            EnviromentVariables.Add(vxEnumEnvVarType.RES_X.ToString(), new EnvVar(this.GraphicsDevice.PresentationParameters.BackBufferWidth,
-                "Width of the Current Backbuffer"));
-            EnviromentVariables.Add(vxEnumEnvVarType.RES_Y.ToString(), new EnvVar(this.GraphicsDevice.PresentationParameters.BackBufferHeight,
-                "Heigh of the Current Backbuffer"));
-
-            EnviromentVariables.Add(vxEnumEnvVarType.FLSCRN.ToString(), new EnvVar(this.GraphicsDevice.PresentationParameters.IsFullScreen,
-                "Set's whether it's Fullscreen or not"));
-
-            EnviromentVariables.Add(vxEnumEnvVarType.VSYNC.ToString(), new EnvVar(false,
-                "Set's whether the Vertical Sync is on or not."));
-
-            string path = "Virtex Edge Design/" + GameName + "/Profiles/";
-#if VRTC_PLTFRM_XNA
-            path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + path;
-#endif
-            EnviromentVariables.Add(vxEnumEnvVarType.PATH_SETTINGS.ToString(), new EnvVar(path,
-                "Path to the Settings Folder"));
-
-
-            string sndpath = "Virtex Edge Design/" + GameName + "/Sandbox/";
-#if VRTC_PLTFRM_XNA
-            sndpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + sndpath;
-#endif
-            EnviromentVariables.Add(vxEnumEnvVarType.PATH_SANDBOX.ToString(), new EnvVar(sndpath,
-                "Path to the Sandbox Folder"));
-
-
-            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_MESH.ToString(), new EnvVar(false,
-                "Toggles the Debug Mesh for Physics"));
-            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString(), new EnvVar(false,
-                "Toggles viewing the Individual Render Targets"));
-            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_INGMECNSL.ToString(), new EnvVar(false,
-                "Toggles the In-Game Debug Window"));
-            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_FPS.ToString(), new EnvVar(false,
-                "Toggles the FPS Counter"));
-            EnviromentVariables.Add(vxEnumEnvVarType.DEBUG_SHW_TIMERULES.ToString(), new EnvVar(false,
-                "Toggles the Time Ruler Debuger"));
-
-            #endregion
-
-            #region Initialise Debug Console
-
-            //Get the vxEngine Version through Reflection
-            EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
-
-
-            // initialize the debug system with the game and the name of the font 
-            // we want to use for the debugging
-            _debugSystem = DebugSystem.Initialize (this, "Fonts/font_debug");
-			_debugSystem.TimeRuler.ShowLog = true;
-
-
-
-			// Register's Command too Show Render Targets on the Screen
-			/*****************************************************************************************************/
-			_debugSystem.DebugCommandUI.RegisterCommand (
-				"rt",              // Name of command
-				"Toggle Viewing Individual Render Targets",     // Description of command
-				delegate (IDebugCommandHost host, string command, IList<string> args) {
-					//DisplayRenderTargets = !DisplayRenderTargets;
-
-					if((bool)EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var == true)
-						EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var = false;
-					else
-						EnviromentVariables[vxEnumEnvVarType.DEBUG_RNDRTRGT.ToString()].Var = true;
-				});
-
-
-			// Register's Command too Show Render Targets on the Screen
-			/*****************************************************************************************************/
-			_debugSystem.DebugCommandUI.RegisterCommand (
-				"dm",              // Name of command
-				"Toggles Debug Mesh's",     // Description of command
-				delegate (IDebugCommandHost host, string command, IList<string> args) {
-					//DisplayDebugMesh = !DisplayDebugMesh
-
-					if((bool)EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var == true)
-						EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var = false;
-					else
-						EnviromentVariables[vxEnumEnvVarType.DEBUG_MESH.ToString()].Var = true;
-				});
-
-
-
-			// Register's Command too Show Render Targets on the Screen
-			/*****************************************************************************************************/
-			_debugSystem.DebugCommandUI.RegisterCommand (
-				"cn",              // Name of command
-				"Toggle the in-game console which won't pause the game (Different than this console)",     // Description of command
-				delegate (IDebugCommandHost host, string command, IList<string> args) {
-					//ShowInGameDebugWindow = !ShowInGameDebugWindow;
-
-					if((bool)EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var == true)
-						EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var = false;
-					else
-						EnviromentVariables[vxEnumEnvVarType.DEBUG_INGMECNSL.ToString()].Var = true;					
-				});
-
-
-
-
-			// Register's Command too Show Render Targets on the Screen
-			/*****************************************************************************************************/
-			_debugSystem.DebugCommandUI.RegisterCommand (
-				"set",              // Name of command
-				"Set's a value to a specific variable which is preregisgtered with the debug system. add -help for more information",     // Description of command
-				delegate (IDebugCommandHost host, string command, IList<string> args) {
-
-					switch(args[0])
-					{
-					case "-help":
-						_debugSystem.DebugCommandUI.Echo("");
-						_debugSystem.DebugCommandUI.Echo("Set the Enviroment Variable by issueing the command:");
-						_debugSystem.DebugCommandUI.Echo("");
-
-						_debugSystem.DebugCommandUI.Echo("set [var] [value]");
-
-						_debugSystem.DebugCommandUI.Echo("");
-						_debugSystem.DebugCommandUI.Echo("Enviroment Variables List");
-						_debugSystem.DebugCommandUI.Echo("------------------------------");
-
-						int length = 20;
-						//Get Length
-						foreach(KeyValuePair<object, EnvVar> entry in EnviromentVariables)
-						{
-							string str = String.Format("\t\t{0} = {1}", 
-								entry.Key, entry.Value.Var);
-							
-							length = Math.Max(length, str.Length);
-						}
-						length += 5;
-
-						//Now Echo the Values
-						foreach(KeyValuePair<object, EnvVar> entry in EnviromentVariables)
-						{
-							string val = String.Format("\t\t{0} = {1}", 
-								entry.Key, entry.Value.Var);
-
-							int cmdlen = val.Length;
-							_debugSystem.DebugCommandUI.Echo(String.Format("\t\t{0}"+new String('.', length - cmdlen)+" : {1}", 
-								val, entry.Value.Description));
-						}
-						_debugSystem.DebugCommandUI.Echo("");
-						break;
-						default:
-						if(args.Count > 1)
-							{
-							try
-							{								
-								EnviromentVariables[args[0]].Var = args[1];
-							}
-							catch(Exception ex)
-							{
-								vxConsole.WriteLine (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-								vxConsole.WriteLine ("Error Setting Enviroment Variable");
-								vxConsole.WriteLine (ex.Message);
-								vxConsole.WriteLine (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-							}
-							}
-						break;
-					}
-				});
-
-			//Initialise the Debug Renderer
-			vxDebugShapeRenderer.Initialize (GraphicsDevice);
-
-			#endregion
-			vxConsole.Init(this);
-
-
-
-#if !VRTC_PLTFRM_DROID
-
-            string settings = EnviromentVariables[vxEnumEnvVarType.PATH_SETTINGS.ToString()].Var.ToString();
-            string sandbox = EnviromentVariables[vxEnumEnvVarType.PATH_SANDBOX.ToString()].Var.ToString();
-
-            Console.WriteLine(settings);
-            Console.WriteLine(sandbox);
-
-            //First Check, if the Profiles Directory Doesn't Exist, Create It
-            if (Directory.Exists (settings) == false)
-				Directory.CreateDirectory (settings);
-
-            //First Check, if the Sandbox Directory Doesn't Exist, Create It
-            if (Directory.Exists(sandbox) == false)
-                Directory.CreateDirectory(sandbox);
-
-            //First Check, if the Temp Directory Doesn't Exist, Create It
-            if (Directory.Exists ("Temp/Settings") == false)
-				Directory.CreateDirectory ("Temp/Settings");
-
-#endif
-
-#if VRTC_INCLDLIB_NET
-			InitialiseMasterServerConnection();
-#endif
-			//Now Setup Settings Managers
-			GraphicsSettingsManager = new vxGraphicsSettingsManager (this);
-
-			vxConsole.WriteLine ("Starting Content Manager...");
+				isInitialised = true;
+			}
 		}
 			
 
@@ -608,6 +361,53 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		protected override void LoadContent ()
 		{
+			vxEnviroment.Initialize (this);
+
+
+			//The Android System uses the Isolated Storage for it's GameSaves
+			#if VRTC_PLTFRM_DROID
+
+			IsolatedStorageFile isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User |
+			IsolatedStorageScope.Assembly, null, null);
+
+			string settings = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SETTINGS).Value.ToString();
+			string sandbox = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SANDBOX).Value.ToString();
+
+			//First Check, if the Profiles Directory Doesn't Exist, Create It
+			if (isoStore.DirectoryExists (settings) == false)
+			isoStore.CreateDirectory (settings);
+
+			//First Check, if the Sandbox Directory Doesn't Exist, Create It
+			if (isoStore.DirectoryExists(sandbox) == false)
+			isoStore.CreateDirectory(sandbox);
+
+			//First Check, if the Temp Directory Doesn't Exist, Create It
+			if (isoStore.DirectoryExists ("Temp/Settings") == false)
+			isoStore.CreateDirectory ("Temp/Settings");
+
+			#else
+
+			string settings = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SETTINGS).Value.ToString ();
+			string sandbox = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SANDBOX).Value.ToString ();
+
+			//First Check, if the Profiles Directory Doesn't Exist, Create It
+			if (Directory.Exists (settings) == false)
+				Directory.CreateDirectory (settings);
+
+			//First Check, if the Sandbox Directory Doesn't Exist, Create It
+			if (Directory.Exists (sandbox) == false)
+				Directory.CreateDirectory (sandbox);
+
+			//First Check, if the Temp Directory Doesn't Exist, Create It
+			if (Directory.Exists ("Temp/Settings") == false)
+				Directory.CreateDirectory ("Temp/Settings");
+
+			#endif
+
+
+
+
+			vxConsole.WriteLine ("Starting Content Manager...");
 			// Load content belonging to the screen manager.
 			ContentManager content = Game.Content;
 			_engineContentManager = new ContentManager (Game.Services);
@@ -616,14 +416,9 @@ namespace Virtex.Lib.Vrtc.Core
             _contentManager = new vxContentManager(this);
 
             //Set Location of Content Specific too Platform
-#if VRTC_PLTFRM_XNA
-            _engineContentManager.RootDirectory = "Virtex.Lib.Vertices.Core.XNA.Content";
-
-#elif VRTC_PLTFRM_GL
-			_engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.DesktopGL";            
-#elif VRTC_PLTFRM_DROID
-            _engineContentManager.RootDirectory = "Vertices.Engine.Content/Compiled.Android";
-            
+			_engineContentManager.RootDirectory = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_ENGINE_CONTENT).Value.ToString();
+         
+#if VRTC_PLTFRM_DROID
             Game.Activity.Window.AddFlags(WindowManagerFlags.Fullscreen);
             Game.Activity.Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
 #endif
@@ -648,12 +443,36 @@ namespace Virtex.Lib.Vrtc.Core
 			vxGUITheme.Font = this.Assets.Fonts.MenuFont;
 
 
+			#region Initialise Debug Console
+
+			//Get the vxEngine Version through Reflection
+			EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
+
+
+			// initialize the debug system with the game and the name of the font 
+			// we want to use for the debugging
+			_debugSystem = vxDebugSystem.Initialize (this, "Fonts/font_debug");
+			_debugSystem.TimeRuler.ShowLog = true;
+
+			//Initialise the Debug Renderer
+			vxDebugShapeRenderer.Initialize (GraphicsDevice);
+			vxConsole.Initialize (this);
+
+
+			//Now Setup Settings Managers
+			GraphicsSettingsManager = new vxGraphicsSettingsManager (this);
+
+			#endregion
+
+
 #if !VRTC_PLTFRM_DROID
 			Model_Sandbox_WorkingPlane = this.Assets.Models.UnitPlane;
 #endif
 
 
 #if VRTC_INCLDLIB_NET
+			InitialiseMasterServerConnection();
+
             ServerManager = new vxNetworkServerManager(this, 14242);
             ClientManager = new vxNetworkClientManager(this);
 #endif
@@ -669,28 +488,10 @@ namespace Virtex.Lib.Vrtc.Core
             #endregion
 
             //Load in Profile Data
-            vxConsole.WriteLine ("Loading Settings....");
 			Profile.LoadSettings (this);
-			vxConsole.WriteLine ("\t\t\tDone!");
-
-			vxConsole.WriteLine (string.Format("LoadResolution: {0}",LoadResolution.ToString()));
 
 			//Set Initial Graphics Settings
-			SetGraphicsSettings ();
-
-			FixedRenderTarget = new RenderTarget2D (this.GraphicsDevice,
-				this.FixedRenderTargetWidth,
-				this.FixedRenderTargetHeight,
-				false, SurfaceFormat.Color, DepthFormat.None, 
-				this.GraphicsDevice.PresentationParameters.MultiSampleCount, RenderTargetUsage.DiscardContents);
-
-
-			GraphicsDeviceManager graphics = Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
-			//graphics.SynchronizeWithVerticalRetrace = false;
-			Game.IsFixedTimeStep = false;
-			//graphics.PreferMultiSampling = true;
-			//graphics.GraphicsDevice.PresentationParameters.MultiSampleCount = 8;
-			graphics.ApplyChanges ();
+			GraphicsSettingsManager.Apply();
 
 #if VIRTICES_3D
 			Renderer = new vxRenderer (this);
@@ -708,7 +509,7 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public virtual void LoadGUITheme ()
 		{
-			vxConsole.WriteLine ("     Loading GUI...");
+			vxConsole.WriteLine ("Loading GUI...");
 
 		}
 
@@ -717,7 +518,7 @@ namespace Virtex.Lib.Vrtc.Core
         /// </summary>
         public virtual void LoadLanguagePacks()
         {
-            vxConsole.WriteLine("     Loading Language Packs...");
+            vxConsole.WriteLine("Loading Language Packs...");
 
             Languages.Add(new vxLanguagePackEnglishBase());
             Languages.Add(new vxLanguagePackFrenchBase());
@@ -839,8 +640,6 @@ namespace Virtex.Lib.Vrtc.Core
 
 			foreach (vxGameBaseScreen screen in screens)
 				screenNames.Add (screen.GetType ().Name);
-
-			//Debug.WriteLine(string.Join(", ", screenNames.ToArray()));
 		}
 
 
@@ -852,13 +651,7 @@ namespace Virtex.Lib.Vrtc.Core
 			// Start measuring time for "Draw".
 			_debugSystem.TimeRuler.BeginMark ("Draw", Color.Yellow);
 
-			if (FixedRenderTargetEnabled) {
 
-				this.GraphicsDevice.SetRenderTarget (FixedRenderTarget);
-
-				TouchPanel.DisplayHeight = this.FixedRenderTargetHeight;
-				TouchPanel.DisplayWidth = this.FixedRenderTargetWidth;
-			}
 				foreach (vxGameBaseScreen screen in screens) {
 					if (screen.ScreenState == ScreenState.Hidden)
 						continue;
@@ -867,25 +660,12 @@ namespace Virtex.Lib.Vrtc.Core
 				}
 
 				_inputManager.Draw ();
-#if VRTC_INCLDLIB_NET
+#if VRTC_INCLDLIB_NET && DEBUG
             DrawNetworkGameConnectionInfo();
 #endif
 
             vxConsole.Draw ();
 
-			if(FixedRenderTargetEnabled){
-				
-				this.GraphicsDevice.SetRenderTarget (null);
-				this.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
-				this.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-
-				//this.SpriteBatch.Begin ();
-				this.SpriteBatch.Draw(FixedRenderTarget, 
-					new Rectangle(0,0,
-						this.GraphicsDevice.Adapter.CurrentDisplayMode.Width,
-						this.GraphicsDevice.Adapter.CurrentDisplayMode.Height),Color.White);
-				this.SpriteBatch.End ();
-			}
 
 			// Stop measuring time for "Draw".
 			_debugSystem.TimeRuler.EndMark ("Draw");
@@ -977,74 +757,6 @@ namespace Virtex.Lib.Vrtc.Core
 #endregion
 
 
-		/// <summary>
-		/// Sets the Resolution and Fullscreen State
-		/// </summary>
-		public void SetGraphicsSettings ()
-		{
-			GraphicsDeviceManager graphics = Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
-#if !VRTC_PLTFRM_DROID 
-            if (LoadResolution == true)
-            {
-
-            #region Set Resolution
-
-                int ResCount = 0;
-
-                foreach (DisplayMode mode in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
-                {
-                    if (Profile.Settings.Graphics.Int_Resolution == ResCount)
-                    {
-                        try
-                        {
-                            graphics.PreferredBackBufferHeight = mode.Height;
-                            graphics.PreferredBackBufferWidth = mode.Width;
-
-                            WriteLine_Cyan("Setting Resolution to: '" +
-                                graphics.PreferredBackBufferWidth.ToString() + "x" + graphics.PreferredBackBufferHeight.ToString() + "'");
-
-                            graphics.ApplyChanges();
-                        }
-                        catch (Exception exception)
-                        {
-                            WriteError("vxEngine.cs", "SetGraphicsSettings", exception.Message);
-                        }
-                    }
-                    //Only Increment if Original Criteria is met
-                    if (mode.Width > 599 || mode.Height > 479)
-                    {
-                        //Increment through Display modes
-                        ResCount++;
-                    }
-                }
-            #endregion
-
-            #region Set FullScreen or Not
-
-                if (Profile.Settings.Graphics.Bool_FullScreen == false)
-                    graphics.IsFullScreen = false;
-                else
-                    graphics.IsFullScreen = true;
-
-                WriteLine_Cyan("Fullscreen: " + Profile.Settings.Graphics.Bool_FullScreen);
-                
-                //Set Graphics
-                graphics.ApplyChanges();
-#if VIRTICES_3D
-                //Reset All Render Targets
-                if (this.Renderer !=null)
-                    this.Renderer.InitialiseRenderTargetsAll();
-#endif
-                for (int i = 0; i < 8; i++)
-                {
-                    graphics.GraphicsDevice.SamplerStates[i] = SamplerState.PointClamp;
-                }
-
-#endregion
-            }
-#endif
-            }
-
         /// <summary>
         /// Clears the temp directory.
         /// </summary>
@@ -1063,120 +775,5 @@ namespace Virtex.Lib.Vrtc.Core
 				}
 			}
 		}
-
-		//TODO: Add to the Utility Namespace
-		/// <summary>
-		/// Writes the error, specifing the Method and Error Message.
-		/// </summary>
-		/// <param name="File">File.</param>
-		/// <param name="Method">Method.</param>
-		/// <param name="Message">Message.</param>
-		public void WriteError (string File, string Method, string Message)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.Red;
-#endif
-			Console.WriteLine ("***********************************************************************");
-			Console.WriteLine ("\t\t\tERROR\n");
-
-			Console.WriteLine ("File:\t\t'{0}'", File);
-			Console.WriteLine ("Method:\t\t'{0}'", Method);
-			Console.WriteLine ("Message:\t{0}", Message);
-			Console.WriteLine ("***********************************************************************");
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
-		/// <summary>
-		/// Writes the line white.
-		/// </summary>
-		/// <param name="Text">Text.</param>
-		public void WriteLine_White (string Text)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.White;
-#endif
-			Console.WriteLine (Text);
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
-		/// <summary>
-		/// Writes the line green.
-		/// </summary>
-		/// <param name="Text">Text.</param>
-		public void WriteLine_Green (string Text)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.Green;
-#endif
-			Console.WriteLine (Text);
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
-		/// <summary>
-		/// Writes the line red.
-		/// </summary>
-		/// <param name="Text">Text.</param>
-		public void WriteLine_Red (string Text)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.Red;
-#endif
-			Console.WriteLine (Text);
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
-		/// <summary>
-		/// Writes the line yellow.
-		/// </summary>
-		/// <param name="Text">Text.</param>
-		public void WriteLine_Yellow (string Text)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.Yellow;
-#endif
-			Console.WriteLine (Text);
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
-		/// <summary>
-		/// Writes the line dark yellow.
-		/// </summary>
-		/// <param name="Text">Text.</param>
-		public void WriteLine_DarkYellow (string Text)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.DarkYellow;
-#endif
-            Console.WriteLine (Text);
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
-		/// <summary>
-		/// Writes the line cyan.
-		/// </summary>
-		/// <param name="Text">Text.</param>
-		public void WriteLine_Cyan (string Text)
-        {
-#if !VRTC_PLTFRM_DROID
-			Console.ForegroundColor = ConsoleColor.Cyan;
-#endif
-			Console.WriteLine (Text);
-#if !VRTC_PLTFRM_DROID
-			Console.ResetColor ();
-#endif
-		}
-
 	}
 }

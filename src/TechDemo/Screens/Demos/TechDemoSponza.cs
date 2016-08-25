@@ -37,6 +37,7 @@ namespace VerticeEnginePort.Base
     /// </summary>
     public class TechDemoSponza : vxSandboxGamePlay
     {
+		/*
         //
         //Player
         //
@@ -65,7 +66,7 @@ namespace VerticeEnginePort.Base
         }
 
         #endregion
-
+		*/
         public TechDemoSponza()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
@@ -119,12 +120,15 @@ namespace VerticeEnginePort.Base
             g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/sponza/spnza_bricks_sm");
             */
 
-			xEnvrio envr = new xEnvrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard", this.vxEngine.Game.Content,
-				this.vxEngine.Assets.Shaders.CartoonShader), Vector3.Zero);
-            //g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_nm");
-            //g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/structure_sm");
+
+			Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+			
+			//Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard", this.vxEngine.Game.Content,
+			//	this.vxEngine.Assets.Shaders.CartoonShader), Vector3.Zero);
+
             envr.SpecularIntensity = 100;
 			envr.SpecularPower = 5f;
+			envr.DoFog = false;
 
 			light = new vxLightEntity (vxEngine, new Vector3 (0, 2, 0), LightType.Point, Color.Orange, 10, 1);
 
@@ -183,18 +187,20 @@ namespace VerticeEnginePort.Base
 
         public override vxSandboxEntity GetNewEntity(string key)
         {
+			vxSandboxEntity returnEntity = null;
             switch (key)
             {
                 //Cubes
                 case "VerticeEnginePort.Base.WoodenCrate":
-                    return new WoodenCrate((GameEngine)vxEngine, Vector3.Zero);
+				returnEntity = new WoodenCrate((GameEngine)vxEngine, Vector3.Zero);
                     break;
 
                 default:
 				vxConsole.WriteError(new Exception( string.Format("'{0}' Key Not Found!", key)));
-                    return base.GetNewEntity(key);
+				returnEntity = base.GetNewEntity(key);
                     break;
-            }
+			}
+			return returnEntity;
         }
         
 

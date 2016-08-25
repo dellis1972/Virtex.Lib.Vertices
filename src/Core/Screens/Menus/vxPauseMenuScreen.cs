@@ -97,7 +97,7 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         /// </summary>
         void ConfirmQuitMessageBoxAccepted(object sender, PlayerIndexEventArgs e)
         {
-            vxLoadingScreen.Load(vxEngine, false, null, new TitleScreen(2));
+			vxLoadingScreen.Load(vxEngine, false, null, new vxTitleScreen(2));
         }
 
 

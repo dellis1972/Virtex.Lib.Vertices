@@ -3,6 +3,8 @@ using Virtex.Lib.Vrtc.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Utilities;
+using Virtex.Lib.Vrtc.Core.Debug;
+using System.Collections.Generic;
 
 namespace Virtex.Lib.Vrtc.Graphics
 {
@@ -35,13 +37,13 @@ namespace Virtex.Lib.Vrtc.Graphics
 		public Vector2 Resolution {
 			get {
 				return new Vector2(
-					(float)Engine.EnviromentVariables [vxEnumEnvVarType.RES_X.ToString ()].Var,
-					(float)Engine.EnviromentVariables [vxEnumEnvVarType.RES_Y.ToString ()].Var
+					vxEnviroment.GetVar(vxEnumEnvVarType.RES_X).GetAsInt(),
+					vxEnviroment.GetVar(vxEnumEnvVarType.RES_Y).GetAsInt()
 				);
 			}
 			set {
-				Engine.EnviromentVariables [vxEnumEnvVarType.RES_X.ToString ()].Var = (int)value.X;
-				Engine.EnviromentVariables [vxEnumEnvVarType.RES_Y.ToString ()].Var = (int)value.Y;
+				vxEnviroment.GetVar(vxEnumEnvVarType.RES_X).Value = (int)value.X;
+				vxEnviroment.GetVar(vxEnumEnvVarType.RES_Y).Value = (int)value.Y;
 			}
 		}
 
@@ -53,7 +55,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 				_loadResolution = value;
 			}
 		}
-		private bool _loadResolution = false;
+		private bool _loadResolution = true;
 
 		/// <summary>
 		/// Gets or sets a value indicating whether this instance is full screen. NOTE: Apply needs to be called to apply these settings.
@@ -62,10 +64,10 @@ namespace Virtex.Lib.Vrtc.Graphics
 		public bool IsFullScreen
 		{
 			get {
-				return (bool)Engine.EnviromentVariables [vxEnumEnvVarType.FLSCRN.ToString ()].Var;
+				return vxEnviroment.GetVar(vxEnumEnvVarType.FLSCRN).GetAsBool();
 			}
 			set {
-				Engine.EnviromentVariables [vxEnumEnvVarType.FLSCRN.ToString ()].Var = value;
+				vxEnviroment.GetVar(vxEnumEnvVarType.FLSCRN).Value = value;
 			}
 		}
 
@@ -76,6 +78,13 @@ namespace Virtex.Lib.Vrtc.Graphics
 		public vxGraphicsSettingsManager (vxEngine Engine)
 		{
 			this.Engine = Engine;
+
+			Engine.DebugSystem.DebugCommandUI.RegisterCommand (
+				"grf",              // Name of command
+				"Refresh the Grapahics Settings",     // Description of command
+				delegate (IDebugCommandHost host, string command, IList<string> args) {
+					this.Apply();
+				});
 		}
 
 		/// <summary>
@@ -104,15 +113,8 @@ namespace Virtex.Lib.Vrtc.Graphics
 
 				try
 				{
-					this.GraphicsDeviceManager.PreferredBackBufferHeight = (int)Resolution.X;
-					this.GraphicsDeviceManager.PreferredBackBufferWidth = (int)Resolution.Y;
-
-
-					vxConsole.WriteLine("Setting Resolution to: '" +
-						this.GraphicsDeviceManager.PreferredBackBufferWidth.ToString() + " x " + 
-						this.GraphicsDeviceManager.PreferredBackBufferHeight.ToString() + "'");
-
-					this.GraphicsDeviceManager.ApplyChanges();
+					this.GraphicsDeviceManager.PreferredBackBufferWidth = (int)Resolution.X;
+					this.GraphicsDeviceManager.PreferredBackBufferHeight = (int)Resolution.Y;
 				}
 				catch (Exception exception)
 				{
@@ -124,7 +126,10 @@ namespace Virtex.Lib.Vrtc.Graphics
 
 				this.GraphicsDeviceManager.IsFullScreen = this.IsFullScreen;
 
-				vxConsole.WriteLine("Fullscreen: " + this.GraphicsDeviceManager.IsFullScreen);
+				vxConsole.WriteLine(string.Format("Refreshing Graphics: - Resolution: {0} x {1} - Fullscreen: {2}",
+					this.GraphicsDeviceManager.PreferredBackBufferWidth,
+					this.GraphicsDeviceManager.PreferredBackBufferHeight,
+					this.GraphicsDeviceManager.IsFullScreen));
 
 				//Set Graphics
 				this.GraphicsDeviceManager.ApplyChanges();

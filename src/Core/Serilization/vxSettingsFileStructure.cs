@@ -23,30 +23,30 @@ namespace Virtex.Lib.Vrtc.Core.Settings
 	/// <summary>
 	/// Serializable Settings.
 	/// </summary>
-	public class vxSettings
+	public class vxSettingsFileStructure
 	{
 		//Controls
 		[XmlElement ("SettingsControls")]
 		public vxSettingsControls Controls;
 
 		//Graphics
-		[XmlElement ("vxSettingsGraphics")]
-		public vxSettingsGraphics Graphics;
+		[XmlElement ("vxGraphicsSettingsFileStructure")]
+		public vxGraphicsSettingsFileStructure Graphics;
 
 		//Audio
 		[XmlElement ("vxSettingsAudio")]
 		public vxSettingsAudio Audio;
 
-		public vxSettings ()
+		public vxSettingsFileStructure ()
 		{
 		}
 
 		//
 		//Constructor
 		//
-		public vxSettings (
+		public vxSettingsFileStructure (
 			vxSettingsControls Controls,
-			vxSettingsGraphics Graphics,
+			vxGraphicsSettingsFileStructure Graphics,
 			vxSettingsAudio Audio)
 		{
 			//Controls
