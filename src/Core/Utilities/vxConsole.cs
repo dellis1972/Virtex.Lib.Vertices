@@ -37,6 +37,8 @@ namespace Virtex.Lib.Vrtc.Utilities
 		/// <param name="engine">Engine.</param>
 		public static void Initialize(vxEngine engine)
 		{
+			WriteLine ("Starting Engine Console");
+
 			vxEngine = engine;
 
 			//This is just temporary, this is re-loaded for global uses when the vxEngine is Initialised.
@@ -170,6 +172,12 @@ namespace Virtex.Lib.Vrtc.Utilities
         /// </example>
         public static void WriteError(Exception ex)
         {
+			int scrnwidth = vxEngine.Game.GraphicsDevice.Viewport.Width;
+			int CharWidth = (int)vxEngine.DebugSystem.DebugManager.DebugFont.MeasureString ("A").X;
+
+			int MaxCharsPerLine = scrnwidth / CharWidth - 5;
+
+
 #if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = ConsoleColor.Red;
 #endif
@@ -183,8 +191,30 @@ namespace Virtex.Lib.Vrtc.Utilities
             if (vxEngine != null)
             {
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
-				vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR: >>: " + ex.Message);
-				vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR: >>: " + ex.StackTrace);
+				vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR MESSAGE:     >>: " + ex.Message);
+				vxEngine.DebugSystem.DebugCommandUI.Echo("ERROR STACK TRACE:");
+
+
+				using (StringReader reader = new StringReader(ex.StackTrace))
+				{
+					string line;
+					while ((line = reader.ReadLine()) != null)
+					{
+						// Do something with the line
+						toolongloop:
+						//If the line is longer than the width of the string, then split it
+						if (line.Length > MaxCharsPerLine) {
+							vxEngine.DebugSystem.DebugCommandUI.Echo(line.Substring (0, MaxCharsPerLine) + "\n");
+
+							//Now set the line to the remainder and loop back up
+							line = line.Substring (MaxCharsPerLine);
+							goto toolongloop;
+						} else {
+							vxEngine.DebugSystem.DebugCommandUI.Echo(line + "\n");
+						}
+					}
+				}
+
                 vxEngine.DebugSystem.DebugCommandUI.Echo("**************************************************");
             }
         }

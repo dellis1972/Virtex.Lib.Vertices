@@ -10,7 +10,8 @@ namespace Virtex.Lib.Vrtc.Mathematics
 	/// <summary>
 	/// Smooths out Values based off of what they should be, what they are, and how many steps it should take to get there.
 	/// </summary>
-    public class vxSmooth
+	[Obsolete ("This function has been simplified and moved to vxMathHelper under the Smooth Functions.")]
+	public class vxSmooth
     {
 		/// <summary>
 		/// Smooths the color.
@@ -19,6 +20,7 @@ namespace Virtex.Lib.Vrtc.Mathematics
 		/// <param name="whatItIs">What it is.</param>
 		/// <param name="whatItShouldBe">What it should be.</param>
 		/// <param name="stepSize">Step size.</param>
+		[Obsolete]
         static public Color SmoothColor(Color whatItIs, Color whatItShouldBe, float stepSize)
         {
             return new Color(
@@ -35,6 +37,7 @@ namespace Virtex.Lib.Vrtc.Mathematics
 		/// <param name="whatItIs">What it is.</param>
 		/// <param name="whatItShouldBe">What it should be.</param>
 		/// <param name="stepSize">Step size.</param>
+		[Obsolete]
         static public Vector2 Smooth2DVector(Vector2 whatItIs, Vector2 whatItShouldBe, float stepSize)
         {
             whatItIs.X = SmoothFloat(whatItIs.X, whatItShouldBe.X, stepSize);
@@ -50,7 +53,8 @@ namespace Virtex.Lib.Vrtc.Mathematics
 		/// <param name="whatItIs">What it is.</param>
 		/// <param name="whatItShouldBe">What it should be.</param>
 		/// <param name="stepSize">Step size.</param>
-        static public Vector3 SmoothVector(Vector3 whatItIs, Vector3 whatItShouldBe, float stepSize)
+		[Obsolete]
+		static public Vector3 SmoothVector(Vector3 whatItIs, Vector3 whatItShouldBe, float stepSize)
         {
             whatItIs.X = SmoothFloat(whatItIs.X, whatItShouldBe.X, stepSize);
             whatItIs.Y = SmoothFloat(whatItIs.Y, whatItShouldBe.Y, stepSize);
@@ -66,7 +70,8 @@ namespace Virtex.Lib.Vrtc.Mathematics
 		/// <param name="whatItIs_f">What it is f.</param>
 		/// <param name="whatItShouldBe_f">What it should be f.</param>
 		/// <param name="stepSize">Step size.</param>
-        static public float SmoothFloat(float whatItIs_f, float whatItShouldBe_f, float stepSize)
+		[Obsolete]
+		static public float SmoothFloat(float whatItIs_f, float whatItShouldBe_f, float stepSize)
         {
             whatItIs_f = whatItIs_f + (whatItShouldBe_f - whatItIs_f) / stepSize;
             return whatItIs_f;
@@ -79,7 +84,8 @@ namespace Virtex.Lib.Vrtc.Mathematics
 		/// <param name="whatItIs">What it is.</param>
 		/// <param name="whatItShouldBe">What it should be.</param>
 		/// <param name="stepSize">Step size.</param>
-        static public int SmoothInt(int whatItIs, int whatItShouldBe, int stepSize)
+		[Obsolete]
+		static public int SmoothInt(int whatItIs, int whatItShouldBe, int stepSize)
         {
             whatItIs = whatItIs + (whatItShouldBe - whatItIs) / stepSize;
             return whatItIs;

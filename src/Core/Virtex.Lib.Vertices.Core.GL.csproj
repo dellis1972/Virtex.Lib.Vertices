@@ -99,6 +99,7 @@
     <WarningLevel>4</WarningLevel>
     <AssemblyName>Virtex.Lib.Vertices.Core.GL</AssemblyName>
     <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug.3D.Network|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -569,7 +570,6 @@
     <Compile Include="GUI\Base\vxGUIBaseItem.cs" />
     <Compile Include="Utilities\vxConsole.cs" />
     <Compile Include="Utilities\vxUtil.cs" />
-    <Compile Include="Mathematics\vxMathUtils.cs" />
     <Compile Include="Geometry\Quad.cs" />
     <Compile Include="Geometry\Tri.cs" />
     <Compile Include="GUI\Controls\Buttons\vxButton.cs" />
@@ -597,7 +597,6 @@
     <Compile Include="Network\Network Enums.cs" />
     <Compile Include="GUI\GUI Enums.cs" />
     <Compile Include="Graphics\Graphics Enums.cs" />
-    <Compile Include="Mathematics\vxSmooth.cs" />
     <Compile Include="Utilities\vxGeometryHelper.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxLightEntity.cs" />
     <Compile Include="Graphics\3D Gameplay\Defferred Rendering\vxDirectionalLight.cs" />
@@ -626,10 +625,6 @@
     <Compile Include="Cameras\Controllers\CharacterCameraControlScheme.cs" />
     <Compile Include="Cameras\Controllers\CharacterControllerInput.cs" />
     <Compile Include="ContentManagement\Assets.cs" />
-    <Compile Include="DebugUtils\IDebugCommandHost.cs" />
-    <Compile Include="DebugUtils\KeyboardUtils.cs" />
-    <Compile Include="DebugUtils\Layout.cs" />
-    <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
     <Compile Include="Entities\VehicleInput.cs" />
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
@@ -652,11 +647,6 @@
     <Compile Include="Input\VirtualGamePad.cs" />
     <Compile Include="Input\vxInputManager.cs" />
     <Compile Include="Input\Events\PlayerIndexEventArgs.cs" />
-    <Compile Include="Scenes\Scene2D.cs" />
-    <Compile Include="Scenes\Scene3D.Network.cs" />
-    <Compile Include="Scenes\Scene3D.cs" />
-    <Compile Include="Scenes\Scene3D.empty.cs" />
-    <Compile Include="Scenes\SceneBase.cs" />
     <Compile Include="Scenes\Sandbox3D\Sandbox Enums.cs" />
     <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.Editor.cs" />
     <Compile Include="Scenes\Sandbox3D\vxSandboxGamePlay.EntityManagement.cs" />
@@ -727,22 +717,33 @@
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
     <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
     <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
-    <Compile Include="DebugUtils\vxCrashHandler.cs" />
     <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveBeforeQuit.cs" />
     <Compile Include="GUI\Art Providers\vxDialogArtProvider.cs" />
     <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
     <Compile Include="Utilities\vxEnviroment.cs" />
-    <Compile Include="DebugUtils\vxVar.cs" />
     <Compile Include="Serilization\vxSettingsFileStructure.cs" />
     <Compile Include="Serilization\vxGraphicsSettingsFileStructure.cs" />
     <Compile Include="Screens\vxTitleScreen.cs" />
-    <Compile Include="DebugUtils\vxDebugSystem.cs" />
-    <Compile Include="DebugUtils\vxDebugManager.cs" />
-    <Compile Include="DebugUtils\vxDebugCommandUI.cs" />
-    <Compile Include="DebugUtils\vxDebugShapeRenderer.cs" />
-    <Compile Include="DebugUtils\vxDebugCntrlFpsCounter.cs" />
-    <Compile Include="DebugUtils\vxDebugCntrlTimeRuler.cs" />
+    <Compile Include="Mathematics\vxMathHelper.cs" />
+    <Compile Include="Mathematics\vxSmooth.cs" />
+    <Compile Include="Scenes\vxScene2D.cs" />
+    <Compile Include="Scenes\vxScene3D.cs" />
+    <Compile Include="Scenes\vxScene3D.empty.cs" />
+    <Compile Include="Scenes\vxScene3D.Network.cs" />
+    <Compile Include="Scenes\vxSceneBase.cs" />
+    <Compile Include="Debug\IDebugCommandHost.cs" />
+    <Compile Include="Debug\KeyboardUtils.cs" />
+    <Compile Include="Debug\Layout.cs" />
+    <Compile Include="Debug\StringBuilderExtensions.cs" />
+    <Compile Include="Debug\vxCrashHandler.cs" />
+    <Compile Include="Debug\vxVar.cs" />
+    <Compile Include="Debug\vxDebugSystem.cs" />
+    <Compile Include="Debug\vxDebugManager.cs" />
+    <Compile Include="Debug\vxDebugCommandUI.cs" />
+    <Compile Include="Debug\vxDebugShapeRenderer.cs" />
+    <Compile Include="Debug\vxDebugCntrlFpsCounter.cs" />
+    <Compile Include="Debug\vxDebugCntrlTimeRuler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

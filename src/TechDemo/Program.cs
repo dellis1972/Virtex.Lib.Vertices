@@ -12,7 +12,7 @@ namespace VerticeEnginePort.Base
         /// The main entry point for the application.
         /// </summary>
         static void Main(string[] args)
-        {
+        {	
             using (MetricRacerBaseGame game = new MetricRacerBaseGame())
             {
                 game.Run();

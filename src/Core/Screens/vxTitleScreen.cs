@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Mathematics;
 
 #endregion
 
@@ -76,7 +77,6 @@ namespace Virtex.Lib.Vrtc.Screens
             if (content == null)
                 content = new ContentManager(vxEngine.Game.Services, "Content");
 			
-
             TitleFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_splash");
 			try
 			{

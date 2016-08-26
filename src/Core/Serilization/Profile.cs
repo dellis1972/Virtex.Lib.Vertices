@@ -51,7 +51,6 @@ namespace Virtex.Lib.Vrtc.Core.Settings
                 object obj = deserializer.Deserialize(reader);
 				Settings = (vxSettingsFileStructure)obj;
                 reader.Close();
-				vxConsole.WriteLine("Done!");
             }
 
             catch (Exception exception)
@@ -83,14 +82,13 @@ namespace Virtex.Lib.Vrtc.Core.Settings
         {
             try
 			{
-				vxConsole.WriteLine("Saving New Settings File...");
+				vxConsole.WriteLine("Saving New Settings File.");
                 //Write The Sandbox File
 				XmlSerializer serializer = new XmlSerializer(typeof(vxSettingsFileStructure));
 				using (TextWriter writer = new StreamWriter(vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SETTINGS).Value.ToString() + "settings.set"))
                 {
                     serializer.Serialize(writer, Settings);
 				}
-				vxConsole.WriteLine("Done!", ConsoleColor.Green);
             }
             catch (Exception exception)
             {

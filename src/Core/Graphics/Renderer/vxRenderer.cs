@@ -449,6 +449,7 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// <param name="vxEngine">Vx engine.</param>
         public vxRenderer(vxEngine vxEngine)
         {
+			vxConsole.WriteLine ("Starting 3D Rendering Engine");
             this.vxEngine = vxEngine;
             bbDim = new BoundingBox(new Vector3(-size, -size, -size), new Vector3(size, size, size));
         }

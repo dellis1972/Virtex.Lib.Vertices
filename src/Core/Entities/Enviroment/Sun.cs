@@ -16,8 +16,8 @@ namespace Virtex.Lib.Vrtc.Core.Entities
     public class Sun : vxEntity3D
     {
         public Vector3 screenPos;
-        public float RotationX = 0;
-        public float RotationZ = 0;
+        public float RotationX = 1.2f;
+        public float RotationZ = 0.4f;
         public bool IsOnScreen = false;
         public bool IsSunOccluded = false;
         public Vector3 SunPosition;
@@ -31,8 +31,9 @@ namespace Virtex.Lib.Vrtc.Core.Entities
             : base(vxEngine, vxEngine.Assets.Models.Sun_Mask, Vector3.Zero)
         {
             vxEngine.CurrentGameplayScreen.Entities.Remove(this);
-            RotationX = MathHelper.PiOver4 / 2;
-            RotationZ = 0;// MathHelper.PiOver4 / 6;
+
+			RotationX = 1.2f;
+			RotationZ = 0.4f;
             //DoEdgeDetect = false;
 			//IsSkyBox = true;
         }

@@ -48,6 +48,8 @@ namespace VerticeEnginePort.Base
             vxEngine = new GameEngine(this);
             Components.Add(vxEngine);
 
+
+
 			string platformTag = "";
 			#if TECHDEMO_PLTFRM_XNA
 			//Do Nothing
@@ -58,6 +60,7 @@ namespace VerticeEnginePort.Base
 			Content.RootDirectory = "Content" + platformTag;
 
             vxEngine.LoadResolution = false;
+
 
             vxEngine.AddScreen(new vxTitleScreen(), null);
         }
@@ -89,31 +92,31 @@ namespace VerticeEnginePort.Base
             // The real drawing happens inside the screen manager component.
             base.Draw(gameTime);
 
-			vxEngine.SpriteBatch.Begin();
-
-			//Draw Version Information
-			int Padding = 5;
-			int TextWidth = (int)vxEngine.Assets.Fonts.DebugFont.MeasureString(vxEngine.GameVersion).X;
-			int TextHeight = (int)vxEngine.Assets.Fonts.DebugFont.MeasureString(vxEngine.GameVersion).Y;
-
-			//Position Of Text
-			Vector2 PosOfText = new Vector2(
-				vxEngine.GraphicsDevice.Viewport.Width - 2 * Padding - TextWidth,
-				vxEngine.GraphicsDevice.Viewport.Height - Padding - TextHeight);
-
-			//Draw Background
-			vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, 
-				new Rectangle(
-					(int)PosOfText.X - Padding,
-					(int)PosOfText.Y,
-					TextWidth + 2 * Padding, 
-					TextHeight),
-				Color.Black * 0.75f);
-
-			vxEngine.SpriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, vxEngine.GameVersion, PosOfText, 
-				Color.White * 0.85f);
-
-			vxEngine.SpriteBatch.End();
+//			vxEngine.SpriteBatch.Begin();
+//
+//			//Draw Version Information
+//			int Padding = 5;
+//			int TextWidth = (int)vxEngine.Assets.Fonts.DebugFont.MeasureString(vxEngine.GameVersion).X;
+//			int TextHeight = (int)vxEngine.Assets.Fonts.DebugFont.MeasureString(vxEngine.GameVersion).Y;
+//
+//			//Position Of Text
+//			Vector2 PosOfText = new Vector2(
+//				vxEngine.GraphicsDevice.Viewport.Width - 2 * Padding - TextWidth,
+//				vxEngine.GraphicsDevice.Viewport.Height - Padding - TextHeight);
+//
+//			//Draw Background
+//			vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, 
+//				new Rectangle(
+//					(int)PosOfText.X - Padding,
+//					(int)PosOfText.Y,
+//					TextWidth + 2 * Padding, 
+//					TextHeight),
+//				Color.Black * 0.75f);
+//
+//			vxEngine.SpriteBatch.DrawString(vxEngine.Assets.Fonts.DebugFont, vxEngine.GameVersion, PosOfText, 
+//				Color.White * 0.85f);
+//
+//			vxEngine.SpriteBatch.End();
         }
 
 

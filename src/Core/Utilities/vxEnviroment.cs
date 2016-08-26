@@ -7,6 +7,7 @@ using System.IO.Compression;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
 
 namespace Virtex.Lib.Vrtc.Core
 {
@@ -131,7 +132,82 @@ namespace Virtex.Lib.Vrtc.Core
 				"Path to the Sandbox Folder"));
 
 			#endregion
+
 		}
+
+		/// <summary>
+		/// Applies any command line arguments in the .
+		/// </summary>
+		public static void ApplyCommandLineArgs()
+		{
+			//Get Command Line Arguments that have been passed to the main game
+			string[] args = System.Environment.GetCommandLineArgs ();
+
+			string argoutput = "Applying Command Line Arguments: ";
+			for (int argIndex = 1; argIndex < args.Length; argIndex++) {
+				argoutput += args [argIndex] + " ";
+			}
+			vxConsole.WriteLine (argoutput);
+
+			//Parse Command Line Arguments Here
+			for (int argIndex = 0; argIndex < args.Length; argIndex++) {
+
+				try
+				{
+					TryToApplyCMDArg (args, argIndex);
+				}
+				catch(Exception ex) {
+					vxConsole.WriteLine (string.Format(" >> cmd line error: {0} <<", ex.Message));
+				}
+
+			}
+		}
+
+		/// <summary>
+		/// Tries to apply CMD argument.
+		/// </summary>
+		/// <param name="args">Arguments.</param>
+		/// <param name="argIndex">Argument index.</param>
+		static void TryToApplyCMDArg(string[] args, int argIndex)
+		{
+			//Get Argument
+			string arg = args [argIndex];
+
+			switch (arg) {
+
+			//Sets the Build Conifg too Debug. This for debugging release builds in the wild
+			case "-dev":
+			case "-debug":
+				vxEngine.SetBuildConfig (vxBuildConfigType.Debug);
+				break;
+
+				//Set Resolution Width
+			case "-w":
+			case "-width":
+				vxEngine.DebugSystem.DebugCommandUI.ExecuteCommand (string.Format("width {0}", args [argIndex + 1]));
+				break;
+				//Set Resolution Height
+			case "-h":
+			case "-height":
+				vxEngine.DebugSystem.DebugCommandUI.ExecuteCommand (string.Format("height {0}", args [argIndex + 1]));
+				break;
+
+			case "-sw":
+			case "-startwindowed":
+			case "-window":
+			case "-windowed":
+				vxEngine.DebugSystem.DebugCommandUI.ExecuteCommand (string.Format("window"));
+				break;
+
+				//Set Fullsreen
+			case "-full":
+			case "-fullscreen":
+				vxEngine.DebugSystem.DebugCommandUI.ExecuteCommand (string.Format("fullscreen"));
+				break;
+
+			}
+		}
+
 
 		/// <summary>
 		/// Add a new variable to the Enviroment Variable Collection.

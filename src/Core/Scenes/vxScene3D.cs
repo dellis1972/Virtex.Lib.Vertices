@@ -345,7 +345,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 				//Update Physics
 				//
 				// Start measuring time for "Physics".
-				vxEngine.DebugSystem.TimeRuler.BeginMark ("Physics", Color.Red);
+				vxEngine.DebugSystem.TimeRuler.BeginMark ("Physics", Color.LimeGreen);
 
 				//Update the Physics System.
 				vxConsole.WriteToInGameDebug ("Physics");
@@ -386,6 +386,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 					SunEmitter.RotationZ -= 0.005f;
 
 				vxEngine.Renderer.setLightPosition (-LightPositions);
+
+				vxConsole.WriteToInGameDebug (this.SunEmitter.RotationX);
+				vxConsole.WriteToInGameDebug (this.SunEmitter.RotationZ);
 
 				// Tell the lensflare component where our camera is positioned.
 				//lensFlare.LightDir = mLightPositions;

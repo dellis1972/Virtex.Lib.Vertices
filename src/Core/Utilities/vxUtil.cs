@@ -13,6 +13,67 @@ namespace Virtex.Lib.Vrtc.Utilities
     public class vxUtil
     {
 		/// <summary>
+		/// Wraps the multiline string. Useful for displaying Stack Traces which sometimes go off the screen.
+		/// </summary>
+		/// <returns>The wrapped multiline string.</returns>
+		/// <param name="inputstring">Inputstring.</param>
+		/// <param name="Width">Width.</param>
+		public static string WrapMultilineString(string inputstring, int MaxCharsPerLine)
+		{
+			string returnstring = "";
+			using (StringReader reader = new StringReader(inputstring))
+			{
+				string line;
+				while ((line = reader.ReadLine()) != null)
+				{
+					// Do something with the line
+					toolongloop:
+					//If the line is longer than the width of the string, then split it
+					if (line.Length > MaxCharsPerLine) {
+						returnstring += line.Substring (0, MaxCharsPerLine) + "\n";
+
+						//Now set the line to the remainder and loop back up
+						line = line.Substring (MaxCharsPerLine);
+						goto toolongloop;
+					} else {
+						returnstring += line + "\n";
+					}
+				}
+			}
+			return returnstring;
+		}
+
+
+		static int spinner_index_i = 0;
+		static int spinner_index_j = 0;
+		static string spinner_text = "|";
+		public static string GetTextSpinner()
+		{
+			spinner_index_i++;
+
+			if (spinner_index_i % 10 == 0) {
+				spinner_index_j++;
+
+				switch(spinner_index_j%4)
+				{
+				case 0:
+					spinner_text = "|";
+					break;
+				case 1:
+					spinner_text = "/";
+					break;
+				case 2:
+					spinner_text = "-";
+					break;
+				case 3:
+					spinner_text = "\\";
+					break;
+				}
+			}
+			return spinner_text;
+		}
+
+		/// <summary>
 		/// Takes in a string and parses based off of the 'XML Tag'. If Tag is not found, No text is returned.
 		/// </summary>
 		/// <param name="Text">Text to be Parsed</param>
@@ -122,13 +183,13 @@ namespace Virtex.Lib.Vrtc.Utilities
 
 
 
+
         /// <summary>
         /// Takes a Screenshot and returns it as a Texture 2D
         /// </summary>
         /// <returns></returns>
 		public static Texture2D TakeScreenshot(vxEngine vxEngine)
         {
-
 			int w = vxEngine.GraphicsDevice.PresentationParameters.BackBufferWidth;
 			int h = vxEngine.GraphicsDevice.PresentationParameters.BackBufferHeight;
 #if VRTC_PLTFRM_XNA

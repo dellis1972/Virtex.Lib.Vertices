@@ -77,10 +77,11 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// <param name="Engine">Engine.</param>
 		public vxGraphicsSettingsManager (vxEngine Engine)
 		{
+			vxConsole.WriteLine ("Starting Graphics Settings Manager");
 			this.Engine = Engine;
 
 			Engine.DebugSystem.DebugCommandUI.RegisterCommand (
-				"grf",              // Name of command
+				"graref",              // Name of command
 				"Refresh the Grapahics Settings",     // Description of command
 				delegate (IDebugCommandHost host, string command, IList<string> args) {
 					this.Apply();
