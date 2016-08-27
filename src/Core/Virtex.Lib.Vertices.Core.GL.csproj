@@ -732,18 +732,18 @@
     <Compile Include="Scenes\vxScene3D.empty.cs" />
     <Compile Include="Scenes\vxScene3D.Network.cs" />
     <Compile Include="Scenes\vxSceneBase.cs" />
-    <Compile Include="Debug\IDebugCommandHost.cs" />
-    <Compile Include="Debug\KeyboardUtils.cs" />
-    <Compile Include="Debug\Layout.cs" />
-    <Compile Include="Debug\StringBuilderExtensions.cs" />
-    <Compile Include="Debug\vxCrashHandler.cs" />
-    <Compile Include="Debug\vxVar.cs" />
-    <Compile Include="Debug\vxDebugSystem.cs" />
-    <Compile Include="Debug\vxDebugManager.cs" />
-    <Compile Include="Debug\vxDebugCommandUI.cs" />
-    <Compile Include="Debug\vxDebugShapeRenderer.cs" />
-    <Compile Include="Debug\vxDebugCntrlFpsCounter.cs" />
-    <Compile Include="Debug\vxDebugCntrlTimeRuler.cs" />
+    <Compile Include="Debug Utilities\IDebugCommandHost.cs" />
+    <Compile Include="Debug Utilities\KeyboardUtils.cs" />
+    <Compile Include="Debug Utilities\Layout.cs" />
+    <Compile Include="Debug Utilities\StringBuilderExtensions.cs" />
+    <Compile Include="Debug Utilities\vxCrashHandler.cs" />
+    <Compile Include="Debug Utilities\vxVar.cs" />
+    <Compile Include="Debug Utilities\vxDebugSystem.cs" />
+    <Compile Include="Debug Utilities\vxDebugManager.cs" />
+    <Compile Include="Debug Utilities\vxDebugCommandUI.cs" />
+    <Compile Include="Debug Utilities\vxDebugShapeRenderer.cs" />
+    <Compile Include="Debug Utilities\vxDebugCntrlFpsCounter.cs" />
+    <Compile Include="Debug Utilities\vxDebugCntrlTimeRuler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
