@@ -233,12 +233,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                 IsPausable = false; 
 
 			//Setup Renderer.
-			vxEngine.Renderer = new vxRenderer (vxEngine);
+			//vxEngine.Renderer = new vxRenderer (vxEngine);
 
 			// default window size
 			mGraphicsManager.PreferMultiSampling = false;
 
-			vxEngine.Renderer.loadContent (mGraphicsManager);
+			//vxEngine.Renderer.loadContent (mGraphicsManager);
 
 			Camera.AspectRatio = mGraphicsManager.GraphicsDevice.Viewport.AspectRatio;
 
@@ -858,21 +858,21 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		{
 			int width = 200;
 			int height = 128;
+			int padding = 2;
 			string TitleText = "Title";
 
 			vxEngine.SpriteBatch.Begin (0, BlendState.Opaque, SamplerState.PointClamp, null, null);
 
 			vxEngine.SpriteBatch.Draw (new Texture2D (vxEngine.GraphicsDevice, 1, 1),
-				new Rectangle (0, 0, vxEngine.GraphicsDevice.Viewport.Width, height + 15), Color.DarkGray * 0.5f);
-
-
+				new Rectangle (0, 0, vxEngine.GraphicsDevice.Viewport.Width, height + vxEngine.Assets.Fonts.DebugFont.LineSpacing + 2 * padding), Color.DarkGray * 0.5f);
+			
 			//
 			//Plain Render
 			//
-			TitleText = "Plain Render";
-			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_LightMap, new Rectangle (0, 0, width, height), Color.White);
+			TitleText = "Colour Map";
+			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_ColourMap, new Rectangle (0, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
-				new Vector2 (width / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
+				new Vector2 (width / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
 			//
 			//Normal Map
@@ -880,26 +880,26 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			TitleText = "Normal Map";
 			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_NormalMap, new Rectangle (width, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
-				new Vector2 (width * 3 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 1), Color.LightGray);
+				new Vector2 (width * 3 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
 
 			//
 			//Depth Map
 			//
 			TitleText = "Depth Map";
-			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_ShadowMap, new Rectangle (2 * width, 0, width, height), Color.White);
+			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_DepthMap, new Rectangle (2 * width, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
-				new Vector2 (width * 5 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
+				new Vector2 (width * 5 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
 
 			//
 			//Distortion Map
 			//
-			TitleText = "Mask Map";
+			TitleText = "Edge Detection";
 
 			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_EdgeDetected, new Rectangle (3 * width, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
-				new Vector2 (width * 7 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
+				new Vector2 (width * 7 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
 			//
 			//Blur Mask
@@ -908,7 +908,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_ShadowMap, new Rectangle (4 * width, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
-				new Vector2 (width * 9 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
+				new Vector2 (width * 9 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
 			//
 			//Distortion Map
@@ -917,7 +917,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_GodRaysScene, new Rectangle (5 * width, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
-				new Vector2 (width * 11 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height - 2), Color.LightGray);
+				new Vector2 (width * 11 / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
 
 			vxEngine.SpriteBatch.End ();

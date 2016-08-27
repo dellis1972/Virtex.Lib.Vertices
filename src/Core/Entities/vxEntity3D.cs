@@ -737,20 +737,11 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 							if (effect.Parameters["LightDirection"] != null)
                                 effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
 
-                                if (vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None)
-                                    DoShadowMap = false;
-                                else
-                                    DoShadowMap = true;
 
 
 							//if (effect.Parameters["DoShadow"] != null)
 								//effect.Parameters["ShadowMapSize"].SetValue(512);
 
-                                if (effect.Parameters["DoShadow"] != null)
-								effect.Parameters["DoShadow"].SetValue(DoShadowMap);
-							
-							if (effect.Parameters["ShadowDebug"] != null)
-								effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
 
                                 if (effect.Parameters["ViewVector"] != null)
                                     effect.Parameters["ViewVector"].SetValue(vxEngine.Current3DSceneBase.Camera.View.Forward);
@@ -759,14 +750,29 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                                     effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
                                 if (effect.Parameters["ShadowTransform"] != null)
                                     effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
+
+
+							if (effect.Parameters["CameraPos"] != null)
+								effect.Parameters["CameraPos"].SetValue(vxEngine.Current3DSceneBase.Camera.WorldMatrix.Translation);
+
+
+							//TODO: Move all below to get - set properties
+
+							if (vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None)
+								DoShadowMap = false;
+							else
+								DoShadowMap = true;
+							
+							if (effect.Parameters["DoShadow"] != null)
+								effect.Parameters["DoShadow"].SetValue(DoShadowMap);
+
+							if (effect.Parameters["ShadowDebug"] != null)
+								effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
                                 if (effect.Parameters["TileBounds"] != null)
                                     effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
                                 if (effect.Parameters["SplitColors"] != null)
                                     effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-
-                                if (effect.Parameters["CameraPos"] != null)
-                                    effect.Parameters["CameraPos"].SetValue(vxEngine.Current3DSceneBase.Camera.WorldMatrix.Translation);
-
+							
                                 /*
                                 if (effect.Parameters["FogNear"] != null)
                                     effect.Parameters["FogNear"].SetValue(5.0f);
@@ -828,6 +834,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                                 effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
                             // vxConsole.WriteToInGameDebug(renderShadowSplitIndex);
 
+							/*
                             if (effect.Parameters["CameraPos"] != null)
                                 effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
 							
@@ -852,7 +859,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                                 effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
                             if (effect.Parameters["SplitColors"] != null)
                                 effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-//#endif
+//#endif*/
                         }
 
                         mesh.Draw();

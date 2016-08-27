@@ -452,12 +452,15 @@ namespace Virtex.Lib.Vrtc.Graphics
 			vxConsole.WriteLine ("Starting 3D Rendering Engine");
             this.vxEngine = vxEngine;
             bbDim = new BoundingBox(new Vector3(-size, -size, -size), new Vector3(size, size, size));
+			this.LoadContent ();
         }
 
         public vxRenderer(vxEngine vxEngine, BoundingBox ShadowMapBB)
-        {
+		{
+			vxConsole.WriteLine ("Starting 3D Rendering Engine");
             this.vxEngine = vxEngine;
             bbDim = ShadowMapBB;
+			this.LoadContent ();
         }
 
         /// <summary>
@@ -493,9 +496,9 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// Loads the content.
         /// </summary>
         /// <param name="graphicsManager">Graphics manager.</param>
-        public void loadContent(GraphicsDeviceManager graphicsManager)
+        public void LoadContent()
         {
-            mGraphicsDevice = graphicsManager.GraphicsDevice;
+			mGraphicsDevice = vxEngine.GraphicsDevice;// graphicsManager.GraphicsDevice;
 
             mInstanceVertexDeclaration = new VertexDeclaration(new[]
             {
@@ -866,6 +869,12 @@ namespace Virtex.Lib.Vrtc.Graphics
                 Vector2 resolution = new Vector2(RT_MainScene.Width,
                                                  RT_MainScene.Height);
 
+
+				foreach (Matrix vec4 in ShadowSplitProjectionsWithTiling) {
+					vxConsole.WriteToInGameDebug (vec4);
+					vxConsole.WriteToInGameDebug ("DDDDD");
+			
+				}
                 // Pass in the current screen resolution.
                 parameters["ScreenResolution"].SetValue(resolution);
                 parameters["NormalTexture"].SetValue(RT_NormalMap);
