@@ -716,7 +716,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 
 			//Just in case, do a last minute check to makes sure the line scroll pos is within bounds
 
-			LineScrollPos = MathHelper.Clamp (LineScrollPos, 0, lines.Count + MaxLineDisplayCount);
+			LineScrollPos = (int)MathHelper.Clamp (LineScrollPos, 0, lines.Count + MaxLineDisplayCount);
 
 			int linestoshow = lines.Count;
 

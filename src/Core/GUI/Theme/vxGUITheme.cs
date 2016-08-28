@@ -118,9 +118,9 @@ namespace Virtex.Lib.Vrtc.GUI.Themes
 			this.vxLoadingScreen.SplashScreen = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxButton/Bckgrnd_Nrml");
 
 
-			// Misc ITEM
-			/*******************************************/
-			SplitterTexture = LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
+            // Misc ITEM
+            /*******************************************/
+            SplitterTexture = Engine.Assets.Textures.Blank;// LoadTexture(Engine.EngineContentManager, "vxGUITheme/vxMenuEntry/Splttr_Nrml");
 
 
             // Sound Effects

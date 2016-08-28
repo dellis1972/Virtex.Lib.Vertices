@@ -885,6 +885,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 		/// </summary>
 		public void DrawGraph()
 		{
+			#if TRACE
 			if (ShowGraph && ShowLog && vxCrashHandler.IsInitialised == false) {
 				int buffer = 4;
 				debugManager.vxEngine.SpriteBatch.Begin ();
@@ -951,6 +952,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 				}
 				ShowGraph = false;
 			}
+			#endif
 		}
 
         #endregion

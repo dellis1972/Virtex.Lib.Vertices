@@ -48,7 +48,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>VerticesEngineKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2D|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -104,18 +105,18 @@
     <Compile Include="Cameras\vxVirtualCamera.cs" />
     <Compile Include="ContentManagement\Assets.cs" />
     <Compile Include="ContentManagement\vxContentManager.cs" />
-    <Compile Include="DebugUtils\IDebugCommandHost.cs" />
-    <Compile Include="DebugUtils\KeyboardUtils.cs" />
-    <Compile Include="DebugUtils\Layout.cs" />
-    <Compile Include="DebugUtils\StringBuilderExtensions.cs" />
-    <Compile Include="DebugUtils\vxCrashHandler.cs" />
-    <Compile Include="DebugUtils\vxDebugCntrlFpsCounter.cs" />
-    <Compile Include="DebugUtils\vxDebugCntrlTimeRuler.cs" />
-    <Compile Include="DebugUtils\vxDebugCommandUI.cs" />
-    <Compile Include="DebugUtils\vxDebugManager.cs" />
-    <Compile Include="DebugUtils\vxDebugShapeRenderer.cs" />
-    <Compile Include="DebugUtils\vxDebugSystem.cs" />
-    <Compile Include="DebugUtils\vxVar.cs" />
+    <Compile Include="Debug Utilities\IDebugCommandHost.cs" />
+    <Compile Include="Debug Utilities\KeyboardUtils.cs" />
+    <Compile Include="Debug Utilities\Layout.cs" />
+    <Compile Include="Debug Utilities\StringBuilderExtensions.cs" />
+    <Compile Include="Debug Utilities\vxCrashHandler.cs" />
+    <Compile Include="Debug Utilities\vxDebugCntrlFpsCounter.cs" />
+    <Compile Include="Debug Utilities\vxDebugCntrlTimeRuler.cs" />
+    <Compile Include="Debug Utilities\vxDebugCommandUI.cs" />
+    <Compile Include="Debug Utilities\vxDebugManager.cs" />
+    <Compile Include="Debug Utilities\vxDebugShapeRenderer.cs" />
+    <Compile Include="Debug Utilities\vxDebugSystem.cs" />
+    <Compile Include="Debug Utilities\vxVar.cs" />
     <Compile Include="Entities\Enviroment\Sun.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Enviroment\Water_General.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
+    <Compile Include="Mathematics\vxMathHelper.cs" />
     <Compile Include="Network\Entity States\vxNetEntity3DState.cs" />
     <Compile Include="Network\Events\vxNetServerEvents.cs" />
     <Compile Include="Network\Events\vxNetClientEvents.cs" />
@@ -170,11 +172,11 @@
     <Compile Include="Network\Server List\vxSeverLocalListDialog.cs" />
     <Compile Include="ParticleSystem\vxParticle3D.cs" />
     <Compile Include="ParticleSystem\vxParticleSystem3D.cs" />
-    <Compile Include="Scenes\Scene2D.cs" />
-    <Compile Include="Scenes\Scene3D.cs" />
-    <Compile Include="Scenes\Scene3D.Network.cs" />
-    <Compile Include="Scenes\SceneBase.cs" />
-    <Compile Include="Scenes\Scene3D.empty.cs" />
+    <Compile Include="Scenes\vxScene2D.cs" />
+    <Compile Include="Scenes\vxScene3D.cs" />
+    <Compile Include="Scenes\vxScene3D.empty.cs" />
+    <Compile Include="Scenes\vxScene3D.Network.cs" />
+    <Compile Include="Scenes\vxSceneBase.cs" />
     <Compile Include="Screens\vxTitleScreen.cs" />
     <Compile Include="Serilization\LevelStats.cs" />
     <Compile Include="Serilization\Profile.cs" />
@@ -245,7 +247,6 @@
     <Compile Include="GUI\Theme\vxThemeButton.cs" />
     <Compile Include="GUI\Theme\vxThemeTextbox.cs" />
     <Compile Include="GUI\vxGuiManager.cs" />
-    <Compile Include="Mathematics\vxMathUtils.cs" />
     <Compile Include="Mathematics\vxSmooth.cs" />
     <Compile Include="Network\Server List\vxSeverListDialog.cs" />
     <Compile Include="Network\Events\vxNetworkEventArgs.cs" />
@@ -301,7 +302,6 @@
   <ItemGroup>
     <None Include="Resources\InstancedEffect.xnb" />
     <None Include="Resources\InstancedEffectXbox.xnb" />
-    <None Include="VerticesEngineKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Network\Server Lobby\misc.txt" />
