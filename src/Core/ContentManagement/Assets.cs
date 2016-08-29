@@ -38,6 +38,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
         {
             public Texture2D Blank;
             public Texture2D Gradient;
+			public Texture2D RandomValues;
             public Texture2D Arrow_Left, Arrow_Right;
 
             public Texture2D Texture_WaterEnvr;
@@ -179,6 +180,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
             textures.Blank = vxEngine.EngineContentManager.Load<Texture2D>("Textures/xGUI/blank");
             textures.Gradient = vxEngine.EngineContentManager.Load<Texture2D>("Textures/xGUI/gradient");
+			textures.RandomValues = vxEngine.EngineContentManager.Load<Texture2D>("Textures/rndm");
 
             //Arrows
             textures.Arrow_Left = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Left");
@@ -212,8 +214,6 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 #if VRTC_PLTFRM_XNA
             //shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/MainModelShader");
 
-            //Water
-            shaders.WaterReflectionShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/Water/vxWater");
 
 			//Distorter
 			shaders.DistortionShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/Distorter/Distorters");
@@ -221,7 +221,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 			postProcessShaders.distortTechnique = postProcessShaders.distortEffect.Techniques["Distort"];
 			postProcessShaders.distortBlurTechnique = postProcessShaders.distortEffect.Techniques["DistortBlur"];
 
-            postProcessShaders.EdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/EdgeDetection");
+            //postProcessShaders.EdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/EdgeDetection");
 #else
 
 			prefixtag = "MonoGame/";
@@ -235,7 +235,9 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
             //Shader Collection
             shaders.CartoonShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/CellModelShader");
-            
+
+            //Water Shader
+            shaders.WaterReflectionShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/Water/vxWater");
 
             //Bloom
             postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
@@ -278,7 +280,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 			models.UnitPlane = vxEngine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.UnitSphere = vxEngine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.Sun_Mask = vxEngine.vxContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
-            models.WaterPlane = models.Sun_Mask;// vxEngine.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager);
+            models.WaterPlane = vxEngine.vxContentManager.LoadModel("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager, shaders.WaterReflectionShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 #endif
         }
     }

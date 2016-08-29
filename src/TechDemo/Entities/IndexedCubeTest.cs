@@ -14,7 +14,7 @@ using Virtex.Lib.Vrtc.Core.Entities;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Graphics;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
 	public class IndexedCubeTest : vxEntity3D
     {

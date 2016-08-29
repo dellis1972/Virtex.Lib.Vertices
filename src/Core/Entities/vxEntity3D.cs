@@ -476,7 +476,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                         if (part.Effect.Parameters["RandomTexture2D"] != null)
                             part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
 
-						//if (part.Effect.Parameters["EvissiveColour"] != null)
+						if (part.Effect.Parameters["EvissiveColour"] != null)
 							part.Effect.Parameters["EvissiveColour"].SetValue(new Vector4(0.5f));
 					
 

@@ -553,6 +553,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Shaders\Include\Shadow.h" />
+    <None Include="Content\MonoGame\Shaders\Model Shaders\MainModelShader %28copy%29.fx" />
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Textures\rndm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,7 +1,6 @@
 using System;
-using VerticeEnginePort.Base;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     /// <summary>
     /// The main program. Allows access to the game instance by the static property Game
@@ -13,7 +12,7 @@ namespace VerticeEnginePort.Base
         /// </summary>
         static void Main(string[] args)
         {	
-            using (MetricRacerBaseGame game = new MetricRacerBaseGame())
+            using (VerticesTechDemoGame game = new VerticesTechDemoGame())
             {
                 game.Run();
             }

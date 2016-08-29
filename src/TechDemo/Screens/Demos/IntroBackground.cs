@@ -26,7 +26,7 @@ using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using Virtex.Lib.Vrtc.Graphics;
 
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
 	/// <summary>
 	/// This is the main class for the game. It holds the instances of the sphere simulator,

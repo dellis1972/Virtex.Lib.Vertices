@@ -22,7 +22,7 @@ using Virtex.Lib.Vrtc.GUI.MessageBoxs;
 using Virtex.Lib.Vrtc.Screens.Async;
 #endregion
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     /// <summary>
     /// The main menu screen is the first thing displayed when the game starts up.

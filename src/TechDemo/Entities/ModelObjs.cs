@@ -23,7 +23,7 @@ using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Entities.Sandbox3D;
 using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     public class ModelObjs : vxSandboxEntity
     {
@@ -54,7 +54,7 @@ namespace VerticeEnginePort.Base
             get
             {
                 return new vxSandboxEntityDescription(
-                "VerticeEnginePort.Base.ModelObjs",
+                "Virtex.vxGame.VerticesTechDemo.ModelObjs",
                 "Wooden Crate",
                 "Models/items/wooden crate/wooden crate");
             }

@@ -75,8 +75,8 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
             // Create the Model Object to return
             vxModel newModel = new vxModel();
 
-            try
-            {
+            //try
+            //{
 
                 // Next Load in the Main Model.
                 newModel.ModelMain = Content.Load<Model>(PathToModel);
@@ -201,7 +201,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 								new Vector4 (160, 32, 240, 255)
 							};
 
-							//if (part.Effect.Parameters ["SplitColors"] != null)
+							if (newEffect.Parameters ["SplitColors"] != null)
 							newEffect.Parameters ["SplitColors"].SetValue (ShadowSplitColors);
 							Console.WriteLine(ShadowSplitColors);
 
@@ -278,11 +278,11 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
                         meshPart.Effect = effectShadowMapping[meshPart.Effect];
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                vxConsole.WriteError(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    vxConsole.WriteError(ex);
+            //}
             #endregion
 
             #region Utility Model Loading

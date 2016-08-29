@@ -1,4 +1,4 @@
-﻿namespace VerticeEnginePort.Base
+﻿namespace Virtex.vxGame.VerticesTechDemo
 {
     public enum ShipController
     {

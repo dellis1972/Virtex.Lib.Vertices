@@ -50,7 +50,7 @@ float4 vShallowColor : Diffuse
 <
     string UIName 	= "Shallow Water Color";
 	string UIWidget = "Vector";
-> = { 0.55f, 0.75f, 0.75f, 1.0f };
+> = { 0.35f, 0.55f, 0.55f, 1.0f };
 
 
 float fReflectionAmount

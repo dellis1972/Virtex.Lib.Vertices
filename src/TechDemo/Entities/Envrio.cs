@@ -8,7 +8,7 @@ using Virtex.Lib.Vrtc.Core.Entities;
 using Virtex.Lib.Vrtc.Graphics;
 using System.Linq;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     public class Envrio : vxEntity3D
     {

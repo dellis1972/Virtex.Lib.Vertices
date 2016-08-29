@@ -659,8 +659,10 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public override void Update (GameTime gameTime)
 		{
-			if (vxCrashHandler.IsInitialised == false) {
+#if !DEBUG
+            if (vxCrashHandler.IsInitialised == false) {
 				try {
+#endif
 					Profile.Settings.Audio.Double_SFX_Volume = 0.2f;
 					// tell the TimeRuler that we're starting a new frame. you always want
 					// to call this at the start of Update
@@ -718,17 +720,20 @@ namespace Virtex.Lib.Vrtc.Core
 
 					// Stop measuring time for "Update".
 					_debugSystem.TimeRuler.EndMark ("Update");
+
+#if !DEBUG
 				} catch (Exception ex) {
 					vxCrashHandler.Init (this, ex);
 					Crashed ();
 				}
 			}
-		}
+#endif
+        }
 
-		/// <summary>
-		/// Function for what the engine to handle if a crash is set off internally
-		/// </summary>
-		void Crashed ()
+        /// <summary>
+        /// Function for what the engine to handle if a crash is set off internally
+        /// </summary>
+        void Crashed ()
 		{
 			if (_debugSystem != null) {
 
@@ -754,8 +759,10 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public override void Draw (GameTime gameTime)
 		{
-			if (vxCrashHandler.IsInitialised == false) {
+#if !DEBUG
+            if (vxCrashHandler.IsInitialised == false) {
 				try {
+#endif
 					// Start measuring time for "Draw".
 					_debugSystem.TimeRuler.BeginMark ("Draw", Color.Yellow);
 
@@ -777,26 +784,30 @@ namespace Virtex.Lib.Vrtc.Core
 					_debugSystem.TimeRuler.EndMark ("Draw");
 
 					_debugSystem.TimeRuler.DrawGraph ();
+#if !DEBUG
 				} catch (Exception ex) {
 					vxCrashHandler.Init (this, ex);
 					Crashed ();
 				}
+
+
 				//If the Crash Handler has been initialised, then a crash has occured somewhere and it'll fall to this.
 			} else {
 				vxCrashHandler.Draw (gameTime);
 			}
-		}
+#endif
+        }
 
 
-		#endregion
+        #endregion
 
-		#region Public Methods
+        #region Public Methods
 
 
-		/// <summary>
-		/// Adds a new screen to the screen manager.
-		/// </summary>
-		public void AddScreen (vxGameBaseScreen screen, PlayerIndex? controllingPlayer)
+        /// <summary>
+        /// Adds a new screen to the screen manager.
+        /// </summary>
+        public void AddScreen (vxGameBaseScreen screen, PlayerIndex? controllingPlayer)
 		{
 			//Console.WriteLine ("Adding Screen: " + screen.ToString ());
 
@@ -870,7 +881,7 @@ namespace Virtex.Lib.Vrtc.Core
 		}
 
 
-		#endregion
+#endregion
 
 
 		/// <summary>

@@ -27,8 +27,9 @@ using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 using Virtex.Lib.Vrtc.Entities.Sandbox3D;
 using Virtex.Lib.Vrtc.Graphics;
+using Virtex.Lib.Vrtc.Core.Entities;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     /// <summary>
     /// This is the main class for the game. It holds the instances of the sphere simulator,
@@ -156,14 +157,15 @@ namespace VerticeEnginePort.Base
             vxTabPage Straights = new vxTabPage(vxEngine, tabControl, "Items");
             tabControl.AddItem(Straights);
 
-            vxScrollPanel ScrollPanel_Straights = new vxScrollPanel(new Vector2(0, 0),
+            vxScrollPanel ScrollPanel_GeneralItemsPage = new vxScrollPanel(new Vector2(0, 0),
                 vxEngine.GraphicsDevice.Viewport.Width - 150, vxEngine.GraphicsDevice.Viewport.Height - 75);
 
             //Cubes
-            ScrollPanel_Straights.AddItem(new vxScrollPanelSpliter(vxEngine, "Items"));
-            ScrollPanel_Straights.AddItem(RegisterNewSandboxItem(WoodenCrate.EntityDescription));
+            ScrollPanel_GeneralItemsPage.AddItem(new vxScrollPanelSpliter(vxEngine, "Items"));
+            ScrollPanel_GeneralItemsPage.AddItem(RegisterNewSandboxItem(WoodenCrate.EntityDescription));
+            ScrollPanel_GeneralItemsPage.AddItem(RegisterNewSandboxItem(vxWaterEntity.EntityDescription));
             //Add the scrollpanel to the slider tab page.
-            Straights.AddItem(ScrollPanel_Straights);
+            Straights.AddItem(ScrollPanel_GeneralItemsPage);
 
             //IndexedCubeTest cube = new IndexedCubeTest(vxEngine, new Vector3(4, 4, 0));
 
@@ -192,13 +194,13 @@ namespace VerticeEnginePort.Base
             switch (key)
             {
                 //Cubes
-                case "VerticeEnginePort.Base.WoodenCrate":
+                case "Virtex.vxGame.VerticesTechDemo.WoodenCrate":
 				returnEntity = new WoodenCrate((GameEngine)vxEngine, Vector3.Zero);
                     break;
 
                 default:
-				vxConsole.WriteError(new Exception( string.Format("'{0}' Key Not Found!", key)));
-				returnEntity = base.GetNewEntity(key);
+                    returnEntity = base.GetNewEntity(key);
+                    //vxConsole.WriteError(new Exception( string.Format("'{0}' Key Not Found!", key)));
                     break;
 			}
 			return returnEntity;

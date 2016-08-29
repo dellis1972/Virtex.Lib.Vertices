@@ -62,7 +62,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         /// </summary>
         /// <param name="AssetPath"></param>
         public vxWaterEntity(vxEngine vxEngine, Vector3 StartPosition, Vector3 WaterScale)
-            : base(vxEngine, vxEngine.vxContentManager.LoadModel("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager, vxEngine.Assets.Shaders.WaterReflectionShader), StartPosition)
+            : base(vxEngine, vxEngine.Assets.Models.WaterPlane, StartPosition)
         {
             waterBumpMap = vxEngine.Assets.Textures.Texture_WaterWaves;
             waterDistortionMap = vxEngine.Assets.Textures.Texture_WaterDistort;
@@ -116,6 +116,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
             Current3DScene.BEPUPhyicsSpace.Add(fluidVolume);
         }
+
 
         float density = 1.05f;
 
@@ -191,12 +192,35 @@ namespace Virtex.Lib.Vrtc.Core.Entities
             Current3DScene.BEPUPhyicsSpace.Add(fluidVolume);
         }
 
-        public override void InitShaders() { }
+        public override void InitShaders()
+		{
+			base.InitShaders();
+
+			if (this.vxModel != null)
+			{
+				if (this.vxModel.ModelMain != null)
+				{
+					foreach (var part in this.vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+					{
+						//if (part.Effect.Parameters["fFresnelBias"] != null)
+						part.Effect.Parameters["fFresnelBias"].SetValue(0.025f);
+						part.Effect.Parameters["fFresnelPower"].SetValue(1.0f);
+						part.Effect.Parameters["fHDRMultiplier"].SetValue(0.45f);
+						part.Effect.Parameters["vDeepColor"].SetValue(new Vector4(0.0f, 0.20f, 0.4150f, 1.0f));
+						part.Effect.Parameters["vShallowColor"].SetValue(new Vector4(0.35f, 0.55f, 0.55f, 1.0f));
+						//part.Effect.Parameters["fReflectionAmount"].SetValue(0.5f);
+						part.Effect.Parameters["fWaterAmount"].SetValue(0.5f);
+
+					}
+				}
+			}
+		}
+
         public override void UpdateRenderTechnique() { }
         public override void RenderMeshForWaterReflectionPass(Plane ReflectedView) { }
-        public override void RenderMeshPrepPass() { }
+        //public override void RenderMeshPrepPass() { }
         public override void RenderMesh(string RenderTechnique) { }
-        public override void RenderMeshShadow() { }
+        //public override void RenderMeshShadow() { }
 
 
         public override void PreSave()
@@ -227,22 +251,29 @@ namespace Virtex.Lib.Vrtc.Core.Entities
             scBack.DisposeEntity();
 
             //CurrentSandboxLevel.Items.Remove(this);
-#if VRTC_PLTFRM_XNA
+//#if VRTC_PLTFRM_XNA
             CurrentSandboxLevel.waterItems.Remove(this);
-#endif
+//#endif
             Current3DScene.BEPUPhyicsSpace.Remove(fluidVolume);
             base.DisposeEntity();
         }
-
+        int i = 0;
+		int modelscalar = 1;
         /// <summary>
         /// Applies a simple rotation to the ship and animates position based
         /// on simple linear motion physics.
         /// </summary>
         public override void Update(GameTime gameTime)
         {
-            World = Matrix.CreateScale(WaterScale);
+            i++;
+#if !VRTC_PLTFRM_XNA
+			modelscalar = 200;
+			#endif
+			World = Matrix.CreateScale(WaterScale /modelscalar);
             World *= Matrix.CreateTranslation(Position);
-
+            vxConsole.WriteToInGameDebug("Water update! " + i);
+            vxConsole.WriteToInGameDebug("Scale:    " + WaterScale);
+            vxConsole.WriteToInGameDebug("Position: " + Position);
             base.Update(gameTime);
         }
 

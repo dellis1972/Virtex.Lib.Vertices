@@ -13,7 +13,7 @@ using Virtex.Lib.Vrtc.Screens.Async;
 using Virtex.Lib.Vrtc.Graphics;
 using Virtex.Lib.Vrtc.Utilities;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     
     public class GameEngine : vxEngine

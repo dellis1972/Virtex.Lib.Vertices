@@ -14,6 +14,7 @@ using Virtex.Lib.Vrtc.Core;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Core.Cameras;
 using Virtex.Lib.Vrtc.Core.Settings;
+using System.IO;
 
 namespace Virtex.Lib.Vrtc.Graphics
 {
@@ -48,6 +49,14 @@ namespace Virtex.Lib.Vrtc.Graphics
             fillTextureWithBlockPattern(RT_BlockTexture, 32);
             _randomTexture3D.SetData(randomRotations(_randomTexture3D.Width * _randomTexture3D.Height * _randomTexture3D.Depth).ToArray());
             _randomTexture2D.SetData(randomRotations(_randomTexture2D.Width * _randomTexture2D.Height).ToArray());
+            //_randomTexture2D = vxEngine.Assets.Textures.RandomValues;
+
+			/*
+            Stream streampng = File.OpenWrite("tiny.png");
+            _randomTexture2D.SaveAsPng(streampng, tSize, tSize);
+            streampng.Dispose();
+            //texture.Dispose();
+			*/
         }
 
 

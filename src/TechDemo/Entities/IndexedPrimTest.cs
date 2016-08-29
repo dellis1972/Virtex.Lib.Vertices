@@ -14,7 +14,7 @@ using Virtex.Lib.Vrtc.Core.Entities;
 using Virtex.Lib.Vrtc.Utilities;
 
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
 	public class IndexedPrimTest : vxEntity3D
     {

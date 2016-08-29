@@ -23,7 +23,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// Gets the graphics device manager.
 		/// </summary>
 		/// <value>The graphics device manager.</value>
-		GraphicsDeviceManager GraphicsDeviceManager {
+		public GraphicsDeviceManager GraphicsDeviceManager {
 			get
 			{
 				return Engine.Game.Services.GetService(typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;

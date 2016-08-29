@@ -93,13 +93,13 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		private float mLightRotationY = 0.01f;
 		// current rotation angle of the light around y axis
 
-		#if VRTC_PLTFRM_XNA
+		//#if VRTC_PLTFRM_XNA
 		
         /// <summary>
         /// Water Entity Collection
         /// </summary>
         public List<vxWaterEntity> waterItems = new List<vxWaterEntity>();
-#endif
+//#endif
        
 		/// <summary>
 		/// Base Camera Class. This can be used on Chase Camera as well as FPS and
@@ -454,7 +454,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.Renderer.ApplyGuassianBloom(vxEngine);
             vxEngine.Renderer.ApplyCrepuscularRays(vxEngine);
 
-
             //Draw Menu Blur Only if this screen is Pausable
 			if (IsPausable) {
 				vxEngine.SpriteBatch.Begin ();
@@ -686,10 +685,10 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 #endif
                         foreach (vxEntity3D entity in Entities)
                             entity.RenderMesh("Technique_Main");
-#if VRTC_PLTFRM_XNA
+
                         foreach (vxWaterEntity water in waterItems)
                             water.DrawWater(vxEngine.Renderer.RT_WaterReflectionMap, camera.GetReflectionView(water.WrknPlane));
-#endif
+
                         //vxEngine.Renderer.RT_WaterReflectionMap
                         //lensFlare.UpdateOcclusion();
 

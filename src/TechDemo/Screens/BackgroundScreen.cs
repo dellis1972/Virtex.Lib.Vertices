@@ -21,7 +21,7 @@ using Virtex.Lib.Vrtc.Graphics;
 using Virtex.Lib.Vrtc.Screens.Async;
 #endregion
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     /// <summary>
     /// The background screen sits behind all the other menu screens.

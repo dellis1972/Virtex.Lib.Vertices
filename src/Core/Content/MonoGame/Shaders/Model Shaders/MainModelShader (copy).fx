@@ -108,10 +108,10 @@ sampler ShadowMapSampler = sampler_state
 	AddressV  = clamp;
 };
 
-texture2D RandomTexture2D;
-sampler RandomSampler2D = sampler_state 
+texture3D RandomTexture3D;
+sampler RandomSampler3D = sampler_state 
 {	
-	texture = <RandomTexture2D>; 
+	texture = <RandomTexture3D>; 
 	magfilter = POINT;	
 	minfilter = POINT;	
 	mipfilter = POINT;	
@@ -242,8 +242,8 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 		float2(-0.791559f, -0.597710f) };
 
 
-	//float2 randomTexCoord3D = float4(shadowData.WorldPosition.xyz*100, 0);
-	float2 randomValues = tex2D(RandomSampler2D, shadowData.WorldPosition.xy).rg;
+	float4 randomTexCoord3D = float4(shadowData.WorldPosition.xyz*100, 0);
+	float2 randomValues = tex3Dlod(RandomSampler3D, randomTexCoord3D).rg;
 	float2 rotation = randomValues * 2 - 1;
 
 	//float l = saturate(smoothstep(-0.2, 0.2, ndotl));
@@ -253,18 +253,23 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 	const int numSamples = 6;
 	ShadowSplitInfo splitInfo = GetSplitInfo(shadowData);
 	
-	//return lerp(0.25f, 1.0, (splitInfo.LightSpaceDepth < tex2Dlod(ShadowMapSampler, float4(splitInfo.TexCoords, 0, 0)).r));
-	float len = length(shadowData.WorldPosition);
-	return lerp(0.25f, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
+	return lerp(0.25f, 1.0, (splitInfo.LightSpaceDepth < tex2Dlod(ShadowMapSampler, float4(splitInfo.TexCoords, 0, 0)).r));
+	//return lerp(0.25f, 1.0, splitInfo.LightSpaceDepth <  tex2D(ShadowMapSampler, splitInfo.TexCoords).r);
 
 	float result = 0;
 	
 	for(int s=0; s<numSamples; ++s)
 	{
+		
 		float2 poissonOffset = float2(
 			rotation.x * PoissonKernel[s].x - rotation.y * PoissonKernel[s].y,
 			rotation.y * PoissonKernel[s].x + rotation.x * PoissonKernel[s].y
 		);
+		
+		//float2 poissonOffset = float2(
+		//	rotation.x - rotation.y,
+		//	rotation.y + rotation.x 
+		//	);
 
 		const float4 randomizedTexCoords = float4(splitInfo.TexCoords + poissonOffset * PoissonKernelScale[splitInfo.SplitIndex] * 0.75, 0, 0);
 		//const float4 randomizedTexCoords = float4(splitInfo.TexCoords, 0, 0);
@@ -272,7 +277,7 @@ float GetShadowFactor( ShadowData shadowData, float ndotl )
 	}
 
 	float shadowFactor = result / numSamples * t;
-	return lerp(0.25, 1.0, shadowFactor); 
+	return lerp(0.25f, 1.0, shadowFactor); 
 	
 }
 

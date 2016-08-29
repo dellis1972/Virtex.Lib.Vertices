@@ -125,6 +125,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
                 vxEngine, InternalvxGUIManager, "VSync",
                 vxEngine.Profile.Settings.Graphics.Bool_VSync ? "On" : "Off",
 				new Vector2(this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y + horiz));
+
             horiz += 45;
 
             VSyncSettingsItem.ValueComboBox.AddItem("Off");
@@ -137,6 +138,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
                     vxEngine.Profile.Settings.Graphics.Bool_VSync = false;
 
                 vxConsole.WriteLine("Setting VSync to: " + vxEngine.Profile.Settings.Graphics.Bool_VSync);
+
+				vxEngine.GraphicsSettingsManager.GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vxEngine.Profile.Settings.Graphics.Bool_VSync;
             };
 
 			#if VIRTICES_3D

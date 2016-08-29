@@ -6,7 +6,7 @@ using Virtex.Lib.Vrtc.Screens;
 using Virtex.Lib.Vrtc.Utilities;
 #endregion
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     /// <summary>
     /// Sample showing how to manage different game states, with transitions
@@ -14,7 +14,7 @@ namespace VerticeEnginePort.Base
     /// menu. This main game class is extremely simple: all the interesting
     /// stuff happens in the ScreenManager component.
     /// </summary>
-    public class MetricRacerBaseGame : Microsoft.Xna.Framework.Game
+    public class VerticesTechDemoGame : Microsoft.Xna.Framework.Game
     {
         #region Fields
 
@@ -31,17 +31,15 @@ namespace VerticeEnginePort.Base
         /// <summary>
         /// The main game constructor.
         /// </summary>
-        public MetricRacerBaseGame()
+        public VerticesTechDemoGame()
         {
-
-
             graphics = new GraphicsDeviceManager(this);
 
 			#if DEBUG
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
 			#endif
-			graphics.SynchronizeWithVerticalRetrace = true;
+			graphics.SynchronizeWithVerticalRetrace = false;
 
 
             // Create the screen manager component.
@@ -54,7 +52,7 @@ namespace VerticeEnginePort.Base
 			#if TECHDEMO_PLTFRM_XNA
 			//Do Nothing
 			#elif TECHDEMO_PLTFRM_GL
-			platformTag = "/Compiled.WindowsGL";
+			platformTag = "/Compiled.DesktopGL";
 			#endif 
 
 			Content.RootDirectory = "Content" + platformTag;

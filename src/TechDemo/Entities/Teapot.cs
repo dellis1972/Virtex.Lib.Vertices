@@ -22,7 +22,7 @@ using Virtex.Lib.Vrtc.Physics.BEPU;
 using Virtex.Lib.Vrtc.Entities.Sandbox3D;
 using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     public class Teapot : vxSandboxEntity
     {
@@ -53,7 +53,7 @@ namespace VerticeEnginePort.Base
             get
             {
                 return new vxSandboxEntityDescription(
-                "VerticeEnginePort.Base.Teapot",
+                "Virtex.vxGame.VerticesTechDemo.Teapot",
                 "Teapot",
                 "Models/teapot/teapot");
             }

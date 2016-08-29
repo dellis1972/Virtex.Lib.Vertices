@@ -7,7 +7,7 @@
     <ProjectGuid>{01EA47C4-E03C-4B42-A767-6560AE5BF1AC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Virtex.lib.Vertices.Core</RootNamespace>
-    <AssemblyName>Virtex.lib.Vertices.Core</AssemblyName>
+    <AssemblyName>Vertices Engine Tech Demo (OpenGL)</AssemblyName>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -68,13 +68,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
-    <None Include="Content\Compiled.WindowsGL\Models\concrete_cube\Cube_dds.xnb">
+    <None Include="Content\Compiled.DesktopGL\Models\concrete_cube\Cube_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Compiled.WindowsGL\Models\concrete_cube\Cube_nm.xnb">
+    <None Include="Content\Compiled.DesktopGL\Models\concrete_cube\Cube_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Compiled.WindowsGL\Models\concrete_cube\Cube_sm.xnb">
+    <None Include="Content\Compiled.DesktopGL\Models\concrete_cube\Cube_sm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Compiled.DesktopGL\Textures\engine\water\water_ICON.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -83,190 +86,190 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\concrete_cube.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\texture.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\texture_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\texture_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\texture_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_side_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\crate_side_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\crate_top_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\crate_top_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\wooden crate.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\wooden crate.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\wooden crate_ICON.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\wooden crate_ICON.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\sponza\spnza_bricks_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\sponza\spnza_bricks_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\sponza\spnza_bricks_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\sponza\spnza_bricks_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\sponza\sponza.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\sponza\sponza.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\teapot\teapot.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_df.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\teapot\teapot_df.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_df_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\teapot\teapot_df_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\teapot\teapot_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\teapot\teapot_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\teapot\teapot_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\cube_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\tech demo\cube_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\grass_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\tech demo\grass_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\grass_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\tech demo\grass_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\vrtc_techDemo.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\tech demo\vrtc_techDemo.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\tech demo\wood_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\tech demo\wood_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Textures\menu\background.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Textures\menu\background.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Textures\virtex_logo\VirtexEdgeLogo64.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Textures\virtex_logo\VirtexEdgeLogo64.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_cube_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_dds_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_cube_dds_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_cube_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_cube_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_cube_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_sphere_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_dds_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_sphere_dds_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_sphere_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\mdl_sphere_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\mdl_sphere_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\modelobjs\modelobjs.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\modelobjs\modelobjs.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\concrete_cube.mtl">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\concrete_cube.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube\texture.png">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube\texture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\concrete_cube.mtl">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube_obj\concrete_cube.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\concrete_cube_obj\texture.png">
+    <Content Include="Content\Compiled.DesktopGL\Models\concrete_cube_obj\texture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_2_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\arch_2_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_2_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\arch_2_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_2_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\arch_2_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\arch_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\arch_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\arch_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\arch_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\columns_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\columns_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\columns_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\columns_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\columns_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\columns_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\crtyrd_bricks_diff_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\crtyrd_bricks_diff_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\floor_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\floor_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\floor_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\floor_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\floor_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\floor_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\roof_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_dds_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\roof_dds_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\roof_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\roof_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\roof_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\structure_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_dds_0.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\structure_dds_0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\structure_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\structure_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\structure_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\courtyard\td_courtyard.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\courtyard\td_courtyard.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\Cube_dds.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\Cube_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\Cube_sm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\Cube_sm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Compiled.WindowsGL\Models\items\wooden crate\Cube_nm.xnb">
+    <Content Include="Content\Compiled.DesktopGL\Models\items\wooden crate\Cube_nm.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

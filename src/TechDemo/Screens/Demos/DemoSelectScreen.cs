@@ -15,7 +15,7 @@ using Virtex.Lib.Vrtc.Screens.Async;
 using Virtex.Lib.Vrtc.Screens.Menus;
 #endregion
 
-namespace VerticeEnginePort.Base
+namespace Virtex.vxGame.VerticesTechDemo
 {
     /// <summary>
     /// The main menu screen is the first thing displayed when the game starts up.
