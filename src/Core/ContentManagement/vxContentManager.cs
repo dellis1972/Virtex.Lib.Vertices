@@ -66,11 +66,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
         /// <param name="UtilityEffect">Utility effect.</param>
         public vxModel LoadModel(string PathToModel, ContentManager Content, Effect EffectToSet, Effect ShadowEffect, Effect UtilityEffect)
         {
-#if !VRTC_PLTFRM_DROID
-            Console.ForegroundColor = ConsoleColor.Cyan;
-#endif
-            Console.WriteLine("\t\tImporting Model: " + PathToModel);
-
+            vxConsole.WriteVerboseLine("\t\tImporting Model: " + PathToModel);
 
             // Create the Model Object to return
             vxModel newModel = new vxModel();
@@ -119,7 +115,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 #endif
 
 
-                #region Main Model Loading
+            #region Main Model Loading
                 /*********************************************************************************/
                 //                              MAIN MODEL
                 /*********************************************************************************/
@@ -133,10 +129,8 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
                 foreach (ModelMesh mesh in newModel.ModelMain.Meshes)
                 {
-                    //#if vxDEBUG_VERBOSE
-                    Console.WriteLine("\t\t\tMesh Name: " + mesh.Name);
-                    //#endif
-                    mesh.Tag = PathToModel;
+                    vxConsole.WriteVerboseLine("\t\t\tMesh Name: " + mesh.Name);
+                mesh.Tag = PathToModel;
                     // Scan over all the effects currently on the mesh.
                     foreach (Effect oldEffect in mesh.Effects)
                     {
@@ -203,7 +197,6 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 							if (newEffect.Parameters ["SplitColors"] != null)
 							newEffect.Parameters ["SplitColors"].SetValue (ShadowSplitColors);
-							Console.WriteLine(ShadowSplitColors);
 
 
 #if VRTC_PLTFRM_XNA
@@ -228,12 +221,12 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
                         meshPart.Effect = effectMapping[meshPart.Effect];
                     }
                 }
-                #endregion
+            #endregion
 
-                #region Loading Shadow Model
-#if vxDEBUG_VERBOSE
-                Console.WriteLine("\t\t\t------------------------");
-#endif
+            #region Loading Shadow Model
+
+                vxConsole.WriteVerboseLine("\t\t\t------------------------");
+
                 //////////////////////////////////////////////////////////////////////////////////
                 //                              SHADOW MODEL
                 //////////////////////////////////////////////////////////////////////////////////
@@ -250,10 +243,9 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
                 foreach (ModelMesh mesh in newModel.ModelShadow.Meshes)
                 {
-#if vxDEBUG_VERBOSE
-                    Console.WriteLine("\t\t\tShadow Mesh: " + mesh.Name);
-#endif
-                    mesh.Tag = PathToModel;
+                    vxConsole.WriteVerboseLine("\t\t\tShadow Mesh: " + mesh.Name);
+
+                mesh.Tag = PathToModel;
                     // Scan over all the effects currently on the mesh.
                     foreach (Effect oldEffect in mesh.Effects)
                     {
@@ -303,9 +295,8 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
             foreach (ModelMesh mesh in newModel.ModelUtility.Meshes)
             {
-#if vxDEBUG_VERBOSE
-                Console.WriteLine("\t\t\tUtility Mesh Name: " + mesh.Name);
-#endif
+                vxConsole.WriteVerboseLine("\t\t\tUtility Mesh Name: " + mesh.Name);
+
                 mesh.Tag = PathToModel;
                 // Scan over all the effects currently on the mesh.
                 foreach (Effect oldEffect in mesh.Effects)
@@ -329,9 +320,9 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
                             else if (this.Engine.Assets != null)
                             {
                                 newEffect.Parameters["Texture"].SetValue(this.Engine.Assets.Textures.Texture_Diffuse_Null);
-#if vxDEBUG_VERBOSE
-                                    vxConsole.WriteWarning(this.ToString(), "DEFAULT DEIFFUSE TEXTURE NOT FOUND FOR MODEL :" + PathToModel);
-#endif
+
+                                vxConsole.WriteVerboseLine("DEFAULT DEIFFUSE TEXTURE NOT FOUND FOR MODEL :" + PathToModel);
+
                             }
                             else
                                 newEffect.Parameters["Texture"].SetValue(this.Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse"));
@@ -342,9 +333,8 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
                             File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
                         {
                             newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
-#if vxDEBUG_VERBOSE
-                                Console.WriteLine("\t\t\t\tNormal Map Found");
-#endif
+                            vxConsole.WriteVerboseLine("\t\t\t\tNormal Map Found");
+
                         }
 
                         // Specular Map
@@ -353,9 +343,8 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
                         {
 
                             newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));
-#if vxDEBUG_VERBOSE
-                                Console.WriteLine("\t\t\t\tSpecular Map Found");
-#endif
+                            vxConsole.WriteVerboseLine("\t\t\t\tSpecular Map Found");
+
                         }
 
                         if (newEffect.Parameters["TextureEnabled"] != null)
@@ -545,5 +534,5 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
             return modelToReturn;
         }
 #endif
+        }
     }
-}

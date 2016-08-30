@@ -102,29 +102,49 @@ namespace Virtex.Lib.Vrtc.Utilities
         /// </example>
         public static void WriteLine(object output)
         {
-#if !VRTC_PLTFRM_DROID
-            Console.ForegroundColor = ConsoleColor.Green;
-#endif
-			Console.WriteLine(">>: " + output);
-#if !VRTC_PLTFRM_DROID
-            Console.ResetColor();
-#endif
-			if (vxEngine != null && vxEngine.DebugSystem != null)
-				vxEngine.DebugSystem.DebugCommandUI.Echo(">>: " + output.ToString());
-		}
+            WriteLine(output, ConsoleColor.Green);
+        }
 
-		public static void WriteLine(object output, ConsoleColor consoleColor)
+        public static void WriteLine(object output, ConsoleColor consoleColor)
+        {
+            WriteLine(">>: ", output, ConsoleColor.Green);
+        }
+
+        public static void WriteLine(string preface, object output, ConsoleColor consoleColor)
 		{
 			#if !VRTC_PLTFRM_DROID
 			Console.ForegroundColor = consoleColor;
 			#endif
-			Console.WriteLine(">>: " + output);
+			Console.WriteLine(preface + output);
 			#if !VRTC_PLTFRM_DROID
 			Console.ResetColor();
 			#endif
 			if (vxEngine != null && vxEngine.DebugSystem != null)
-				vxEngine.DebugSystem.DebugCommandUI.Echo(">>: " + output.ToString());
+				vxEngine.DebugSystem.DebugCommandUI.Echo(preface + output.ToString());
 		}
+
+        /// <summary>
+        /// Writes out a Verbose Line. This line will be written to the console/output window if the Verbose Property is set too true
+        /// </summary>
+        /// <param name="output"></param>
+        public static void WriteVerboseLine(object output)
+        {
+#if vxDEBUG_VERBOSE
+            WriteLine("V >>: ", output, ConsoleColor.Cyan);
+#endif
+        }
+
+        /// <summary>
+        /// Writes out a Verbose Line. This line will be written to the console/output window if the Verbose Property is set too true
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="consoleColor"></param>
+        public static void WriteVerboseLine(object output, ConsoleColor consoleColor)
+        {
+#if vxDEBUG_VERBOSE
+            WriteLine("V >>: ", output, consoleColor);
+#endif
+        }
 
         /// <summary>
         /// Similar to the <see cref="WriteLine"/> method. This method writes out a line of text which is 

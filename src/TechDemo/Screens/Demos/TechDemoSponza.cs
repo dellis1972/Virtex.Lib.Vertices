@@ -115,17 +115,10 @@ namespace Virtex.vxGame.VerticesTechDemo
             #endregion
 
             DoFog = true;
-            /*
-			xEnvrio g = new xEnvrio(vxEngine, vxEngine.LoadModel("Models/sponza/sponza"), Vector3.Zero);
-            g.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/sponza/spnza_bricks_nm");
-            g.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/sponza/spnza_bricks_sm");
-            */
 
-
-			Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
-
-            //Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard", this.vxEngine.Game.Content,
-            //	this.vxEngine.Assets.Shaders.CartoonShader), Vector3.Zero);
+			Envrio envr = new Envrio(vxEngine, 
+                vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Up * -1);
+            AddWaterVolume(Vector3.Zero);
 
             envr.SpecularIntensity = 1;
             //envr.SpecularIntensity = 100;
@@ -200,7 +193,6 @@ namespace Virtex.vxGame.VerticesTechDemo
 
                 default:
                     returnEntity = base.GetNewEntity(key);
-                    //vxConsole.WriteError(new Exception( string.Format("'{0}' Key Not Found!", key)));
                     break;
 			}
 			return returnEntity;

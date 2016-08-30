@@ -257,7 +257,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
             Current3DScene.BEPUPhyicsSpace.Remove(fluidVolume);
             base.DisposeEntity();
         }
-        int i = 0;
+
 		int modelscalar = 1;
         /// <summary>
         /// Applies a simple rotation to the ship and animates position based
@@ -265,15 +265,12 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         /// </summary>
         public override void Update(GameTime gameTime)
         {
-            i++;
 #if !VRTC_PLTFRM_XNA
 			modelscalar = 200;
-			#endif
+#endif
 			World = Matrix.CreateScale(WaterScale /modelscalar);
             World *= Matrix.CreateTranslation(Position);
-            vxConsole.WriteToInGameDebug("Water update! " + i);
-            vxConsole.WriteToInGameDebug("Scale:    " + WaterScale);
-            vxConsole.WriteToInGameDebug("Position: " + Position);
+
             base.Update(gameTime);
         }
 

@@ -6,6 +6,9 @@ float4x4 View;
 float4x4 Projection;
 float Alpha = 1;
 
+//Reflection Clip Plane
+float4 ClipPlane0;
+
 float SpecularIntensity = 1;
 float SpecularPower = 5;
 
@@ -205,4 +208,68 @@ technique Technique_PrepPass_Instanced
 		VertexShader = compile vs_3_0 PrepPassVSFunctionInstancedVS();
         PixelShader = compile ps_3_0 PrepPassPSFunction();
     }
+}
+
+
+
+struct WaterVSInput
+{
+	float4 Position : POSITION0;
+	float2 TexCoord	: TEXCOORD0;
+
+	// TODO: add input channels such as texture
+	// coordinates and vertex colors here.
+};
+
+struct WaterVSOutput
+{
+	float4 Position : POSITION0;
+	float2 TexCoord	: TEXCOORD0;
+	float4 ClipDistances	: TEXCOORD1;
+
+	// TODO: add vertex shader outputs such as colors and texture
+	// coordinates here. These values will automatically be interpolated
+	// over the triangle, and provided as input to your pixel shader.
+};
+
+WaterVSOutput WaterVSFunction(WaterVSInput input)
+{
+	WaterVSOutput output;
+
+	float4 worldPosition = mul(input.Position, World);
+	float4 viewPosition = mul(worldPosition, View);
+	output.Position = mul(viewPosition, Projection);
+
+	output.TexCoord = input.TexCoord;
+
+	output.ClipDistances.x = dot(worldPosition, ClipPlane0);
+	output.ClipDistances.y = 0;
+	output.ClipDistances.z = 0;
+	output.ClipDistances.w = 0;
+
+	// TODO: add your vertex shader code here.
+
+	return output;
+}
+
+float4 WaterPSFunction(WaterVSOutput input) : COLOR0
+{
+	// TODO: add your pixel shader code here.
+
+	//clip(input.ClipDistances);
+	if(input.ClipDistances.x > 0)
+	return tex2D(diffuseSampler, input.TexCoord)/2 + float4(0,0,0,1);
+	else
+	return float4(0,0,0,0);
+}
+
+technique Technique_WtrRflcnPass
+{
+	pass Pass1
+	{
+		// TODO: set renderstates here.
+
+		VertexShader = compile vs_3_0 WaterVSFunction();
+		PixelShader = compile ps_3_0 WaterPSFunction();
+	}
 }

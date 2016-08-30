@@ -872,15 +872,15 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         /// </summary>
         public virtual void RenderMeshForWaterReflectionPass(Plane surfacePlane)
         {
-            if (vxModel.ModelMain != null)
+            if (vxModel.ModelUtility != null)
             {
                 // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
+                Matrix[] transforms = new Matrix[vxModel.ModelUtility.Bones.Count];
 
-                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
+                vxModel.ModelUtility.CopyAbsoluteBoneTransformsTo(transforms);
 
                 // Draw the model.
-                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
+                foreach (ModelMesh mesh in vxModel.ModelUtility.Meshes)
                 {
                     foreach (Effect effect in mesh.Effects)
                     {
@@ -891,6 +891,8 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                         effect.Parameters["View"].SetValue(Camera.GetReflectionView(surfacePlane));
                         effect.Parameters["Projection"].SetValue(Camera.Projection);
                         effect.Parameters["ClipPlane0"].SetValue(new Vector4(surfacePlane.Normal, surfacePlane.D));
+                        vxConsole.WriteToInGameDebug(surfacePlane);
+                        //effect.Parameters["ClipPlane0"].SetValue(new Vector4(surfacePlane.Normal.X, surfacePlane.Normal.Z, surfacePlane.Normal.Y, surfacePlane.D));
                     }
 
                     mesh.Draw();

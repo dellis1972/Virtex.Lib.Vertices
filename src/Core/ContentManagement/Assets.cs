@@ -212,16 +212,12 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
             //Model Shaders
 #if VRTC_PLTFRM_XNA
-            //shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/MainModelShader");
-
-
+            
 			//Distorter
 			shaders.DistortionShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/Distorter/Distorters");
 			postProcessShaders.distortEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Distorter/DistortScene");
 			postProcessShaders.distortTechnique = postProcessShaders.distortEffect.Techniques["Distort"];
 			postProcessShaders.distortBlurTechnique = postProcessShaders.distortEffect.Techniques["DistortBlur"];
-
-            //postProcessShaders.EdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/EdgeDetection");
 #else
 
 			prefixtag = "MonoGame/";
@@ -247,8 +243,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 			//Depth Of Field
 			postProcessShaders.DepthOfFieldEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/DepthOfField/DepthOfField");
 
-			//Post Processing Shaders            
-			
+			//Post Processing Shaders 
 			postProcessShaders.CartoonEdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/CartoonEdgeDetection");
 
 

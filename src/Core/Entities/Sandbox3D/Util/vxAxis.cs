@@ -116,6 +116,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 
         public override void RenderMesh(string RenderTechnique) { }
         public override void RenderMeshPrepPass() { }
+        public override void RenderMeshForWaterReflectionPass(Plane surfacePlane) { }
 
         public override void Update(GameTime gameTime)
         {
