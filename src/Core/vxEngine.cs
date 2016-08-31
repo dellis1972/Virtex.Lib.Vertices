@@ -427,13 +427,16 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		protected override void LoadContent ()
 		{
-			try {
 
-				#if DEBUG
+#if !DEBUG
+			try {
+#endif
+
+#if DEBUG
 				BuildConfigType = vxBuildConfigType.Debug;
-				#else
+#else
 				BuildConfigType = vxBuildConfigType.Release;
-				#endif
+#endif
 
 
 				vxConsole.WriteLine ("");
@@ -446,7 +449,7 @@ namespace Virtex.Lib.Vrtc.Core
 				vxConsole.WriteLine ("Checking Directories");
 
 				//The Android System uses the Isolated Storage for it's GameSaves
-				#if VRTC_PLTFRM_DROID
+#if VRTC_PLTFRM_DROID
 
 			IsolatedStorageFile isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User |
 			IsolatedStorageScope.Assembly, null, null);
@@ -466,7 +469,7 @@ namespace Virtex.Lib.Vrtc.Core
 			if (isoStore.DirectoryExists ("Temp/Settings") == false)
 			isoStore.CreateDirectory ("Temp/Settings");
 
-				#else
+#else
 
 				string settings = vxEnviroment.GetVar (vxEnumEnvVarType.PATH_SETTINGS).Value.ToString ();
 				string sandbox = vxEnviroment.GetVar (vxEnumEnvVarType.PATH_SANDBOX).Value.ToString ();
@@ -483,7 +486,7 @@ namespace Virtex.Lib.Vrtc.Core
 				if (Directory.Exists ("Temp/Settings") == false)
 					Directory.CreateDirectory ("Temp/Settings");
 
-				#endif
+#endif
 
 
 
@@ -524,7 +527,7 @@ namespace Virtex.Lib.Vrtc.Core
 				vxGUITheme.Font = this.Assets.Fonts.MenuFont;
 
 
-				#region Initialise Debug Console
+#region Initialise Debug Console
 
 				//Get the vxEngine Version through Reflection
 				EngineVersion = System.Reflection.Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
@@ -543,7 +546,7 @@ namespace Virtex.Lib.Vrtc.Core
 				//Now Setup Settings Managers
 				GraphicsSettingsManager = new vxGraphicsSettingsManager (this);
 
-				#endregion
+#endregion
 
 
 #if !VRTC_PLTFRM_DROID
@@ -558,7 +561,7 @@ namespace Virtex.Lib.Vrtc.Core
             ClientManager = new vxNetworkClientManager(this);
 #endif
 
-				#region Load Base Language
+#region Load Base Language
 
 				Languages = new List<vxLanguagePackBase> ();
 				LoadLanguagePacks ();
@@ -566,7 +569,7 @@ namespace Virtex.Lib.Vrtc.Core
 				//Default is English
 				this.Language = Languages [0];
 
-				#endregion
+#endregion
 
 #if VIRTICES_3D
 				//Initialise Renderer
@@ -586,10 +589,12 @@ namespace Virtex.Lib.Vrtc.Core
 				// Tell each of the screens to load their content.
 				foreach (vxGameBaseScreen screen in screens) {
 					screen.LoadContent ();
-				}
+			}
+#if !DEBUG
 			} catch (Exception ex) {
 				vxCrashHandler.Init (this, ex);
 			}
+#endif
 		}
 
 		/// <summary>
@@ -649,9 +654,9 @@ namespace Virtex.Lib.Vrtc.Core
 		}
 
 
-		#endregion
+#endregion
 
-		#region Update and Draw
+#region Update and Draw
 
 
 		/// <summary>
@@ -799,9 +804,9 @@ namespace Virtex.Lib.Vrtc.Core
         }
 
 
-        #endregion
+#endregion
 
-        #region Public Methods
+#region Public Methods
 
 
         /// <summary>

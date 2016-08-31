@@ -78,6 +78,17 @@ sampler DepthSampler : register(s2) = sampler_state
 	AddressV = Clamp;
 };
 
+float4x4 MatrixTransform;
+
+
+
+void SpriteVertexShader(inout float4 vColor : COLOR0,
+	inout float2 texCoord : TEXCOORD0,
+	inout float4 position : POSITION0)
+{
+	position = mul(position, MatrixTransform);
+}
+
 
 // Pixel shader applies the edge detection and/or sketch filter postprocessing.
 // It is compiled several times using different settings for the uniform boolean
@@ -127,6 +138,7 @@ technique EdgeDetect
 {
     pass P0
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+		VertexShader = compile vs_3_0 SpriteVertexShader();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

@@ -152,7 +152,7 @@ technique EdgeDetect
 {
     pass P0
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction(true, false, false);
+        PixelShader = compile ps_3_0 PixelShaderFunction(true, false, false);
     }
 }
 
@@ -161,7 +161,7 @@ technique EdgeDetectMonoSketch
 {
     pass P0
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction(true, true, false);
+        PixelShader = compile ps_3_0 PixelShaderFunction(true, true, false);
     }
 }
 
@@ -170,7 +170,7 @@ technique EdgeDetectColorSketch
 {
     pass P0
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction(true, true, true);
+        PixelShader = compile ps_3_0 PixelShaderFunction(true, true, true);
     }
 }
 
@@ -179,7 +179,7 @@ technique MonoSketch
 {
     pass P0
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction(false, true, false);
+        PixelShader = compile ps_3_0 PixelShaderFunction(false, true, false);
     }
 }
 
@@ -188,6 +188,6 @@ technique ColorSketch
 {
     pass P0
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction(false, true, true);
+        PixelShader = compile ps_3_0 PixelShaderFunction(false, true, true);
     }
 }

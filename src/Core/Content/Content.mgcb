@@ -787,36 +787,6 @@
 /processorParam:TextureFormat=Color
 /build:Shaders/Water/waterdistort.jpg
 
-#begin MonoGame/Shaders/Lighting/ClearGBuffer.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/Lighting/ClearGBuffer.fx
-
-#begin MonoGame/Shaders/Lighting/CombineFinal.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/Lighting/CombineFinal.fx
-
-#begin MonoGame/Shaders/Lighting/DirectionalLight.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/Lighting/DirectionalLight.fx
-
-#begin MonoGame/Shaders/Lighting/PointLight.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/Lighting/PointLight.fx
-
-#begin MonoGame/Shaders/Lighting/RenderGBuffer.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/Lighting/RenderGBuffer.fx
-
 #begin Models/lghtng/sphere.x
 /importer:OpenAssetImporter
 /processor:ModelProcessor
@@ -841,18 +811,6 @@
 
 #begin Models/sun/sun_mask.xnb
 /copy:Models/sun/sun_mask.xnb
-
-#begin MonoGame/Shaders/God Rays/GodRaysCombine.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/God Rays/GodRaysCombine.fx
-
-#begin MonoGame/Shaders/God Rays/LightRays.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/God Rays/LightRays.fx
 
 #begin Gui/DfltThm/vxGUITheme/vxButton/Bckgrnd_Nrml.png
 /importer:TextureImporter
@@ -913,12 +871,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/sandbox/tlbr/sel/sel_selItem_hover.png
-
-#begin MonoGame/Shaders/God Rays/MaskedSun.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MonoGame/Shaders/God Rays/MaskedSun.fx
 
 #begin Shaders/DepthOfField/DepthOfField.fx
 /importer:EffectImporter
@@ -1004,21 +956,6 @@
 /processorParam:Quality=Best
 /build:Gui/DfltThm/vxGUITheme/SndFx/Menu/menuClick.wav
 
-#begin Shaders/Include/ModelDistorter.h
-/importer:
-/processor:
-/build:Shaders/Include/ModelDistorter.h
-
-#begin Shaders/Include/ModelPixelShaders.h
-/importer:
-/processor:
-/build:Shaders/Include/ModelPixelShaders.h
-
-#begin Shaders/Include/Shadow.h
-/importer:
-/processor:
-/build:Shaders/Include/Shadow.h
-
 #begin Textures/nullTextures/null_diffuse.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1055,29 +992,11 @@
 /processorParam:TextureFormat=Color
 /build:Textures/nullTextures/null_specular.tga
 
-#begin Shaders/Model Shaders/CellModelShader.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:Shaders/Model Shaders/CellModelShader.fx
-
-#begin Shaders/Model Shaders/MainModelShader.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:Shaders/Model Shaders/MainModelShader.fx
-
 #begin Shaders/Edge Detection/CartoonEdgeDetection.Fx
 /importer:EffectImporter
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:Shaders/Edge Detection/CartoonEdgeDetection.Fx
-
-#begin Shaders/Edge Detection/EdgeDetection.Fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:Shaders/Edge Detection/EdgeDetection.Fx
 
 #begin MonoGame/Shaders/Model Shaders/CellModelShader.fx
 /importer:EffectImporter
@@ -1114,4 +1033,52 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/rndm.png
+
+#begin Shaders/SSAO/SSAO.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/SSAO/SSAO.fx
+
+#begin Shaders/God Rays/MaskedSun.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/God Rays/MaskedSun.fx
+
+#begin Shaders/Lighting/ClearGBuffer.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/Lighting/ClearGBuffer.fx
+
+#begin Shaders/Lighting/CombineFinal.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/Lighting/CombineFinal.fx
+
+#begin Shaders/Lighting/DirectionalLight.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/Lighting/DirectionalLight.fx
+
+#begin Shaders/Lighting/PointLight.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/Lighting/PointLight.fx
+
+#begin Shaders/Lighting/RenderGBuffer.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/Lighting/RenderGBuffer.fx
+
+#begin MonoGame/Shaders/Water/vxWater.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:MonoGame/Shaders/Water/vxWater.fx
 

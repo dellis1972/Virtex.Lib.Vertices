@@ -1,3 +1,5 @@
+#include "../Include/Shadow.h"
+
 float4x4 World;
 float4x4 View;
 float4x4 Projection;
@@ -106,6 +108,7 @@ struct WaterVSOut
 	float4 ReflectionMapSamplingPos : TEXCOORD1;
     float2 BumpMapSamplingPos        : TEXCOORD2;	
     float4 Position3D                : TEXCOORD3;
+	ShadowData Shadow : TEXCOORD4;
 };
 
 struct WaterPixelToFrame
@@ -125,6 +128,9 @@ WaterVSOut WaterVS(WaterVSIn input)
 	Output.ReflectionMapSamplingPos = mul(input.Position, mul(World, mul(ReflectionView, Projection)));
 	Output.BumpMapSamplingPos = input.inTex/xWaveLength;
 	Output.Position3D = mul(input.Position, World);
+
+
+	Output.Shadow = GetShadowData(worldPosition, Output.Position);
 	
 	return Output;
 }
@@ -136,6 +142,9 @@ WaterPixelToFrame WaterPS(WaterVSOut PSIn)
 	float2 ProjectedTexCoords;
     ProjectedTexCoords.x = PSIn.ReflectionMapSamplingPos.x/PSIn.ReflectionMapSamplingPos.w/2.0f + 0.5f;
     ProjectedTexCoords.y = -PSIn.ReflectionMapSamplingPos.y/PSIn.ReflectionMapSamplingPos.w/2.0f + 0.5f;    
+
+
+	float shadow = GetShadowFactor(PSIn.Shadow, 1);
 
 	float2 perturbatedTexCoords = ProjectedTexCoords;
 	float3 normalVector = float3(0,1,0);
@@ -173,8 +182,11 @@ WaterPixelToFrame WaterPS(WaterVSOut PSIn)
 	//Apply Specular
      float3 reflectionVector = -reflect(xLightDirection, normalVector);
      float specular = dot(normalize(reflectionVector), normalize(eyeVector));
-     specular = pow(specular, 256);        
+     specular = pow(specular, 256);
+
+
      Output.Color.rgb += specular * specular;
+	 Output.Color.rgb *= shadow;
 	 //Output.Color.a = 0.5;
 
 	return Output;

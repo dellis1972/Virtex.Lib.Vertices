@@ -52,6 +52,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Shaders\SSAO\SSAO.fx">
+      <Name>SSAO</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Menu\Slider\Arrow_Right.png">
@@ -147,13 +152,6 @@
       <Name>font_gui_title</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Shaders\Edge Detection\EdgeDetection.Fx">
-      <Name>EdgeDetection</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

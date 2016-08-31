@@ -1,5 +1,5 @@
 #include "../Include/Shadow.h"
-//#include "Include/ModelPixelShaders.h"
+
 
 
 //			Main Properties
@@ -63,21 +63,6 @@ sampler normalSampler = sampler_state
     AddressU = Wrap;
     AddressV = Wrap;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //**************************************************

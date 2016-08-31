@@ -501,25 +501,7 @@
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\God Rays\GodRaysCombine.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Water\vxWater.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Water\waterdistort.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Lighting\ClearGBuffer.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Lighting\CombineFinal.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Lighting\DirectionalLight.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Lighting\PointLight.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Lighting\RenderGBuffer.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Models\lghtng\sphere.xnb">
@@ -555,6 +537,33 @@
     <None Include="Content\Shaders\Include\Shadow.h" />
     <None Include="Content\MonoGame\Shaders\Model Shaders\MainModelShader %28copy%29.fx" />
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Textures\rndm.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\SSAO\SSAO.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\God Rays\LightRays.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\God Rays\MaskedSun.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Lighting\ClearGBuffer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Lighting\CombineFinal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Lighting\DirectionalLight.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Lighting\PointLight.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Lighting\RenderGBuffer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Water\vxWater.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -767,11 +776,10 @@
     <Folder Include="Graphics\Instancing\" />
     <Folder Include="Graphics\Renderer\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\" />
-    <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Lighting\" />
-    <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\vxButton\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\Gui\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Shadows\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Utility\" />
+    <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Water\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\Graphics\Flares\flare1.xnb">
@@ -811,15 +819,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\Textures\sandbox\tlbr\sel\sel_selItem_hover.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\God Rays\MaskedSun.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\God Rays\GodRaysCombine.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\God Rays\LightRays.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Bloom\BloomCombine.xnb">

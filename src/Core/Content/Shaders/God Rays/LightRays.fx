@@ -23,6 +23,15 @@ float Decay = .95f;
 float Weight = 1.0f;
 float Exposure = .15f;
 
+float4x4 MatrixTransform;
+
+void SpriteVertexShader(inout float4 vColor : COLOR0,
+	inout float2 texCoord : TEXCOORD0,
+	inout float4 position : POSITION0)
+{
+	position = mul(position, MatrixTransform);
+}
+
 float4 PixelShaderFunction(float2 texCoord : TEXCOORD0) : COLOR0
 {
     // Look up the bloom and original base image colors.
@@ -53,6 +62,7 @@ technique LightRayFX
 {
     pass Pass1
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+		VertexShader = compile vs_3_0 SpriteVertexShader();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

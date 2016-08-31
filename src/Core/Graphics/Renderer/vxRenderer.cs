@@ -129,6 +129,10 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public RenderTarget2D RT_BlurredScene { get; internal set; }
 
+        /// <summary>
+        /// SSAO Render Target
+        /// </summary>
+        public RenderTarget2D RT_SSAO { get; internal set; }
 
         //**********************************************//
         //            Bloom Render Targets
@@ -583,6 +587,10 @@ namespace Virtex.Lib.Vrtc.Graphics
                 pp.BackBufferWidth, pp.BackBufferHeight, false,
                 pp.BackBufferFormat, pp.DepthStencilFormat);
 
+            RT_SSAO = new RenderTarget2D(mGraphicsDevice,
+                pp.BackBufferWidth, pp.BackBufferHeight, false,
+                pp.BackBufferFormat, pp.DepthStencilFormat);
+
             RT_SunMap = new RenderTarget2D(mGraphicsDevice,
                                                    pp.BackBufferWidth, pp.BackBufferHeight, false,
                                                    pp.BackBufferFormat, pp.DepthStencilFormat);
@@ -606,8 +614,8 @@ namespace Virtex.Lib.Vrtc.Graphics
 
         public void InitialiseRenderTargetsForWaterReflection(PresentationParameters pp)
         {
-
-            int res = 2;
+            //TODO: Tie into Graphics Settings
+            int res = 4;
             RT_WaterReflectionMap = new RenderTarget2D(mGraphicsDevice,
                                                          pp.BackBufferWidth / res, pp.BackBufferHeight / res, false,
                                                          pp.BackBufferFormat, pp.DepthStencilFormat);
@@ -857,6 +865,83 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// <summary>
         /// Helper applies the edge detection and pencil sketch postprocess effect.
         /// </summary>
+        public void CreateSSAO(vxEngine vxEngine)
+        {
+            //Set Render Target
+            vxEngine.GraphicsDevice.SetRenderTarget(RT_SSAO);
+
+            //Clear
+            vxEngine.GraphicsDevice.Clear(Color.Black);
+            //vxEngine.GraphicsDevice.BlendState = BlendState.Opaque;
+            //vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+            EffectParameterCollection parameters = vxEngine.Assets.PostProcessShaders.SSAOEffect.Parameters;
+            
+            //Calculate Frustum Corner of the Camera
+            Vector3 cornerFrustum = Vector3.Zero;
+            cornerFrustum.Y = (float)Math.Tan(Math.PI / 3.0 / 2.0) * vxEngine.Current3DSceneBase.Camera.FarPlane;
+            cornerFrustum.X = cornerFrustum.Y * vxEngine.Current3DSceneBase.Camera.AspectRatio;
+            cornerFrustum.Z = vxEngine.Current3DSceneBase.Camera.FarPlane;
+
+
+            //Set SSAO parameters
+
+            //parameters["depthTexture"].SetValue(RT_DepthMap);
+
+            //sAVE sATATES
+            SamplerState s1 = new SamplerState();
+            s1 = vxEngine.GraphicsDevice.SamplerStates[1];
+
+            vxEngine.GraphicsDevice.Textures[1] = RT_DepthMap;
+            vxEngine.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
+            
+         float _randomTile = 100;
+         float _radius = 0.05f;
+         float _maxRadius = 0.5f;
+         float _bias = 0.00001f;
+         int _blurCount = 1;
+         float _intensity = 1.75f;
+
+        parameters["NormalBuffer"].SetValue(RT_NormalMap);
+            parameters["DepthBuffer"].SetValue(RT_DepthMap);
+            parameters["RandomMap"].SetValue(RT_NormalMap);
+
+            //parameters["Projection"].SetValue(vxEngine.Current3DSceneBase.Camera.Projection);
+            parameters["Radius"].SetValue(new Vector2(_radius, _maxRadius));
+            parameters["RandomTile"].SetValue(_randomTile);
+            parameters["Bias"].SetValue(_bias);
+            parameters["FarClip"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane);
+
+            Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
+           vxEngine.GraphicsDevice.Viewport.Width,
+           vxEngine.GraphicsDevice.Viewport.Height,
+           0, 0, 1);
+            Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+
+            parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
+
+            // Activate the appropriate effect technique.
+            vxEngine.Assets.PostProcessShaders.SSAOEffect.CurrentTechnique = vxEngine.Assets.PostProcessShaders.SSAOEffect.Techniques["Technique1"];
+            //vxEngine.Assets.PostProcessShaders.SSAOEffect.CurrentTechnique = vxEngine.Assets.PostProcessShaders.SSAOEffect.Techniques["SSAO"];
+
+            vxEngine.Assets.PostProcessShaders.SSAOEffect.CurrentTechnique.Passes[0].Apply();
+            
+            vxEngine.SpriteBatch.Begin(0, BlendState.Opaque, null, null, null, vxEngine.Assets.PostProcessShaders.SSAOEffect);
+            vxEngine.SpriteBatch.Draw(RT_FinalScene, Vector2.Zero, Color.White);
+            vxEngine.SpriteBatch.End();
+            
+            //Apply
+            //vxEngine.Assets.PostProcessShaders.SSAOEffect.CurrentTechnique.Passes[0].Apply();
+            //vxEngine.Renderer.RenderQuad(Vector2.One * -1, Vector2.One);
+
+            if (s1 != null)
+            vxEngine.GraphicsDevice.SamplerStates[1] = s1;
+
+        }
+
+        /// <summary>
+        /// Helper applies the edge detection and pencil sketch postprocess effect.
+        /// </summary>
         public void ApplyEdgeDetect(vxEngine vxEngine)
         {
             //Set Render Target
@@ -875,6 +960,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 					vxConsole.WriteToInGameDebug ("DDDDD");
 			
 				}
+
                 // Pass in the current screen resolution.
                 parameters["ScreenResolution"].SetValue(resolution);
                 parameters["NormalTexture"].SetValue(RT_NormalMap);
@@ -894,6 +980,15 @@ namespace Virtex.Lib.Vrtc.Graphics
                 // How dark should the edges get in response to changes in the input data?
                 parameters["NormalSensitivity"].SetValue(1.0f);
                 parameters["DepthSensitivity"].SetValue(10000.0f);
+
+                Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
+                           vxEngine.GraphicsDevice.Viewport.Width,
+                           vxEngine.GraphicsDevice.Viewport.Height,
+                           0, 0, 1);
+                Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+
+                parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
+
 
 
                 // Activate the appropriate effect technique.
@@ -928,6 +1023,14 @@ namespace Virtex.Lib.Vrtc.Graphics
                 parameters["SceneTexture"].SetValue(RT_EdgeDetected);
                 parameters["DepthTexture"].SetValue(RT_DepthMap);
                 parameters["BlurTexture"].SetValue(RT_BlurredScene);
+
+                Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
+                           vxEngine.GraphicsDevice.Viewport.Width,
+                           vxEngine.GraphicsDevice.Viewport.Height,
+                           0, 0, 1);
+                Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+
+                parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
 #if VIRTICES_3D
                 parameters["FarClip"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane);
                 parameters["FocalDistance"].SetValue(vxEngine.Current3DSceneBase.Camera.FocalDistance);
@@ -1041,7 +1144,17 @@ namespace Virtex.Lib.Vrtc.Graphics
                 float Weight = 1.0f;
                 float Exposure = .15f;
 
+                Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
+                           vxEngine.GraphicsDevice.Viewport.Width,
+                           vxEngine.GraphicsDevice.Viewport.Height,
+                           0, 0, 1);
+                Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+
+
+
                 vxEngine.Assets.PostProcessShaders.LightRaysEffect.CurrentTechnique = vxEngine.Assets.PostProcessShaders.LightRaysEffect.Techniques["LightRayFX"];
+
+                vxEngine.Assets.PostProcessShaders.LightRaysEffect.Parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
                 vxEngine.Assets.PostProcessShaders.LightRaysEffect.Parameters["halfPixel"].SetValue(HalfPixel);
                 vxEngine.Assets.PostProcessShaders.LightRaysEffect.Parameters["Density"].SetValue(Density);
                 vxEngine.Assets.PostProcessShaders.LightRaysEffect.Parameters["Decay"].SetValue(Decay);
@@ -1058,6 +1171,8 @@ namespace Virtex.Lib.Vrtc.Graphics
                                    vxEngine.Assets.PostProcessShaders.LightRaysEffect);
 
                 vxEngine.GraphicsDevice.SetRenderTarget(null);
+                vxEngine.Assets.PostProcessShaders.GodRaysCombineEffect.Parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
+
                 vxEngine.Assets.PostProcessShaders.GodRaysCombineEffect.Parameters["TextureSampler"].SetValue(RT_FinalScene);
                 vxEngine.Assets.PostProcessShaders.LightRaysEffect.Parameters["Weight"].SetValue(Weight);
 

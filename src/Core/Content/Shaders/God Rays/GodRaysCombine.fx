@@ -31,6 +31,16 @@ float BloomSaturation;
 float BaseSaturation;
 
 
+float4x4 MatrixTransform;
+
+void SpriteVertexShader(inout float4 vColor : COLOR0,
+	inout float2 texCoord : TEXCOORD0,
+	inout float4 position : POSITION0)
+{
+	position = mul(position, MatrixTransform);
+}
+
+
 // Helper for modifying the saturation of a color.
 float4 AdjustSaturation(float4 color, float saturation)
 {
@@ -67,6 +77,7 @@ technique GodRaysCombine
 {
     pass Pass1
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+		VertexShader = compile vs_3_0 SpriteVertexShader();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

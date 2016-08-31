@@ -11,13 +11,13 @@ sampler DistortionMap : register(s1);
 #define SAMPLE_COUNT 15
 float2 SampleOffsets[SAMPLE_COUNT];
 float SampleWeights[SAMPLE_COUNT];
+bool distortionBlur;
 
 // The Distortion map represents zero displacement as 0.5, but in an 8 bit color
 // channel there is no exact value for 0.5. ZeroOffset adjusts for this error.
 const float ZeroOffset = 0.5f / 255.0f;
 
-float4 Distort_PixelShader(float2 TexCoord : TEXCOORD0, 
-    uniform bool distortionBlur) : COLOR0
+float4 Distort_PixelShader(float2 TexCoord : TEXCOORD0) : COLOR0
 {
     // Look up the displacement
     float2 displacement = tex2D(DistortionMap, TexCoord).rg;
@@ -37,7 +37,7 @@ float4 Distort_PixelShader(float2 TexCoord : TEXCOORD0,
         // .5 is excluded by adjustment for zero
         displacement -= .5 + ZeroOffset;
 
-        if (distortionBlur)
+        if (distortionBlur == true)
         {
             // Combine a number of weighted displaced-image filter taps
             for (int i = 0; i < SAMPLE_COUNT; i++)
@@ -60,14 +60,6 @@ technique Distort
 {
     pass
     {
-        PixelShader = compile ps_2_0 Distort_PixelShader(false);
-    }
-}
-
-technique DistortBlur
-{
-    pass
-    {
-        PixelShader = compile ps_2_0 Distort_PixelShader(true);
+        PixelShader = compile ps_3_0 Distort_PixelShader();
     }
 }

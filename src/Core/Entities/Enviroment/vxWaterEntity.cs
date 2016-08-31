@@ -204,14 +204,22 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 					{
 						//if (part.Effect.Parameters["fFresnelBias"] != null)
 						part.Effect.Parameters["fFresnelBias"].SetValue(0.025f);
-						part.Effect.Parameters["fFresnelPower"].SetValue(1.0f);
+						part.Effect.Parameters["fFresnelPower"].SetValue(2.0f);
 						part.Effect.Parameters["fHDRMultiplier"].SetValue(0.45f);
 						part.Effect.Parameters["vDeepColor"].SetValue(new Vector4(0.0f, 0.20f, 0.4150f, 1.0f));
 						part.Effect.Parameters["vShallowColor"].SetValue(new Vector4(0.35f, 0.55f, 0.55f, 1.0f));
 						//part.Effect.Parameters["fReflectionAmount"].SetValue(0.5f);
 						part.Effect.Parameters["fWaterAmount"].SetValue(0.5f);
 
-					}
+                        if (part.Effect.Parameters["PoissonKernel"] != null)
+                            part.Effect.Parameters["PoissonKernel"].SetValue(vxEngine.Renderer.poissonKernel);
+
+                        if (part.Effect.Parameters["RandomTexture3D"] != null)
+                            part.Effect.Parameters["RandomTexture3D"].SetValue(vxEngine.Renderer.RandomTexture3D);
+                        if (part.Effect.Parameters["RandomTexture2D"] != null)
+                            part.Effect.Parameters["RandomTexture2D"].SetValue(vxEngine.Renderer.RandomTexture2D);
+
+                    }
 				}
 			}
 		}
@@ -220,7 +228,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         public override void RenderMeshForWaterReflectionPass(Plane ReflectedView) { }
         //public override void RenderMeshPrepPass() { }
         public override void RenderMesh(string RenderTechnique) { }
-        //public override void RenderMeshShadow() { }
+        public override void RenderMeshShadow() { }
 
 
         public override void PreSave()
@@ -305,6 +313,18 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
                         effect.Parameters["xCamPos"].SetValue(Camera.Position);
                         effect.Parameters["xLightDirection"].SetValue(vxEngine.Renderer.lightPosition);
+
+                            //effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
+
+                            effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
+
+                            //effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
+
+
+                            effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
+
+                            effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
+
                     }
                     mesh.Draw();
                 }

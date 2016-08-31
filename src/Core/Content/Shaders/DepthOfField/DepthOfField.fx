@@ -45,6 +45,14 @@ float GetBlurFactor(float DepthVS)
 	return  saturate(abs(fSceneZ - FocalDistance) / FocalWidth);
 }
 
+float4x4 MatrixTransform;
+
+void SpriteVertexShader(inout float4 vColor : COLOR0,
+	inout float2 texCoord : TEXCOORD0,
+	inout float4 position : POSITION0)
+{
+	position = mul(position, MatrixTransform);
+}
 
 float4 PixelShaderFunction(float2 texCoord : TEXCOORD0) : COLOR0
 {
@@ -62,7 +70,7 @@ technique Technique1
 {
     pass Pass1
     {
-        // TODO: set renderstates here.
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+		VertexShader = compile vs_3_0 SpriteVertexShader();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

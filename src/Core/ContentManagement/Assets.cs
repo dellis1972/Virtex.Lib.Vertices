@@ -134,6 +134,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
             public Effect DepthOfFieldEffect { get; set; }
 
             //God Rays
+            public Effect SSAOEffect { get; set; }
             public Effect MaskedSunEffect { get; set; }
             public Effect GodRaysCombineEffect { get; set; }
             public Effect LightRaysEffect { get; set; }
@@ -219,10 +220,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 			postProcessShaders.distortTechnique = postProcessShaders.distortEffect.Techniques["Distort"];
 			postProcessShaders.distortBlurTechnique = postProcessShaders.distortEffect.Techniques["DistortBlur"];
 #else
-
 			prefixtag = "MonoGame/";
-
-
 #endif
 
             shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/MainModelShader");
@@ -233,7 +231,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
             shaders.CartoonShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/CellModelShader");
 
             //Water Shader
-            shaders.WaterReflectionShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/Water/vxWater");
+            shaders.WaterReflectionShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Water/vxWater");
 
             //Bloom
             postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
@@ -250,15 +248,16 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
 
 			//Defferred Shading
-			shaders.DrfrdRndrClearGBuffer = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Lighting/ClearGBuffer");
-			shaders.DrfrdRndrCombineFinal = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Lighting/CombineFinal");
-			shaders.DrfrdRndrDirectionalLight = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Lighting/DirectionalLight");
-			shaders.DrfrdRndrPointLight = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Lighting/PointLight");
+			shaders.DrfrdRndrClearGBuffer = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/ClearGBuffer");
+			shaders.DrfrdRndrCombineFinal = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/CombineFinal");
+			shaders.DrfrdRndrDirectionalLight = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/DirectionalLight");
+			shaders.DrfrdRndrPointLight = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/PointLight");
 
             //Crepuscular Rays
-            postProcessShaders.MaskedSunEffect = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/God Rays/MaskedSun");
-            postProcessShaders.GodRaysCombineEffect = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/God Rays/GodRaysCombine");
-			postProcessShaders.LightRaysEffect = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/God Rays/LightRays");
+            postProcessShaders.SSAOEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/SSAO/SSAO");
+            postProcessShaders.MaskedSunEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/God Rays/MaskedSun");
+            postProcessShaders.GodRaysCombineEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/God Rays/GodRaysCombine");
+			postProcessShaders.LightRaysEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/God Rays/LightRays");
             /********************************************************************************************/
             /*										Models												*/
             /********************************************************************************************/

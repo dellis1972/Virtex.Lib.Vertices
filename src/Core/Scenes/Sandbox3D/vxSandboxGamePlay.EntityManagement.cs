@@ -233,7 +233,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
         public vxWaterEntity AddWaterVolume(Vector3 Position)
         {
-            vxWaterEntity water = new vxWaterEntity(vxEngine, Position, new Vector3(5, 5, 8));
+            vxWaterEntity water = new vxWaterEntity(vxEngine, Position, new Vector3(25, 5, 25));
             waterItems.Add(water);
             return water;
         }

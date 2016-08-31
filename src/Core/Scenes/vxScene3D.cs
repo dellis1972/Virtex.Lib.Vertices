@@ -631,6 +631,13 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             vxEngine.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
 
+            Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
+                                       vxEngine.GraphicsDevice.Viewport.Width,
+                                       vxEngine.GraphicsDevice.Viewport.Height,
+                                       0, 0, 1);
+            Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+
+            vxEngine.Assets.PostProcessShaders.MaskedSunEffect.Parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
             vxEngine.Assets.PostProcessShaders.MaskedSunEffect.Parameters["DepthMap"].SetValue(vxEngine.Renderer.RT_DepthMap);
             
             vxEngine.SpriteBatch.Begin(0, BlendState.Opaque, null, null, null, 
@@ -644,11 +651,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.GraphicsDevice.SetRenderTarget(vxEngine.Renderer.RT_WaterReflectionMap);
             vxEngine.GraphicsDevice.Clear(Color.CornflowerBlue);
             vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
-            vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
+            vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
             if (waterItems.Count > 0)
                 foreach (vxEntity3D entity in Entities)
                     entity.RenderMeshForWaterReflectionPass(waterItems[0].WrknPlane);
+
 
             /*
             //Now Get Water Reflection
@@ -709,6 +717,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             }
 
 
+            //vxEngine.Renderer.CreateSSAO(vxEngine);
+
             /****************************************************************************/
             /*						LIGHT MAP PASS										*/
             /****************************************************************************/
@@ -760,6 +770,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
             finalCombineEffect.Techniques[0].Passes[0].Apply();
             vxEngine.Renderer.RenderQuad(Vector2.One * -1, Vector2.One);
+
 
             //vxEngine.Renderer.SetCurrentPass(RenderPass.WaterReflection);
 
@@ -882,7 +893,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			//Plain Render
 			//
 			TitleText = "Colour Map";
-			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_WaterReflectionMap, new Rectangle (0, 0, width, height), Color.White);
+			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_SSAO, new Rectangle (0, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
 				new Vector2 (width / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 
