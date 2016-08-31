@@ -117,8 +117,11 @@ namespace Virtex.vxGame.VerticesTechDemo
             DoFog = true;
 
 			Envrio envr = new Envrio(vxEngine, 
-                vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Up * -1);
-            AddWaterVolume(Vector3.Zero);
+                vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+
+
+            waterItems.Add(new vxWaterEntity(vxEngine, Vector3.Up, new Vector3(50, 0.25f, 50)));
+            
 
             envr.SpecularIntensity = 1;
             //envr.SpecularIntensity = 100;

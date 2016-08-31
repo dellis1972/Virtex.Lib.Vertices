@@ -24,7 +24,7 @@ using Virtex.Lib.Vrtc.Core.Entities;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using Virtex.Lib.Vrtc.Graphics;
-
+using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
 namespace Virtex.vxGame.VerticesTechDemo
 {
@@ -33,8 +33,8 @@ namespace Virtex.vxGame.VerticesTechDemo
 	/// the arena, the bsp tree, renderer, GUI (Overlay) and player. It contains the main 
 	/// game loop, and provides keyboard and mouse input.
 	/// </summary>
-	public class IntroBackground : vxScene3D
-	{
+	public class IntroBackground : vxSandboxGamePlay
+    {
 
 		//
 		//Player
@@ -66,7 +66,7 @@ namespace Virtex.vxGame.VerticesTechDemo
 
 		#endregion
 
-		public IntroBackground()
+		public IntroBackground():base(vxEnumSandboxGameType.RunGame, "")
 		{
 			TransitionOnTime = TimeSpan.FromSeconds(1.5);
 			TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -86,13 +86,14 @@ namespace Virtex.vxGame.VerticesTechDemo
 
 			InitialiseLevel();
 
-			d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
-			//d.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_nm");
-			//d.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_sm");
-			d.SpecularIntensity = 1;
+			d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), new Vector3(20, 0, 0));
+            //d.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_nm");
+            //d.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_sm");
+            d.SpecularIntensity = 1;
+            
+            waterItems.Add(new vxWaterEntity(vxEngine, Vector3.Up, new Vector3(500, 1, 500)));
 
-
-			int size = 100;
+            int size = 100;
 			Box baseBox = new Box (new Vector3(0, -5, 0), size, 10, size);
 			BEPUPhyicsSpace.Add(baseBox);
 
@@ -102,17 +103,6 @@ namespace Virtex.vxGame.VerticesTechDemo
 			#region Set Up Camera
 
 			base.LoadContent();
-//			Camera.CameraType = CameraType.CharacterFPS;
-//
-//			Camera.Position = new Vector3(0,0,0);
-//
-//			character = new CharacterControllerInput(BEPUPhyicsSpace, Camera, vxEngine);
-//
-//			//Since this is the character playground, turn on the character by default.
-//			character.Activate();
-//
-//			//Having the character body visible would be a bit distracting.
-//			character.CharacterController.Body.Tag = "noDisplayObject";
 
 
 			Camera.CameraType = CameraType.Orbit;
@@ -128,17 +118,18 @@ namespace Virtex.vxGame.VerticesTechDemo
 
 			IsPausable = false;
 
-			ConcreteCube cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 0));
-			cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, 0)), true, true);
+            #endregion
 
-			cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 4f));
-			cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, 5f)), true, true);
+            int height = 3;
+            ConcreteCube cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 0));
+            cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, height, 0)), true, true);
 
-			cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 4f));
-			cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, -5f)), true, true);
+            cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 4f));
+            cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, height, 5f)), true, true);
 
-			#endregion
-		}
+            cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 4f));
+            cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, height, -5f)), true, true);
+        }
 
 
 		float angle = 0;
