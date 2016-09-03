@@ -87,34 +87,32 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         }
 
         float hightLiteFactor = 1;
-        public override void RenderMeshPlain()
-        {
-            if (Current3DScene.Camera.CameraType == CameraType.Freeroam && model != null)
-            {
-                // Copy any parent transforms.
-                Matrix[] transforms = new Matrix[model.Bones.Count];
-                model.CopyAbsoluteBoneTransformsTo(transforms);
 
-                // Draw the model. A model can have multiple meshes, so loop.
-                foreach (ModelMesh mesh in model.Meshes)
-                {
-                    // This is where the mesh orientation is set, as well 
-                    // as our camera and projection.
-                    foreach (BasicEffect effect in mesh.Effects)
-                    {
-                        //effect.EnableDefaultLighting();
-                        effect.DiffuseColor = this.PlainColor.ToVector3() * hightLiteFactor * hightLiteFactor;
-                        effect.World = Matrix.CreateScale(10) * World;
-                        effect.View = vxEngine.Current3DSceneBase.Camera.View;
-                        effect.Projection = vxEngine.Current3DSceneBase.Camera.Projection;
-                    }
-                    // Draw the mesh, using the effects set above.
-                    mesh.Draw();
-                }
-            }
-        }
 
-        public override void RenderMesh(string RenderTechnique) { }
+        public override void RenderMesh(string RenderTechnique) {
+			if (Current3DScene.Camera.CameraType == CameraType.Freeroam && model != null)
+			{
+				// Copy any parent transforms.
+				Matrix[] transforms = new Matrix[model.Bones.Count];
+				model.CopyAbsoluteBoneTransformsTo(transforms);
+
+				// Draw the model. A model can have multiple meshes, so loop.
+				foreach (ModelMesh mesh in model.Meshes)
+				{
+					// This is where the mesh orientation is set, as well 
+					// as our camera and projection.
+					foreach (BasicEffect effect in mesh.Effects)
+					{
+						//effect.EnableDefaultLighting();
+						effect.DiffuseColor = this.PlainColor.ToVector3() * hightLiteFactor * hightLiteFactor;
+						effect.World = Matrix.CreateScale(10) * World;
+						effect.View = vxEngine.Current3DSceneBase.Camera.View;
+						effect.Projection = vxEngine.Current3DSceneBase.Camera.Projection;
+					}
+					// Draw the mesh, using the effects set above.
+					mesh.Draw();
+				}
+			} }
         public override void RenderMeshPrepPass() { }
         public override void RenderMeshForWaterReflectionPass(Plane surfacePlane) { }
 

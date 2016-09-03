@@ -10,7 +10,7 @@ using Virtex.Lib.Vrtc.Core.Settings;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Localization;
 using System.Collections.Generic;
-
+using Virtex.Lib.Vrtc.Graphics;
 
 namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
@@ -142,6 +142,31 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 				vxEngine.GraphicsSettingsManager.GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vxEngine.Profile.Settings.Graphics.Bool_VSync;
             };
 
+
+			// Texture Qaulity
+			/*****************************************************************************************************/
+			vxSettingsGUIItem TextureQualityItem = new vxSettingsGUIItem(
+			   vxEngine, InternalvxGUIManager, "Texture Quality",
+			   vxEngine.Profile.Settings.Graphics.TextureQuality.ToString(),
+				new Vector2(this.ArtProvider.BoundingGUIRectangle.X, this.ArtProvider.BoundingGUIRectangle.Y + horiz));
+
+			horiz += 45;
+
+			TextureQualityItem.ValueComboBox.AddItem(vxEnumTextureQuality.Ultra.ToString());
+			TextureQualityItem.ValueComboBox.AddItem(vxEnumTextureQuality.High.ToString());
+			TextureQualityItem.ValueComboBox.AddItem(vxEnumTextureQuality.Medium.ToString());
+			TextureQualityItem.ValueComboBox.AddItem(vxEnumTextureQuality.Low.ToString());
+
+			TextureQualityItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e)
+			{
+				vxEngine.Profile.Settings.Graphics.TextureQuality = (vxEnumTextureQuality)(e.SelectedIndex);
+				vxConsole.WriteLine("Setting "+TextureQualityItem.Text+" to: " + vxEngine.Profile.Settings.Graphics.TextureQuality);
+
+				foreach (vxModel model in vxEngine.vxContentManager.vxModelCollection)
+					model.SetTexturePackLevel(vxEngine.Profile.Settings.Graphics.TextureQuality);
+			};
+
+
 			#if VIRTICES_3D
 
             //Shadows
@@ -160,7 +185,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
             ShadowsSettingsItem.ValueComboBox.SelectionChanged += delegate (object sender, vxComboBoxSelectionChangedEventArgs e) {
                 vxEngine.Profile.Settings.Graphics.ShadowQuality = (vxEnumQuality)(e.SelectedIndex);
-                vxConsole.WriteLine("Setting Bloom to: " + vxEngine.Profile.Settings.Graphics.ShadowQuality);
+                vxConsole.WriteLine("Setting Shadows to: " + vxEngine.Profile.Settings.Graphics.ShadowQuality);
             };
 
 

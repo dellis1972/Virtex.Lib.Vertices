@@ -157,7 +157,10 @@ namespace Virtex.Lib.Vrtc.Utilities
         /// <returns></returns>
         public static Texture2D LoadTextureFromFile(string FilePath, GraphicsDevice graphicsDevice)
         {
-            return Texture2D.FromStream(graphicsDevice, new FileStream(FilePath, FileMode.Open));
+			using (FileStream fileStream = new FileStream(FilePath, FileMode.Open))
+			{
+				return Texture2D.FromStream(graphicsDevice, fileStream);
+			}
         }
 
 

@@ -508,7 +508,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         {
             base.DrawOverlayItems();
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
-            Cursor.RenderMeshPlain();
+            Cursor.RenderMesh("");
         }
 
         public override void DrawGameplayScreen(GameTime gameTime)

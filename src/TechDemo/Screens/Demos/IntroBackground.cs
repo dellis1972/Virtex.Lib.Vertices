@@ -25,6 +25,7 @@ using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Physics.BEPU.Entities.Prefabs;
 using Virtex.Lib.Vrtc.Graphics;
 using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
+using Virtex.Lib.Vrtc.Core.Settings;
 
 namespace Virtex.vxGame.VerticesTechDemo
 {
@@ -93,6 +94,15 @@ namespace Virtex.vxGame.VerticesTechDemo
             
             waterItems.Add(new vxWaterEntity(vxEngine, Vector3.Up, new Vector3(500, 1, 500)));
 
+			vxModel mod = vxEngine.vxContentManager.LoadModel("Models/cbe/cbe");
+			new Envrio(vxEngine, mod, new Vector3(-5, 5, 0));
+			//mod.SetTexturePackLevel(vxEnumQuality.Low);
+			//mod.SetTexturePackLevel(vxEnumQuality.High);
+			//mod.SetTexturePackLevel(vxEnumQuality.Ultra);
+			//mod.SetTexturePackLevel(vxEnumQuality.Medium);
+
+			//vxTexture2D newtexture = new vxTexture2D(vxEngine, "Models/cbe/Cube_dds");
+
             int size = 100;
 			Box baseBox = new Box (new Vector3(0, -5, 0), size, 10, size);
 			BEPUPhyicsSpace.Add(baseBox);
@@ -153,6 +163,19 @@ namespace Virtex.vxGame.VerticesTechDemo
 			}
 
             base.UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+		}
+
+		public override void DrawScene(GameTime gameTime)
+		{
+			base.DrawScene(gameTime);
+
+
+			/*
+			vxEngine.SpriteBatch.Begin();
+			vxEngine.SpriteBatch.Draw(((GameEngine)vxEngine).Model_Items_Concrete.DiffuseTexture.Texture,
+									  new Vector2(0, 0), Color.White);
+			vxEngine.SpriteBatch.End();
+			*/
 		}
 	}
 }

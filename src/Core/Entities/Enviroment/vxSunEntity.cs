@@ -13,7 +13,7 @@ using Virtex.Lib.Vrtc.Utilities;
 namespace Virtex.Lib.Vrtc.Core.Entities
 {
 
-    public class Sun : vxEntity3D
+    public class vxSunEntity : vxEntity3D
     {
         public Vector3 screenPos;
         public float RotationX = 0.9f;
@@ -27,7 +27,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         /// SnapBox for allowing tracks to snap together
         /// </summary>
         /// <param name="vxEngine"></param>
-        public Sun(vxEngine vxEngine)
+        public vxSunEntity(vxEngine vxEngine)
             : base(vxEngine, vxEngine.Assets.Models.Sun_Mask, Vector3.Zero)
         {
             vxEngine.CurrentGameplayScreen.Entities.Remove(this);

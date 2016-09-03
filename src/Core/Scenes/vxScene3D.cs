@@ -84,13 +84,13 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
         /// <summary>
         /// Manages the Sun Class.
         /// </summary>
-        public Sun SunEmitter { get; set; }
+        public vxSunEntity SunEmitter { get; set; }
 
 		private Vector3 LightPositions {
 			get { return SunEmitter.SunPosition; }
 		}
 
-		private float mLightRotationY = 0.01f;
+		//private float mLightRotationY = 0.01f;
 		// current rotation angle of the light around y axis
 
 		//#if VRTC_PLTFRM_XNA
@@ -220,7 +220,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             FogFar = Camera.FarPlane/4;
 
             //Setup Sun
-            SunEmitter = new Sun (vxEngine);
+            SunEmitter = new vxSunEntity (vxEngine);
                         
 			//Setup Audio Manager
 			AudioManager = new vxAudioManager (vxEngine);
@@ -647,7 +647,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 
 
-
+			//Now get the Water Reflection
             vxEngine.GraphicsDevice.SetRenderTarget(vxEngine.Renderer.RT_WaterReflectionMap);
             vxEngine.GraphicsDevice.Clear(Color.CornflowerBlue);
             vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
@@ -658,25 +658,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                     entity.RenderMeshForWaterReflectionPass(waterItems[0].WrknPlane);
 
 
-            /*
-            //Now Get Water Reflection
-            vxEngine.GraphicsDevice.SetRenderTargets(vxEngine.Renderer.RT_WaterReflectionMap);
-            vxEngine.GraphicsDevice.BlendState = BlendState.Opaque;
-            vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-            vxEngine.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1.0f, 0);
-            */
-
-            //vxEngine.
-
-            //if (water != null)
-            //    foreach (vxEntity aeroEntity in List_Entities)
-            //        ((vxEntity3D)aeroEntity).RenderMeshForWaterReflectionPass(water.WrknPlane);
-
-            //if (instSet.InstancedModel != null)
-            //    vxEngine.Renderer.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
-
-            //foreach (InstanceSet instSet in List_InstanceSetCollection)
-            //    instSet.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_Reflec_Instanced");
 
 
 
@@ -706,6 +687,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                         foreach (vxEntity3D entity in Entities)
                             entity.RenderMesh("Technique_Main");
 
+							
+
                         foreach (vxWaterEntity water in waterItems)
                             water.DrawWater(vxEngine.Renderer.RT_WaterReflectionMap, camera.GetReflectionView(water.WrknPlane));
 
@@ -729,7 +712,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
             
-            int rad = 4;
             /*
             float angle = (float)gameTime.TotalGameTime.TotalSeconds;
             DrawPointLight(new Vector3((float)Math.Sin(angle) * rad, 1, (float)Math.Cos(angle) * rad), Color.Orange, 5, 2);
@@ -772,46 +754,10 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.Renderer.RenderQuad(Vector2.One * -1, Vector2.One);
 
 
-            //vxEngine.Renderer.SetCurrentPass(RenderPass.WaterReflection);
+			//vxEngine.Renderer.SetCurrentPass(RenderPass.WaterReflection);
+			vxConsole.WriteToInGameDebug(this.mGraphicsManager.SynchronizeWithVerticalRetrace);
+			//lensFlare.UpdateOcclusion();
 
-
-            /*
-            //Draw Water Reflection
-            vxEngine.Renderer.SetCurrentPass(RenderPass.WaterReflection);
-
-            if(water != null)
-                foreach (vxEntity aeroEntity in List_Entities)
-                    ((vxEntity3D)aeroEntity).RenderMeshForWaterReflectionPass(water.WrknPlane);
-
-            
-            if (instSet.InstancedModel != null)
-                vxEngine.Renderer.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
-            
-
-            //Now Render the Scene Into the Scene Render Target
-            vxEngine.Renderer.SetCurrentPass(RenderPass.ColourPass);
-            if (vxEngine.DisplayDebugMesh == false)
-            {
-                switch (mSceneShadowMode)
-                {
-                    case vxEngine.SceneShadowMode.Default:
-                    case vxEngine.SceneShadowMode.SplitColors:
-                    case vxEngine.SceneShadowMode.BlockPattern:
-
-                        foreach (vxEntity aeroEntity in List_Entities)
-                            ((vxEntity3D)aeroEntity).RenderMesh(((vxEntity3D)aeroEntity).RenderTechnique);
-
-                        if (instSet.InstancedModel != null)
-                            vxEngine.Renderer.RenderInstanced(instSet.InstancedModel, camera, instSet.instances.Count, "Lambert_Instanced");
-
-                        if(water!=null)
-                            water.DrawWater(vxEngine.Renderer.RT_WaterReflectionMap, camera.GetReflectionView(water.WrknPlane));
-                    
-			lensFlare.UpdateOcclusion();
-                        break;
-                }
-            }
-            */
         }
 
 
@@ -893,7 +839,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			//Plain Render
 			//
 			TitleText = "Colour Map";
-			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_SSAO, new Rectangle (0, 0, width, height), Color.White);
+			vxEngine.SpriteBatch.Draw (vxEngine.Renderer.RT_ColourMap, new Rectangle (0, 0, width, height), Color.White);
 			vxEngine.SpriteBatch.DrawString (vxEngine.Assets.Fonts.DebugFont, TitleText,
 				new Vector2 (width / 2 - vxEngine.Assets.Fonts.DebugFont.MeasureString (TitleText).X / 2, height + padding), Color.LightGray);
 

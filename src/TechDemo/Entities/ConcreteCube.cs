@@ -22,6 +22,7 @@ using Virtex.Lib.Vrtc.Physics.BEPU;
 using Virtex.Lib.Vrtc.Utilities;
 using Virtex.Lib.Vrtc.Entities.Sandbox3D;
 using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
+using Virtex.Lib.Vrtc.Graphics;
 
 namespace Virtex.vxGame.VerticesTechDemo
 {
@@ -83,6 +84,8 @@ namespace Virtex.vxGame.VerticesTechDemo
             vxEngine.Current3DSceneBase.BEPUPhyicsSpace.Add(entityMover);
             SpecularIntensity = 1;
 
+			GameEngine.Model_Items_Concrete.SetTexturePackLevel(vxEnumTextureQuality.Ultra);
+
         }
         Matrix preMat = Matrix.Identity;
         public override void ToggleSimulation(bool IsRunning)
@@ -119,7 +122,7 @@ namespace Virtex.vxGame.VerticesTechDemo
             //Set Entity Orientation
             if (UseEntityMover)
             {
-                entityMover.TargetPosition = vxSmooth.SmoothVector(entity.WorldTransform.Translation,
+                entityMover.TargetPosition = vxMathHelper.Smooth(entity.WorldTransform.Translation,
                     RequestedPosition, 8);
                 
                 World = Matrix.Identity * Matrix.CreateScale(1);

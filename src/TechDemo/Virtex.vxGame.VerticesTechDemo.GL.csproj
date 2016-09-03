@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{01EA47C4-E03C-4B42-A767-6560AE5BF1AC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Virtex.lib.Vertices.Core</RootNamespace>
+    <RootNamespace>Virtex.vxGame.VerticesTechDemo</RootNamespace>
     <AssemblyName>Vertices Engine Tech Demo (OpenGL)</AssemblyName>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -78,6 +78,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Compiled.DesktopGL\Textures\engine\water\water_ICON.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Compiled.DesktopGL\Models\cbe\cbe.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Compiled.DesktopGL\Models\cbe\Cube_dds.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

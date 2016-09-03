@@ -155,7 +155,7 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 			// Register's Command to Show Render Targets on the Screen
 			/*****************************************************************************************************/
 			singletonInstance.DebugCommandUI.RegisterCommand (
-				"gamecon",              // Name of command
+				"gcon",              // Name of command
 				"Toggle the in-game console which won't pause the game (Different than this console)",     // Description of command
 				delegate (IDebugCommandHost host, string command, IList<string> args) {
 					vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_INGMECNSL).Value = !vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_INGMECNSL).GetAsBool();
@@ -248,10 +248,6 @@ namespace Virtex.Lib.Vrtc.Core.Debug
 					default:
 						if (args.Count > 1) {
 							try {
-								//TODO: Reference for converting string too enum.
-								//vxEnumEnvVarType typekey = (vxEnumEnvVarType) Enum.Parse(typeof(vxEnumEnvVarType), args [0].ToString(), true);
-
-
 								//Look up the variable. All keys are converted too strings when added, so applying just the
 								//first argument as a string
 								vxEnviroment.Variables [args [0]].Value = args [1];

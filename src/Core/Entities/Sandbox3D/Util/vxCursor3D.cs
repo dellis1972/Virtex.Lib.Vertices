@@ -189,18 +189,17 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
             //    base.RenderMeshPrepPass();
         }
 
-        public override void RenderMeshPlain()
-        {
-            foreach (vxAxis entity in List_Items)
-            {
-                entity.RenderMeshPlain();
-            }
-        }
-
         public override void RenderMesh(string RenderTechnique)
         {
-            if (Current3DScene.Camera.CameraType == CameraType.Freeroam)
-                base.RenderMesh(RenderTechnique);
+			if (Current3DScene.Camera.CameraType == CameraType.Freeroam)
+			{
+				foreach (vxAxis entity in List_Items)
+				{
+					entity.RenderMesh(RenderTechnique);
+				}
+
+				base.RenderMesh(RenderTechnique);
+			}
         }
 
         public override void SetOffetOrientation()

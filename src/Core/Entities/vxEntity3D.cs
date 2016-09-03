@@ -451,10 +451,13 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         /// </summary>
         public virtual void InitShaders()
         {
-
-            // set lighting parameters for each shader
-            if (vxModel != null)
+			// set lighting parameters for each shader
+			if (vxModel != null)
             {
+
+				//Set Texture Quality
+				vxModel.SetTexturePackLevel(vxEngine.Profile.Settings.Graphics.TextureQuality);
+
                 if (vxModel.ModelMain != null)
                 {
                     foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
@@ -581,65 +584,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
             }
         }
 
-        
-        public virtual void RenderMeshPlain()
-        {/*
-            if (vxModel.ModelMain != null)
-            {
-                // Look up the bone transform matrices.
-                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
-
-                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
-
-                // Draw the model.
-                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
-                {
-                    foreach (Effect effect in mesh.Effects)
-                    {
-                        // Specify which effect technique to use.
-                        effect.CurrentTechnique = effect.Techniques["PlainShader"];
-
-                        effect.Parameters["World"].SetValue(World);
-                        effect.Parameters["View"].SetValue(Camera.View);
-                        effect.Parameters["Projection"].SetValue(Camera.Projection);
-                        //Set The Colour
-                        effect.Parameters["PlainColor"].SetValue(new Vector4(PlainColor.R, PlainColor.G, PlainColor.B, AlphaValue));
-                    }
-                    mesh.Draw();
-                }
-            }*/
-        }
-        
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public virtual void RenderWithBaseEffect()
-        {
-            if (vxModel.ModelMain != null)
-            {
-                // Copy any parent transforms.
-                Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
-                vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
-
-                // Draw the model. A model can have multiple meshes, so loop.
-                foreach (ModelMesh mesh in vxModel.ModelMain.Meshes)
-                {
-                    // This is where the mesh orientation is set, as well 
-                    // as our camera and projection.
-                    foreach (BasicEffect effect in mesh.Effects)
-                    {
-                        effect.EnableDefaultLighting();
-                        effect.World = this.World;
-                        effect.View = this.Camera.View;
-                        effect.Projection = this.Camera.Projection;
-                    }
-                    // Draw the mesh, using the effects set above.
-                    mesh.Draw();
-                }
-            }
-        }
+      
         
         /// <summary>
         /// Render's the Model using the applied shader and specefied Render Technique
@@ -663,71 +608,6 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                             if (effect.Techniques[RenderTechnique] != null)
                             {
                                 effect.CurrentTechnique = effect.Techniques[RenderTechnique];
-
-        //                        if (effect.Parameters["DoShadow"] != null)
-        //                            effect.Parameters["DoShadow"].SetValue(vxEngine.Profile.Settings.Graphics.ShadowQuality == Settings.vxEnumQuality.None ? true : false);
-
-        //                        if (effect.Parameters["ShadowMap"] != null)
-        //                            effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
-        //                        if (effect.Parameters["ShadowTransform"] != null)
-        //                            effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
-        //                        if (effect.Parameters["TileBounds"] != null)
-        //                            effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
-        //                        if (effect.Parameters["SplitColors"] != null)
-        //                            effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-
-        //                        if (effect.Parameters["CameraPos"] != null)
-        //                            effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
-
-        //                        if (effect.Parameters["FogNear"] != null)
-        //                            effect.Parameters["FogNear"].SetValue(5);
-
-        //                        if (effect.Parameters["FogFar"] != null)
-        //                            effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane / 4);
-
-        //                        if (effect.Parameters["FogColor"] != null)
-        //                            effect.Parameters["FogColor"].SetValue(Vector4.One);
-
-        //                        if (effect.Parameters["TextureSampler"] != null)
-        //                            effect.Parameters["TextureSampler"].SetValue(vxEngine.Renderer.RT_ColourMap);
-
-        //                        if (effect.Parameters["NormalSampler"] != null)
-        //                            effect.Parameters["NormalSampler"].SetValue(vxEngine.Renderer.RT_NormalMap);
-                                
-        //                        if (effect.Parameters["DiffuseLight"] != null)
-        //                            effect.Parameters["DiffuseLight"].SetValue(new Vector3(0.5f));
-
-        //                        if (effect.Parameters["AmbientLight"] != null)
-        //                            effect.Parameters["AmbientLight"].SetValue(new Vector3(0.5f));
-
-        //                        effect.Parameters["World"].SetValue(World);
-        //                        if (effect.Parameters["View"] != null)
-        //                            effect.Parameters["View"].SetValue(this.Camera.View);
-
-        //                        if (effect.Parameters["Projection"] != null)
-        //                            effect.Parameters["Projection"].SetValue(this.Camera.Projection);
-
-
-        //                        if (effect.Parameters["LightPosition"] != null)
-        //                            effect.Parameters["LightPosition"].SetValue(vxEngine.Renderer.lightPosition);
-
-        //                        if (effect.Parameters["LightDirection"] != null)
-        //                            effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
-
-        //                        float Factor = 125;
-        //                        if (effect.Parameters["SelectionColor"] != null)
-        //                            effect.Parameters["SelectionColor"].SetValue((new Vector3(SelectionColor.R / Factor, SelectionColor.G / Factor, SelectionColor.B / Factor)));
-        //                        /*
-        //                        if (TextureOffset != Vector2.Zero)
-        //                            vxConsole.WriteToInGameDebug(TextureOffset);
-        //*/
-        //                        if (effect.Parameters["TextOffset"] != null)
-        //                            effect.Parameters["TextOffset"].SetValue(TextureOffset);
-
-        //                        if (effect.Parameters["Alpha"] != null)
-        //                            effect.Parameters["Alpha"].SetValue(AlphaValue);
-
-
 
                                 //effect.CurrentTechnique = effect.Techniques[technique];
                                 effect.Parameters["World"].SetValue(World);
@@ -762,6 +642,11 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 								DoShadowMap = false;
 							else
 								DoShadowMap = true;
+
+								if (effect.Parameters["ShadowBrightness"] != null)
+									effect.Parameters["ShadowBrightness"].SetValue(0.25f);
+
+
 							
 							if (effect.Parameters["DoShadow"] != null)
 								effect.Parameters["DoShadow"].SetValue(DoShadowMap);

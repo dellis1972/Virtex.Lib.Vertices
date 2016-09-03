@@ -954,13 +954,6 @@ namespace Virtex.Lib.Vrtc.Graphics
                 Vector2 resolution = new Vector2(RT_MainScene.Width,
                                                  RT_MainScene.Height);
 
-
-				foreach (Matrix vec4 in ShadowSplitProjectionsWithTiling) {
-					vxConsole.WriteToInGameDebug (vec4);
-					vxConsole.WriteToInGameDebug ("DDDDD");
-			
-				}
-
                 // Pass in the current screen resolution.
                 parameters["ScreenResolution"].SetValue(resolution);
                 parameters["NormalTexture"].SetValue(RT_NormalMap);

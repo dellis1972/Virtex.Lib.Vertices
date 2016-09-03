@@ -100,6 +100,11 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
         /// </summary>
         public List<vxEntity> Entities = new List<vxEntity>();
 
+		/// <summary>
+		/// List of Entities to draw as with Alpha less than 1 and which don't cast shadows.
+		/// </summary>
+		public List<vxEntity> AlphaEntities = new List<vxEntity>();
+
 		#if VIRTICES_3D
         /// <summary>
         /// vxEngine Partile System, Note this is managed seperate from the Entity List.

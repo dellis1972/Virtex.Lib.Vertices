@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
 using Virtex.Lib.Vrtc.Graphics;
 
 namespace Virtex.Lib.Vrtc.Core.ContentManagement
@@ -13,7 +9,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
     /// </summary>
     public class Assets
     {
-        vxEngine vxEngine;
+        vxEngine Engine;
 
         public struct AssetFonts
         {
@@ -126,7 +122,6 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
         public struct AssetPostProcessShaders
         {
-            public Effect EdgeDetection { get; set; }
             public Effect CartoonEdgeDetection { get; set; }
             public Effect BloomExtractEffect { get; set; }
             public Effect BloomCombineEffect { get; set; }
@@ -161,17 +156,17 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
         /// <summary>
         /// Assets For the vxEngine
         /// </summary>
-        public Assets(vxEngine vxEngine)
+        public Assets(vxEngine engine)
         {
             //Game vxEngine
-            this.vxEngine = vxEngine;
+            Engine = engine;
 
 			/********************************************************************************************/
 			/*										Fonts												*/
 			/********************************************************************************************/
-            fonts.MenuTitleFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_gui_title");
-            fonts.MenuFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_gui");
-            fonts.DebugFont = vxEngine.EngineContentManager.Load<SpriteFont>("Fonts/font_debug");
+            fonts.MenuTitleFont = Engine.EngineContentManager.Load<SpriteFont>("Fonts/font_gui_title");
+            fonts.MenuFont = Engine.EngineContentManager.Load<SpriteFont>("Fonts/font_gui");
+            fonts.DebugFont = Engine.EngineContentManager.Load<SpriteFont>("Fonts/font_debug");
 
 
 
@@ -179,30 +174,30 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 			/*										Textures											*/
 			/********************************************************************************************/
 
-            textures.Blank = vxEngine.EngineContentManager.Load<Texture2D>("Textures/xGUI/blank");
-            textures.Gradient = vxEngine.EngineContentManager.Load<Texture2D>("Textures/xGUI/gradient");
-			textures.RandomValues = vxEngine.EngineContentManager.Load<Texture2D>("Textures/rndm");
+            textures.Blank = Engine.EngineContentManager.Load<Texture2D>("Textures/xGUI/blank");
+            textures.Gradient = Engine.EngineContentManager.Load<Texture2D>("Textures/xGUI/gradient");
+			textures.RandomValues = Engine.EngineContentManager.Load<Texture2D>("Textures/rndm");
 
             //Arrows
-            textures.Arrow_Left = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Left");
-            textures.Arrow_Right = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Right");
+            textures.Arrow_Left = Engine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Left");
+            textures.Arrow_Right = Engine.EngineContentManager.Load<Texture2D>("Textures/Menu/Slider/Arrow_Right");
 
-            textures.Texture_Diffuse_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse");
-            textures.Texture_NormalMap_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_normal");
-            textures.Texture_SpecularMap_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_specular");
+            textures.Texture_Diffuse_Null = Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse");
+            textures.Texture_NormalMap_Null = Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_normal");
+            textures.Texture_SpecularMap_Null = Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_specular");
 
             //textures.Texture_Cube_Null = vxEngine.EngineContentManager.Load<Texture2D>("Textures/null_cube");
 
             //Glow
-            textures.Texture_Sun_Glow = vxEngine.EngineContentManager.Load<Texture2D>("Textures/Rays/Rays");
+            textures.Texture_Sun_Glow = Engine.EngineContentManager.Load<Texture2D>("Textures/Rays/Rays");
 
 
 
 
 #if !VRTC_PLTFRM_DROID
             //Water
-            textures.Texture_WaterWaves = vxEngine.EngineContentManager.Load<Texture2D>("Shaders/Water/waterbump");
-            textures.Texture_WaterDistort = vxEngine.EngineContentManager.Load<Texture2D>("Shaders/Water/waterdistort");
+            textures.Texture_WaterWaves = Engine.EngineContentManager.Load<Texture2D>("Shaders/Water/waterbump");
+            textures.Texture_WaterDistort = Engine.EngineContentManager.Load<Texture2D>("Shaders/Water/waterdistort");
 
 
             /********************************************************************************************/
@@ -214,50 +209,50 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
             //Model Shaders
 #if VRTC_PLTFRM_XNA
             
-			//Distorter
-			shaders.DistortionShader = vxEngine.EngineContentManager.Load<Effect>("Shaders/Distorter/Distorters");
-			postProcessShaders.distortEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Distorter/DistortScene");
-			postProcessShaders.distortTechnique = postProcessShaders.distortEffect.Techniques["Distort"];
-			postProcessShaders.distortBlurTechnique = postProcessShaders.distortEffect.Techniques["DistortBlur"];
 #else
 			prefixtag = "MonoGame/";
 #endif
 
-            shaders.MainShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/MainModelShader");
-            shaders.CascadeShadowShader  = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Shadows/CascadeShadowShader");
-            shaders.UtilityShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Utility/UtilityShader");
+            shaders.MainShader = Engine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/MainModelShader");
+            shaders.CascadeShadowShader  = Engine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Shadows/CascadeShadowShader");
+            shaders.UtilityShader = Engine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Utility/UtilityShader");
 
             //Shader Collection
-            shaders.CartoonShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/CellModelShader");
+            shaders.CartoonShader = Engine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Model Shaders/CellModelShader");
 
             //Water Shader
-            shaders.WaterReflectionShader = vxEngine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Water/vxWater");
+            shaders.WaterReflectionShader = Engine.EngineContentManager.Load<Effect>(prefixtag + "Shaders/Water/vxWater");
 
             //Bloom
-            postProcessShaders.BloomExtractEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
-			postProcessShaders.BloomCombineEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomCombine");
-			postProcessShaders.GaussianBlurEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/Bloom/GaussianBlur");
+            postProcessShaders.BloomExtractEffect = Engine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomExtract");
+			postProcessShaders.BloomCombineEffect = Engine.EngineContentManager.Load<Effect>("Shaders/Bloom/BloomCombine");
+			postProcessShaders.GaussianBlurEffect = Engine.EngineContentManager.Load<Effect>("Shaders/Bloom/GaussianBlur");
 
 			//Depth Of Field
-			postProcessShaders.DepthOfFieldEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/DepthOfField/DepthOfField");
+			postProcessShaders.DepthOfFieldEffect = Engine.EngineContentManager.Load<Effect>("Shaders/DepthOfField/DepthOfField");
 
 			//Post Processing Shaders 
-			postProcessShaders.CartoonEdgeDetection = vxEngine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/CartoonEdgeDetection");
+			postProcessShaders.CartoonEdgeDetection = Engine.EngineContentManager.Load<Effect>("Shaders/Edge Detection/CartoonEdgeDetection");
 
+			//Distortion Shaders
+			shaders.DistortionShader = Engine.EngineContentManager.Load<Effect>("Shaders/Distorter/Distorters");
+			postProcessShaders.distortEffect = Engine.EngineContentManager.Load<Effect>("Shaders/Distorter/DistortScene");
+			postProcessShaders.distortTechnique = postProcessShaders.distortEffect.Techniques["Distort"];
+			postProcessShaders.distortBlurTechnique = postProcessShaders.distortEffect.Techniques["DistortBlur"];
 
 
 
 			//Defferred Shading
-			shaders.DrfrdRndrClearGBuffer = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/ClearGBuffer");
-			shaders.DrfrdRndrCombineFinal = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/CombineFinal");
-			shaders.DrfrdRndrDirectionalLight = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/DirectionalLight");
-			shaders.DrfrdRndrPointLight = vxEngine.EngineContentManager.Load<Effect>("Shaders/Lighting/PointLight");
+			shaders.DrfrdRndrClearGBuffer = Engine.EngineContentManager.Load<Effect>("Shaders/Lighting/ClearGBuffer");
+			shaders.DrfrdRndrCombineFinal = Engine.EngineContentManager.Load<Effect>("Shaders/Lighting/CombineFinal");
+			shaders.DrfrdRndrDirectionalLight = Engine.EngineContentManager.Load<Effect>("Shaders/Lighting/DirectionalLight");
+			shaders.DrfrdRndrPointLight = Engine.EngineContentManager.Load<Effect>("Shaders/Lighting/PointLight");
 
             //Crepuscular Rays
-            postProcessShaders.SSAOEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/SSAO/SSAO");
-            postProcessShaders.MaskedSunEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/God Rays/MaskedSun");
-            postProcessShaders.GodRaysCombineEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/God Rays/GodRaysCombine");
-			postProcessShaders.LightRaysEffect = vxEngine.EngineContentManager.Load<Effect>("Shaders/God Rays/LightRays");
+            postProcessShaders.SSAOEffect = Engine.EngineContentManager.Load<Effect>("Shaders/SSAO/SSAO");
+            postProcessShaders.MaskedSunEffect = Engine.EngineContentManager.Load<Effect>("Shaders/God Rays/MaskedSun");
+            postProcessShaders.GodRaysCombineEffect = Engine.EngineContentManager.Load<Effect>("Shaders/God Rays/GodRaysCombine");
+			postProcessShaders.LightRaysEffect = Engine.EngineContentManager.Load<Effect>("Shaders/God Rays/LightRays");
             /********************************************************************************************/
             /*										Models												*/
             /********************************************************************************************/
@@ -267,14 +262,14 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 				tag = "_mg";
 
 #else
-            //Unit Models
-            models.UnitArrow = vxEngine.EngineContentManager.Load<Model>("Models/utils/unit_arrow/unit_arrow");
 #endif
-            models.UnitBox = vxEngine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
-			models.UnitPlane = vxEngine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
-			models.UnitSphere = vxEngine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
-			models.Sun_Mask = vxEngine.vxContentManager.LoadModel("Models/sun/sun_mask", vxEngine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
-            models.WaterPlane = vxEngine.vxContentManager.LoadModel("Models/water_plane/water_plane_mg", vxEngine.EngineContentManager, shaders.WaterReflectionShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			//Unit Models
+			//models.UnitArrow = Engine.EngineContentManager.Load<Model>("Models/utils/unit_arrow/unit_arrow");
+			models.UnitBox = Engine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			models.UnitPlane = Engine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			models.UnitSphere = Engine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+			models.Sun_Mask = Engine.vxContentManager.LoadModel("Models/sun/sun_mask", Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+            models.WaterPlane = Engine.vxContentManager.LoadModel("Models/water_plane/water_plane_mg", Engine.EngineContentManager, shaders.WaterReflectionShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 #endif
         }
     }

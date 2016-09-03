@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+using Virtex.Lib.Vrtc.Graphics;
 
 namespace Virtex.Lib.Vrtc.Core.Settings
 {
@@ -44,6 +45,9 @@ namespace Virtex.Lib.Vrtc.Core.Settings
 			get { return vxEnviroment.GetVar (vxEnumEnvVarType.VSYNC).GetAsBool (); }
 			set { vxEnviroment.GetVar (vxEnumEnvVarType.VSYNC).Value = value; }
 		}
+
+		[XmlElement("TextureQuality")]
+		public vxEnumTextureQuality TextureQuality;
 
         [XmlElement("ShadowQuality")]
         public vxEnumQuality ShadowQuality;

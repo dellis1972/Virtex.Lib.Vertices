@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C500E437-A2C6-4846-98FC-D89ECE1BBF7F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Virtex.Lib.Vrtc</RootNamespace>
+    <RootNamespace>Virtex.Lib.Vrtc.Core</RootNamespace>
     <Description>The Core Library for Virtex Edge Design's Vertices Engine.</Description>
     <UseMSBuildEngine>True</UseMSBuildEngine>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
@@ -566,6 +566,9 @@
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Water\vxWater.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Distorter\DistortScene.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -625,7 +628,6 @@
     <Compile Include="GUI\Controls\Buttons\vxSandboxItemButton.cs" />
     <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
     <Compile Include="GUI\Theme\vxThemeDialog.cs" />
-    <Compile Include="Graphics\Model\vxModel.cs" />
     <Compile Include="Graphics\Instancing\InstanceSet.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.cs" />
@@ -641,8 +643,7 @@
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
     <Compile Include="Entities\vxEntity3D.cs" />
-    <Compile Include="Entities\Enviroment\Sun.cs" />
-    <Compile Include="Entities\Enviroment\Water_General.cs" />
+    <Compile Include="Entities\Enviroment\vxSunEntity.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\Sandbox3D\vxSandboxEntity.cs" />
     <Compile Include="Entities\Sandbox3D\vxSandboxEntityDescription.cs" />
@@ -678,7 +679,6 @@
     <Compile Include="GUI\MessageBoxs\vxMessageBoxNetworkLoggingIn.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBoxSaveAs.cs" />
     <Compile Include="ContentManagement\vxContentManager.cs" />
-    <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="GUI\Theme\vxLoadingScreen.cs" />
     <Compile Include="Animation\vxAnimationPlayer2D.cs" />
     <Compile Include="Animation\vxAnimationSprite2D.cs" />
@@ -756,6 +756,10 @@
     <Compile Include="Debug Utilities\vxDebugShapeRenderer.cs" />
     <Compile Include="Debug Utilities\vxDebugCntrlFpsCounter.cs" />
     <Compile Include="Debug Utilities\vxDebugCntrlTimeRuler.cs" />
+    <Compile Include="Entities\3D\vxAlphaEntity3D.cs" />
+    <Compile Include="Graphics\vxTexture2D.cs" />
+    <Compile Include="Graphics\vxModel.cs" />
+    <Compile Include="Graphics\vxModelVoxel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />
@@ -772,7 +776,6 @@
     <Folder Include="Graphics\3D Gameplay\Defferred Rendering\" />
     <Folder Include="Content\MonoGame\Shaders\Include\" />
     <Folder Include="GUI\Theme\" />
-    <Folder Include="Graphics\Model\" />
     <Folder Include="Graphics\Instancing\" />
     <Folder Include="Graphics\Renderer\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\" />
@@ -780,6 +783,7 @@
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Shadows\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Utility\" />
     <Folder Include="Vertices.Engine.Content\Compiled.DesktopGL\MonoGame\Shaders\Water\" />
+    <Folder Include="Entities\3D\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vertices.Engine.Content\Compiled.DesktopGL\Graphics\Flares\flare1.xnb">
