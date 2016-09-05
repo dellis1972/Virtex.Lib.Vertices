@@ -76,9 +76,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 			get
 			{
 				if (Engine.Assets != null)
-				{
 					return Engine.Assets.Textures.Texture_Diffuse_Null;
-				}
 				else
 					return Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse");
 			}

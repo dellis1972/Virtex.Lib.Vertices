@@ -42,13 +42,14 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// </summary>
 		string PathToOriginal = "";
 
+		/// <summary>
+		/// Gets or sets the texture.
+		/// </summary>
+		/// <value>The texture.</value>
 		public Texture2D Texture
 		{
 			get {
-				int valp = Convert.ToInt32(Quality);
-				int val = MathHelper.Clamp(valp, 0, 3);
-				vxConsole.WriteLine(valp + " - " + val);
-				return TexturePack[val]; }
+				return TexturePack[MathHelper.Clamp(Convert.ToInt32(Quality), 0, 3)]; }
 			set { CreateTexturePack(value); }
 		}
 
@@ -81,7 +82,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// <summary>
 		/// The minimum size of any of the textures.
 		/// </summary>
-		public const int MIN_SIZE = 8;
+		public const int MIN_SIZE = 48;
 
 		#endregion
 
