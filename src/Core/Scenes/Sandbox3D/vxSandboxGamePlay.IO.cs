@@ -195,44 +195,194 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         /// <param name="e"></param>
         public virtual void ExportFileToolbarItem_Clicked(object sender, vxGuiItemClickEventArgs e)
         {
-            //string path = vxEngine.Path_Sandbox + "\\" + sandBoxFile.Name;
-			string path =  vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SANDBOX).Value.ToString() + "\\Export\\";
-
-            //First Check, if the Items Directory Doesn't Exist, Create It
-            if (Directory.Exists(path) == false)
-                Directory.CreateDirectory(path);
-
-            Console.Write("Exporting File...");
-            StreamWriter writer = new StreamWriter(path + sandBoxFile.Name + "_export.stl");
-            writer.WriteLine("solid Exported from Vertices vxEngine");
-            foreach (vxSandboxEntity entity in Items)
+            try
             {
-                if (entity.MeshIndices != null)
+                bool UsePhysicsMesh = true;
+                //string path = vxEngine.Path_Sandbox + "\\" + sandBoxFile.Name;
+                string path = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SANDBOX).Value.ToString() + "\\Export\\";
+
+                //First Check, if the Items Directory Doesn't Exist, Create It
+                if (Directory.Exists(path) == false)
+                    Directory.CreateDirectory(path);
+
+                Console.Write("Exporting File...");
+                StreamWriter writer = new StreamWriter(path + sandBoxFile.Name + "_export.stl");
+                writer.WriteLine("solid Exported from Vertices vxEngine");
+                foreach (vxSandboxEntity entity in Items)
                 {
-                    for (int i = 0; i < entity.MeshIndices.Length - 3; i += 3)
+                    Matrix correctionMatrix = entity.World * Matrix.CreateRotationX(MathHelper.PiOver2);
+
+                    if (UsePhysicsMesh == false)
                     {
-                        int indice = entity.MeshIndices[i];
-                        Matrix correctionMatrix = Matrix.CreateRotationX(MathHelper.PiOver2);
-                        Vector3 Pt1 = vxGeometryHelper.RotatePoint(entity.World * correctionMatrix, entity.MeshVertices[indice]);
-                        Vector3 Pt2 = vxGeometryHelper.RotatePoint(entity.World * correctionMatrix, entity.MeshVertices[indice + 1]);
-                        Vector3 Pt3 = vxGeometryHelper.RotatePoint(entity.World * correctionMatrix, entity.MeshVertices[indice + 2]);
+                        foreach (ModelMesh mesh in entity.vxModel.ModelMain.Meshes)
+                        {
+                            foreach (ModelMeshPart meshpart in mesh.MeshParts)
+                            {
+                                //ExtractModelMeshPartData(meshpart, ref correctionMatrix, writer);
+                                
+                                //First Get the Position/Normal Texture Data
+                                VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[meshpart.VertexBuffer.VertexCount];
+                                meshpart.VertexBuffer.GetData(vertices);
 
-                        Vector3 Normal = Vector3.Cross(Pt2, Pt1);
-                        Normal.Normalize();
-                        writer.WriteLine(string.Format("facet normal {0} {1} {2}", Normal.X, Normal.Y, Normal.Z));
-                        writer.WriteLine("outer loop");
-                        writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt1.X, Pt1.Y, Pt1.Z));
-                        writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt2.X, Pt2.Y, Pt2.Z));
-                        writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt3.X, Pt3.Y, Pt3.Z));
-                        writer.WriteLine("endloop");
-                        writer.WriteLine("endfacet");
+                                ushort[] drawOrder = new ushort[meshpart.IndexBuffer.IndexCount];
+                                meshpart.IndexBuffer.GetData(drawOrder);
 
+
+                                    for (ushort i = 0; i < drawOrder.Length-3; i++)
+                                    {   
+                                        Vector3 Pt1 = vxGeometryHelper.RotatePoint(correctionMatrix, vertices[drawOrder[i]].Position);
+                                        Vector3 Pt2 = vxGeometryHelper.RotatePoint(correctionMatrix, vertices[drawOrder[i+1]].Position);
+                                        Vector3 Pt3 = vxGeometryHelper.RotatePoint(correctionMatrix, vertices[drawOrder[i+2]].Position);
+                                    
+
+                                    Vector3 Normal = vertices[drawOrder[i]].Normal;
+                                        //Normal.Normalize();
+                                        writer.WriteLine(string.Format("facet normal {0} {1} {2}", Normal.X, Normal.Y, Normal.Z));
+                                        writer.WriteLine("outer loop");
+                                        writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt1.X, Pt1.Y, Pt1.Z));
+                                        writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt2.X, Pt2.Y, Pt2.Z));
+                                        writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt3.X, Pt3.Y, Pt3.Z));
+                                        writer.WriteLine("endloop");
+                                        writer.WriteLine("endfacet");
+                                    }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+
+                        if (entity.MeshIndices != null)
+                        {
+                            for (int i = 0; i < entity.MeshIndices.Length; i += 3)
+                            {
+                                Vector3 Pt1 = vxGeometryHelper.RotatePoint(correctionMatrix, entity.MeshVertices[entity.MeshIndices[i]]);
+                                Vector3 Pt2 = vxGeometryHelper.RotatePoint(correctionMatrix, entity.MeshVertices[entity.MeshIndices[i + 1]]);
+                                Vector3 Pt3 = vxGeometryHelper.RotatePoint(correctionMatrix, entity.MeshVertices[entity.MeshIndices[i + 2]]);
+
+                                Vector3 Normal = Vector3.Cross(Pt2, Pt1);
+                                Normal.Normalize();
+                                writer.WriteLine(string.Format("facet normal {0} {1} {2}", Normal.X, Normal.Y, Normal.Z));
+                                writer.WriteLine("outer loop");
+                                writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt1.X, Pt1.Y, Pt1.Z));
+                                writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt2.X, Pt2.Y, Pt2.Z));
+                                writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt3.X, Pt3.Y, Pt3.Z));
+                                writer.WriteLine("endloop");
+                                writer.WriteLine("endfacet");
+
+                            }
+                        }
                     }
                 }
+                writer.WriteLine("endsolid");
+                writer.Close();
+                Console.WriteLine("Done!");
             }
-            writer.WriteLine("endsolid");
-            writer.Close();
-            Console.WriteLine("Done!");
+            catch(Exception ex)
+            {
+                vxConsole.WriteError(ex);
+            }
+        }
+
+
+        /// <summary>  
+        /// Get all the triangles from each mesh part (Changed for XNA 4)  
+        /// </summary>  
+        public void ExtractModelMeshPartData(ModelMeshPart meshPart, ref Matrix transform, StreamWriter writer )
+        {
+            List<Vector3> vertices = new List<Vector3>();
+            List<int> indices = new List<int>();
+
+            // Before we add any more where are we starting from  
+            int offset = 0;
+
+            // == Vertices (Changed for XNA 4.0)  
+
+            // Read the format of the vertex buffer  
+            VertexDeclaration declaration = meshPart.VertexBuffer.VertexDeclaration;
+            VertexElement[] vertexElements = declaration.GetVertexElements();
+            // Find the element that holds the position  
+            VertexElement vertexPosition = new VertexElement();
+            foreach (VertexElement vert in vertexElements)
+            {
+                if (vert.VertexElementUsage == VertexElementUsage.Position &&
+                    vert.VertexElementFormat == VertexElementFormat.Vector3)
+                {
+                    vertexPosition = vert;
+                    // There should only be one  
+                    break;
+                }
+            }
+            // Check the position element found is valid  
+            if (vertexPosition == null ||
+                vertexPosition.VertexElementUsage != VertexElementUsage.Position ||
+                vertexPosition.VertexElementFormat != VertexElementFormat.Vector3)
+            {
+                throw new Exception("Model uses unsupported vertex format!");
+            }
+            // This where we store the vertices until transformed  
+            Vector3[] allVertex = new Vector3[meshPart.NumVertices];
+            // Read the vertices from the buffer in to the array  
+            meshPart.VertexBuffer.GetData<Vector3>(
+                meshPart.VertexOffset * declaration.VertexStride + vertexPosition.Offset,
+                allVertex,
+                0,
+                meshPart.NumVertices,
+                declaration.VertexStride);
+            // Transform them based on the relative bone location and the world if provided  
+            for (int i = 0; i != allVertex.Length; ++i)
+            {
+                Vector3.Transform(ref allVertex[i], ref transform, out allVertex[i]);
+            }
+            // Store the transformed vertices with those from all the other meshes in this model  
+            vertices.AddRange(allVertex);
+
+            // == Indices (Changed for XNA 4)  
+
+            // Find out which vertices make up which triangles  
+            if (meshPart.IndexBuffer.IndexElementSize != IndexElementSize.SixteenBits)
+            {
+                // This could probably be handled by using int in place of short but is unnecessary  
+                throw new Exception("Model uses 32-bit indices, which are not supported.");
+            }
+            // Each primitive is a triangle  
+            short[] indexElements = new short[meshPart.PrimitiveCount * 3];
+            meshPart.IndexBuffer.GetData<short>(
+                meshPart.StartIndex * 2,
+                indexElements,
+                0,
+                meshPart.PrimitiveCount * 3);
+            // Each TriangleVertexIndices holds the three indexes to each vertex that makes up a triangle  
+            //TriangleVertexIndices[] tvi = new TriangleVertexIndices[meshPart.PrimitiveCount];
+            for (int i = 0; i != meshPart.PrimitiveCount; ++i)
+            {
+                // The offset is because we are storing them all in the one array and the   
+                // vertices were added to the end of the array.  
+                indices.Add(indexElements[i * 3 + 0] + offset);
+                //tvi[i].B = indexElements[i * 3 + 1] + offset;
+                //tvi[i].C = indexElements[i * 3 + 2] + offset;
+            }
+            // Store our triangles  
+            //indices.AddRange(tvi);
+
+            for (int i = 0; i < indices.Count-3; i += 3)
+            {
+                Matrix correctionMatrix = Matrix.CreateRotationX(MathHelper.PiOver2);
+                Vector3 Pt1 = vertices[i];
+                Vector3 Pt2 = vertices[i + 1];
+                Vector3 Pt3 = vertices[i + 2];
+
+                Vector3 Normal = Vector3.Cross(Pt2, Pt1);
+                Normal.Normalize();
+                //Normal.Normalize();
+                writer.WriteLine(string.Format("facet normal {0} {1} {2}", Normal.X, Normal.Y, Normal.Z));
+                writer.WriteLine("outer loop");
+                writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt1.X, Pt1.Y, Pt1.Z));
+                writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt2.X, Pt2.Y, Pt2.Z));
+                writer.WriteLine(string.Format("vertex {0} {1} {2}", Pt3.X, Pt3.Y, Pt3.Z));
+                writer.WriteLine("endloop");
+                writer.WriteLine("endfacet");
+            }
         }
     }
 }

@@ -117,9 +117,9 @@
     <Compile Include="Debug Utilities\vxDebugShapeRenderer.cs" />
     <Compile Include="Debug Utilities\vxDebugSystem.cs" />
     <Compile Include="Debug Utilities\vxVar.cs" />
-    <Compile Include="Entities\Enviroment\Sun.cs" />
+    <Compile Include="Entities\3D\vxAlphaEntity3D.cs" />
+    <Compile Include="Entities\Enviroment\vxSunEntity.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
-    <Compile Include="Entities\Enviroment\Water_General.cs" />
     <Compile Include="Entities\VehicleInput.cs" />
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
@@ -128,8 +128,10 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
     <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
-    <Compile Include="Graphics\Model\vxModelVoxel.cs" />
     <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
+    <Compile Include="Graphics\vxModel.cs" />
+    <Compile Include="Graphics\vxModelVoxel.cs" />
+    <Compile Include="Graphics\vxTexture2D.cs" />
     <Compile Include="GUI\Art Providers\IGuiArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxArtProviderBase.cs" />
     <Compile Include="GUI\Art Providers\vxButtonArtProvider.cs" />
@@ -203,7 +205,6 @@
     <Compile Include="Graphics\3D Gameplay\Components\NonPhotoRealisticSettings.cs" />
     <Compile Include="Graphics\Instancing\InstanceSet.cs" />
     <Compile Include="Graphics\Instancing\vxMeshSet.cs" />
-    <Compile Include="Graphics\Model\vxModel.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.cs" />
     <Compile Include="Graphics\Graphics Enums.cs" />

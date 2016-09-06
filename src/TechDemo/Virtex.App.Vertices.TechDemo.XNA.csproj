@@ -17,7 +17,8 @@
     <XnaCrossPlatformGroupID>79c45ef7-ea93-4df7-8b5f-b209b06364ee</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <Thumbnail>
+    </Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -101,9 +102,6 @@
     <Compile Include="Screens\MainMenuScreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GameThumbnail.png">
-      <XnaPlatformSpecific>true</XnaPlatformSpecific>
-    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

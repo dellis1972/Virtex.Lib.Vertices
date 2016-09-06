@@ -49,7 +49,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		public Texture2D Texture
 		{
 			get {
-				return TexturePack[MathHelper.Clamp(Convert.ToInt32(Quality), 0, 3)]; }
+				return TexturePack[(int)MathHelper.Clamp(Convert.ToInt32(Quality), 0, 3)]; }
 			set { CreateTexturePack(value); }
 		}
 
@@ -109,7 +109,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// <param name="engine">Engine.</param>
 		/// <param name="path">Path.</param>
 		public vxTexture2D(vxEngine engine, string path) :
-		this(engine, engine.Game.Content.Load<Texture2D>(path), path)
+		this(engine, engine.Game.Content.Load<Texture2D>(path), engine.Game.Content.RootDirectory +"/" + path)
 		{
 		}
 
@@ -138,18 +138,18 @@ namespace Virtex.Lib.Vrtc.Graphics
 				{
 					// First get the Path name of the needed file.
 					string filepath = path + "_res" + ind.ToString() + ".png";
-					//Console.Write("Looking for " + filepath + "...");
+				vxConsole.WriteVerboseLine("Looking for " + filepath + "...");
 
 					// Next check if the file exisits
 					if (File.Exists(filepath))
 					{
 						TexturePack.Add(vxUtil.LoadTextureFromFile(filepath, Engine.GraphicsDevice));
-						//Console.WriteLine("Found!");
+						vxConsole.WriteVerboseLine("Found!");
 					}
 					// If the file does not exist, or if this is in DEBUG mode, then create a new texture.
 					else
 					{
-						//Console.WriteLine("Creating New File!");
+						vxConsole.WriteLine("Creating New Texture File! : " + filepath);
 						// First scale down the new texture
 						Texture2D newTexture = ScaleDownTexture(TextureOriginal, divisors[ind]);
 
@@ -162,7 +162,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine("\n >> >> >> " + ex.Message);
+					vxConsole.WriteLine("\n >> >> >> " + ex.Message);
 
 					// Now add it to the texture pack
 					TexturePack.Add(NullDiffuseTexture);

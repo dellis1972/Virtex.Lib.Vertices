@@ -80,11 +80,12 @@ namespace Virtex.Lib.Vrtc.GUI.GuiArtProvider
 			TitlePadding = new Vector2 (10, 10);
 			Padding = new Vector2 (10, 10);
 
-			BackgroundColour = Color.White;
-			TitleBackgroundColour = Color.White;
+			BackgroundColour = Color.Black * 0.75f;
+			TitleBackgroundColour = Color.DarkOrange;
 			BackgroundHoverColour = Color.DarkOrange;
 
-			TextColour = Color.Black;
+            TitleTextColour = Color.Black;
+            TextColour = Color.White;
 			TextHoverColour = Color.Black;
 
 			TitleBackgroundImage = vxEngine.Assets.Textures.Blank;

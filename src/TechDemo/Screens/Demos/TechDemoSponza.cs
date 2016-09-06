@@ -116,9 +116,9 @@ namespace Virtex.vxGame.VerticesTechDemo
 
             DoFog = true;
 
-			Envrio envr = new Envrio(vxEngine, 
-                vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
+			//Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
 
+            Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/castle/mdl_castle"), new Vector3(0, 1, 0));
 
             waterItems.Add(new vxWaterEntity(vxEngine, Vector3.Up, new Vector3(50, 0.25f, 50)));
             
