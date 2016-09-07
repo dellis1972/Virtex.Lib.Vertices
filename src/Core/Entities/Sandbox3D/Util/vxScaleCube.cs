@@ -133,7 +133,13 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
             prePos = World.Translation;
         }
 
-
+		public override void RenderMeshForWaterReflectionPass(Plane surfacePlane)
+		{
+			if (SandboxState == vxEnumSandboxGameState.EditMode)
+			{
+				base.RenderMeshForWaterReflectionPass(surfacePlane);
+			}
+		}
         public override void RenderMeshShadow() { }
         public override void RenderMesh(string RenderTechnique)
         {

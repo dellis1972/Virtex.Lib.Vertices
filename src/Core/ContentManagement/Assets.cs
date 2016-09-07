@@ -66,7 +66,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
         public struct AssetModels
         {
-            public Model UnitArrow { get; set; }
+            public vxModel UnitArrow { get; set; }
             public vxModel UnitBox { get; set; }
             public vxModel UnitSphere { get; set; }
             public vxModel UnitPlane { get; set; }
@@ -263,8 +263,9 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
 #else
 #endif
+
 			//Unit Models
-			//models.UnitArrow = Engine.EngineContentManager.Load<Model>("Models/utils/unit_arrow/unit_arrow");
+			models.UnitArrow = Engine.vxContentManager.LoadBasicEffectModel("Models/utils/unit_arrow/unit_arrow", Engine.EngineContentManager, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.UnitBox = Engine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.UnitPlane = Engine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.UnitSphere = Engine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);

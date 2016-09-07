@@ -459,6 +459,11 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 		/// <param name="Content">Content.</param>
 		public vxModel LoadBasicEffectModel(string PathToModel, ContentManager Content)
 		{
+			return LoadBasicEffectModel(PathToModel, Content, Engine.Assets.Shaders.CascadeShadowShader, Engine.Assets.Shaders.UtilityShader);
+		}
+
+		public vxModel LoadBasicEffectModel(string PathToModel, ContentManager Content, Effect ShadowEffect, Effect UtilityEffect)
+		{
 			vxConsole.WriteVerboseLine("        Importing Basic Effect Model: " + PathToModel);
 
 			// Create the Model Object to return
@@ -470,11 +475,11 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 			DoModelFileCheck(PathToModel, Content);
 
 			// Now load the shadow model.
-			newModel.ModelShadow = LoadShadowModel(PathToModel, Content, Engine.Assets.Shaders.CascadeShadowShader);
+			newModel.ModelShadow = LoadShadowModel(PathToModel, Content, ShadowEffect);
 
 
 			// Now load the utility model.
-			newModel.ModelUtility = LoadUtilityModel(PathToModel, Content, Engine.Assets.Shaders.UtilityShader);
+			newModel.ModelUtility = LoadUtilityModel(PathToModel, Content, UtilityEffect);
 
 			// Add a tag of the Path to the model for debuging
 			newModel.ModelMain.Tag = PathToModel;

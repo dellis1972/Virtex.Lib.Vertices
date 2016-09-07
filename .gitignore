@@ -5,10 +5,14 @@
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
-*.d
-*.o.d
-*.cpp.o.d
+*.sln.docstates
+
+*.d
+
+*.o.d
+
+*.DS_Store
+
 vxpad/bin/
 
 # User-specific files (MonoDevelop/Xamarin Studio)

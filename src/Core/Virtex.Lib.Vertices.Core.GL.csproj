@@ -569,6 +569,9 @@
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Distorter\DistortScene.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Models\utils\unit_arrow\unit_arrow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

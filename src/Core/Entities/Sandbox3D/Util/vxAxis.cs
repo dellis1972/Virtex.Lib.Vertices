@@ -46,7 +46,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         public vxAxis(vxEngine vxEngine, vxCursor3D ParentCursor, AxisDirections AxisDirections)
             : base(vxEngine, null, Vector3.Zero)
         {
-            model = vxEngine.Assets.Models.UnitArrow;
+            model = vxEngine.Assets.Models.UnitArrow.ModelMain;
             this.ParentCursor = ParentCursor;
             DoShadowMap = false;
             HitBox = new Box(Vector3.Zero, 2, 2, 25);
@@ -167,9 +167,11 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
                 if(vxEngine.InputManager.IsNewMouseButtonPress(MouseButtons.LeftButton))
                     StartPosition = ParentCursor.Position;
                 
+
+
                 ParentCursor.Position += MovementAxis * (
-                    vxEngine.InputManager.MouseState.X - vxEngine.InputManager.PreviousMouseState.X
-                    - vxEngine.InputManager.MouseState.Y + vxEngine.InputManager.PreviousMouseState.Y) * ParentCursor.ZoomFactor / (ParentCursor.scale*40);
+                    vxEngine.InputManager.Cursor.X - vxEngine.InputManager.PreviousCursor.X
+                    - vxEngine.InputManager.Cursor.Y + vxEngine.InputManager.PreviousCursor.Y) * ParentCursor.ZoomFactor / (ParentCursor.scale*40);
                 //DebugShapeRenderer.AddBoundingBox(HitBox.CollisionInformation.BoundingBox, Color.LimeGreen);
             }
             

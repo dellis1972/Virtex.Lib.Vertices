@@ -776,7 +776,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                         effect.Parameters["View"].SetValue(Camera.GetReflectionView(surfacePlane));
                         effect.Parameters["Projection"].SetValue(Camera.Projection);
                         effect.Parameters["ClipPlane0"].SetValue(new Vector4(surfacePlane.Normal, surfacePlane.D));
-                        vxConsole.WriteToInGameDebug(surfacePlane);
+                        //vxConsole.WriteToInGameDebug(surfacePlane);
                         //effect.Parameters["ClipPlane0"].SetValue(new Vector4(surfacePlane.Normal.X, surfacePlane.Normal.Z, surfacePlane.Normal.Y, surfacePlane.D));
                     }
 

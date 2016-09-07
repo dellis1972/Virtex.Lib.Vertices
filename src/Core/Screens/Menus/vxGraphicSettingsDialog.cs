@@ -138,7 +138,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
                     vxEngine.Profile.Settings.Graphics.Bool_VSync = false;
 
                 vxConsole.WriteLine("Setting VSync to: " + vxEngine.Profile.Settings.Graphics.Bool_VSync);
-
+				vxEngine.Game.IsFixedTimeStep = vxEngine.Profile.Settings.Graphics.Bool_VSync;
 				vxEngine.GraphicsSettingsManager.GraphicsDeviceManager.SynchronizeWithVerticalRetrace = vxEngine.Profile.Settings.Graphics.Bool_VSync;
             };
 

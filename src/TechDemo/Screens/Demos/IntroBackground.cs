@@ -86,8 +86,8 @@ namespace Virtex.vxGame.VerticesTechDemo
 				vxEngine.LoadGlobalContent(vxEngine.Game.Content);
 
 			InitialiseLevel();
-            //d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), new Vector3(20, 0, 0));
-            d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/castle/mdl_castle"), new Vector3(20, 0, 0));
+            d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), new Vector3(20, 0, 0));
+            //d = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/castle/mdl_castle"), new Vector3(20, 0, 0));
             //d.NormalMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_nm");
             //d.SpecularMap = vxEngine.Game.Content.Load<Texture2D>("Models/courtyard/crtyrd_bricks_sm");
             d.SpecularIntensity = 1;

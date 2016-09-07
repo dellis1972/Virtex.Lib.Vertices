@@ -778,7 +778,7 @@ namespace Virtex.Lib.Vrtc.Core
 
 						screen.Draw (gameTime);
 					}
-
+			vxConsole.WriteToInGameDebug("fs:"+this.Game.IsFixedTimeStep);
 					_inputManager.Draw ();
 #if VRTC_INCLDLIB_NET && DEBUG
             DrawNetworkGameConnectionInfo();
