@@ -273,7 +273,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             //Texture2D Texture_Splitter = vxEngine.EngineContentManager.Load<Texture2D>("Textures/sandbox/toolbar_icons/Toolbar_Seperator");
 
             GUIManager.Add(toolbar);
-
+            
             //Test Buttons
             vxToolbarButton RunGameToolbarItem = new vxToolbarButton(vxEngine, vxEngine.EngineContentManager, "Textures/sandbox/tlbr/test/test_run");
             //vxToolbarButton StopGameToolbarItem = new vxToolbarButton(vxEngine, vxEngine.EngineContentManager, "Textures/sandbox/tlbr/test/test_stop");

@@ -366,7 +366,7 @@ namespace Virtex.Lib.Vrtc.Graphics
             { 2.5f, 0.000009f },
             { 2.5f, 0.00009f },
             { 2.5f, 0.0009f },
-            { 2.5f, 0.009f }
+            { 2.5f, 0.0009f }
         };
 
 
@@ -419,7 +419,7 @@ namespace Virtex.Lib.Vrtc.Graphics
         }
         private int _shadowMapSize = 512;
 
-        float size = 256;
+        float size = 512;
 
 
 
