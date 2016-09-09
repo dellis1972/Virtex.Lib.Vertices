@@ -110,7 +110,7 @@ namespace Virtex.vxGame.VerticesTechDemo
             //Set Entity Orientation
             if (UseEntityMover)
             {
-                entityMover.TargetPosition = vxSmooth.SmoothVector(entity.WorldTransform.Translation,
+                entityMover.TargetPosition = vxMathHelper.Smooth(entity.WorldTransform.Translation,
                     RequestedPosition, 8);
                 
                 World = Matrix.Identity * Matrix.CreateScale(1);

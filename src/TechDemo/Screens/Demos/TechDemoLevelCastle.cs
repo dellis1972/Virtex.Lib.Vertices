@@ -36,7 +36,7 @@ namespace Virtex.vxGame.VerticesTechDemo
     /// the arena, the bsp tree, renderer, GUI (Overlay) and player. It contains the main 
     /// game loop, and provides keyboard and mouse input.
     /// </summary>
-    public class TechDemoSponza : vxSandboxGamePlay
+    public class TechDemoLevelCastle : vxSandboxGamePlay
     {
 		
         //
@@ -68,7 +68,7 @@ namespace Virtex.vxGame.VerticesTechDemo
 
         #endregion
 		
-        public TechDemoSponza()
+        public TechDemoLevelCastle()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -115,6 +115,8 @@ namespace Virtex.vxGame.VerticesTechDemo
             #endregion
 
             DoFog = true;
+			FogNear = 20;
+			FogFar = Camera.FarPlane / 4;
 
 			Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/courtyard/td_courtyard"), Vector3.Zero);
 

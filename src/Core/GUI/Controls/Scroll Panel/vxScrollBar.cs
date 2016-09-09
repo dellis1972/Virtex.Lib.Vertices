@@ -8,84 +8,119 @@ using Virtex.Lib.Vrtc.Core;
 
 namespace Virtex.Lib.Vrtc.GUI.Controls
 {
-    public class vxScrollBar : vxGUIBaseItem
-    {
-        public vxScrollPanel ParentPanel;
-        public int BarWidth = 12;
+	/// <summary>
+	/// Scroll bar gui item which controls the scroll position of a <see cref="T:Virtex.Lib.Vrtc.GUI.Controls.vxScrollPanel"/>.
+	/// </summary>
+	public class vxScrollBar : vxGUIBaseItem
+	{
+		/// <summary>
+		/// The parent panel.
+		/// </summary>
+		public vxScrollPanel ParentPanel;
 
-        int TotalHeight = 0;
-        private int scrollLength = 0;
-        public int ScrollLength
-        {
-            get { return scrollLength; }
-            set { scrollLength = value; SetBounds(); }
-        }
-        int MaxTravel = 0;
+		/// <summary>
+		/// The width of the bar.
+		/// </summary>
+		public int BarWidth = 12;
 
-        private int scrollBarHeight = 0;
-        public int ScrollBarHeight
-        {
-            get { return scrollBarHeight; }
-            set { scrollBarHeight = value; }
-        }
+		int TotalHeight = 0;
+		private int scrollLength = 0;
+		public int ScrollLength
+		{
+			get { return scrollLength; }
+			set { scrollLength = value; SetBounds(); }
+		}
+		int MaxTravel = 0;
 
-        int travelPosition = 0;
-        public int TravelPosition
-        {
-            get { return travelPosition; }
-            set { travelPosition = value; SetBounds(); }
-        }
+		private int scrollBarHeight = 0;
+		public int ScrollBarHeight
+		{
+			get { return scrollBarHeight; }
+			set { scrollBarHeight = value; }
+		}
 
-        public float Percentage
-        {
-            get 
-            {
-                if (MaxTravel < 1)
-                    return 0;
-                else
-                    return (float)(TravelPosition) / ((float)(MaxTravel)); 
-            }
-        }
+		int travelPosition = 0;
+		public int TravelPosition
+		{
+			get { return travelPosition; }
+			set { travelPosition = value; SetBounds(); }
+		}
 
-        //public Vector2 BasePosition;
-        int StartMousePosition;
+		public float Percentage
+		{
+			get
+			{
+				if (MaxTravel < 1)
+					return 0;
+				else
+					return (float)(TravelPosition) / ((float)(MaxTravel));
+			}
+		}
 
-        bool IsScrolling = false;
-        int ScrollWheel_Previous;
+		/// <summary>
+		/// The start mouse position when the mouse is first clicked.
+		/// </summary>
+		int StartMousePosition;
+
+		/// <summary>
+		/// Is the panel scrolling.
+		/// </summary>
+		bool IsScrolling = false;
+
+		/// <summary>
+		/// Previous scroll wheel value.
+		/// </summary>
+		int ScrollWheel_Previous;
 
 
-        public vxScrollBar(vxScrollPanel Parent, Vector2 Position, int TotalHeight, int ViewHeight)
-        {
-            this.ParentPanel = Parent;
-            this.Position = Position;
-            //BasePosition = Position;
+#if VRTC_PLTFRM_DROID
+		bool isFirstTouchDown = true;
+#endif
 
-            this.TotalHeight = TotalHeight;
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:Virtex.Lib.Vrtc.GUI.Controls.vxScrollBar"/> class.
+		/// </summary>
+		/// <param name="Parent">Parent.</param>
+		/// <param name="Position">Position.</param>
+		/// <param name="TotalHeight">Total height.</param>
+		/// <param name="ViewHeight">View height.</param>
+		public vxScrollBar(vxScrollPanel Parent, Vector2 Position, int TotalHeight, int ViewHeight)
+		{
+			//Get Parent Panel
+			ParentPanel = Parent;
 
-            scrollLength = ViewHeight;
+			//Set Position
+			this.Position = Position;
 
-            SetBounds();
-        }
-        
-        void SetBounds()
-        {
-            ScrollBarHeight = (this.TotalHeight - Padding * 2) * (this.ParentPanel.Height 
-                - this.ParentPanel.Padding * 2) / this.ScrollLength;
+			//Set Total Height
+			this.TotalHeight = TotalHeight;
 
-            MaxTravel = this.TotalHeight - ScrollBarHeight - Padding * 4;
+			// Set the View Length
+			scrollLength = ViewHeight;
 
-            BoundingRectangle = new Rectangle((int)Position.X,
-                (int)Position.Y + TravelPosition,
-                BarWidth, ScrollBarHeight);
-        }
-        bool isFirstTouchDown = true;
-        public override void Update(vxEngine vxEngine)
-        {
-            MouseState mouseState = vxEngine.InputManager.MouseState;
+			SetBounds();
+		}
 
-            BoundingRectangle = new Rectangle((int)Position.X,
-    (int)Position.Y + TravelPosition,
-    BarWidth, ScrollBarHeight);
+		void SetBounds()
+		{
+			ScrollBarHeight = (TotalHeight - Padding * 2) * (ParentPanel.Height
+				- ParentPanel.Padding * 2) / ScrollLength;
+
+			MaxTravel = this.TotalHeight - ScrollBarHeight - Padding * 4;
+
+			BoundingRectangle = new Rectangle((int)Position.X,
+				(int)Position.Y + TravelPosition,
+				BarWidth, ScrollBarHeight);
+		}
+
+
+		public override void Update(vxEngine vxEngine)
+		{
+			MouseState mouseState = vxEngine.InputManager.MouseState;
+
+			BoundingRectangle = new Rectangle((int)Position.X,
+	(int)Position.Y + TravelPosition,
+	BarWidth, ScrollBarHeight);
 
 #if VRTC_PLTFRM_DROID
             if (HasFocus)
@@ -104,47 +139,50 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
                 IsScrolling = false;
             }
 #else
-            if (HasFocus)
-            {
-                if (mouseState.LeftButton == ButtonState.Pressed &&
-                    PreviousMouseState.LeftButton == ButtonState.Released)
-                {
-                    StartMousePosition = mouseState.Y;
-                    IsScrolling = true;
-                }
-            }
+			if (HasFocus)
+			{
+				if (mouseState.LeftButton == ButtonState.Pressed &&
+					PreviousMouseState.LeftButton == ButtonState.Released)
+				{
+					StartMousePosition = mouseState.Y;
+					IsScrolling = true;
+				}
+			}
 
-            if (mouseState.LeftButton == ButtonState.Released)
-                IsScrolling = false;
+			if (mouseState.LeftButton == ButtonState.Released)
+				IsScrolling = false;
 #endif
 
-            if (IsScrolling)
-                TravelPosition = (int)vxEngine.InputManager.Cursor.Y - StartMousePosition;
+			if (IsScrolling)
+				TravelPosition += (int)vxEngine.InputManager.Cursor.Y - (int)vxEngine.InputManager.PreviousCursor.Y;
 
-            if (HasFocus || ParentPanel.HasFocus)
-            {
-                TravelPosition += (mouseState.ScrollWheelValue - ScrollWheel_Previous) / -10;
+			if (HasFocus || ParentPanel.HasFocus)
+			{
+				TravelPosition += (mouseState.ScrollWheelValue - ScrollWheel_Previous) / -10;
 
-                TravelPosition = Math.Max(Math.Min(TravelPosition, MaxTravel), 0);
-            }
-            base.Update(vxEngine);
+				//TravelPosition = Math.Max(Math.Min(TravelPosition, MaxTravel), 0);
+			}
 
-            ScrollWheel_Previous = mouseState.ScrollWheelValue;
-        }
+			TravelPosition = MathHelper.Clamp(TravelPosition, 0, MaxTravel);
 
-        public override void Draw(vxEngine vxEngine)
-        {
-            vxEngine.SpriteBatch.Begin();
-            this.DrawByOwner(vxEngine);
-            vxEngine.SpriteBatch.End();
-        }
+			base.Update(vxEngine);
 
-        public override void DrawByOwner(vxEngine vxEngine)
-        {
-            base.DrawByOwner(vxEngine);
-            Rectangle rect = new Rectangle(BoundingRectangle.X, 0, BoundingRectangle.Width, 10000);
-            vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, rect, Color.Black*0.5f);
-            vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Colour);
-        }
-    }
+			ScrollWheel_Previous = mouseState.ScrollWheelValue;
+		}
+
+		public override void Draw(vxEngine vxEngine)
+		{
+			vxEngine.SpriteBatch.Begin();
+			DrawByOwner(vxEngine);
+			vxEngine.SpriteBatch.End();
+		}
+
+		public override void DrawByOwner(vxEngine vxEngine)
+		{
+			base.DrawByOwner(vxEngine);
+			var rect = new Rectangle(BoundingRectangle.X, 0, BoundingRectangle.Width, 10000);
+			vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, rect, Color.Black * 0.5f);
+			vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BoundingRectangle, Colour);
+		}
+	}
 }

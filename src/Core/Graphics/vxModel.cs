@@ -67,6 +67,16 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// </summary>
 		public List<vxTexture2D> DiffuseTextureCollection = new List<vxTexture2D>();
 
+		/// <summary>
+		/// This List holds all Normal Map Texture Packs for this model.
+		/// </summary>
+		public List<vxTexture2D> NormalMaps = new List<vxTexture2D>();
+
+		/// <summary>
+		/// This List holds all Specular Map Texture Packs for this model.
+		/// </summary>
+		public List<vxTexture2D> SpecularMaps = new List<vxTexture2D>();
+
 		#endregion
 
 		#region Null Texture References
@@ -81,6 +91,29 @@ namespace Virtex.Lib.Vrtc.Graphics
 					return Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_diffuse");
 			}
 		}
+
+		public Texture2D NullNormalMap
+		{
+			get
+			{
+				if (Engine.Assets != null)
+					return Engine.Assets.Textures.Texture_NormalMap_Null;
+				else
+					return Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_normal");
+			}
+		}
+
+		public Texture2D NullSpecularMap
+		{
+			get
+			{
+				if (Engine.Assets != null)
+					return Engine.Assets.Textures.Texture_SpecularMap_Null;
+				else
+					return Engine.EngineContentManager.Load<Texture2D>("Textures/nullTextures/null_specular");
+			}
+		}
+
 		#endregion
 
 		/// <summary>
@@ -96,7 +129,8 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// <summary>
 		/// Loads the texture packs for each mesh.
 		/// </summary>
-		/// <param name="PathToModel">Path to original model file.</param>
+		/// <param name="Content">Content Manager to use if different than Game's Content Manager.</param>
+		/// <param name="PathToModel">Path to model.</param>
 		public void LoadTextures(ContentManager Content, string PathToModel)
 		{
 			// Load the Textures for hte Model Main.
@@ -104,25 +138,61 @@ namespace Virtex.Lib.Vrtc.Graphics
 			{
 				//First Create The Path to the Diffuse Texture
 				string pathToDiffTexture = vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds";
+				string pathToNrmMpTexture = vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm";
+				string pathToSpecMpTexture = vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm";
 
 				Texture2D diftexture;
+				Texture2D nrmtexture;
+				Texture2D spctexture;
 
-				//First try to find the corresponding diffuse texture for this mesh
+
+				// Load/Create Diffuse Texture Pack
+				//**************************************************************************************************************
+
+				//First try to find the corresponding diffuse texture for this mesh, 
+				//if it isn't found, then set the null texture as a fall back
 				if (File.Exists(Content.RootDirectory + "/" + pathToDiffTexture + ".xnb"))
-				{
 					diftexture = Content.Load<Texture2D>(pathToDiffTexture);
-				}
-
-				// If the mesh diffuse texture isn't found, then set the null texture as a fall back
 				else
-				{
-					vxConsole.WriteWarning(this.ToString(), "DEFAULT DEIFFUSE TEXTURE NOT FOUND FOR MODEL :" + PathToModel);
 					diftexture = NullDiffuseTexture;
-				}
 
 
 				//Now Set the Diffuse Texture Pack
-				DiffuseTextureCollection.Add(new vxTexture2D(this.Engine, diftexture, Content.RootDirectory + "/" + pathToDiffTexture));
+				DiffuseTextureCollection.Add(new vxTexture2D(Engine, diftexture, Content.RootDirectory + "/" + pathToDiffTexture));
+
+
+
+
+
+				// Load/Create Normal Map Texture Pack
+				//**************************************************************************************************************
+
+				//First try to find the corresponding normal map texture for this mesh, 
+				//if it isn't found, then set the null texture as a fall back
+				if (File.Exists(Content.RootDirectory + "/" + pathToNrmMpTexture + ".xnb"))
+					nrmtexture = Content.Load<Texture2D>(pathToNrmMpTexture);
+				else
+					nrmtexture = NullNormalMap;
+
+				// Now Load/Create the Texture pack based off the path
+				NormalMaps.Add(new vxTexture2D(Engine, nrmtexture, Content.RootDirectory + "/" + pathToNrmMpTexture));
+
+
+
+
+
+				// Load/Create Specular Map Texture Pack
+				//**************************************************************************************************************
+
+				//First try to find the corresponding normal map texture for this mesh, 
+				//if it isn't found, then set the null texture as a fall back
+				if (File.Exists(Content.RootDirectory + "/" + pathToSpecMpTexture + ".xnb"))
+					spctexture = Content.Load<Texture2D>(pathToSpecMpTexture);
+				else
+					spctexture = NullSpecularMap;
+
+				// Now Load/Create the Texture pack based off the path
+				SpecularMaps.Add(new vxTexture2D(Engine, spctexture, Content.RootDirectory + "/" + pathToSpecMpTexture));
 
 			}
 		}
@@ -132,6 +202,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 
 			int index = 0;
 
+
 			//Loop through Main Model and set set texture from pack
 			foreach (ModelMesh mesh in ModelMain.Meshes)
 			{
@@ -139,19 +210,73 @@ namespace Virtex.Lib.Vrtc.Graphics
 				{
 					foreach (Effect effect in mesh.Effects)
 					{
-						//Set Texture Qualities
+						//Set Texture Pack Qualities
 						DiffuseTextureCollection[index].Quality = quality;
+						NormalMaps[index].Quality = quality;
+						SpecularMaps[index].Quality = quality;
+
 
 						// Set Texture with Specified Quality
 						if (effect.Parameters["Texture"] != null)
 							effect.Parameters["Texture"].SetValue(DiffuseTextureCollection[index].Texture);
+
+						// Set Normal Map with Specified Quality
+						if (effect.Parameters["NormalMap"] != null)
+							effect.Parameters["NormalMap"].SetValue(NormalMaps[index].Texture);
+
+						// Set Specular Map with Specified Quality
+						if (effect.Parameters["SpecularMap"] != null)
+							effect.Parameters["SpecularMap"].SetValue(SpecularMaps[index].Texture);
 					}
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine(this.ModelMain.Tag);
+
+					Console.WriteLine("-----------------------------------------------");
+					Console.WriteLine("Error Setting Texture for Main Model");
+					Console.WriteLine(ModelMain.Tag);
+					Console.WriteLine("Index: " + index);
 					Console.WriteLine(ex.Message);
-					Console.WriteLine("-------");
+					Console.WriteLine("-----------------------------------------------");
+				}
+
+				index++;
+			}
+
+			index = 0;
+			foreach (ModelMesh mesh in ModelUtility.Meshes)
+			{
+				try
+				{
+					foreach (Effect effect in mesh.Effects)
+					{
+						//Set Texture Pack Qualities
+						DiffuseTextureCollection[index].Quality = quality;
+						NormalMaps[index].Quality = quality;
+						SpecularMaps[index].Quality = quality;
+
+
+						// Set Texture with Specified Quality
+						if (effect.Parameters["Texture"] != null)
+							effect.Parameters["Texture"].SetValue(DiffuseTextureCollection[index].Texture);
+
+						// Set Normal Map with Specified Quality
+						if (effect.Parameters["NormalMap"] != null)
+							effect.Parameters["NormalMap"].SetValue(NormalMaps[index].Texture);
+
+						// Set Specular Map with Specified Quality
+						if (effect.Parameters["SpecularMap"] != null)
+							effect.Parameters["SpecularMap"].SetValue(SpecularMaps[index].Texture);
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("-----------------------------------------------");
+					Console.WriteLine("Error Setting Texture for Utility Model");
+					Console.WriteLine(ModelUtility.Tag);
+					Console.WriteLine("Index: " + index);
+					Console.WriteLine(ex.Message);
+					Console.WriteLine("-----------------------------------------------");
 				}
 
 				index++;

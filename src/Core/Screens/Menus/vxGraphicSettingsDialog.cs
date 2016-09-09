@@ -15,8 +15,7 @@ using Virtex.Lib.Vrtc.Graphics;
 namespace Virtex.Lib.Vrtc.GUI.Dialogs
 {
     /// <summary>
-    /// A popup message box screen, used to display "are you sure?"
-    /// confirmation messages.
+    /// The graphic settings dialog.
     /// </summary>
     public class vxGraphicSettingsDialog : vxDialogBase
     {
@@ -143,6 +142,8 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             };
 
 
+#if VIRTICES_3D
+
 			// Texture Qaulity
 			/*****************************************************************************************************/
 			vxSettingsGUIItem TextureQualityItem = new vxSettingsGUIItem(
@@ -167,7 +168,6 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 			};
 
 
-			#if VIRTICES_3D
 
             //Shadows
             /*****************************************************************************************************/

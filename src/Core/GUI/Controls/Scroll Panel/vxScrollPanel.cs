@@ -35,7 +35,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
         /// <summary>
         /// The alpha.
         /// </summary>
-        public float Alpha = 0.5f;
+        //public float Alpha = 0.5f;
 
         /// <summary>
         /// The width of the scroll bar.
@@ -82,20 +82,22 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 		/// </summary>
 		public Color BackgroundColour = Color.Black;
 
-        /// <summary>
-        /// Scroll Panael to Hold a Grid or Detail list of Items
-        /// </summary>
-        /// <param name="Position"></param>
-        /// <param name="Width"></param>
-        /// <param name="Height"></param>
-        public vxScrollPanel(Vector2 Position, int Width, int Height) :
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:Virtex.Lib.Vrtc.GUI.Controls.vxScrollPanel"/> class which
+		/// can hold a Grid or Detail list of Items.
+		/// </summary>
+		/// <param name="Position">Position.</param>
+		/// <param name="Width">Width.</param>
+		/// <param name="Height">Height.</param>
+		public vxScrollPanel(Vector2 Position, int Width, int Height) :
 		this(Position, Width, Height, 64)
         {
             
         }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Virtex.Lib.Vrtc.GUI.Controls.vxScrollPanel"/> class.
+		/// Initializes a new instance of the <see cref="T:Virtex.Lib.Vrtc.GUI.Controls.vxScrollPanel"/> class which
+		/// can hold a Grid or Detail list of Items.
 		/// </summary>
 		/// <param name="Position">Position.</param>
 		/// <param name="Width">Width.</param>

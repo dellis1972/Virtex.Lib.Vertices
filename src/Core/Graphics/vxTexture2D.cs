@@ -111,6 +111,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 		public vxTexture2D(vxEngine engine, string path) :
 		this(engine, engine.Game.Content.Load<Texture2D>(path), engine.Game.Content.RootDirectory +"/" + path)
 		{
+			
 		}
 
 		/// <summary>
@@ -122,7 +123,6 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// <param name="path">Path.</param>
 		public vxTexture2D(vxEngine engine, Texture2D texture, string path)
 		{
-
 			// Get the engine
 			Engine = engine;
 

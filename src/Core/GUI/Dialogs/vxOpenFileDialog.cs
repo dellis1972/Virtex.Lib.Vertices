@@ -192,7 +192,7 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
             base.Draw(gameTime);
             spriteBatch.Begin();
 
-			LoadingAlpha = vxSmooth.SmoothFloat(LoadingAlpha, LoadingAlpha_Req, 8);
+			LoadingAlpha = vxMathHelper.Smooth(LoadingAlpha, LoadingAlpha_Req, 8);
 
             WaitingText = "<Please Wait/>";
             WaitingText += new string('.', (int)((periodCount/2) % 5));

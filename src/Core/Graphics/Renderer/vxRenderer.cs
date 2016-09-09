@@ -331,11 +331,10 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public Matrix[] ShadowSplitProjectionsWithTiling;
 
-        /// <summary>
-        /// The shadow split tile bounds.
-        /// </summary>
-        public Vector4[] ShadowSplitTileBounds;
-
+		/// <summary>
+		/// The shadow split tile bounds.
+		/// </summary>
+		public Vector4[] ShadowSplitTileBounds;
 
         /// <summary>
         /// The view frustum splits.

@@ -69,7 +69,6 @@ namespace Virtex.Lib.Vrtc.Core.Settings
 							//Set the New Resolution
 							Settings.Graphics.Int_Resolution_X = mode.Width;
 							Settings.Graphics.Int_Resolution_Y = mode.Height;
-							Console.WriteLine ("res: {0}x{1}",mode.Width, mode.Height);
 						}
                     }
                 }

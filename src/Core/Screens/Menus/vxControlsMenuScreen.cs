@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Virtex.Lib.Vrtc.Core.Input.Events;
 using Virtex.Lib.Vrtc.Core;
 using Virtex.Lib.Vrtc.GUI.Controls;
+using Virtex.Lib.Vrtc.GUI.Dialogs;
 
 
 #endregion
@@ -38,18 +39,24 @@ namespace Virtex.Lib.Vrtc.Screens.Menus
         public override void LoadContent()
         {
             base.LoadContent();
-			//            MouseInvertedMenuEntry = new vxSliderMenuEntry("mouse:", 5, 150, 50);
-			//            MouseInvertedMenuEntry.ItemList.Add("normal");
-			//            MouseInvertedMenuEntry.ItemList.Add("inverted");
 
-			vxMenuEntry backMenuEntry = new vxMenuEntry(this, "back");
+			var keyboardMenuEntry = new vxMenuEntry(this, "Keyboard Settings");
+			var gamepadMenuEntry = new vxMenuEntry(this, "Gamepad Settings");
+			var mouseMenuEntry = new vxMenuEntry(this, "Mouse Settings");
+
+			var backMenuEntry = new vxMenuEntry(this, "back");
 
 			//Accept and Cancel
+			keyboardMenuEntry.Selected += delegate {
+				vxEngine.AddScreen(new vxKeyboardSettingsDialog(), PlayerIndex.One);	
+			};
 			backMenuEntry.Selected += new System.EventHandler<PlayerIndexEventArgs>(backMenuEntry_Selected);
 
 
 			// Add entries to the menu.
-			//            MenuEntries.Add(MouseInvertedMenuEntry);
+			MenuEntries.Add(keyboardMenuEntry);
+			MenuEntries.Add(gamepadMenuEntry);
+			MenuEntries.Add(mouseMenuEntry);
 			MenuEntries.Add(backMenuEntry);
 
             //Set Invert

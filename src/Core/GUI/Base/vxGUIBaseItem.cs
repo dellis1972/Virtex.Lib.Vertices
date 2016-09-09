@@ -673,7 +673,7 @@ namespace Virtex.Lib.Vrtc.GUI
             {
                 spriteFont = vxEngine.vxGUITheme.Font;
             }
-            hoverAlpha = vxSmooth.SmoothFloat(hoverAlpha, hoverAlphaReq, HoverAlphaDeltaSpeed);
+            hoverAlpha = vxMathHelper.Smooth(hoverAlpha, hoverAlphaReq, HoverAlphaDeltaSpeed);
         }
 
         /// <summary>
@@ -687,7 +687,7 @@ namespace Virtex.Lib.Vrtc.GUI
             {
                 spriteFont = vxEngine.vxGUITheme.Font;
             }
-            hoverAlpha = vxSmooth.SmoothFloat(hoverAlpha, hoverAlphaReq, HoverAlphaDeltaSpeed);
+            hoverAlpha = vxMathHelper.Smooth(hoverAlpha, hoverAlphaReq, HoverAlphaDeltaSpeed);
         }
 
         public virtual void DrawBorder(vxEngine vxEngine)

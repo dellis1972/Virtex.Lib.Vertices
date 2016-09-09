@@ -250,7 +250,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 			else if (HasFocus == false)
 				Position_Requested = Position_Original;
 
-			Position = vxSmooth.Smooth2DVector (Position, Position_Requested, 6);
+			Position = vxMathHelper.Smooth (Position, Position_Requested, 6);
 
 			//Then Set Tab Position
 			TabPosition = this.Position + TabPositionOffset;

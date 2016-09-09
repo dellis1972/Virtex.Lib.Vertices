@@ -375,7 +375,7 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
 
                     mouseDelta += vxEngine.InputManager.MouseState.ScrollWheelValue - prevMsScrl;
                     mouseDelta = Math.Max(mouseDelta, 15);
-				zoom = vxSmooth.SmoothFloat(zoom, mouseDelta, 4);
+				zoom = vxMathHelper.Smooth(zoom, mouseDelta, 4);
 
                 WorldMatrix = Matrix.CreateTranslation(new Vector3(0, 0, (zoom) / 50));
 

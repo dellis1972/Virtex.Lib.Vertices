@@ -118,5 +118,17 @@ namespace Virtex.Lib.Vrtc.GUI
 
 			Alpha = 1;
 		}
+
+
+		/// <summary>
+		/// Many sizes and positions are set based off of screensize,
+		/// although this can change if a user changes the resolution 
+		/// settings. Therefore, this SetBounds() method will be where the
+		/// sizes will be set.
+		/// </summary>
+		public virtual void SetBounds()
+		{
+
+		}
 	}
 }

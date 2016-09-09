@@ -122,13 +122,21 @@ namespace Virtex.Lib.Vrtc.GUI.GuiArtProvider
 			BackgroundImage = vxEngine.Assets.Textures.Blank;
 			TitleBackgroundImage = vxEngine.Assets.Textures.Blank;
 
-			viewport = vxEngine.GraphicsDevice.Viewport;
 
 
 			textTitleSize = engine.Font.MeasureString("A");
 
+			SetBounds();
+		}
+
+		public override void SetBounds()
+		{
+			base.SetBounds();
+
+			viewport = vxEngine.GraphicsDevice.Viewport;
+
 			TitleBoundingRectangle = new Rectangle(
-				(int)Padding.X, 
+				(int)Padding.X,
 				(int)Padding.Y,
 				(int)(viewport.Width - Padding.X * 2),
 				(int)(textTitleSize.Y + Padding.Y * 2));
@@ -138,21 +146,21 @@ namespace Virtex.Lib.Vrtc.GUI.GuiArtProvider
 				(int)Padding.Y - BorderWidth,
 				TitleBoundingRectangle.Width + BorderWidth * 2,
 				TitleBoundingRectangle.Height + BorderWidth * 2);
-			
-			textTitlePosition = new Vector2 (
+
+			textTitlePosition = new Vector2(
 				TitleBoundingRectangle.X,
 				TitleBoundingRectangle.Y + Padding.Y);
 
-			BoundingGUIRectangle = new Rectangle (
-				(int)(textTitlePosition.X), 
+			BoundingGUIRectangle = new Rectangle(
+				(int)(textTitlePosition.X),
 				(int)(textTitlePosition.Y + TitleBoundingRectangle.Height),
-				(int)(viewport.Width - Padding.X * 2), 
+				(int)(viewport.Width - Padding.X * 2),
 				(int)(viewport.Height - Padding.Y - TitleBoundingRectangle.Height - textTitlePosition.Y));
 
 			FormBackground = new Rectangle(
-				(int)(BoundingGUIRectangle.X - Margin.X), 
+				(int)(BoundingGUIRectangle.X - Margin.X),
 				(int)(BoundingGUIRectangle.Y - Margin.Y),
-				(int)(BoundingGUIRectangle.Width + Margin.X + Margin.Z), 
+				(int)(BoundingGUIRectangle.Width + Margin.X + Margin.Z),
 				(int)(BoundingGUIRectangle.Height + Margin.Y + Margin.W));
 		}
 

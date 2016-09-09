@@ -76,7 +76,7 @@ namespace Virtex.vxGame.VerticesTechDemo
         void spoznzaMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             vxLoadingScreen.Load(vxEngine, true, e.PlayerIndex,
-                 new TechDemoSponza());
+                 new TechDemoLevelCastle());
         }
 
 
@@ -86,7 +86,7 @@ namespace Virtex.vxGame.VerticesTechDemo
         void fpsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             vxLoadingScreen.Load(vxEngine, true, e.PlayerIndex,
-                               new FPSGamePlay());
+                               new TechDemoLevelFPSDemo());
         }
 
 

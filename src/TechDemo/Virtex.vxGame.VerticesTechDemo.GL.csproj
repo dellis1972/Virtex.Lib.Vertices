@@ -54,17 +54,18 @@
     <Compile Include="Screens\BackgroundScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
     <Compile Include="Screens\ModelViewerScreen.cs" />
-    <Compile Include="Screens\Demos\DemoSelectScreen.cs" />
-    <Compile Include="Screens\Demos\FPSGamePlay.cs" />
-    <Compile Include="Screens\Demos\TechDemoSponza.cs" />
+    <Compile Include="Screens\Demos\TechDemoLevelFPSDemo.cs" />
+    <Compile Include="Screens\Demos\TechDemoLevelCastle.cs" />
     <Compile Include="Entities\ConcreteCube.cs" />
     <Compile Include="Entities\Teapot.cs" />
     <Compile Include="Entities\WoodenCrate.cs" />
     <Compile Include="Entities\ModelObjs.cs" />
     <Compile Include="Entities\IndexedPrimTest.cs" />
-    <Compile Include="Screens\Demos\IntroBackground.cs" />
     <Compile Include="Entities\IndexedCubeTest.cs" />
     <Compile Include="Entities\Envrio.cs" />
+    <Compile Include="Screens\Demos\TechDemoLevelVoxelTest.cs" />
+    <Compile Include="Screens\IntroBackground.cs" />
+    <Compile Include="Screens\DemoSelectScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

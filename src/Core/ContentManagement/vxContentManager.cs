@@ -79,6 +79,42 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 
 #if !VRTC_PLTFRM_DROID
+
+		/// <summary>
+		/// Load a Model and apply the Main Shader Effect to it.
+		/// </summary>
+		/// <param name="Path">The Model File Path</param>
+		/// <returns>A Model Object With the Main Shader Applied</returns>
+		public vxModel LoadModel(string Path)
+		{
+			return LoadModel(Path, this.Engine.Game.Content);
+		}
+
+		/// <summary>
+		/// Load a Model and apply the Main Shader Effect to it.
+		/// </summary>
+		/// <param name="Path">The Model File Path</param>
+		/// <param name="Content">The Content Manager to load the Model with</param>
+		/// <returns>A Model Object With the Main Shader Applied</returns>
+		public vxModel LoadModel(string Path, ContentManager Content)
+		{
+			return LoadModel(Path, Content, Engine.Assets.Shaders.MainShader);
+		}
+
+
+		/// <summary>
+		/// Load a Model and apply a Custom Shader Effect to it.
+		/// </summary>
+		/// <returns>The model.</returns>
+		/// <param name="Path">Path.</param>
+		/// <param name="Content">Content.</param>
+		/// <param name="EffectToSet">Effect to set.</param>
+		public vxModel LoadModel(string Path, ContentManager Content, Effect EffectToSet)
+		{
+			return LoadModel(Path, Content, EffectToSet, Engine.Assets.Shaders.CascadeShadowShader, Engine.Assets.Shaders.UtilityShader);
+		}
+
+
 		/// <summary>
 		/// This Loads Models at Run time performing a number of functions. See remarks for full details.
 		/// </summary>
@@ -136,6 +172,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 			// Now Apply and Initialise the New Effect on the MainModel Object using the speceified Effect.
 			//
 
+
 			// Table mapping the original effects to our replacement versions.
 			Dictionary<Effect, Effect> effectMapping = new Dictionary<Effect, Effect>();
 
@@ -156,39 +193,38 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 						// time we want to set a different texture into it.
 						Effect newEffect = EffectToSet.Clone();
 
+						//First Load in the Texture packs based off of the mesh name
+						newModel.LoadTextures(Content, PathToModel);
 
+
+						/*
 						//Main Diffuse Texture
 						if (newEffect.Parameters["Texture"] != null)
 						{
 							//First Create The Path to the Diffuse Texture
-							string pathToDiffTexture = vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_dds";
-
-							//Next, Create a New texture variable
 							newModel.LoadTextures(Content, PathToModel);
-							//newEffect.Parameters["Texture"].SetValue(newModel.DiffuseTextureCollection);
-
 						}
-
+						/*
 						// Normal Map
 						if (newEffect.Parameters["NormalMap"] != null &&
 							File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
 						{
 							newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
-#if vxDEBUG_VERBOSE
-							Console.WriteLine("\t\t\t\tNormal Map Found");
-#endif
-						}
 
+							vxConsole.WriteVerboseLine("\t\t\t\tNormal Map Found");
+
+						}
 						// Specular Map
 						if (newEffect.Parameters["SpecularMap"] != null &&
 							File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
 						{
 
 							newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));
-#if vxDEBUG_VERBOSE
-							Console.WriteLine("\t\t\t\tSpecular Map Found");
-#endif
+
+							vxConsole.WriteVerboseLine("\t\t\t\tSpecular Map Found");
+
 						}
+						*/
 
 						if (newEffect.Parameters["TextureEnabled"] != null)
 							newEffect.Parameters["TextureEnabled"].SetValue(true);
@@ -205,6 +241,13 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 						if (newEffect.Parameters["SplitColors"] != null)
 							newEffect.Parameters["SplitColors"].SetValue(ShadowSplitColors);
+
+
+						if (newEffect.Parameters["AlphaValue"] != null)
+							newEffect.Parameters["AlphaValue"].SetValue(1);
+
+						if (newEffect.Parameters["ShadowBrightness"] != null)
+							newEffect.Parameters["ShadowBrightness"].SetValue(0.25f);
 
 
 #if VRTC_PLTFRM_XNA
@@ -244,31 +287,6 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 			return newModel;
 		}
 
-		/// <summary>
-		/// Load a Model and apply the Main Shader Effect to it.
-		/// </summary>
-		/// <param name="Path">The Model File Path</param>
-		/// <returns>A Model Object With the Main Shader Applied</returns>
-		public vxModel LoadModel(string Path)
-		{
-			return LoadModel(Path, this.Engine.Game.Content);
-		}
-
-		/// <summary>
-		/// Load a Model and apply the Main Shader Effect to it.
-		/// </summary>
-		/// <param name="Path">The Model File Path</param>
-		/// <param name="Content">The Content Manager to load the Model with</param>
-		/// <returns>A Model Object With the Main Shader Applied</returns>
-		public vxModel LoadModel(string Path, ContentManager Content)
-		{
-			return LoadModel(Path, Content, Engine.Assets.Shaders.MainShader);
-		}
-
-		public vxModel LoadModel(string Path, ContentManager Content, Effect EffectToSet)
-		{
-			return LoadModel(Path, Content, EffectToSet, Engine.Assets.Shaders.CascadeShadowShader, Engine.Assets.Shaders.UtilityShader);
-		}
 
 
 
@@ -287,7 +305,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 			Model sdwmodel = Content.Load<Model>(PathToModel + "_shdw");
 			//Grab the CascadeShadowShader.
-			Effect CascadeShadowShader = ShadowEffect;
+			//Effect CascadeShadowShader = ShadowEffect;
 
 			// Table mapping the original effects to our replacement versions.
 			Dictionary<Effect, Effect> effectShadowMapping = new Dictionary<Effect, Effect>();
@@ -308,7 +326,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 						// applied several times to different parts of the model using
 						// a different texture each time, so we need a fresh copy each
 						// time we want to set a different texture into it.
-						Effect newEffect = CascadeShadowShader.Clone();
+						Effect newEffect = ShadowEffect.Clone();
 
 						effectShadowMapping.Add(oldEffect, newEffect);
 					}
@@ -345,9 +363,6 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 		{
 			Model utilModel = Content.Load<Model>(PathToModel + "_util");
 
-			//Grab the CascadeShadowShader.
-			Effect UtilityShader = UtilityEffect;
-
 			// Table mapping the original effects to our replacement versions.
 			Dictionary<Effect, Effect> effectUtilityMapping = new Dictionary<Effect, Effect>();
 
@@ -367,7 +382,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 						// applied several times to different parts of the model using
 						// a different texture each time, so we need a fresh copy each
 						// time we want to set a different texture into it.
-						Effect newEffect = UtilityShader.Clone();
+						Effect newEffect = UtilityEffect.Clone();
 
 
 						//Main Diffuse Texture

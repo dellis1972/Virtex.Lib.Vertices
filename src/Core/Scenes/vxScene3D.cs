@@ -75,11 +75,71 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
         //LensFlareComponent lensFlare;
 
-        public bool DoFog { get; set; }
-        public float FogNear { get; set; }
-        public float FogFar { get; set; }
-        public Color FogColor { get { return _FogColor; } set { _FogColor = value; } }
-        private Color _FogColor = Color.White;
+		#region Fog Control
+
+        public bool DoFog
+		{
+			get { return _doFog; }
+			set
+			{
+				_doFog = value;
+				foreach (vxEntity3D entity in Entities)
+					entity.DoFog = _doFog;
+			}
+		}
+		bool _doFog = false;
+
+		/// <summary>
+		/// Gets or sets the fog near value. Updating this will cascade an update down to all entities in the scene.
+		/// </summary>
+		/// <value>The fog near.</value>
+        public float FogNear 
+		{ 
+			get { return _fogNear;}
+			set
+			{
+				_fogNear = value;
+				foreach (vxEntity3D entity in Entities)
+					entity.FogNear = _fogNear;
+			}
+		}
+		float _fogNear = 20;
+
+
+		/// <summary>
+		/// Gets or sets the fog far value. Updating this will cascade an update down to all entities in the scene.
+		/// </summary>
+		/// <value>The fog far.</value>
+		public float FogFar
+		{
+			get { return _fogNear; }
+			set
+			{
+				_fogFar = value;
+				foreach (vxEntity3D entity in Entities)
+					entity.FogFar = _fogFar;
+			}
+		}
+		float _fogFar = 20;
+
+
+		/// <summary>
+		/// Gets or sets the color of the fog.
+		/// </summary>
+		/// <value>The color of the fog.</value>
+        public Color FogColor 
+		{
+			get { return _fogColor; }
+			set
+			{
+				_fogColor = value;
+				foreach (vxEntity3D entity in Entities)
+					entity.FogColor = _fogColor;
+			}
+		}
+        Color _fogColor = Color.White;
+
+		#endregion
 
         /// <summary>
         /// Manages the Sun Class.
@@ -90,16 +150,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			get { return SunEmitter.SunPosition; }
 		}
 
-		//private float mLightRotationY = 0.01f;
-		// current rotation angle of the light around y axis
-
-		//#if VRTC_PLTFRM_XNA
 		
         /// <summary>
         /// Water Entity Collection
         /// </summary>
         public List<vxWaterEntity> waterItems = new List<vxWaterEntity>();
-//#endif
+
        
 		/// <summary>
 		/// Base Camera Class. This can be used on Chase Camera as well as FPS and
@@ -149,7 +205,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             get { return _skyColour; }
             set { _skyColour = value; }
         }
-        private Color _skyColour = Color.CornflowerBlue;
+        Color _skyColour = Color.CornflowerBlue;
 
 
 		float pauseAlpha;

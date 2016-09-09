@@ -33,7 +33,7 @@ namespace Virtex.vxGame.VerticesTechDemo
     /// the arena, the bsp tree, renderer, GUI (Overlay) and player. It contains the main 
     /// game loop, and provides keyboard and mouse input.
     /// </summary>
-    public class FPSGamePlay : vxScene3D
+    public class TechDemoLevelFPSDemo : vxScene3D
     {
 
         //
@@ -66,7 +66,7 @@ namespace Virtex.vxGame.VerticesTechDemo
 
         #endregion
 
-        public FPSGamePlay()
+        public TechDemoLevelFPSDemo()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);

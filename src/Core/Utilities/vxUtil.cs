@@ -10,7 +10,10 @@ using Virtex.Lib.Vrtc.Core;
 
 namespace Virtex.Lib.Vrtc.Utilities
 {
-    public class vxUtil
+	/// <summary>
+	/// Collection of static utility methods.
+	/// </summary>
+    public static class vxUtil
     {
 		/// <summary>
 		/// Wraps the multiline string. Useful for displaying Stack Traces which sometimes go off the screen.

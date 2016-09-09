@@ -206,7 +206,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// </summary>
 		public virtual void Draw ()
 		{
-			Alpha = vxSmooth.SmoothFloat (Alpha, Alpha_Req, AlphaChnageSteps);
+			Alpha = vxMathHelper.Smooth(Alpha, Alpha_Req, AlphaChnageSteps);
 
 			if (body != null)
 				mPosition = ConvertUnits.ToDisplayUnits (body.Position);

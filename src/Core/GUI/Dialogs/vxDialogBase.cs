@@ -111,6 +111,9 @@ namespace Virtex.Lib.Vrtc.GUI.Dialogs
 
 			this.ArtProvider = (vxDialogArtProvider)vxEngine.vxGUITheme.ArtProviderForDialogs.Clone();
 
+			//And just so that all is set up properly, resize anything based off of current resolution scale.
+			ArtProvider.SetBounds();
+
             viewportSize = new Vector2(vxEngine.GraphicsDevice.Viewport.Width, vxEngine.GraphicsDevice.Viewport.Height);
 
             Btn_Apply = new vxButton(vxEngine, btn_Apply_text, new Vector2(viewportSize.X / 2 - 115, viewportSize.Y / 2 + 20));

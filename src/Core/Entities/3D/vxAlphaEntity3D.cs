@@ -1,4 +1,4 @@
-﻿using System;
+﻿#if VIRTICES_3D
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -56,4 +56,4 @@ namespace Virtex.Lib.Vrtc.Core
 		}
 	}
 }
-
+#endif

@@ -22,6 +22,16 @@ using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
 namespace Virtex.Lib.Vrtc.Core.Entities
 {
+	public enum vxEnumWaterReflectionQuality
+	{
+		Ultra,
+		High,
+		Medium,
+		Low,
+		Simple,
+		None
+	}
+
     public class vxWaterEntity : vxSandboxEntity
     {
         public Plane WrknPlane;

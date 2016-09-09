@@ -37,6 +37,21 @@ namespace Virtex.Lib.Vrtc.Localization
         Graphics_FullScreen,
         Graphics_Windowed,
 
+		//Keyboard Settings
+		Keyboard_TitleSettings,
+		Keyboard_PresetTitle,
+
+		//Keyboard Key Bindings Name
+		KeyName_Forward,
+		KeyName_Back,
+		KeyName_Left,
+		KeyName_Right,
+		KeyName_Jump,
+		KeyName_Croutch,
+		KeyName_Interact1,
+		KeyName_Interact2,
+
+
         //Misc
         Misc_Yes,
         Misc_No,
@@ -101,6 +116,22 @@ namespace Virtex.Lib.Vrtc.Localization
             Add(vxLocalization.Graphics_Resolution, "Resolution");
             Add(vxLocalization.Graphics_FullScreen, "Full Screen");
             Add(vxLocalization.Graphics_Windowed, "Windowed");
+
+
+			//Keyboard Settings
+			Add(vxLocalization.Keyboard_TitleSettings, "Keyboard Settings");
+
+
+			//Keyboard Key
+			Add(vxLocalization.KeyName_Forward, "Forward");
+			Add(vxLocalization.KeyName_Back, "Back");
+			Add(vxLocalization.KeyName_Left, "Left");
+			Add(vxLocalization.KeyName_Right, "Right");
+			Add(vxLocalization.KeyName_Jump, "Jump");
+			Add(vxLocalization.KeyName_Croutch, "Croutch");
+			Add(vxLocalization.KeyName_Interact1, "Interact1");
+			Add(vxLocalization.KeyName_Interact2, "Interact2");
+
 
             //Misc
             Add(vxLocalization.Misc_Yes, "Yes");

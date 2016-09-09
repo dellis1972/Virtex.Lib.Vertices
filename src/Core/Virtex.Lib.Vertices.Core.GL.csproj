@@ -629,7 +629,7 @@
     <Compile Include="GUI\Theme\vxThemeButton.cs" />
     <Compile Include="GUI\Theme\vxThemeTextbox.cs" />
     <Compile Include="GUI\Controls\Buttons\vxSandboxItemButton.cs" />
-    <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
+    <Compile Include="GUI\Dialogs\vxSettingsGUIItem.cs" />
     <Compile Include="GUI\Theme\vxThemeDialog.cs" />
     <Compile Include="Graphics\Instancing\InstanceSet.cs" />
     <Compile Include="Graphics\Renderer\vxRenderer.Shadows.cs" />
@@ -741,7 +741,6 @@
     <Compile Include="Serilization\vxGraphicsSettingsFileStructure.cs" />
     <Compile Include="Screens\vxTitleScreen.cs" />
     <Compile Include="Mathematics\vxMathHelper.cs" />
-    <Compile Include="Mathematics\vxSmooth.cs" />
     <Compile Include="Scenes\vxScene2D.cs" />
     <Compile Include="Scenes\vxScene3D.cs" />
     <Compile Include="Scenes\vxScene3D.empty.cs" />
@@ -763,6 +762,8 @@
     <Compile Include="Graphics\vxTexture2D.cs" />
     <Compile Include="Graphics\vxModel.cs" />
     <Compile Include="Graphics\vxModelVoxel.cs" />
+    <Compile Include="Screens\Menus\vxKeyboardSettingsDialog.cs" />
+    <Compile Include="GUI\Dialogs\vxKeyBindingSettingsGUIItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

@@ -198,7 +198,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
             else
                 alpha = 0;
 
-            Alpha_Actual = vxSmooth.SmoothFloat(Alpha_Actual, alpha, 4);
+            Alpha_Actual = vxMathHelper.Smooth(Alpha_Actual, alpha, 4);
 
             //Draw the Text Box
             vxEngine.SpriteBatch.Draw(vxEngine.Assets.Textures.Blank, BackRectangle, Color.Black * 0.75f);
