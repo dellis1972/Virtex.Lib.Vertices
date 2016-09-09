@@ -226,15 +226,18 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 			set
 			{
 				_renderShadowSplitIndex = value; UpdateRenderTechnique();
-				foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+				if (vxModel != null)
 				{
-					if (part.Effect.Parameters["ShadowDebug"] != null)
-						part.Effect.Parameters["ShadowDebug"].SetValue(_renderShadowSplitIndex);
+					foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+					{
+						if (part.Effect.Parameters["ShadowDebug"] != null)
+							part.Effect.Parameters["ShadowDebug"].SetValue(_renderShadowSplitIndex);
+					}
+					foreach (var part in vxModel.ModelUtility.Meshes.SelectMany(m => m.MeshParts))
+					{
+						if (part.Effect.Parameters["ShadowDebug"] != null)
+							part.Effect.Parameters["ShadowDebug"].SetValue(_renderShadowSplitIndex);
 				}
-				foreach (var part in vxModel.ModelUtility.Meshes.SelectMany(m => m.MeshParts))
-				{
-					if (part.Effect.Parameters["ShadowDebug"] != null)
-						part.Effect.Parameters["ShadowDebug"].SetValue(_renderShadowSplitIndex);
 				}
 			}
 			get { return _renderShadowSplitIndex; }
@@ -645,8 +648,8 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 						if (part.Effect.Parameters["FogFar"] != null)
 							part.Effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar / 5);
 
-						if (part.Effect.Parameters["FogColor"] != null)
-							part.Effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
+						//if (part.Effect.Parameters["FogColor"] != null)
+						//	part.Effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
 
 					}
 				}

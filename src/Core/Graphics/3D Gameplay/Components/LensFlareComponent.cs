@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Virtex.Lib.Vrtc.Core;
+using Virtex.Lib.Vrtc.Utilities;
 #endregion
 
 namespace Virtex.Lib.Vrtc.Graphics
@@ -181,11 +182,16 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public void Draw(GameTime gameTime)
         {
-            // Check whether the light is hidden behind the scenery.
-            //UpdateOcclusion();
+			// Check whether the light is hidden behind the scenery.
+			//UpdateOcclusion();
 
+			lightPosition = new Vector2(vxEngine.Current3DSceneBase.SunEmitter.screenPos.X, 
+			                            vxEngine.Current3DSceneBase.SunEmitter.screenPos.Y);
+			vxConsole.WriteToInGameDebug(lightPosition);
+
+			occlusionAlpha = 1;
             // Draw the flare effect.
-            DrawGlow();
+            //DrawGlow();
             DrawFlares();
 
             RestoreRenderStates();
@@ -220,6 +226,10 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public void UpdateOcclusion()
         {
+			Texture2D depth = vxEngine.Renderer.RT_DepthMap;
+
+			//vxConsole.WriteToInGameDebug(vxTexture2D.GetPixel(depth, 2, 2, vxEngine.GraphicsDevice.Viewport.Width).R);
+			/*
             // The sun is infinitely distant, so it should not be affected by the
             // position of the camera. Floating point math doesn't support infinitely
             // distant vectors, but we can get the same result by making a copy of our
@@ -286,6 +296,7 @@ namespace Virtex.Lib.Vrtc.Graphics
             occlusionQuery.End();
 
             occlusionQueryActive = true;
+			*/
         }
 
 
@@ -294,8 +305,8 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public void DrawGlow()
         {
-            if (lightBehindCamera || occlusionAlpha <= 0)
-                return;
+            //if (lightBehindCamera || occlusionAlpha <= 0)
+            //    return;
 
             Color color = Color.White * occlusionAlpha;
             Vector2 origin = new Vector2(glowSprite.Width, glowSprite.Height) / 2;
@@ -316,8 +327,8 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public void DrawFlares()
         {
-            if (lightBehindCamera || occlusionAlpha <= 0)
-                return;
+            //if (lightBehindCamera || occlusionAlpha <= 0)
+            //    return;
 
             Viewport viewport = vxEngine.GraphicsDevice.Viewport;
 

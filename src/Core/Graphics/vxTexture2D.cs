@@ -143,7 +143,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 					// Next check if the file exisits
 					if (File.Exists(filepath))
 					{
-						TexturePack.Add(vxUtil.LoadTextureFromFile(filepath, Engine.GraphicsDevice));
+						TexturePack.Add(LoadTextureFromFile(filepath, Engine.GraphicsDevice));
 						vxConsole.WriteVerboseLine("Found!");
 					}
 					// If the file does not exist, or if this is in DEBUG mode, then create a new texture.
@@ -219,6 +219,40 @@ namespace Virtex.Lib.Vrtc.Graphics
 			Stream streampng = File.OpenWrite(filename);
 			texture.SaveAsPng(streampng, texture.Width, texture.Height);
 			streampng.Dispose();
+		}
+
+		/// <summary>
+		/// Loads a Texture at Runtime from a File URL
+		/// </summary>
+		/// <param name="FilePath"></param>
+		/// <param name="graphicsDevice"></param>
+		/// <returns></returns>
+		public static Texture2D LoadTextureFromFile(string FilePath, GraphicsDevice graphicsDevice)
+		{
+			using (FileStream fileStream = new FileStream(FilePath, FileMode.Open))
+			{
+				return Texture2D.FromStream(graphicsDevice, fileStream);
+			}
+		}
+
+
+
+		public static Color GetPixel(Color[] colors, int x, int y, int width)
+		{
+			return colors[x + (y * width)];
+		}
+
+
+		public static Color GetPixel(Texture2D texture, int x, int y, int width)
+		{
+			return GetPixels(texture)[x + (y * width)];
+		}
+
+		public static Color[] GetPixels(Texture2D texture)
+		{
+			Color[] colors1D = new Color[texture.Width * texture.Height];
+			texture.GetData<Color>(colors1D);
+			return colors1D;
 		}
 	}
 }

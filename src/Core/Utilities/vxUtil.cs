@@ -152,20 +152,6 @@ namespace Virtex.Lib.Vrtc.Utilities
             return FilePath.Substring(0,FilePath.LastIndexOf(c));
         }
 
-        /// <summary>
-        /// Loads a Texture at Runtime from a File URL
-        /// </summary>
-        /// <param name="FilePath"></param>
-        /// <param name="graphicsDevice"></param>
-        /// <returns></returns>
-        public static Texture2D LoadTextureFromFile(string FilePath, GraphicsDevice graphicsDevice)
-        {
-			using (FileStream fileStream = new FileStream(FilePath, FileMode.Open))
-			{
-				return Texture2D.FromStream(graphicsDevice, fileStream);
-			}
-        }
-
 
 
 		/// <summary>

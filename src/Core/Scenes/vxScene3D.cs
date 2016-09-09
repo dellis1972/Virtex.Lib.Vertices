@@ -73,7 +73,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		/// </summary>
 		public ModelDrawer BEPUDebugDrawer { get; set; }
 
-        //LensFlareComponent lensFlare;
+        LensFlareComponent lensFlare;
 
 		#region Fog Control
 
@@ -282,8 +282,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			AudioManager = new vxAudioManager (vxEngine);
 
             // Create and add the lensflare component.
-            //lensFlare = new LensFlareComponent(vxEngine);
-            //lensFlare.LoadContent();
+            lensFlare = new LensFlareComponent(vxEngine);
+            lensFlare.LoadContent();
 
             if (GameType == vxEnumGameType.Networked)
                 IsPausable = false; 
@@ -447,9 +447,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 				vxConsole.WriteToInGameDebug (this.SunEmitter.RotationZ);
 
 				// Tell the lensflare component where our camera is positioned.
-				//lensFlare.LightDir = mLightPositions;
-				//lensFlare.View = camera.View;
-				//lensFlare.Projection = camera.Projection;
+				lensFlare.LightDir = SunEmitter.LightDirection;
+				lensFlare.View = Camera.View;
+				lensFlare.Projection = Camera.Projection;
 			} else
 				vxEngine.InputManager.ShowCursor = true;
 		}
@@ -496,7 +496,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             DrawMain(gameTime, Camera);
 
             //Draw the Sun (And any post processing that comes with)
-            //lensFlare.Draw(gameTime);
+            lensFlare.Draw(gameTime);
 
             //Now Draw the Distortion (Note, this will not show up in the edge detection)
             //DrawDistortion(vxEngine.Renderer.RT_MainScene, gameTime);

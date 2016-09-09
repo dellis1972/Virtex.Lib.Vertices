@@ -201,7 +201,7 @@ namespace Virtex.Lib.Vrtc.Core
             if (ServerManager.Server != null)
             {
                 Req = 5;
-                   local = vxSmooth.SmoothInt(local, Req, 8);
+                   local = vxMathHelper.Smooth(local, Req, 8);
                 string output = string.Format(
                     "NETWORK DEBUG INFO: | User Roll: {3} | Server Name: {0} | Port: {1} | Broadcast Address: {2} | Status: {4}",
                     ServerManager.Server.Configuration.AppIdentifier,
@@ -218,7 +218,7 @@ namespace Virtex.Lib.Vrtc.Core
             else if (ClientManager.Client != null)
             {
                 Req = 5;
-                local = vxSmooth.SmoothInt(local, Req, 8);
+                local = vxMathHelper.Smooth(local, Req, 8);
                 string output = string.Format(
                     "NETWORK DEBUG INFO: | User Roll: {3} | Client Name: {0} | Port: {1} | Broadcast Address: {2} | Status: {4}",
                     ClientManager.Client.Configuration.AppIdentifier,
