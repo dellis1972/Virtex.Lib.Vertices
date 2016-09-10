@@ -404,7 +404,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                 {
                     //Reset to Negative One each loop
                     Index = -1;
-
+                    
                     Ray Ray_Mouse = vxGeometryHelper.CalculateCursorRay(vxEngine, Camera.Projection, Camera.View);
                     if (!grabber.IsGrabbing)
                     {
@@ -479,9 +479,9 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                     }
 
 
-                    /**********************************************************/
-                    /*                   Update Cursor                        */
-                    /**********************************************************/
+                    
+                    // Update Cursor                        
+                    //**********************************************************
 
                     Vector3 CursorAverage = Vector3.Zero;
                     for (int ind = 0; ind < SelectedItems.Count; ind++)
@@ -496,6 +496,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                         CursorAverage /= SelectedItems.Count;
                         Cursor.Position = CursorAverage;
                     }
+                    
                 }
 
                 if (vxEngine.InputManager.MouseState.MiddleButton == ButtonState.Pressed)

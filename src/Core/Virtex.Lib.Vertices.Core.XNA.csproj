@@ -118,6 +118,7 @@
     <Compile Include="Debug Utilities\vxDebugSystem.cs" />
     <Compile Include="Debug Utilities\vxVar.cs" />
     <Compile Include="Entities\3D\vxAlphaEntity3D.cs" />
+    <Compile Include="Entities\Enviroment\vxSkyBoxEntity.cs" />
     <Compile Include="Entities\Enviroment\vxSunEntity.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
     <Compile Include="Entities\VehicleInput.cs" />
@@ -140,6 +141,8 @@
     <Compile Include="GUI\Art Providers\vxMenuItemArtProvider.cs" />
     <Compile Include="GUI\Art Providers\vxMessageBoxArtProvider.cs" />
     <Compile Include="GUI\Controls\Scroll Panel\vxScrollPanelItem.cs" />
+    <Compile Include="GUI\Dialogs\vxKeyBindingSettingsGUIItem.cs" />
+    <Compile Include="GUI\Dialogs\vxSettingsGUIItem.cs" />
     <Compile Include="Mathematics\vxMathHelper.cs" />
     <Compile Include="Network\Entity States\vxNetEntity3DState.cs" />
     <Compile Include="Network\Events\vxNetServerEvents.cs" />
@@ -179,6 +182,7 @@
     <Compile Include="Scenes\vxScene3D.empty.cs" />
     <Compile Include="Scenes\vxScene3D.Network.cs" />
     <Compile Include="Scenes\vxSceneBase.cs" />
+    <Compile Include="Screens\Menus\vxKeyboardSettingsDialog.cs" />
     <Compile Include="Screens\vxTitleScreen.cs" />
     <Compile Include="Serilization\LevelStats.cs" />
     <Compile Include="Serilization\Profile.cs" />
@@ -237,7 +241,6 @@
     <Compile Include="GUI\Dialogs\vxFileDialogItem.cs" />
     <Compile Include="GUI\Dialogs\vxOpenFileDialog.cs" />
     <Compile Include="Screens\Menus\vxGraphicSettingsDialog.cs" />
-    <Compile Include="GUI\Dialogs\vxGraphicSettingsItem.cs" />
     <Compile Include="GUI\GUI Enums.cs" />
     <Compile Include="GUI\MessageBoxs\vxMessageBox.cs" />
     <Compile Include="GUI\Theme\vxBaseItemTheme.cs" />

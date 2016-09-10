@@ -163,7 +163,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 				//TravelPosition = Math.Max(Math.Min(TravelPosition, MaxTravel), 0);
 			}
 
-			TravelPosition = MathHelper.Clamp(TravelPosition, 0, MaxTravel);
+			TravelPosition = (int)MathHelper.Clamp(TravelPosition, 0, MaxTravel);
 
 			base.Update(vxEngine);
 

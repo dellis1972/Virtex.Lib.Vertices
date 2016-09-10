@@ -234,7 +234,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 			}
 		}
 
-        public override void UpdateRenderTechnique() { }
+        //public override void UpdateRenderTechnique() { }
         public override void RenderMeshForWaterReflectionPass(Plane ReflectedView) { }
         //public override void RenderMeshPrepPass() { }
         public override void RenderMesh(string RenderTechnique) { }

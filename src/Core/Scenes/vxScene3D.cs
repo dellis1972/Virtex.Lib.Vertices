@@ -44,6 +44,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 		public List<vxEntity3D> List_OverlayItems = new List<vxEntity3D> ();
 
+        vxSkyBoxEntity SkyBox;
+
 		/// <summary>
 		/// A Collection of Instance Sets (Yes a collection inside of a collection, ....colleception?!?!)
 		/// </summary>
@@ -239,11 +241,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 					BEPUParallelLooper.AddThread ();
 				}
 			}
+            
 
-			vxConsole.WriteLine ("Starting Physics vxEngine using " + Environment.ProcessorCount.ToString () + " Processors");
-			BEPUPhyicsSpace = new Space ();
+            BEPUPhyicsSpace = new Space(BEPUParallelLooper);
 			BEPUPhyicsSpace.ForceUpdater.Gravity = new Vector3 (0, -9.81f, 0);
-		}
+            vxConsole.WriteLine("Starting Physics vxEngine using " + BEPUPhyicsSpace.ParallelLooper.ThreadCount + " Processors");
+        }
 
 		public Model sphereModel;
 
@@ -262,7 +265,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 			vxEngine.CurrentGameplayScreen = this;
 
 
-			sphereModel = vxEngine.EngineContentManager.Load<Model> ("Models/lghtng/sphere");
+            sphereModel = vxEngine.EngineContentManager.Load<Model> ("Models/lghtng/sphere");
 
 			//Setup Camera
 			Camera = new vxCamera3D (vxEngine, new Vector3 (0, 15, 0), 0, 0,
@@ -277,9 +280,10 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
             //Setup Sun
             SunEmitter = new vxSunEntity (vxEngine);
-                        
-			//Setup Audio Manager
-			AudioManager = new vxAudioManager (vxEngine);
+            SkyBox = new vxSkyBoxEntity(vxEngine);
+
+            //Setup Audio Manager
+            AudioManager = new vxAudioManager (vxEngine);
 
             // Create and add the lensflare component.
             lensFlare = new LensFlareComponent(vxEngine);
@@ -496,7 +500,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             DrawMain(gameTime, Camera);
 
             //Draw the Sun (And any post processing that comes with)
-            lensFlare.Draw(gameTime);
+            //lensFlare.Draw(gameTime);
 
             //Now Draw the Distortion (Note, this will not show up in the edge detection)
             //DrawDistortion(vxEngine.Renderer.RT_MainScene, gameTime);

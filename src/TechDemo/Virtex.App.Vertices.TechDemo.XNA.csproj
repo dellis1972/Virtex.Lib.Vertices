@@ -95,10 +95,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Screens\BackgroundScreen.cs" />
-    <Compile Include="Screens\Demos\IntroBackground.cs" />
-    <Compile Include="Screens\Demos\TechDemoSponza.cs" />
-    <Compile Include="Screens\Demos\DemoSelectScreen.cs" />
-    <Compile Include="Screens\Demos\FPSGamePlay.cs" />
+    <Compile Include="Screens\DemoSelectScreen.cs" />
+    <Compile Include="Screens\Demos\TechDemoLevelCastle.cs" />
+    <Compile Include="Screens\Demos\TechDemoLevelFPSDemo.cs" />
+    <Compile Include="Screens\Demos\TechDemoLevelVoxelTest.cs" />
+    <Compile Include="Screens\IntroBackground.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -374,12 +374,27 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D
             World = this.Parent.EndOrientation * this.Parent.World;
         }
 
+        Physics.BEPU.CollisionRuleManagement.CollisionRule OriginalCollisionRules;
         public virtual void ToggleSimulation(bool IsRunning)
         {
-            if(IsRunning == true)
+            if (IsRunning == true)
+            {
                 SandboxState = vxEnumSandboxGameState.Running;
+                if(PhysicsSkin_Main !=null)
+                    PhysicsSkin_Main.CollisionRules.Personal = OriginalCollisionRules;
+            }
             else
+            {
                 SandboxState = vxEnumSandboxGameState.EditMode;
+
+                if (PhysicsSkin_Main != null)
+                {
+                    OriginalCollisionRules = PhysicsSkin_Main.CollisionRules.Personal;
+
+                    //Now Zero it out
+                    PhysicsSkin_Main.CollisionRules.Personal = Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
+                }
+            }
         }
 
         public virtual void SetIndex(int NewIndex)

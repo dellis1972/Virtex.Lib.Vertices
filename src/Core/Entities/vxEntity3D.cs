@@ -225,7 +225,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		{
 			set
 			{
-				_renderShadowSplitIndex = value; UpdateRenderTechnique();
+				_renderShadowSplitIndex = value; //UpdateRenderTechnique();
 				if (vxModel != null)
 				{
 					foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
@@ -477,7 +477,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// </summary>
 		public string RenderTechnique
 		{
-			set { _technique = value; UpdateRenderTechnique(); }
+			set { _technique = value; /*UpdateRenderTechnique();*/ }
 			get { return _technique; }
 		}
 		string _technique = "Lambert";
@@ -710,10 +710,10 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			UpdateRenderTechnique();
+			//UpdateRenderTechnique();
 		}
 
-
+        /*
 		/// <summary>
 		/// Updates the shaders technique according to the properties normaMapping and
 		/// noTextures
@@ -742,7 +742,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 					}
 			}
 		}
-
+        */
 
 
 		/// <summary>
@@ -910,7 +910,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// </summary>
 		public virtual void RenderMeshForWaterReflectionPass(Plane surfacePlane)
 		{
-			if (vxModel.ModelUtility != null)
+			if (vxModel!= null && vxModel.ModelUtility != null)
 			{
 				// Look up the bone transform matrices.
 				Matrix[] transforms = new Matrix[vxModel.ModelUtility.Bones.Count];
