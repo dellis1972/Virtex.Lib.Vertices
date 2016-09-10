@@ -267,11 +267,9 @@ namespace Virtex.Lib.Vrtc.Core.Entities
             scRight.DisposeEntity();
             scForward.DisposeEntity();
             scBack.DisposeEntity();
-
-            //CurrentSandboxLevel.Items.Remove(this);
-//#if VRTC_PLTFRM_XNA
+            
             CurrentSandboxLevel.waterItems.Remove(this);
-//#endif
+
             Current3DScene.BEPUPhyicsSpace.Remove(fluidVolume);
             base.DisposeEntity();
         }

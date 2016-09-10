@@ -572,6 +572,19 @@
     <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Models\utils\unit_arrow\unit_arrow.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Shaders\Skybox\cube.fbx" />
+    <None Include="Content\Shaders\Skybox\SkyBox.dds" />
+    <None Include="Content\Shaders\Skybox\SkyBoxShader.fx" />
+    <None Include="Content\Shaders\Skybox\SkyBoxShader - Copy.fx" />
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Skybox\cube.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Skybox\SkyBox.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Vertices.Engine.Content\Compiled.DesktopGL\Shaders\Skybox\SkyBoxShader.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -764,6 +777,7 @@
     <Compile Include="Graphics\vxModelVoxel.cs" />
     <Compile Include="Screens\Menus\vxKeyboardSettingsDialog.cs" />
     <Compile Include="GUI\Dialogs\vxKeyBindingSettingsGUIItem.cs" />
+    <Compile Include="Entities\Enviroment\vxSkyBoxEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

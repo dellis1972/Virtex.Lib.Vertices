@@ -57,11 +57,6 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
-    <Compile Include="Shaders\Skybox\SkyBoxShader2.fx">
-      <Name>SkyBoxShader2</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
     <Compile Include="Shaders\Skybox\cube.fbx">
       <Name>cube</Name>
       <Importer>FbxImporter</Importer>

@@ -1,3 +1,8 @@
+
+	#define SV_POSITION POSITION
+	#define VS_SHADERMODEL vs_3_0
+	#define PS_SHADERMODEL ps_3_0
+
 float4x4 World;
 float4x4 View;
 float4x4 Projection;
@@ -7,7 +12,7 @@ float3 CameraPosition;
 Texture SkyBoxTexture;
 samplerCUBE SkyBoxSampler = sampler_state
 {
-	texture = <SkyBoxTexture>;
+	texture = (SkyBoxTexture);
 	magfilter = LINEAR;
 	minfilter = LINEAR;
 	mipfilter = LINEAR;
@@ -17,16 +22,16 @@ samplerCUBE SkyBoxSampler = sampler_state
 
 struct VertexShaderInput
 {
-	float4 Position : POSITION0;
+	float4 Position : SV_POSITION;
 };
 
 struct VertexShaderOutput
 {
-	float4 Position : POSITION0;
+	float4 Position : SV_POSITION;
 	float3 TextureCoordinate : TEXCOORD0;
 };
 
-VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
+VertexShaderOutput MainVS(in VertexShaderInput input)
 {
 	VertexShaderOutput output;
 
@@ -40,72 +45,16 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	return output;
 }
 
-float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
+float4 MainPS(VertexShaderOutput input) : COLOR
 {
 	return texCUBE(SkyBoxSampler, normalize(input.TextureCoordinate)) + float4(0,0,0,1);;
 }
 
 technique Skybox
 {
-	pass Pass1
+	pass P0
 	{
-		VertexShader = compile vs_2_0 VertexShaderFunction();
-		PixelShader = compile ps_2_0 PixelShaderFunction();
+		VertexShader = compile VS_SHADERMODEL MainVS();
+		PixelShader = compile PS_SHADERMODEL MainPS();
 	}
-}
-
-
-
-float4 ClipPlane0;
-
-
-struct WaterVSInput
-{
-	float4 Position : POSITION0;
 };
-
-struct WaterVSOutput
-{
-	float4 Position : POSITION0;
-	float3 TextureCoordinate : TEXCOORD0;
-	float4 ClipDistances	: TEXCOORD1;
-};
-
-WaterVSOutput WaterVSFunction(WaterVSInput input)
-{
-	WaterVSOutput output;
-
-
-	float4 worldPosition = mul(input.Position, World);
-	float4 viewPosition = mul(worldPosition, View);
-	output.Position = mul(viewPosition, Projection);
-
-	float4 VertexPosition = mul(input.Position, World);
-	output.TextureCoordinate = VertexPosition - CameraPosition;
-
-
-	output.ClipDistances.x = dot(worldPosition, ClipPlane0);
-	output.ClipDistances.y = 0;
-	output.ClipDistances.z = 0;
-	output.ClipDistances.w = 0;
-	
-	return output;
-}
-
-float4 WaterPSFunction(WaterVSOutput input) : COLOR0
-{
-	// TODO: add your pixel shader code here.
-	clip(input.ClipDistances);
-	return texCUBE(SkyBoxSampler, input.TextureCoordinate) / 2 + float4(0,0,0,1);
-}
-
-technique Technique_WtrRflcnPass
-{
-	pass Pass1
-	{
-		// TODO: set renderstates here.
-
-		VertexShader = compile vs_3_0 WaterVSFunction();
-		PixelShader = compile ps_3_0 WaterPSFunction();
-	}
-}

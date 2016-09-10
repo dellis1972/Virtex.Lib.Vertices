@@ -114,7 +114,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		/// <value>The fog far.</value>
 		public float FogFar
 		{
-			get { return _fogNear; }
+			get { return _fogFar; }
 			set
 			{
 				_fogFar = value;
@@ -122,7 +122,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 					entity.FogFar = _fogFar;
 			}
 		}
-		float _fogFar = 20;
+		float _fogFar = 1000;
 
 
 		/// <summary>
@@ -275,8 +275,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 
             DoFog = false;
-            FogNear = 20;
-            FogFar = Camera.FarPlane/4;
+            FogNear = Camera.FarPlane/4;
+            FogFar = Camera.FarPlane;
 
             //Setup Sun
             SunEmitter = new vxSunEntity (vxEngine);
@@ -342,11 +342,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 		public sealed override void Update (GameTime gameTime, bool otherScreenHasFocus,
 		                                    bool coveredByOtherScreen)
 		{
-			//vxEngine.Game.IsFixedTimeStep = false;
-
 			base.Update (gameTime, otherScreenHasFocus, false);
-
-			// GUIManager.Update(vxEngine);
+            
 
 			// Gradually fade in or out depending on whether we are covered by the pause screen.
 			if (coveredByOtherScreen && IsPausable)
@@ -355,7 +352,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 				pauseAlpha = Math.Max (pauseAlpha - 1f / 32, 0);
 
 			if (IsActive  || IsPausable == false) {
-#region Set Debug Info
+            
+                #region Set Debug Info
 
 				BEPUDebugDrawer.Update ();
 
@@ -386,30 +384,24 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 						((vxEntity3D)entity).TextureEnabled = !((vxEntity3D)entity).TextureEnabled;
 				}
 
-#endregion
+                #endregion
 
 
-#if VRTC_INCLDLIB_NET
-				//UpdateNetwork ();
-#endif
-
-				//
-				//Update Audio Manager
-				//                
-				AudioManager.Listener.Position = Camera.Position / 100;
+                //Update Audio Manager
+                //**********************************************************************************************
+                AudioManager.Listener.Position = Camera.Position / 100;
 				AudioManager.Listener.Forward = Camera.View.Forward;
 				AudioManager.Listener.Up = Camera.View.Up;
 				AudioManager.Listener.Velocity = Camera.View.Forward;
 
-				//
-				//Update Physics
-				//
+				
+				// Update Physics
+				//**********************************************************************************************
+
 				// Start measuring time for "Physics".
 				vxEngine.DebugSystem.TimeRuler.BeginMark ("Physics", Color.LimeGreen);
 
 				//Update the Physics System.
-				vxConsole.WriteToInGameDebug ("Physics");
-
 				//vxConsole.WriteToInGameDebug(((float)gameTime.ElapsedGameTime.Milliseconds)/1000);
 				//vxConsole.WriteToInGameDebug((float)gameTime.ElapsedGameTime.TotalSeconds);
 				//BEPUPhyicsSpace.Update ((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -418,37 +410,38 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 				// Stop measuring time for "Draw".
 				vxEngine.DebugSystem.TimeRuler.EndMark ("Physics");
 
-				UpdateScene (gameTime, otherScreenHasFocus, false);
 
-				for (int i = 0; i < Entities.Count; i++) {
+
+                // Update the Scene
+                //**********************************************************************************************
+                UpdateScene(gameTime, otherScreenHasFocus, false);
+
+
+
+
+                // Update Scene Entities
+                //**********************************************************************************************
+                for (int i = 0; i < Entities.Count; i++) {
 					Entities [i].Update (gameTime);
 
 					if (Entities [i].KeepUpdating == false)
 						Entities.RemoveAt (i);
 				}
 
-				ParticleSystem.Update (gameTime);
+                // Update Particle System
+                //**********************************************************************************************
+                ParticleSystem.Update (gameTime);
 
-				//vxEngine.Renderer.mSnapShadowMaps = false;
+                //vxEngine.Renderer.mSnapShadowMaps = false;
 
-				// The chase camera's update behavior is the springs, but we can
-				// use the Reset method to have a locked, spring-less camera
-				UpdateCameraChaseTarget ();
+
+                // Update Camera
+                //**********************************************************************************************
+                UpdateCameraChaseTarget();
 				Camera.Update (gameTime);
 
-				if (vxEngine.InputManager.KeyboardState.IsKeyDown (Keys.Up))
-					SunEmitter.RotationX += 0.005f;
-				if (vxEngine.InputManager.KeyboardState.IsKeyDown (Keys.Down))
-					SunEmitter.RotationX -= 0.005f;
-				if (vxEngine.InputManager.KeyboardState.IsKeyDown (Keys.Left))
-					SunEmitter.RotationZ += 0.005f;
-				if (vxEngine.InputManager.KeyboardState.IsKeyDown (Keys.Right))
-					SunEmitter.RotationZ -= 0.005f;
 
 				vxEngine.Renderer.setLightPosition (-LightPositions);
-
-				vxConsole.WriteToInGameDebug (this.SunEmitter.RotationX);
-				vxConsole.WriteToInGameDebug (this.SunEmitter.RotationZ);
 
 				// Tell the lensflare component where our camera is positioned.
 				lensFlare.LightDir = SunEmitter.LightDirection;
@@ -490,6 +483,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                 entry.Value.Update();
             }
 #endif
+
+            // Draw Shadow Map
+            //**********************************************************************************************
             // determine shadow frustums
             var shadowCamera = mVirtualCameraMode != vxEnumVirtualCameraMode.None ? mVirtualCamera : Camera;
             vxEngine.Renderer.setShadowTransforms(shadowCamera);
@@ -497,6 +493,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             // render shadow maps first, then scene
             DrawShadows(gameTime, shadowCamera);
 
+
+            // Draw Main Render Passes
+            //**********************************************************************************************
             DrawMain(gameTime, Camera);
 
             //Draw the Sun (And any post processing that comes with)
@@ -507,6 +506,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
             //Get Blurred Scene for a number of different Processes (Depth of Field, Menu Background blurring etc...)
             //Do This before the Edge Detection, otherwise you get edge bleeding that over saturates the scene with black.
+
+            // Apply Post Processing Effects
+            //**********************************************************************************************
             vxEngine.Renderer.CreateBluredScreen(vxEngine);
 
             vxEngine.Renderer.ApplyEdgeDetect(vxEngine);
@@ -521,13 +523,23 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 				vxEngine.SpriteBatch.End ();
 			}
 
-			DrawGameplayScreen(gameTime);
+            // Draw any inherited or overriden code
+            //**********************************************************************************************
+            DrawGameplayScreen(gameTime);
 
-			DrawOverlayItems();
+
+
+            // Draw Overlay items such as 3D Sandbox Cursor and HUD
+            //**********************************************************************************************
+            DrawOverlayItems();
 
 			DrawHUD();
 
-			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool())
+
+
+            // Debug Rendering
+            //**********************************************************************************************
+            if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool())
 				BEPUDebugDrawer.Draw (Camera.View, Camera.Projection);
 
 			vxDebugShapeRenderer.Draw (gameTime, Camera.View, Camera.Projection);
@@ -668,6 +680,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
             foreach (vxEntity entity in Entities)
 				((vxEntity3D)entity).RenderMeshPrepPass();
+
+
 #if VRTC_PLTFRM_XNA
             foreach (InstanceSet instSet in InstanceSetCollection)
                 instSet.RenderInstanced(instSet.InstancedModel.ModelMain, camera, instSet.instances.Count, "Technique_PrepPass_Instanced");
@@ -679,6 +693,9 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             }
 #endif
 
+
+            // Render God Rays
+            //**********************************************************************************************
             vxEngine.GraphicsDevice.SetRenderTarget(vxEngine.Renderer.RT_SunMap);
             vxEngine.GraphicsDevice.BlendState = BlendState.Opaque;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
@@ -707,7 +724,8 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 
 
-			//Now get the Water Reflection
+            // Render the Water Reflection Map for the nearest water entity
+            //**********************************************************************************************
             vxEngine.GraphicsDevice.SetRenderTarget(vxEngine.Renderer.RT_WaterReflectionMap);
             vxEngine.GraphicsDevice.Clear(Color.CornflowerBlue);
             vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
@@ -722,10 +740,12 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 
             //Now Render the Scene Into the Scene Render Target
+            //**********************************************************************************************
             vxEngine.GraphicsDevice.SetRenderTarget(vxEngine.Renderer.RT_MainScene);
             vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             vxEngine.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, SkyColour, 1.0f, 0);
+
 			if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool() == false)
             {
                 switch (mSceneShadowMode)
@@ -744,11 +764,15 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                             entry.Value.RenderInstanced(entry.Value.InstancedModel.ModelMain, camera, entry.Value.instances.Count, "Technique_Main_Instanced");
                         }
 #endif
+
+                        // Render Main Pass
+                        //**********************************************************************************************
                         foreach (vxEntity3D entity in Entities)
                             entity.RenderMesh("Technique_Main");
 
-							
 
+                        // Now Generate Water Reflection Map
+                        //**********************************************************************************************
                         foreach (vxWaterEntity water in waterItems)
                             water.DrawWater(vxEngine.Renderer.RT_WaterReflectionMap, camera.GetReflectionView(water.WrknPlane));
 
@@ -758,9 +782,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                         break;
                 }
             }
-
-
-            //vxEngine.Renderer.CreateSSAO(vxEngine);
+            
 
             /****************************************************************************/
             /*						LIGHT MAP PASS										*/
@@ -771,20 +793,10 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
-            
-            /*
-            float angle = (float)gameTime.TotalGameTime.TotalSeconds;
-            DrawPointLight(new Vector3((float)Math.Sin(angle) * rad, 1, (float)Math.Cos(angle) * rad), Color.Orange, 5, 2);
-            rad = 2;
-            DrawPointLight(new Vector3((float)Math.Cos(angle) * rad, 1, (float)Math.Sin(angle) * rad), Color.Blue, 2, 2);
-            DrawPointLight(new Vector3(-5, 1, 15 * (float)Math.Cos(angle)), Color.White, 2, 2);
 
-            DrawPointLight(new Vector3(5, 2, 15 * (float)Math.Cos(angle)), Color.Orange, 4, 0.25f);
-            DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White);
-            */
             DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White*0);
 
-            DrawPointLight(new Vector3(0,0, 0), Color.Orange, 0, 0);
+            //DrawPointLight(new Vector3(0,0, 0), Color.Orange, 0, 0);
             
             vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
@@ -815,7 +827,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 
 			//vxEngine.Renderer.SetCurrentPass(RenderPass.WaterReflection);
-			vxConsole.WriteToInGameDebug(this.mGraphicsManager.SynchronizeWithVerticalRetrace);
+			vxConsole.WriteToInGameDebug("VSYNC: " + this.mGraphicsManager.SynchronizeWithVerticalRetrace);
 			//lensFlare.UpdateOcclusion();
 
         }

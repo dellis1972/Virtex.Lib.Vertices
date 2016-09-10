@@ -76,13 +76,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
                     {
                         part.Effect = skyBoxEffect;
                         part.Effect.CurrentTechnique = skyBoxEffect.Techniques["Skybox"];
-                        part.Effect.Parameters["World"].SetValue(
-                            Matrix.CreateScale(size) * Matrix.CreateTranslation(Camera.Position));
                         part.Effect.Parameters["View"].SetValue(Camera.GetReflectionView(surfacePlane));
-                        part.Effect.Parameters["Projection"].SetValue(Camera.Projection);
-                        part.Effect.Parameters["ClipPlane0"].SetValue(new Vector4(surfacePlane.Normal, surfacePlane.D));
-                        part.Effect.Parameters["SkyBoxTexture"].SetValue(skyBoxTexture);
-                        part.Effect.Parameters["CameraPosition"].SetValue(Camera.Position);
                     }
 
                     // Draw the mesh with the skybox effect

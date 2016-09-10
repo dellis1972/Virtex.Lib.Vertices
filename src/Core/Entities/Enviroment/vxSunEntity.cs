@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 //Virtex vxEngine Declaration
 using Virtex.Lib.Vrtc.Core;
 using Virtex.Lib.Vrtc.Utilities;
+using Microsoft.Xna.Framework.Input;
 
 namespace Virtex.Lib.Vrtc.Core.Entities
 {
@@ -41,6 +42,20 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         public int TextureSize = 3;
 		public void DrawGlow()
         {
+            // Debug
+            //vxConsole.WriteToInGameDebug(this.RotationX);
+            //vxConsole.WriteToInGameDebug(this.RotationZ);
+
+
+            if (vxEngine.InputManager.KeyboardState.IsKeyDown(Keys.Up))
+                RotationX += 0.005f;
+            if (vxEngine.InputManager.KeyboardState.IsKeyDown(Keys.Down))
+                RotationX -= 0.005f;
+            if (vxEngine.InputManager.KeyboardState.IsKeyDown(Keys.Left))
+                RotationZ += 0.005f;
+            if (vxEngine.InputManager.KeyboardState.IsKeyDown(Keys.Right))
+                RotationZ -= 0.005f;
+
             float scale = vxEngine.Current3DSceneBase.Camera.FarPlane;
             inc += 0.001667f;
             //Set the Position for Screen Positioning

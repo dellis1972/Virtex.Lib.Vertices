@@ -646,7 +646,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 							part.Effect.Parameters["FogNear"].SetValue(vxEngine.Current3DSceneBase.FogNear);
 
 						if (part.Effect.Parameters["FogFar"] != null)
-							part.Effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar / 5);
+							part.Effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar);
 
 						//if (part.Effect.Parameters["FogColor"] != null)
 						//	part.Effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
@@ -806,7 +806,16 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 								
 								 if (effect.Parameters["ShadowBrightness"] != null)
 									effect.Parameters["ShadowBrightness"].SetValue(0.25f);
-								/*
+
+                                if (effect.Parameters["FogNear"] != null)
+                                    effect.Parameters["FogNear"].SetValue(vxEngine.Current3DSceneBase.FogNear);
+
+                                if (effect.Parameters["FogFar"] != null)
+                                    effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar);
+
+                                if (effect.Parameters["FogColor"] != null)
+                                    effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
+                                /*
 
 
 									if (effect.Parameters["ShadowDebug"] != null)
@@ -820,17 +829,8 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 									if (effect.Parameters["DoShadow"] != null)
 										effect.Parameters["DoShadow"].SetValue(DoShadowMap);
 
-										if (effect.Parameters["FogNear"] != null)
-											effect.Parameters["FogNear"].SetValue(vxEngine.Current3DSceneBase.FogNear);
-
-										if (effect.Parameters["FogFar"] != null)
-											effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar/5);
-
-										if (effect.Parameters["FogColor"] != null)
-											effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
-
 	*/
-								if (effect.Parameters["Alpha"] != null)
+                                if (effect.Parameters["Alpha"] != null)
 										effect.Parameters["Alpha"].SetValue(AlphaValue);
 
 							}
