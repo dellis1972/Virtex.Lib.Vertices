@@ -428,6 +428,18 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                                             if (Items[Index] != null)
                                                 Items[Index].SelectionState = vxEnumSelectionState.Unseleced;
 
+										Vector3 pnt = raycastResult.HitData.Location;
+										Vector3 nrml = raycastResult.HitData.Normal;
+
+										nrml.Normalize();
+
+										vxDebugShapeRenderer.AddBoundingSphere(
+											new BoundingSphere(pnt, 1), Color.HotPink);
+
+										vxDebugShapeRenderer.AddLine(
+											pnt, pnt + 5 * nrml, Color.LimeGreen);
+
+
                                         //Get Index of Currently Selected Item
                                         Index = Convert.ToInt32(raycastResult.HitObject.Tag);
                                         if (Index < Items.Count)

@@ -88,7 +88,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
         public override void RenderMesh(string RenderTechnique)
         {
-            size = Camera.FarPlane * 0.6f;
+            size = Camera.FarPlane * 0.55f;
 
             OldRS = Engine.GraphicsDevice.RasterizerState;
             Engine.GraphicsDevice.RasterizerState = NewRS;
