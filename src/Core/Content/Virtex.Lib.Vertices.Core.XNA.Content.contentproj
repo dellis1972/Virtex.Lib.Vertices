@@ -443,6 +443,11 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Models\water_plane\water_plane_ICON.png">
+      <Name>water_plane_ICON</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="Shaders\Include\ModelDistorter.h">
       <Name>ModelDistorter</Name>
       <Importer>EffectImporter</Importer>

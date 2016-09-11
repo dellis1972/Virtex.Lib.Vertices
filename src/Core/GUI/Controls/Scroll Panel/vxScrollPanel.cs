@@ -90,7 +90,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 		/// <param name="Width">Width.</param>
 		/// <param name="Height">Height.</param>
 		public vxScrollPanel(Vector2 Position, int Width, int Height) :
-		this(Position, Width, Height, 64)
+		this(Position, Width, Height, 24)
         {
             
         }
@@ -105,6 +105,7 @@ namespace Virtex.Lib.Vrtc.GUI.Controls
 		/// <param name="ScrollBarWidth">Scroll bar width.</param>
 		public vxScrollPanel(Vector2 Position, int Width, int Height, int ScrollBarWidth)
 		{
+            Alpha = 0.75f;
 
 			this.Position = Position;
 			this.OriginalPosition = Position;

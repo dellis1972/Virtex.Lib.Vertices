@@ -418,7 +418,7 @@ namespace Virtex.Lib.Vrtc.Graphics
         }
         private int _shadowMapSize = 512;
 
-        float size = 256;
+        float size = 750;
 
 
 

@@ -44,6 +44,11 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         /// </summary>
         public List<vxSandboxEntity> EditorItems = new List<vxSandboxEntity>();
 
+        /// <summary>
+        /// This Dictionary contains a collection of all Registered items within the Sandbox.
+        /// </summary>
+        public Dictionary<string, vxSandboxEntityRegistrationInfo> RegisteredItems = new Dictionary<string, vxSandboxEntityRegistrationInfo>();
+
 
         /// <summary>
         /// Current Key being used too add new entities.
@@ -109,16 +114,18 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         /// Register New Sandbox Item 
         /// </summary>
         /// <param name="Entity"></param>
-        public vxSandboxItemButton RegisterNewSandboxItem(vxSandboxEntityDescription EntityDescription)
+        public vxSandboxItemButton RegisterNewSandboxItem(vxSandboxEntityRegistrationInfo EntityDescription)
         {
             return RegisterNewSandboxItem(EntityDescription, Vector2.Zero, 150, 150);
         }
 
-        public vxSandboxItemButton RegisterNewSandboxItem(vxSandboxEntityDescription EntityDescription, Vector2 ButtonPosition, int Width, int Height)
+        public vxSandboxItemButton RegisterNewSandboxItem(vxSandboxEntityRegistrationInfo EntityDescription, Vector2 ButtonPosition, int Width, int Height)
         {
             //First Ensure the Entity Description Is Loaded.
             EntityDescription.Load(vxEngine);
 
+            //Next Register the Entity with the Sandbox Registrar
+            RegisteredItems.Add(EntityDescription.Key, EntityDescription);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\tRegistering: \t'{0}' to Dictionary", EntityDescription.Key);
@@ -216,28 +223,27 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         /// <returns></returns>
         public virtual vxSandboxEntity GetNewEntity(string key)
         {
-            switch (key)
+            // First Check if Registrar has the key
+            if(RegisteredItems.ContainsKey(key))
             {
-                //Cubes
-                case "Virtex.Lib.Vrtc.Core.Entities.vxWaterEntity":
-                    return AddWaterVolume(Vector3.Zero);
-                    break;
-
-			default:
-				vxConsole.WriteError(new Exception (string.Format("'{0}' Key Not Found!", key)));
-                    return null;
-                    break;
+                vxConsole.WriteLine("Adding " + key);
+                return RegisteredItems[key].CreateNewEntity();
+            }
+            else
+            {
+                vxConsole.WriteError(new Exception(string.Format("'{0}' Key Not Found!", key)));
+                return null;
             }
         }
 
-
+        /*
         public vxWaterEntity AddWaterVolume(Vector3 Position)
         {
             vxWaterEntity water = new vxWaterEntity(vxEngine, Position, new Vector3(25, 5, 25));
             waterItems.Add(water);
             return water;
         }
-
+        */
         /// <summary>
         /// Resets the Layout of Element Indecies for Selection and Element Management
         /// </summary>

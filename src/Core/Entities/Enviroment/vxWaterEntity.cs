@@ -56,14 +56,18 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         vxScaleCube scForward;
         vxScaleCube scBack;
 
-        public static vxSandboxEntityDescription EntityDescription
+        public static vxSandboxEntityRegistrationInfo Info
         {
             get
             {
-                return new vxSandboxEntityDescription(
-                "Virtex.Lib.Vrtc.Core.Entities.vxWaterEntity",
+                return new vxSandboxEntityRegistrationInfo(true,
+                    typeof(vxWaterEntity).ToString(),
                 "Water",
-                "Textures/engine/water/water");
+                "Models/water_plane/water_plane",
+                    delegate (vxEngine Engine)
+                    {
+                        return new vxWaterEntity(Engine, Vector3.Zero, new Vector3(25, 5, 25));
+                    });
             }
         }
 
@@ -71,9 +75,11 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         /// Creates a New Instance of the Base Ship Class
         /// </summary>
         /// <param name="AssetPath"></param>
-        public vxWaterEntity(vxEngine vxEngine, Vector3 StartPosition, Vector3 WaterScale)
-            : base(vxEngine, vxEngine.Assets.Models.WaterPlane, StartPosition)
+        public vxWaterEntity(vxEngine Engine, Vector3 StartPosition, Vector3 WaterScale)
+            : base(Engine, Engine.Assets.Models.WaterPlane, StartPosition)
         {
+            Engine.Current3DSceneBase.waterItems.Add(this);
+
             waterBumpMap = vxEngine.Assets.Textures.Texture_WaterWaves;
             waterDistortionMap = vxEngine.Assets.Textures.Texture_WaterDistort;
 

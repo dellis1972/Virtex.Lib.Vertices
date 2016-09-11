@@ -340,9 +340,13 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
         public override void LoadContent()
         {
+            InitialiseLevel();
+
             vxScaleCube center = new vxScaleCube(vxEngine, Vector3.One * 1000);
 
             base.LoadContent();
+
+            InitialiseCamera();
 
             Cursor = new vxCursor3D(vxEngine);
 
@@ -364,7 +368,27 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
             if (this.SandboxGameState == vxEnumSandboxGameState.EditMode)
                 this.vxEngine.InputManager.ShowCursor = true;
+
+            vxTabPage tabPage_EngineItems = new vxTabPage(vxEngine, tabControl, "General Items");
+            tabControl.AddItem(tabPage_EngineItems);
+
+            ScrollPanel_EngineItems = new vxScrollPanel(new Vector2(0, 0),
+                vxEngine.GraphicsDevice.Viewport.Width - 150, vxEngine.GraphicsDevice.Viewport.Height - 75);
+            tabPage_EngineItems.AddItem(ScrollPanel_EngineItems);
+
+            RegisterSandboxEntities();
         }
+
+        public vxScrollPanel ScrollPanel_EngineItems;
+        /// <summary>
+        /// Override this Method and add in your Register Sandbox Entities code.
+        /// </summary>
+        public virtual void RegisterSandboxEntities()
+        {
+            ScrollPanel_EngineItems.AddItem(new vxScrollPanelSpliter(vxEngine, "Water"));
+            ScrollPanel_EngineItems.AddItem(RegisterNewSandboxItem(vxWaterEntity.Info));
+        }
+
 
         public virtual void InitialiseCamera()
         {
