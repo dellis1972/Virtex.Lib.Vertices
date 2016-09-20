@@ -10,6 +10,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <OutputPath>bin\$(Platform)\$(Configuration)</OutputPath>
+    <ContentRootDirectory>Content/vxengine</ContentRootDirectory>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>Aero.Content</RootNamespace>
@@ -37,6 +38,12 @@
       <Name>testbox2</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\utils\unit_torus\unit_torus.fbx">
+      <Name>unit_torus</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_GenerateTangentFrames>True</ProcessorParameters_GenerateTangentFrames>
     </Compile>
     <None Include="Shaders\Include\ModelPixelShaders.h">
       <Name>ModelPixelShaders</Name>

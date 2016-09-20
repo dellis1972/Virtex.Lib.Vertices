@@ -122,7 +122,7 @@ namespace Virtex.vxGame.VerticesTechDemo
 
             //Envrio envr = new Envrio(vxEngine, vxEngine.vxContentManager.LoadModel("Models/castle/mdl_castle"), new Vector3(0, 1, 0));
 
-            waterItems.Add(new vxWaterEntity(vxEngine, Vector3.Up, new Vector3(50, 0.25f, 50)));
+            //waterItems.Add(new vxWaterEntity(vxEngine, Vector3.Up, new Vector3(50, 0.25f, 50)));
             
 
             envr.SpecularIntensity = 1;
@@ -161,19 +161,19 @@ namespace Virtex.vxGame.VerticesTechDemo
             //Cubes
             ScrollPanel_GeneralItemsPage.AddItem(new vxScrollPanelSpliter(vxEngine, "Items"));
             ScrollPanel_GeneralItemsPage.AddItem(RegisterNewSandboxItem(WoodenCrate.EntityDescription));
-            ScrollPanel_GeneralItemsPage.AddItem(RegisterNewSandboxItem(vxWaterEntity.EntityDescription));
+
             //Add the scrollpanel to the slider tab page.
             Straights.AddItem(ScrollPanel_GeneralItemsPage);
 
             //IndexedCubeTest cube = new IndexedCubeTest(vxEngine, new Vector3(4, 4, 0));
 
-            /*
+            
             Teapot t = new Teapot((GameEngine)vxEngine, new Vector3(4, 4, 0));
             t.SetMesh(Matrix.CreateTranslation(new Vector3(4, 2, 0)), true, true);
             
             ConcreteCube cc = new ConcreteCube((GameEngine)vxEngine, new Vector3(0, 5, 0));
             cc.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, 0)), true, true);
-            */
+            
 
             ModelObjs mo = new ModelObjs((GameEngine)vxEngine, new Vector3(-4, 4, 0));
             mo.SetMesh(Matrix.CreateTranslation(new Vector3(0, 2, 8)), true, true);
@@ -186,6 +186,7 @@ namespace Virtex.vxGame.VerticesTechDemo
             base.UnloadContent();
         }
 
+        /*
         public override vxSandboxEntity GetNewEntity(string key)
         {
 			vxSandboxEntity returnEntity = null;
@@ -202,7 +203,7 @@ namespace Virtex.vxGame.VerticesTechDemo
 			}
 			return returnEntity;
         }
-        
+        */
 
         /// <summary>
         /// Updates Main Gameplay Loop code here, this is affected by whether or not the scene is paused.

@@ -29,7 +29,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         /// <summary>
         /// The Pillar Collider Skin
         /// </summary>
-        public Entity entity { get; set; }
+        public Box entity { get; set; }
 
         /// <summary>
         /// Entity Mover which controls the position of the Sandbox Entity.
@@ -91,11 +91,12 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         }
 
 
+        float ZoomFactor = 1;
         public override void SetMesh(Matrix NewWorld, bool AddToPhysics, bool ResetWholeMesh)
         {
             AddToPhysicsLibrary = AddToPhysics;
 
-            World = NewWorld;
+            World = Matrix.CreateScale(ZoomFactor) * NewWorld;
             //entity.WorldTransform = World;
 
             Position = World.Translation;
@@ -106,9 +107,17 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         {
             base.Update(gameTime);
 
-            World = Matrix.CreateScale(0.5f);
+            ZoomFactor = Math.Abs(Vector3.Subtract(Position, Current3DScene.Camera.Position).Length()) / 100;
+
+            World = Matrix.CreateScale(ZoomFactor);
             World *= Matrix.CreateTranslation(Position);
+
+            entity.WorldTransform = World;
             
+            entity.HalfLength = ZoomFactor;
+            entity.HalfWidth =  ZoomFactor;
+            entity.HalfHeight =  ZoomFactor;
+
             entityMover.TargetPosition = World.Translation;
 
             if (Math.Abs(Vector3.Subtract(World.Translation, prePos).Length()) > 0.5)

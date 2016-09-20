@@ -11,10 +11,12 @@ using Virtex.Lib.Vrtc.Audio;
 using Virtex.Lib.Vrtc.Core.Scenes;
 using Virtex.Lib.Vrtc.Core.Cameras;
 using Virtex.Lib.Vrtc.Graphics;
-
+using Virtex.Lib.Vrtc.Core.Debug;
+using Virtex.Lib.Vrtc.Utilities;
 
 namespace Virtex.Lib.Vrtc.Core.Entities
 {
+    
 	/// <summary>
 	/// Base Entity in the Virtex vxEngine which controls all Rendering and Provides
 	/// position and world matrix updates to the other required entities.
@@ -92,13 +94,29 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 			}
 		}
 
-		#region Entity Fog Controls
 
-		/// <summary>
-		/// Gets or sets a value indicating whether this <see cref="T:Virtex.Lib.Vrtc.Core.Entities.vxEntity3D"/> should do fog.
-		/// </summary>
-		/// <value><c>true</c> if do fog; otherwise, <c>false</c>.</value>
-		public bool DoFog
+        public Texture2D DiffuseMap
+        {
+            get { return _diffuseMap; }
+            set
+            {
+                _diffuseMap = value;
+                foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                {
+                    if (part.Effect.Parameters["DiffuseMap"] != null)
+                        part.Effect.Parameters["DiffuseMap"].SetValue(_diffuseMap);
+                }
+            }
+        }
+        Texture2D _diffuseMap;
+
+        #region Entity Fog Controls
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:Virtex.Lib.Vrtc.Core.Entities.vxEntity3D"/> should do fog.
+        /// </summary>
+        /// <value><c>true</c> if do fog; otherwise, <c>false</c>.</value>
+        public bool DoFog
 		{
 			get { return _doFog; }
 			set
@@ -287,12 +305,26 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// <summary>
 		/// Off Set for Textures Used On the Model
 		/// </summary>
-		//public Vector2 TextureOffset = Vector2.Zero;
+		public Vector2 TextureUVOffset
+        {
+            get { return _textureUVOffset; }
+            set
+            {
+                _textureUVOffset = value;
+                if (vxModel != null)
+                    foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                    {
+                        if (part.Effect.Parameters["TextureUVOffset"] != null)
+                            part.Effect.Parameters["TextureUVOffset"].SetValue(_textureUVOffset);
+                    }
+            }
+        }
+        Vector2 _textureUVOffset = Vector2.Zero;
 
-		/// <summary>
-		/// Model Used for Distortion
-		/// </summary>
-		public Model Model_Distorter
+        /// <summary>
+        /// Model Used for Distortion
+        /// </summary>
+        public Model Model_Distorter
 		{
 			get { return _model_Distorter; }
 			set { _model_Distorter = value; }
@@ -496,10 +528,21 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		}
 		private Vector3 _position;
 
-		/// <summary>
-		/// Direction Entity is facing.
-		/// </summary>
-		public Vector3 Direction;
+        /// <summary>
+        /// The Bounding Sphere which is used to do frustrum culling.
+        /// </summary>
+        public BoundingSphere BoundingShape;
+
+        /// <summary>
+        /// Boolean value which holds whether or not the current Bounding Shape is within the Camera's View Frustrum.
+        /// </summary>
+        public bool IsInCameraViewFrustum = true;
+
+
+        /// <summary>
+        /// Direction Entity is facing.
+        /// </summary>
+        public Vector3 Direction;
 
 		/// <summary>
 		/// Entity's up vector.
@@ -593,13 +636,14 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
 			InitShaders();
 		}
-
+        Vector3 ModelCenter;
 		/// <summary>
 		/// Initialise the Main Shader.
 		/// <para>If a different shader is applied to this model, this method should be overridden</para>
 		/// </summary>
 		public virtual void InitShaders()
 		{
+           // BoundingShape = new BoundingSphere(this.Position, 2);
 
 			//By Default, Don't Show Fog
 			DoFog = vxEngine.Current3DSceneBase.DoFog;
@@ -620,7 +664,10 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
 				if (vxModel.ModelMain != null)
 				{
-					foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
+                    BoundingShape = vxGeometryHelper.GetModelBoundingSphere(vxModel.ModelMain);
+                    ModelCenter = BoundingShape.Center;
+
+                    foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
 					{
 						if (part.Effect.Parameters["LightDirection"] != null)
 							part.Effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
@@ -648,10 +695,13 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 						if (part.Effect.Parameters["FogFar"] != null)
 							part.Effect.Parameters["FogFar"].SetValue(vxEngine.Current3DSceneBase.FogFar);
 
-						//if (part.Effect.Parameters["FogColor"] != null)
-						//	part.Effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
+                        
+                        DiffuseMap = vxEngine.Assets.Textures.Blank;
 
-					}
+                        //if (part.Effect.Parameters["FogColor"] != null)
+                        //	part.Effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
+
+                    }
 				}
 
 
@@ -705,44 +755,18 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		}
 
 		/// <summary>
-		/// Applies a simple rotation to the ship and animates position based
-		/// on simple linear motion physics.
+		/// Updates the Entity
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			//UpdateRenderTechnique();
-		}
+            // Reset the Bounding Sphere's Center Position
+            BoundingShape.Center = Vector3.Transform(ModelCenter, World);
 
-        /*
-		/// <summary>
-		/// Updates the shaders technique according to the properties normaMapping and
-		/// noTextures
-		/// </summary>
-		public virtual void UpdateRenderTechnique()
-		{
-			if (vxModel != null)
-			{
-				if (_renderShadowSplitIndex)
-				{
-					_technique = "ShadowSplitIndex";
-				}
-				else
-				{
-					if (_isAlphaNoShadow == true)
-						_technique = "Alpha_NoShadow";
-					else
-						_technique = mainTechnique;
-				}
+            // Now Check if this entity is even in view of the camera
+            IsInCameraViewFrustum = Camera.IsInViewFrustrum(BoundingShape);
+        }
 
-				if (vxModel.ModelMain != null)
-					foreach (var part in vxModel.ModelMain.Meshes.SelectMany(m => m.MeshParts))
-					{
-						if (part.Effect.Techniques[_technique] != null)
-							part.Effect.CurrentTechnique = part.Effect.Techniques[_technique];
-					}
-			}
-		}
-        */
+
 
 
 		/// <summary>
@@ -751,12 +775,11 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// <param name="RenderTechnique">The Current Render Technique to Apply.</param>
 		public virtual void RenderMesh(string RenderTechnique)
 		{
-			if (vxModel != null && vxModel.ModelMain != null)
+			if (vxModel != null && vxModel.ModelMain != null && IsInCameraViewFrustum == true)
 				if (vxEnviroment.GetVar(vxEnumEnvVarType.DEBUG_MESH).GetAsBool() == false || RenderEvenInDebug == true || IsAlphaNoShadow == false)
-				{
-					//updateTechnique();
-
-					Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
+                {
+                    vxEngine.RenderCount++;
+                    Matrix[] transforms = new Matrix[vxModel.ModelMain.Bones.Count];
 					vxModel.ModelMain.CopyAbsoluteBoneTransformsTo(transforms);
 
 					// Draw the model. A model can have multiple meshes, so loop.
@@ -768,7 +791,6 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 							{
 								effect.CurrentTechnique = effect.Techniques[RenderTechnique];
 
-								//effect.CurrentTechnique = effect.Techniques[technique];
 								effect.Parameters["World"].SetValue(World);
 								effect.Parameters["View"].SetValue(Camera.View);
 								effect.Parameters["Projection"].SetValue(Camera.Projection);
@@ -779,6 +801,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
 								if (effect.Parameters["ViewVector"] != null)
 									effect.Parameters["ViewVector"].SetValue(vxEngine.Current3DSceneBase.Camera.View.Forward);
+
 
 								if (effect.Parameters["ShadowMap"] != null)
 									effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
@@ -815,23 +838,9 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
                                 if (effect.Parameters["FogColor"] != null)
                                     effect.Parameters["FogColor"].SetValue(vxEngine.Current3DSceneBase.FogColor.ToVector4());
-                                /*
 
-
-									if (effect.Parameters["ShadowDebug"] != null)
-										effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
-										if (effect.Parameters["TileBounds"] != null)
-											effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
-										if (effect.Parameters["SplitColors"] != null)
-											effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-
-
-									if (effect.Parameters["DoShadow"] != null)
-										effect.Parameters["DoShadow"].SetValue(DoShadowMap);
-
-	*/
                                 if (effect.Parameters["Alpha"] != null)
-										effect.Parameters["Alpha"].SetValue(AlphaValue);
+									effect.Parameters["Alpha"].SetValue(AlphaValue);
 
 							}
 						}
@@ -840,6 +849,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 						mesh.Draw();
 					}
 				}
+            //vxDebugShapeRenderer.AddBoundingSphere(BoundingShape, Color.LimeGreen);
 		}
 
 		/// <summary>
@@ -847,7 +857,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// </summary>
 		public virtual void RenderMeshPrepPass()
 		{
-			if (vxModel != null && vxModel.ModelUtility != null)
+			if (vxModel != null && vxModel.ModelUtility != null && IsInCameraViewFrustum == true)
 			{
 				// Look up the bone transform matrices.
 				Matrix[] transforms = new Matrix[vxModel.ModelUtility.Bones.Count];
@@ -870,34 +880,6 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 
 							if (effect.Parameters["LightDirection"] != null)
 								effect.Parameters["LightDirection"].SetValue(Vector3.Normalize(vxEngine.Renderer.lightPosition));
-							// vxConsole.WriteToInGameDebug(renderShadowSplitIndex);
-
-							/*
-                            if (effect.Parameters["CameraPos"] != null)
-                                effect.Parameters["CameraPos"].SetValue(Camera.WorldMatrix.Translation);
-							
-                            if (effect.Parameters["FogNear"] != null)
-								effect.Parameters["FogNear"].SetValue(5.0f);
-
-                            if (effect.Parameters["FogFar"] != null)
-                                effect.Parameters["FogFar"].SetValue(Camera.FarPlane / 2);
-
-                            if (effect.Parameters["FogColor"] != null)
-                                effect.Parameters["FogColor"].SetValue(Vector4.One);
-
-//#if VRTC_PLTFRM_XNA
-                            if (effect.Parameters["ShadowDebug"] != null)
-                                effect.Parameters["ShadowDebug"].SetValue(renderShadowSplitIndex);
-
-                            if (effect.Parameters["ShadowMap"] != null)
-                                effect.Parameters["ShadowMap"].SetValue(vxEngine.Renderer.RT_ShadowMap);
-                            if (effect.Parameters["ShadowTransform"] != null)
-                                effect.Parameters["ShadowTransform"].SetValue(vxEngine.Renderer.ShadowSplitProjectionsWithTiling);
-                            if (effect.Parameters["TileBounds"] != null)
-                                effect.Parameters["TileBounds"].SetValue(vxEngine.Renderer.ShadowSplitTileBounds);
-                            if (effect.Parameters["SplitColors"] != null)
-                                effect.Parameters["SplitColors"].SetValue(vxEngine.Renderer.ShadowSplitColors.Select(c => c.ToVector4()).ToArray());
-//#endif*/
 						}
 
 						mesh.Draw();
@@ -910,7 +892,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		/// </summary>
 		public virtual void RenderMeshForWaterReflectionPass(Plane surfacePlane)
 		{
-			if (vxModel!= null && vxModel.ModelUtility != null)
+			if (vxModel!= null && vxModel.ModelUtility != null && IsInCameraViewFrustum == true)
 			{
 				// Look up the bone transform matrices.
 				Matrix[] transforms = new Matrix[vxModel.ModelUtility.Bones.Count];
@@ -945,7 +927,7 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 		public virtual void RenderMeshShadow()
 		{
 
-			if (vxModel != null && DoShadowMap && vxModel.ModelShadow != null)
+			if (vxModel != null && DoShadowMap && vxModel.ModelShadow != null && IsInCameraViewFrustum == true)
 			{
 				for (int i = 0; i < vxEngine.Renderer.NumberOfShadowSplits; ++i)
 				{

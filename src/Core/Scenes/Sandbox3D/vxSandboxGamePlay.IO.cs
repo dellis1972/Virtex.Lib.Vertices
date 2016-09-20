@@ -30,6 +30,7 @@ using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries;
 using Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement;
 using Virtex.Lib.Vrtc.Physics.BEPU.BroadPhaseEntries.MobileCollidables;
 using Virtex.Lib.Vrtc.Entities.Sandbox3D;
+using Virtex.Lib.Vrtc.Entities.Sandbox3D.Util;
 
 namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 {
@@ -38,7 +39,35 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
         public virtual void LoadFile()
         {
+            //If it's not a new file, then open the specifeid file
+            if (SandboxStartGameType != vxEnumSandboxGameType.NewSandbox)
+            {
+                //Deserialize the input xml file in the de-compressed directory
+                XmlSerializer deserializer = new XmlSerializer(typeof(vxSandBoxFileStructure));
+                TextReader reader = new StreamReader(sandBoxFile.Name);
+                sandBoxFile = (vxSandBoxFileStructure)deserializer.Deserialize(reader);
+                reader.Close();
 
+                //This locks in the system to force the orientation
+                Index = -2;
+                foreach (vxSandboxItemStruct part in sandBoxFile.items)
+                {
+                    //Console.WriteLine("id: {0}, Type: {1}", part.id, part.Type);
+                    AddSandboxItem(part.Type, part.Orientation);
+
+                    temp_part.UserDefinedData01 = part.UserDefinedData01;
+                    temp_part.UserDefinedData02 = part.UserDefinedData02;
+                    temp_part.UserDefinedData03 = part.UserDefinedData03;
+                    temp_part.UserDefinedData04 = part.UserDefinedData04;
+                    temp_part.UserDefinedData05 = part.UserDefinedData05;
+
+                    if (temp_part != null)
+                        temp_part.PostLoad();
+                }
+
+                //Clear the temp directory
+                vxEngine.ClearTempDirectory();
+            }
         }
 
         /// <summary>
@@ -88,6 +117,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
         public virtual void SaveFile(bool takeScreenshot)
         {
+            /*
             vxConsole.WriteLine("============================================");
             vxConsole.WriteLine("Saving File : '" + sandBoxFile.Name + "'");
 
@@ -143,6 +173,65 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             }
             sandBoxFile.items.Clear();
             Items.Add(temp_part);
+
+            vxConsole.WriteLine("Finished Save!");
+            vxConsole.WriteLine("============================================");
+            */
+
+
+            vxConsole.WriteLine("============================================");
+            vxConsole.WriteLine("Saving File : '" + sandBoxFile.Name + "'");
+            sandBoxFile.items.Clear();
+
+            foreach (vxSandboxEntity part in Items)
+            {
+                // Prepare the entity for saving
+                part.PreSave();
+
+                //Don't Save Construction Geometry
+                Type partType = part.GetType();
+                if (partType != typeof(vxSnapBox) &&
+                    partType != typeof(vxScaleCube))
+                {
+                    sandBoxFile.items.Add(new vxSandboxItemStruct(part.Index,
+                        part.ToString(),
+                        part.World,
+                        part.UserDefinedData01,
+                        part.UserDefinedData02,
+                        part.UserDefinedData03,
+                        part.UserDefinedData04,
+                        part.UserDefinedData05));
+                    Console.Write(".");
+                }
+            }
+
+
+            int Width = vxEngine.GraphicsDevice.PresentationParameters.BackBufferWidth;
+            int Height = vxEngine.GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+            Texture2D thumbnail = vxUtil.ResizeTexture2D(vxEngine, ThumbnailImage, 48, 48);
+
+            byte[] b = new byte[thumbnail.Width * thumbnail.Height * 4];
+            thumbnail.GetData<byte>(b);
+            sandBoxFile.texture = b;
+
+            sandBoxFile.textureWidth = thumbnail.Width;
+            sandBoxFile.textureHeight = thumbnail.Height;
+
+            string path = vxEnviroment.GetVar(vxEnumEnvVarType.PATH_SANDBOX).Value.ToString();
+            //string path = "Temp/Sandbox/" + LevelFile.Name;
+
+            //First Check, if the Items Directory Doesn't Exist, Create It
+            if (Directory.Exists(path) == false)
+                Directory.CreateDirectory(path);
+
+            //Write The Sandbox File
+            XmlSerializer serializer = new XmlSerializer(typeof(vxSandBoxFileStructure));
+            using (TextWriter writer = new StreamWriter(path + "/" + sandBoxFile.Name + ".sbx"))
+            {
+                serializer.Serialize(writer, sandBoxFile);
+            }
+            sandBoxFile.items.Clear();
 
             vxConsole.WriteLine("Finished Save!");
             vxConsole.WriteLine("============================================");

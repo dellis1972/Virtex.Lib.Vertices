@@ -7,7 +7,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
     /// <summary>
     /// Class for holding all vxEngine Assets
     /// </summary>
-    public class Assets
+    public class vxInternalAssetManager
     {
         vxEngine Engine;
 
@@ -67,6 +67,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
         public struct AssetModels
         {
             public vxModel UnitArrow { get; set; }
+            public vxModel UnitTorus { get; set; }
             public vxModel UnitBox { get; set; }
             public vxModel UnitSphere { get; set; }
             public vxModel UnitPlane { get; set; }
@@ -156,7 +157,7 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
         /// <summary>
         /// Assets For the vxEngine
         /// </summary>
-        public Assets(vxEngine engine)
+        public vxInternalAssetManager(vxEngine engine)
         {
             //Game vxEngine
             Engine = engine;
@@ -266,7 +267,8 @@ namespace Virtex.Lib.Vrtc.Core.ContentManagement
 
 			//Unit Models
 			models.UnitArrow = Engine.vxContentManager.LoadBasicEffectModel("Models/utils/unit_arrow/unit_arrow", Engine.EngineContentManager, shaders.CascadeShadowShader, shaders.UtilityShader);
-			models.UnitBox = Engine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
+            models.UnitTorus = Engine.vxContentManager.LoadBasicEffectModel("Models/utils/unit_torus/unit_torus", Engine.EngineContentManager, shaders.CascadeShadowShader, shaders.UtilityShader);
+            models.UnitBox = Engine.vxContentManager.LoadModel("Models/utils/unit_box/unit_box" + tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.UnitPlane = Engine.vxContentManager.LoadModel("Models/utils/unit_plane/unit_plane"+ tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.UnitSphere = Engine.vxContentManager.LoadModel("Models/utils/unit_sphere/unit_sphere"+ tag, Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);
 			models.Sun_Mask = Engine.vxContentManager.LoadModel("Models/sun/sun_mask", Engine.EngineContentManager, shaders.MainShader, shaders.CascadeShadowShader, shaders.UtilityShader);

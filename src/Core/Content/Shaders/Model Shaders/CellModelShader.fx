@@ -11,6 +11,8 @@ float Alpha = 1;
 float SpecularIntensity = 1;
 float SpecularPower = 5;
 
+float2 TextureUVOffset = float2(0, 0);
+
 float3 ViewVector = float3(1, 0, 0);
 
 // The light direction is shared between the Lambert and Toon lighting techniques.
@@ -43,6 +45,16 @@ sampler diffuseSampler = sampler_state
     AddressU = Wrap;
     AddressV = Wrap;
 };
+texture DiffuseMap;
+sampler diffuseMapSampler = sampler_state
+{
+	Texture = (DiffuseMap);
+	MagFilter = LINEAR;
+	MinFilter = LINEAR;
+	Mipfilter = LINEAR;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
 
 texture SpecularMap;
 sampler specularSampler = sampler_state
@@ -65,7 +77,6 @@ sampler normalSampler = sampler_state
     AddressU = Wrap;
     AddressV = Wrap;
 };
-
 
 
 
@@ -114,7 +125,7 @@ MainVSOutput MainVSFunction(MainVSInput input, float4x4 worldTransform)
 	float4 viewPosition = mul(worldPosition, View);
 	output.Position = mul(viewPosition, Projection);
 
-	output.TexCoord = input.TexCoord;
+	output.TexCoord = input.TexCoord + TextureUVOffset;
 
 	// calculate tangent space to world space matrix using the world space tangent,
 	// binormal, and normal as basis vectors
@@ -157,11 +168,13 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	//First, Get the Diffuse Colour of from the Texture
 	//*********************************************************************************************
 	float4 diffusecolor = tex2D(diffuseSampler, input.TexCoord);
+	float diffuseMap = tex2D(diffuseMapSampler, input.TexCoord).a;
 
 	//Set Colour From the Diffuse Sampler Colour and the Shadow Factor
 	
 	float shadow = GetShadowFactor(input.Shadow, 1);
-	float4 Color = diffusecolor * shadow;
+	float4 Color = diffusecolor;
+
 
 	float LightAmount = dot(input.tangentToWorld[0], LightDirection);
 
@@ -183,7 +196,10 @@ float4 MainPSFunction(MainVSOutput input) : COLOR0
 	}
 	// diffusecolor * shadow + float4(0, 0, 0, Alpha);//
 
-	return Color + float4(0, 0, 0, Alpha) + EvissiveColour;
+	if (diffuseMap < 0.5)
+		return diffusecolor;
+
+	return Color * shadow + float4(0, 0, 0, Alpha) + EvissiveColour;
 
 }
 

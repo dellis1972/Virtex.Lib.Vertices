@@ -12,19 +12,14 @@ using Virtex.Lib.Vrtc.Scenes.Sandbox3D;
 
 namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 {
-    public enum AxisDirections
-    {
-        X,
-        Y,
-        Z,
-    }
-
+   
 	/// <summary>
 	/// Axis Object for editing Sandbox Entity Position in the Sandbox Enviroment.
 	/// </summary>
-    public class vxAxis : vxSandboxEntity
+    public class vxAxisRotator : vxSandboxEntity
     {
-        public Box HitBox;
+        public Cylinder HitBox;
+        
         public AxisDirections AxisDirections;
 
 		vxCursor3D ParentCursor;
@@ -43,34 +38,34 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         /// <param name="vxEngine">Vx engine.</param>
         /// <param name="ParentCursor">Parent cursor.</param>
         /// <param name="AxisDirections">Axis directions.</param>
-        public vxAxis(vxEngine vxEngine, vxCursor3D ParentCursor, AxisDirections AxisDirections)
+        public vxAxisRotator(vxEngine vxEngine, vxCursor3D ParentCursor, AxisDirections AxisDirections)
             : base(vxEngine, null, Vector3.Zero)
         {
-            model = vxEngine.Assets.Models.UnitArrow.ModelMain;
+            model = vxEngine.Assets.Models.UnitTorus.ModelMain;
             this.ParentCursor = ParentCursor;
             DoShadowMap = false;
-            HitBox = new Box(Vector3.Zero, 2, 2, 25);
+            HitBox = new Cylinder(Vector3.Zero, 2, 25);
             World = Matrix.CreateScale(2, 2, 25);
 
             this.AxisDirections = AxisDirections;
             switch (AxisDirections)
             {
                 case AxisDirections.X:
-                    PlainColor = new Color(255, 0,0);
+                    PlainColor = new Color(128,0,0);
                     World = Matrix.CreateScale(25, 2, 2);
                     break;
                 case AxisDirections.Y:
-                    PlainColor = Color.Lime;
+                    PlainColor = Color.Green;
                     World = Matrix.CreateScale(2, 25, 2);
                     break;
                 case AxisDirections.Z:
-                    PlainColor = new Color(0, 0, 255);
+                    PlainColor = new Color(0, 0, 128);
                     World = Matrix.CreateScale(2, 2, 25);
                     break;
             }
 
             Current3DScene.BEPUPhyicsSpace.Add(HitBox);
-            //Current3DScene.Physics3DDebugDrawer.Add(HitBox);
+           // Current3DScene.BEPUDebugDrawer.Add(HitBox);
             HitBox.CollisionInformation.Tag = AxisDirections;
 
 			HitBox.CollisionInformation.CollisionRules.Personal = Virtex.Lib.Vrtc.Physics.BEPU.CollisionRuleManagement.CollisionRule.NoSolver;
@@ -88,7 +83,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 
         float hightLiteFactor = 1;
 
-        Color Color;
+
         public override void RenderMesh(string RenderTechnique) {
 			if (Current3DScene.Camera.CameraType == CameraType.Freeroam && model != null)
 			{
@@ -104,9 +99,8 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 					foreach (BasicEffect effect in mesh.Effects)
 					{
 						//effect.EnableDefaultLighting();
-						//effect.DiffuseColor = this.PlainColor.ToVector3() * hightLiteFactor * hightLiteFactor;
-                        effect.DiffuseColor = Color.ToVector3();
-                        effect.World = Matrix.CreateScale(10) * World;
+						effect.DiffuseColor = this.PlainColor.ToVector3() * hightLiteFactor * hightLiteFactor;
+						effect.World = Matrix.CreateScale(10) * World;
 						effect.View = vxEngine.Current3DSceneBase.Camera.View;
 						effect.Projection = vxEngine.Current3DSceneBase.Camera.Projection;
 					}
@@ -127,7 +121,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
                     break;
                 case AxisDirections.Y:
                     MainAxis = ParentCursor.World.Up;
-                    PerpendicularAxis = ParentCursor.World.Forward;
+                    PerpendicularAxis = ParentCursor.World.Right;
                     break;
                 case AxisDirections.Z:
                     MainAxis = ParentCursor.World.Right;
@@ -141,23 +135,20 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 
             //Set the World of the Bit Box
             HitBox.WorldTransform = Matrix.CreateScale(1) * Matrix.CreateWorld(
-                ParentCursor.Position + MainAxis * ParentCursor.ZoomFactor / ((ParentCursor.scale)),
-                MainAxis,
-                PerpendicularAxis);
+                ParentCursor.Position,
+                PerpendicularAxis,
+                MainAxis);
 
-            HitBox.HalfLength = 2 * ParentCursor.ZoomFactor / ParentCursor.scale;
-            HitBox.HalfWidth = 2 * ParentCursor.ZoomFactor / (ParentCursor.scale * 7.5f);
-            HitBox.HalfHeight =2 * ParentCursor.ZoomFactor / (ParentCursor.scale * 7.5f);
+
+            HitBox.Radius = 2* ParentCursor.ZoomFactor / ParentCursor.scale;
 
             base.Update(gameTime);
 
             hightLiteFactor = 1;
-            Color = PlainColor;
             if (SelectionState == vxEnumSelectionState.Hover)
             {
                 hightLiteFactor = 1.25f;
-                Color = Color.DeepSkyBlue;
-                Color = Color.DarkOrange;
+                //DebugShapeRenderer.AddBoundingBox(HitBox.CollisionInformation.BoundingBox, Color.HotPink);
             }              
 
 
@@ -169,8 +160,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
                 MovementAxis.Normalize();
                 if(vxEngine.InputManager.IsNewMouseButtonPress(MouseButtons.LeftButton))
                     StartPosition = ParentCursor.Position;
-
-                Color = Color.DarkOrange*0.9f;
+                
 
 
                 ParentCursor.Position += MovementAxis * (

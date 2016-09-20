@@ -124,21 +124,22 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             //First Ensure the Entity Description Is Loaded.
             EntityDescription.Load(vxEngine);
 
-            //Next Register the Entity with the Sandbox Registrar
-            RegisteredItems.Add(EntityDescription.Key, EntityDescription);
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\tRegistering: \t'{0}' to Dictionary", EntityDescription.Key);
-            Console.ResetColor();
+                //Next Register the Entity with the Sandbox Registrar
+                RegisteredItems.Add(EntityDescription.Key, EntityDescription);
 
-            vxSandboxItemButton button = new vxSandboxItemButton(vxEngine,
-                EntityDescription.Icon,
-                EntityDescription.Description,
-                EntityDescription.Key,
-                ButtonPosition, Width, Height);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\tRegistering: \t'{0}' to Dictionary", EntityDescription.Key);
+                Console.ResetColor();
 
-            button.Clicked += AddItemModeToolbarItem_Clicked;
-            button.Clicked += Button_Clicked;
+                vxSandboxItemButton button = new vxSandboxItemButton(vxEngine,
+                    EntityDescription.Icon,
+                    EntityDescription.Description,
+                    EntityDescription.Key,
+                    ButtonPosition, Width, Height);
+
+                button.Clicked += AddItemModeToolbarItem_Clicked;
+                button.Clicked += Button_Clicked;
 
             return button;
         }
@@ -194,6 +195,8 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                 //Add too Item Collection.
                 Items.Add(temp_part);
 
+                temp_part.InitSandboxEntity();
+
                 //Process the New Entity.
                 ProcessEntity(World);
 
@@ -236,14 +239,6 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
             }
         }
 
-        /*
-        public vxWaterEntity AddWaterVolume(Vector3 Position)
-        {
-            vxWaterEntity water = new vxWaterEntity(vxEngine, Position, new Vector3(25, 5, 25));
-            waterItems.Add(water);
-            return water;
-        }
-        */
         /// <summary>
         /// Resets the Layout of Element Indecies for Selection and Element Management
         /// </summary>

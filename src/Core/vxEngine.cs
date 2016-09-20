@@ -80,19 +80,15 @@ namespace Virtex.Lib.Vrtc.Core
 		/// Gets or sets the name of the game, this needs to be set by each program which uses this library.
 		/// </summary>
 		/// <value>The name of the game.</value>
-		public string GameName {
-			get { return _gameName; }
-			set { _gameName = value; }
-		}
+		public string GameName = "default_gamename";
 
-		private string _gameName = "default_gamename";
+        public static int RenderCount = 0;
 
-
-		/// <summary>
-		/// Gets or sets the graphics settings manager.
-		/// </summary>
-		/// <value>The graphics settings manager.</value>
-		public vxGraphicsSettingsManager GraphicsSettingsManager { get; set; }
+        /// <summary>
+        /// Gets or sets the graphics settings manager.
+        /// </summary>
+        /// <value>The graphics settings manager.</value>
+        public vxGraphicsSettingsManager GraphicsSettingsManager;
 
 		#if VIRTICES_2D
 		/// <summary>
@@ -126,44 +122,24 @@ namespace Virtex.Lib.Vrtc.Core
 		/// <summary>
 		/// Engine Content Manager for specific Virtices Engine fun.
 		/// </summary>
-		public vxContentManager vxContentManager {
-			get { return _contentManager; }
-			set { _contentManager = value; }
-		}
-
-		private vxContentManager _contentManager;
+		public vxContentManager vxContentManager;
 
 		/// <summary>
 		/// Virtex vxEngine Debug Class
 		/// </summary>
-		public vxDebugSystem DebugSystem {
-			get { return _debugSystem; }
-			set { _debugSystem = value; }
-		}
-
-		private vxDebugSystem _debugSystem;
+		public vxDebugSystem DebugSystem;
 
 		/// <summary>
 		/// Gets or sets the game version.
 		/// </summary>
 		/// <value>The game version.</value>
-		public string GameVersion {
-			get { return _gameVersion; }
-			set { _gameVersion = value; }
-		}
-
-		string _gameVersion = "v. 0.0.0.0";
+		public string GameVersion = "v. 0.0.0.0";
 
 		/// <summary>
 		/// Gets or sets the vxEngine version.
 		/// </summary>
 		/// <value>The vxEngine version.</value>
-		public string EngineVersion {
-			get { return _engineVersion; }
-			set { _engineVersion = value; }
-		}
-
-		string _engineVersion = "v. 0.0.0.0";
+		public string EngineVersion = "v. 0.0.0.0";
 
 
 
@@ -221,32 +197,23 @@ namespace Virtex.Lib.Vrtc.Core
 		/// </summary>
 		public bool IsBackBufferInvalidated = false;
 
-		/// <summary>
-		/// Gets the engine content manager.
-		/// </summary>
-		/// <value>The engine content manager.</value>
-		public ContentManager EngineContentManager {
-			get { return _engineContentManager; }
-		}
+        /// <summary>
+        /// Gets the engine content manager.
+        /// </summary>
+        /// <value>The engine content manager.</value>
+        public ContentManager EngineContentManager;
 
-		private ContentManager _engineContentManager;
-
-		#if VIRTICES_3D
-		/// <summary>
-		/// Virtex Render System
-		/// </summary>
-		public vxRenderer Renderer {
-			get { return _renderer; }
-			set { _renderer = value; }
-		}
-
-		private vxRenderer _renderer;
+#if VIRTICES_3D
+        /// <summary>
+        /// Virtex Render System
+        /// </summary>
+        public vxRenderer Renderer;
 		#endif
 
 		/// <summary>
 		/// Assets within the vxEngine
 		/// </summary>
-		public Assets Assets { get; set; }
+		public vxInternalAssetManager Assets { get; set; }
 
 		/// <summary>
 		/// Gets or sets the vxGUItheme use by this game.
@@ -265,15 +232,10 @@ namespace Virtex.Lib.Vrtc.Core
 		List<vxGameBaseScreen> screensToUpdate = new List<vxGameBaseScreen> ();
 
 
-		/// <summary>
-		/// The Game's Input Manager.
-		/// </summary>
-		public vxInputManager InputManager {
-			get { return _inputManager; }
-			set { _inputManager = value; }
-		}
-
-		private vxInputManager _inputManager;
+        /// <summary>
+        /// The Game's Input Manager.
+        /// </summary>
+        public vxInputManager InputManager;
 
 
 		//TODO: Add Too Asset's Folder
@@ -316,18 +278,14 @@ namespace Virtex.Lib.Vrtc.Core
 		public vxLanguagePackBase Language { get; set; }
 
 
-		#region Properties
+        #region Properties
 
 
-		/// <summary>
-		/// A default SpriteBatch shared by all the screens. This saves
-		/// each screen having to bother creating their own local instance.
-		/// </summary>
-		public SpriteBatch SpriteBatch {
-			get { return _spriteBatch; }
-		}
-
-		SpriteBatch _spriteBatch;
+        /// <summary>
+        /// A default SpriteBatch shared by all the screens. This saves
+        /// each screen having to bother creating their own local instance.
+        /// </summary>
+        public SpriteBatch SpriteBatch;
 
 		/// <summary>
 		/// A default font shared by all the screens. This saves
@@ -494,13 +452,13 @@ namespace Virtex.Lib.Vrtc.Core
 				vxConsole.WriteLine ("Starting Content Manager");
 				// Load content belonging to the screen manager.
 				ContentManager content = Game.Content;
-				_engineContentManager = new ContentManager (Game.Services);
+				EngineContentManager = new ContentManager (Game.Services);
 
-				// Initialise the Engine Speciality Content Manager.
-				_contentManager = new vxContentManager (this);
+            // Initialise the Engine Speciality Content Manager.
+            vxContentManager = new vxContentManager (this);
 
-				//Set Location of Content Specific too Platform
-				_engineContentManager.RootDirectory = vxEnviroment.GetVar (vxEnumEnvVarType.PATH_ENGINE_CONTENT).Value.ToString ();
+            //Set Location of Content Specific too Platform
+            EngineContentManager.RootDirectory = vxEnviroment.GetVar (vxEnumEnvVarType.PATH_ENGINE_CONTENT).Value.ToString ();
          
 #if VRTC_PLTFRM_DROID
             Game.Activity.Window.AddFlags(WindowManagerFlags.Fullscreen);
@@ -514,14 +472,14 @@ namespace Virtex.Lib.Vrtc.Core
 			AssetCreator = new vxAssetCreator2D (GraphicsDevice);
 			AssetCreator.LoadContent (_engineContentManager);
 #endif
-				_inputManager = new vxInputManager (this);
-				_inputManager.LoadContent ();
-				_inputManager.ShowCursor = true;
+				InputManager = new vxInputManager (this);
+            InputManager.LoadContent ();
+            InputManager.ShowCursor = true;
 
-				_spriteBatch = new SpriteBatch (GraphicsDevice);
+				SpriteBatch = new SpriteBatch (GraphicsDevice);
 
 				//Initialise vxEngine Assets
-				Assets = new Assets (this);
+				Assets = new vxInternalAssetManager (this);
 
 				vxGUITheme = new vxGUITheme (this);
 				vxGUITheme.Font = this.Assets.Fonts.MenuFont;
@@ -535,8 +493,8 @@ namespace Virtex.Lib.Vrtc.Core
 
 				// initialize the debug system with the game and the name of the font 
 				// we want to use for the debugging
-				_debugSystem = vxDebugSystem.Initialize (this, "Fonts/font_debug");
-				_debugSystem.TimeRuler.ShowLog = true;
+				DebugSystem = vxDebugSystem.Initialize (this, "Fonts/font_debug");
+            DebugSystem.TimeRuler.ShowLog = true;
 
 				//Initialise the Debug Renderer
 				vxDebugShapeRenderer.Initialize (GraphicsDevice);
@@ -574,6 +532,7 @@ namespace Virtex.Lib.Vrtc.Core
 #if VIRTICES_3D
 				//Initialise Renderer
 				Renderer = new vxRenderer (this);
+            Renderer.LoadContent();
 #endif
 
 				//Load in Profile Data
@@ -669,17 +628,17 @@ namespace Virtex.Lib.Vrtc.Core
 				try {
 #endif
 					Profile.Settings.Audio.Double_SFX_Volume = 0.2f;
-					// tell the TimeRuler that we're starting a new frame. you always want
-					// to call this at the start of Update
-					_debugSystem.TimeRuler.StartFrame ();
+            // tell the TimeRuler that we're starting a new frame. you always want
+            // to call this at the start of Update
+            DebugSystem.TimeRuler.StartFrame ();
 
-					// Start measuring time for "Update".
-					_debugSystem.TimeRuler.BeginMark ("Update", Color.Red);
+            // Start measuring time for "Update".
+            DebugSystem.TimeRuler.BeginMark ("Update", Color.Red);
 
 					//If the Debug Console is Open, Then don't update or take input
-					if (!_debugSystem.DebugCommandUI.Focused) {
+					if (!DebugSystem.DebugCommandUI.Focused) {
 						// Read the keyboard and gamepad.
-						_inputManager.Update (gameTime);
+						InputManager.Update (gameTime);
 
 						// Make a copy of the master screen list, to avoid confusion if
 						// the process of updating one screen adds or removes others.
@@ -706,7 +665,7 @@ namespace Virtex.Lib.Vrtc.Core
 								// If this is the first active screen we came across,
 								// give it a chance to handle input.
 								if (!otherScreenHasFocus) {
-									screen.HandleInput (_inputManager);
+									screen.HandleInput (InputManager);
 
 									otherScreenHasFocus = true;
 								}
@@ -723,8 +682,8 @@ namespace Virtex.Lib.Vrtc.Core
 							TraceScreens ();
 					}
 
-					// Stop measuring time for "Update".
-					_debugSystem.TimeRuler.EndMark ("Update");
+            // Stop measuring time for "Update".
+            DebugSystem.TimeRuler.EndMark ("Update");
 
 #if !DEBUG
 				} catch (Exception ex) {
@@ -740,10 +699,10 @@ namespace Virtex.Lib.Vrtc.Core
         /// </summary>
         void Crashed ()
 		{
-			if (_debugSystem != null) {
+			if (DebugSystem != null) {
 
-				if (_debugSystem.TimeRuler != null)
-					_debugSystem.TimeRuler.Visible = false;
+				if (DebugSystem.TimeRuler != null)
+                    DebugSystem.TimeRuler.Visible = false;
 			}
 		}
 
@@ -768,8 +727,8 @@ namespace Virtex.Lib.Vrtc.Core
             if (vxCrashHandler.IsInitialised == false) {
 				try {
 #endif
-					// Start measuring time for "Draw".
-					_debugSystem.TimeRuler.BeginMark ("Draw", Color.Yellow);
+            // Start measuring time for "Draw".
+            DebugSystem.TimeRuler.BeginMark ("Draw", Color.Yellow);
 
 
 					foreach (vxGameBaseScreen screen in screens) {
@@ -779,16 +738,16 @@ namespace Virtex.Lib.Vrtc.Core
 						screen.Draw (gameTime);
 					}
 
-					_inputManager.Draw ();
+					InputManager.Draw ();
 #if VRTC_INCLDLIB_NET && DEBUG
             DrawNetworkGameConnectionInfo();
 #endif
 
 					vxConsole.Draw ();
-					// Stop measuring time for "Draw".
-					_debugSystem.TimeRuler.EndMark ("Draw");
+            // Stop measuring time for "Draw".
+            DebugSystem.TimeRuler.EndMark ("Draw");
 
-					_debugSystem.TimeRuler.DrawGraph ();
+            DebugSystem.TimeRuler.DrawGraph ();
 #if !DEBUG
 				} catch (Exception ex) {
 					vxCrashHandler.Init (this, ex);
@@ -876,13 +835,13 @@ namespace Virtex.Lib.Vrtc.Core
 		{
 			Viewport viewport = GraphicsDevice.Viewport;
 
-			_spriteBatch.Begin ();
+            SpriteBatch.Begin ();
 
-			_spriteBatch.Draw (this.Assets.Textures.Blank,
+            SpriteBatch.Draw (this.Assets.Textures.Blank,
 				new Rectangle (0, 0, viewport.Width, viewport.Height),
 				FadeToBackBufferColor * alpha);
-			
-			_spriteBatch.End ();
+
+            SpriteBatch.End ();
 		}
 
 

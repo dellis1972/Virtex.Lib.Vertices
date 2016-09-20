@@ -73,6 +73,12 @@ namespace Virtex.Lib.Vrtc.Graphics
 
         RenderPass mCurrentPass = RenderPass.ColourPass;
 
+        vxEdgeDetectPostProcess EdgeDetectPostProcessor;
+        vxDepthOfFieldPostProcess DepthOfFieldPostProcess;
+        vxBlurScenePostProcess BlurScenePostProcess;
+
+        public List<vxPostProcessor> PostProcessors = new List<vxPostProcessor>();
+
         // Custom rendertargets.
         /// <summary>
         /// The Main Render Target 
@@ -251,13 +257,14 @@ namespace Virtex.Lib.Vrtc.Graphics
         /// </summary>
         public RenderTarget2D RT_DistortionMap { get; internal set; }
 
+        /*
         // Choose what display settings to use.
         NonPhotoRealisticSettings Settings
         {
             get { return NonPhotoRealisticSettings.PresetSettings[settingsIndex]; }
         }
         int settingsIndex = 0;
-
+        */
 
 
 
@@ -418,7 +425,7 @@ namespace Virtex.Lib.Vrtc.Graphics
         }
         private int _shadowMapSize = 512;
 
-        float size = 750;
+        float size = 256;
 
 
 
@@ -455,7 +462,6 @@ namespace Virtex.Lib.Vrtc.Graphics
 			vxConsole.WriteLine ("Starting 3D Rendering Engine");
             this.vxEngine = vxEngine;
             bbDim = new BoundingBox(new Vector3(-size, -size, -size), new Vector3(size, size, size));
-			this.LoadContent ();
         }
 
         public vxRenderer(vxEngine vxEngine, BoundingBox ShadowMapBB)
@@ -463,7 +469,6 @@ namespace Virtex.Lib.Vrtc.Graphics
 			vxConsole.WriteLine ("Starting 3D Rendering Engine");
             this.vxEngine = vxEngine;
             bbDim = ShadowMapBB;
-			this.LoadContent ();
         }
 
         /// <summary>
@@ -530,6 +535,16 @@ namespace Virtex.Lib.Vrtc.Graphics
             quadRendererIndexBuffer = new short[] { 0, 1, 2, 2, 3, 0 };
 
             InitialiseRenderTargetsAll();
+
+            //Now Initialise all Post Processors
+            EdgeDetectPostProcessor = new vxEdgeDetectPostProcess(vxEngine);
+            EdgeDetectPostProcessor.LoadContent();
+
+            DepthOfFieldPostProcess = new vxDepthOfFieldPostProcess(vxEngine);
+            DepthOfFieldPostProcess.LoadContent();
+
+            BlurScenePostProcess = new vxBlurScenePostProcess(vxEngine);
+            BlurScenePostProcess.LoadContent();
         }
 
         public void InitialiseRenderTargetsAll()
@@ -609,6 +624,11 @@ namespace Virtex.Lib.Vrtc.Graphics
             RT_NormalDepth = new RenderTarget2D(mGraphicsDevice,
                                                          pp.BackBufferWidth, pp.BackBufferHeight, false,
                                                          pp.BackBufferFormat, pp.DepthStencilFormat);
+
+
+            //Then Set the info for the Post Processors
+            foreach (vxPostProcessor pstprcsr in PostProcessors)
+                pstprcsr.SetResoultion();
         }
 
         public void InitialiseRenderTargetsForWaterReflection(PresentationParameters pp)
@@ -813,54 +833,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 #endregion
 
 #region Post Processing Methods
-
-
-        public void CreateBluredScreen(vxEngine vxEngine)
-        {
-            //Set First Temp Blur Rendertarget 
-            vxEngine.GraphicsDevice.SetRenderTarget(RT_BlurTempOne);
-
-            //Now Draw the the Final Scene too the res-downed TempBlur Target.
-            vxEngine.SpriteBatch.Begin();
-            vxEngine.SpriteBatch.Draw(RT_FinalScene,
-                new Rectangle(0, 0, RT_BlurTempOne.Width, RT_BlurTempOne.Height),
-                Color.White);
-            vxEngine.SpriteBatch.End();
-
-            // Pass 2: draw from rendertarget 1 into rendertarget 2,
-            // using a shader to apply a horizontal gaussian blur filter.
-            BloomComponent.SetBloomEffectParameters(vxEngine.Assets.PostProcessShaders.GaussianBlurEffect,
-                1.0f / (float)RT_BlurTempOne.Width, 0, BloomSettings.BlurAmount);
-
-            DrawRenderTargetIntoOther(vxEngine, RT_BlurTempOne, RT_BlurTempTwo,
-                               vxEngine.Assets.PostProcessShaders.GaussianBlurEffect,
-                               IntermediateBuffer.BlurredHorizontally);
-
-            // Pass 3: draw from rendertarget 2 back into rendertarget 1,
-            // using a shader to apply a vertical gaussian blur filter.
-            BloomComponent.SetBloomEffectParameters(vxEngine.Assets.PostProcessShaders.GaussianBlurEffect,
-                0, 1.0f / (float)RT_BlurTempOne.Height, BloomSettings.BlurAmount);
-
-            DrawRenderTargetIntoOther(vxEngine, RT_BlurTempTwo, RT_BlurTempOne,
-                               vxEngine.Assets.PostProcessShaders.GaussianBlurEffect,
-                               IntermediateBuffer.BlurredBothWays);
-
-            // Pass 4: draw both rendertarget 1 and the original scene
-            // image back into the main backbuffer, using a shader that
-            // combines them to produce the final bloomed result.
-
-            vxEngine.Assets.PostProcessShaders.BloomCombineEffect.Parameters["BloomIntensity"].SetValue(BloomSettings.BloomIntensity);
-            vxEngine.Assets.PostProcessShaders.BloomCombineEffect.Parameters["BaseIntensity"].SetValue(BloomSettings.BaseIntensity);
-            vxEngine.Assets.PostProcessShaders.BloomCombineEffect.Parameters["BloomSaturation"].SetValue(BloomSettings.BloomSaturation);
-            vxEngine.Assets.PostProcessShaders.BloomCombineEffect.Parameters["BaseSaturation"].SetValue(BloomSettings.BaseSaturation);
-
-            vxEngine.GraphicsDevice.SetRenderTarget(RT_BlurredScene);
-
-            vxEngine.SpriteBatch.Begin();
-            vxEngine.SpriteBatch.Draw(RT_BlurTempOne, vxEngine.GraphicsDevice.Viewport.Bounds, Color.White);
-            vxEngine.SpriteBatch.End();
-        }
-
+        
         /// <summary>
         /// Helper applies the edge detection and pencil sketch postprocess effect.
         /// </summary>
@@ -938,111 +911,16 @@ namespace Virtex.Lib.Vrtc.Graphics
 
         }
 
-        /// <summary>
-        /// Helper applies the edge detection and pencil sketch postprocess effect.
-        /// </summary>
-        public void ApplyEdgeDetect(vxEngine vxEngine)
+
+        public void ApplyPostProcessors()
         {
-            //Set Render Target
-            mGraphicsDevice.SetRenderTarget(RT_EdgeDetected);
-
-            if (vxEngine.Profile.Settings.Graphics.Bool_DoEdgeDetection)
-            {
-                EffectParameterCollection parameters = vxEngine.Assets.PostProcessShaders.CartoonEdgeDetection.Parameters;
-
-                Vector2 resolution = new Vector2(RT_MainScene.Width,
-                                                 RT_MainScene.Height);
-
-                // Pass in the current screen resolution.
-                parameters["ScreenResolution"].SetValue(resolution);
-                parameters["NormalTexture"].SetValue(RT_NormalMap);
-                parameters["DepthTexture"].SetValue(RT_DepthMap);
-
-
-                // Settings controlling the edge detection filter.
-                parameters["EdgeWidth"].SetValue(Settings.EdgeWidth);
-                parameters["EdgeIntensity"].SetValue(Settings.EdgeIntensity);
-
-                // How sensitive should the edge detection be to tiny variations in the input data?
-                // Smaller settings will make it pick up more subtle edges, while larger values get
-                // rid of unwanted noise.
-                parameters["NormalThreshold"].SetValue(0.5f);
-                parameters["DepthThreshold"].SetValue(0.001f);
-
-                // How dark should the edges get in response to changes in the input data?
-                parameters["NormalSensitivity"].SetValue(1.0f);
-                parameters["DepthSensitivity"].SetValue(10000.0f);
-
-                Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
-                           vxEngine.GraphicsDevice.Viewport.Width,
-                           vxEngine.GraphicsDevice.Viewport.Height,
-                           0, 0, 1);
-                Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-
-                parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
-
-
-
-                // Activate the appropriate effect technique.
-                vxEngine.Assets.PostProcessShaders.CartoonEdgeDetection.CurrentTechnique = vxEngine.Assets.PostProcessShaders.CartoonEdgeDetection.Techniques["EdgeDetect"];
-
-
-                // Draw a fullscreen sprite to apply the postprocessing effect.
-                vxEngine.SpriteBatch.Begin(0, BlendState.Opaque, null, null, null, vxEngine.Assets.PostProcessShaders.CartoonEdgeDetection);
-                vxEngine.SpriteBatch.Draw(RT_FinalScene, Vector2.Zero, Color.White);
-                vxEngine.SpriteBatch.End();
-            }
-            else
-            {
-                //If the user elects to not use the effect, simply draw the previous scene into the current 
-                //active render target.
-                vxEngine.SpriteBatch.Begin();
-                vxEngine.SpriteBatch.Draw(RT_FinalScene, Vector2.Zero, Color.White);
-                vxEngine.SpriteBatch.End();
-            }
+            BlurScenePostProcess.Apply();
+            EdgeDetectPostProcessor.Apply();
+            DepthOfFieldPostProcess.Apply();
+            ApplyGuassianBloom(vxEngine);
+            ApplyCrepuscularRays(vxEngine);
         }
-
-        public float DepthOfFieldAlpha = 1;
-        public void ApplyDepthOfField()
-        {
-            //Set Render Target
-            mGraphicsDevice.SetRenderTarget(RT_DepthOfField);
-
-            if (vxEngine.Profile.Settings.Graphics.DepthOfField != vxEnumQuality.None)
-            {
-                EffectParameterCollection parameters = vxEngine.Assets.PostProcessShaders.DepthOfFieldEffect.Parameters;
-
-                parameters["SceneTexture"].SetValue(RT_EdgeDetected);
-                parameters["DepthTexture"].SetValue(RT_DepthMap);
-                parameters["BlurTexture"].SetValue(RT_BlurredScene);
-
-                Matrix orthoproj = Matrix.CreateOrthographicOffCenter(0,
-                           vxEngine.GraphicsDevice.Viewport.Width,
-                           vxEngine.GraphicsDevice.Viewport.Height,
-                           0, 0, 1);
-                Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-
-                parameters["MatrixTransform"].SetValue(halfPixelOffset * orthoproj);
-#if VIRTICES_3D
-                parameters["FarClip"].SetValue(vxEngine.Current3DSceneBase.Camera.FarPlane);
-                parameters["FocalDistance"].SetValue(vxEngine.Current3DSceneBase.Camera.FocalDistance);
-                parameters["FocalWidth"].SetValue(vxEngine.Current3DSceneBase.Camera.FocalWidth);
-#endif
-
-                // Draw a fullscreen sprite to apply the postprocessing effect.
-                vxEngine.SpriteBatch.Begin(0, BlendState.Opaque, null, null, null, vxEngine.Assets.PostProcessShaders.DepthOfFieldEffect);
-                vxEngine.SpriteBatch.Draw(RT_EdgeDetected, Vector2.Zero, Color.White);
-                vxEngine.SpriteBatch.End();
-            }
-            else
-            {
-                //If the user elects to not use the effect, simply draw the previous scene into the current 
-                //active render target.
-                vxEngine.SpriteBatch.Begin();
-                vxEngine.SpriteBatch.Draw(RT_EdgeDetected, Vector2.Zero, Color.White);
-                vxEngine.SpriteBatch.End();
-            }
-        }
+        
 
 #endregion
 
@@ -1061,6 +939,7 @@ namespace Virtex.Lib.Vrtc.Graphics
                 // shader that extracts only the brightest parts of the image.
                 vxEngine.Assets.PostProcessShaders.BloomExtractEffect.Parameters["BloomThreshold"].SetValue(BloomSettings.BloomThreshold);
 
+                
                 DrawRenderTargetIntoOther(vxEngine, RT_FinalScene, RT_BlurTempOne,
                                    vxEngine.Assets.PostProcessShaders.BloomExtractEffect,
                                    IntermediateBuffer.PreBloom);
@@ -1082,6 +961,7 @@ namespace Virtex.Lib.Vrtc.Graphics
                 DrawRenderTargetIntoOther(vxEngine, RT_BlurTempTwo, RT_BlurTempOne,
                                    vxEngine.Assets.PostProcessShaders.GaussianBlurEffect,
                                    IntermediateBuffer.BlurredBothWays);
+                
 
                 // Pass 4: draw both rendertarget 1 and the original scene
                 // image back into the main backbuffer, using a shader that
@@ -1093,7 +973,6 @@ namespace Virtex.Lib.Vrtc.Graphics
                 vxEngine.Assets.PostProcessShaders.BloomCombineEffect.Parameters["BaseSaturation"].SetValue(BloomSettings.BaseSaturation);
 
                 //No Apply the bloom to the current post-processed scene.
-                //vxEngine.GraphicsDevice.Textures[1] = RT_DepthOfField;
                 vxEngine.Assets.PostProcessShaders.BloomCombineEffect.Parameters["BaseTexture"].SetValue(RT_DepthOfField);
 
                 vxEngine.GraphicsDevice.SetRenderTarget(RT_FinalScene);

@@ -258,7 +258,9 @@ namespace Virtex.Lib.Vrtc.Core.Entities
         {
             string[] vars = UserDefinedData02.Split(';');
 
-            WaterScale = new Vector3(float.Parse(vars[0]), float.Parse(vars[1]), float.Parse(vars[2]));
+            if(vars.Length > 2)
+                WaterScale = new Vector3(float.Parse(vars[0]), float.Parse(vars[1]), float.Parse(vars[2]));
+
             ResetScaleCubes();
 
             base.PostLoad();
@@ -292,6 +294,9 @@ namespace Virtex.Lib.Vrtc.Core.Entities
 #endif
 			World = Matrix.CreateScale(WaterScale /modelscalar);
             World *= Matrix.CreateTranslation(Position);
+
+            WrknPlane.D = 10;// World.Translation.Y;
+            vxConsole.WriteToInGameDebug(WrknPlane);
 
             base.Update(gameTime);
         }

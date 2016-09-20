@@ -48,14 +48,18 @@ namespace Virtex.vxGame.VerticesTechDemo
         /// </summary>
         public Vector3 Vector_ModelOffSet = Vector3.Zero;
 
-        public static vxSandboxEntityDescription EntityDescription
+        public static vxSandboxEntityRegistrationInfo EntityDescription
         {
             get
             {
-                return new vxSandboxEntityDescription(
-                "Virtex.vxGame.VerticesTechDemo.Teapot",
+                return new vxSandboxEntityRegistrationInfo(
+                    typeof(Teapot).ToString(),
                 "Teapot",
-                "Models/teapot/teapot");
+                "Models/teapot/teapot",
+                    delegate (vxEngine Engine)
+                    {
+                        return new Teapot((GameEngine)Engine, Vector3.Zero);
+                    });
             }
         }
 

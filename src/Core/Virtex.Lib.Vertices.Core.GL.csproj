@@ -654,7 +654,6 @@
     <Compile Include="Cameras\Controllers\CameraControlScheme.cs" />
     <Compile Include="Cameras\Controllers\CharacterCameraControlScheme.cs" />
     <Compile Include="Cameras\Controllers\CharacterControllerInput.cs" />
-    <Compile Include="ContentManagement\Assets.cs" />
     <Compile Include="Entities\VehicleInput.cs" />
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
@@ -778,6 +777,13 @@
     <Compile Include="Screens\Menus\vxKeyboardSettingsDialog.cs" />
     <Compile Include="GUI\Dialogs\vxKeyBindingSettingsGUIItem.cs" />
     <Compile Include="Entities\Enviroment\vxSkyBoxEntity.cs" />
+    <Compile Include="ContentManagement\vxInternalAssetManager.cs" />
+    <Compile Include="Graphics\Post Processors\vxBlurScenePostProcess.cs" />
+    <Compile Include="Graphics\Post Processors\vxDepthOfFieldPostProcess.cs" />
+    <Compile Include="Graphics\Post Processors\vxEdgeDetectPostProcess.cs" />
+    <Compile Include="Graphics\Post Processors\vxPostProcessor.cs" />
+    <Compile Include="Graphics\Post Processors\vxPostProcessorInterface.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxAxisRotator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\2D Gameplay\" />

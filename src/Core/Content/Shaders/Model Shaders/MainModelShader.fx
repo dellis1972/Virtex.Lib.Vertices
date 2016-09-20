@@ -12,6 +12,8 @@ float Alpha = 1;
 float SpecularIntensity = 1;
 float SpecularPower = 5;
 
+float2 TextureUVOffset = float2(0, 0);
+
 float3 ViewVector = float3(1, 0, 0);
 
 // The light direction is shared between the Lambert and Toon lighting techniques.
@@ -110,7 +112,7 @@ MainVSOutput MainVSFunction(MainVSInput input, float4x4 worldTransform)
 	float4 viewPosition = mul(worldPosition, View);
 	output.Position = mul(viewPosition, Projection);
 
-	output.TexCoord = input.TexCoord;
+	output.TexCoord = input.TexCoord + TextureUVOffset;
 
 	// calculate tangent space to world space matrix using the world space tangent,
 	// binormal, and normal as basis vectors

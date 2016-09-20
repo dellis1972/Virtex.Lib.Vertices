@@ -50,13 +50,25 @@ namespace Virtex.Lib.Vrtc.Graphics
             _randomTexture3D.SetData(randomRotations(_randomTexture3D.Width * _randomTexture3D.Height * _randomTexture3D.Depth).ToArray());
             _randomTexture2D.SetData(randomRotations(_randomTexture2D.Width * _randomTexture2D.Height).ToArray());
             //_randomTexture2D = vxEngine.Assets.Textures.RandomValues;
+            /*
+           BinaryWriter writer = new BinaryWriter(File.Create("3DTextureByte.txt"));
+           byte[] b = new byte[_randomTexture3D.Width * _randomTexture3D.Height * _randomTexture3D.Depth * 4];
+           _randomTexture3D.GetData<byte>(b);
 
-			/*
-            Stream streampng = File.OpenWrite("tiny.png");
-            _randomTexture2D.SaveAsPng(streampng, tSize, tSize);
-            streampng.Dispose();
-            //texture.Dispose();
-			*/
+
+           // Writer raw data                
+           writer.Write(b);
+           writer.Flush();
+           writer.Close();
+
+           byte[] file = System.IO.File.ReadAllBytes("3DTextureByte.bin");
+           _randomTexture3D.SetData<byte>(file);
+
+           Stream streampng = File.OpenWrite("tiny.png");
+           _randomTexture2D.SaveAsPng(streampng, tSize, tSize);
+           streampng.Dispose();
+           //texture.Dispose();
+           */
         }
 
 

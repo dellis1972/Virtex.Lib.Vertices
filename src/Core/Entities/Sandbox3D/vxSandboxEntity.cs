@@ -161,6 +161,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D
         vxTextbox nameBox;
         vxTextbox indexProp;
 
+        public bool CanBePlacedOnSurface = false;
 
         public Matrix PreSelectionWorld = Matrix.Identity;
 
@@ -186,6 +187,12 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D
             SetMesh(World, AddToPhysics, ResetWholeMesh);
         }
 
+        public bool IstSandboxEntityInit = false;
+        public virtual void InitSandboxEntity()
+        {
+            IstSandboxEntityInit = true;
+        }
+
         /// <summary>
         /// A method which allows for certain opperations to be preformed just before the entity is saved to a file.
         /// </summary>
@@ -205,6 +212,8 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D
 
         public virtual void SetMesh(Matrix NewWorld, bool AddToPhysics, bool ResetWholeMesh)
         {
+            this.Position = NewWorld.Translation;
+            World = NewWorld;
             /*
             AddToPhysicsLibrary = AddToPhysics;
             this.Position = NewWorld.Translation;

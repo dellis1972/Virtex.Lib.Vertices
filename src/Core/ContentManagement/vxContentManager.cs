@@ -195,37 +195,7 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 						//First Load in the Texture packs based off of the mesh name
 						newModel.LoadTextures(Content, PathToModel);
-
-
-						/*
-						//Main Diffuse Texture
-						if (newEffect.Parameters["Texture"] != null)
-						{
-							//First Create The Path to the Diffuse Texture
-							newModel.LoadTextures(Content, PathToModel);
-						}
-						/*
-						// Normal Map
-						if (newEffect.Parameters["NormalMap"] != null &&
-							File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm.xnb"))
-						{
-							newEffect.Parameters["NormalMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_nm"));
-
-							vxConsole.WriteVerboseLine("\t\t\t\tNormal Map Found");
-
-						}
-						// Specular Map
-						if (newEffect.Parameters["SpecularMap"] != null &&
-							File.Exists(Content.RootDirectory + "/" + vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm.xnb"))
-						{
-
-							newEffect.Parameters["SpecularMap"].SetValue(Content.Load<Texture2D>(vxUtil.GetParentPathFromFilePath(PathToModel) + "/" + mesh.Name + "_sm"));
-
-							vxConsole.WriteVerboseLine("\t\t\t\tSpecular Map Found");
-
-						}
-						*/
-
+                        
 						if (newEffect.Parameters["TextureEnabled"] != null)
 							newEffect.Parameters["TextureEnabled"].SetValue(true);
 
@@ -249,8 +219,6 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 						if (newEffect.Parameters["ShadowBrightness"] != null)
 							newEffect.Parameters["ShadowBrightness"].SetValue(0.25f);
 
-
-#if VRTC_PLTFRM_XNA
                             if (newEffect.Parameters["LightDirection"] != null)
                                 newEffect.Parameters["LightDirection"].SetValue(Vector3.Normalize(new Vector3(100, 130, 0)));
 
@@ -259,7 +227,6 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
                             if (newEffect.Parameters["AmbientLightColor"] != null)
                                 newEffect.Parameters["AmbientLightColor"].SetValue(new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
-#endif
 
 						effectMapping.Add(oldEffect, newEffect);
 					}
@@ -489,8 +456,11 @@ namespace Virtex.Lib.Vrtc.XNA.ContentManagement
 
 			DoModelFileCheck(PathToModel, Content);
 
-			// Now load the shadow model.
-			newModel.ModelShadow = LoadShadowModel(PathToModel, Content, ShadowEffect);
+            // Now load in the textures
+            newModel.LoadTextures(Content, PathToModel);
+
+            // Now load the shadow model.
+            newModel.ModelShadow = LoadShadowModel(PathToModel, Content, ShadowEffect);
 
 
 			// Now load the utility model.

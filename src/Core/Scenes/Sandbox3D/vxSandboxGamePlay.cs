@@ -34,6 +34,12 @@ using Virtex.Lib.Vrtc.Entities.Sandbox3D;
 
 namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 {
+    public enum vxEnumAddMode
+    {
+        OnPlane,
+
+        OnSurface
+    }
     /// <summary>
     /// This is the main class for the game. It holds the instances of the sphere simulator,
     /// the arena, the bsp tree, renderer, GUI (Overlay) and player. It contains the main 
@@ -45,6 +51,8 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
         /// An in game Open File Dialog too access files from specific directories.
         /// </summary>
         public vxOpenFileDialog OpenFileDialog;
+
+        public vxEnumAddMode AddMode = vxEnumAddMode.OnPlane;
 
         /// <summary>
         /// Save As Message Box.
@@ -395,7 +403,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 
         }
 
-
+        public Matrix MouseWorld;
 
         /// <summary>
         /// Updates Main Gameplay Loop code here, this is affected by whether or not the scene is paused.
@@ -417,8 +425,6 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                 //If it's in Testing Mode, Update the Vehicle and Chase Camera
                 if (SandboxGameState == vxEnumSandboxGameState.Running)
                 {
-                    //UpdateCameraChaseTarget();
-
                     //drop it out of view
                     workingPlane.Position = OutofSight;
                 }
@@ -426,9 +432,12 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                 //Update If In Edit Mode
                 if (SandboxGameState == vxEnumSandboxGameState.EditMode)
                 {
+                    MouseWorld = Matrix.Identity;
+
                     //Reset to Negative One each loop
                     Index = -1;
-                    
+                    AddMode = vxEnumAddMode.OnPlane;
+
                     Ray Ray_Mouse = vxGeometryHelper.CalculateCursorRay(vxEngine, Camera.Projection, Camera.View);
                     if (!grabber.IsGrabbing)
                     {
@@ -456,12 +465,7 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
 										Vector3 nrml = raycastResult.HitData.Normal;
 
 										nrml.Normalize();
-
-										vxDebugShapeRenderer.AddBoundingSphere(
-											new BoundingSphere(pnt, 1), Color.HotPink);
-
-										vxDebugShapeRenderer.AddLine(
-											pnt, pnt + 5 * nrml, Color.LimeGreen);
+                                        
 
 
                                         //Get Index of Currently Selected Item
@@ -482,6 +486,26 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                                                         vxDebugShapeRenderer.AddBoundingBox(raycastResult.HitObject.BoundingBox, Color.HotPink);
                                                     }
                                                 }
+
+                                                else
+                                                {
+
+                                                    if (temp_part != null && IsSurface(Items[Index]))
+                                                    {
+                                                        vxDebugShapeRenderer.AddBoundingSphere(
+                                                            new BoundingSphere(pnt, 1), Color.Blue);
+
+                                                        vxDebugShapeRenderer.AddLine(
+                                                            pnt, pnt + 5 * nrml, Color.LimeGreen);
+
+                                                        Vector3 fwd = Vector3.Cross(Vector3.UnitX + Vector3.UnitZ, nrml);
+                                                        fwd.Normalize();
+
+                                                        AddMode = vxEnumAddMode.OnSurface;
+                                                        MouseWorld = Matrix.CreateWorld(pnt, fwd, nrml);
+                                                    }
+
+                                                }
                                             }
                                         }
                                     }
@@ -500,6 +524,20 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                             Vector3 intersection = (float)Ray_Mouse.Intersects(workingPlane.WrknPlane) * Ray_Mouse.Direction + Ray_Mouse.Position;
                             int_intersc = new Vector3((int)intersection.X, (int)intersection.Y, (int)intersection.Z);
                         }
+
+                        if (temp_part != null && Index > -2)
+                        {
+
+                            if (AddMode == vxEnumAddMode.OnSurface && temp_part.CanBePlacedOnSurface == true)
+                            {
+                                temp_part.SetMesh(MouseWorld, false, false);
+                            }
+                            else
+                            {
+                                temp_part.Position = int_intersc;
+                                temp_part.SetMesh(false, false);
+                            }
+                        }
                     }
 
                     else
@@ -508,11 +546,6 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                         int_intersc = OutofSight;
                     }
 
-                    if (temp_part != null && Index > -2)
-                    {
-                        temp_part.Position = int_intersc;
-                        temp_part.SetMesh(false, false);
-                    }
 
 
                     
@@ -539,6 +572,16 @@ namespace Virtex.Lib.Vrtc.Scenes.Sandbox3D
                     Mouse.SetPosition((int)vxEngine.Mouse_ClickPos.X, (int)vxEngine.Mouse_ClickPos.Y);
             }
             base.UpdateScene(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
+
+        public virtual bool IsSurface(vxSandboxEntity HoveredEntity)
+        {
+            if (HoveredEntity == temp_part)
+            {
+                return false;
+            }
+            else
+                return true;
         }
 
         public override void DrawOverlayItems()

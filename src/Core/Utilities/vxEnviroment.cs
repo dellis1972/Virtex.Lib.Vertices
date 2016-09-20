@@ -97,7 +97,7 @@ namespace Virtex.Lib.Vrtc.Core
 			string enginecontentpath = "Virtex.Lib.Vertices.Core";
 
 			#if VRTC_PLTFRM_XNA
-			enginecontentpath = "Virtex.Lib.Vertices.Core.XNA.Content";
+			enginecontentpath = "Content/vxengine";
 
 			#elif VRTC_PLTFRM_GL
 			enginecontentpath = "Vertices.Engine.Content/Compiled.DesktopGL";            

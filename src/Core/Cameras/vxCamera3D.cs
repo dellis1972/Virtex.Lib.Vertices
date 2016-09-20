@@ -30,49 +30,53 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
     {
         public CameraType CameraType = CameraType.Freeroam;
         
-        private Matrix mViewMatrix;
         public Matrix View
         {
             get { return mViewMatrix; }
             set { mViewMatrix = value; }
         }
+        private Matrix mViewMatrix;
 
-        private Matrix mProjectionMatrix;
         public Matrix Projection
         {
             get { return mProjectionMatrix; }
             set { mProjectionMatrix = value; }
         }
+        private Matrix mProjectionMatrix;
 
-        private float mFieldOfView;
+
+        public BoundingFrustum BoundingFrustum;
+
+
         public float FieldOfView
         {
             get { return mFieldOfView; }
             set { mFieldOfView = value; calcProjectionMatrix(); }
         }
+        private float mFieldOfView;
 
-        private float mAspectRatio;
 
         public float AspectRatio
         {
             get { return mAspectRatio; }
             set { mAspectRatio = value; calcProjectionMatrix(); }
         }
+        private float mAspectRatio;
 
-        private float mNearPlane;
         public float NearPlane
         {
             get { return mNearPlane; }
             set { mNearPlane = value; calcProjectionMatrix(); }
         }
+        private float mNearPlane;
 
-        private float mFarPlane;
         public float FarPlane
         {
             get { return mFarPlane; }
             set { mFarPlane = value; calcProjectionMatrix(); }
         }
-        
+        private float mFarPlane;
+
         /// <summary>
         /// Focal Distance Used During Depth of Field Calculations.
         /// </summary>
@@ -320,6 +324,10 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
         private void calcProjectionMatrix()
         {
             mProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(mFieldOfView, mAspectRatio, mNearPlane, mFarPlane);
+
+            BoundingFrustum = new BoundingFrustum(View * Projection);
+
+            
         }
 
 
@@ -339,7 +347,9 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
 
         public virtual void Update(GameTime time)
         {
-			vxConsole.WriteToInGameDebug (CameraType);
+            vxConsole.WriteToInGameDebug(vxEngine.RenderCount);
+            vxEngine.RenderCount = 0;
+
             if (CameraType == CameraType.CharacterFPS)
             {
                 //Only move around if the camera has control over its own position.
@@ -447,8 +457,14 @@ namespace Virtex.Lib.Vrtc.Core.Cameras
             }
 
             vxConsole.WriteToInGameDebug("Camera Position: " + this.Position);
+
+            BoundingFrustum.Matrix = View * Projection;
         }
 
+        public bool IsInViewFrustrum(BoundingSphere boundingSphere)
+        {
+            return BoundingFrustum.Intersects(boundingSphere);
+        }
 
         /// <summary>
         /// Moves the camera forward.

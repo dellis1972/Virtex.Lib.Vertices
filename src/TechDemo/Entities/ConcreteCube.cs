@@ -50,14 +50,18 @@ namespace Virtex.vxGame.VerticesTechDemo
         /// </summary>
         public Vector3 Vector_ModelOffSet = Vector3.Zero;
 
-        public static vxSandboxEntityDescription EntityDescription
+        public static vxSandboxEntityRegistrationInfo EntityDescription
         {
             get
             {
-                return new vxSandboxEntityDescription(
-                "Virtex.vxGame.VerticesTechDemo.WoodenCrate",
+                return new vxSandboxEntityRegistrationInfo(
+                    typeof(ConcreteCube).ToString(),
                 "Wooden Crate",
-                "Models/items/wooden crate/wooden crate");
+                "Models/items/wooden crate/wooden crate",
+                    delegate (vxEngine Engine)
+                    {
+                        return new ConcreteCube((GameEngine)Engine, Vector3.Zero);
+                    });
             }
         }
 

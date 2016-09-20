@@ -507,14 +507,11 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
             //Get Blurred Scene for a number of different Processes (Depth of Field, Menu Background blurring etc...)
             //Do This before the Edge Detection, otherwise you get edge bleeding that over saturates the scene with black.
 
+
             // Apply Post Processing Effects
             //**********************************************************************************************
-            vxEngine.Renderer.CreateBluredScreen(vxEngine);
+            vxEngine.Renderer.ApplyPostProcessors();
 
-            vxEngine.Renderer.ApplyEdgeDetect(vxEngine);
-            vxEngine.Renderer.ApplyDepthOfField();
-            vxEngine.Renderer.ApplyGuassianBloom(vxEngine);
-            vxEngine.Renderer.ApplyCrepuscularRays(vxEngine);
 
             //Draw Menu Blur Only if this screen is Pausable
 			if (IsPausable) {
@@ -776,9 +773,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                         foreach (vxWaterEntity water in waterItems)
                             water.DrawWater(vxEngine.Renderer.RT_WaterReflectionMap, camera.GetReflectionView(water.WrknPlane));
 
-                        //vxEngine.Renderer.RT_WaterReflectionMap
-                        //lensFlare.UpdateOcclusion();
-
                         break;
                 }
             }
@@ -795,8 +789,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
 
             DrawDirectionalLight(-Vector3.Normalize(vxEngine.Renderer.lightPosition), Color.White*0);
-
-            //DrawPointLight(new Vector3(0,0, 0), Color.Orange, 0, 0);
             
             vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
@@ -811,7 +803,7 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
             //Set Render State
             vxEngine.GraphicsDevice.SetRenderTarget(vxEngine.Renderer.RT_FinalScene);
-            vxEngine.GraphicsDevice.BlendState = BlendState.Opaque;
+            vxEngine.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             vxEngine.GraphicsDevice.DepthStencilState = DepthStencilState.None;
             vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
 
@@ -824,12 +816,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 
             finalCombineEffect.Techniques[0].Passes[0].Apply();
             vxEngine.Renderer.RenderQuad(Vector2.One * -1, Vector2.One);
-
-
-			//vxEngine.Renderer.SetCurrentPass(RenderPass.WaterReflection);
-			vxConsole.WriteToInGameDebug("VSYNC: " + this.mGraphicsManager.SynchronizeWithVerticalRetrace);
-			//lensFlare.UpdateOcclusion();
-
         }
 
 

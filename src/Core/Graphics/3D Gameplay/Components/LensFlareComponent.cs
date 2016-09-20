@@ -187,7 +187,6 @@ namespace Virtex.Lib.Vrtc.Graphics
 
 			lightPosition = new Vector2(vxEngine.Current3DSceneBase.SunEmitter.screenPos.X, 
 			                            vxEngine.Current3DSceneBase.SunEmitter.screenPos.Y);
-			vxConsole.WriteToInGameDebug(lightPosition);
 
 			occlusionAlpha = 1;
             // Draw the flare effect.

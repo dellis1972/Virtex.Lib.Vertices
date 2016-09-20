@@ -13,11 +13,13 @@ namespace Virtex.Lib.Vrtc.Core
 	/// </summary>
 	public class vxAlphaEntity3D : vxEntity3D
 	{
+        public Texture2D Texture;
+
 		public vxAlphaEntity3D(vxEngine Engine, vxModel model, Vector3 Pos) : 
 			base(Engine, model, Pos)
 		{
-			
-		}
+            Texture = Engine.Assets.Textures.Blank;
+        }
 
 		public override void RenderMeshPrepPass() { }
 		public override void RenderMeshShadow() { }
@@ -28,7 +30,7 @@ namespace Virtex.Lib.Vrtc.Core
 		/// <summary>
 		/// Renders the alpha model.
 		/// </summary>
-		public void RenderAlpha()
+		public virtual void RenderAlpha()
 		{
 			if (vxModel.ModelMain != null)
 			{
@@ -45,9 +47,10 @@ namespace Virtex.Lib.Vrtc.Core
 					{
 						effect.World = this.World;
 						effect.View = this.Camera.View;
+                        effect.Texture = Texture;
 						effect.Projection = this.Camera.Projection;
-						effect.EmissiveColor = Color.White.ToVector3();
-						effect.Alpha = 1;
+                        effect.TextureEnabled = true;
+                        effect.EmissiveColor = Color.White.ToVector3();
 					}
 					// Draw the mesh, using the effects set above.
 					mesh.Draw();

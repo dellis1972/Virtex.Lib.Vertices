@@ -33,6 +33,7 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
         public float ZoomFactor = 25;
 
 		public List<vxAxis> List_Items = new List<vxAxis>();
+        public List<vxAxisRotator> List_Rotators = new List<vxAxisRotator>();
 
         public List<vxSandboxEntity> SelectedItems = new List<vxSandboxEntity>();
 
@@ -88,6 +89,11 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 			List_Items.Add(new vxAxis(vxEngine, this, AxisDirections.Y));
 			List_Items.Add(new vxAxis(vxEngine, this, AxisDirections.Z));
 
+            //Add Rotators
+            List_Rotators.Add(new vxAxisRotator(vxEngine, this, AxisDirections.X));
+            List_Rotators.Add(new vxAxisRotator(vxEngine, this, AxisDirections.Y));
+            List_Rotators.Add(new vxAxisRotator(vxEngine, this, AxisDirections.Z));
+            
             Current3DScene.BEPUPhyicsSpace.Add(HitBox);
             //Current3DScene.Physics3DDebugDrawer.Add(HitBox);
 
@@ -116,6 +122,18 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
                 if (t != null && entity.SelectionState != vxEnumSelectionState.Selected)
                 {
                     entity.SelectionState = vxEnumSelectionState.Hover;
+                    break;
+                }
+                else if (entity.SelectionState == vxEnumSelectionState.Hover)
+                    entity.SelectionState = vxEnumSelectionState.Unseleced;
+            }
+            foreach (vxAxisRotator entity in List_Rotators)
+            {
+                float? t = MouseRay.Intersects(entity.HitBox.CollisionInformation.BoundingBox);
+                if (t != null && entity.SelectionState != vxEnumSelectionState.Selected)
+                {
+                    entity.SelectionState = vxEnumSelectionState.Hover;
+                    break;
                 }
                 else if (entity.SelectionState == vxEnumSelectionState.Hover)
                     entity.SelectionState = vxEnumSelectionState.Unseleced;
@@ -136,6 +154,13 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
                     SelectionState = vxEnumSelectionState.Hover;
                 entity.Update(gameTime);
             }
+            foreach (vxSandboxEntity entity in List_Rotators)
+            {
+                if (entity.SelectionState == vxEnumSelectionState.Hover ||
+                    entity.SelectionState == vxEnumSelectionState.Selected)
+                    SelectionState = vxEnumSelectionState.Hover;
+                entity.Update(gameTime);
+            }
 
             if (vxEngine.InputManager.MouseState.LeftButton == ButtonState.Pressed)
             {
@@ -143,15 +168,17 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
                 {
                     firstClick = false;
                 }
+
                 if(cnt == 4)
                 {
                     clickPos = Position;
-                    //vxConsole.WriteLine("Chosen Pt: " + clickPos);
+
                     foreach (vxSandboxEntity selectedEntity in CurrentSandbox.SelectedItems)
                     {
                         selectedEntity.PreSelectionWorld = selectedEntity.World;
                     }
                 }
+
                 //Set Geometry Changes based off of Child Elements
                 Vector3 DeltaPosition = Position - clickPos;
 
@@ -191,14 +218,18 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D.Util
 
         public override void RenderMesh(string RenderTechnique)
         {
-			if (Current3DScene.Camera.CameraType == CameraType.Freeroam)
+			if (Current3DScene.Camera.CameraType == CameraType.Freeroam && IsInCameraViewFrustum)
 			{
 				foreach (vxAxis entity in List_Items)
 				{
 					entity.RenderMesh(RenderTechnique);
 				}
+                foreach (vxAxisRotator entity in List_Rotators)
+                {
+                    entity.RenderMesh(RenderTechnique);
+                }
 
-				base.RenderMesh(RenderTechnique);
+                base.RenderMesh(RenderTechnique);
 			}
         }
 

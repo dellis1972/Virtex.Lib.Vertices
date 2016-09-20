@@ -227,7 +227,9 @@ namespace Virtex.Lib.Vrtc.Graphics
 						// Set Specular Map with Specified Quality
 						if (effect.Parameters["SpecularMap"] != null)
 							effect.Parameters["SpecularMap"].SetValue(SpecularMaps[index].Texture);
-					}
+
+
+                    }
 				}
 				catch (Exception ex)
 				{

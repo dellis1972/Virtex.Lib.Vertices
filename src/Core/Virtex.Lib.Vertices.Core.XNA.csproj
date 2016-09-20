@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Virtex.Lib.Vertices</RootNamespace>
+    <RootNamespace>Virtex.Lib.Vrtc</RootNamespace>
     <AssemblyName>Virtex.Lib.Vertices.XNA</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -103,7 +103,7 @@
     <Compile Include="Cameras\vxCamera2D.cs" />
     <Compile Include="Cameras\vxCamera3D.cs" />
     <Compile Include="Cameras\vxVirtualCamera.cs" />
-    <Compile Include="ContentManagement\Assets.cs" />
+    <Compile Include="ContentManagement\vxInternalAssetManager.cs" />
     <Compile Include="ContentManagement\vxContentManager.cs" />
     <Compile Include="Debug Utilities\IDebugCommandHost.cs" />
     <Compile Include="Debug Utilities\KeyboardUtils.cs" />
@@ -121,14 +121,19 @@
     <Compile Include="Entities\Enviroment\vxSkyBoxEntity.cs" />
     <Compile Include="Entities\Enviroment\vxSunEntity.cs" />
     <Compile Include="Entities\Enviroment\vxWaterEntity.cs" />
+    <Compile Include="Entities\Sandbox3D\Util\vxAxisRotator.cs" />
     <Compile Include="Entities\VehicleInput.cs" />
     <Compile Include="Entities\vxEntity.cs" />
     <Compile Include="Entities\vxEntity2D.cs" />
-    <Compile Include="Entities\vxAlphaEntity3D.cs" />
     <Compile Include="Entities\vxEntity3D.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Graphics\2D Gameplay\vxAssetCreator2D.cs" />
     <Compile Include="Graphics\2D Gameplay\vxLineBatch.cs" />
+    <Compile Include="Graphics\Post Processors\vxBlurScenePostProcess.cs" />
+    <Compile Include="Graphics\Post Processors\vxDepthOfFieldPostProcess.cs" />
+    <Compile Include="Graphics\Post Processors\vxPostProcessor.cs" />
+    <Compile Include="Graphics\Post Processors\vxEdgeDetectPostProcess.cs" />
+    <Compile Include="Graphics\Post Processors\vxPostProcessorInterface.cs" />
     <Compile Include="Graphics\vxGraphicsSettingsManager.cs" />
     <Compile Include="Graphics\vxModel.cs" />
     <Compile Include="Graphics\vxModelVoxel.cs" />

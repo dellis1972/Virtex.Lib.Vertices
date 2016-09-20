@@ -50,9 +50,9 @@ namespace Virtex.Lib.Vrtc.Graphics
 		/// </summary>
 		public Color Color { get; set; }
 
-        float lightRadius { get; set; }
+        public float lightRadius { get; set; }
 
-        float lightIntensity { get; set; }
+        public float lightIntensity { get; set; }
 
         public vxCamera3D camera
         {
@@ -136,6 +136,7 @@ namespace Virtex.Lib.Vrtc.Graphics
 			//calculate the distance between the camera and light center
             float cameraToCenter = Vector3.Distance(camera.Position, lightPosition);
             //if we are inside the light volume, draw the sphere's inside face
+
             if (cameraToCenter < lightRadius)
                 vxEngine.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
             else

@@ -13,6 +13,54 @@ namespace Virtex.Lib.Vrtc.Utilities
 	/// </summary>
 public class vxGeometryHelper
 {
+        public static BoundingSphere GetModelBoundingSphere(Model model)
+        {
+            // Initialize minimum and maximum corners of the bounding box to max and min values
+            Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+            // For each mesh of the model
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (ModelMeshPart meshPart in mesh.MeshParts)
+                {
+                    // Vertex buffer parameters
+                    int vertexStride = meshPart.VertexBuffer.VertexDeclaration.VertexStride;
+                    int vertexBufferSize = meshPart.NumVertices * vertexStride;
+
+                    // Get vertex data as float
+                    float[] vertexData = new float[vertexBufferSize / sizeof(float)];
+                    meshPart.VertexBuffer.GetData<float>(vertexData);
+
+                    // Iterate through vertices (possibly) growing bounding box, all calculations are done in world space
+                    for (int i = 0; i < vertexBufferSize / sizeof(float); i += vertexStride / sizeof(float))
+                    {
+                        Vector3 vert = new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]);
+
+                        min = Vector3.Min(min, vert);
+                        max = Vector3.Max(max, vert);
+                    }
+                }
+            }
+
+            //min = Vector3.Transform(min, Matrix.CreateRotationX(-MathHelper.PiOver2));
+            //max = Vector3.Transform(max, Matrix.CreateRotationX(-MathHelper.PiOver2));
+
+            // The Center will be the average of the Max and Min
+            Vector3 Center = Vector3.Add(max, min)/2;
+
+            // The Radius will be half the difference between the max and min
+            float Raduis = Vector3.Subtract(max, min).Length() / 2;
+
+
+            // Create and return bounding box
+            return new BoundingSphere(Center, Raduis);
+        }
+
+        public static BoundingBox GetModelBoundingBox(Model model)
+        {
+            return UpdateBoundingBox(model, Matrix.Identity);
+        }
 
         /// <summary>
         /// Updates a Bounding Box based off of Model Data
