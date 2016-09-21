@@ -99,6 +99,8 @@ namespace Virtex.Lib.Vrtc.Entities.Sandbox3D
 
         public StaticMesh PhysicsSkin_Main { get; set; }
 
+        public object Tag = "";
+
         //Load in mesh data and create the collision mesh.
         public Vector3[] MeshVertices;
         public int[] MeshIndices;

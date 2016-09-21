@@ -401,11 +401,11 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
 				// Start measuring time for "Physics".
 				vxEngine.DebugSystem.TimeRuler.BeginMark ("Physics", Color.LimeGreen);
 
-				//Update the Physics System.
-				//vxConsole.WriteToInGameDebug(((float)gameTime.ElapsedGameTime.Milliseconds)/1000);
-				//vxConsole.WriteToInGameDebug((float)gameTime.ElapsedGameTime.TotalSeconds);
-				//BEPUPhyicsSpace.Update ((float)gameTime.ElapsedGameTime.TotalSeconds);
-				BEPUPhyicsSpace.Update ();
+                //Update the Physics System.
+                //vxConsole.WriteToInGameDebug(((float)gameTime.ElapsedGameTime.Milliseconds)/1000);
+                //vxConsole.WriteToInGameDebug((float)gameTime.ElapsedGameTime.TotalSeconds);
+                //BEPUPhyicsSpace.Update ((float)gameTime.ElapsedGameTime.TotalSeconds);
+                BEPUPhyicsSpace.Update();
 
 				// Stop measuring time for "Draw".
 				vxEngine.DebugSystem.TimeRuler.EndMark ("Physics");
@@ -431,8 +431,6 @@ namespace Virtex.Lib.Vrtc.Core.Scenes
                 // Update Particle System
                 //**********************************************************************************************
                 ParticleSystem.Update (gameTime);
-
-                //vxEngine.Renderer.mSnapShadowMaps = false;
 
 
                 // Update Camera
